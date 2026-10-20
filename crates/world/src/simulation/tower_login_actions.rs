@@ -1,6 +1,7 @@
 use super::*;
 impl World {
     pub(super) fn process_tower_ash(&mut self, slot: usize) {
+        if self.cinderworks.is_some(){return;}
         self.try_tower_login_restore(slot);
         let Some(config) = self.tower_restore.as_ref() else {
             return;
@@ -64,6 +65,7 @@ impl World {
     }
 
     pub(super) fn try_tower_login_restore(&mut self, slot: usize) {
+        if self.cinderworks.is_some() || self.players.get(slot).is_some_and(|p|p.data.tower_run.id>0){return;}
         let Some(config) = self.tower_restore.as_ref() else {
             return;
         };

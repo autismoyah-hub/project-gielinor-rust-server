@@ -29,6 +29,7 @@ impl Add {
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Object {
+    Graphic {id:u16,height:u8,delay:u16,x:u8,z:u8},
     SoundArea(SoundArea),
     Projectile(Projectile),
     Add(Add),
@@ -105,6 +106,10 @@ impl Object {
     pub fn encode(self) -> Result<Vec<u8>, DecodeError> {
         let mut out = Vec::new();
         match self {
+            Self::Graphic{id,height,delay,x,z}=>{
+                // Existing revision-239 MapAnim enclosed record, not a new opcode.
+                out.extend([5,height]);out.extend(id.to_le_bytes());out.extend(delay.to_le_bytes());out.push(coord(x,z)?);
+            }
             Self::SoundArea(v) => {
                 out.extend([
                     14,
@@ -235,4 +240,17 @@ pub fn enclosed(x: u8, z: u8, level: u8, objects: &[Object]) -> Result<Packet, D
         opcode: 105,
         payload,
     })
+}
+
+
+#[cfg(test)]
+mod graphic_tests {
+    use super::*;
+    #[test]
+    fn original_rsprot_mapanim_vector_and_coordinate_bounds() {
+        // Independently emitted by cached RSProt239 Kotlin desktop encoder.
+        assert_eq!(Object::Graphic{id:0x1234,height:7,delay:0x5678,x:3,z:6}.encode().unwrap(),[5,7,0x34,0x12,0x78,0x56,0x36]);
+        assert!(Object::Graphic{id:1,height:0,delay:0,x:8,z:0}.encode().is_err());
+        assert!(Object::Graphic{id:1,height:0,delay:0,x:0,z:8}.encode().is_err());
+    }
 }

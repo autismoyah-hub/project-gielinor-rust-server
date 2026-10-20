@@ -180,3 +180,34 @@ The diagnostic uses synthetic disposable state and does not demonstrate earned
 content. Entry, tool and claim producers, services, encounters and paired current-
 floor acceptance remain separate integration work. The library checkpoint
 producer is intentionally not yet exposed through a gameplay handler.
+
+## Gameplay kernel — authored entry, services and encounters
+
+Opt-in entry preserves earned possessions and permanent progress. Plaque tool
+collections, new runs, guardian unlocks and chest rewards stage full snapshots;
+items and run flags become visible only after the matching save acknowledgment.
+Full packs and repeated pending claims leave live inventory unchanged.
+
+The maintained gathering, cooking, smithing and offering owners perform resource
+changes and XP. New hooks credit successful preparation only. Burned shrimp does
+not restore the kitchen. The authored Imp/Warden bounds, telegraphs, coolant
+interrupts and rescue scheduler are integrated behind explicit configuration.
+
+Standard revision-239 MapAnim records carry owner-filtered transient hazards.
+The run journal and eight restoration landmarks use committed player state and
+explicit spatial overrides; scene resets reconstruct each observer independently.
+
+Validation: the pre-journal workspace passed 991 tests, zero failures, one
+pre-existing ignored test. The journal/scenery server run passed 285 tests and
+exposed one old-layout visibility fixture assumption; the corrected final six
+scene tests passed, including all eight exact authored landmark coordinates.
+All three original-RSProt zone comparisons passed (1,024 MapAnim cases). The
+archived final server passed the maintained native walk/Talk/logout baseline.
+Detailed evidence and the preserved failure are recorded in
+`docs/consolidation/gameplay-kernel-validation.json`.
+
+Application package mounting, authored population/display/Attack settings and
+quiet guardian visibility are next. The default launch remains unchanged.
+These tests do not constitute earned current-floor native acceptance; the full
+service/Imp/Warden/reward/replay/restart/observer scenario remains pending.
+Chemistry verification stays paused and the GR-10 tree-policy gap stays explicit.

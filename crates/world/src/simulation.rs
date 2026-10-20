@@ -1,5 +1,11 @@
 //! Authoritative world state. Network clients and future testing actors use the same actions.
 mod cinderworks_checkpoint;
+mod cinderworks_actions;
+mod cinderworks_entry;
+mod cinderworks_encounter_actions;
+mod cinderworks_recovery;
+mod cinderworks_fishing;
+mod cinderworks_services;
 use crate::npc::{Mode, Npc, RandomSource, SeededRandom};
 use crate::{
     collision::{CollisionMap, Strategy},
@@ -210,6 +216,7 @@ enum Deferred {
     Milking(crate::milking::Job),
     WaterFilling(crate::water_sources::Job),
     Cooking(crate::cooking::Job),
+    CinderworksFishing(cinderworks_fishing::Job),
     Pickpocket(thieving_actions::Job),
     ToolCrafting(crate::tool_crafting::Pending),
     AssemblyProduction(crate::assembly_production::Pending),
@@ -273,6 +280,7 @@ enum LocationAction {
 }
 struct Player {
     cinderworks_checkpoint: Option<cinderworks_checkpoint::Pending>,
+    cinderworks_recovery_at:Option<i32>,
     dough_request: Option<crate::dough::Request>,
     tool_crafting_request:Option<crate::tool_crafting::Request>,
     counted_assembly_request:Option<crate::counted_assembly::Request>,
@@ -600,6 +608,7 @@ pub enum AdmissionError {
 }
 #[derive(Debug)]
 pub enum WorldEvent {
+    TileGraphic(crate::zones::Graphic),
     CinderworksCheckpoint { actor:ActorId, data:PlayerData },
     CinderworksProgress { actor:ActorId, run:crate::tower_run::Run },
     CountedAssemblyMade {actor: ActorId, first: i32, second: i32, output: i32, count: i32},
@@ -946,6 +955,8 @@ pub struct World {
     /// Host-supplied wall time, kept separate from the deterministic world clock.
     pub unix_millis: u64,
     pub tower_arrival: Option<crate::tower_arrival::Config>,
+    pub cinderworks:Option<crate::tower_cinderworks::Config>,
+    pub cinderworks_encounters:[Option<crate::cinderworks_encounter::Encounter>;2],
     pub tanning: BTreeMap<u16, Vec<crate::tanning::Recipe>>,
     pub tower_tanning: Option<crate::tower_tanning::HandlerConfig>,
     pub tower_chest: Option<crate::tower_chest::HandlerConfig>,
@@ -1080,6 +1091,8 @@ impl Default for World {
             music: None,
             area_sources: Default::default(),
             tower_arrival: None,
+            cinderworks:None,
+            cinderworks_encounters:[None,None],
             tanning: Default::default(),
             tower_tanning: None,
             tower_chest: None,
@@ -2372,6 +2385,8 @@ impl World {
             self.events.push(WorldEvent::Phase(phase, self.clock.0));
             match phase {
                 Phase::ControllerMain => {
+                    self.process_cinderworks_encounters();
+                    self.process_cinderworks_recovery();
                     self.active_trees.tick(self.clock.0, &self.locations);
                     // Gathering deadlines use the action clock. Processing before
                     // PlayerMain keeps N ticks of visible stump lifetime; the
@@ -2671,7 +2686,15 @@ impl World {
                                                     }
                                                 }
                                                 Deferred::Cooking(job) => {
+                                                    let first=self.events.len();
                                                     if let Some(config)=&self.cooking {cooking_actions::complete(p,job,config,&self.object_types,self.locations.revision(job.target),self.clock.0,self.tutorial_rules_completed_varp.is_some(),&mut self.events,random);}
+                                                    cinderworks_services::observe(p,self.cinderworks.as_ref(),first,&mut self.events);
+                                                }
+                                                Deferred::CinderworksFishing(job) => {
+                                                    if let Some(config)=&self.cinderworks {
+                                                        let valid=self.npcs.get(job.target.slot as usize).is_some_and(|n|n.id==job.target&&n.npc.movement.coords==job.coords&&config.work.is_some_and(|w|w.fishing_spot==n.npc.type_id));
+                                                        cinderworks_fishing::complete(p,queues,job,config,valid,&self.object_types,self.tutorial_rules_completed_varp.is_some(),&mut self.events);
+                                                    }
                                                 }
                                                 Deferred::WaterFilling(job) => {
                                                     if let Some(config) = &self.water_sources {
@@ -2706,6 +2729,7 @@ impl World {
                                                     held_use_actions::complete_assembly_reward_with_tools(p,pending.job,&self.object_types,pending.queued_at,self.clock.0,pending.xp_tenths,pending.required_tools,&mut self.events);
                                                 }
                                                 Deferred::Smithing(job) => {
+                                                    let first=self.events.len();
                                                     if let Some(config) = self.smithing {
                                                         if let Err(error) =
                                                             smithing_actions::complete(
@@ -2729,6 +2753,7 @@ impl World {
                                                             );
                                                         }
                                                     }
+                                                    cinderworks_services::observe(p,self.cinderworks.as_ref(),first,&mut self.events);
                                                 }
                                                 Deferred::StandardHit(hit) => {
                                                     if let Some(config) = self.player_hit_queues {
@@ -3164,6 +3189,7 @@ impl World {
                         }
                         let player = Player {
                             cinderworks_checkpoint: None,
+                            cinderworks_recovery_at:None,
                             member: false,
                             dough_request: None,
                             tool_crafting_request:None,

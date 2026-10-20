@@ -1,6 +1,7 @@
 use super::*;
 impl World {
     pub(super) fn process_tower_arrival(&mut self, slot: usize) {
+        if self.cinderworks.is_some(){self.process_cinderworks_arrival(slot);return;}
         let Some(config) = self.tower_arrival else {
             return;
         };

@@ -6,6 +6,7 @@ use crate::{
 };
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Update {
+    Graphic(Graphic),
     Sound(Sound),
     Projectile(crate::projectile::Flight),
     Add(Object),
@@ -15,10 +16,20 @@ pub enum Update {
 }
 #[derive(Clone, Debug)]
 pub enum Change {
+    Graphic(Graphic),
     Sound(Sound),
     Projectile(crate::projectile::Flight),
     Ground(Event),
     Location(crate::locations::Event),
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Graphic {
+    pub coords:CoordGrid,
+    pub id:u16,
+    pub height:u8,
+    pub delay:u16,
+    /// None is public. A character receiver uses the existing observer identity.
+    pub receiver:Option<i64>,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Sound {
@@ -140,6 +151,10 @@ impl Observer {
             let mut shared = Vec::new();
             for event in events {
                 let event = match event {
+                    Change::Graphic(graphic)=>{
+                        if ground::zone_base(graphic.coords)==base && (graphic.receiver.is_none() || graphic.receiver==receiver){shared.push(Update::Graphic(*graphic));}
+                        continue;
+                    }
                     Change::Sound(sound) => {
                         if ground::zone_base(sound.coords) == base {
                             shared.push(Update::Sound(*sound));
@@ -500,5 +515,25 @@ mod tests {
         assert!(observer
             .cycle(CoordGrid::NULL, pos(0, 0), None, &objects, &[])
             .is_err());
+    }
+}
+
+
+#[cfg(test)]
+mod graphic_tests {
+    use super::*;
+    #[test]
+    fn receiver_graphics_are_private_and_never_replay_after_idle_or_rebuild() {
+        let at=CoordGrid::new(3200,3200,0).unwrap();let build=CoordGrid::new(3160,3160,0).unwrap();
+        let objects=Objects::default();let locations=crate::locations::Locations::default();
+        let mut one=Observer::default();let mut two=Observer::default();
+        one.cycle_all(at,build,Some(1),&objects,&locations,&[]).unwrap();
+        two.cycle_all(at,build,Some(2),&objects,&locations,&[]).unwrap();
+        let changes=[Change::Graphic(Graphic{coords:at,id:86,height:0,delay:0,receiver:Some(1)}),Change::Graphic(Graphic{coords:at,id:78,height:0,delay:0,receiver:None})];
+        let ids=|emissions:Vec<Emission>|emissions.into_iter().flat_map(|e|match e{Emission::Enclosed{updates,..}=>updates,_=>vec![]}).filter_map(|u|match u{Update::Graphic(g)=>Some(g.id),_=>None}).collect::<Vec<_>>();
+        assert_eq!(ids(one.cycle_all(at,build,Some(1),&objects,&locations,&changes).unwrap()),vec![86,78]);
+        assert_eq!(ids(two.cycle_all(at,build,Some(2),&objects,&locations,&changes).unwrap()),vec![78]);
+        assert!(ids(one.cycle_all(at,build,Some(1),&objects,&locations,&[]).unwrap()).is_empty());
+        assert!(ids(one.cycle_all(at.translate(8,0,0).unwrap(),build,Some(1),&objects,&locations,&[]).unwrap()).is_empty());
     }
 }

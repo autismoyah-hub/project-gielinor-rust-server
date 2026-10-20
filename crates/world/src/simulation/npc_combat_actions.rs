@@ -16,6 +16,7 @@ impl World {
     }
     /// Returns true when the combat mode owns this NPC's movement for this tick.
     pub(super) fn process_npc_combat(&mut self, id: NpcId, random: &mut impl RandomSource) -> bool {
+        if self.cinderworks_boss(id).is_some(){return true;}
         let Some(config) = &self.npc_melee else {
             return false;
         };

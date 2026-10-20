@@ -254,6 +254,7 @@ struct Active {
     observer: Option<crate::synchronization::Observer>,
     npc_observer: crate::npc_synchronization::Observer,
     zone_observer: gielinor_world::zones::Observer,
+    tower_scene: crate::tower_scene::Observer,
     inventories: crate::inventory_sync::Transmissions,
     shop_inventory: Option<shop::Transmission>,
     stats: crate::stat_sync::Observer,
@@ -578,7 +579,14 @@ impl<B: AccountBackend> Runtime<B> {
         self.interface_controls = controls;
         Ok(())
     }
-    pub fn configure_journal(&mut self, journal: crate::journal::Journal) -> io::Result<()> {
+    /// Select the authored Floor One runtime explicitly before admitting players.
+    pub fn configure_cinderworks(&mut self, config:gielinor_world::tower_cinderworks::Config)->io::Result<()> {
+        if !self.connections.is_empty(){return Err(io::Error::other("Configure Cinderworks before admission"));}
+        self.world.cinderworks=Some(config);
+        if let Some(journal)=&mut self.journal {journal.cinderworks=true;}
+        Ok(())
+    }
+    pub fn configure_journal(&mut self, mut journal: crate::journal::Journal) -> io::Result<()> {
         if !self.connections.is_empty() || self.presentation.is_none() {
             return Err(io::Error::other(
                 "Configure journal after presentation and before admission",
@@ -616,6 +624,7 @@ impl<B: AccountBackend> Runtime<B> {
         }) {
             return Err(io::Error::other("Invalid Tower diary configuration"));
         }
+        journal.cinderworks = self.world.cinderworks.is_some();
         self.journal = Some(journal);
         Ok(())
     }
@@ -1306,13 +1315,14 @@ impl<B: AccountBackend> Runtime<B> {
                 .map_err(|e| io::Error::other(format!("{e:?}")))?;
             let combat = self.presentation.as_ref().unwrap().combat_level(data);
             for packet in journal
-                .opened(
+                .opened_for_run(
                     interface,
                     &mut active.ui,
                     &data.variables,
                     combat,
                     journal.marks(data),
                     &self.interface_hooks,
+                    data.tower_run,
                 )
                 .map_err(io::Error::other)?
             {
@@ -2403,7 +2413,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                     .combat_level(data);
                                                 let active = self.active.get_mut(&actor).unwrap();
                                                 let marks = journal.marks(data);
-                                                match journal.switch(
+                                                match journal.switch_for_run(
                                                     tab,
                                                     &mut active.ui,
                                                     &mut data.variables,
@@ -2412,6 +2422,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                     logged_in,
                                                     marks,
                                                     &self.interface_hooks,
+                                                    data.tower_run,
                                                 ) {
                                                     Ok(packets) => {
                                                         for packet in packets {
@@ -3048,7 +3059,10 @@ impl<B: AccountBackend> Runtime<B> {
                         self.connection(actor),
                         self.journal.as_ref().and_then(|j| j.diary.as_ref()),
                     ) {
-                        for packet in diary.packets(marks).map_err(io::Error::other)? {
+                        let run=self.world.data(actor).map_err(|e|io::Error::other(format!("{e:?}")))?.tower_run;
+                        let current=run.id>0 || self.world.cinderworks.is_some();
+                        let packets=if current {diary.cinderworks_packets(run)} else {diary.packets(marks)};
+                        for packet in packets.map_err(io::Error::other)? {
                             self.transport
                                 .send(connection, packet.opcode, &packet.payload)?;
                         }
@@ -3056,19 +3070,27 @@ impl<B: AccountBackend> Runtime<B> {
                     self.events
                         .push(Event::World(WorldEvent::TowerDiary { actor, marks }));
                 }
+                WorldEvent::CinderworksProgress{actor,run}=>{
+                    if let (Some(connection),Some(diary))=(self.connection(actor),self.journal.as_ref().and_then(|j|j.diary.as_ref())) {
+                        for packet in diary.cinderworks_packets(run).map_err(io::Error::other)? {self.transport.send(connection,packet.opcode,&packet.payload)?;}
+                    }
+                    self.events.push(Event::World(WorldEvent::CinderworksProgress{actor,run}));
+                }
                 WorldEvent::TowerArrival {
                     actor,
                     arrival,
                     hitpoints_message,
                 } => {
                     if let Some(connection) = self.connection(actor) {
-                        let first = if arrival.first {
+                        let first = if self.world.cinderworks.is_some() {
+                            "The Cinderworks sanctuary awaits. Read the plaque to restore its workshop, kitchen and altar."
+                        } else if arrival.first {
                             "The Threshold. Read the plaque. Wings are around you."
                         } else {
                             "You wake at the Threshold door."
                         };
                         let messages = std::iter::once(first).chain(hitpoints_message)
-                            .chain(arrival.fists_message.then_some("You arrive with nothing but your fists. The diary grants the next tool."));
+                            .chain((arrival.fists_message && self.world.cinderworks.is_none()).then_some("You arrive with nothing but your fists. The diary grants the next tool."));
                         for message in messages {
                             let packet = gielinor_protocol::chat::game(0, None, message)
                                 .map_err(|e| io::Error::other(format!("{e:?}")))?;
@@ -3209,6 +3231,7 @@ impl<B: AccountBackend> Runtime<B> {
                             observer: None,
                             npc_observer: Default::default(),
                             zone_observer: Default::default(),
+                            tower_scene: Default::default(),
                             stats: Default::default(),
                             invisible_levels: BTreeMap::new(),
                             run: None,
@@ -3855,6 +3878,10 @@ impl<B: AccountBackend> Runtime<B> {
                     }
                     self.events.push(Event::World(WorldEvent::Location(event)));
                 }
+                WorldEvent::TileGraphic(graphic)=>{
+                    if self.zones_enabled{self.ground_updates.push(gielinor_world::zones::Change::Graphic(graphic));}
+                    self.events.push(Event::World(WorldEvent::TileGraphic(graphic)));
+                }
                 WorldEvent::Projectile(flight) => {
                     if self.zones_enabled {
                         self.ground_updates
@@ -4050,13 +4077,14 @@ impl<B: AccountBackend> Runtime<B> {
                 if let Some(journal) = &self.journal {
                     packets.extend(
                         journal
-                            .opened(
+                            .opened_for_run(
                                 interface,
                                 &mut active.ui,
                                 &data.variables,
                                 policy.combat_level(data),
                                 journal.marks(data),
                                 &self.interface_hooks,
+                    data.tower_run,
                             )
                             .map_err(io::Error::other)?,
                     );
@@ -4427,8 +4455,9 @@ impl<B: AccountBackend> Runtime<B> {
                 }
                 packets.push(active_world);
                 let mut zone_observer = active.zone_observer.clone();
+                let mut tower_scene = active.tower_scene.clone();
                 if self.zones_enabled {
-                    let emissions = zone_observer
+                    let mut emissions = zone_observer
                         .cycle_all(
                             origin,
                             base,
@@ -4438,6 +4467,12 @@ impl<B: AccountBackend> Runtime<B> {
                             &self.ground_updates,
                         )
                         .map_err(io::Error::other)?;
+                    if let Some(config)=&self.world.cinderworks {
+                        crate::tower_scene::phase_effects(config.origin,data.tower_run,origin,&mut emissions);
+                        let scenery=tower_scene.cycle(config.origin,&config.spatial,data.tower_run,origin,base,
+                            zone_observer.visible(),&emissions,self.world.clock.0).map_err(io::Error::other)?;
+                        emissions.extend(scenery);
+                    }
                     packets.extend(
                         crate::ground_sync::encode(base, &emissions)
                             .map_err(|e| io::Error::other(format!("{e:?}")))?,
@@ -4454,6 +4489,7 @@ impl<B: AccountBackend> Runtime<B> {
                 active.observer = observer;
                 active.npc_observer = npc_observer;
                 active.zone_observer = zone_observer;
+                active.tower_scene = tower_scene;
                 active.inventories = inventories;
                 active.shop_inventory = shop_inventory;
                 active.stats = stats;

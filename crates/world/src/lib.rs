@@ -231,6 +231,8 @@ pub mod session_vars;
 pub mod smithing_make;
 pub mod tower_diary;
 pub mod tower_run;
+pub mod tower_cinderworks;
+pub mod cinderworks_encounter;
 pub mod tower_diary_ui;
 pub mod tower_furnishings;
 pub mod tower_hazards;

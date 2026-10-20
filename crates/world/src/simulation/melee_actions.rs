@@ -10,6 +10,10 @@ impl World {
         target: NpcId,
     ) -> Option<(Option<&'static str>, bool)> {
         let p = self.player(actor).ok()?;
+        if let Some(message)=self.cinderworks_denial(actor,target){
+            let shell=message==crate::tower_cinderworks::SHELL_HINT;
+            return Some(((!shell).then_some(message),!shell));
+        }
         if let Some(config) = &self.combat_stance {
             let weapon = p
                 .data

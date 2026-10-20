@@ -291,6 +291,10 @@ impl World {
                 }
                 return true;
             }
+            if pending.handler == Some(Handler::TutorialFishing)
+                && self.cinderworks.as_ref().is_some_and(|c|crate::tower_layout::contains(c.origin,source)&&c.work.is_some_and(|w|self.npc(pending.target).is_some_and(|n|n.type_id==w.fishing_spot&&crate::tower_layout::contains(c.origin,n.spawn)))) {
+                self.clear_npc_route(slot);self.start_cinderworks_fishing(slot,pending.target);return true;
+            }
             if pending.handler == Some(Handler::TutorialFishing) {
                 self.clear_npc_route(slot);
                 self.process_tutorial_fishing(slot);

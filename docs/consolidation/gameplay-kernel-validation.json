@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "scope": "Opt-in gameplay producers/shared service hooks/encounter kernel and observer plumbing; authored application serving and earned acceptance remain pending",
+  "base_commit": "620e8c82e8f8a5d5a355cd9f07a95a8dc1b55652",
+  "adapted_source": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "workspace_before_journal": {
+    "log": "consolidation-gameplay-workspace-20261019-01.log",
+    "sha256": "559b0e930bffa9b5a5fa145d17191887983fd67579373a07444f3fcce92da0c2",
+    "passed": 991,
+    "failed": 0,
+    "ignored": 1
+  },
+  "journal_scene_initial": {
+    "log": "consolidation-gameplay-journal-scene-20261019-01.log",
+    "sha256": "fa2c2575669511e573ea857059f444a06c134261de261066116861d759575adc",
+    "passed": 285,
+    "failed": 1,
+    "reason": "Old-map fixture assumed boiler and vents shared a visible zone; production spatial mapping moved the boiler. Fixture now admits actual boiler zone."
+  },
+  "final_scene": {
+    "log": "consolidation-gameplay-journal-scene-20261019-03.log",
+    "sha256": "4bf4e6ee4727c24d3ab037c66dc0f7d6cda9641c0db5191523429d810b1ac056",
+    "passed": 6,
+    "failed": 0,
+    "ignored": 0
+  },
+  "original_rsprot_zone_comparison": {
+    "log": "consolidation-map-anim-differential-20261019-01.log",
+    "sha256": "892a693e41622caa99c0dc81bad2ef65a1f15aaa9ad4c50db3f3f8059591e700",
+    "passed": 3,
+    "failed": 0,
+    "ignored": 0,
+    "map_anim_cases": 1024,
+    "reference_sha256": "2e60e6387c5f2963743c4c94a4f3c44790a6327ed3536c4c7eacbbb4d87e243c"
+  },
+  "native_baseline": {
+    "run": "consolidation-gameplay-baseline-20261019-001",
+    "server_sha256": "5C167851B38F8AF01ECF3737649389BE207785507FAF926321E0106112970053",
+    "source_manifest_sha256": "2ddc9b0964568e81d8b892eb13bba161a2a886eaad0b7e0402e5113105c42f16",
+    "scope": "Default maintained floor; native login, walk, NPC Talk and clean logout. No current-floor earned gameplay."
+  },
+  "design": [
+    "Plaque tools/new run and reward inventory/payment flags publish only after matching save ACK.",
+    "No entry stripping or synthetic legacy diary flags; normal inventory/equipment/bank/XP owners retained.",
+    "Fishing uses existing atomic gathering rewards/weak queues; successful shared cooking/smithing and existing offering credit services. Burned cooking does not credit Kitchen.",
+    "Current authored arena admission, hazard timing, interrupt and recovery are opt-in; defeat progress stages durable snapshots.",
+    "Standard MapAnim receiver filtering keeps owner effects private, transient and nonreplayed.",
+    "Per-observer landmarks use explicit spatial overrides and preserve authoritative shared collision."
+  ],
+  "pending": [
+    "Explicit application package mount and authored NPC population",
+    "NPC display/Attack initialization and guardian quiet-state visibility",
+    "Fresh earned native service/Imp/Warden/claim sequence, bag/replay/restart/multiplayer coverage",
+    "Paired ORACLE acceptance and final component/branch dispositions"
+  ],
+  "chemistry_campaign": "Remains user-paused; no independent/native chemistry campaign resumed",
+  "regular_tree_policy": "GR-10 remains gated; no timer invented"
+}

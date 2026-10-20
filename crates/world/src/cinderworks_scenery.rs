@@ -117,3 +117,6 @@ pub const LANDMARKS: &[Landmark] = &[
         angle: 1,
     },
 ];
+
+pub const TRAINING_COOLANT:(i32,i32)=(69,52);
+pub const VENTS:[(i32,i32);4]=[(67,70),(67,74),(76,70),(76,74)];

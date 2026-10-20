@@ -25,6 +25,7 @@ pub fn encode(base: CoordGrid, emissions: &[Emission]) -> Result<Vec<Packet>, De
                 let objects = updates
                     .iter()
                     .map(|update| {
+                        if let Update::Graphic(v)=update{return Object::Graphic{id:v.id,height:v.height,delay:v.delay,x:(v.coords.x()&7)as u8,z:(v.coords.z()&7)as u8};}
                         if let Update::Sound(sound) = update {
                             return Object::SoundArea(zone::SoundArea {
                                 id: sound.id as u16,
@@ -46,7 +47,7 @@ pub fn encode(base: CoordGrid, emissions: &[Emission]) -> Result<Vec<Packet>, De
                             Update::Add(obj)
                             | Update::Delete(obj)
                             | Update::Count { object: obj, .. } => obj,
-                            Update::Location(_) | Update::Projectile(_) | Update::Sound(_) => {
+                            Update::Location(_) | Update::Projectile(_) | Update::Sound(_) | Update::Graphic(_) => {
                                 unreachable!()
                             }
                         };
@@ -66,7 +67,7 @@ pub fn encode(base: CoordGrid, emissions: &[Emission]) -> Result<Vec<Packet>, De
                                 x,
                                 z,
                             },
-                            Update::Location(_) | Update::Projectile(_) | Update::Sound(_) => {
+                            Update::Location(_) | Update::Projectile(_) | Update::Sound(_) | Update::Graphic(_) => {
                                 unreachable!()
                             }
                         }

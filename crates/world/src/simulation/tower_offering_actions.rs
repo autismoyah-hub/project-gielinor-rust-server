@@ -12,7 +12,11 @@ impl World {
         if !crate::tower_layout::contains(config.origin, p.movement.coords) {
             return Ok(());
         }
-        p.data.tower_diary.ok_or(ActionError::UnknownTowerDiary)?;
+        if self.cinderworks.is_some() {
+            if p.data.tower_run.id==0 {
+                self.events.push(WorldEvent::GameMessage{actor,text:p.data.tower_run.guide().into()});return Ok(());
+            }
+        } else {p.data.tower_diary.ok_or(ActionError::UnknownTowerDiary)?;}
         config
             .bones
             .take_from_bank(&mut p.data.inventory, &mut p.data.bank, &self.object_types);
@@ -37,6 +41,15 @@ impl World {
         continuation: Continuation,
         offered: bool,
     ) {
+        if let Some(config)=&self.cinderworks {
+            let Some(offering)=&self.tower_offering else{return;};
+            let p=self.players.get_mut(actor.slot as usize).unwrap();
+            let near=config.spatial.at(config.origin,60,52).is_ok_and(|at|p.movement.coords.chebyshev_distance(at)<=2);
+            if offered&&near&&offering.bones.count(&p.data.inventory)<continuation.before {
+                cinderworks_services::credit(p,config,crate::tower_run::Service::Altar,&mut self.events);
+            }
+            return; // The independent run does not advance legacy diary/crate flags.
+        }
         let Some(config) = self.tower_offering.as_ref() else {
             return;
         };

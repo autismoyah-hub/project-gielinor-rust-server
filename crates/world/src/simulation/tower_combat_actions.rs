@@ -9,12 +9,14 @@ impl World {
         mut damage: i32,
     ) -> Result<i32, ActionError> {
         let kind = self.npc(target).ok_or(ActionError::StaleActor)?.type_id;
+        let cinderworks_guardian=self.cinderworks_boss(target).is_some();
+        if let Some(actor)=source{self.begin_cinderworks_encounter(actor,target);}
         if let Some(config) = self.tower_combat.as_ref() {
             let player = source.and_then(|id| self.player(id).ok());
             if config.bosses.contains(&kind) {
                 let armed = player
                     .and_then(|p| p.data.equipment.get(3))
-                    .is_some_and(|item| config.scimitars.contains(&item.id));
+                    .is_some_and(|item| config.scimitars.contains(&item.id) || cinderworks_guardian && self.cinderworks.as_ref().is_some_and(|c|player.is_some_and(|p|p.data.tower_run.active())&&c.forged_weapon(item.id)));
                 if !armed {
                     damage = 0;
                     if let Some(p) = player {
