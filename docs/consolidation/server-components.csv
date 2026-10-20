@@ -15,6 +15,6 @@ S-013,Partially integrated,Missing/default/explicitHidden policy and original wi
 S-014,Partially integrated,Explicit immutable application mount and actual native paired content load verified; distribution policy remains out-of-band,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-015,Blocked,Regular-tree policy remains GR-10 gated,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-016,Retained,Ordinary handlers retained; same bounded worker extended with in-session Checkpoint request,f9180b23ae1e158a296489a3730a8ae697a71de2
-S-017,Partially integrated,Prepared-profile native entry/viewing/logout and stat capture verified; earned ordinary-action adapter pending,f9180b23ae1e158a296489a3730a8ae697a71de2
-S-018,Partially integrated,Immutable paired launch/restart receipts preserved; final earned scenario and HUD readiness remain pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-017,Partially integrated,Prepared native entry/save/strict-ready HUD verified; C018 available and fresh ordinary-action journey underway,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-018,Partially integrated,Immutable paired launch/restart and strict-ready HUD verified; final earned scenario remains pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-090,Requires adaptation,Review remaining fork-era capabilities selectively,f9180b23ae1e158a296489a3730a8ae697a71de2

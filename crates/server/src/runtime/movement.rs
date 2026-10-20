@@ -6,6 +6,10 @@ impl<B: AccountBackend> Runtime<B> {
         destination: gielinor_world::CoordGrid,
         control: bool,
     ) -> io::Result<()> {
+        // Mandatory character creation remains modal until Confirm is accepted.
+        if self.active.get(&actor).is_some_and(|active|active.design.hidden) {
+            return Ok(());
+        }
         let err = |e| io::Error::other(format!("{e:?}"));
         let Some(input) = self
             .world

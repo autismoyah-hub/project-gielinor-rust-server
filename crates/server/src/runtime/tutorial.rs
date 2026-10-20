@@ -1005,7 +1005,19 @@ impl<B: AccountBackend> Runtime<B> {
                     }],
                 )?;
                 self.tutorial_close(actor)?;
-                self.set_tutorial_step(actor, Step::GielinorTalk, None)?;
+                // Only the explicit Cinderworks route replaces the ordinary guide.
+                // This runs after actual appearance and experience confirmation.
+                let coords=self.world.data(actor).map_err(|e|io::Error::other(format!("{e:?}")))?.coords;
+                let cinderworks=self.world.cinderworks.as_ref().is_some_and(|c|gielinor_world::tower_layout::contains(c.origin,coords));
+                self.set_tutorial_step(actor,if cinderworks {Step::Completed}else{Step::GielinorTalk},None)?;
+                if cinderworks {
+                    self.close_interface(actor,config.focus.chatmodal)?;
+                    self.close_interface(actor,config.focus.atmosphere)?;
+                    if let Some(connection)=self.connection(actor) {
+                        let packet=gielinor_protocol::chat::game(0,None,"Welcome to the Cinderworks. Read the sanctuary plaque to begin your run.").map_err(|e|io::Error::other(format!("{e:?}")))?;
+                        self.transport.send(connection,packet.opcode,&packet.payload)?;
+                    }
+                }
             }
         }
         Ok(())

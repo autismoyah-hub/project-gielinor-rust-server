@@ -1,6 +1,6 @@
 {
   "scope": "Server contract for future ordinary-action native journey; preparation specification, not acceptance evidence",
-  "server_candidate": "6D5D45A9CF3CEB48B5D094EE8BCDF3AA2CF8834D7FF0EE49787D1D2EB14B5FB2",
+  "server_candidate": "63E5516921C0CAC7BD606F0BA98FD1942EBEFE07B595421EABA0963D5F163C6F",
   "source": "f9180b23ae1e158a296489a3730a8ae697a71de2 adapted through maintained owners",
   "spawn": [
     10420,
@@ -227,5 +227,5 @@
     "Capture real native frames plus immutable source/binary/package identities",
     "Preserve all failed attempts; no forced hits, XP, service flags, kills, inventory or rewards"
   ],
-  "pending_client_dependency": "C018 ordinary-action adapter/journey integration"
+  "pending_client_dependency": "C018 adapter implemented; fresh-account ordinary-action joint acceptance in progress"
 }

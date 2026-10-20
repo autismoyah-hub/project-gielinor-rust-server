@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "scope": "Selective creator/onboarding regression and independent same-save native HUD readiness; fresh earned gameplay remains pending",
+  "base_main": "379bb39adc2d1502d836730ef602c4789a5e9a59",
+  "adapted_source": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "changes": [
+    "Mandatory hidden character creator ignores movement before Confirm without closing its modal",
+    "After real appearance Confirm and experience choice only explicit in-floor Cinderworks configuration completes onboarding; default and out-of-floor accounts retain ordinary guide",
+    "No inventory, skill or run grants in onboarding handoff"
+  ],
+  "regressions": {
+    "server_library": {
+      "log": "consolidation-onboarding-server-lib-20261020-01.log",
+      "sha256": "af8e9af57bd8ef201f6e3cb80e3bd671a901eec65f1a85f0acbd8ff488525756",
+      "passed": 289,
+      "failed": 0
+    },
+    "tcp_lifecycle": {
+      "log": "consolidation-onboarding-route-matrix-20261020-03.log",
+      "sha256": "5973ad0c929312283b97e10ba75aa2d987be439b5b8695fb104f0f383e5e96ac",
+      "passed": 3,
+      "failed": 0,
+      "route_choice_cases": 9,
+      "conserved": [
+        "inventory",
+        "equipment",
+        "bank",
+        "stats",
+        "tower_run",
+        "coords"
+      ],
+      "coverage": "Encrypted move-before-Confirm and actual interface buttons; synthetic config route matrix plus existing original bootstrap packet comparisons; not native earned gameplay"
+    }
+  },
+  "preserved_failures": [
+    {
+      "log": "consolidation-onboarding-creator-regression-20261020-02.log",
+      "sha256": "a42277ef85d7e4dab17531bf6211d13b77799d35d6fd39b0b089871b3132c328"
+    },
+    {
+      "log": "consolidation-onboarding-route-matrix-20261020-01.log",
+      "sha256": "73b93508395ae0a5c7f31e9dfb12995abf869a978c9af594dabc818d6d8b4b6a"
+    },
+    {
+      "log": "consolidation-onboarding-route-matrix-20261020-02.log",
+      "sha256": "a817c1b8703c6c41eeea0797bd87b9987db69c3c79067c78e64946f6c8832a77"
+    }
+  ],
+  "exact_build": {
+    "run": "consolidation-onboarding-20261020-001",
+    "sha256": "63E5516921C0CAC7BD606F0BA98FD1942EBEFE07B595421EABA0963D5F163C6F",
+    "sourceCount": 598
+  },
+  "native_readiness": {
+    "server_sha256": "6D5D45A9CF3CEB48B5D094EE8BCDF3AA2CF8834D7FF0EE49787D1D2EB14B5FB2",
+    "client_sha256": "376300D89F5ABDF5E19E475842FCEE4BCABE8BE6A2E1C6FB89297EB08AE1C267",
+    "content_declaration_sha256": "4F733D7AACAE3F3AC88D6DCD532C0346C3707D027934B98BD271F86E59CC84D9",
+    "image_sha256": "0E2DC8CBD9806DA36AD82FFD8B6EE904FFCC02BF40D1DFD61FC86C058D3B8BFA",
+    "hp": 10,
+    "prayer": 1,
+    "energy": 100,
+    "total_xp": 1411,
+    "initial_not_ready_zero_stats_until_seconds": 254.46,
+    "ready_observed_seconds": 255.1,
+    "saved_state": "inventory/stats/XP rate/chemistry/run unchanged; run0; ACK607tick659; clean logout and server exit0",
+    "scope": "Observe/inspect/capture/stop only; prepared same-save profile; no earned action acceptance",
+    "remaining": "Startup latency remains; earlier zero HUD frames predated readiness"
+  },
+  "fresh_earned_candidate": {
+    "binary_sha256": "63E5516921C0CAC7BD606F0BA98FD1942EBEFE07B595421EABA0963D5F163C6F",
+    "account_preparation": "new isolated state; ordinary registration; no offline profile edits or grants",
+    "status": "Native ordinary-action attempt in progress; not accepted"
+  },
+  "preservation": "Original26 pending paths, all private fixtures/assets/evidence retained; chemistry campaign remains paused; GR10 unchanged"
+}

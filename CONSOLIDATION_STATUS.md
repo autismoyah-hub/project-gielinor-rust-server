@@ -247,3 +247,22 @@ is specified in `docs/consolidation/earned-acceptance-contract.json`: genuine
 services, Imp, Warden, atomic claim/full-pack/replay, restart and observer separation.
 C018 native action tooling is being coordinated with ORACLE. No branch retirement
 or full content acceptance follows from this launch checkpoint.
+
+## Creator route and native readiness follow-up
+
+The restart HUD question above was resolved by a strict-ready native observation.
+HP10, prayer1, energy100 and total XP1411 appeared after initial queued loading
+completed; prior zero HUD frames predated readiness. The saved inventory, stats,
+chemistry and unstarted run remained unchanged. Startup latency remains recorded.
+
+A selective original-source adaptation preserves the mandatory character creator
+against movement before Confirm. After real appearance and experience selection,
+explicit in-floor Cinderworks accounts can proceed to the plaque; ordinary and
+out-of-floor accounts keep the existing guide route. Three TCP lifecycle tests,
+including nine route/experience cases, and all289 server library tests pass.
+The route matrix preserves inventory, equipment, bank, stats, run and position.
+The exact candidate is archived. Fresh-account native ordinary-action acceptance
+is underway without seeded progress or items; the earned chain remains pending.
+
+Evidence: `docs/consolidation/onboarding-readiness-validation.json`. Earlier
+failures and private captures remain retained; no branch retirement is approved.
