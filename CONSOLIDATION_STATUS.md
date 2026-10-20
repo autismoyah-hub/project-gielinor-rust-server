@@ -266,3 +266,15 @@ is underway without seeded progress or items; the earned chain remains pending.
 
 Evidence: `docs/consolidation/onboarding-readiness-validation.json`. Earlier
 failures and private captures remain retained; no branch retirement is approved.
+
+## Legacy bounty conservation
+
+The audited legacy bounty fix stages the whole reward before publishing it.
+A failed beer insertion cannot leave a partial coin grant and an unpaid bounty
+that can be retried. All2048 original Kotlin cases were compared:2000 retain
+original results;48 partial-grant cases now deliberately roll back, with three
+retry checks each. The original fixture is unchanged. Seventeen actual location
+handler tests and650 world library tests pass, with one preexisting ignored test.
+This is an explicit reference-behavior correction, separate from the already
+atomic ACK-gated Cinderworks claim path. Fresh native earned claims remain pending.
+Evidence: `docs/consolidation/legacy-claim-validation.json`.

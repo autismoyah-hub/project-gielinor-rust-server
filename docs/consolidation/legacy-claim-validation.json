@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "scope": "Audited legacy bounty atomicity adaptation; current Cinderworks native earned claim still pending",
+  "base_main": "4c82658e0efeebfcf6ef52d3485f61493fa41196",
+  "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "source_path": "crates/world/src/tower_chest.rs",
+  "selective_safety": "Maintained module byte-normalized equal to82888b93 baseline before adopting audited file; no newer shared-owner changes replaced",
+  "intentional_reference_difference": "Original Kotlin composition can insert coins before beer fails while preserving bounty. Audit adaptation stages all rewards and publishes only on complete success. This is an explicit conservation fix, not claimed exact Kotlin parity.",
+  "differential": {
+    "log": "consolidation-legacy-claim-differential-20261020-01.log",
+    "sha256": "cdf22dd19c809c19e4efea3cd88386f1918e57222b3de7b8923c0ee69382c22a",
+    "original_cases": 2048,
+    "unchanged_original_cases": 2000,
+    "explicit_atomic_rollback_cases": 48,
+    "reference_fixture_modified": false,
+    "retries_per_rollback_case": 3,
+    "real_location_handler_tests_passed": 17,
+    "failed": 0
+  },
+  "focused": {
+    "log": "consolidation-legacy-claim-unit-20261020-01.log",
+    "sha256": "280c3c03334b83ace91437f63b7c9162dacd033c6a719857324ec40518a2df57",
+    "passed": 3,
+    "failed": 0
+  },
+  "world_library": {
+    "log": "consolidation-legacy-claim-world-lib-20261020-01.log",
+    "sha256": "e52ccba0cd527e84fd5d34671a9e16119a0d5384e34611adc8c129402174b8f6",
+    "passed": 650,
+    "failed": 0,
+    "preexisting_ignored": 1
+  },
+  "exact_build": {
+    "run": "consolidation-legacy-claim-20261020-001",
+    "sha256": "156DA3E2F4C0027694F6F1E6ED3A89D478760E86B893EFA3719B0F4A7CBEBAB6",
+    "sourceCount": 598
+  },
+  "native_scope": "Fresh-account native run continues independently on previous immutable63E551 candidate; this reward change has not yet received native acceptance",
+  "preservation": "Original private comparison/handler tests and fixtures retained, protected26 pending paths untouched; no assets published"
+}

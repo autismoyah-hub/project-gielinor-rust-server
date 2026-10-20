@@ -8,7 +8,7 @@ S-006,Partially integrated,ACK-gated entry/tool/claim and boss producers tested;
 S-007,Partially integrated,Authored entry/return/departure/rescue unit coverage; native acceptance pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-008,Partially integrated,Shared gathering/cooking/smithing/offering hooks tested; native authored services pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-009,Partially integrated,Authored encounter kernel and owner effects tested; population/display/earned native victory pending,f9180b23ae1e158a296489a3730a8ae697a71de2
-S-010,Partially integrated,ACK-gated atomic full-pack/claim producers tested; earned native claim/replay pending,f9180b23ae1e158a296489a3730a8ae697a71de2
+S-010,Partially integrated,ACK-gated claim tested; audited legacy atomic rollback verified against2048 original cases; earned native claim/replay pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-011,Partially integrated,Exact spatial observer restoration and MapAnim isolation tested; quiet NPC filtering/native pair pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-012,Partially integrated,Exact20-actor cache population/footing checked; native guardian admission/combat pending,f9180b23ae1e158a296489a3730a8ae697a71de2
 S-013,Partially integrated,Missing/default/explicitHidden policy and original wire comparisons pass; native Attack interaction pending,f9180b23ae1e158a296489a3730a8ae697a71de2
