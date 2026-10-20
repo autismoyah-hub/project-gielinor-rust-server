@@ -4036,6 +4036,7 @@ impl<B: AccountBackend> Runtime<B> {
             );
         }
         if let Some(login) = &self.login_presentation {
+            let cinderworks=self.world.cinderworks.is_some();
             let data = self
                 .world
                 .data_mut(actor)
@@ -4043,12 +4044,13 @@ impl<B: AccountBackend> Runtime<B> {
             packets.extend(
                 login
                     .variables
-                    .high_priority(
+                    .high_priority_for_content(
                         &mut data.variables,
                         &data.display_name,
                         -1,
                         login.welcome.as_deref(),
                         login.broadcast.as_deref(),
+                        cinderworks,
                     )
                     .map_err(io::Error::other)?,
             );
@@ -4254,6 +4256,7 @@ impl<B: AccountBackend> Runtime<B> {
                 continue;
             }
             let result = (|| -> io::Result<()> {
+                let restorer_run=self.world.data(actor).map_err(|_|io::Error::other("Invalid observer actor"))?.tower_run;
                 let npc_blocks: Vec<_> = self
                     .npc_snapshots
                     .iter()
@@ -4308,8 +4311,12 @@ impl<B: AccountBackend> Runtime<B> {
                             sequence: display.and_then(|d| d.sequence),
                             spot_animations: spots.as_deref(),
                             face: n.face_changed.then_some(facing.as_slice()),
+                            ..Default::default()
                         };
                         let current = blocks.encode();
+                        if self.world.cinderworks.as_ref().is_some_and(|c|n.type_id==c.warden && self.world.npc(n.actor).is_some_and(|npc|gielinor_world::tower_layout::contains(c.origin,npc.spawn))) {
+                            blocks.name=Some(b"Ash Warden\0");blocks.combat=Some(7);blocks.transform=Some(gielinor_world::tower_cinderworks::WARDEN_VISUAL);
+                        }
                         blocks.face = (n.face_player.is_some() || n.face_changed)
                             .then_some(facing.as_slice());
                         Ok::<_, gielinor_protocol::buffer::DecodeError>((current, blocks.encode()))
@@ -4320,6 +4327,10 @@ impl<B: AccountBackend> Runtime<B> {
                     .npc_snapshots
                     .iter()
                     .zip(&npc_blocks)
+                    .filter(|(n,_)|self.world.cinderworks.as_ref().is_none_or(|c| {
+                        self.world.npc(n.actor).is_none_or(|npc|!gielinor_world::tower_layout::contains(c.origin,npc.spawn)
+                            || gielinor_world::cinderworks_scenery::guardian_visible(restorer_run,n.type_id,c.imp,c.warden,npc.stats[3]>0))
+                    }))
                     .map(|(n, block)| crate::npc_synchronization::Avatar {
                         actor: n.actor,
                         type_id: n.type_id,

@@ -1,0 +1,231 @@
+{
+  "scope": "Server contract for future ordinary-action native journey; preparation specification, not acceptance evidence",
+  "server_candidate": "6D5D45A9CF3CEB48B5D094EE8BCDF3AA2CF8834D7FF0EE49787D1D2EB14B5FB2",
+  "source": "f9180b23ae1e158a296489a3730a8ae697a71de2 adapted through maintained owners",
+  "spawn": [
+    10420,
+    110,
+    0
+  ],
+  "anchors": [
+    {
+      "role": "bank",
+      "coords": [
+        10417,
+        114,
+        0
+      ],
+      "id": 18491,
+      "operation": 2,
+      "shape": 10
+    },
+    {
+      "role": "plaque",
+      "coords": [
+        10418,
+        105,
+        0
+      ],
+      "id": 909,
+      "operation": 1,
+      "shape": 10
+    },
+    {
+      "role": "chest",
+      "coords": [
+        10419,
+        105,
+        0
+      ],
+      "id": 57694,
+      "operation": 1,
+      "shape": 10
+    },
+    {
+      "role": "altar",
+      "coords": [
+        10424,
+        106,
+        0
+      ],
+      "id": 409,
+      "operation": 1,
+      "shape": 10
+    },
+    {
+      "role": "portal",
+      "coords": [
+        10428,
+        114,
+        0
+      ],
+      "id": 57692,
+      "operation": 1,
+      "shape": 0
+    },
+    {
+      "role": "furnace",
+      "coords": [
+        10398,
+        104,
+        0
+      ],
+      "id": 37947,
+      "operation": 1,
+      "shape": 10
+    },
+    {
+      "role": "anvil",
+      "coords": [
+        10401,
+        106,
+        0
+      ],
+      "id": 2097,
+      "operation": 1,
+      "shape": 10
+    },
+    {
+      "role": "range",
+      "coords": [
+        10432,
+        107,
+        0
+      ],
+      "id": 9736,
+      "operation": 1,
+      "shape": 10
+    }
+  ],
+  "population": {
+    "imp": {
+      "id": 16300,
+      "coords": [
+        10436,
+        135,
+        0
+      ],
+      "local_bounds": [
+        [
+          64,
+          67
+        ],
+        [
+          71,
+          74
+        ]
+      ]
+    },
+    "warden": {
+      "id": 16295,
+      "display_id": 2075,
+      "coords": [
+        10449,
+        120,
+        0
+      ],
+      "local_bounds": [
+        [
+          75,
+          51
+        ],
+        [
+          87,
+          61
+        ]
+      ]
+    },
+    "fishing": {
+      "id": 3317,
+      "coords": [
+        [
+          10437,
+          122,
+          0
+        ],
+        [
+          10438,
+          124,
+          0
+        ],
+        [
+          10438,
+          126,
+          0
+        ],
+        [
+          10437,
+          129,
+          0
+        ]
+      ]
+    }
+  },
+  "coolant": {
+    "id": 30124,
+    "operation": 1,
+    "training": [
+      10430,
+      124,
+      0
+    ],
+    "encounter": [
+      [
+        10446,
+        119,
+        0
+      ],
+      [
+        10446,
+        122,
+        0
+      ],
+      [
+        10453,
+        119,
+        0
+      ],
+      [
+        10453,
+        122,
+        0
+      ]
+    ]
+  },
+  "sequence": [
+    "Real plaque approach/read; wait for matching worker ACK and received tool/inventory delta",
+    "Mine actual copper/tin, smelt bronze and use ordinary smithing UI to make an eligible bronze dagger/scimitar",
+    "Net real shrimp and cook at the actual range; burned outcomes do not credit Kitchen",
+    "Kill ordinary supply creature and use real bones on the altar",
+    "Complete preparation in multiple valid orders; no injected service flags",
+    "Equip forged eligible weapon; enter Imp court and earn the real defeat",
+    "Enter Warden court; observe private warnings, move using real collision and exercise ordinary coolant Search during charge; earn real defeat",
+    "Demonstrate full-pack atomic rejection, then free appropriate slots using ordinary actions and collect exactly once",
+    "Clean logout/restart same database; repeat claim must not duplicate resources",
+    "Replay from plaque and earn replay reward; preserve first-clear history",
+    "Second player verifies admission ownership and observer-specific restored/quiet scenery"
+  ],
+  "encounter_timing": {
+    "warning_ticks": 4,
+    "imp_hazard_damage": 3,
+    "warden_hazard_damage": 4,
+    "recovery_exposure_ticks": 4,
+    "quench_exposure_ticks": 8,
+    "quench_cadence_ticks": 10,
+    "native_escape_check": "1323 real-cache static collision cases; not a substitute for native reactions"
+  },
+  "rewards": {
+    "first_coins": 500,
+    "replay_coins": 25,
+    "beer_each": 1,
+    "inventory_policy": "Atomic existing-owner inserts; an existing coin stack can reduce required empty slots. No partial grant on failure."
+  },
+  "evidence": [
+    "Record actual action requests/results and inventory/skill changes",
+    "Distinguish prepared state from earned outcomes",
+    "Checkpoint BEGIN/Imp/victory/claim snapshots must be acknowledged before publishing proposed inventory/run flags",
+    "Capture real native frames plus immutable source/binary/package identities",
+    "Preserve all failed attempts; no forced hits, XP, service flags, kills, inventory or rewards"
+  ],
+  "pending_client_dependency": "C018 ordinary-action adapter/journey integration"
+}

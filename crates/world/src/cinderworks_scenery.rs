@@ -120,3 +120,22 @@ pub const LANDMARKS: &[Landmark] = &[
 
 pub const TRAINING_COOLANT:(i32,i32)=(69,52);
 pub const VENTS:[(i32,i32);4]=[(67,70),(67,74),(76,70),(76,74)];
+
+/// Keep the dying guardian for its normal death sequence; hide its shared
+/// respawn only from restorers who already earned that guardian's credit.
+pub fn guardian_visible(run:Run,kind:u16,imp:u16,warden:u16,alive:bool)->bool {
+    !alive || !((kind==imp && run.imp)||(kind==warden && run.victory))
+}
+#[cfg(test)]
+mod visibility_tests {
+    use super::*;
+    #[test]
+    fn earned_credit_hides_respawns_but_preserves_death_and_other_npcs() {
+        let mut run=Run::default();run.begin();
+        for service in [crate::tower_run::Service::Forge,crate::tower_run::Service::Kitchen,crate::tower_run::Service::Altar]{run.service(service);}
+        assert!(guardian_visible(run,200,200,201,true));run.defeat_imp();
+        assert!(!guardian_visible(run,200,200,201,true));assert!(guardian_visible(run,200,200,201,false));assert!(guardian_visible(run,201,200,201,true));
+        run.defeat_warden();assert!(!guardian_visible(run,201,200,201,true));assert!(guardian_visible(run,202,200,201,true));
+        run.paid(run.id);run.begin();assert!(guardian_visible(run,200,200,201,true));assert!(guardian_visible(run,201,200,201,true));
+    }
+}

@@ -5,6 +5,10 @@ use crate::buffer::DecodeError;
 /// Bodies already contain the counts selected for this observer.
 #[derive(Default)]
 pub struct NpcUpdates<'a> {
+    /// Pre-encoded standard CP1252 name including its terminator.
+    pub name: Option<&'a [u8]>,
+    pub combat: Option<u32>,
+    pub transform: Option<u16>,
     pub hitmarks: Option<&'a [u8]>,
     pub headbars: Option<&'a [u8]>,
     pub sequence: Option<(u16, u8)>,
@@ -15,6 +19,7 @@ impl NpcUpdates<'_> {
     pub fn encode(&self) -> Vec<u8> {
         let mut mask = 0u32;
         let mut body = vec![];
+        if let Some(level)=self.combat {mask|=0x8000;body.extend(level.to_le_bytes());}
         if let Some(bytes) = self.hitmarks {
             mask |= 0x80000;
             body.extend(bytes);
@@ -32,6 +37,8 @@ impl NpcUpdates<'_> {
             mask |= 0x40000;
             body.extend(spots);
         }
+        if let Some(name)=self.name {mask|=0x4000;body.extend(name);}
+        if let Some(id)=self.transform {mask|=1;body.push((id as u8).wrapping_add(128));body.push((id>>8) as u8);}
         if let Some(face) = self.face {
             mask |= 8;
             body.extend(face);

@@ -1,4 +1,4 @@
-# Consolidation checkpoint — 2026-10-19
+# Consolidation checkpoints — 2026-10-19 to 2026-10-20
 
 The maintained OpenRune server is now the mainline. Promotion used a normal
 fast-forward to `7421b89d5e458a7022ff7c5afc51ea79b02406fe`; GitHub main and
@@ -211,3 +211,39 @@ quiet guardian visibility are next. The default launch remains unchanged.
 These tests do not constitute earned current-floor native acceptance; the full
 service/Imp/Warden/reward/replay/restart/observer scenario remains pending.
 Chemistry verification stays paused and the GR-10 tree-policy gap stays explicit.
+
+## Authored launch and paired native entry
+
+`--cinderworks-content ART_TOWER` now mounts the exact admitted package and
+floor before any account database or listener opens. The default launch retains
+its existing layout. The authored population contains 20 actors at the pinned
+positions. Warden presentation uses standard NPC name/combat/transform blocks;
+Attack initialization transmits an absent default while preserving saved Hidden.
+Restoration pairs must have identical clipping and no gameplay operations.
+
+The full maintained workspace passed 1,407 tests, zero failures and two previously
+ignored tests. Original RSProt NPC presentation comparisons cover 1,024 cases;
+existing combat and spot-animation composites also pass. Real-cache collision
+checks cover eight anchors and 1,323 hazard escape cases with NPC footprints.
+The adapted audit example additionally exports scene, objects, flags, walk edges,
+combat steps and NPC footprints to a new private directory; overwrites are refused.
+
+Paired native entry/viewing/logout passed with 428 frames, followed by a final-
+source same-save restart with 469 frames. Both preserved 10420,110,0, inventory,
+stats, XP rate and the unstarted run; neither sent action input or granted tools
+or progress. Original screenshots and immutable client/server identities are
+retained. These runs verify entry and persistence, not the earned content chain.
+
+Image review found a restart HUD discrepancy (HP/prayer displayed as zero).
+A separate pinned native packet capture received all 25 cache-defined stats,
+including HP10/XP1154, prayer1 and energy10000, with no later zero updates.
+Client application/readiness and packet-order investigation remains open; HUD
+parity is not asserted. Two shorter startup timeouts are preserved; independent
+startup recovery completed 10,695 requests in about 231 seconds without failures.
+
+Receipts: `docs/consolidation/native-launch-validation.json` and
+`docs/consolidation/added-source-disposition.csv`. The concrete remaining journey
+is specified in `docs/consolidation/earned-acceptance-contract.json`: genuine
+services, Imp, Warden, atomic claim/full-pack/replay, restart and observer separation.
+C018 native action tooling is being coordinated with ORACLE. No branch retirement
+or full content acceptance follows from this launch checkpoint.

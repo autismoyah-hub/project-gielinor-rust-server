@@ -1,0 +1,216 @@
+{
+  "status": "PASS",
+  "scope": "Pinned authored launch/population/standard NPC presentation and native entry/viewing/logout/same-save persistence; earned gameplay is pending",
+  "base_commit": "036b6bd07aa6d4028a7babf14295c93098b4f761",
+  "adapted_source": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "final_server_binary_sha256": "6D5D45A9CF3CEB48B5D094EE8BCDF3AA2CF8834D7FF0EE49787D1D2EB14B5FB2",
+  "final_source_manifest_sha256": "9c864f4ef590ed7c66f67cdc153194a43d8b289a11af3a431a7f1c7b580b2f13",
+  "workspace": {
+    "log": "consolidation-authored-launch-workspace-20261019-03.log",
+    "sha256": "9ff89dd72d33360f36b507539d0ddee0c73d86ae74d87b9848eff82524e1d971",
+    "groups": 217,
+    "passed": 1407,
+    "failed": 0,
+    "ignored": 2
+  },
+  "regression_source_note": "Workspace tested before canonical CRLF-to-LF cleanup. Normalized production Rust text is identical; only subsequent semantic addition is the separately executed read-only audit example. Final exact canonical source built and used for native same-save restart and independent packet capture.",
+  "original_rsprot_npc_presentation": {
+    "log": "consolidation-npc-presentation-differential-20261019-01.log",
+    "sha256": "5b89905066d95572346b2c6577c5ba9a5bf10d973df069e02faa207beb2f276a",
+    "groups": 3,
+    "passed": 4,
+    "failed": 0,
+    "ignored": 0,
+    "cases": 1024,
+    "reference_receipt_sha256": "a39602655eb42be0b2cdc5477d43fd9b67a7500e8df296ba42c8341ea5cff13b"
+  },
+  "geometry": {
+    "cells": 16384,
+    "authored_objects": 74,
+    "final_locations": 103,
+    "reachable_tiles": 2565,
+    "population": 20,
+    "static_hazard_escape_cases": 1323,
+    "functional_anchors": 8,
+    "nonwaterborne_npc_blocked_cells": 0
+  },
+  "static_report_validation": {
+    "status": "PASS",
+    "scope": "Adapted static authored audit exports; no game account or earned gameplay",
+    "reports": {
+      "audit.json": "7a38e30499703a6bbef8e8ed2e34614d55274201f204fdacf07e39b926cfe066",
+      "collision-flags.tsv": "4cf429670f4923dd401b6acffbc666e9006d82a639b659321ba9da7c456fb075",
+      "combat-eight-direction-steps.tsv": "6ba27f70b22fa1235e69d37a6f597885b363ddeb34eef00623d74999c3442eac",
+      "npc-footprints.tsv": "bbee7ff45c265828d1b41a5936daaf50fdbede9a07ee315b2d8eb56523940a2e",
+      "objects.tsv": "29ce7e5c5921e647dc0679d6efbf6c7414342d5341fbcf66dd1857e60fb175fb",
+      "prepared.scene": "689214ed7ba6cce24a728fd6415e7852511cfb7f762d45c27b3fcd5b1dff52f2",
+      "walk-edges.tsv": "fda4808186b691faf59b7a32e4312bc389c203e35aaa84d56a734cb4458a03fb"
+    },
+    "cells": 16384,
+    "scene_templates": 72,
+    "locations": 103,
+    "population": 20,
+    "nonwaterborne_blocked_static_cells": 0,
+    "existing_output_refused": true,
+    "existing_reports_unchanged": true,
+    "refusal_log": "consolidation-authored-floor-reports-refusal-20261020-01.log",
+    "refusal_log_sha256": "f895c3105e4b36454425b96af853a69a2fd4daa02b535a8a8fdccbf03d2692ee",
+    "tool_sha256": "0f955b402276e5f76f01611b3e36e58efbfdb1233832c933592fa62bdc36c020"
+  },
+  "native_runs": [
+    {
+      "run": "paired-launch-001",
+      "server_binary_sha256": "7AB019F5ADFD473AE0DEE83392EE1397710C846592788A113278ABAD81DC3EC9",
+      "source_manifest_sha256": "771C50143F6CEE9B381B88FCE092FF20355B2E02A84BBC41DB5AD0B816EA39E8",
+      "client_implementation": "6ac96fdb2bbfc6b0a936e0177008671e7232eb3b",
+      "client_binary_sha256": "2b3b93c5fee24e7334ae137ff8116224a9d2a441e642ac62839ba2bf1557478c",
+      "content_declaration_sha256": "4f733d7aacae3f3ac88d6dcd532c0346c3707d027934b98bd271f86e59cc84d9",
+      "frames": 428,
+      "client_exit": 0,
+      "input_packets": 0,
+      "server_confirmation": {
+        "status": "PASS",
+        "scope": "Prepared basic profile; real server authored arrival plus native viewing/logout; no earned services/combat/rewards",
+        "persisted_coords": [
+          10420,
+          110,
+          0
+        ],
+        "logged_out": true,
+        "last_logout": "2026-10-20 07:18:38",
+        "inventory_unchanged": true,
+        "stats_unchanged": true,
+        "xp_rate_unchanged": true,
+        "run": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "chemistry_unchanged": true,
+        "tool_reward_progress_grants": false,
+        "save_ack": {
+          "actor_slot": 1,
+          "actor_generation": 607,
+          "save_generation": 607,
+          "observed_tick": 1885,
+          "save_completed": true
+        },
+        "server_sha256": "7AB019F5ADFD473AE0DEE83392EE1397710C846592788A113278ABAD81DC3EC9",
+        "snapshot_sha256": "80bfaadae51c3bd454a564be49017f19391b751f26dc53b1ca4a50197c08856a"
+      },
+      "server_receipt_sha256": "7f6845ecfe4079cf6056472b49fb3ff36a02bc59a9c9fbe315f1211bebbec027",
+      "client_stdout_sha256": "5e4b69c1fed2ad7bf26a219389f711409d2bfcf3993777e97fcddbcb5a6a824d",
+      "screenshot_sha256": "e474de934c9f7b5bc06e87f47f561bfd0fa61e172034faf698320df8ba75c9f7",
+      "screenshot_scope": "Unedited actual native view; arrival/persistence only. HUD values in restart frame remain under readiness investigation."
+    },
+    {
+      "run": "paired-launch-002",
+      "server_binary_sha256": "6D5D45A9CF3CEB48B5D094EE8BCDF3AA2CF8834D7FF0EE49787D1D2EB14B5FB2",
+      "source_manifest_sha256": "9C864F4EF590ED7C66F67CDC153194A43D8B289A11AF3A431A7F1C7B580B2F13",
+      "client_implementation": "6ac96fdb2bbfc6b0a936e0177008671e7232eb3b",
+      "client_binary_sha256": "2B3B93C5FEE24E7334AE137FF8116224A9D2A441E642AC62839BA2BF1557478C",
+      "content_declaration_sha256": "4F733D7AACAE3F3AC88D6DCD532C0346C3707D027934B98BD271F86E59CC84D9",
+      "frames": 469,
+      "client_exit": 0,
+      "input_packets": 0,
+      "server_confirmation": {
+        "status": "PASS",
+        "scope": "Same saved database; actual authored restart/re-entry and native viewing/logout; no profile edits or earned gameplay",
+        "persisted_coords": [
+          10420,
+          110,
+          0
+        ],
+        "logged_out": true,
+        "last_logout": "2026-10-20 07:30:47",
+        "inventory_unchanged": true,
+        "stats_unchanged": true,
+        "xp_rate_unchanged": true,
+        "run": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "chemistry_unchanged": true,
+        "tool_reward_progress_grants": false,
+        "save_ack": {
+          "actor_slot": 1,
+          "actor_generation": 607,
+          "save_generation": 607,
+          "observed_tick": 680,
+          "save_completed": true
+        },
+        "server_sha256": "6D5D45A9CF3CEB48B5D094EE8BCDF3AA2CF8834D7FF0EE49787D1D2EB14B5FB2",
+        "snapshot_sha256": "f4a82f317b0a2076f059d0da58a8cfccbe4d877df6c61c6172266a20dc5519a7"
+      },
+      "server_receipt_sha256": "d7803fe81ec0910a406dc2a01075e42b72a7d7946039539ff70642b0a0da4138",
+      "client_stdout_sha256": "78c3b9f8a9bf883108e3e1e0deaec16d2c174906a7c1201549a765dd937c3a4a",
+      "screenshot_sha256": "ccf060f1a41528e1499c1352a8428bab899ea8e3e91040ccdd135686277c8cbd",
+      "screenshot_scope": "Unedited actual native view; arrival/persistence only. HUD values in restart frame remain under readiness investigation."
+    }
+  ],
+  "native_stat_capture": {
+    "receipt_sha256": "ae13fed0723a98d5f85ea349a49e9d4f519eeab788e2c125b16ef768109f1ebb",
+    "packet_count": 2134,
+    "stat_count": 25,
+    "capture_sha256": "1b65c23df02e88065c02f43c4ae782d43b1497b6ae33247babe0f63ff6b5ff0a",
+    "native_binary_sha256": "cdcc96d5a0a67e15b3790fbeda4d94ef236db0cfc44c9132aa261f76122d9148",
+    "hp": [
+      {
+        "ordinal": 208,
+        "id": 3,
+        "current": 10,
+        "invisible": 10,
+        "xp": 1154,
+        "hex": "0a0a8304820000"
+      }
+    ],
+    "prayer": [
+      {
+        "ordinal": 210,
+        "id": 5,
+        "current": 1,
+        "invisible": 1,
+        "xp": 0,
+        "hex": "01018500000000"
+      }
+    ],
+    "run_energy": [
+      {
+        "ordinal": 231,
+        "value": 10000,
+        "hex": "2710"
+      }
+    ],
+    "scope": "Actual pinned native socket delivery; not a HUD binding or readiness assertion"
+  },
+  "preserved_failures": [
+    {
+      "log": "consolidation-native-launch-focused-20261019-01.log",
+      "sha256": "8aa0ebf690c9203f520587a69adf96075bade42ed52cbe19c53ed60fe560b8eb"
+    },
+    {
+      "log": "consolidation-authored-launch-20261019-001-build.log",
+      "sha256": "a4ea4d3442c13b4b6dc8bdb6bef4c1875dd866b85e1904d8e9f3614f5f520b65"
+    },
+    {
+      "log": "consolidation-authored-launch-workspace-20261019-01.log",
+      "sha256": "7606a7e6624f41c2853d769d00dc4f8653ca3c063c7ca495b37c71f3c2f0ac0c"
+    },
+    {
+      "log": "consolidation-authored-launch-workspace-20261019-02.log",
+      "sha256": "4a742a8ca05714e4ef1e006b0e8ba1837c3ca8485e4b76b272e0b3eb66a92937"
+    }
+  ],
+  "cold_start": "Two own-harness 180-second timeouts preserved. Independent original startup diagnostic completed10695 requests/0failures in231.4067555s. Extended runs succeeded; cold throughput remains a limitation.",
+  "limitations": [
+    "Restart BMP shows HP/prayer zeros despite unchanged saves; actual native packet capture confirms correct initial values. Client application/readiness/order investigation remains open; no HUD parity assertion.",
+    "No earned preparation/Imp/Warden/claim/replay/multiplayer acceptance in these viewing-only runs. C018 ordinary-action journey adapter remains pending.",
+    "Original art/performance limitations and33ms target are not newly accepted.",
+    "Out-of-band content installation only; no distribution/signing scheme added.",
+    "Chemistry-specific independent/native campaign remains user-paused; GR-10 ordinary tree policy remains gated."
+  ],
+  "private_evidence": "Original raw logs/BMPs/packet capture/account snapshots/resource inputs retained privately; no cache/model/reference payload publication"
+}

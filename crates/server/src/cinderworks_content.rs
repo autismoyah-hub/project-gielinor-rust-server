@@ -156,6 +156,34 @@ impl Content {
             definitions,
         )?;
         for f in gielinor_world::cinderworks_scenery::LANDMARKS {
+        let cold = definitions
+            .locations
+            .get(&f.dormant)
+            .ok_or("Missing dormant landmark")?;
+        let hot = definitions
+            .locations
+            .get(&f.restored)
+            .ok_or("Missing restored landmark")?;
+        let clip = |t: &gielinor_cache::locations::LocationType| {
+            let c = t.collision;
+            (
+                c.width,
+                c.length,
+                c.block_walk,
+                c.block_range,
+                c.break_route_finding,
+            )
+        };
+        if clip(cold) != clip(hot) || cold.ops.iter().chain(&hot.ops).any(Option::is_some) {
+            return Err(format!(
+                "Unsafe restoration pair {} / {}",
+                f.dormant, f.restored
+            ));
+        }
+        if f.angle > 3 {
+            return Err("Invalid landmark rotation".into());
+        }
+
             shell.stamp_shaped(
                 self.spatial.at(origin, f.x, f.z).unwrap(),
                 f.dormant,

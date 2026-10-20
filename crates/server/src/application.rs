@@ -193,7 +193,7 @@ pub fn run() -> io::Result<()> {
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
         if arg == "--help" {
-            println!("Gielinor Rust development server (partial implementation)\n--game-cache PATH --js5-cache PATH --symbols PATH [--symbols OVERLAY]\n--check validates cache/content without a socket or account database.\nTo serve: --rsa-exponent RAW_BE_FILE --rsa-modulus RAW_BE_FILE --argon2 DLL\n[--state-name isolated] [--bind 127.0.0.1:0] [--ticks N] [--spawn X,Z,LEVEL] [--stop-file PATH] [--elemental-source ISOLATED_FIXTURE_DIR]\nCtrl+C or creation of the stop file requests logout and drains pending saves. Port 43594 is forbidden.");
+            println!("Gielinor Rust development server (partial implementation)\n--game-cache PATH --js5-cache PATH --symbols PATH [--symbols OVERLAY]\n--check validates cache/content without a socket or account database.\nTo serve: --rsa-exponent RAW_BE_FILE --rsa-modulus RAW_BE_FILE --argon2 DLL\n[--state-name isolated] [--bind 127.0.0.1:0] [--ticks N] [--spawn X,Z,LEVEL] [--stop-file PATH] [--elemental-source ISOLATED_FIXTURE_DIR] [--cinderworks-content ART_TOWER]\nCtrl+C or creation of the stop file requests logout and drains pending saves. Port 43594 is forbidden.");
             return Ok(());
         }
         if arg == "--check" {
@@ -213,6 +213,7 @@ pub fn run() -> io::Result<()> {
             "--spawn",
             "--stop-file",
             "--elemental-source",
+            "--cinderworks-content",
         ]
         .contains(&arg.as_str())
         {
@@ -265,7 +266,12 @@ pub fn run() -> io::Result<()> {
     let names =
         startup::Names::load(&directories.iter().map(PathBuf::as_path).collect::<Vec<_>>())?;
     let mut cache = GameCache::open(Path::new(required("--game-cache")?), 0xff_ffff)?;
-    let definitions = cache.definitions_all()?;
+    let cinderworks=values.get("--cinderworks-content").map(|path|gielinor_server::cinderworks_content::Content::load(Path::new(path))).transpose().map_err(fail)?;
+    let mut definitions = cache.definitions_all()?;
+    if let Some(content)=&cinderworks {
+        content.package().install(&mut definitions,&cache.groups(7)?.into_iter().collect())?;
+    }
+    let tower_template=if cinderworks.is_some(){gielinor_world::cinderworks_floor::template()}else{gielinor_world::tower_layout::template()};
     let mut maps = Vec::new();
     for x in (spawn.mx() - 1).max(0)..=(spawn.mx() + 1).min(255) {
         for z in (spawn.mz() - 1).max(0)..=(spawn.mz() + 1).min(255) {
@@ -282,7 +288,7 @@ pub fn run() -> io::Result<()> {
     }
     // Floor 1 copies zones outside the login map window. Resolve all template
     // sources before preparing the world, including the old dungeon square.
-    let source_ids = gielinor_world::tower_layout::template()
+    let source_ids = tower_template
         .values()
         .map(|zone| ((zone.x / 8) << 8) | (zone.z / 8))
         .collect::<std::collections::BTreeSet<_>>();
@@ -306,17 +312,14 @@ pub fn run() -> io::Result<()> {
         source_locations.extend(map.location_collision(&definitions, &mut source_collision)?);
     }
     let tower_origin = CoordGrid::new(10368, 64, 0).map_err(|e| fail(format!("{e:?}")))?;
-    let tower = gielinor_server::tower_map::prepare(
-        tower_origin,
-        &source_collision,
-        &source_locations,
-        &definitions,
-        names.group("loc"),
-    )
-    .map_err(fail)?;
-    let tower_population =
-        gielinor_server::tower_map::npcs(tower_origin, &definitions, names.group("npc"))
-            .map_err(fail)?;
+    let tower = match &cinderworks {
+        Some(content)=>content.prepare(&source_collision,&source_locations,&definitions,names.group("loc")).map_err(fail)?,
+        None=>gielinor_server::tower_map::prepare(tower_origin,&source_collision,&source_locations,&definitions,names.group("loc")).map_err(fail)?,
+    };
+    let tower_population=match &cinderworks {
+        Some(content)=>gielinor_server::cinderworks_population::resolve(tower_origin,content.spatial(),&definitions,names.group("npc")).map_err(fail)?,
+        None=>gielinor_server::tower_map::npcs(tower_origin,&definitions,names.group("npc")).map_err(fail)?,
+    };
     let loaded = bootstrap::build(&definitions, &maps).map_err(fail)?;
     println!(
         "Loaded {} map squares, {} NPCs, {} locations",
@@ -380,11 +383,12 @@ pub fn run() -> io::Result<()> {
     }
     // No account worker or listening socket exists yet. A failure discards this
     // unpublished runtime; successful publication preserves configured NPC hooks.
-    let (world, constructed) = gielinor_server::tower_map::publish(
+    let (world, constructed) = gielinor_server::tower_map::publish_with_template(
         std::mem::take(&mut runtime.world),
         tower_origin,
         tower,
         tower_population,
+        tower_template,
     )
     .map_err(fail)?;
     runtime.world = world;
@@ -446,6 +450,7 @@ pub fn run() -> io::Result<()> {
         offering_xp,
         offering_default,
     )?;
+    if let Some(content)=&cinderworks {gielinor_server::cinderworks_runtime::configure(&mut runtime,&mut cache,&names,content.spatial())?;}
     if check {
         println!(
             "Implemented content configuration validated. Full gameplay parity remains incomplete."

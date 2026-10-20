@@ -78,5 +78,8 @@ pub mod anvil;
 
 pub mod cinderworks_contract;
 pub mod cinderworks_content;
+pub mod cinderworks_population;
+#[cfg(windows)]
+pub mod cinderworks_runtime;
 
 pub mod tower_scene;

@@ -29,6 +29,10 @@ impl Config {
         welcome: Option<&str>,
         broadcast: Option<&str>,
     ) -> Result<Vec<Packet>, String> {
+        self.high_priority_for_content(vars,display_name,processed_clock,welcome,broadcast,false)
+    }
+    pub fn high_priority_for_content(&self,vars:&mut Variables,display_name:&str,processed_clock:i32,
+        welcome:Option<&str>,broadcast:Option<&str>,tower:bool)->Result<Vec<Packet>,String> {
         use gielinor_protocol::{
             client_script::{self, Argument},
             login_init as init,
@@ -48,7 +52,7 @@ impl Config {
             }
         }
         packets.extend(
-            self.variables(vars, display_name, processed_clock)
+            self.variables_for_content(vars, display_name, processed_clock,tower)
                 .map_err(|e| format!("{e:?}"))?,
         );
         packets.push(init::camera_reset());
@@ -110,6 +114,9 @@ impl Config {
         display_name: &str,
         processed_clock: i32,
     ) -> Result<Vec<Packet>, gielinor_world::variables::Error> {
+        self.variables_for_content(vars,display_name,processed_clock,false)
+    }
+    pub(crate) fn variables_for_content(&self,vars:&mut Variables,display_name:&str,processed_clock:i32,tower:bool)->Result<Vec<Packet>,gielinor_world::variables::Error>{
         let mut packets = vec![varp::reset()];
         if let Some(mode) = self.music_mode {
             vars.set(mode, 1, false);
@@ -133,7 +140,7 @@ impl Config {
         let mut transmit = self.transmit.clone();
         transmit.sort_by_key(|ty| ty.id);
         for ty in transmit {
-            if ty.transmit != Transmit::Never && vars.contains(ty.id) {
+            if ty.transmit != Transmit::Never && (vars.contains(ty.id) || (tower && ty.client_code==22)) {
                 packets.push(varp::update(ty.id, vars.get(ty.id)));
             }
         }
@@ -184,6 +191,21 @@ pub fn tail() -> [Packet; 2] {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn tower_login_sends_absent_attack_zero_and_preserves_explicit_hidden(){
+        let ty=|id|Varp{id,permanent:true,transmit:Transmit::Always,bit_protect:false,client_code:if id==1306{22}else{-1}};
+        let binding=Binding{base:ty(40),bit:gielinor_world::variables::Varbit{base:40,lsb:0,msb:0}};
+        let config=Config{chatbox:binding,roofs:binding,volumes:[ty(41),ty(42),ty(43),ty(44)],music_mode:None,transmit:vec![ty(1306)]};
+        for tower in [false,true]{for previous in [None,Some(0),Some(3)]{
+            let mut vars=Variables::default();if let Some(v)=previous{vars.set(ty(1306),v,false);}
+            let packets=config.variables_for_content(&mut vars,"Test",-1,tower).unwrap();
+            let expected=varp::update(1306,previous.unwrap_or(0));
+            let count=packets.iter().filter(|p|p.opcode==expected.opcode && p.payload==expected.payload).count();
+            assert_eq!(count,usize::from(tower || previous.is_some()));
+            assert_eq!(vars.contains(1306),previous.is_some(),"Synchronization must not invent a persisted preference");
+        }}
+    }
+
     #[test]
     fn area_music_login_overrides_saved_mode_and_transmits_once_after_reset() {
         let ty = |id| Varp {
