@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "scope": "Partial T-CORE standalone static authoring source adoption, no server runtime changes or private resources",
+  "base_main": "07608f54ddb513f0ad247d802bc4c710884bbc1c",
+  "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "source_files": [
+    {
+      "path": "tools/tower/custom-assets/converter/calibration_codec.py",
+      "sha256": "08f5d86d0ba8597f453c51310206daa2e107708b408894f92f995c5eba30fd9c",
+      "bytes": 6042,
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "destination": "Original source semantics preserved; CRLF normalized to LF where present for repository text policy",
+      "destination_sha256": "acc0d1ffb26e2f4f96cce5379cb95f330dc6178f074e19fa24448e744cc12710"
+    },
+    {
+      "path": "tools/tower/custom-assets/converter/convert_glb.py",
+      "sha256": "c8d9aed92a76f8fdffb4b13eea0a4c816d1540db1a58fe01cf1f16c5be786d38",
+      "bytes": 10625,
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "destination": "Original source semantics preserved; CRLF normalized to LF where present for repository text policy",
+      "destination_sha256": "c8d9aed92a76f8fdffb4b13eea0a4c816d1540db1a58fe01cf1f16c5be786d38"
+    },
+    {
+      "path": "tools/tower/custom-assets/converter/test_calibration_codec.py",
+      "sha256": "9745f893b89646799e04150f4193d52e1dc418dbb1bb87754946e3dd3da50850",
+      "bytes": 1368,
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "destination": "Original source semantics preserved; CRLF normalized to LF where present for repository text policy",
+      "destination_sha256": "9745f893b89646799e04150f4193d52e1dc418dbb1bb87754946e3dd3da50850"
+    },
+    {
+      "path": "tools/tower/custom-assets/converter/test_converter.py",
+      "sha256": "43937fa23bd20c2d5e8676d191da9bd58cd4ea7964e24f1c1e5e0db41b34f0d9",
+      "bytes": 1410,
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "destination": "Original source semantics preserved; CRLF normalized to LF where present for repository text policy",
+      "destination_sha256": "43937fa23bd20c2d5e8676d191da9bd58cd4ea7964e24f1c1e5e0db41b34f0d9"
+    }
+  ],
+  "validation": {
+    "log": "consolidation-static-tools-20261020-01.log",
+    "sha256": "c1d1f66820f0b9d99b70303ab037333faa41aa7d4ea5dffea9b8395d57aab368",
+    "original_synthetic_tests": 11,
+    "failures": 0
+  },
+  "not_claimed": [
+    "Native decoder/rendered model acceptance",
+    "Blender round trip or full model/animation type support",
+    "Complete T-CORE/T-MOTION/T-RENDER migration",
+    "New private asset export or current content namespace policy"
+  ],
+  "remaining": "Native extended/classic action codec, mesh cleanup and Blender adapter remain recoverable in exact audited source. Blender adapter imports additional animation/calibration modules; importing it alone would be incomplete. Historical packagers use stale IDs and remain archived, not current package authorities. Native offline rendering needs ORACLE-owned decoder/provider interface.",
+  "preserved_publication_failure": "First staging rejected CRLF lines in original calibration_codec.py. Original source bytes and Git log retained. Text normalized to LF without source logic changes; original synthetic suite rerun."
+}

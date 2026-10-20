@@ -394,3 +394,15 @@ failed and is retained; the corrected test uses the actual spatial mapping.
 Production code and the running native candidate are unchanged. This is headless
 acceptance; native Kitchen/Altar and the earned encounter chain remain pending.
 Evidence: `docs/consolidation/service-order-validation.json`.
+
+## Partial standalone authoring-tool adoption
+
+The original strict static GLB converter and classic diagnostic encoder now live
+under `tools/tower/custom-assets/converter` with their original tests
+and source hashes (CRLF text normalized to LF where present). All11 synthetic boundary tests pass at the destination. No
+cache, private geometry, Blender process or runtime dependency was introduced.
+The README documents the supported subset and limits. Native decoder/rendered
+acceptance is not inferred from encoder tests. Blender/extended animation tools
+remain recoverable for separate dependency review; historical packagers retain
+stale ID assumptions and were not made current namespace authorities. T-CORE is
+partially adopted. See `docs/consolidation/static-tools-validation.json`.
