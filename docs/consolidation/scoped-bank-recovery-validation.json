@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "scope": "Exact-site shared bank adaptation and real first-checkpoint crash authentication recovery regression; native recovered-tool delivery and earned journey still pending",
+  "base_main": "29742f744308a86aa7421062f4290ad72e9a388e",
+  "adapted_source": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "bank": {
+    "id": 18491,
+    "coords": [
+      10417,
+      114,
+      0
+    ],
+    "operation": 2,
+    "shape": 10,
+    "rotation": 0,
+    "owner": "Existing LocationBankRequested, location_bank_request_valid and standard full-bank UI/transfers",
+    "scope": "Exact authored spatial binding only; same type elsewhere/rotation/removed target/config disappearance rejected; inventory/bank/stats/run unchanged by request",
+    "tests": {
+      "log": "consolidation-scoped-bank-world-20261020-01.log",
+      "sha256": "743d9951b6ea8d8dbb782c6a3ceb7bd7478935fdb11c63f3f426f4d2a0041c4e",
+      "passed": 45,
+      "failed": 0
+    }
+  },
+  "authentication_failure": {
+    "native_response": 13,
+    "cause": "Existing-account login required a prior logout even after a real first checkpoint; correct checkpoint preserved NULL last_logout, making first-session crash unrecoverable",
+    "real_failed_client_attempts_preserved_files": 15,
+    "change": "After existing OTP/password verification, initialization is accepted if either a durable last_login or last_logout exists. Never-saved registrations still rejected. No timestamp fabrication or profile edits. Existing runtime online/account reservation remains authoritative.",
+    "red": {
+      "log": "consolidation-checkpoint-auth-red-20261020-01.log",
+      "sha256": "bdd1eba598cd4c7894333620a3ce58df5565ba3bcb2ee2c20913d91e9dcd9002"
+    },
+    "green": {
+      "log": "consolidation-checkpoint-auth-green-20261020-01.log",
+      "sha256": "a06161dc99fd7da9a48a220692221f54982cadd7e2b2555537043c3792be100d"
+    },
+    "real_worker_diagnostic": {
+      "status": "PASS",
+      "checkpoint_auth_recovery": true,
+      "incomplete_registration_rejected": true,
+      "wrong_password_rejected": true,
+      "checkpoint_requests": 2,
+      "logout_requests": 1,
+      "checkpoint_preserved_last_logout": true,
+      "ordinary_logout_stamped": true,
+      "run": 1,
+      "coins": 10,
+      "duplicate_snapshot_conserved_inventory": true,
+      "scope": "Real account worker and SQLite transaction; synthetic disposable state, no earned gameplay"
+    },
+    "diagnostic_scope": "New no-overwrite synthetic database, decoded synthetic login, real Argon2 verification and bounded worker restart; not earned gameplay"
+  },
+  "libraries": {
+    "log": "consolidation-scoped-bank-recovery-libs-20261020-01.log",
+    "sha256": "28ab03cc46f29b9edb54b97e506f6b6924a597d7dd3a1d99d147b66a5efb4421",
+    "world_passed": 654,
+    "server_passed": 289,
+    "failed": 0,
+    "preexisting_ignored": 1
+  },
+  "tcp_lifecycle": {
+    "log": "consolidation-scoped-bank-recovery-tcp-20261020-01.log",
+    "sha256": "303e751cdd141b77890d5e4bfa3589ac197aa2577ee926740b93080775544351",
+    "passed": 3,
+    "failed": 0,
+    "coverage": "Existing encrypted admission/save-backpressure/reservation and9onboarding route cases"
+  },
+  "exact_build": {
+    "run": "consolidation-scoped-bank-recovery-20261020-001",
+    "sha256": "60DF4115D71A419A83A1380AE63A62D41575D20ED274C1A9660C77894C9BCA0F",
+    "sourceCount": 598
+  },
+  "independent_native_listener_probe": {
+    "scope": "Separate ordinary new account; pinned old native packet capture only, not display/gameplay acceptance",
+    "packets": 2183,
+    "world_and_instance_rebuild": true,
+    "exit_code": 0,
+    "save_ack_tick": 1936,
+    "known_client_failure": "Creator onload script8310 opcode106 unsupported in older baseline"
+  },
+  "same_save_candidate": {
+    "original_earned_account_unchanged": true,
+    "compared": "Entire saved character,stats,run,inventory equal preserved actual first-plaque checkpoint; last_logout remainsNULL",
+    "server_sha256": "60DF4115D71A419A83A1380AE63A62D41575D20ED274C1A9660C77894C9BCA0F",
+    "status": "Listening; ORACLE native tool recovery/retry and earned services pending"
+  },
+  "preservation": "Protected26 original paths, private fixtures, original source/evidence retained; no branch retirement, chemistry verification remains paused and GR10 remains gated"
+}

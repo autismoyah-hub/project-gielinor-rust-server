@@ -1,6 +1,10 @@
 use super::*;
 use crate::bank_access::Request;
 impl World {
+    pub(super) fn cinderworks_bank(&self, location:crate::locations::Location)->bool {
+        location.id==crate::tower_cinderworks::BANK_BOOTH && location.shape==10 && location.angle==0
+            && self.cinderworks.as_ref().is_some_and(|c|c.spatial.at(c.origin,53,60).is_ok_and(|at|at==location.coords))
+    }
     pub(super) fn request_location_bank(
         &mut self,
         slot: usize,
@@ -8,21 +12,21 @@ impl World {
     ) {
         let p = self.players.get(slot).unwrap();
         let actor = p.id;
-        let gate = &self.location_banks[&location.id];
-        if !gate.allows(p.member, &p.data.stats, &p.data.variables) {
-            let message = if gate.members && !p.member {
-                "You need to be a member to use this bank."
-            } else {
-                "You need 99 Crafting or the hard or elite Falador Diary reward to use this bank."
-            };
-            self.events
-                .push(WorldEvent::LocationMessage { actor, message });
-            return;
-        }
+        let kind=if self.cinderworks_bank(location) {
+            crate::bank_access::Kind::Full
+        } else {
+            let Some(gate)=self.location_banks.get(&location.id) else {return;};
+            if !gate.allows(p.member, &p.data.stats, &p.data.variables) {
+                let message=if gate.members && !p.member {"You need to be a member to use this bank."}
+                    else {"You need 99 Crafting or the hard or elite Falador Diary reward to use this bank."};
+                self.events.push(WorldEvent::LocationMessage {actor,message});return;
+            }
+            gate.kind
+        };
         self.events.push(WorldEvent::LocationBankRequested {
             actor,
             request: Request {
-                kind: gate.kind,
+                kind,
                 location,
                 origin: p.movement.coords,
                 last_movement: p.movement.last_movement,
@@ -42,12 +46,9 @@ impl World {
                 .locations
                 .find_type(request.location.coords, request.location.id)
                 == Some(request.location)
-            && self
-                .location_banks
-                .get(&request.location.id)
-                .is_some_and(|g| {
+            && (self.location_banks.get(&request.location.id).is_some_and(|g| {
                     g.kind == request.kind && g.allows(p.member, &p.data.stats, &p.data.variables)
-                })
+                }) || request.kind==crate::bank_access::Kind::Full && self.cinderworks_bank(request.location))
             && self.door_target(request.location).is_ok_and(|target| {
                 target.reached(&self.collision, p.movement.coords, p.movement.size)
             })

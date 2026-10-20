@@ -299,3 +299,25 @@ original smithing cases,28 shared combat tests and three TCP lifecycle tests.
 The exact archived candidate passed real-cache authored configuration checking.
 Same-save native tool-delivery/retry recovery and the earned chain continue.
 Evidence: `docs/consolidation/shared-content-validation.json`.
+
+## Scoped banking and first-checkpoint recovery
+
+The authored bank booth now uses operation2 at10417,114 through the existing
+full-bank request, reach checks and UI owner. The same cache object elsewhere
+cannot open this scoped bank. Forty-five focused banking tests pass, including
+normal routing, exact-site rejection and character-state conservation.
+
+The first-plaque crash also exposed an authentication assumption: an existing
+account without a previous logout was rejected even after its first durable
+checkpoint. Authentication now recognizes the saved initialization marker after
+ordinary password/OTP verification. A never-saved registration remains rejected.
+A real SQLite/Argon2 worker-reopen diagnostic reproduced response13 before the
+fix and now passes; wrong passwords remain rejected. No logout time was invented.
+
+All654 world and289 server library tests pass, plus three encrypted TCP lifecycle
+tests covering account reservation. The exact archived candidate is running
+against the unchanged earned account for native recovery. The original saved
+character, stats, inventory and run match the preserved first checkpoint. Both
+failed client recovery attempts remain retained. Received-tool/retry acceptance
+and the full services/encounters/reward/replay journey are still in progress.
+Evidence: `docs/consolidation/scoped-bank-recovery-validation.json`.

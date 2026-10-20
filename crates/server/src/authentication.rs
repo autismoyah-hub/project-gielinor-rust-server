@@ -99,7 +99,10 @@ impl Service {
             if !ignore && !verified {
                 return Err(3);
             }
-            if account.last_logout.is_none() {
+            // A durable first checkpoint records last_login without inventing a
+            // logout. It must remain recoverable after a crash before first exit.
+            // Never-saved registrations still lack both initialization markers.
+            if account.last_logout.is_none() && account.last_login.is_none() {
                 return Err(13);
             }
         }

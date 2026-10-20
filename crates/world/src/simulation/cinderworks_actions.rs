@@ -15,6 +15,10 @@ impl World {
         else {
             return false;
         };
+        if loc.id==crate::tower_cinderworks::BANK_BOOTH && operation==2 {
+            if self.cinderworks_bank(loc) {self.request_location_bank(slot,loc);}
+            return true; // The same cache object elsewhere is not this authored bank.
+        }
         if loc.id == config.quench {
             return self.quench_cinderworks(slot,loc);
         }
@@ -250,6 +254,54 @@ mod tests {
             .unwrap();
         for _ in 0..3 {
             world.tick().unwrap();
+        }
+    }
+    fn bank_fixture()->(World,ActorId,Location) {
+        let (mut world,actor,_)=fixture(28);
+        let config=world.cinderworks.as_ref().unwrap();
+        let at=config.spatial.at(config.origin,53,60).unwrap();
+        assert_eq!((at.x(),at.z()),(10417,114));
+        let bank=Location::new(at,crate::tower_cinderworks::BANK_BOOTH,10,0).unwrap();
+        let ty=LocCollision {width:1,length:1,block_walk:2,block_range:false,break_route_finding:false};
+        world.location_types.insert(bank.id,ty);world.locations.load(bank);
+        crate::loc_collision::toggle(&mut world.collision,at,10,0,ty,true).unwrap();
+        world.drain_events();(world,actor,bank)
+    }
+    fn request_bank(world:&mut World,actor:ActorId,bank:Location) {
+        world.submit(actor,Action::OperateLocation {coords:bank.coords,id:bank.id,operation:2,control:false}).unwrap();
+    }
+    #[test]
+    fn authored_bank_uses_shared_reached_request_and_preserves_character_state() {
+        let (mut world,actor,bank)=bank_fixture();
+        let before=world.data(actor).unwrap().clone();
+        assert!(!world.has_location_handler(bank.id,1));assert!(world.has_location_handler(bank.id,2));
+        request_bank(&mut world,actor,bank);world.tick().unwrap();
+        assert!(!world.drain_events().iter().any(|event|matches!(event,WorldEvent::LocationBankRequested {..})));
+        let mut requests=vec![];
+        for _ in 0..30 {
+            world.tick().unwrap();
+            for event in world.drain_events() {if let WorldEvent::LocationBankRequested {actor:a,request}=event {assert_eq!(a,actor);requests.push(request);}}
+        }
+        assert_eq!(requests.len(),1);let request=requests[0];
+        assert_eq!(request.kind(),crate::bank_access::Kind::Full);
+        assert!(world.location_bank_request_valid(actor,request));
+        let after=world.data(actor).unwrap();
+        assert_eq!(after.inventory,before.inventory);assert_eq!(after.bank,before.bank);
+        assert_eq!(after.stats,before.stats);assert_eq!(after.tower_run,before.tower_run);
+        let config=world.cinderworks.take();assert!(!world.location_bank_request_valid(actor,request));world.cinderworks=config;
+        world.locations.delete(bank);assert!(!world.location_bank_request_valid(actor,request));
+    }
+    #[test]
+    fn authored_bank_rejects_same_type_elsewhere_wrong_shape_and_removed_targets() {
+        for removed in [false,true] {
+            let (mut world,actor,bank)=bank_fixture();
+            let other=Location::new(bank.coords.translate(3,0,0).unwrap(),bank.id,10,0).unwrap();
+            world.locations.load(other);
+            assert!(!world.cinderworks_bank(other));
+            assert!(!world.cinderworks_bank(Location::new(bank.coords,bank.id,10,1).unwrap()));
+            request_bank(&mut world,actor,if removed {bank}else{other});
+            if removed {world.locations.delete(bank);}
+            for _ in 0..30 {world.tick().unwrap();assert!(!world.drain_events().iter().any(|event|matches!(event,WorldEvent::LocationBankRequested {..})));}
         }
     }
     #[test]

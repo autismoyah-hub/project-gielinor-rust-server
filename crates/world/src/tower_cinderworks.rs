@@ -3,6 +3,7 @@
 /// distinct native fire-giant body and skeleton without changing XP metadata.
 pub const WARDEN: u16 = 16295;
 pub const WARDEN_VISUAL: u16 = 2075;
+pub const BANK_BOOTH: u32 = 18491;
 pub const COAL_BRAZIER: u32 = 11025;
 pub const COOLANT_TILES: [(i32, i32); 4] = [(53, 71), (53, 74), (60, 71), (60, 74)];
 pub const SHELL_HINT: &str = "The Warden's shell is closed. Evade the smoke, or search a coolant barrel to interrupt its charge.";
@@ -49,7 +50,7 @@ impl Config {
         id == self.dagger || id == self.scimitar
     }
     pub fn handles(&self, id: u32, operation: u8) -> bool {
-        operation == 1
+        (operation == 2 && id == BANK_BOOTH) || operation == 1
             && [
                 self.plaque,
                 self.portal,
