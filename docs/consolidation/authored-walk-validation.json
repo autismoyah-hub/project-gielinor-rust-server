@@ -1,0 +1,224 @@
+{
+  "status": "PASS",
+  "scope": "Exact authored-cache ordinary World walking plus separately preserved earned native Imp. No server runtime or floor mutation.",
+  "base_main": "4d385625a60f8a427932f59da7b60beea414aab8",
+  "headless": {
+    "log": "consolidation-authored-walk-20261020-01.log",
+    "sha256": "64bda3956a8e53f850743b172e06d937e71fdc8d67978922ea5489f95a140979",
+    "direct_route_ticks": 5,
+    "direct_route": "10434,128 ->10435,132 around authored barrier",
+    "waypoint_route": [
+      [
+        10433,
+        129
+      ],
+      [
+        10432,
+        130
+      ],
+      [
+        10432,
+        131
+      ],
+      [
+        10433,
+        132
+      ],
+      [
+        10434,
+        133
+      ],
+      [
+        10435,
+        134
+      ]
+    ],
+    "waypoint_ticks_each": 1,
+    "authored_npcs": 20,
+    "functional_anchors": 8,
+    "hazard_escapes": 1323,
+    "reachable_tiles": 2565,
+    "scope_limit": "Synthetic movement actor only; no account, inventory, XP or service grants. Not native gameplay."
+  },
+  "static_route_proof": {
+    "scope": "Read-only shortest paths from actual saved native position over previously exported exact authored production collision. Dynamic roaming NPCs still require native action/reach verification. No clipping or floor changes.",
+    "origin": [
+      10368,
+      64,
+      0
+    ],
+    "start": [
+      10434,
+      128,
+      0
+    ],
+    "imp_court_bounds": [
+      [
+        10432,
+        131,
+        0
+      ],
+      [
+        10439,
+        138,
+        0
+      ]
+    ],
+    "closest_entry_world": [
+      [
+        10434,
+        128,
+        0
+      ],
+      [
+        10433,
+        129,
+        0
+      ],
+      [
+        10432,
+        130,
+        0
+      ],
+      [
+        10432,
+        131,
+        0
+      ]
+    ],
+    "adjacent_imp_world": [
+      [
+        10434,
+        128,
+        0
+      ],
+      [
+        10433,
+        129,
+        0
+      ],
+      [
+        10432,
+        130,
+        0
+      ],
+      [
+        10432,
+        131,
+        0
+      ],
+      [
+        10433,
+        132,
+        0
+      ],
+      [
+        10434,
+        133,
+        0
+      ],
+      [
+        10435,
+        134,
+        0
+      ]
+    ],
+    "reachable_court_tiles": 63,
+    "target_requested_10435_132_static_reachable": true,
+    "reports": {
+      "walk-edges.tsv": "fda4808186b691faf59b7a32e4312bc389c203e35aaa84d56a734cb4458a03fb",
+      "collision-flags.tsv": "4cf429670f4923dd401b6acffbc666e9006d82a639b659321ba9da7c456fb075",
+      "objects.tsv": "29ce7e5c5921e647dc0679d6efbf6c7414342d5341fbcf66dd1857e60fb175fb",
+      "npc-footprints.tsv": "bbee7ff45c265828d1b41a5936daaf50fdbede9a07ee315b2d8eb56523940a2e"
+    }
+  },
+  "native_imp": {
+    "status": "PASS_EARNED_NATIVE_IMP_CHECKPOINT",
+    "scope": "Actual ordinary movement entered authored court, native controller defeated real18HP Ash Imp with native warning/food/attack actions, journal unlock and authoritative completion save. Active client; Warden/rewards pending.",
+    "server_sha256": "A9B70BD12E3830B0FF8003313D50266D10F73D8E0654668C733505250F0E7A63",
+    "client_sha256": "0A506755D2845CA50655A419ED114215C9D12106E9CF780F530FBD321AA5D8C7",
+    "run": [
+      1,
+      7,
+      1,
+      0
+    ],
+    "hp": 10,
+    "attack_xp": 480,
+    "cooked_food_before": 12,
+    "cooked_food_after": 8,
+    "normal_food_commits": 4,
+    "save_ack": {
+      "actor_slot": 1,
+      "generation": 607,
+      "tick": 676
+    },
+    "snapshot_sha256": "260403f2a840647097dc5ffa06f0a38329bd94b73212333184a6df858991df4c",
+    "files": [
+      {
+        "path": "state-10.json",
+        "sha256": "0635f5b3fa5a0b245a7ffe321aabf2013c9919ea6ec59491e249fa225c671c2e",
+        "bytes": 4256
+      },
+      {
+        "path": "state-16.json",
+        "sha256": "95af3d825908ffc1a75964aec7a42c8e113c6d33bb8dfe1610b6565deac171d5",
+        "bytes": 4256
+      },
+      {
+        "path": "state-22.json",
+        "sha256": "dbf44dce1a3d6196da7b19ac59ecfbf7cd3f8c5954920cb4e5403c2c3ef18462",
+        "bytes": 4419
+      },
+      {
+        "path": "state-27.json",
+        "sha256": "a8fd07ad970ace82f43e4ee1a408c3a7fef4852cf1e6ead6bb196e9a444bd83f",
+        "bytes": 4256
+      },
+      {
+        "path": "state-32.json",
+        "sha256": "bb3832bf41a908b58b1dd3c91b0b9f0f687a7fc7d80e7cf3f09ee8beb41cea31",
+        "bytes": 4298
+      },
+      {
+        "path": "state-38.json",
+        "sha256": "ff168aca626bae43df880284cef7f24674e0033dda91ea98f26e572f647cf340",
+        "bytes": 4256
+      },
+      {
+        "path": "state-39.json",
+        "sha256": "b7a32f3679d3ab81049368097a08ca9b361e156594949f666aee89e0d2e916cd",
+        "bytes": 4256
+      },
+      {
+        "path": "state-274.json",
+        "sha256": "4d35a24168a3ba662e9e6394f0273b4d214e73ab2f9aa7a2d7f1633353a1588c",
+        "bytes": 5192
+      },
+      {
+        "path": "frame-40.bmp",
+        "sha256": "76df836eb43c474448728180c1e9cb3363ad5fad90c8fa8f172d29372ebe6d59",
+        "bytes": 1539234
+      },
+      {
+        "path": "frame-275.bmp",
+        "sha256": "f751679c0983833da8ce797f35c25c98479ae62f1c0adad73dfe9746705d97c9",
+        "bytes": 1539234
+      }
+    ],
+    "preserved_helper_failure": "First capture expected optional inspect276 before it materialized; partial001 and original helper retained. Immutable274 already contains completed Imp journal/HP/food proof.",
+    "limits": "No full floor shading/shell/GDI/audio claim; no Warden/reward/replay/multiplayer completion inferred."
+  },
+  "entry_diagnosis": "Both actual World execution and native arrival-by-arrival traversal pass. Earlier outside-court Attack cancels an unfinished normal walk by existing OperateNpc semantics; its exact old timing is not independently proven. No boundary/collision bypass was introduced.",
+  "native_js5_timing_reported": {
+    "client_sha256": "0A506755D2845CA50655A419ED114215C9D12106E9CF780F530FBD321AA5D8C7",
+    "server_sha256": "A9B70BD12E3830B0FF8003313D50266D10F73D8E0654668C733505250F0E7A63",
+    "startup_groups": 10723,
+    "archives_seconds": 54.519,
+    "login_seconds": 62.033,
+    "world_ready_seconds": 63.847,
+    "same_client_prior_c77e_world_seconds": 153.405,
+    "limits": "Single observed pair reported by ORACLE, not a general benchmark; server/client warm state and other load not a controlled performance study."
+  },
+  "remaining": "Warden, victory/reward/full-pack/replay/normal restart/multiplayer acceptance pending; active native007 retained. Render shading/shell/GDI/audio remain separate."
+}

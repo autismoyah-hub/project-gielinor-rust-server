@@ -41,7 +41,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
     let published_locations = shell.map.locations.clone();
     let mut world = World::default();
     world.collision.set(3222, 3218, 0, 0x100);
-    let (world, regions) =
+    let (mut world, regions) =
         tower_map::publish_with_template(world, floor::origin(), shell, vec![], floor::template())?;
     assert_eq!(world.collision.get(3222, 3218, 0), 0x100);
     let spawn = content
@@ -184,6 +184,30 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
     assert_eq!(content.floor().cells.len(), 16384);
     assert_eq!(content.floor().objects.len(), 74);
     println!("authored floor prepared/published cells={} objects={} scene_locations={} reachable_tiles={} package=630bbb1bd738d4a105493f510b7273c51a6cfaca789bb7ae2d95c40d2bdb32d0",content.floor().cells.len(),content.floor().objects.len(),published_locations.len(),seen.len());
+    // Real movement execution complements static BFS. Synthetic actor only:
+    // no account database, rewards, service flags or earned-native claims.
+    for npc in population {world.spawn_npc(npc).map_err(|e|format!("{e:?}"))?;}
+    let at=gielinor_world::CoordGrid::new(10434,128,0).unwrap();
+    world.queue_login(1,gielinor_world::simulation::PlayerData::new(1,"Walk diagnostic".into(),at,gielinor_world::stats::Stats::default())).map_err(|e|format!("{e:?}"))?;
+    world.tick().map_err(|e|format!("{e:?}"))?;
+    let actor=world.actors().next().ok_or("Missing movement actor")?;
+    let before=world.data(actor).unwrap().clone();
+    // The direct destination must route around the authored barrier, rather
+    // than requiring a fabricated opening or a teleport through the court.
+    for (x,z) in [(10435,132),(10434,128),(10433,129),(10432,130),(10432,131),(10433,132),(10434,133),(10435,134)] {
+        let destination=gielinor_world::CoordGrid::new(x,z,0).unwrap();
+        world.submit(actor,gielinor_world::simulation::Action::Walk {destination,run:false}).map_err(|e|format!("{e:?}"))?;
+        let mut steps=0;
+        while world.observe(actor).unwrap().coords!=destination && steps<25 {
+            world.tick().map_err(|e|format!("{e:?}"))?;steps+=1;
+        }
+        assert_eq!(world.observe(actor).unwrap().coords,destination,"Authored ordinary walking failed at{x},{z}");
+        println!("ordinary authored walk arrived={x},{z},0 ticks={steps}");
+    }
+    let after=world.data(actor).unwrap();assert_eq!(after.inventory,before.inventory);assert_eq!(after.bank,before.bank);
+    for skill in 0..25 {assert_eq!(after.stats.fine_xp(skill),before.stats.fine_xp(skill));}
+    assert!(gielinor_world::cinderworks_encounter::Boss::Imp.contains(floor::origin(),world.observe(actor).unwrap().coords));
+    println!("ordinary authored court walking PASS;20 actual NPC footprints; no item/XP/progression grant");
     Ok(())
 }
 fn main() {

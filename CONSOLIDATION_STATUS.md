@@ -453,3 +453,23 @@ RSProt queue cases,three TCP lifecycle checks and exact authored startup pass.
 The old native server remained unchanged during play. Native timing on the new
 candidate is pending; a clean saved-session swap is coordinated with ORACLE.
 See `docs/consolidation/js5-pipeline-validation.json`.
+
+## Exact ordinary court walking and earned Imp
+
+The read-only authored-floor diagnostic now executes World walking with all20
+NPC footprints after its static checks. The direct10434,128 to10435,132 request
+routes around the barrier in five ticks; each entrance waypoint takes one tick.
+All eight functional anchors,1323 escape cases and2565 reachable tiles still pass.
+A synthetic movement actor gains no possessions, XP or service progress.
+
+Separately, the actual native character followed each entrance waypoint and
+defeated the18HP Ash Imp. Its journal unlocked the Warden, HP remained10, and
+four normal food commits reduced cooked shrimp from12 to8. Completion SaveACK607
+at tick676 and a read-only SQLite snapshot confirm run[1,7,1,0]. The first partial
+evidence copy expected an optional inspect276 before it appeared; that attempt is
+retained, and immutable274 supplies the completed proof. Warden is still pending.
+
+The same native client reached the world in63.847s on the pipelined server versus
+153.405s on the prior server,10723 startup groups in each reported run. This is
+a single observed pair, not a general benchmark. No active gameplay hotpatch or
+floor/boundary change was made. See `docs/consolidation/authored-walk-validation.json`.
