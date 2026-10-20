@@ -2,7 +2,7 @@
 // Source SHA256: 705564b1a32ec37415a0714d87bccb6e844b9f42a684dba7ce0ad7e2bc65bc42
 use crate::dialogue::{Expression, Page, Speaker};
 pub const PAGES: [Page; 26] = [
-    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Hello again. Open your inventory â€” the backpack icon â€” so you can see the net I gave you." },
+    Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Hello again. Open your inventory — the backpack icon — so you can see the net I gave you." },
     Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Hello again. First up, we're going to do some fishing. There's some shrimp in this pond here. Let's try and catch some." },
     Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Hello again. You should take a look at that menu before we continue." },
     Page::Chat { speaker: Speaker::Npc, expression: Expression::Happy, text: "Next up you need to make a fire. First, you'll need to cut down a tree to get some logs." },
