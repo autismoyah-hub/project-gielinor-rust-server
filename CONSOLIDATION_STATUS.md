@@ -523,3 +523,21 @@ court ownership,per-observer restoration and receiver-private/no-replay graphics
 cases. Those are headless tests;simultaneous native peer rendering was not run.
 The replay addition is separately scoped rather than added to the broad count.
 See `docs/consolidation/restart-replay-validation.json`.
+
+## Consolidation source dispositions and owner review
+
+The maintained server scope is recorded in `CONSOLIDATION_REPORT.md`. Exact
+source/destination fingerprints cover the90 positive shared-hunk paths; newer
+OpenRune behavior remains retained. All332 audited asset/tool entries have a
+classification,including63 model entries checked against the actual admitted
+registry. These are inventory/source dispositions,not gameplay percentages.
+All27 audited source commits are recoverable and20 integration heads are retained
+in accepted main. The branch retirement review is a proposal for owner review;
+no refs or private assets were removed. Standalone authoring/research archives
+are distinguished from selected executable server/runtime functionality.
+
+Fresh earned first-clear,restart,portal and replay-admission receipts plus scoped
+headless replay-payment/peer tests provide acceptance. A second native replay
+clear and simultaneous native peer rendering remain additional coverage. GR10
+and the independent chemistry pause remain unchanged. See the report and
+`docs/consolidation/BRANCH_RETIREMENT_REVIEW.md` for evidence and limits.

@@ -1,0 +1,22 @@
+commit	subject
+7421b89d5e458a7022ff7c5afc51ea79b02406fe	Fix Survival Tutor dialogue UTF-8 punctuation
+84fdbaf81c869c0fb63e273af30d6c10e48d9e39	Integrate additive Tower storage and immutable Cinderworks package contracts
+8a1e535c426e564e3d1c77d34a5496724991c5ff	Integrate exact authored Cinderworks floor preparation and publication
+620e8c82e8f8a5d5a355cd9f07a95a8dc1b55652	Add acknowledged Tower snapshots with unique save tokens and session metadata
+036b6bd07aa6d4028a7babf14295c93098b4f761	Integrate ACK-gated Cinderworks gameplay and authored observer effects
+379bb39adc2d1502d836730ef602c4789a5e9a59	Enable pinned authored Cinderworks launch with verified native persistence
+4c82658e0efeebfcf6ef52d3485f61493fa41196	Preserve mandatory creator and route confirmed Cinderworks onboarding
+6ee1c54f934616022ae961edc10553310115e300	Conserve legacy bounty rewards across failed full-pack retries
+29742f744308a86aa7421062f4290ad72e9a388e	Fix native plaque chat overflow and reconcile shared content behavior
+031e2ca77430f77538b4477803faddd2f0cb63be	Recover first-checkpoint accounts and integrate scoped Cinderworks banking
+f2193d8d27d1cdfa1a58e7a045bc904ce0df2144	Restore scoped shore fishing and record native checkpoint recovery
+9bc1e58df65b36c4b30bf9575d23072ba990b1fe	Bind authored fishing through shared content configuration
+526756e2263f038b6f2a0540596c2e4b536e9965	Bind authored range to shared cooking and preserve earned Workshop
+07608f54ddb513f0ad247d802bc4c710884bbc1c	Verify all preparation orders through committed shared gameplay
+c166cbfe094783fad2da233ca5c393ca90d1df53	Adopt preserved standalone static authoring tools and tests
+5026d3ea58423e8890b0e78387de9bb8b0d5c670	Record explicit maintained and adapted shared engine ownership
+04e00977373c32520bf8b62058d626522ec057fe	Record earned native preparation outcomes and remaining acceptance
+4d385625a60f8a427932f59da7b60beea414aab8	Pipeline bounded JS5 reads and preserve durable native preparation
+b11ae3b32157849514b62a9b367f448ae1b700ef	Verify authored court walking and record earned native Imp
+2634178df160dd190f31370455bc5ab6ac38b019	Verify earned first clear rewards and disconnect grace conservation
+bce0e0683a3913ac46e046d693e727504e556434	Verify native restart and transactional replay reward conservation

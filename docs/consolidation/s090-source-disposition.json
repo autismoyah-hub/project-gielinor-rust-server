@@ -1,0 +1,1553 @@
+{
+  "scope": "S090 positive-hunk source dispositions; no path-count gameplay percentage or whole-file equivalence claim. Already selected S-series adaptations reference their scoped evidence. Historical source is retained.",
+  "source_base": "82888b93d619cd03facf1bf022d79078ab97f1e3",
+  "source_handoff": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+  "accepted_main": "bce0e0683a3913ac46e046d693e727504e556434",
+  "rows": [
+    {
+      "source_path": "crates/cache/src/game.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "3b02c2c65bd9ac188bb457fc047c25eed772b7a9a0ff556745bfdc9b6583d308",
+      "diff_sha256": "e7acbf041c038dd979b52202117972ae34aad0fe1fd2431c7d67af5592423a14",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Explicit admitted resource mounting preserves default cache behavior.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/cache/src/game.rs",
+          "sha256": "60be97d35c5d564d3b903e58e20ec67cf64713d237d7850eb3ce82d2c69d8580"
+        }
+      ],
+      "evidence": "batch-a-validation.json"
+    },
+    {
+      "source_path": "crates/cache/src/tower_shell.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "b5b34ad57e7141d9632dcf3b2c9c78e5891bb7c6e66a9ab9953e3728f67a472f",
+      "diff_sha256": "a0ca3461a4993f215fda20558450cd7c74bb475d3847cced194cfcddd8d19fa8",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Prepared shell/collision owner selectively extended; exact authored publication verified.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/cache/src/tower_shell.rs",
+          "sha256": "2ece467db1ca3f451f6d45a606b50fd2c1e509c23f9f154330ece6c7ffa4aa95"
+        }
+      ],
+      "evidence": "floor-scene-validation.json"
+    },
+    {
+      "source_path": "crates/protocol/src/combat_updates.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "f940d6d80d41f63f4ba5bb2aa03b42d2c5cb7d86fc080d5404ac0e1a6fa6adff",
+      "diff_sha256": "1f10be9cd556c05b18df73e454eede7f1af970b2365c7c47f3115ad9309d8b04",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "NPC combat/spot presentation extends existing protocol owner; original reference comparisons retained.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/protocol/src/combat_updates.rs",
+          "sha256": "10d94d1363cc2067e1cb2cae2ece931568fb00b0bc457eab862f7c48fc3b00a6"
+        }
+      ],
+      "evidence": "gameplay-kernel-validation.json"
+    },
+    {
+      "source_path": "crates/protocol/src/zone.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "1b45b4104ff841d085aaa1ca046a175d66ae05607363f24f1c77a415518968df",
+      "diff_sha256": "b93ac741e4a5c24a39ee26d9625b40b623fe6f7e29d23da8719b1dea77bf7673",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Receiver-local tile animation uses existing zone wire path; original1024 MapAnim cases retained.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/protocol/src/zone.rs",
+          "sha256": "5951b0e9d6576af19c6db1a37c783e6b40d2e21efda6f9c6cb44de76b51dfacc"
+        }
+      ],
+      "evidence": "gameplay-kernel-validation.json"
+    },
+    {
+      "source_path": "crates/server/Cargo.toml",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "4b7bf6460e28632df82988cf4fc38d19a994b7cab973daffea9df66e973ce30b",
+      "diff_sha256": "3666a592562860462811b04c93d56b4e3f2ae2b5b55d56d6737b6f3b5f2dc4af",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Only selected current read-only diagnostics declared; old helper targets are not imported wholesale.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/Cargo.toml",
+          "sha256": "f51949f4b2960caae54ccb264ea51266cc62f9711744f2b7499c41e64d3ccc63"
+        }
+      ],
+      "evidence": "authored-walk-validation.json"
+    },
+    {
+      "source_path": "crates/server/examples/broken_water_audit.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "16e9e5ff86234039b8b5bd1161f08d240331d89d576dd020f8b09eebeaaf7e97",
+      "diff_sha256": "cd7d59de504d3a84ef12aaee579db0b39af1dd943eb85d2e6f135a0f6883e810",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Read-only scene/flags/edges/combat/NPC diagnostics adapted to explicit actual floor and no-overwrite output; real walking and cache checks pass.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/examples/cinderworks_floor_check.rs",
+          "sha256": "6b36c817ea36bd3f2983bfe15c4539bb148e1eb11d3774f33d1d7276955e9f7a"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/server/examples/cinderworks_environment_account.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "db94a332341db5878c87ee8baf8f519a152c42034f76c25b10a4bb3af5c851d7",
+      "diff_sha256": "1614f37daef4332c9d35a002d905432fa0e17c767db82859fb9bca9f526e9970",
+      "classification": "Intentionally archived",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "New-account helper fabricates an initial logout marker and predates chemistry Save fields; normal registration/first-checkpoint recovery now supplies the maintained route.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/authentication.rs",
+          "sha256": "ed5cee73714d7cab03a97a48abb42fe9b216550434a68222bcef7f8b9001809a"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/server/examples/cinderworks_environment_audit.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "b661f7fb43fcef0002ae765c910735a4edf734cd9550cd23bc3040ae05cb7add",
+      "diff_sha256": "13a388f400801ad5713c28b40e53cbc9a6b5501aaaf6a301525bcac2ba27df7a",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Read-only scene/flags/edges/combat/NPC diagnostics adapted to explicit actual floor and no-overwrite output; real walking and cache checks pass.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/examples/cinderworks_floor_check.rs",
+          "sha256": "6b36c817ea36bd3f2983bfe15c4539bb148e1eb11d3774f33d1d7276955e9f7a"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/server/examples/custom_asset_account.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "f4190ea77363d119a5d5f120f45fbbd4a9e6e0c383cb2acb7069c983416f4102",
+      "diff_sha256": "846a60c24e1f49d02910ab0e056b4361dfe93e99656dc508091d47dd17bbe601",
+      "classification": "Intentionally archived",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Historical initial-logout provisioning is unnecessary for the maintained ordinary registration route; original helper remains recoverable.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/authentication.rs",
+          "sha256": "ed5cee73714d7cab03a97a48abb42fe9b216550434a68222bcef7f8b9001809a"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/server/examples/custom_asset_collision.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "7379840dc927cf9ee8cebdabb7e76ad1dc5d84b4e6e8abdc85b29c05c88793e6",
+      "diff_sha256": "96c5e070d9cdb1fc23e8c93b31470e119640976cfd776f1155adf657a7e27a8b",
+      "classification": "Intentionally archived",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Two-arch65000/65001 diagnostic targets superseded art; current exact-floor diagnostic covers actual103placements/anchors/collision. Original source retained.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/examples/cinderworks_floor_check.rs",
+          "sha256": "6b36c817ea36bd3f2983bfe15c4539bb148e1eb11d3774f33d1d7276955e9f7a"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/application.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "419e2f415dcfa700ccf478524600ec1819304bc33ce71c53f5de903b6d6126f3",
+      "diff_sha256": "10c050bf67f6f3f06a3bdfa2bd4c0b16d08fe28e61052085a24fc4bfbd8cd46a",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Explicit authored CLI admission before DB/socket preserves default OpenRune startup and current owners.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/application.rs",
+          "sha256": "4f75001f28c45791282f81c3298cc35de47639a39f3a7fecd7804da1a6914fa0"
+        }
+      ],
+      "evidence": "native-launch-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/broken_water_return.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "2d08b357fdc0b2d81fd7651df4c67b67c32b813d577bc095bca6a977100bff17",
+      "diff_sha256": "955c5cd449676916059ecf35558465c3de981f672ad9a98f9d35d9a257e1bc37",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Explicit immutable Content replaces environment-selected preparation wrapper.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/cinderworks_content.rs",
+          "sha256": "ed8cdd06d83ae8592284e4f3d900b2dee1522c71a8438ab530ae506fb1ed7f0d"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/characters.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "9d5eb69163451c2d3266b58bb7d6a7d765284a06a1adaee424585a182a45b052",
+      "diff_sha256": "919e27410822273f7a77505e86bdcb2ec779452cb95bcda65226c991a21f9267",
+      "classification": "Adapted",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Tower load/save coexists with chemistry rather than replacing it. Additive V13 and chemistry preservation tested earlier.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/characters.rs",
+          "sha256": "791a48381db12a7a4938c99696a7b4b97919e725bd96cb488336bc63b7e64ced"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/server/src/cinderworks_environment.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "9f613cf5f91c75153cacca41304550d65b25a97dd061cdf4220995bc99310016",
+      "diff_sha256": "e9890778a3a5e15948222425905709606dbb3c4c89cd7a3ee753ba8e24ac9b73",
+      "classification": "Superseded",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Limited historical placement parser is superseded by pinned full authored floor and package; original parser is archived.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/cinderworks_content.rs",
+          "sha256": "ed8cdd06d83ae8592284e4f3d900b2dee1522c71a8438ab530ae506fb1ed7f0d"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/content.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "60a9ced4fbda001df0a1b68b06b5b278f9e0b8facbfdd5c12e555641164eb21a",
+      "diff_sha256": "7225b5bf1b7b7c35016125cefc4994e20b84a4effff2f59344508c32d4ca06f6",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Experimental hunks drop newer recipes/atomic bindings and retain only older food/grinding subsets. Keep maintained OpenRune content and live catalog guards.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/content.rs",
+          "sha256": "d4ac80a15ca43f29278259a79de263dca3b441d574e84f4febef1ab539f6df60"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/dialogue.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "27e8655f5f0bbe6f8b8f1c70f284393b33e2d7d857e71839d24a95e69a4d597c",
+      "diff_sha256": "83cae696eb872ed4f9e37c839569c64302d73bf0d77fef17239072e8b87dffcf",
+      "classification": "Retained newer owner",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Keep optional NPC so source-free location choices do not require a fabricated NPC.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/dialogue.rs",
+          "sha256": "e3f46665f0287304242f14a8a6a34041b586356375f08300dba5d23e612b99e2"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/server/src/ground_sync.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "c56afa869827da4bfc30ce1911846a1246b3d09cecb82c42bf561c9f544d5579",
+      "diff_sha256": "710326ab82f6aac3763d39819b69299c1e8d2d32e837de639437ac3dccb36c3f",
+      "classification": "Adapted",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Shared receiver-local Graphic emission uses normal zone protocol; no separate Tower effect transport. Original1024-case reference evidence retained.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/ground_sync.rs",
+          "sha256": "dfc1865e42bb739ad96267727817c890cdb7cd044c50f062cfd1eb16618d5e6a"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/server/src/interface_hooks.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "2ce41e2536e7cba3097cfa8e387f44386da66774e0d585127f4fc023c6a45b4d",
+      "diff_sha256": "302b63cc252f129933d6e2d8900a4ff8a40f380c31b2e2349275f00f503e230f",
+      "classification": "Retained newer owner",
+      "review_kind": "Explicit retained/shared-adapter source decision",
+      "decision": "Keep maintained overlay restoration and richer dialogue/choice/member UI hooks; experimental reduced interface owner is not imported.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/interface_hooks.rs",
+          "sha256": "083083c8f55818159966c22bf04ea488d54219a434041a533b0b6476a38bc3de"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/journal.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "bcb73c41723a7e82f60d52b0047a40f9cdfa8ba6b6a33f6bdbf9f2cdf055f1ed",
+      "diff_sha256": "84a0f244f65970c9d3603cf0c172ed3b51aa8c829b4f1abd1700423e993115dd",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Run journal projection coexists with ordinary diary and reflects acknowledged native progression.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/journal.rs",
+          "sha256": "f20d2dd4005fb1fb8fd7bddcfaa1caca99039d355b0994bee41b979e927c017d"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/lib.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "dff92461ba6bb53c9ef299a9d1b977d64ec47462e8c0307ff3accd9fc3a7bf9e",
+      "diff_sha256": "004f9b830cfae02a83fa2959b7f78b76dd1412955b4869c012a2e0d3b52b3de7",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Register selected explicit modules without removing newer maintained modules.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/lib.rs",
+          "sha256": "b1843803d72d74a0426cc9f553af33e3e2e1948c4b2c4ae2ea306a85e53e03e8"
+        }
+      ],
+      "evidence": "native-launch-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/login_init.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "89c1f730cac75c5bffea76ffca387740a48031c93aab7e3f89bb811420d4f065",
+      "diff_sha256": "2c712270bace628976f914f7cef0f93d41cf52baa9ee36b3274f22ab55d9a176",
+      "classification": "Adapted",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Explicit runtime content flag supplies absent Attack preference zero without inventing persisted preference; no environment-global mode.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/login_init.rs",
+          "sha256": "d06a288a9a23e08fa7fcc650126cace697e40a2c0a42c865a6e359640e61416d"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/server/src/prayer.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "d008c88133d5bf4456560bb3492c81ab46ce5e78cf7f921ab565e6f50a5b5f46",
+      "diff_sha256": "41c3c3728abd843241ae7d7ed0d80213ff2f53c005e7ea4648689c809eb4df69",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Older import/owner shape removes the later prayer selection and member policies. Keep maintained owner.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/prayer.rs",
+          "sha256": "fb8f8becdcb9ba6cf6351cb488b2e830d320a139a4c597a8d7bacc9113b61208"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/runtime.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "516c07df5b944cb6973887f381e709d2ae5bb3218cb91e198b6943c569d42577",
+      "diff_sha256": "40411dfe993ec35e0eb23cf9c809b29207b104b0dc7c01f524fdbcf00e4c21ef",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Select checkpoint/journal/scene producers through existing authentication, transport, save and interface owners; old shared replacements rejected.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/runtime.rs",
+          "sha256": "2972b67984fd0b565673893041eb748238facf69eacd2dffad8d040d2eb54a69"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/runtime/dialogue.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "67735c95b775630c414ebbb90e4bbcd0efed13ec91655e663d30a07d576976ea",
+      "diff_sha256": "ddf3eeb1a75a46a8fc117dd77c752ced2270efb3c952a9c1f0750df26a761813",
+      "classification": "Retained newer owner",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Preserve actual LocationChoice UI and NPC-optional resolution; experimental narrower NPC-only state would regress migrated ladders/menus.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/runtime/dialogue.rs",
+          "sha256": "dae0bd8b14bcb90013ee505752a6972b9891908eab664a39786e68560c6a172d"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/server/src/runtime/finished_potions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "e03c04eebc6e60a23c832a28804e3a42955c8b0fa023cf8cb50313b660f9136a",
+      "diff_sha256": "f9aee27a3f92f2d4adc3ec8a2445a8b55deeb77caf2c6758e3a72970d3907a5d",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Older resolver drops later dependencies and live member metadata; preserve current chemistry owner without resuming the paused campaign.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/runtime/finished_potions.rs",
+          "sha256": "f2608ada8e93da211245022420dd0ec8283a8f9d54e56d800e6cf5b4337d4b35"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/runtime/mining.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "985f2e5a0c3b8367b57e5c8384c4318cc34213ab656b13d01ee38d1869527957",
+      "diff_sha256": "17de92c48a25c6a3ddb728bdf3344ac47ad83eb8a59ceef7df65b18ff8c6f405",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Experimental basic copper/tin-only documentation and resolver would discard later special-pick/rock profiles. Keep maintained mining configuration.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/runtime/mining.rs",
+          "sha256": "b3d467ff5f3ef1b7ecfcf9ac53c6bae0e54567eec7120bcf436a500cc0120f78"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/runtime/movement.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "f23750507a33e07b2a689546fbc33249f9b35d65e3404716c8ea2de431b3f5c6",
+      "diff_sha256": "b07294f467d57776fe1916b347f89aa1fdc96adcab6760ff7413b4dc67e13bfc",
+      "classification": "Adapted",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Required hidden creator rejects movement; successful native actual Confirm/experience evidence retained.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/runtime/movement.rs",
+          "sha256": "f8d753ffe5e2d3c63e2a36a510c8cc81d2e267024916d5d042f9269a35c331fa"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/server/src/runtime/smelting.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "635385076a755122bc438024ef620a6b865b0bc75b21ce76bc0f1ab3749643da",
+      "diff_sha256": "ef86779be6a5ffca54838d55411826a58e9863d7d46e95b3c72e45d36164d9b6",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Older ore resolver removes later catalyst/member/metadata checks; retain current shared smelting owner.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/runtime/smelting.rs",
+          "sha256": "66be34a59ba23fae31171b9f6b85d30d749b7ff36a1990c58b67873d46fe67e7"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/runtime/tutorial.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "d958a0d0894871eb370d95d03b5a16bb28fd25b9265e5605c73abea254cb7c28",
+      "diff_sha256": "cf63d15967a8bdfb79293e5a10e713f1e9d3f6a8d8f3b83107ca664f9b999c28",
+      "classification": "Adapted",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Only explicit Cinderworks onboarding replaces ordinary guide after real Confirm and experience choice.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/runtime/tutorial.rs",
+          "sha256": "be9c60fa4361d11c1dd92846b56dc4dae09108d65a95c79739d2cd8a19d36fb4"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/server/src/runtime/woodcutting.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "0bff854eec224f06a0b1205673e6cfd4681188149d417fb6c7756cf0f0a8b6f9",
+      "diff_sha256": "cea0fc65abdaa75c12e808c0248b3217a23dba900ffeba464775c011cd2473e0",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Keep broader maintained axes/tree policy and GR10 regular-tree gate; no guessed timer is supplied.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/runtime/woodcutting.rs",
+          "sha256": "2b1a3dce4d80a0455e7904b3893a6eae0d2c19824f62294bea2f20db8ebac0ee"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/startup.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "bd815e71ebca064caf7f2a54bcea0c04a049bcb99e702370361c561506998088",
+      "diff_sha256": "8d1fb3cc662031b7d244e43597e1f21a7a001e68eaea52242f27d11d290916df",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Retain maintained broad startup and bind authored content explicitly; dedicated factory fixes native3317 registration gap.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/startup.rs",
+          "sha256": "3ec1ac0d3245af65843fe3f48d4691f6029aadbbb59af539ff658a84aa0b2f5a"
+        }
+      ],
+      "evidence": "fishing-binding-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/tower_map.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "f86645867455138b0b6fb7dd348ddedaa40d15eeef514c0a51e9011c3fd32601",
+      "diff_sha256": "9765749b118a227308514e8dd02cb9698f6be0ac7109d1c262bae0f32505e357",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Detached publication accepts exact template while retaining normal map collision and construction paths.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/tower_map.rs",
+          "sha256": "d052dca1c1e2e2b4ab486f27c15f332f1dbcb97c2736822a4305189b3213c67a"
+        }
+      ],
+      "evidence": "authored-walk-validation.json"
+    },
+    {
+      "source_path": "crates/server/src/tower_scene.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "5bbed1f76e030e62887b83bc42a114e6e071d7546ebdd740c7bf10b43f449524",
+      "diff_sha256": "7463bb6e81666aa49cbe8d2e07cc139cd966951a32ac14b9770f8bdd60e4c4c5",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Selected S-series owner retained/adapted through additive storage, exact current floor and ordinary progression/encounter APIs; native first clear and component tests supply acceptance, not blob equality.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/server/src/tower_scene.rs",
+          "sha256": "404801f5a61fb01e4e933fdb4103b763615edc75fbcda5634f64565d75d5bc7d"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/storage/migrations/V12__tower_run.sql",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "52fdc29b84c66ca353d72119a7db54ea82896e8c989d8189392e5002204623ca",
+      "diff_sha256": "fd98a7e7f329a8b7162b3baa328e5558f5a20076f9ce6b49927b14324f908590",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Selected S-series owner retained/adapted through additive storage, exact current floor and ordinary progression/encounter APIs; native first clear and component tests supply acceptance, not blob equality.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/storage/migrations/V13__tower_run.sql",
+          "sha256": "52fdc29b84c66ca353d72119a7db54ea82896e8c989d8189392e5002204623ca"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/storage/src/accounts.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "4cda03601100bb747e086cbefa4679b62cac4c9642bab417303b5b78af0e98cf",
+      "diff_sha256": "2c5ac3a1fc2f1157e94231c79bdeb13234d80a59ab930ef6bd652d14ddc86d36",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Retain chemistry/current account schema and add transactional Tower state/checkpoint save without copying stale account owner.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/storage/src/accounts.rs",
+          "sha256": "d8cbcba0987f7ee4b408d8c39d8854ddbddb98da7d2c81540f4353be5853099c"
+        }
+      ],
+      "evidence": "checkpoint-validation.json"
+    },
+    {
+      "source_path": "crates/storage/src/lib.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "518a80f3477a5e49803a8c7d1d2c813c97bab97df2b513b02e727792771ec326",
+      "diff_sha256": "7a5850edfbbcbc571c20bf4e5df91374a0bd28fb457da4407d95af38085d16a4",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Append additive V13 registration; chemistry checksums unchanged.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/storage/src/lib.rs",
+          "sha256": "a14004caa5c4f58f1e744a50f9dce10388a9c33bb8c8513c591a5245d66fd32b"
+        }
+      ],
+      "evidence": "batch-a-validation.json"
+    },
+    {
+      "source_path": "crates/storage/src/tower_run.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "88b4bbfff12261db6b998625779c46af72b83e9cada9967e7a681091c005d12e",
+      "diff_sha256": "399405a7e18700e61209d5ee2f43601d1847bef1202e996724d425de9ed7c89d",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Selected S-series owner retained/adapted through additive storage, exact current floor and ordinary progression/encounter APIs; native first clear and component tests supply acceptance, not blob equality.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/storage/src/tower_run.rs",
+          "sha256": "88b4bbfff12261db6b998625779c46af72b83e9cada9967e7a681091c005d12e"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/assembly.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "63b202e5465f0e25fef3f716fdfef0aa2ecee5a3e559b4801db4e49518a4fa0d",
+      "diff_sha256": "40235a5f58ff48fd554aa4dd22915e9469b16a2e1617ffd1c17bf31b9c62d66d",
+      "classification": "Keep maintained owner",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Experimental hunk removes precise/fractional awards, tool requirements and multi-material exchange in favor of older pair-only transaction. Maintained owner keeps these and its exact-slot atomic exchange.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/assembly.rs",
+          "sha256": "5f139c6f3f237078c1829a18d85c70c63e09d91e1bc0311af518bb975227a7fa"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/bank.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "88214cd7cefed3593bc54fc5cf0d0db874773007883ada85e99571697d3cebce",
+      "diff_sha256": "605bec32e4968ccda5c538ed67e49600ff8941de969e25ef140ecf11a63d2eb1",
+      "classification": "Keep maintained owner",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Older experimental boundary check omits maintained priority guard. Current deposit retains priority.is_none() before the range-end unnoted match.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/bank.rs",
+          "sha256": "8ee6ac65ed842f62de6823ff459a37a04adbddff373c5ee48fa0846a7dfe3534"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/broken_water_return.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "60e76c3497678423da0771cbb32e0afbd2c23a8e861040195c3767b105ae49c2",
+      "diff_sha256": "8d5918f836d0f05a2fe192a5f6ff71c8d8e7663e53036876d21cca6f6b9dd9d9",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Exact authored geometry/spatial parsing is isolated from the retained legacy Tower layout.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/cinderworks_floor.rs",
+          "sha256": "b9bbd5dc7c40fe966dab2f5132803efb9be2c762a473bc1037f3d1c41e522122"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/cinderworks_encounter.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "e76c99fbb51fc90b16b3f347c433292a6ab0fcfa93f173f78400494cd1917f46",
+      "diff_sha256": "ceb3a7c61bd96cd7900ba2fb9a92985686995005e2cceb06436d02d21d0f7b9e",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Selected S-series owner retained/adapted through additive storage, exact current floor and ordinary progression/encounter APIs; native first clear and component tests supply acceptance, not blob equality.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/cinderworks_encounter.rs",
+          "sha256": "0c8f5083461ac803cf818075ff1f5dd5509926620605c4700b3370cea0a8fb25"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/finished_potions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "3393d8ed03e4396357ea77160d511d9f872c3e7811a3acd66412dc53133ead1f",
+      "diff_sha256": "407d67d6912ea07239a2a866a82b43782ffbf7b38b140c114783a43da5c43938",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Older29-profile schema removes later chemistry/member/recipe support; keep maintained selection and transactions.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/finished_potions.rs",
+          "sha256": "f78180aeaa134d0706ad0d8d9f8f43855f5ca1f8d2c286be0e965c39239c1866"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/food.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "0606ecc13f8ac836a3588d302d1b7923eda128f5590ab1c1458b247a2e88b057",
+      "diff_sha256": "e60c61f153ee49e4fd9fa948194582f8fe519bd555ce88c484295df6ef4deba5",
+      "classification": "Keep maintained owner",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Experimental owner removes later selected-slot food profiles and attack-delay policy. Retain current selected-slot clone/commit, replacements, membership and stat/random healing support; no old file replacement.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/food.rs",
+          "sha256": "490e90728c18bf0720ffaf97c1c5b2a256746e94727e21907636cecc3595a7a7"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/gathering.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "cd790118963cd3075244b1ad0e72e79cae9efd2e2d424211cbdde9466ba26535",
+      "diff_sha256": "c8aa4c21b957400ca8651c369d510bf50a055aa57c3e9f35ac2658be2f84a0e3",
+      "classification": "Keep maintained owner",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Experimental best-tool selection collapses eligibility and quality to requirement alone. Current best_tool delegates to best_tool_by and retains first carried/equipped tie policy plus outfit transaction.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/gathering.rs",
+          "sha256": "4c41e9630b68a2cf94bb9a956047f9b32abd2524197ed33440db86e7dce39da5"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/grinding.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "fea16b9d7a8a0b4965b43370e246fe170d34f5465f0b639e8aea8d59b84e7e5a",
+      "diff_sha256": "838b14324afcbfd35306cb2ff32c11af41cadb49c854fa8c39c5eb3fd469f0f8",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Older one-input replacement is a subset of maintained guarded selected-slot/batch transactions; no rollback.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/grinding.rs",
+          "sha256": "220f2d0798dd4f8d2ddc52b396d6e2d96a654f10d469d935b1aec8d709436058"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/held_use.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "d69e94f1322f56bd42abb7551d8b087d9e8e511796d5fb97b6b6b28048ead448",
+      "diff_sha256": "b71078ad0ba97a4443425d27d931898fa33b6845c8d75f568daf3cf5e0d610b2",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Keep richer request identity/equality and selected held-use dispatch contracts rather than older derive/API reduction.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/held_use.rs",
+          "sha256": "36647887bbef68268fa44dec01175097be72ff1ee17bdcd29400f29bf27c86f7"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/item_packs.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "38bb72df962a6a071ec651191be6e43d328ccf02e09213ff9d267d15fc6c8722",
+      "diff_sha256": "2742d29e7693a89d70d132264079b6b52d730e12356889c49ab9e605007a44eb",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Older count-only replacement discards current catalog/vars/selected-slot atomicity guards; retain maintained owner.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/item_packs.rs",
+          "sha256": "fad15a926b39eaa3faf392a6c755e92470d4ab020a1d80d679b8f044d2355f8e"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/lib.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "399b3b13c9d6296e74e017cea9a985a27d32179bd61547e51817723eb1ce7827",
+      "diff_sha256": "7c375d78cc10a0dba55192e73fe96433d3850462def8da421d2fe1a95b42574c",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Register selected authored modules while retaining later OpenRune modules.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/lib.rs",
+          "sha256": "6fa62c2ba353c44000ad1d994ca28b310e6be5a35174d11163b54f721e5bdd04"
+        }
+      ],
+      "evidence": "gameplay-kernel-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/loc_timers.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "5eb2d98caa2bbf3b88eaaa2fda3d4a5ca86cf55ca554b6265399e7e298d00c0e",
+      "diff_sha256": "8ae81d436a3aad8f3d6b117f824fcc6ffa5d3bdd812471f0d9e31384516a4818",
+      "classification": "Keep maintained owner",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Experimental revision-only replacement check loses the maintained deleted-location sentinel path. Preserve deleted_revision(original) and live replacement revision checks.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/loc_timers.rs",
+          "sha256": "38c470c6e45e39a2c613959f62b444e7f6e2bd24cfd5ffaf71f99050c52f4d9d"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/location_content.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "13886815a135f08f69f9bfe4e91896846e380c4d91a68352a17c9110fb4611fa",
+      "diff_sha256": "c16f0df68ff35bef119a939e2f450af6cfc9305ad88b5e64e107ae99aa0248dc",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Scoped authored bank functionality is adapted through cinderworks_location and shared BankRequested; do not replace newer pickables/climb/location enums with the reduced experimental enum.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/location_content.rs",
+          "sha256": "50685cd26009b61f4c0f05259d28070e00fcd5a6bcffad63e92abc805891f3f8"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/mining.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "363570c276f4d3bd16dcd49759985ce749b7dc49a4f22931c014112cfcd27eef",
+      "diff_sha256": "e06ed652f22fee2d07307045e602b79992e80a766de31a5c705c6a8d0cc91f79",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Retain separated tool eligibility/quality and later profiles instead of experimental requirement-only choice.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/mining.rs",
+          "sha256": "23348239132cd23680a7c1ffffda4f81fd2af12c434495850f3433760143ae36"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/npc_interaction.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "907cea9468d777ce62436cf0823f6b1e58ac0f9f33dcd764722a0bb55783bf19",
+      "diff_sha256": "511559eca74994a9a060563b16f49fe6163b48d4c94ae03d25eb1f89e4dcba62",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Add dedicated authored fishing handler while retaining tutorial/member/tanning/pickpocket/vendor handlers.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/npc_interaction.rs",
+          "sha256": "4e1c5b879c87962ac8973b20c3abfbb98297470b3072dd0c8bd56a670036d2c9"
+        }
+      ],
+      "evidence": "fishing-binding-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/potions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "51be68fd156f51b61f27510a07a59300b80710034d40f7a8661a27c3928c94c2",
+      "diff_sha256": "d1d7ed81dd2d134ee2aadfe62a9cdf20a0923bb34c7622941886d2f0e65b1633",
+      "classification": "Keep maintained owner",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Experimental legacy item-ID consume is already retained for reference comparison. It must not replace current consume_slot clone/commit and strict selected-dose catalog checks. This is source-preservation review only, not resumed chemistry acceptance.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/potions.rs",
+          "sha256": "83f9224fd77e1650d97ae2b6f44d6c1b5b1042b3a5df0ecbe2ad9278db6d24bd"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/prayer.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "b296b930fe6e472025516d2c24e2d75ffb3b13cd3c4eabc25a5b67665e25d46b",
+      "diff_sha256": "65ab21a3bc6f88973e1e069816211e30f0b3f42c1c3a98670f9e6f8886771e50",
+      "classification": "Retained newer owner",
+      "review_kind": "Inspected positive hunks and maintained owner",
+      "decision": "Maintain selected burial/ash/member policies alongside legacy reference APIs and shared offering continuation; older enum/consume reductions are not imported.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/prayer.rs",
+          "sha256": "8232f284843561f05c8ff70d9c95752d768ea9d550836a33795bcb70fdedd9ce"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "ec64881b8ee874d8d43b72c76d6add1176c9b0682c22df7e6af6c50203a5f9d9",
+      "diff_sha256": "1c766a2d6a4544f6aac506fefc9090ff9b2aa77874215c11b59362662783a82d",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Integrate event/checkpoint/encounter phases through existing queues, actors, hits and save lifecycle; do not drop newer content owners.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation.rs",
+          "sha256": "bb5ea1c76a4f8cc0e3a81d476f3c6eaa899b17fa522268170217c7eb8332d2a4"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/cinderworks_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "fa831b38e9f58b1227799f1382ddea66e2bb4c831ebebc19857c0bf5623f29f8",
+      "diff_sha256": "d3f92d419ee10f0343dc4295232141d1c83031ed786da389c196d3934d1d3905",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Selected S-series owner retained/adapted through additive storage, exact current floor and ordinary progression/encounter APIs; native first clear and component tests supply acceptance, not blob equality.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/cinderworks_actions.rs",
+          "sha256": "8c01b77b08d98592ee0d00e4f9751d306a82c2e2f3b1dbd2ec6c9deb9098d6aa"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/cinderworks_checkpoint.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "45bbb54b19b585b5ac05dc7004ced9c91c47775333035530a3f3ff7c7721026f",
+      "diff_sha256": "81c3fd8cfd199878ee7830a5d3674bc6b40009034b47b7f2d743af71766bac92",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Selected S-series owner retained/adapted through additive storage, exact current floor and ordinary progression/encounter APIs; native first clear and component tests supply acceptance, not blob equality.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/cinderworks_checkpoint.rs",
+          "sha256": "65e2118ab71bd2371dd055c107c8c3e679bb8b2814562581ffc9a38ee1479fe8"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/cinderworks_encounter_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "7ec2d5201b668133512c18ad658270a7c32316fd6283b7bedc12c952eb400c36",
+      "diff_sha256": "3bbcee9b9537eb22cad2e0f10363a864472f9b43b378983442491811ae42c5b0",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Selected S-series owner retained/adapted through additive storage, exact current floor and ordinary progression/encounter APIs; native first clear and component tests supply acceptance, not blob equality.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/cinderworks_encounter_actions.rs",
+          "sha256": "9223f32e1b076796c2c007a7a6212ed61034a58252c9ba393d748502a1fda7b7"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/cinderworks_recovery.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "53ca95d15b99c36a6d13da25b02e3e4b30f838cd38cf2032147679156eb47c5f",
+      "diff_sha256": "edd5b4bfa7401ccda7b38c807a3a5d1a7e1a0ebf58735145d1ede711753a22aa",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Selected S-series owner retained/adapted through additive storage, exact current floor and ordinary progression/encounter APIs; native first clear and component tests supply acceptance, not blob equality.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/cinderworks_recovery.rs",
+          "sha256": "7c1cfbea4286e19c38cc687182cb72c65dfb832bf383c98bc86af8bdc1f399bd"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/cinderworks_work.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "6183893aa7aad9a27339bd773d2a9e3bbd0bdcebe04c29bb44f85910bd2030e1",
+      "diff_sha256": "4e1abf7897c9245658b6477eb2a3d10be4777e4cd5d1fae50e4526ae9e014f5f",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Dedicated net registration uses shared gathering; deterministic legacy cooker is replaced with maintained random cooking and output-only service observation.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/cinderworks_fishing.rs",
+          "sha256": "f4b206738bfc1b2711d5e54f9a9a6bd4f2d917c1bcafc63c2f3bb0d6834c0453"
+        },
+        {
+          "path": "crates/world/src/simulation/cooking_actions.rs",
+          "sha256": "d8f3d38a19b46b874527b8769a2ec11701b3ffe9ffd84ef27102460381550bee"
+        },
+        {
+          "path": "crates/world/src/simulation/cinderworks_services.rs",
+          "sha256": "dfe7dfab533244658222fb4ca68bfc69217f8992f525d8560685c87b21e769cf"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/combat_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "16e9588c97722a12bd74f840670adc1d9e4c517b676f9c90215afda8c677c970",
+      "diff_sha256": "69b9a02f3440ad71c943fd9bf6f6f681c2fff3cd231d592356b753f5f76c6696",
+      "classification": "Retained newer owner",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Keep checked consumable effective attack delays rather than experimental legacy action_delay-only replacement.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/combat_actions.rs",
+          "sha256": "a12641cb287577a3773f4795ff6ae07e954cb06f3dafa7be21a54312b5474589"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/dialogue_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "5a43b1ff7d21c07899ebbd1533e3b13f44cbc1c983375f0d22227d0c75ae5db8",
+      "diff_sha256": "b80f51936c7d0cd955cedbca6b9d85ddbcfc3f2b5942f6515e6852bd1ceb32f5",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Keep richer location/NPC dialogue continuation; preserve current input cancellation.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/dialogue_actions.rs",
+          "sha256": "373253bf4353a35809a07637be9a54f8a79ec5a8a5ef5b849d74c49eb2ad70e9"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/door_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "eb195b6e446dda319d23a7962305d546bc3c3da32d3d7e60efa79163fe49ed15",
+      "diff_sha256": "d3f5b5bfdcb0300c956385ed5f38f5ec839a7db554dc8ad24b630cf32a7e903e",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Explicit authored location dispatch and exact bank booth reuse ordinary reach/UI; retain newer guild/climb/pickable branches.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/door_actions.rs",
+          "sha256": "3ab038e676efc2cd652a913180e1d7ee62653c50afda3bd1359f538857aec72b"
+        }
+      ],
+      "evidence": "scoped-bank-recovery-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/finished_potion_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "679ddda7f99f1f403675545d32f743a875399e1c105817a63d4ee285b31520aa",
+      "diff_sha256": "7fc522deb443eb5124e82438f79c43aa2407f4c8fdacb1160292935c956a0b38",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Retain current selected/live member/held cancellation behavior; experimental reductions are obsolete.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/finished_potion_actions.rs",
+          "sha256": "edc60c714c1dfcf364a123447ea38fec639ca6a8280cd9001c8ea138270bf1d1"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/grinding_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "15e2290e5f358b58e3cae1104fbf0ccee1a3f1ed5d9770926987264f172be179",
+      "diff_sha256": "a610f6a36cf77f1c1e634b075554ce7d5facc5d87bf1f018963d91dee75a226f",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Keep maintained selected/batch queue and cancellation behavior.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/grinding_actions.rs",
+          "sha256": "f3c6732427443fe9f26630034aafd57c2330409945ffa909901d5d0a69100a8d"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/held_use_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "30668e390ff0939c3c64445acdd332f9056cd26d733dc5aa07dba8a723138c91",
+      "diff_sha256": "3199c764beb547d0d1cd71630dd71d1ddfd091e00b8c52dd1c8590b12a25f0cb",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Retain broader maintained manual production dispatch and protections.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/held_use_actions.rs",
+          "sha256": "41c8643380756460d147d64fe4dc9251edfc2b24b94abdf17e888ebadb9b3223"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/location_use_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "7c227178a53158a97aef11d692726e22f4efd061e1b2b25d67f08c160cd484a2",
+      "diff_sha256": "c1cf79d7056d6dbb0d69dc7f71614f917c6a30204063bd43f1a21ebf2bf5818e",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Use shared cooking at actual authored range and existing prayer offering; retain newer location-input handlers.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/location_use_actions.rs",
+          "sha256": "29bc273433337efe195ae09ea74384694ae232b6f8739f9b347cd2a012a476cd"
+        }
+      ],
+      "evidence": "cooking-binding-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/melee_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "59f6103d869073ed82fbd39a4dde974a442c20ac37ffaeba4b47f51f86847739",
+      "diff_sha256": "9be86f64f8dfcf8543e1eb2e69c51d716278691aa4326cc53a2e1e9431067347",
+      "classification": "Adapted",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Admission denial cancels invalid requests; only temporary Warden shell keeps attack intent. Warden defend presentation moved into shared NPC catalog instead of melee-only override.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/melee_actions.rs",
+          "sha256": "cbcaf7fda29242da9158ef27a076078beffd0076c93231f744f9fd0d16500ba6"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/mining_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "8a687b1a1e348902469596dd857fba85f25b54986eed0c9eca47bfe3e3f92328",
+      "diff_sha256": "75d709df0cc5f0a18c5c9eebeb961d9a5f11f2c4a1e863e3db748d6f636ec486",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Retain current member/tool/depletion/outfit transaction owner; native copper/tin path verifies shared reuse.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/mining_actions.rs",
+          "sha256": "22a7b787daf071e9a3395df9b82bfae0fa0d37c8145538c7d1e1a61a0aabce52"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/npc_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "2fdab7736d5a3426ded18aa744bdfba21a1acfb3716d951e19e694cc98924275",
+      "diff_sha256": "5b26c5b125d40b8bdbca4a421d3ba459153426548a8296af2c635788f0a7103c",
+      "classification": "Adapted",
+      "review_kind": "Explicit retained/shared-adapter source decision",
+      "decision": "Dedicated authored shore operation retains normal tutorial, pickpocket, tanning and vendor owners; exact native Net/collision/action binding is verified.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/npc_actions.rs",
+          "sha256": "df94c5f077d3e65847215cf3d046c270d3512c2bd905347c309be51c321b703b"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/npc_combat_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "d1c53d8706fc8f5dd646033a38b4613668489cba2e6f695c40c23e051c5a5d14",
+      "diff_sha256": "1458bb68b8570e825c9a61c9eaeaa8e7961f9b7a8aae7c4f27c1f32d8a61628e",
+      "classification": "Adapted",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Configured guardians use their owned encounter hazard process; ordinary NPC combat owner retained.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/npc_combat_actions.rs",
+          "sha256": "0de8624956494e51f21fdb6e393fd2e071bcd2b31009be1abd13155ed8046c66"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/prayer_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "70c7a5e35b829df22996800c7a9b615e74066dd2eb768d3516b3d32018684940",
+      "diff_sha256": "619eb80288ccd2a29d31bbcc85db6e93f9adf20735d4e5c854f5263d162aeb90",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Keep maintained selected burial/ash/continuation behavior; independent Altar credits only actual offering completion.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/prayer_actions.rs",
+          "sha256": "1598b3a8dc4e791e231b3af98f12e2fcd35762dae2011424104dcd9e494ed1d5"
+        }
+      ],
+      "evidence": "service-order-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/smithing_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "e5c4ede980b772f786a79dfc40b3d0a1b735100683485e391765efb96e8c5f1f",
+      "diff_sha256": "8f641dc58cb27c56e0ccd12e8db19c02261d26fa4d5b5b16d461841cc4d6fdf3",
+      "classification": "Adapted",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Character multiplier composes with global rate while preserving member checks, live member completion, repeat delays and output event owner.12,500 original reference cases and earned native bronze path retained.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/smithing_actions.rs",
+          "sha256": "c18f502503096aaebf1005dc3f964bc33a4c79a28a32bf432ea55337ad2cc7df"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/tower_combat_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "076747b6813cc2776f0032fe52b7730e5c8ab545f41a96460c76919bb395646c",
+      "diff_sha256": "f261ef060cb9a9c9c27db25d6400f73b840a4c844e2be06c9d499c11cc84553c",
+      "classification": "Adapted",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Actual shared Attack starts scoped encounter admission; no synthetic boss defeat or second hit engine.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/tower_combat_actions.rs",
+          "sha256": "5c08b2433775ebe21989fd3c4d03d6edc8351e82239f5f5c368b9a1c94544fac"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/tower_login_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "49d11c57c07b772cad9277ad6a42c47498468db2abddae960c82a5173ffb67ab",
+      "diff_sha256": "c45f5e448caa50fb3637331528c9b509bb4637ef619eb8cb20575289232c8722",
+      "classification": "Adapted",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Explicit Cinderworks suppresses old automatic diary/ash restoration so earned run cannot inherit unrelated progress.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/tower_login_actions.rs",
+          "sha256": "0190db60bccb1a8771723982b635e1276cdc36d38279838c7985689e68362f93"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/tower_offering_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "72955255b0d62a6913af77d3165ed153b6c830253edb5ea738f588e55ea9b39c",
+      "diff_sha256": "0d2bd0a38559803c0877dec3ee4b6fccc0992bb5bbf0b906e376b6d640a60a5b",
+      "classification": "Adapted",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Real offered inventory decrease near actual spatial altar credits independent service. No legacy diary/crate flags or forced walk for Cinderworks. Six-order shared completion test now covers it.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/tower_offering_actions.rs",
+          "sha256": "e7a66285e9e54aedef6685bad2a1aca56f8218b15d6dde2a993110783c1f451c"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/tutorial_shrimp_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "00e4694152bc2d585d6bc02e4f39ab0aca98b2dcb5ea9a3689ce9caddc8189c7",
+      "diff_sha256": "f4131582688e7511f936db043239c24be12695665d51fd1199b9c6732092c43d",
+      "classification": "Intentionally not imported",
+      "review_kind": "Explicit shared hunk review",
+      "decision": "Experimental tutorial cook success credit would bypass ordinary shared burn/lifecycle policy. Actual Kitchen uses CookingMade observer and explicitly scoped canonical range alias. Original tutorial remains independent.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/tutorial_shrimp_actions.rs",
+          "sha256": "b7b88a77cda4bf8906ffded9d5167375dce6dbc70b6aa7e942ac5c5ba2669653"
+        }
+      ],
+      "evidence": "shared-owner-review.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/unfinished_potion_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "49bca1b48554c145a0132f9c4a7b16f984489acbbb30fe3d5f0030c7b8229887",
+      "diff_sha256": "cddc70eeeb35777f7d664ce06d63cd66962f6ab63ee3517f5957a570d58ae7d5",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Keep newer selected/member/atomic unfinished-potion flow; chemistry campaign remains paused.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/unfinished_potion_actions.rs",
+          "sha256": "5ad6260d00326479701e7ee0b9b84e8d97baac407b72db07c1dfa4714035228f"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/simulation/woodcutting_actions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "2caf366edc038a327752e325e8397d58bbf8eaacdffce151a9a9d06472756dc4",
+      "diff_sha256": "41062ecf390de98a85ceb12412c0ca882c7193afa1d7728cf31e422bd3de10c2",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Keep current tools/tree/outfit/cancellation policy and GR10 gate.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/simulation/woodcutting_actions.rs",
+          "sha256": "fd4c1f6505028e0ba1ffb520989a629812ef368c670a7cce1956d924b6ac5cd0"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/smithing_make.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "a370461fd6e5263c7ab2f5ef10f39688a732d7eb6841007201899da38e4e44dc",
+      "diff_sha256": "b1ef93367d0ad2e2845406d95752bb5d616464db8f335dde3b12ad18a1994188",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Keep current member/precise/repeat policies; character/global rate composition uses shared owner and original12500-case reference.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/smithing_make.rs",
+          "sha256": "7511dd35ad545386db4a1b3718f86923f19285c061e7defe5d1f47be4e8eadcd"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/tower_arrival.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "d073954d3a654d65d3ee6e7a5c8edeed104dbfeb043edd3f43a7f04f767c5feb",
+      "diff_sha256": "42052845dd862ad99510a8b944a7df3b895d3ead5350bfc0fc9d68fde761bb8b",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Retain legacy arrival policy; explicit authored entry and actual Confirm/experience route remain separate.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/tower_arrival.rs",
+          "sha256": "7911d0560c18b6ec83d176ae4afecc145dd285b52d1fc83f7452036bc695959e"
+        }
+      ],
+      "evidence": "onboarding-readiness-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/tower_chest.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "1d36c68ff4eea1a9b5a038b98eff9c2b7f05366036d817f55b72a6e71e2aef0c",
+      "diff_sha256": "7b03ba32e5f0c561ce0a63fd59d13de3e5984097f568efbc00cd434d3fc9d568",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Keep maintained atomic staged grants; original2048 comparisons document intentional rollback differences.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/tower_chest.rs",
+          "sha256": "1d36c68ff4eea1a9b5a038b98eff9c2b7f05366036d817f55b72a6e71e2aef0c"
+        }
+      ],
+      "evidence": "legacy-claim-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/tower_cinderworks.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "4421517b21466ed66446faa03c4233852c62969d35f19e2079d25f78cc1e3422",
+      "diff_sha256": "b45ae578a5b901c237e8694609eb9f3f58a5a3f13e32ce6cd9079920adeef608",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Selected S-series owner retained/adapted through additive storage, exact current floor and ordinary progression/encounter APIs; native first clear and component tests supply acceptance, not blob equality.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/tower_cinderworks.rs",
+          "sha256": "5588734c568609911311d330c427621c445433c0dac6ddbe414e6da476188200"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/tower_furnishings.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "4dea1f9883b09d09dfb68011bc942d8bea36412f7a74aceebda7e68f1f589031",
+      "diff_sha256": "df072895d367e2d716438a3c04e50dfa5191880878592622db75693c5d3b94d1",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Retain ordinary furniture owner; authored relative bindings use explicit exact Spatial without reverting global legacy layout.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/tower_furnishings.rs",
+          "sha256": "21c321652ed8384c11b392be12e8a082b7b0adc6863167abad435c9bd07551f6"
+        }
+      ],
+      "evidence": "floor-scene-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/tower_layout.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "a88d9ec24b22e5086bb482597803ee7ffc6a7f0ca248582f17edf7560912a689",
+      "diff_sha256": "7acbfd31b7d5a39c29ebe09066917194b80ffe68367d1ba34107fdeba89f220c",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Retain legacy template; exact current authored floor resides in separate cinderworks_floor owner.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/tower_layout.rs",
+          "sha256": "0cf700e4f8af7888b65c6b33570e26c1c42316e592227aa2f37daa2a818b8879"
+        }
+      ],
+      "evidence": "floor-scene-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/tower_run.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "866731f081e8f9ec5ca391cfa87a38412a21283295f7975c4e46e39abb57ca14",
+      "diff_sha256": "2d0b964410fc87adfa4156f42c81f547cd86db6070f126b5fbb50875b7955ded",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Selected S-series owner retained/adapted through additive storage, exact current floor and ordinary progression/encounter APIs; native first clear and component tests supply acceptance, not blob equality.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/tower_run.rs",
+          "sha256": "e01c6d91771e0689a81f8fc6410ba61611f7eb5d2fc5785738b63b551959b279"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/tower_scenery.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "e22f7c815afb38e2db3135c28584e7a8c46af2c49860f8ea06d553572c947811",
+      "diff_sha256": "032e7fa9015556bcb296d7d96c918e252f4e76df875097aa46a55586d2bd8f88",
+      "classification": "Adapted",
+      "review_kind": "Existing S-series adaptation plus fresh first-clear evidence",
+      "decision": "Per-observer restoration uses exact current spatial coordinates; obsolete rectangular arrays are not restored.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/cinderworks_scenery.rs",
+          "sha256": "8cc4b391d3a48861120a5a941b45ee3fc1a38cebb47e075437e74d50e1f25cac"
+        },
+        {
+          "path": "crates/server/src/tower_scene.rs",
+          "sha256": "404801f5a61fb01e4e933fdb4103b763615edc75fbcda5634f64565d75d5bc7d"
+        }
+      ],
+      "evidence": "first-clear-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/unfinished_potions.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "47a193cd886451bc632b7eb3dcc3d3674ea079ab5559b6e9aef53562d3721726",
+      "diff_sha256": "7d7b4786f0d7899dcf3158e492fbf63e44d640c7fc9cb3a314e83ba5e03bf413",
+      "classification": "Retained newer owner",
+      "review_kind": "Explicit retained/shared-adapter source decision",
+      "decision": "Keep maintained selected-slot/member recipe and atomic XP policies rather than older potion schema; no independent chemistry campaign resumed.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/unfinished_potions.rs",
+          "sha256": "5ff28a05e20c5c3d2bcb1913b52af2ea1f19e9de4dad480e47599e5cfe68e88f"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/woodcutting.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "a817159b0dd3eb5c1e0e70dd4a41885a9161193db18527143d2a1a2b0728f873",
+      "diff_sha256": "2ae8fffdea77184b45c64c2794cdaa88ef4db91f5f87f319933ceef822dfd26e",
+      "classification": "Retained newer owner",
+      "review_kind": "Explicit retained/shared-adapter source decision",
+      "decision": "Preserve maintained axe quality, eligibility, tree timer/outfit/state policies; ordinary regular-tree GR10 remains explicitly gated.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/woodcutting.rs",
+          "sha256": "8d701ff87e528f3d5ad9e2b20ca2e83ca553249dba8803183a99083ff0dd753b"
+        }
+      ],
+      "evidence": "shared-content-validation.json"
+    },
+    {
+      "source_path": "crates/world/src/zones.rs",
+      "source_commit": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "source_sha256": "916b51721b6316ec9b6eec4310ef6ca730206171fb5bf9dc6c0955d49edbb9f6",
+      "diff_sha256": "78c9f6d0e653c374f09fd3a78d3340d3b405a41e6588f8100ecc16137f055455",
+      "classification": "Selectively adapted / newer owner retained",
+      "review_kind": "S-series capability/source reconciliation",
+      "decision": "Receiver character identity controls transient graphics in existing zone streams without idle/rebuild replay.",
+      "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+      "destination": [
+        {
+          "path": "crates/world/src/zones.rs",
+          "sha256": "48070dc3413ee9c08c4f5e4c39710f0aaa94791e6083d88594426a8ad194ade5"
+        }
+      ],
+      "evidence": "gameplay-kernel-validation.json"
+    }
+  ],
+  "negative_only_paths": "Other substantive differences remove maintained newer OpenRune files/features. They are not requests to delete current behavior; full original source remains preserved in verified bundles.",
+  "limits": "This is capability/source reconciliation; native peer rendering and full replay clear are not established by a ledger.",
+  "validation_followup": "restart-replay-validation.json"
+}

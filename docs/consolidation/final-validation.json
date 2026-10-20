@@ -1,0 +1,15 @@
+{
+  "status": "PASS_SCOPED_CONSOLIDATION",
+  "accepted_code_test_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+  "initial_promotion": "7421b89d5e458a7022ff7c5afc51ea79b02406fe",
+  "native_first_clear": "first-clear-validation.json",
+  "native_restart_headless_replay": "restart-replay-validation.json",
+  "source_review": "s090-source-disposition.json",
+  "asset_tool_review": "asset-tool-disposition.csv",
+  "retirement_review": "branch-retirement-matrix.json",
+  "protected_pending_paths": 26,
+  "private_assets_publication": false,
+  "branch_deletions": false,
+  "final_workflow": "Normal commit/feature push/main fast-forward/remote SHA verification followed by independent fetch and local maintained-history bundle; postpublication private receipt records exact final SHA.",
+  "scope_limits": "Full native second clear/simultaneous peer rendering, client visual/GDI/audio, off-host private-resource backup and standalone authoring tool acceptance remain explicit follow-ups; GR10 and chemistry pause retained."
+}

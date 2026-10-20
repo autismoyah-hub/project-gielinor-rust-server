@@ -1,0 +1,942 @@
+{
+  "scope": "Owner review matrix; source/capability classification, not authorization to delete refs or proof that every historical asset was ported.",
+  "observed_utc": "2026-10-20T13:35:08.650598+00:00",
+  "accepted_destination_commit": "bce0e0683a3913ac46e046d693e727504e556434",
+  "audited_branches": [
+    {
+      "branch": "agent5/tower-development",
+      "source_sha": "f9e4433f2451235805f85fe379d351d095b7535b",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Integrated server runtime; archived original authoring/support source",
+      "remaining_work": "Selected current server behavior accepted through earned first clear/restart/replay admission and headless lifecycle/observer checks. Full native replay clear/peer rendering and authoring tools remain separately scoped.",
+      "source_path_counts": {
+        "source_paths": 238,
+        "blob_diff_current_main": 96,
+        "maintained_only": 198,
+        "source_only_current_main": 140,
+        "blob_equal_current_main": 2
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "f9e4433f2451235805f85fe379d351d095b7535b",
+      "owner_review": "Candidate only after owner reviews exact source/asset archive and remaining client/tool limits; no branch deletion authorized"
+    },
+    {
+      "branch": "experiment/advanced-asset-mastery",
+      "source_sha": "28db23a3498bfc54fa285765508a27b2cc07cf00",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 2583,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 2479,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {
+        "resource_paths": 357,
+        "editable_masters": 2,
+        "outside_git": 0
+      },
+      "retirement_approved": false,
+      "current_remote_sha": "28db23a3498bfc54fa285765508a27b2cc07cf00",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/ashhorn-reference-reconstruction",
+      "source_sha": "6771dee2cdec2abca702b4504449f63ef76eadbc",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 4385,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 4281,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {
+        "resource_paths": 532,
+        "editable_masters": 73,
+        "outside_git": 0
+      },
+      "retirement_approved": false,
+      "current_remote_sha": "6771dee2cdec2abca702b4504449f63ef76eadbc",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/asset-fidelity-workbench",
+      "source_sha": "1c8b9b7169c2092475d713695007a29ae5e30e61",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 812,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 708,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "1c8b9b7169c2092475d713695007a29ae5e30e61",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/asset-reconstruction-calibration",
+      "source_sha": "75e611a4a97c7141c837de46102766711e9cdf22",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 737,
+        "blob_diff_current_main": 99,
+        "maintained_only": 198,
+        "source_only_current_main": 633,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "75e611a4a97c7141c837de46102766711e9cdf22",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/astra-art-benchmark",
+      "source_sha": "2c473420d27a9601a6c4e1f31e784afe089a1a11",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 2817,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 2713,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {
+        "resource_paths": 375,
+        "editable_masters": 6,
+        "outside_git": 0
+      },
+      "retirement_approved": false,
+      "current_remote_sha": "2c473420d27a9601a6c4e1f31e784afe089a1a11",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/astra-production-study",
+      "source_sha": "2c473420d27a9601a6c4e1f31e784afe089a1a11",
+      "audited_availability": "LOCAL ONLY",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 2817,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 2713,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {
+        "resource_paths": 375,
+        "editable_masters": 6,
+        "outside_git": 0
+      },
+      "retirement_approved": false,
+      "current_remote_sha": null,
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/broken-water-return-integration",
+      "source_sha": "04979140b47afe58188a2ed6496bb5e02a18bb30",
+      "audited_availability": "LOCAL ONLY",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Superseded alias",
+      "remaining_work": "Same audited source SHA as design-correction branch; unique checkout/private assets remain subject to preserved inventory; alias equality alone does not establish absorption",
+      "source_path_counts": {
+        "source_paths": 4769,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 4665,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": null,
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/cinderworks-design-correction",
+      "source_sha": "04979140b47afe58188a2ed6496bb5e02a18bb30",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Superseded runtime; intentionally archived sources",
+      "remaining_work": "Current pinned exact floor/package supersedes historical placements; authoring/master/converter and evidence history retained; static GLB/classic diagnostic subset adopted/tested at c166cbf; Blender/extended animation/native rendering and other T-series work still need acceptance",
+      "source_path_counts": {
+        "source_paths": 4769,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 4665,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "04979140b47afe58188a2ed6496bb5e02a18bb30",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/cinderworks-environment-production",
+      "source_sha": "75e8ce364013756754873cc037b18d6a85c8a266",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Superseded runtime; intentionally archived sources",
+      "remaining_work": "Current pinned exact floor/package supersedes historical placements; authoring/master/converter and evidence history retained; static GLB/classic diagnostic subset adopted/tested at c166cbf; Blender/extended animation/native rendering and other T-series work still need acceptance",
+      "source_path_counts": {
+        "source_paths": 4673,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 4569,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {
+        "resource_paths": 638,
+        "editable_masters": 101,
+        "outside_git": 0
+      },
+      "retirement_approved": false,
+      "current_remote_sha": "75e8ce364013756754873cc037b18d6a85c8a266",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/cinderworks-gameplay-handoff",
+      "source_sha": "f9180b23ae1e158a296489a3730a8ae697a71de2",
+      "audited_availability": "LOCAL ONLY",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Integrated server runtime; archived original authoring/support source",
+      "remaining_work": "Selected current server behavior accepted through earned first clear/restart/replay admission and headless lifecycle/observer checks. Full native replay clear/peer rendering and authoring tools remain separately scoped.",
+      "source_path_counts": {
+        "source_paths": 6812,
+        "blob_diff_current_main": 101,
+        "source_only_current_main": 6706,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {
+        "resource_paths": 1167,
+        "editable_masters": 112,
+        "outside_git": 0
+      },
+      "retirement_approved": false,
+      "current_remote_sha": null,
+      "owner_review": "Candidate only after owner reviews exact source/asset archive and remaining client/tool limits; no branch deletion authorized"
+    },
+    {
+      "branch": "experiment/concept-guided-creature-ab",
+      "source_sha": "56af70ef03668fd6f429e0c3dd958bcdef7e8b40",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 3998,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 3894,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {
+        "resource_paths": 507,
+        "editable_masters": 70,
+        "outside_git": 0
+      },
+      "retirement_approved": false,
+      "current_remote_sha": "56af70ef03668fd6f429e0c3dd958bcdef7e8b40",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/custom-model-pipeline",
+      "source_sha": "eb7e479a96401dba58aa4b74606ea1876a301095",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Superseded runtime; intentionally archived sources",
+      "remaining_work": "Current pinned exact floor/package supersedes historical placements; authoring/master/converter and evidence history retained; static GLB/classic diagnostic subset adopted/tested at c166cbf; Blender/extended animation/native rendering and other T-series work still need acceptance",
+      "source_path_counts": {
+        "source_paths": 259,
+        "blob_diff_current_main": 99,
+        "maintained_only": 198,
+        "source_only_current_main": 157,
+        "blob_equal_current_main": 3
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "eb7e479a96401dba58aa4b74606ea1876a301095",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/fallen-cinderworks-design",
+      "source_sha": "31ca6466f6476c9c99616ffb297b0e48caaff7f4",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Superseded runtime; intentionally archived sources",
+      "remaining_work": "Current pinned exact floor/package supersedes historical placements; authoring/master/converter and evidence history retained; static GLB/classic diagnostic subset adopted/tested at c166cbf; Blender/extended animation/native rendering and other T-series work still need acceptance",
+      "source_path_counts": {
+        "source_paths": 722,
+        "blob_diff_current_main": 98,
+        "maintained_only": 198,
+        "source_only_current_main": 620,
+        "blob_equal_current_main": 4
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "31ca6466f6476c9c99616ffb297b0e48caaff7f4",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/high-fidelity-mastery",
+      "source_sha": "0f84faac29561dbf522a032d05fb60628e3c3f98",
+      "audited_availability": "LOCAL ONLY",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 3534,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 3430,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {
+        "resource_paths": 438,
+        "editable_masters": 35,
+        "outside_git": 0
+      },
+      "retirement_approved": false,
+      "current_remote_sha": null,
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/mesh-production-study",
+      "source_sha": "9492a2d59c4ef6f67f62ed0faa8b40b5cb531236",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 3123,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 3019,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {
+        "resource_paths": 408,
+        "editable_masters": 20,
+        "outside_git": 0
+      },
+      "retirement_approved": false,
+      "current_remote_sha": "9492a2d59c4ef6f67f62ed0faa8b40b5cb531236",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/production-fidelity-workbench",
+      "source_sha": "56aa24113a9ccdbd6288e643be061077fc24758b",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 1009,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 905,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "56aa24113a9ccdbd6288e643be061077fc24758b",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/reconstruction-reassessment",
+      "source_sha": "df879b05ee1898cff0eacf0ea0b68d6d66563fc4",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 3771,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 3667,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {
+        "resource_paths": 479,
+        "editable_masters": 57,
+        "outside_git": 0
+      },
+      "retirement_approved": false,
+      "current_remote_sha": "df879b05ee1898cff0eacf0ea0b68d6d66563fc4",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/reference-constrained-authoring",
+      "source_sha": "8b85f19ce2d70988b0724f1d03e241c29a45daf6",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 3822,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 3718,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {
+        "resource_paths": 493,
+        "editable_masters": 64,
+        "outside_git": 8
+      },
+      "retirement_approved": false,
+      "current_remote_sha": "8b85f19ce2d70988b0724f1d03e241c29a45daf6",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "experiment/static-production-benchmark",
+      "source_sha": "3f1b9ea95b6ad00071cd04b160b5fe4b993676fd",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Intentionally archived",
+      "remaining_work": "Historical authoring/research/code retained in verified source bundle and restricted CAS; not selected as runtime content; no general model fidelity or animation acceptance inferred",
+      "source_path_counts": {
+        "source_paths": 3766,
+        "blob_diff_current_main": 99,
+        "source_only_current_main": 3662,
+        "maintained_only": 198,
+        "blob_equal_current_main": 5
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "art",
+        "crates",
+        "docs",
+        "tools"
+      ],
+      "private_resource_counts": {
+        "resource_paths": 479,
+        "editable_masters": 57,
+        "outside_git": 0
+      },
+      "retirement_approved": false,
+      "current_remote_sha": "3f1b9ea95b6ad00071cd04b160b5fe4b993676fd",
+      "owner_review": "Historical source remains in verified experimental bundle/bare objects and restricted payload archive; owner must approve any retirement. No runtime equivalence inferred."
+    },
+    {
+      "branch": "agent2/openrune-content",
+      "source_sha": "6a1ea78022bd1c9cbc7e259bcb3595652e5eaae5",
+      "audited_availability": "LOCAL ONLY",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Protected reference",
+      "remaining_work": "Maintained/verification history preserved; no retirement authority inferred; old OpenRune/main promoted via7421b89; supplemental verification heads require capability review",
+      "source_path_counts": {
+        "source_paths": 71,
+        "blob_diff_current_main": 71,
+        "maintained_only": 198
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "crates"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "7421b89d5e458a7022ff7c5afc51ea79b02406fe",
+      "owner_review": "Retain protected maintained/verification/recovery reference; no retirement recommendation"
+    },
+    {
+      "branch": "agent2/openrune-content",
+      "source_sha": "82888b93d619cd03facf1bf022d79078ab97f1e3",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Protected reference",
+      "remaining_work": "Maintained/verification history preserved; no retirement authority inferred; old OpenRune/main promoted via7421b89; supplemental verification heads require capability review",
+      "source_path_counts": {},
+      "distinct_top_level_source_roots": [],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "7421b89d5e458a7022ff7c5afc51ea79b02406fe",
+      "owner_review": "Retain protected maintained/verification/recovery reference; no retirement recommendation"
+    },
+    {
+      "branch": "agent2/workspace-readiness-20261015",
+      "source_sha": "377b797848c7b87d63fe7cdd690c09b2baf3a6af",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Protected reference",
+      "remaining_work": "Maintained/verification history preserved; no retirement authority inferred; old OpenRune/main promoted via7421b89; supplemental verification heads require capability review",
+      "source_path_counts": {
+        "source_paths": 61,
+        "blob_diff_current_main": 61,
+        "maintained_only": 225
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "GITHUB_WORKFLOW.md",
+        "WORKSPACE_RECOVERY.md",
+        "WORKSPACE_VALIDATION.md",
+        "crates"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "377b797848c7b87d63fe7cdd690c09b2baf3a6af",
+      "owner_review": "Retain protected maintained/verification/recovery reference; no retirement recommendation"
+    },
+    {
+      "branch": "agent7/openrune-verification",
+      "source_sha": "943fe36383160e3ef250d07bf44ac83bc502e965",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Protected reference",
+      "remaining_work": "Maintained/verification history preserved; no retirement authority inferred; old OpenRune/main promoted via7421b89; supplemental verification heads require capability review",
+      "source_path_counts": {
+        "source_paths": 4812,
+        "blob_diff_current_main": 68,
+        "maintained_only": 177,
+        "source_only_current_main": 4744
+      },
+      "distinct_top_level_source_roots": [
+        ".gitattributes",
+        ".gitignore",
+        "OPENRUNE_CONTENT_INVENTORY.csv",
+        "OPENRUNE_MIGRATION_STATUS.md",
+        "crates",
+        "docs",
+        "scripts",
+        "verification"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "943fe36383160e3ef250d07bf44ac83bc502e965",
+      "owner_review": "Retain protected maintained/verification/recovery reference; no retirement recommendation"
+    },
+    {
+      "branch": "main",
+      "source_sha": "b811af5de9e10d73989070ec318601c05ddbe9f5",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Protected reference",
+      "remaining_work": "Maintained/verification history preserved; no retirement authority inferred; old OpenRune/main promoted via7421b89; supplemental verification heads require capability review",
+      "source_path_counts": {
+        "source_paths": 58,
+        "blob_diff_current_main": 58,
+        "maintained_only": 229
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "crates"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "bce0e0683a3913ac46e046d693e727504e556434",
+      "owner_review": "Retain protected maintained/verification/recovery reference; no retirement recommendation"
+    },
+    {
+      "branch": "verify/agent2-api-20261015",
+      "source_sha": "d62a03d4e7e041063c6e91672c9c340994821edd",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Protected reference",
+      "remaining_work": "Maintained/verification history preserved; no retirement authority inferred; old OpenRune/main promoted via7421b89; supplemental verification heads require capability review",
+      "source_path_counts": {
+        "source_paths": 59,
+        "blob_diff_current_main": 58,
+        "maintained_only": 229,
+        "source_only_current_main": 1
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "WORKSPACE_VERIFICATION.md",
+        "crates"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "d62a03d4e7e041063c6e91672c9c340994821edd",
+      "owner_review": "Retain protected maintained/verification/recovery reference; no retirement recommendation"
+    },
+    {
+      "branch": "verify/agent2-cli-20261015",
+      "source_sha": "4a7741f080e72924600bc223e185a2a18d3a1e93",
+      "audited_availability": "REMOTE",
+      "source_commit_recoverable": true,
+      "destination_main": "bce0e0683a3913ac46e046d693e727504e556434",
+      "classification": "Protected reference",
+      "remaining_work": "Maintained/verification history preserved; no retirement authority inferred; old OpenRune/main promoted via7421b89; supplemental verification heads require capability review",
+      "source_path_counts": {
+        "source_paths": 58,
+        "blob_diff_current_main": 58,
+        "maintained_only": 224
+      },
+      "distinct_top_level_source_roots": [
+        ".gitignore",
+        "crates"
+      ],
+      "private_resource_counts": {},
+      "retirement_approved": false,
+      "current_remote_sha": "4a7741f080e72924600bc223e185a2a18d3a1e93",
+      "owner_review": "Retain protected maintained/verification/recovery reference; no retirement recommendation"
+    }
+  ],
+  "retained_integration_checkpoints": [
+    {
+      "branch": "integration/authored-court-walk-acceptance",
+      "source_sha": "b11ae3b32157849514b62a9b367f448ae1b700ef",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/bounded-js5-read-pipeline",
+      "source_sha": "4d385625a60f8a427932f59da7b60beea414aab8",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-authored-floor",
+      "source_sha": "8a1e535c426e564e3d1c77d34a5496724991c5ff",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-claim-conservation",
+      "source_sha": "6ee1c54f934616022ae961edc10553310115e300",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-cooking-binding",
+      "source_sha": "526756e2263f038b6f2a0540596c2e4b536e9965",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-disconnect-grace-acceptance",
+      "source_sha": "2634178df160dd190f31370455bc5ab6ac38b019",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-gameplay",
+      "source_sha": "036b6bd07aa6d4028a7babf14295c93098b4f761",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-native-acceptance",
+      "source_sha": "4c82658e0efeebfcf6ef52d3485f61493fa41196",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-native-launch",
+      "source_sha": "379bb39adc2d1502d836730ef602c4789a5e9a59",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-replay-reward-acceptance",
+      "source_sha": "bce0e0683a3913ac46e046d693e727504e556434",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-save-barriers",
+      "source_sha": "620e8c82e8f8a5d5a355cd9f07a95a8dc1b55652",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-scoped-bank",
+      "source_sha": "031e2ca77430f77538b4477803faddd2f0cb63be",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-service-acceptance",
+      "source_sha": "9bc1e58df65b36c4b30bf9575d23072ba990b1fe",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-service-orders",
+      "source_sha": "07608f54ddb513f0ad247d802bc4c710884bbc1c",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-shared-content",
+      "source_sha": "29742f744308a86aa7421062f4290ad72e9a388e",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-shore-fishing",
+      "source_sha": "f2193d8d27d1cdfa1a58e7a045bc904ce0df2144",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/cinderworks-storage-package",
+      "source_sha": "84fdbaf81c869c0fb63e273af30d6c10e48d9e39",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/native-preparation-evidence",
+      "source_sha": "04e00977373c32520bf8b62058d626522ec057fe",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/shared-owner-review",
+      "source_sha": "5026d3ea58423e8890b0e78387de9bb8b0d5c670",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    },
+    {
+      "branch": "integration/static-authoring-tools",
+      "source_sha": "c166cbfe094783fad2da233ca5c393ca90d1df53",
+      "contained_in_main": true,
+      "retirement_approved": false,
+      "disposition": "Retained integration checkpoint; no deletion performed"
+    }
+  ],
+  "no_branch_deletions": true,
+  "recovery": {
+    "original_snapshot_files": 11406,
+    "private_payload_manifest_sha256": "a190a578df0230c558457f3853f864c4840344e8651e877f80f1acc8bb76d323",
+    "masters": "Four ignored Blender masters recovered and hash-verified; original native compressed headers retained",
+    "source_bundles": "Maintained pre-integration and experimental history bundles verified; final maintained checkpoint bundle follows documentation publication",
+    "location_limit": "Recovery copies/UNC source are on this host. No independent off-host disaster backup is claimed."
+  }
+}
