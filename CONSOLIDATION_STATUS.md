@@ -473,3 +473,28 @@ The same native client reached the world in63.847s on the pipelined server versu
 153.405s on the prior server,10723 startup groups in each reported run. This is
 a single observed pair, not a general benchmark. No active gameplay hotpatch or
 floor/boundary change was made. See `docs/consolidation/authored-walk-validation.json`.
+
+## Earned first clear and reward verified
+
+The native character defeated the42HP Warden through ordinary attacks, movement,
+food and two successful coolant interactions. Phase-two and final-phase messages
+were observed. Its victory checkpoint persisted before the chest was used.
+A full28-slot pack, filled through seven additional normal catches, rejected the
+reward without payment. Banking nine burnt shrimp made space. The next search
+granted500 coins and one beer; a repeated search changed no inventory or XP.
+
+Safe-location stop and SaveACK609 at tick4950 preserve run[1,7,11,1], all tools,
+the worn dagger and the single reward. All30 caught shrimp are accounted for:
+7 raw,6 cooked,11 burnt and6 eaten through normal food transactions. The1082
+closed client files and read-only final SQLite snapshot are preserved. The old
+server exited normally; an unchanged-save restart is ready for native follow-up.
+
+A test-only lifecycle comparison also passes: quiet disconnect saves its position
+after17 world ticks; a live warning can continue through combat-prevented grace,
+cause normal rescue and save sanctuary after28 ticks without refunding items or
+resetting progression. Different native/server clock domains are not subtracted.
+This reproduces a mechanism consistent with the earlier sanctuary return, rather
+than claiming an unconditional relogin teleport or an uncaptured rescue trace.
+No production combat/logout rule changed. Warden/reward state acceptance does
+not imply complete visual hazard/shading/shell/GDI/audio parity.
+See `docs/consolidation/first-clear-validation.json`.

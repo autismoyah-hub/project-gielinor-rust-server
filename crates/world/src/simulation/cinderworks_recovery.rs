@@ -194,4 +194,42 @@ mod tests {
         assert_eq!(restored.tower_run, projection.tower_run);
         assert_eq!(restored.equipment, projection.equipment);
     }
+    #[test]
+    fn live_warning_during_disconnect_grace_can_rescue_before_save_but_quiet_logout_keeps_coords() {
+        for active in [false,true] {
+            let (mut world,actor,_)=super::super::cinderworks_encounter_actions::tests::setup(Boss::Warden);
+            world.data_mut(actor).unwrap().stats.set_base(3,11);
+            world.data_mut(actor).unwrap().stats.set_current(3,11);
+            if !active {world.cinderworks_encounters=[None,None];}
+            else {
+                for _ in 0..8 {
+                    if world.cinderworks_encounters[1].as_ref().is_some_and(|e|e.warning.is_some()){break;}
+                    world.tick().unwrap();
+                }
+                assert!(world.cinderworks_encounters[1].as_ref().unwrap().warning.is_some());
+            }
+            let before=world.data(actor).unwrap().clone();world.drain_events();
+            world.client_disconnected(actor).unwrap();
+            let mut snapshot=None;let mut rescued=false;let mut elapsed=0;
+            for _ in 0..80 {
+                world.tick().unwrap();elapsed+=1;
+                for event in world.drain_events() {
+                    match event {
+                        WorldEvent::Save {actor:who,data} if who==actor=>snapshot=Some(data),
+                        WorldEvent::GameMessage {actor:who,text} if who==actor && text.starts_with("You wake in the sanctuary.")=>rescued=true,
+                        _=>(),
+                    }
+                }
+                if snapshot.is_some(){break;}
+            }
+            let saved=snapshot.expect("Disconnect must eventually emit its ordinary save");
+            assert_eq!(saved.tower_run,before.tower_run);assert_eq!(saved.inventory,before.inventory);assert_eq!(saved.equipment,before.equipment);
+            assert_eq!(saved.stats.current(3),11);
+            if active {
+                assert!(rescued);assert_eq!(saved.coords,CoordGrid::new(10420,110,0).unwrap());
+            } else {assert!(!rescued);assert_eq!(saved.coords,before.coords);}
+            println!("disconnect grace active_warning={active} save_after_world_ticks={elapsed} saved={:?}",saved.coords);
+        }
+    }
+
 }

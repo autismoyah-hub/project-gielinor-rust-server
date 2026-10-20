@@ -1,0 +1,419 @@
+{
+  "status": "PASS_EARNED_FIRST_CLEAR",
+  "scope": "Fresh actual authored-floor preparation, Imp, Warden and first reward campaign; startup/restart/return/replay/multiplayer follow-up still separate.",
+  "base_main": "b11ae3b32157849514b62a9b367f448ae1b700ef",
+  "warden": {
+    "status": "PASS_EARNED_NATIVE_WARDEN",
+    "scope": "Actual ordinary native Warden victory after real preparation/Imp. Native snapshot shows all five objectives Done and reward pending; current durable victory is independently backed up.",
+    "server_sha256": "A9B70BD12E3830B0FF8003313D50266D10F73D8E0654668C733505250F0E7A63",
+    "client_sha256": "0A506755D2845CA50655A419ED114215C9D12106E9CF780F530FBD321AA5D8C7",
+    "hp": 12,
+    "cooked_food_before": 8,
+    "cooked_food_after": 6,
+    "coolant_exposures_in_native_history": 2,
+    "native_phases": [
+      "phase two",
+      "final phase"
+    ],
+    "current_durable_run": [
+      1,
+      7,
+      7,
+      1
+    ],
+    "save_ack": {
+      "slot": 2,
+      "generation": 609,
+      "tick": 3319
+    },
+    "snapshot_sha256": "8d3e98a8c2a84097c2ade593310417f1482a9eea842023b4bc844242c25a5163",
+    "files": [
+      {
+        "path": "state-761.json",
+        "sha256": "f9330feab2c2f1c4b92b2b07164aaf0872a20bc8e50155643b6b520b2ea1f6e2",
+        "bytes": 5470
+      },
+      {
+        "path": "frame-760.bmp",
+        "sha256": "8a7f65c1d4e4f4a2fd3186ee172b0f9f3950b636af50da0dad4aea64e9649b4b",
+        "bytes": 1539234
+      }
+    ],
+    "closed007_files": 759,
+    "limits": "Reward full-pack/claim/repeat/restart/replay/multiplayer pending. Composition/service/encounter state is accepted within evidence; complete visual hazard/shading/shell/GDI/audio parity is not asserted."
+  },
+  "first_reward_and_safe_save": {
+    "status": "PASS_DURABLE_EARNED_FIRST_CLEAR",
+    "scope": "Actual native ordinary preparation, Imp, Warden, full-pack rejection, bank-space recovery,500coins+beer claim and repeated-claim conservation. Normal safe-location native stop and authoritative save verified.",
+    "server_sha256": "A9B70BD12E3830B0FF8003313D50266D10F73D8E0654668C733505250F0E7A63",
+    "client_sha256": "0A506755D2845CA50655A419ED114215C9D12106E9CF780F530FBD321AA5D8C7",
+    "run": [
+      1,
+      7,
+      11,
+      1
+    ],
+    "character": {
+      "id": 1,
+      "x": 10419,
+      "z": 106,
+      "level": 0,
+      "last_login": "2026-10-20T05:14:14",
+      "last_logout": "2026-10-20 12:42:04",
+      "world_id": null
+    },
+    "items": [
+      {
+        "inv_type": 93,
+        "slot": 0,
+        "obj": 1351,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 1,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 2,
+        "obj": 303,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 3,
+        "obj": 2347,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 4,
+        "obj": 590,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 5,
+        "obj": 946,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 6,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 7,
+        "obj": 995,
+        "count": 500,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 8,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 9,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 10,
+        "obj": 1265,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 11,
+        "obj": 1917,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 13,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 16,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 17,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 19,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 22,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 24,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 25,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 26,
+        "obj": 315,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 93,
+        "slot": 27,
+        "obj": 317,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 94,
+        "slot": 3,
+        "obj": 1205,
+        "count": 1,
+        "vars": 0
+      },
+      {
+        "inv_type": 95,
+        "slot": 0,
+        "obj": 7954,
+        "count": 11,
+        "vars": 0
+      }
+    ],
+    "stats": [
+      [
+        0,
+        12,
+        12,
+        16600
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        1,
+        1,
+        0
+      ],
+      [
+        3,
+        12,
+        12,
+        17018
+      ],
+      [
+        4,
+        1,
+        1,
+        0
+      ],
+      [
+        5,
+        1,
+        1,
+        450
+      ],
+      [
+        6,
+        1,
+        1,
+        0
+      ],
+      [
+        7,
+        12,
+        12,
+        18000
+      ],
+      [
+        8,
+        1,
+        1,
+        0
+      ],
+      [
+        9,
+        1,
+        1,
+        0
+      ],
+      [
+        10,
+        11,
+        11,
+        15000
+      ],
+      [
+        11,
+        1,
+        1,
+        0
+      ],
+      [
+        12,
+        1,
+        1,
+        0
+      ],
+      [
+        13,
+        2,
+        2,
+        935
+      ],
+      [
+        14,
+        3,
+        3,
+        1750
+      ],
+      [
+        15,
+        3,
+        3,
+        1740
+      ],
+      [
+        16,
+        1,
+        1,
+        0
+      ],
+      [
+        17,
+        1,
+        1,
+        0
+      ],
+      [
+        18,
+        1,
+        1,
+        0
+      ],
+      [
+        19,
+        1,
+        1,
+        0
+      ],
+      [
+        20,
+        2,
+        2,
+        830
+      ],
+      [
+        21,
+        1,
+        1,
+        0
+      ],
+      [
+        22,
+        1,
+        1,
+        0
+      ],
+      [
+        23,
+        1,
+        1,
+        0
+      ],
+      [
+        24,
+        1,
+        1,
+        0
+      ]
+    ],
+    "fish_conservation": {
+      "caught": 30,
+      "raw": 7,
+      "cooked_remaining": 6,
+      "burnt": 11,
+      "normally_eaten": 6
+    },
+    "claim_checkpoint_ack": 4751,
+    "normal_logout_ack": 4950,
+    "actor_slot": 2,
+    "actor_generation": 609,
+    "snapshot_sha256": "519f7547a46e5a40199f12865f6dc831465cf19a0bfd01cf785b2b5fb4ca0902",
+    "preserved_client_files": 1082,
+    "native_exit": {
+      "completed": "2026-10-20T12:41:55.0972340Z",
+      "exit_code": 0,
+      "timeout": false
+    },
+    "remaining": "Actual server restart/re-entry/departure/replay and fresh multiplayer observer coverage pending. No full native replay clear or complete visual/GDI/audio parity asserted."
+  },
+  "test_only_disconnect_grace": {
+    "log": "consolidation-disconnect-hazards-20261020-01.log",
+    "sha256": "6698e309d70f263601bb07dc57205b59044ab622f348deba0d25c1c7e7abdc08",
+    "passed": 4,
+    "failed": 0,
+    "quiet_save_world_ticks": 17,
+    "active_warning_rescue_save_world_ticks": 28,
+    "scope": "Synthetic actor comparison, no production-rule change. Existing combat-prevented disconnect grace can allow natural warning damage and rescue before save; quiet disconnect preserves position. Inventory/equipment/run conserved.",
+    "clock_correction": "Native client-local tick1613 and server absolute1958 cannot be subtracted; no345tick unattended interval is inferred. Actual native007 exitUTC12:11:46 and saved logout12:12:02 are consistent with this mechanism but its specific rescue trace was not captured."
+  },
+  "actual_server_restart": {
+    "pid": 13292,
+    "exited": true,
+    "exitCode": 0,
+    "forced": false,
+    "utc": "2026-10-20T12:48:49.1086790Z"
+  },
+  "fresh_restart_lease": "earned-launch-008; same immutableA9 server and unchanged final save; native restoration/departure/replay now requested",
+  "remaining": "Native restart restoration/departure/return/replay admission, fresh peer/observer coverage and remaining source/tool disposition review. Full native replay reward25 and complete scene/hazard visual/GDI/audio parity are not claimed."
+}
