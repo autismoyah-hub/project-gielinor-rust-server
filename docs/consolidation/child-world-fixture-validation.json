@@ -1,6 +1,6 @@
 {
-  "status": "PASS_SERVER_FIXTURE_NATIVE_ACCEPTANCE_PENDING",
-  "verified_utc": "2026-10-21T16:05:31.765744+00:00",
+  "status": "PASS_SERVER_FIXTURE_CLASSIC_AND_GPU_CHILD_CAPTURE",
+  "verified_utc": "2026-10-21T16:59:19.817809+00:00",
   "server_sha256": "2E95EF81C465C0C2F42A2C157446F6D6B40E0184E9F856CB023B60275018CCC1",
   "features": [
     "integration-fixtures"
@@ -62,6 +62,90 @@
     "cache-startup-check.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "default-fixture-refusal.json": "0d3d3aa3d2813331500fe2fd48dee30327e4065f3ea30edde8ae0d9b1834398f"
   },
-  "native_acceptance": "PENDING",
-  "performance": "SEPARATE_OPEN"
+  "native_acceptance": "PASS_CLASSIC_AND_GPU_LOGICAL_CHILD_SCENE_AND_ACTOR_CAPTURE",
+  "performance": "OPEN_SEPARATE_FROM_CAPTURE_ACCEPTANCE",
+  "native_attempts": [
+    {
+      "lease": "043",
+      "status": "SERVER_RECOVERY_PASS_NATIVE_CHILD_RESOURCE_FAILURE",
+      "native_acceptance": false,
+      "receipt_sha256": "3271a912731c7489416f5274956496a9f1349b862f7496130c86e1608694c6c4",
+      "server_exit_code": 0,
+      "forced": false,
+      "earned_state_unchanged": true
+    },
+    {
+      "lease": "044",
+      "status": "SERVER_RECOVERY_PASS_NATIVE_CHILD_MAP_RESOURCE_FAILURE",
+      "native_acceptance": false,
+      "receipt_sha256": "376c6467662dd8cca9885c465742904ee8404833058e34aa21f2cfafe246b5d7",
+      "server_exit_code": 0,
+      "forced": false,
+      "earned_state_unchanged": true
+    },
+    {
+      "lease": "045",
+      "status": "PASS_CHILD_SCENE_STATE_SAVE_ACTOR_VISIBILITY_OPEN",
+      "native_acceptance": false,
+      "receipt_sha256": "3f23d5dfbd177ae6ebb9f9bf86794e86c8df6c79f02cc1abd619cd4c4326e464",
+      "server_exit_code": 0,
+      "forced": false,
+      "earned_state_unchanged": true
+    },
+    {
+      "lease": "046",
+      "status": "PASS_CLASSIC_CHILD_SCENE_ACTOR_STATE_AND_SAVE",
+      "native_acceptance": true,
+      "receipt_sha256": "a9c7fd6ca5576ffc77387485bb39c0a31f2cf08f931dad0e4e45ce39bf3a9f5c",
+      "server_exit_code": 0,
+      "forced": false,
+      "earned_state_unchanged": true
+    },
+    {
+      "lease": "047",
+      "status": "PASS_GPU_CHILD_SCENE_ACTOR_STATE_AND_SAVE",
+      "native_acceptance": true,
+      "receipt_sha256": "b538d05e2ca640402645a61a80b72bd7dcfe0ae42db0f57d7dc26ed455a4e4bc",
+      "server_exit_code": 0,
+      "forced": false,
+      "earned_state_unchanged": true
+    }
+  ],
+  "native_verification": {
+    "classic": {
+      "lease": "046",
+      "status": "PASS",
+      "capture_views": 8,
+      "ready_sidecars_checked": 24,
+      "files_preserved": 172,
+      "client_binary_sha256": "175eef32e88fd81d87b20604ec5f40388684ad1517a694db07affa7a86c41473",
+      "normal_save_ack_tick": 281,
+      "actor_pixels_independently_reviewed_sequences": [
+        5,
+        21
+      ]
+    },
+    "gpu": {
+      "lease": "047",
+      "status": "PASS",
+      "capture_views": 8,
+      "ready_sidecars_checked": 24,
+      "files_preserved": 172,
+      "client_binary_sha256": "dc4d21713bed85be81c01103dbfa98e6a17871312ee4a0cf4f53539f60a876af",
+      "normal_save_ack_tick": 354,
+      "adapter": 1,
+      "adapter_name": "NVIDIA GeForce MX250",
+      "explicit_enhanced_display_observed": true,
+      "classic_fallback_observed": false,
+      "actor_pixels_independently_reviewed_sequences": [
+        5,
+        21
+      ]
+    },
+    "source_cache_and_namespace": "Unchanged throughout043..047; no resource warming or fixture changes",
+    "scope": "Native logical captures of one16x16 child and one stationary NPC at fixed yaw512 across eight camera views; physical display, performance, movement/combat and arbitrary nested-world coverage remain separate.",
+    "visual_limits": "Actor edge-clipped in13; no actor visibility claim for29/33. Early model-pending logs retained; later captures demonstrate visible recovery.",
+    "save_recovery": "Both accepted leases: world released, earned state conserved, final/save backups byte-identical with13tables/schema equal, server exit0/unforced and lock released."
+  },
+  "native_candidate_source_commit": "c9e8d517bffa8e5fc050dfa12154c1733c02447e"
 }

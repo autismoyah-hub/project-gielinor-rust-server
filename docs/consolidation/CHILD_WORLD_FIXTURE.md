@@ -58,3 +58,23 @@ loading, decoded NPC state and known transforms alongside real frame captures.
 Admission or actor decoding alone does not establish rendered pixels. Keep a
 root-only control, save acknowledgments, logical account-state comparisons and
 graceful shutdown evidence. Performance acceptance remains a separate question.
+
+## Verified checkpoint
+
+The fixture passed299 unique server tests, including original-library packet
+controls and encrypted TCP regressions. The ordinary executable rejects the
+fixture option; a feature build without opt-in retains root-only behavior.
+
+Native leases046(Classic) and047(Enhanced GPU, adapter1/MX250) completed eight
+camera views of the admitted child scene and stationary chicken. Each preserved
+172 evidence files and verified24 readiness sidecars. The chicken is visibly
+identifiable in reviewed captures; actor visibility is not asserted for every
+angle. These are native logical captures. Performance remains open.
+
+The earlier043 definition-resource failure,044 map-resource failure and045
+scene-only result remain recorded separately. Client cold-resource handling and
+camera framing were corrected; the server fixture, source cache and namespace
+stayed unchanged. Both accepted leases saved normally and closed without force,
+preserving earned account state and all13 database tables. Exact outcomes and
+receipt hashes are in `child-world-fixture-validation.json`; raw captures,
+account backups and original dependency assets remain private.
