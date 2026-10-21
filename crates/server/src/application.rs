@@ -214,6 +214,8 @@ pub fn run() -> io::Result<()> {
             "--stop-file",
             "--elemental-source",
             "--cinderworks-content",
+            #[cfg(feature = "integration-fixtures")]
+            "--child-world-fixture",
         ]
         .contains(&arg.as_str())
         {
@@ -251,6 +253,14 @@ pub fn run() -> io::Result<()> {
         .transpose()
         .map_err(io::Error::other)?;
     let stop_file = values.get("--stop-file").map(PathBuf::from);
+    #[cfg(feature = "integration-fixtures")]
+    let child_world_fixture = match values.get("--child-world-fixture") {
+        None => false,
+        Some(value) if value == "c008-v1" && matches!(ticks, Some(1..=1200))
+            && stop_file.is_some() && values.contains_key("--cinderworks-content") => true,
+        Some(_) => return Err(fail("Child fixture requires c008-v1, pinned Cinderworks content, stop-file and1..1200ticks")),
+    };
+
     let coords = values
         .get("--spawn")
         .map_or("3222,3218,0", String::as_str)
@@ -358,6 +368,26 @@ pub fn run() -> io::Result<()> {
     let mut runtime =
         runtime::Runtime::new(loaded.world, transport, definitions, policy, Backend(None));
     startup::configure(&mut runtime, &mut cache, &names)?;
+    #[cfg(feature = "integration-fixtures")]
+    if child_world_fixture {
+        let child_map=cache.map_square(12850)?.ok_or_else(||fail("Child fixture requires stock source map square12850"))?;
+        let game_files=cache.files(5,12850,Some([0;4]))?.ok_or_else(||fail("Missing child game source"))?;
+        let mut served_cache=GameCache::open(Path::new(required("--js5-cache")?),0xff_ffff)?;
+        let served_files=served_cache.files(5,12850,Some([0;4]))?.ok_or_else(||fail("Missing child JS5 source"))?;
+        for id in [0,1] {
+            let source=game_files.get(&id).ok_or_else(||fail("Missing child terrain/location file"))?;
+            if served_files.get(&id)!=Some(source) {return Err(fail("Child JS5 terrain/locations differ from game cache"));}
+            println!("C008 source map12850 file{id}: {} bytes crc{:08x}; JS5 equals game; XTEA[0,0,0,0] decoded",source.len(),gielinor_cache::crc32(source));
+        }
+        let npc_type=u16::try_from(names.id("npc","chicken")?).map_err(io::Error::other)?;
+        if runtime.definitions.npcs.get(&(npc_type as u32)).map(|n|n.size)!=Some(1) {
+            return Err(fail("Child fixture requires size1 stock chicken"));
+        }
+        runtime.configure_child_world_fixture(npc_type)?;
+        println!("C008 source map12850: {} decoded locations; actual child resource loading remains a client acceptance check",child_map.locations.len());
+        println!("C008 test fixture: child1;16x16tiles; yaw512; anchor10423.5,110.5; child NPC30000 type{npc_type} at10,8; root account unchanged");
+    }
+
     if let Some(source) = values.get("--elemental-source") {
         let source = PathBuf::from(source);
         if !source.is_dir() {

@@ -1,0 +1,67 @@
+{
+  "status": "PASS_SERVER_FIXTURE_NATIVE_ACCEPTANCE_PENDING",
+  "verified_utc": "2026-10-21T16:05:31.765744+00:00",
+  "server_sha256": "2E95EF81C465C0C2F42A2C157446F6D6B40E0184E9F856CB023B60275018CCC1",
+  "features": [
+    "integration-fixtures"
+  ],
+  "default_library_tests": 291,
+  "fixture_original_control_tests": 3,
+  "private_encrypted_tcp_tests": 2,
+  "existing_runtime_lifecycle_tests": 3,
+  "unique_tests_total": 299,
+  "original_control_cases": [
+    "nonempty admission",
+    "next-cycle retention",
+    "active child context",
+    "child rebuild"
+  ],
+  "default_cli": "PASS_EXPECTED_REFUSAL_WITHOUT_FEATURE",
+  "fixture_without_opt_in": "PASS_ROOT_ONLY_TCP_REGRESSION",
+  "cache_startup": "PASS_ARCHIVED_CHECK_NO_DB_OR_SOCKET",
+  "source_map": {
+    "id": 12850,
+    "zero_xtea_keys": true,
+    "terrain_bytes": 60239,
+    "terrain_crc32": "c36cb08d",
+    "locations_bytes": 11157,
+    "locations_crc32": "792fd60f",
+    "whole_square_locations": 4726,
+    "game_js5_files_byte_equal": true
+  },
+  "actor": {
+    "index": 30000,
+    "type_id": 1173,
+    "name": "chicken",
+    "size": 1,
+    "tile": [
+      10,
+      8
+    ],
+    "fine": [
+      1344,
+      1088
+    ]
+  },
+  "scope": "Opt-in test-only child terrain/NPC packet fixture; native scene loading and rendered pixels pending. No gameplay World actors/rewards added. Ordinary A9 remains unchanged.",
+  "preserved_setup_errors": [
+    "Original oracle zone-size units corrected",
+    "Original oracle missing root build area corrected",
+    "Original oracle desktop extended-info writer configured",
+    "Original oracle same allocation-cycle control preserved and corrected"
+  ],
+  "private_evidence_sha256": {
+    "rust-fixture-tests-001.log": "1861ea6112984adf5909b003469aede5e85e04843e5655bb33e81266a9a8746a",
+    "rust-tcp-tests-001.log": "7f0040e03109d4217bd51888c670b8bb22a58f0f4b38731aa1d6418633008767",
+    "runtime-regression-001.log": "548fb2147a8545c620eeb589791f921fca372b9b797bd1699e6a7cd62b683b77",
+    "default-lib-tests-001.log": "d3e8cef6dc16d63451a0a948e79c8526c4a2da7515325c565ae7e6f32b28010d",
+    "default-executable-build-001.log": "265b8d273afff1aa748607c56b15c7124ca367d49c8f95cf16b8113adda4bf02",
+    "final-original-parity-001.log": "8270b497375b1196057d39ccab96f40eba283ead2035fcf0aba4b54246ec8f39",
+    "feature-executable-build-001.log": "653bf61715c5dca6fbdd630b986154560cd25d0c665d7ad63b3901f6c2b3a3d0",
+    "cache-startup-check.stdout": "b737391fd0965c6c0332f8811c1495471fc2470532dfa9b6d8c2feba0cb643f2",
+    "cache-startup-check.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "default-fixture-refusal.json": "0d3d3aa3d2813331500fe2fd48dee30327e4065f3ea30edde8ae0d9b1834398f"
+  },
+  "native_acceptance": "PENDING",
+  "performance": "SEPARATE_OPEN"
+}

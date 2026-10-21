@@ -253,6 +253,8 @@ struct Active {
     appearance_rebuild: bool,
     observer: Option<crate::synchronization::Observer>,
     npc_observer: crate::npc_synchronization::Observer,
+    #[cfg(feature = "integration-fixtures")]
+    child_world_fixture: crate::child_world_fixture::Observer,
     zone_observer: gielinor_world::zones::Observer,
     tower_scene: crate::tower_scene::Observer,
     inventories: crate::inventory_sync::Transmissions,
@@ -319,6 +321,8 @@ pub struct Runtime<B: AccountBackend> {
     shutting_down: bool,
     presentation: Option<Presentation>,
     npc_snapshots: Vec<gielinor_world::simulation::NpcSnapshot>,
+    #[cfg(feature = "integration-fixtures")]
+    child_world_fixture: Option<u16>,
 }
 impl<B: AccountBackend> Runtime<B> {
     pub fn new(
@@ -385,7 +389,18 @@ impl<B: AccountBackend> Runtime<B> {
             shutting_down: false,
             presentation: None,
             npc_snapshots: vec![],
+            #[cfg(feature = "integration-fixtures")]
+            child_world_fixture: None,
         }
+    }
+    /// Explicit test-only wire fixture. Does not insert actors into the gameplay World.
+    #[cfg(feature = "integration-fixtures")]
+    pub fn configure_child_world_fixture(&mut self, npc_type: u16) -> io::Result<()> {
+        if !self.connections.is_empty() || npc_type >= 16384 || !self.definitions.npcs.contains_key(&(npc_type as u32)) {
+            return Err(io::Error::other("Configure valid child fixture before admission"));
+        }
+        self.child_world_fixture = Some(npc_type);
+        Ok(())
     }
     /// Attach the account worker after startup validation, before any admission.
     pub fn configure_backend(&mut self, backend: B) -> io::Result<()> {
@@ -3230,6 +3245,8 @@ impl<B: AccountBackend> Runtime<B> {
                             appearance_rebuild: false,
                             observer: None,
                             npc_observer: Default::default(),
+                            #[cfg(feature = "integration-fixtures")]
+                            child_world_fixture: Default::default(),
                             zone_observer: Default::default(),
                             tower_scene: Default::default(),
                             stats: Default::default(),
@@ -4453,6 +4470,14 @@ impl<B: AccountBackend> Runtime<B> {
                 }
                 packets.push(active_world.clone());
                 packets.push(origin_packet);
+                #[cfg(feature = "integration-fixtures")]
+                let mut child_observer = active.child_world_fixture.clone();
+                #[cfg(feature = "integration-fixtures")]
+                let child_frame = self.child_world_fixture.map(|npc_type| child_observer.cycle(base, npc_type))
+                    .transpose().map_err(|e| io::Error::other(format!("Child fixture: {e:?}")))?;
+                #[cfg(feature = "integration-fixtures")]
+                packets.push(child_frame.as_ref().map_or_else(gielinor_protocol::world_context::empty_entities, |frame|frame.root_entities.clone()));
+                #[cfg(not(feature = "integration-fixtures"))]
                 packets.push(gielinor_protocol::world_context::empty_entities());
                 packets.push(player_info);
                 let mut npc_observer = active.npc_observer.clone();
@@ -4465,6 +4490,11 @@ impl<B: AccountBackend> Runtime<B> {
                     packets.push(npc_packet);
                 }
                 packets.push(active_world);
+                #[cfg(feature = "integration-fixtures")]
+                if let Some(frame) = child_frame {
+                    packets.extend(frame.child_packets);
+                    packets.push(gielinor_protocol::world_context::npc_origin(offset(origin.x()-base.x())?,offset(origin.z()-base.z())?));
+                }
                 let mut zone_observer = active.zone_observer.clone();
                 let mut tower_scene = active.tower_scene.clone();
                 if self.zones_enabled {
@@ -4499,6 +4529,8 @@ impl<B: AccountBackend> Runtime<B> {
                 }
                 active.observer = observer;
                 active.npc_observer = npc_observer;
+                #[cfg(feature = "integration-fixtures")]
+                { active.child_world_fixture = child_observer; }
                 active.zone_observer = zone_observer;
                 active.tower_scene = tower_scene;
                 active.inventories = inventories;

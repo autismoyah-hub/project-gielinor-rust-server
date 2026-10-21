@@ -83,3 +83,6 @@ pub mod cinderworks_population;
 pub mod cinderworks_runtime;
 
 pub mod tower_scene;
+
+#[cfg(feature = "integration-fixtures")]
+pub mod child_world_fixture;
