@@ -1,13 +1,11 @@
 # FORGE implementation status
 
 <!-- forge-current:start -->
-## Current implementation checkpoint
+## Current implementation checkpoint — paused
 
-OR-MIG-0204 removes bogus normal bones from three registered small-spider types. Source [325ff50c](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/325ff50ce9ce43e3bc3a344c49ffa48055717865). Owner 337 server / 33 selected World integration / 24 actual-cache cases passed, including 6 unregistered controls that reproduce the former fallback. Ordinary lifecycle is preserved; two same-rig special variants explicitly reuse it. Spider native interaction, special presentation, conditional drops and earned-XP reconnect remain unaccepted.
+PG-DEF-011 ordinary player death correction is published at [43df54d9](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/43df54d97e9e87e4386b99dc50ea9dafa18638fe). Owner World775PASS/1ignored plus final focused6PASS, server337PASS, protocol23PASS and actual-cache default/remote startup passed. [Contract](development/PG-DEF-011.json). Native and independent acceptance remain pending; issue135 stays open. Existing Cinderworks sanctuary priority and earned state are preserved.
 
-The next priority is separately pinned ordinary player-death recovery [PG-DEF-011 / #135](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/135). Independent OR177 evidence shows no ordinary respawn and zero-health saves reopening eligibility through regeneration; this is a baseline dependency, not introduced-by-OR177 attribution. Preserve current Cinderworks sanctuary rescue and all item/fineXP state.
-
-Imp 004 Take-first continuation remains compiled and earned-state copies preserved, queued behind the independent shared native session. Discovery 3,508 classifications remain {'not_yet_assessed': 2715, 'configuration': 661, 'framework_or_infrastructure': 22, 'eligible_gameplay_behavior': 110}; 204 units across 228 append-only records are not gameplay completion. Independent V0–V4 pending; chemistry verification paused.
+User requested completion of the current task and pause; no next migration batch started. OR204 small-spider source325ff50c remains the latest content unit; special presentation/native/conditional coverage stays pending. Imp004 Take-first earned-state continuation remains prepared. Discovery3508/units204/records228 are not gameplay completion. Chemistry independent verification remains paused.
 <!-- forge-current:end -->
 
 
@@ -1683,3 +1681,12 @@ Ordinary 3019 already has death 6251 / three ticks / sound 3608 and is preserved
 Owner 337 server tests, 33 selected World integration tests, 30 factory refusal cases and 24 actual-cache death cases passed. The cache matrix includes 18 registered cases and 6 deliberately unregistered controls reproducing the old bone fallback. Eight cases retain a natural ordinary spawn; sixteen prepare special variants in the same actual region. One actual protected TOML declaration matches the adapters; no donor engine was executed.
 
 [Owner evidence](development/OR-MIG-0204.json). Archive `2D9902C69F4F9711EBAEB0D049D75068EBB76A7A3D1DD58B3AF5101C63F4BF26` pins710 source files and application configuration validation passed. Seven natural ordinary spawns were found in the bounded 48-map scan. This is headless evidence, not native interaction: ordinary Attack/no-new-pile, special lifecycle presentation and same-save fine-XP/inventory checks remain required. General player-death recovery [PG-DEF-011 / #135](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/135) is a separately tracked V3 dependency and the next implementation priority. Independent V0–V4 remains pending; chemistry verification remains paused. Discovery classifications {'not_yet_assessed': 2715, 'configuration': 661, 'framework_or_infrastructure': 22, 'eligible_gameplay_behavior': 110} and 204 units / 228 append-only records are not gameplay completion.
+
+
+## PG-DEF-011 — Ordinary player death recovery
+
+Source [43df54d9](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/43df54d97e9e87e4386b99dc50ea9dafa18638fe) adds the missing ordinary recovery path and reconstructs it from zero-HP saves. It selects a Lumbridge respawn, delays two ticks, plays human death836 and waits four ticks before telejump and state restoration. Inventory, bank, equipment, base/fineXP and earned Tower state remain. Missing collision cannot silently heal in place. Existing Cinderworks sanctuary and Tutorial protection keep priority.
+
+Owner validation: initial full World775PASS/1existingignored; final focused recovery6PASS; server337PASS; protocol23PASS. Actual-cache startup passed for default and distant3100,3500 spawns. Immutable executable `6B53B6A85EC1F1A21731E5B28A2BE7C987918F6C416BCAE108EC164E680E1A02` pins712sources. The full World and focused runs are distinct; native death presentation, exact saved-state replay and independent acceptance remain pending. Original Kotlin behavior was inspected, not executed as a differential death pipeline. [Contract](development/PG-DEF-011.json). [Issue135](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/135) remains open.
+
+FORGE is paused at the user's request after publishing this checkpoint. OpenRune units204/records228 and discovery classifications remain unchanged. Chemistry independent verification remains paused; pending Imp004 earned-state continuation and all prior native evidence are preserved.

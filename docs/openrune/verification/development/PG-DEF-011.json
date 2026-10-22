@@ -1,0 +1,129 @@
+{
+  "finding_id": "PG-DEF-011",
+  "github_issue": 135,
+  "implementation_sha": "43df54d97e9e87e4386b99dc50ea9dafa18638fe",
+  "status": "implemented_owner_headless_passed_pending_independent_and_native_verification",
+  "classification": "Baseline ordinary death dependency correction. No OpenRune inventory reclassification, new unit, or acceptance count.",
+  "source_hashes": {
+    "crates/protocol/src/music.rs": "756eefb4a908fe2b84460ad47c4aa986e3afe450717095960552f9d182bee2f0",
+    "crates/server/src/application.rs": "6cf74320695ad6a4130cf78c52efca031f4be67685710fce3f602773b5ba0b4d",
+    "crates/server/src/runtime.rs": "350f0ab1f1d069717079d5ef788bf8c61343700d6ae0efc57c206332a74e174a",
+    "crates/server/src/startup.rs": "810dec64afed00684eeabd22730314c229ae33c7761727054976939f0e09c452",
+    "crates/world/src/lib.rs": "96149714b36a1ed2725d6f90284d09234bc9d4b41f09a89f413b870d673f5a46",
+    "crates/world/src/player_death.rs": "c6516d1ce2a2676f06ad040bb056edc887ef4b333cf2d632d3c2fa14be3b776d",
+    "crates/world/src/simulation.rs": "2a1208ba93f542f6210ca8d784c40a1dfe8223568218d44700f781e3184b0266",
+    "crates/world/src/simulation/player_death_actions.rs": "0bc3635ae9710d2cb6a7eebe889964e460a811114b4f75a1fde934eb1bcc036c",
+    "crates/world/src/simulation/soft_timer_actions.rs": "eefe98c40b204e9b65657ce744f5c62224a151312d2fddefe33a10f40cc7e3e0"
+  },
+  "references": [
+    {
+      "kind": "protected_original_kotlin",
+      "path": "api/death/src/main/kotlin/org/rsmod/api/death/PlayerDeath.kt",
+      "sha256": "99d9630f629753af8e93552e9daae22917f6744791e3366471073259ece91bde",
+      "availability": "protected current Project-Gielinor checkout; older Floor1 modifications present; not proof of original baseline commit identity"
+    },
+    {
+      "kind": "protected_original_kotlin",
+      "path": "api/player/src/main/kotlin/org/rsmod/api/player/protect/ProtectedAccess.kt",
+      "sha256": "ac865b4b831cc3395eb45633e7e13f89c3472d3fe0eca388f7c559a6943fa655",
+      "availability": "protected local original; tab restoration method is a TODO/no-op"
+    },
+    {
+      "title": "Death",
+      "revision": 15341882,
+      "sha256": "9eef87e21b84d8d4c9c02dbd30872d119169d5e19b259cbabeeff3cbfbd2220b",
+      "scope": "Read-only offline Wiki context. Reference compatibility governs this correction; no Wiki grave/item-loss system claimed."
+    },
+    {
+      "title": "Respawn",
+      "revision": 263491,
+      "sha256": "cd3255168b0ef7bcd35613c21a63808f7be44772518b814f86d5ba2f3c9300cc",
+      "scope": "Read-only offline Wiki context. Reference compatibility governs this correction; no Wiki grave/item-loss system claimed."
+    }
+  ],
+  "behavior": [
+    "Server startup enables ordinary death recovery. Bare World remains opt-in, preserving existing headless fixtures.",
+    "Live zero HP or a loaded zero-HP save selects a shuffled radius-two line-of-walk-valid candidate around3221,3218,0 before stopping actions. BLOCK_PLAYERS is0x100000. Centre fallback matches the reference; uniform shuffle is not a Kotlin seed-stream parity claim.",
+    "Stop held/queued work and combat hits, clear modal/interaction state, root movement; delay2 ticks, animation836, delay4 ticks, telejump. Missing collision retains the pending job/root and retries; passive health regeneration cannot reopen eligibility.",
+    "Restore configured current stats to base, both boosts and drains; preserve inventory/equipment/bank/other inventories/base/fineXP and earned Tower progression. Reference death-inventory loss remains TODO; no graves or item-loss engine added.",
+    "Disable active/quick prayers and normal prayer overheads; cancel drain, rapid-restore and preserve activation; reset stat/boost/health timers100 and special timer50; clear special attack selection. Unrelated soft timers remain.",
+    "Reset animation, map flag, combat grace, skull/facing/appearance, camera/minimap; emit stop MIDI147 and jingle90 from the separate target jingle symbol group. Music clocks reset. Existing interface-close restoration is reused; source restoreToplevelTabs itself is a TODO.",
+    "Cinderworks qualified run/geometry or an active sanctuary recovery keeps priority. No old broad Kotlin x>=6400 heuristic is imported. Tutorial stat protection is separate. Positive unsigned HP180 remains alive.",
+    "Load Lumbridge collision even when CLI --spawn is distant. Saved zero HP reconstructs recovery after restart; already-positive historical saves cannot be classified retroactively."
+  ],
+  "owner_validation": {
+    "world_initial": {
+      "result": "PASS775, existing ignored1",
+      "command": "build.ps1 -Action test -CargoArgs @(-p,gielinor-world,--lib)",
+      "scope": "Initial five new recovery tests plus existing suite, before followup music-clock reset and sixth timer/prayer test."
+    },
+    "world_final_focused": {
+      "result": "PASS6",
+      "command": "build.ps1 -Action test -CargoArgs @(-p,gielinor-world,--lib,player_death_actions)",
+      "scope": "Live lethal hits; exact2+4 phase boundaries; stat/base/fineXP/item/bank conservation and no repeated recovery; savedHP0 restart; missing-collision wait past health timer; unsignedHP/tutorial priority; prayer/special/stat/unrelated timers; Cinderworks sanctuary priority. New files subsequently rustfmt-formatted without semantic changes."
+    },
+    "server_protocol": {
+      "result": "PASS337server/23protocol",
+      "command": "build.ps1 -Action test -CargoArgs @(-p,gielinor-server,-p,gielinor-protocol,--lib)",
+      "scope": "Includes new five-byte revision239 jingle fields. A final runtime facing-state reset was then included in the successful immutable executable build; no native presentation acceptance claimed."
+    },
+    "immutable_server_build": {
+      "result": "PASS",
+      "run": "ordinary-death-recovery-20261022-001",
+      "sha256": "6B53B6A85EC1F1A21731E5B28A2BE7C987918F6C416BCAE108EC164E680E1A02",
+      "source_count": 712,
+      "scope": "All nine committed source files match the immutable archive manifest."
+    },
+    "actual_cache_startup": [
+      {
+        "result": "PASS",
+        "spawn": "default",
+        "maps": 11,
+        "npcs": 586,
+        "locations": 24220
+      },
+      {
+        "result": "PASS",
+        "spawn": "3100,3500,0",
+        "maps": 14,
+        "npcs": 324,
+        "locations": 38088
+      }
+    ],
+    "resources": "Windows available-memory/commit/paging/CPU/disk sampling permitted Cargo-j2; archive6505MiB/49.8%commit/pages0/5msdisk. Startup checks6625..6636MiB/49.2%commit/pages0. No other agent process modified.",
+    "private_evidence_sha256": {
+      "application-default-008.log": "f3ad93d4120d67426f86f698b3753258fc73f1af922fe9913259a611cd353b94",
+      "application-remote-009.log": "2e1d0c58818372d63e59f9d5f480c51b041de7e71cb931b701f17a6dc6361442",
+      "archive-007.log": "a3faf01f7dfb10114771c2fb15595b0670a9b1f3a4cb16bfb057f445dc4d7384",
+      "preflight-006.json": "b5876a15ced16e4b014e7dfc64ccb1f460825b452b03b1590f373796751c58cb",
+      "review-002.json": "80462182c86a7f68db7ba32b241cd0e1f7ca6180c869fe873109ab40aecf7189",
+      "server-protocol-005.log": "149c02d766ec967130aa2e420ee109612f7eeb41614ac4bdb30f031fcf035188",
+      "source-identity-001.json": "6ea007f1fb73bac305dfb4925223d61f5ac7b5a5980831e22bb50925cf2b1bd4",
+      "world-003.log": "840289ecb772dcf5ce7fdd9c9a08ab163f686ec14bc36a0715c5f6a1be94072a",
+      "world-004.log": "9c18dcd54b666f23ef4a75218e7394197cdac9381cc33d174570fd1bb763fcc4"
+    },
+    "limitations": [
+      "Actual protected Kotlin code was inspected, not compiled/executed as a full death pipeline. Owned recovery tests are not Kotlin differential-engine acceptance.",
+      "Actual-cache --check validates startup, not live combat/respawn presentation.",
+      "First full World run and final focused recovery run are reported separately; no final full-suite rerun asserted."
+    ]
+  },
+  "native_acceptance": {
+    "status": "NOT_RUN",
+    "reason": "Agent5 owned the shared session during implementation; user requested completion of the current checkpoint and pause. No replacement native session started.",
+    "required": [
+      "On this exact source/executable, use a genuine rendered ordinary NPC Attack to reach lethal HP. Observe836 after2 ticks, formal respawn4 ticks later, current stats restored and controls reopened only after recovery.",
+      "Inspect camera/minimap, skull/normal prayer overhead, closed interfaces, stop/jingle and ordinary world synchronization; distinguish decoded packets from rendered/audio acceptance.",
+      "Copy/preserve an acknowledged zero-HP failed save with earned XP and items, reconnect on this pin, and verify formal respawn rather than passive in-place healing. Retain original failures; no reset of earned profiles.",
+      "Acknowledge save/logout, restart the exact earned state, compare all inventories/base/fineXP and no duplicate recovery or rewards. Exercise stale held/movement input and a fresh post-respawn action.",
+      "Recheck maintained Cinderworks rescue/earned progression and tutorial floor separately on this pin; earlier independent72cases remain historical evidence, not retested by FORGE."
+    ]
+  },
+  "independent_verification": {
+    "status": "pending",
+    "chat": "Verify OpenRune contracts",
+    "historical_defect_pin": "1e1af49843769872a68ce344b7593284b9b7cd1d",
+    "issue_closure": "Do not close135 on owner tests alone."
+  },
+  "pause": "User requested current task completion then pause. Preserve all fixtures, archives, failures, earned state, pending Imp004 and chemistry verification pause."
+}
