@@ -1,0 +1,606 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0194",
+  "revision": 2,
+  "implementation_commit_sha": "2c04b788150552fa1ca02a31216dfa4964c5e724",
+  "recorded_utc": "2026-10-22T14:28:06.886403+00:00",
+  "result": "OWNER_THREE_NATIVE_MINING_STORAGE_FULL_BAG_FALLBACK_AND_SAVE_REPLAY_PASS_INDEPENDENT_PENDING",
+  "source_report": "docs/openrune/verification/development/OR-MIG-0194.json",
+  "sources": {
+    "crates/world/src/coal_bag.rs": "fec1aada83e19a8d0ace43ae8d8901d2b655655f49e8f78a382293ee47ea4c61",
+    "crates/world/src/gathering.rs": "02753fc9d029b8efd898cd21041e9881a04d82a83bab73245e2eb39472d2b7a5",
+    "crates/world/src/simulation/coal_bag_mining_tests.rs": "cd9ceb322f9dd7fc565c7a747c1c665de781206c9b6a6b0b145fa7d46565feb9",
+    "crates/world/src/simulation/mining_actions.rs": "6306eb64ffad8db6ee493f1dea71499ae4833f1177e882bd44941d2177efc877",
+    "crates/world/src/simulation/woodcutting_actions.rs": "b20e8c9503b6b191d8c49b5a8ecbeedf1fb2b93ac4c15221f76a7d1b0fb85c83"
+  },
+  "server_archive": {
+    "sha256": "31B171C701297EF6FE297705AF2DA7257BB0C012C71B931C21431E9BBACD6616",
+    "source_count": 664,
+    "source_manifest_sha256": "297d41db713805f9d54b32314bf8e1d5e95ea1dd237612ccbbac888f4c57d047",
+    "before_after_sources_unchanged": true
+  },
+  "native": [
+    {
+      "run": "openrune-coal-bag-mining-control-native-20261022-003",
+      "assessment_sha256": "56fbbad26ece3fe962c5f934dfbd91efa73590b530d380db06b3d53428c0ab7b",
+      "assessment": {
+        "result": "PASS_NATIVE_COAL_MINING_CONTROL",
+        "run": "openrune-coal-bag-mining-control-native-20261022-003",
+        "mode": "control",
+        "server_sha256": "31B171C701297EF6FE297705AF2DA7257BB0C012C71B931C21431E9BBACD6616",
+        "driver_sha256": "C38CE777217C92241B9B05BB89E62C61028B8F76CFE3848192A410388D415D4B",
+        "native_events": [
+          {
+            "kind": "native.coal_check",
+            "stage": 1,
+            "button": 4,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_checked",
+            "stage": 1,
+            "stored": 26,
+            "physical_coal": 0,
+            "xp_delta": 0
+          },
+          {
+            "kind": "native.coal_mining_done",
+            "mode": "control",
+            "xp_delta": 0,
+            "physical_coal": 0,
+            "stored": 26
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.328,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 14:19:05"
+          }
+        },
+        "shutdown": {
+          "pid": 1132,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T14:19:06.6762520Z"
+        },
+        "saved_stock": {
+          "physical_before": 0,
+          "physical_after": 0,
+          "stored_before": 26,
+          "stored_after": 26,
+          "total_awarded": 0
+        },
+        "saved_fine_xp_delta": 0,
+        "all_varp_changes": {
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "300": {
+            "before": 0,
+            "after": 100
+          },
+          "65515": {
+            "before": 0,
+            "after": 74
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "3079": {
+            "before": 0,
+            "after": 80
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "3077": {
+            "before": 0,
+            "after": 6000
+          }
+        },
+        "position_before": {
+          "x": 3143,
+          "z": 3149,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3143,
+          "z": 3149,
+          "level": 0
+        },
+        "evidence_hashes": {
+          "client.log": "a263e7d6a47af3af2050dae67beea098b3e1c62149f69de35bff529a8d92c870",
+          "final-state.json": "bcb2639e07a6ed2639e1218dc8db46878888c7d26bcbe9bece38e05b148d7bc8",
+          "initial-state.json": "f6957cf5a5aeee106acb512eacbfdab60bbfaffb6794eed3e61e9c0b360bf27a",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "f2433d9f0644764393b2bebf910795c96f6dca26c9173ddfd4968c7908ef9378",
+          "native-events.jsonl": "d9043e28e4c2967463850eeeb1c4e5a040ff1e0df1eed5951c0fb4ad638cc221",
+          "result.json": "d0bd365d67cf30a0f927287bc6875b7f00271a7e2922e96c070b9e434257c6cb",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "3f50fbc3fa61e4ce8d87072b653189a35f5716237ec2e1becf70c313f49a377b",
+          "server.log": "b2c052a647fc7bb616a66411ff15cb0ff993ff6662f9e597f041a8b34ff56b9d",
+          "shutdown.json": "c8614a202532aed821be70f21f19ddfb4629c9263d4e52657b186a6a5bdee475"
+        },
+        "limitations": [
+          "Owner actual map Mine1/natural RNG/depletion and bagCheck4; prepared member99Mining/rune pick/26stored/maintained5xrate are fixture setup, not earned progression.",
+          "Two ordinary nodes: first250XP coal enters26\u219227bag, second250XP falls back to physical inventory at bag capacity; exact saved total+2 and same-save Check27.",
+          "No mining-glove/gem/charged-pick variants, nativecape36/full-inventory/life/other incoming sources/bank/smelting or probability-distribution acceptance.",
+          "Software frames require visual review; no physical desktop input or independent verdict. Chemistry verification paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-coal-bag-mining-actions-native-20261022-003",
+      "assessment_sha256": "7b86ea70850c2a7d3e3e8d632616172344723e5b9b1658b3c2d06de68fb3d8a1",
+      "assessment": {
+        "result": "PASS_NATIVE_COAL_MINING_MINE",
+        "run": "openrune-coal-bag-mining-actions-native-20261022-003",
+        "mode": "mine",
+        "server_sha256": "31B171C701297EF6FE297705AF2DA7257BB0C012C71B931C21431E9BBACD6616",
+        "driver_sha256": "C38CE777217C92241B9B05BB89E62C61028B8F76CFE3848192A410388D415D4B",
+        "native_events": [
+          {
+            "kind": "native.coal_mine",
+            "ore": 1,
+            "raw": 11367,
+            "x": 3144,
+            "z": 3148,
+            "opcode": 73
+          },
+          {
+            "kind": "native.coal_mined",
+            "ore": 1,
+            "xp_delta": 250,
+            "physical_coal": 0,
+            "depleted": true
+          },
+          {
+            "kind": "native.coal_check",
+            "stage": 1,
+            "button": 4,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_checked",
+            "stage": 1,
+            "stored": 27,
+            "physical_coal": 0,
+            "xp_delta": 250
+          },
+          {
+            "kind": "native.coal_mine",
+            "ore": 2,
+            "raw": 11367,
+            "x": 3144,
+            "z": 3150,
+            "opcode": 73
+          },
+          {
+            "kind": "native.coal_mined",
+            "ore": 2,
+            "xp_delta": 500,
+            "physical_coal": 1,
+            "depleted": true
+          },
+          {
+            "kind": "native.coal_check",
+            "stage": 3,
+            "button": 4,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_checked",
+            "stage": 3,
+            "stored": 27,
+            "physical_coal": 1,
+            "xp_delta": 500
+          },
+          {
+            "kind": "native.coal_mining_done",
+            "mode": "mine",
+            "xp_delta": 500,
+            "physical_coal": 1,
+            "stored": 27
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.329,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 14:20:25"
+          }
+        },
+        "shutdown": {
+          "pid": 15412,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T14:20:26.2968857Z"
+        },
+        "saved_stock": {
+          "physical_before": 0,
+          "physical_after": 1,
+          "stored_before": 26,
+          "stored_after": 27,
+          "total_awarded": 2
+        },
+        "saved_fine_xp_delta": 5000,
+        "all_varp_changes": {
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "3077": {
+            "before": 0,
+            "after": 26018
+          },
+          "3079": {
+            "before": 0,
+            "after": 109
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "65515": {
+            "before": 0,
+            "after": 104
+          },
+          "65531": {
+            "before": 872415232,
+            "after": 905969664
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          }
+        },
+        "position_before": {
+          "x": 3143,
+          "z": 3149,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3144,
+          "z": 3149,
+          "level": 0
+        },
+        "evidence_hashes": {
+          "client.log": "6a756858b6d24d6ab93bb73eb2eb73ffa67546e0eab8e42b7560f39139c1f5fb",
+          "final-state.json": "8f286e1d78f47ed982b3f9ffd5fecd36259260b31e0f23445f9cfebf2f475af4",
+          "initial-state.json": "f6957cf5a5aeee106acb512eacbfdab60bbfaffb6794eed3e61e9c0b360bf27a",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "0c4143657caa6408f8c9d6a2b9d69a57ed54e62bf42eeb9567232ab85cf78f0e",
+          "native-events.before.bmp": "e04d92587c5aa57652e06f3326a9faa782c4c51b7f653bcfef784c3a0d463926",
+          "native-events.jsonl": "ee230eee664aacbf33e5f66a38afb56cae8ed5c504a789b5d406633ee6223c73",
+          "native-events.ore1.bmp": "ed79ee5998699719d5b066b53910742701465f5a41f64cbd7713b934c1bfaf3a",
+          "native-events.ore2.bmp": "9309a5140b7b6da882be6f6ca319851cf3e503555c8fbe32f51ccc9555a1bcd0",
+          "result.json": "ef045bd51fb792bc7dabc97a5bfc42f7ca428a856734f44aa25abe2b2b3b9769",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "6e17a9b173909a812935c58788c919a762a0a09ac95f9ec3f454bf544a4d3add",
+          "server.log": "476afd6bfdaf887635ec6e5025654e97a21058ba3a71f7cbe2d0412221e5ec32",
+          "shutdown.json": "00481cbc6734c6801aead10bbeabd83648da56ee0387b50a84c51708748b971f"
+        },
+        "limitations": [
+          "Owner actual map Mine1/natural RNG/depletion and bagCheck4; prepared member99Mining/rune pick/26stored/maintained5xrate are fixture setup, not earned progression.",
+          "Two ordinary nodes: first250XP coal enters26\u219227bag, second250XP falls back to physical inventory at bag capacity; exact saved total+2 and same-save Check27.",
+          "No mining-glove/gem/charged-pick variants, nativecape36/full-inventory/life/other incoming sources/bank/smelting or probability-distribution acceptance.",
+          "Software frames require visual review; no physical desktop input or independent verdict. Chemistry verification paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-coal-bag-mining-replay-native-20261022-003",
+      "assessment_sha256": "e2d84fb6c19053c8af00d0f3b9d5a37ff1ab5aab9a24386385d004435a77b892",
+      "assessment": {
+        "result": "PASS_NATIVE_COAL_MINING_VERIFY",
+        "run": "openrune-coal-bag-mining-replay-native-20261022-003",
+        "mode": "verify",
+        "server_sha256": "31B171C701297EF6FE297705AF2DA7257BB0C012C71B931C21431E9BBACD6616",
+        "driver_sha256": "C38CE777217C92241B9B05BB89E62C61028B8F76CFE3848192A410388D415D4B",
+        "native_events": [
+          {
+            "kind": "native.coal_check",
+            "stage": 1,
+            "button": 4,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_checked",
+            "stage": 1,
+            "stored": 27,
+            "physical_coal": 1,
+            "xp_delta": 0
+          },
+          {
+            "kind": "native.coal_mining_done",
+            "mode": "verify",
+            "xp_delta": 0,
+            "physical_coal": 1,
+            "stored": 27
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.578,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 14:20:25"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 14:21:36"
+          }
+        },
+        "shutdown": {
+          "pid": 6228,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T14:21:37.5221379Z"
+        },
+        "saved_stock": {
+          "physical_before": 1,
+          "physical_after": 1,
+          "stored_before": 27,
+          "stored_after": 27,
+          "total_awarded": 0
+        },
+        "saved_fine_xp_delta": 0,
+        "all_varp_changes": {
+          "3079": {
+            "before": 109,
+            "after": 81
+          },
+          "3077": {
+            "before": 26018,
+            "after": 37596
+          },
+          "65515": {
+            "before": 104,
+            "after": 179
+          },
+          "300": {
+            "before": 200,
+            "after": 300
+          }
+        },
+        "position_before": {
+          "x": 3144,
+          "z": 3149,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3144,
+          "z": 3149,
+          "level": 0
+        },
+        "evidence_hashes": {
+          "client.log": "ed32ea6773ba8a8642308f8e5930dc32e3b438c5858e92d92ca3efc26690d32f",
+          "final-state.json": "f54371d16664c6da787857e151ff5217484133141088aa384fba54a1c62fa03b",
+          "initial-state.json": "8f286e1d78f47ed982b3f9ffd5fecd36259260b31e0f23445f9cfebf2f475af4",
+          "logout-before.json": "a9a0bf31a83c59da22b26fcc9f5ac4911fc1266b57c1e2476e1bb3070509908f",
+          "logout-observation.json": "eb26d180e3d02f559c32046242875ad68a65a05f88b679a9bbda7e6f50f02011",
+          "native-events.jsonl": "5ca3e680f438d66681f92a99c1f9c1b4362b91c95dd944c4f91ec3168ce45633",
+          "result.json": "d73022e37ab3b179d87a3a5a9e234f754ab1a27b40939722cb8b12a8a8652648",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "a8abdf988c9ff2bf1420ecf994aca0fcd35402681dec7fb3cad750d72e9f12bc",
+          "server.log": "c0c1845e61f94f0418748e0579bf335731ffecb2f1ea4171931321f8d3730406",
+          "shutdown.json": "fc65cdf18153d29cdceaa8e98061b82b102733084d1de012a66ca368c71a30c0"
+        },
+        "limitations": [
+          "Owner actual map Mine1/natural RNG/depletion and bagCheck4; prepared member99Mining/rune pick/26stored/maintained5xrate are fixture setup, not earned progression.",
+          "Two ordinary nodes: first250XP coal enters26\u219227bag, second250XP falls back to physical inventory at bag capacity; exact saved total+2 and same-save Check27.",
+          "No mining-glove/gem/charged-pick variants, nativecape36/full-inventory/life/other incoming sources/bank/smelting or probability-distribution acceptance.",
+          "Software frames require visual review; no physical desktop input or independent verdict. Chemistry verification paused."
+        ]
+      }
+    }
+  ],
+  "native_mining_success_traces": [
+    {
+      "schema": 1,
+      "activity": "mining",
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "tick": 65,
+      "location": [
+        3144,
+        3148,
+        0,
+        11367,
+        10,
+        1
+      ],
+      "revision": 1916,
+      "scheduled_tick": 65,
+      "result": "success",
+      "roll": 21,
+      "threshold": 101,
+      "product": 453,
+      "product_delta": 0,
+      "fine_xp_delta": 2500,
+      "level": 99,
+      "required_level": 30,
+      "tool": 1275,
+      "free_slots": 26,
+      "product_before": 0,
+      "fine_xp_before": 130344310,
+      "base_xp": 50,
+      "xp_rate_hundreds": 500,
+      "depletion_roll": 10,
+      "active_ticks": null,
+      "respawn_delay": 50,
+      "consumed_delta": 0,
+      "stored_delta": 1
+    },
+    {
+      "schema": 1,
+      "activity": "mining",
+      "actor_slot": 1,
+      "actor_generation": 614,
+      "tick": 84,
+      "location": [
+        3144,
+        3150,
+        0,
+        11367,
+        10,
+        1
+      ],
+      "revision": 1917,
+      "scheduled_tick": 84,
+      "result": "success",
+      "roll": 86,
+      "threshold": 101,
+      "product": 453,
+      "product_delta": 1,
+      "fine_xp_delta": 2500,
+      "level": 99,
+      "required_level": 30,
+      "tool": 1275,
+      "free_slots": 26,
+      "product_before": 0,
+      "fine_xp_before": 130346810,
+      "base_xp": 50,
+      "xp_rate_hundreds": 500,
+      "depletion_roll": 159,
+      "active_ticks": null,
+      "respawn_delay": 50,
+      "consumed_delta": 0
+    }
+  ],
+  "initial_rate_failure": {
+    "run": "openrune-coal-bag-mining-control-native-20261022-001",
+    "result": "CLIENT_CHECK26_PASS_BUT_ASSESSOR_FAILED_FIXTURE_RATE_NORMALIZATION",
+    "reason": "Maintained Floor progression unconditionally sets effective5xXP on login. Fixture requested1x and assessor expected100; no mining occurred, stock/Stats unchanged. Original driver/fixture/run/log retained, fresh0025x inputs prepared without production change.",
+    "artifacts": {
+      "initial-state.json": "033c0f6f29ce05f64bfaec75cbb02dac58c394fad2ca0e406ebae61374caf96a",
+      "final-state.json": "1d207027a0d3ba8ef9fd03263f99334301b70a7b1e46e0b076f4134c569ded3d",
+      "result.json": "c5fc36f81a2125a48c46026e08b4f42ae608e8f3040dfa4585b31dd983298ba7",
+      "shutdown.json": "8b9f086acec1d9ed714d41ffd74297bd7e519fb58b9cd8716be339c4181525ee",
+      "logout-observation.json": "93c6ed2dde50d42eec602f8868c43e99df94e835ebdc147e06e1306edf15fc36",
+      "client.log": "512472a0052f9b3ddaed5ffda22670211e3861f85934b2b6f812a9104769825d",
+      "native-events.jsonl": "d9043e28e4c2967463850eeeb1c4e5a040ff1e0df1eed5951c0fb4ad638cc221"
+    }
+  },
+  "unreached_target_failure": {
+    "run": "openrune-coal-bag-mining-actions-native-20261022-002",
+    "target": [
+      3145,
+      3153,
+      0,
+      11367
+    ],
+    "final_actor_position": [
+      3143,
+      3152,
+      0
+    ],
+    "gathering_traces": 0,
+    "stock_and_stats_unchanged": true,
+    "offline_acknowledged": true,
+    "shutdown": {
+      "pid": 17412,
+      "exited": true,
+      "exitCode": 0,
+      "forced": false,
+      "utc": "2026-10-22T14:16:39.8838041Z"
+    },
+    "unresolved": true,
+    "artifacts": {
+      "initial-state.json": "f6957cf5a5aeee106acb512eacbfdab60bbfaffb6794eed3e61e9c0b360bf27a",
+      "final-state.json": "046d2b5ba665169d23f4a0a64bee4480c89d4fe800414d9ee91d3825ae5fd0f0",
+      "result.json": "b2a51bc28afcd328c59d8f334cf23ff6cc5dbf9eba2721749527f664499bfcec",
+      "logout-observation.json": "6d8138d8daddf68fcff1d257ad81d6611c0573e344ded78ed51dba8f9048dab8",
+      "shutdown.json": "15c9fc7418a03d273171865e0ed294ce2b5c84cb92db1638b29367a4af4424b8",
+      "server.log": "d38cf45378de1ffcd045cbea0b0ff2d67cef83362278bc58f06c41c76c2438d0",
+      "client.log": "c25b69305a660f2697cbb666963356b53eb1c16e89457549b0d35556f9de9176",
+      "native-events.jsonl": "dfadb0a0b28fb25d3c0564213ca3db6d39b1e867f9dec1d049220384fd05fa26"
+    }
+  },
+  "native_driver": {
+    "driver": "coal-bag-mining-003",
+    "scenario": "openCoalBagRealMiningAndFullCapacityFallback",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless real-map Mine1 and native bag Check4, natural RNG and storage/full-capacity fallback; no OS window, desktop input or bank-interface acceptance; no OS Window/desktop input or independent verdict",
+    "files": {
+      "NativeCoalMiningScenario3.rs": "D861F4C16156D847D409D339023A638CC0324065960A61C915C700C2D74C4E93",
+      "server_coal_mining3.exe": "C38CE777217C92241B9B05BB89E62C61028B8F76CFE3848192A410388D415D4B"
+    }
+  },
+  "native_runtime_xp_policy": {
+    "path": "crates/world/src/floor_progression.rs",
+    "sha256": "4d67a9ae171e2971fc8f92ddc19fe979615add4ed45cef2d42f262cecd2e884c",
+    "effective_rate_hundreds": 500,
+    "base_coal_xp": 50,
+    "native_expected_xp_per_coal": 250,
+    "changed_production_policy": false
+  },
+  "visual_review": {
+    "path": "work/integration/runs/openrune-coal-bag-mining-actions-native-20261022-003/native-events.ore1.bmp",
+    "sha256": "ed79ee5998699719d5b066b53910742701465f5a41f64cbd7713b934c1bfaf3a",
+    "observed": "Avatar beside coal-rock cluster at lakeside; outer inventory/chat area black. No inventory/chat/animation pixel claim."
+  },
+  "known_limitations": [
+    "Incoming ordinary mining coal only; not global virtual storage, bank/ground pickup interception, smithing/superheat consumption, destroy/ownership or full donor SkillingProduct framework.",
+    "Both source Mining implementations reject full inventory before mining. Rust preserves that guard even if an open bag has capacity; no unsupported bypass is inferred from the Wiki.",
+    "Actual protected CoalBag/StorageHook and generic incoming storage/interface/context/consume-policy sources compile unchanged with owned recording dependencies. Twelve logical incoming cases match real-cache Rust mining; full Kotlin mining/XP/coroutine engine and seeded RNG equivalence are not tested.",
+    "F2P and malformed variable/duplicate-count bags do not capture; current form/member/cape is rechecked at reward. These are explicit maintained-engine safety policies, not proof of donor membership/death scheduling.",
+    "Bag variables, inventory and Stats are staged until existing location preflight/depletion succeeds. A failed output or out-of-world scenery footprint commits no coal or XP; this retains Rust atomic reward architecture rather than reproducing generic donor partial-add failure behavior.",
+    "Virtual trace separates physical product_delta0 from optional stored_delta1. Ordinary traces omit the new field and retain their prior JSON shape; existing ordinary fixed-product ledgers are not claimed as virtual-storage acceptance.",
+    "Owner working-tree315server737world/1ignored, five World regressions including120capacity/form/member cases and12actual-cache/Kotlin logical cases passed. Terrain/positions and success RNG are prepared in cache tests; actual map spawns separately inspected. Not pristine or independent acceptance.",
+    "Three owner native003sessions pass: matchedCheck26control, two exact real-map Mine1actions with natural server RNG, bagCheck27after each and same-saveCheck27reconnect. All offline acknowledgements/shutdown0unforced/990unchangedclientlibrary. First coal enters26\u219227bag with no inventory coal, second at capacity adds one physical coal.",
+    "Base50XP is multiplied by maintainedFloor5x: two250XPclient awards/two2500fineXPserver traces, exact saved+5000fineXP and+2totalcoal. Prepared99Mining/rune pick/stored26 inputs are setup, not earned progression. No production XP-policy change.",
+    "Original001control assessment failure from1x\u21925x normalization and002unreached-target deadline are retained. The002Mine11367at3145,3153 stopped at3143,3152 with no Gathering traces/XP/stock; reachability cause is not diagnosed. Separate003driver selects existing outer3144,3148/3144,3150 with strict native scene menus and diagnostics, no server code change. Success does not establish all-coal-rock reachability.",
+    "Inspected ore1software frame shows an avatar beside the coal-rock cluster at the lakeside; outer inventory/chat area black. Node depletion is checked in actual native scene state and server traces, not inferred from inventory/chat pixels or an animation frame.",
+    "Native scope covers ordinary27capacity/near-full bag and inventory fallback, not cape36/full-inventory/life/bank/global incoming/consumption. Independent acceptance and unresolved far-rock reachability remain pending; chemistry verification paused."
+  ]
+}
