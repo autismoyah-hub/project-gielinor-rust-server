@@ -100,12 +100,18 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
     let mut run = c.tower_run;
     assert!(run.begin());
     assert!(run.service(Service::Forge));
+    // Synthetic earned-state prerequisite, not client gameplay acceptance.
+    assert!(run.service(Service::Kitchen));
+    assert!(run.service(Service::Altar));
+    assert!(run.defeat_imp());
+    assert!(run.defeat_warden());
     let snapshot = Save {
         account_id: c.account_id,
         character_id: c.character_id,
         tower_diary: c.tower_diary,
         chemistry: c.chemistry,
         tower_run: run,
+        tower_floors: Default::default(),
         tower_arrival: c.tower_arrival,
         display_name: c.display_name,
         known_device: c.known_device,
@@ -153,6 +159,8 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         let c = read(&database)?;
         assert!(c.last_logout.is_none());
         assert_eq!(c.tower_run, snapshot.tower_run);
+        assert!(c.tower_floors.completed(gielinor_world::tower_progression::FloorId::CINDERWORKS));
+        assert!(c.tower_run.reward_pending);
         assert_eq!(c.inventories, snapshot.inventories);
     }
     // Simulate a worker/server crash after the durable first checkpoint, before
@@ -177,6 +185,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
     assert!(worker.shutdown()?.is_empty());
     // A complete close/reopen preserves the same acknowledged content.
     assert_eq!(read(&database)?.tower_run, snapshot.tower_run);
+    assert!(read(&database)?.tower_floors.completed(gielinor_world::tower_progression::FloorId::CINDERWORKS));
     let receipt="{\"status\":\"PASS\",\"checkpoint_auth_recovery\":true,\"incomplete_registration_rejected\":true,\"wrong_password_rejected\":true,\"checkpoint_requests\":2,\"logout_requests\":1,\"checkpoint_preserved_last_logout\":true,\"ordinary_logout_stamped\":true,\"run\":1,\"coins\":10,\"duplicate_snapshot_conserved_inventory\":true,\"scope\":\"Real account worker and SQLite transaction; synthetic disposable state, no earned gameplay\"}\n";
     std::fs::write(directory.join("receipt.json"), receipt)?;
     print!("{receipt}");

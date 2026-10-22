@@ -97,6 +97,8 @@ impl Character {
         data.energy = a.run_energy;
         data.chemistry = a.chemistry;
         data.tower_run = a.tower_run;
+        data.tower_floors = a.tower_floors;
+        data.tower_floors.reconcile_cinderworks(data.tower_run);
         data.xp_rate_hundreds = if auth.new_account {
             policy.base_xp_rate_hundreds
         } else {
@@ -218,6 +220,7 @@ impl Character {
         Ok(Save {
             chemistry: data.chemistry,
             tower_run: data.tower_run,
+            tower_floors: data.tower_floors.clone(),
             tower_arrival: data.tower_arrival,
             tower_diary: data.tower_diary,
             account_id: self.account_id,

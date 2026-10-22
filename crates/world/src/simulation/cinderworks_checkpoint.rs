@@ -5,6 +5,7 @@ use super::*;
 pub(super) struct Pending {
     inventory: Inventory,
     run: crate::tower_run::Run,
+    floors: crate::tower_progression::Progress,
     message: String,
 }
 impl World {
@@ -37,9 +38,11 @@ impl World {
         data.coords = p.movement.coords;
         data.inventory = inventory.clone();
         data.tower_run = run;
+        data.tower_floors.reconcile_cinderworks(run);
         p.cinderworks_checkpoint = Some(Pending {
             inventory,
             run,
+            floors: data.tower_floors.clone(),
             message,
         });
         self.events
@@ -56,6 +59,7 @@ impl World {
             .ok_or(ActionError::LoggingOut)?;
         p.data.inventory = pending.inventory;
         p.data.tower_run = pending.run;
+        p.data.tower_floors = pending.floors;
         self.events.push(WorldEvent::CinderworksProgress {
             actor,
             run: p.data.tower_run,
@@ -182,5 +186,28 @@ mod tests {
             .unwrap();
         assert_eq!(saved.inventory.slots()[0].as_ref().unwrap().count, 12);
         assert_eq!(saved.tower_run.id, 1);
+    }
+
+    #[test]
+    fn permanent_floor_unlock_waits_for_victory_save_acknowledgement() {
+        use crate::{tower_progression::FloorId, tower_run::Service};
+        let (mut world, actor) = fixture();
+        let mut run = crate::tower_run::Run::default();
+        run.begin();
+        for service in [Service::Forge, Service::Kitchen, Service::Altar] { run.service(service); }
+        run.defeat_imp(); run.defeat_warden();
+        let inventory = world.data(actor).unwrap().inventory.clone();
+        world.checkpoint_cinderworks(actor, inventory.clone(), run, "Synthetic victory".into());
+        assert!(!world.data(actor).unwrap().tower_floors.completed(FloorId::CINDERWORKS));
+        let staged = world.drain_events().into_iter().find_map(|event| match event {
+            WorldEvent::CinderworksCheckpoint { data, .. } => Some(data), _ => None,
+        }).unwrap();
+        assert!(staged.tower_floors.completed(FloorId::CINDERWORKS));
+        assert!(world.cinderworks_checkpoint_pending(actor));
+        world.cinderworks_checkpoint_saved(actor).unwrap();
+        assert!(world.data(actor).unwrap().tower_floors.completed(FloorId::CINDERWORKS));
+        assert_eq!(world.data(actor).unwrap().inventory, inventory);
+        assert!(world.data(actor).unwrap().tower_run.reward_pending);
+        assert!(world.cinderworks_checkpoint_saved(actor).is_err());
     }
 }

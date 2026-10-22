@@ -16,3 +16,5 @@ mod tower_diary;
 mod chemistry;
 #[cfg(windows)]
 mod tower_run;
+#[cfg(windows)]
+mod tower_progression;

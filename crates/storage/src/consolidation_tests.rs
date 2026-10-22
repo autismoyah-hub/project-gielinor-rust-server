@@ -10,6 +10,7 @@ fn snapshot(a: &Accounts, name: &str) -> Save {
         tower_diary: c.tower_diary,
         chemistry: c.chemistry,
         tower_run: c.tower_run,
+        tower_floors: c.tower_floors,
         tower_arrival: c.tower_arrival,
         display_name: c.display_name,
         known_device: c.known_device,
@@ -60,8 +61,9 @@ fn fresh_and_existing_forge_v12_keep_chemistry_and_add_empty_tower_run() {
         )]),
     )]);
     a.save(&s).unwrap();
+    a.db.execute("DROP TABLE tower_floor_completion", &[]).unwrap();
     a.db.execute("DROP TABLE tower_run", &[]).unwrap();
-    a.db.execute("DELETE FROM _rust_migrations WHERE version=13", &[])
+    a.db.execute("DELETE FROM _rust_migrations WHERE version>=13", &[])
         .unwrap();
     a.initialize().unwrap();
     a.initialize().unwrap();
@@ -74,7 +76,7 @@ fn fresh_and_existing_forge_v12_keep_chemistry_and_add_empty_tower_run() {
     assert_eq!(
         a.db.query("SELECT MAX(version) FROM _rust_migrations", &[], 1)
             .unwrap()[0][0],
-        int(13)
+        int(14)
     );
 }
 
@@ -86,7 +88,7 @@ fn experimental_tower_v12_is_refused_without_renumbering_or_mutation() {
     a.save(&s).unwrap();
     // Reconstruct the actual divergent V12 shape using this disposable memory DB.
     a.db.execute("DROP TABLE chemistry_state", &[]).unwrap();
-    a.db.execute("DELETE FROM _rust_migrations WHERE version=13", &[])
+    a.db.execute("DELETE FROM _rust_migrations WHERE version>=13", &[])
         .unwrap();
     let before = a.db.query("SELECT * FROM tower_run", &[], 4).unwrap();
     let error = a.initialize().unwrap_err();
@@ -180,4 +182,93 @@ fn checkpoint_commits_content_without_creating_or_overwriting_logout_metadata() 
     assert_eq!(c.tower_run,s.tower_run);
     a.save(&s).unwrap();
     assert_ne!(a.load("consolidation",1).unwrap().unwrap().last_logout.as_deref(),Some("2001-02-03 04:05:06"));
+}
+
+#[test]
+fn v13_backfill_preserves_pending_rewards_and_replay_unlocks_without_grants() {
+    use gielinor_world::tower_progression::FloorId;
+    for replay in [false, true] {
+        let mut a = database();
+        let mut saved = snapshot(&a, "consolidation");
+        saved.tower_run = victory();
+        if replay {
+            assert!(saved.tower_run.paid(saved.tower_run.id));
+            assert!(saved.tower_run.begin());
+        }
+        a.save(&saved).unwrap();
+        let original = snapshot(&a, "consolidation");
+        a.db.execute("DROP TABLE tower_floor_completion", &[]).unwrap();
+        a.db.execute("DELETE FROM _rust_migrations WHERE version=14", &[]).unwrap();
+        a.initialize().unwrap();
+        a.initialize().unwrap();
+        let loaded = snapshot(&a, "consolidation");
+        assert!(loaded.tower_floors.completed(FloorId::CINDERWORKS));
+        assert_eq!(loaded.tower_run, original.tower_run);
+        assert_eq!(loaded.inventories, original.inventories);
+        assert_eq!(loaded.stats, original.stats);
+        assert_eq!(loaded.run_energy, original.run_energy);
+        assert_eq!(loaded.chemistry, original.chemistry);
+        assert_eq!(loaded.tower_floors.floors().count(), 1);
+    }
+}
+
+#[test]
+fn permanent_conquest_and_possessions_roll_back_together_and_stale_saves_cannot_revoke() {
+    use gielinor_world::tower_progression::FloorId;
+    let mut a = database();
+    let fresh = snapshot(&a, "consolidation");
+    let mut earned = fresh.clone();
+    earned.tower_run = victory();
+    earned.inventories = BTreeMap::from([(93, BTreeMap::from([(0, Item { id: 995, count: 19, vars: 0 })]))]);
+    a.db.migration_script("CREATE TRIGGER reject_floor_inventory BEFORE INSERT ON inventory_objs BEGIN SELECT RAISE(ABORT,'floor rollback'); END;").unwrap();
+    assert!(a.save_checkpoint(&earned).is_err());
+    let failed = snapshot(&a, "consolidation");
+    assert!(!failed.tower_floors.completed(FloorId::CINDERWORKS));
+    assert_eq!(failed.tower_run, fresh.tower_run);
+    assert_eq!(failed.inventories, fresh.inventories);
+    a.db.execute("DROP TRIGGER reject_floor_inventory", &[]).unwrap();
+    a.save_checkpoint(&earned).unwrap();
+    let first = snapshot(&a, "consolidation");
+    assert!(first.tower_floors.completed(FloorId::CINDERWORKS));
+    assert_eq!(first.inventories, earned.inventories);
+    a.save_checkpoint(&earned).unwrap();
+    // Simulate a snapshot missing only the new permanent ledger, not an old inventory.
+    earned.tower_run.paid(earned.tower_run.id);
+    earned.tower_run.begin();
+    assert_eq!(earned.tower_floors.floors().count(), 0);
+    a.save_checkpoint(&earned).unwrap();
+    let replay = snapshot(&a, "consolidation");
+    assert!(replay.tower_floors.completed(FloorId::CINDERWORKS));
+    assert_eq!(replay.inventories, first.inventories);
+    a.create("separate character", "fixture-hash-only", 1).unwrap();
+    assert_eq!(a.load("separate character", 1).unwrap().unwrap().tower_floors.floors().count(), 0);
+}
+
+#[test]
+fn two_floor_synthetic_contract_survives_actual_database_close_and_reopen() {
+    use gielinor_world::tower_progression::{Definition, FloorId, Objectives};
+    let path = std::env::temp_dir().join(format!("tower-floors-{}-{}.sqlite", std::process::id(), std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos()));
+    let mut a = Accounts::from_database(Database::open(&path, false).unwrap());
+    a.initialize().unwrap();
+    a.create("consolidation", "fixture-hash-only", 1).unwrap();
+    let mut saved = snapshot(&a, "consolidation");
+    saved.tower_run = victory();
+    saved.tower_floors.reconcile_cinderworks(saved.tower_run);
+    let second = FloorId::new(2).unwrap();
+    let definition = Definition { id: second, prerequisites: &[FloorId::CINDERWORKS], required: 1, optional: 2 };
+    let mut objectives = Objectives::new(definition).unwrap();
+    objectives.credit(definition, 1);
+    saved.tower_floors.complete(definition, &objectives).unwrap();
+    a.save_checkpoint(&saved).unwrap();
+    drop(a);
+    let mut reopened = Accounts::from_database(Database::open(&path, false).unwrap());
+    reopened.initialize().unwrap();
+    let loaded = snapshot(&reopened, "consolidation");
+    assert_eq!(loaded.tower_floors, saved.tower_floors);
+    assert_eq!(loaded.tower_run, saved.tower_run);
+    assert_eq!(loaded.inventories, saved.inventories);
+    assert_eq!(loaded.stats, saved.stats);
+    assert!(loaded.tower_floors.completed(second));
+    drop(reopened);
+    std::fs::remove_file(path).unwrap();
 }

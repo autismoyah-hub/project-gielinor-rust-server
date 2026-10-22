@@ -167,6 +167,7 @@ pub struct PlayerData {
     pub tower_diary: Option<crate::tower_diary::Progress>,
     pub chemistry: crate::chemistry::State,
     pub tower_run: crate::tower_run::Run,
+    pub tower_floors: crate::tower_progression::Progress,
 }
 #[derive(Clone, Copy, Debug)]
 pub enum WeightSource {
@@ -205,6 +206,7 @@ impl PlayerData {
             tower_diary: None,
             chemistry: Default::default(),
             tower_run: Default::default(),
+            tower_floors: Default::default(),
         }
     }
 }
