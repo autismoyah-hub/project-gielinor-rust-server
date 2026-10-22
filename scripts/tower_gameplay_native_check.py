@@ -56,6 +56,14 @@ def main():
     # Historical experimental coordinates are intentionally not used.
     plaque, chest, portal = [symbol("loc", name) for name in ["plaque", "threshold_chest", "threshold_portal"]]
     fishing = symbol("npc", "0_48_48_newbiefishing")
+    population = []
+    population_file = args.walk_edges.parent / "npc-footprints.tsv"
+    for line in population_file.read_text(encoding="utf-8").splitlines()[1:]:
+        values = line.split()
+        if int(values[1]) == fishing:
+            population.append({"x": 10368 + int(values[2]), "z": 64 + int(values[3])})
+    if not population:
+        raise RuntimeError("Maintained navigation export has no authored fishing population")
     raw, cooked, burnt = [symbol("obj", name) for name in ["raw_shrimp", "shrimp", "burnt_shrimp"]]
     count = lambda state, item: sum(i["count"] for i in state["items"] if i["id"] == item)
     def conserved(state):
@@ -169,15 +177,19 @@ def main():
                     admitted = gateway.wait(lambda s: "run 1" in s["journal"] and all(count(s, tool) == 1 for tool in tool_ids), 35)
                     assert "Cinderworks milestones: 0/5" in admitted["journal"]
                     gateway.act(f"object {plaque} 10418 105 1")
-                    duplicate = gateway.wait(lambda s: s["ready"], 20)
+                    duplicate = gateway.wait(lambda s: s["ready"] and any(
+                        event["uid"] > max((e["uid"] for e in admitted["message_events"]), default=-1)
+                        and event["text"].startswith("Restore services in any order") for event in s["message_events"]), 25)
                     assert conserved(duplicate) == conserved(admitted), "Repeated recovery changed possessions or XP"
                     gateway.act(f"object {chest} 10419 105 1")
-                    refused = gateway.wait(lambda s: s["ready"], 20)
+                    refused = gateway.wait(lambda s: s["ready"] and any(
+                        event["uid"] > max((e["uid"] for e in duplicate["message_events"]), default=-1)
+                        and event["text"].startswith("Restore services in any order") for event in s["message_events"]), 25)
                     assert conserved(refused) == conserved(admitted), "Unearned claim changed state"
                     gateway.act("interface 35913795 1")
                     for attempt in range(3):
                         state = gateway.observe()
-                        target = min((n for n in state["npcs"] if n["id"] == fishing),
+                        target = min(population,
                                      key=lambda n: abs(n["x"] - state["position"][1]) + abs(n["z"] - state["position"][2]))
                         # Waterborne NPCs are deliberately off the walkable mesh.
                         # Choose their actual nearest exported shore, never an
@@ -185,6 +197,9 @@ def main():
                         shore = min(edges, key=lambda at: (max(abs(at[0] - target["x"]), abs(at[1] - target["z"])),
                                                           abs(at[0] - target["x"]) + abs(at[1] - target["z"])))
                         walk(*shore)
+                        visible = gateway.wait(lambda s: any(n["id"] == fishing for n in s["npcs"]), 15)
+                        target = min((n for n in visible["npcs"] if n["id"] == fishing),
+                                     key=lambda n: abs(n["x"] - shore[0]) + abs(n["z"] - shore[1]))
                         gateway.act(f"npc {target['index']} 1")
                         gateway.wait(lambda s: count(s, raw) >= 8, 130)
                         walk(*edges[shore][0])  # Interrupt gathering through ordinary movement.
