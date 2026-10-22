@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0204",
+  "implementation_commit_sha": "325ff50ce9ce43e3bc3a344c49ffa48055717865",
+  "recorded_utc": "2026-10-22T22:16:32.732673+00:00",
+  "result": "OWNER_SMALL_SPIDER_NO_NORMAL_LOOT_FACTORY_WORLD_CACHE_APPLICATION_PASS_NATIVE_NOT_RUN",
+  "sources": {
+    "crates/server/src/content.rs": "f0ffe6e2b5b084590c6eb63f49f144bffa805a4433d8d3189d035af7dfe88af1",
+    "crates/server/src/content/spider_drops.rs": "cc6aa313f62e2ed03f245f05c59642b9313b62ac6b27cc73c514a69490369b4f",
+    "crates/server/src/startup.rs": "c899f8df3a256db762971209bf2c4aaf8126dfb7839d05d5c45c937a5012a1a2",
+    "crates/world/src/npc_death.rs": "94fa51e56ade3bccf490ee7eeb1ac6c42c84a270e0d636276a5dcf55e8554106",
+    "crates/world/tests/spider_drops.rs": "50e2315a5cccae3edc3450a9658f1bb2a5a92ce0fc8228f3383bf1e6ad9daa4d"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/drops/src/main/resources/drops/tables/monsters/spider.toml",
+      "sha256": "72be708050631887a75c3f82a6e93b0cc68593ec11de282523b62b6c294b224c",
+      "availability": "protected_local_reference",
+      "revision": "Protected local archive; configured241; upstream commit unknown"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Spider",
+      "revision": "15330931",
+      "sha256": "1eec9c1335606bf7f760d4b9b7fe348b7b925a4e7c5e4f2c42ff637cb4275a50",
+      "availability": "protected_local_reference"
+    }
+  ],
+  "server_archive": {
+    "sha256": "2D9902C69F4F9711EBAEB0D049D75068EBB76A7A3D1DD58B3AF5101C63F4BF26",
+    "source_count": 710,
+    "source_manifest_sha256": "8452cec81d483761711944806f6fdddd1a1c645c51926d77f3129ab2c81619fe"
+  },
+  "matrix": {
+    "server_passed": 337,
+    "selected_world_integration_passed": 33,
+    "new_spider_world_tests": 5,
+    "factory_refusals": 30,
+    "actual_source_declarations": 1,
+    "actual_cache_deaths": 24,
+    "registered_cache_cases": 18,
+    "unregistered_bone_controls": 6,
+    "natural_ordinary_cache_cases": 8,
+    "prepared_special_cache_cases": 16
+  },
+  "logs": {
+    "application-check-009.log": {
+      "reference": "work/openrune-spider-drops-20261022/application-check-009.log",
+      "sha256": "9c1010f7414f22d661c9b0608d3354f14d467122c49ef0a7d3fb14cf7d24da67"
+    },
+    "archive-008.log": {
+      "reference": "work/openrune-spider-drops-20261022/archive-008.log",
+      "sha256": "d0e22fd3182ba0a08212f7b57df678c0a58e4d952f617a27a6754a714c8a0460"
+    },
+    "cache-006.log": {
+      "reference": "work/openrune-spider-drops-20261022/cache-006.log",
+      "sha256": "8bdb019f40a89eda138b2528213765f1102ee751e3564a2dc15b35d4341eb488"
+    },
+    "cache-007.log": {
+      "reference": "work/openrune-spider-drops-20261022/cache-007.log",
+      "sha256": "29f0d6465b1d900acf1b449ba8e8c08e6a4497775c8c1bf333928a6bb0eaa433"
+    },
+    "profiles-002.log": {
+      "reference": "work/openrune-spider-drops-20261022/profiles-002.log",
+      "sha256": "e27233cb67132b91fb021c1a57638a3029d81cb9dc9213fc3e97528b2c59ee80"
+    },
+    "server-004.log": {
+      "reference": "work/openrune-spider-drops-20261022/server-004.log",
+      "sha256": "f57d0fa90c3029030ac2ebb4c23f599807e26da39cb0b238d9a567b381e64eb4"
+    },
+    "world-003.log": {
+      "reference": "work/openrune-spider-drops-20261022/world-003.log",
+      "sha256": "7d2f6b0b4fb98a0a093fd3787765d476d34f1eebd944082201bdc9f5d8c60056"
+    }
+  },
+  "source_declarations": {
+    "input_manifest_sha256": "787558495cb46ab2987466ab9adb31ea1a4c7a9b417e381abf2f74d5b9d84a04",
+    "expected_sha256": "a96c7ccb23bd20b5bd14a3a51be648b3a0911d57b73e3e0b3286e209dd9ed32e",
+    "scope": "Actual three source NPC symbols, absent guaranteed/main declarations and two conditional tertiaries; no donor engine execution."
+  },
+  "lifecycle": {
+    "preserved_ordinary": [
+      3019,
+      6251,
+      3,
+      3608
+    ],
+    "same_rig": [
+      6247,
+      6248
+    ],
+    "adapted_missing_parameter_types": [
+      2478,
+      4561
+    ],
+    "observed_fallback": [
+      836,
+      2,
+      null
+    ],
+    "adaptation": "Copy the attested ordinary small-spider lifecycle only for two exact matching rigs; ordinary baseline unchanged, not donor timing or native presentation proof."
+  },
+  "preserved_failure": {
+    "reference": "work/openrune-spider-drops-20261022/cache-006.log",
+    "sha256": "8bdb019f40a89eda138b2528213765f1102ee751e3564a2dc15b35d4341eb488",
+    "source_snapshot_sha256": "a4f4aa43b6bb8737a31c1831b14e9ded6f7dc94589c9dfa390fca751484cc916",
+    "scope": "Private probe E0277: spawn capacity error is an Npc, not std::error::Error; converted to a clear test error, corrected007PASS. Production factory/world tests already passed."
+  },
+  "native": {
+    "status": "NOT_RUN",
+    "ordinary_natural_spawns_in_bounded_scan": 7,
+    "first_ordinary_coords": [
+      3157,
+      3225,
+      0
+    ],
+    "scope": "Cache natural spawn is not native interaction. Special variants are prepared cache fixtures; native body/audio, ordinary Attack/no-new-pile and same-save fine-XP reconnect remain required.",
+    "ordinary_player_death_dependency": "PG-DEF-011 / issue135; baseline recovery gap, not introduced by this NPC change."
+  },
+  "known_limitations": [
+    "Three exact source registrations only: ordinary3019, Stronghold2478 and Underpass4561. The normal profile has no guaranteed products or main roll, so it must not inherit generic bones. This is not a claim that spiders never have conditional drops.",
+    "The protected TOML has only conditional looting-bag and beginner-clue tables. Those rolls, Wilderness Slayer drops shown by Wiki, quest/special-area access and account exceptions remain unported or unaccepted. Standard Python parsed actual declaration facts; the donor Kotlin engine was not executed.",
+    "Ordinary 3019 already has explicit small-spider death6251 / three ticks / sound3608; it is preserved. Same-rig2478/4561 omit the parameter and resolve to human836 / two ticks / no sound. The adapter explicitly copies the attested ordinary baseline only to those two strict variants. This is a documented family adaptation; their native body/audio/cadence remain unaccepted.",
+    "A bounded 48-map inspection found seven natural ordinary3019 spawns. Eight cache cases retain an actual natural spawn; sixteen prepare the two special variants on the same real12594region. These are headless direct-hit/hero cases, not native Attack, quest or area-access acceptance.",
+    "The24cache cases comprise18registered normal/offline/irrelevant-bone-catalog cases and6deliberately unregistered controls. Controls reproduce the former generic bone drop and are not claimed as successful registered no-loot outcomes. No normal-loot RNG or drop XP is added; existing ground identities/timers and other NPC fallback remain intact.",
+    "Spider native testing and same-save combat/fine-XP reconnect have not run. General player death/restart recovery PG-DEF-011 is tracked in issue135 and remains a separate ordinary-world V3 dependency. Current Cinderworks rescue remains separate; no new independent acceptance is asserted.",
+    "Local manifests/configuration and lean debug0/nonincremental/codegen2 profiles differ from a pristine published checkout. The archive pins actual inputs and five changed public sources match the implementation commit; this is owner development evidence only. Discovery counts are not gameplay completion; chemistry independent verification remains paused."
+  ],
+  "contract_validation": {
+    "reference": "work/openrune-spider-drops-20261022/queue-010.log",
+    "sha256": "e55901c27182daad803fe9eb3bb9c11059087e35129db0be080f0172b737e270",
+    "result": "PASS228records/204units/exactGitobject integrity; not gameplay acceptance"
+  }
+}
