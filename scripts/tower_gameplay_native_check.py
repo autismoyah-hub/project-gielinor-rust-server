@@ -176,13 +176,18 @@ def main():
                     assert conserved(refused) == conserved(admitted), "Unearned claim changed state"
                     gateway.act("interface 35913795 1")
                     for attempt in range(3):
-                        walk(10438, 116)
                         state = gateway.observe()
                         target = min((n for n in state["npcs"] if n["id"] == fishing),
-                                     key=lambda n: abs(n["x"] - 10438) + abs(n["z"] - 116))
+                                     key=lambda n: abs(n["x"] - state["position"][1]) + abs(n["z"] - state["position"][2]))
+                        # Waterborne NPCs are deliberately off the walkable mesh.
+                        # Choose their actual nearest exported shore, never an
+                        # old experimental NPC position or a blocked water tile.
+                        shore = min(edges, key=lambda at: (max(abs(at[0] - target["x"]), abs(at[1] - target["z"])),
+                                                          abs(at[0] - target["x"]) + abs(at[1] - target["z"])))
+                        walk(*shore)
                         gateway.act(f"npc {target['index']} 1")
                         gateway.wait(lambda s: count(s, raw) >= 8, 130)
-                        walk(10438, 115)  # Interrupt gathering through an ordinary movement action.
+                        walk(*edges[shore][0])  # Interrupt gathering through ordinary movement.
                         caught = gateway.observe()
                         raw_item = next(i for i in caught["items"] if i["id"] == raw and i["count"] > 0)
                         previous_total = count(caught, raw) + count(caught, cooked) + count(caught, burnt)
