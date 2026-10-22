@@ -469,6 +469,12 @@ impl World {
         let Some(&door) = self.doors.get(&loc.id).filter(|_| operation == 1) else {
             return;
         };
+        if door.kind.is_picket() && (p.death_queued || p.data.stats.current(3) as u8==0
+            || self.locations.revision(loc)!=p.location_revision) {
+            p.location_interaction=None;p.movement.interacting=false;p.movement.abort();
+            self.events.push(WorldEvent::ActionRejected{actor,error:ActionError::Protected});
+            return;
+        }
         let started = match doors::begin(loc, door, source) {
             Ok(started) => started,
             Err(error) => {

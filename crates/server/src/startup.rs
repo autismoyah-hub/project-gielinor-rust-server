@@ -477,6 +477,9 @@ pub fn configure<B: AccountBackend>(
     runtime.world.doors =
         crate::doors::resolve(n("content"), n("param"), &parameters, &runtime.definitions)
             .map_err(io::Error::other)?;
+    let picket=crate::doors::resolve_picket(n("content"),n("param"),n("loc"),&runtime.definitions).map_err(io::Error::other)?;
+    if picket.keys().any(|id|runtime.world.doors.contains_key(id)){return Err(io::Error::other("Conflicting picket gate registration"));}
+    runtime.world.doors.extend(picket);
     let passages=crate::content::guild_passages(n("obj"),n("loc"),n("stat"),n("content"),&runtime.definitions).map_err(io::Error::other)?;
     for &id in passages.keys(){
         // A special guild handler supersedes only a possible generic-door binding.
