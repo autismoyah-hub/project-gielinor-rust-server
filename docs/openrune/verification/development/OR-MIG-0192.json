@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0192",
+  "implementation_commit_sha": "afdd75043065374182164af3fd1fe50d2a259768",
+  "recorded_utc": "2026-10-22T12:48:04.237016+00:00",
+  "result": "OWNER_WORLD_CACHE_AND_COMPILED_QUEUE_FIXTURES_PASS_NATIVE_PENDING_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/server/src/content.rs": "4e32f784d09770c4931df5300a84bc2a68deb92e6d06bae9ea626cdda0084cb0",
+    "crates/server/src/content/ducks.rs": "68a8945d3e174d51a58d88457837e07c5dd558a81706697fb3e528fb3a32ceaf",
+    "crates/server/src/startup.rs": "37172e2445642d8c79e83c3c6b0f4f688868eef0774e70dceb0888e75c93559c",
+    "crates/world/src/ducks.rs": "f62c1e6a0db96f1e9f13532793cde929846ddc1c830d4ce8f960bcc89091d37d",
+    "crates/world/src/lib.rs": "5467289ebc8d5b037b8f251c225b7051a9e6b997ebccfbb23afce5801fcfc6b9",
+    "crates/world/src/simulation.rs": "f444783a0752f6826bc95ed6c4d13582416babc92f7b758b18b6b5875553afa6",
+    "crates/world/src/simulation/duck_actions.rs": "8e65a23b433f9060e76c31137e60589b6bfef149a6b0c450f3d4cae8585fc29a",
+    "crates/world/src/simulation/duck_tests.rs": "d5e561117af633c2e470584ddeac40c6c47e8184df950c0af5ba9a3eb8e4f878",
+    "crates/world/src/simulation/fixtures/duck-queue-source.expected": "9432680558db3149e8ded25320d8cab647366ef1bbcdc5d67a1d450cd363889d",
+    "crates/world/src/simulation/npc_death_actions.rs": "4cae5925312a5832abba73014dea5ab1e8bd103dc144383df17951b2d084447a",
+    "crates/world/src/simulation/npc_search.rs": "87c0e730da9bd0dea52e71c5375822ab4cf6d7fd24e674a6f0216b0374d8f04c"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-npcs/src/main/kotlin/org/rsmod/content/generic/npcs/ducks/Ducks.kt",
+      "sha256": "0a5bb95d0c2bc04c908dfc332e76af4fb757bf83d5bdad467fc73e656ce701d1",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local reference; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/game-process/src/main/kotlin/org/rsmod/api/game/process/npc/NpcQueueProcessor.kt",
+      "sha256": "b4210aa540a37233dc28a06b6a13950dfa28ea9cd8e1cda392fcb96e847c8228",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local reference; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "engine/game/src/main/kotlin/org/rsmod/game/queue/NpcQueueList.kt",
+      "sha256": "dc310a04c5ba82af7e69cc90fae4d3cb3c34e4c32cd7107f6c6a6ac011a7a3d8",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local reference; configured241"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "content/generic/generic-npcs/src/main/kotlin/org/rsmod/content/generic/npcs/ducks/Ducks.kt",
+      "sha256": "fa266b6e53a98dfa384514fde7554dff4c237f722333a2833117f6e2fcc98978",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local reference; target239.1"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "api/game-process/src/main/kotlin/org/rsmod/api/game/process/npc/NpcQueueProcessor.kt",
+      "sha256": "67153a7d3189f2b241b436e5040cb9e4534b81c4d0256b338bde042101829333",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local reference; target239.1"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "engine/game/src/main/kotlin/org/rsmod/game/queue/NpcQueueList.kt",
+      "sha256": "606163041c15ec4537322be065c16cf3458e695868698439cdf01acd531936c2",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local reference; target239.1"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Duck",
+      "sha256": "118b60f00451c849a06b5c50d520de5ab0931d7b5f20928b6932a6ccac82dfe6",
+      "availability": "protected_local_reference",
+      "revision": "15284078"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Duckling",
+      "sha256": "1c56a3f0118fab911abf5de3b45429fb0663fa360eaa4df742e2b519e1a4d797",
+      "availability": "protected_local_reference",
+      "revision": "15199375"
+    }
+  ],
+  "compatibility_notes": {
+    "scope": "Ordinary aquatic adult1838/1839 and cluster2002 only. Timer, callbacks, mother/child LOS, mourn and no-drop death adaptation; not excluded duck variants or full Wiki content.",
+    "queue_oracle": "Actual protected NpcQueueProcessor.kt and NpcQueueList.kt compiled in place with nine owned recording dependencies; ten logical queue fixtures match Rust. Not full Kotlin engine, actual Ducks.kt callback execution, coroutine death or native acceptance.",
+    "oracle_label_correction": "Frozen kotlin-queue-001/result.json and runner contain copied GenericPerson scope/error labels. inputs.json source paths/hashes and compiled arguments identify actual NPC QUEUE sources, not Person; preserved unchanged and explicitly corrected here.",
+    "rng": "Independent RandomSource; inclusive 50..100 bound verified. Mourn samples remaining square buffer without replacement before filtering; no Kotlin seeded stream equivalence claimed.",
+    "wiki": "Local pinned Wiki pages support broad ordinary duck/duckling behavior; precise queue timing and cache IDs are source/cache verified. Web search Duck page supports mother Quack?/duckling responses; direct Wiki web access robots-blocked.",
+    "native": "Pending; synthetic prepared terrain/positions and stationary modes are disclosed in cache probe. No audio playback or actual-map/native claim."
+  },
+  "logs": {
+    "inspection-001.log": {
+      "sha256": "6fd8e68864e86840b3185e288397b0ac87b8de4efff6d5633603e61e1378bcf5",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.1% sampled, ceiling70%.",
+        "Capacity: 8,477 MiB available, commit 41.6%, pages-in/s 0, disk 0.6 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "focused-002.log": {
+      "sha256": "0e3f567fab2a82e6dd12cee22ebad3a9f96e8a58bbe143067b20f20f0a5a934d",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 2.7% sampled, ceiling70%.",
+        "Capacity: 8,480 MiB available, commit 41.4%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "focused-003.log": {
+      "sha256": "29c50199e64beba9a3c82761a15217380707559fafcafddc0c088f4421493601",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 1.7% sampled, ceiling70%.",
+        "Capacity: 8,561 MiB available, commit 41.1%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 313 filtered out; finished in 0.00s",
+        "test result: FAILED. 7 passed; 1 failed; 0 ignored; 0 measured; 719 filtered out; finished in 1.37s"
+      ]
+    },
+    "kotlin-004.log": {
+      "sha256": "4ffe30a395eb875755a2d5278f3efc0c1d7d27334f0373d77450280a4194a9e7",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.6% sampled, ceiling70%.",
+        "Capacity: 8,275 MiB available, commit 42.5%, pages-in/s 2,798, disk 0.3 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS actual Kotlin NpcQueueList+NpcQueueProcessor10phase/tail/pause/reset fixtures; recording callbacks, not full NPC engine"
+      ]
+    },
+    "focused-005.log": {
+      "sha256": "bbfd02d423714a2778d454ec4548319f60a442250739ee4d2eddf2e27b2460d0",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.8% sampled, ceiling70%.",
+        "Capacity: 8,330 MiB available, commit 42.1%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 313 filtered out; finished in 0.00s",
+        "test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 719 filtered out; finished in 0.92s"
+      ]
+    },
+    "shared-006.log": {
+      "sha256": "03a29e33a32720ee6f447cb9bf723a006c13a788d4944203532ee1337c7ea8cd",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.8% sampled, ceiling70%.",
+        "Capacity: 8,217 MiB available, commit 43.4%, pages-in/s 0, disk 5.1 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 314 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 72.04s",
+        "test result: ok. 727 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 46.30s"
+      ]
+    },
+    "cache-007.log": {
+      "sha256": "939c304a47192d068153dedf3042fd16071d6ab1b93565d672a90da305b0d070",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.4% sampled, ceiling70%.",
+        "Capacity: 8,235 MiB available, commit 43.2%, pages-in/s 0, disk 5.2 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS 9actual-cache duck family timer/queue/LOS sound cases; prepared water flags/positions and stationary mode, not actual-map/native/death acceptance"
+      ]
+    },
+    "map-008.log": {
+      "sha256": "0456d92becc16648fcff6029f19755a68cc1d094ba586deeabc8451910924875",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.8% sampled, ceiling70%.",
+        "Capacity: 8,164 MiB available, commit 43.3%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "archive-009.log": {
+      "sha256": "1d6983aeacf2bc1e8382e783cd5ca7d913b40c57eb4b2ba4e4b9e8f80a2c2b38",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 1.4% sampled, ceiling70%.",
+        "Capacity: 8,197 MiB available, commit 43.3%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "archive-011.log": {
+      "sha256": "877481c6da4f50f71333867871f96a2fc6717cce499c9e4c2bf035e80adcc5a4",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.1% sampled, ceiling70%.",
+        "Capacity: 8,196 MiB available, commit 43.3%, pages-in/s 0, disk 0.4 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 6D4C63B2442E381D465A665D3C6A388C1D3AFF7501B7B1277B0586C6DFE6E57F (654 source files)."
+      ]
+    }
+  },
+  "server_archive": {
+    "sha256": "6D4C63B2442E381D465A665D3C6A388C1D3AFF7501B7B1277B0586C6DFE6E57F",
+    "source_count": 654,
+    "source_manifest_sha256": "f5e16bc275e4d8d4e972e7f41fb2c3961df9f14328fc0bf9f63c697495a0432a",
+    "before_after_sources_unchanged": true
+  },
+  "matrix": {
+    "server_pass": 314,
+    "world_pass": 727,
+    "world_existing_ignored": 1,
+    "duck_world_tests": 9,
+    "binding_drift_cases": 12,
+    "actual_cache_profiles": 3,
+    "actual_cache_prepared_cases": 9,
+    "kotlin_queue_logical_cases": 10,
+    "adult_interval_values": 51
+  },
+  "private_probes": {
+    "crates/server/examples/duck_profiles_private.rs": "b930e0b03f2218a3f987ebd5865e1e3a9bdde7c7f0eb9a17ec74d7b375f32480",
+    "crates/server/examples/duck_world_cache_private.rs": "d57c60546949478894856fc4547568b385bc5669cbf9a5a614095c725724e301",
+    "crates/server/examples/duck_map_cache_private.rs": "7c380a2744164dc7b296a1ff2a10a3f604e5a8422519de43ba5a06b15637f13d"
+  },
+  "queue_oracle": {
+    "inputs": {
+      "source": "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\game-process\\src\\main\\kotlin\\org\\rsmod\\api\\game\\process\\npc\\NpcQueueProcessor.kt",
+      "source_sha256": "b4210aa540a37233dc28a06b6a13950dfa28ea9cd8e1cda392fcb96e847c8228",
+      "extra_source": "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\engine\\game\\src\\main\\kotlin\\org\\rsmod\\game\\queue\\NpcQueueList.kt",
+      "extra_source_sha256": "dc310a04c5ba82af7e69cc90fae4d3cb3c34e4c32cd7107f6c6a6ac011a7a3d8",
+      "stubs": {
+        "Inject.kt": "135a38de15b48776d26c185c021acce2a4ba097776c74377fd3446609dc5dd4b",
+        "Types.kt": "ac05de16a95d664e7178e32406989c02e23cce2bd19101ee50ce898d504100c4",
+        "Rscm.kt": "5e4958018b104ec56d8031bee335a14fb00960b86e45a2b50ec6f0ab38fc60d6",
+        "Npc.kt": "bd71d67c02f4501b8769de2c5692f179b5d74f8d6bb9eaf6e3a3d249110f1908",
+        "Events.kt": "2b769aebb6abf8c0c3121086042fa5f118e2c03b7a83040c4e96c086162527ff",
+        "Access.kt": "28e569c22ab810f0612a7cec9c641549c817057d45b083610f8609975d9c521c",
+        "EventBus.kt": "4e4d954599eee5b8ebefb10906397f1d249d622cbdb7d71c824f81278bf94987",
+        "Trace.kt": "996fa25f12d88ec27d6d6aa6b295f635b2dc45051da94e0e81a57a03c124e3e4",
+        "DuckQueueOracle.kt": "9449e697056ce5c7d3731372a523f5211ec66c2962c6095dcde740c49589a989"
+      },
+      "scope": "Actual queue list and queue processor compiled unchanged with owned minimal NPC/EventBus/access environment; callback/timing core, not full engine."
+    },
+    "fixture_sha256": "9432680558db3149e8ded25320d8cab647366ef1bbcdc5d67a1d450cd363889d",
+    "scope": "Actual protected NpcQueueProcessor.kt and NpcQueueList.kt compiled in place with nine owned recording dependencies; ten logical queue fixtures match Rust. Not full Kotlin engine, actual Ducks.kt callback execution, coroutine death or native acceptance.",
+    "label_correction": "Frozen kotlin-queue-001/result.json and runner contain copied GenericPerson scope/error labels. inputs.json source paths/hashes and compiled arguments identify actual NPC QUEUE sources, not Person; preserved unchanged and explicitly corrected here."
+  },
+  "disk_cleanup": {
+    "reason": "Archive009 linker disk exhaustion",
+    "scope": "Owned regenerable incremental compiler cache only; no source, fixtures, evidence, archives or other agents files removed",
+    "paths": [
+      "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\incremental\\gielinor_world-3hw0joyady9y6",
+      "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\incremental\\gielinor_server-36bc5fcpyp7yi",
+      "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\incremental\\gielinor_server-2313qaa8o6zw4"
+    ],
+    "freeBeforeBytes": 138354688,
+    "freeAfterBytes": 2321309696,
+    "utc": "2026-10-22T12:44:20.5107934Z"
+  },
+  "failures_preserved": {
+    "focused002": "Borrow overlap around death hook fixed by capturing type/hero before mutation.",
+    "focused003": "Positive ordinary-bone test lacked hero attribution; only fixture corrected, death hook unchanged.",
+    "archive009": "Link failed: no space left on device. Three owned incremental compiler caches reclaimed under exclusive owned build lease; no source/fixture/evidence/archive removed. New archive011 passed."
+  },
+  "native": [],
+  "known_limitations": [
+    "Owner working-tree validation with protected private manifest/test opt-ins; not pristine or independent acceptance.",
+    "Only aquatic adult1838/1839 and cluster2002, actual content24/25. Other duck/duckling variants, general follow behavior and wider Wiki behavior are outside this unit.",
+    "Ten queue fixtures execute actual protected NpcQueueProcessor.kt/NpcQueueList.kt with owned recording dependencies. They do not execute full Ducks.kt, Kotlin engine, hunt, coroutine death or native client. Frozen oracle result copied GenericPerson labels are explicitly corrected in compatibility_notes; source inputs identify the actual queue processor.",
+    "Prepared World/cache tests use synthetic terrain/positions and stationary modes; exact target definitions/timers are real. World death test pre-attributes hero points then queues a typeless hit: no melee/ranged accuracy or combat XP acceptance.",
+    "Native observation is pending. No rendered speech, audio playback, actual-map combat/death/mourning or multiplayer acceptance claimed.",
+    "Mourn uses independent bounded RNG and remaining-square sampling; no Kotlin seeded RNG stream equivalence. Map-edge search fails safely rather than throwing into the tick.",
+    "The archive source enumerator excluded the then-ignored owned include_str fixture. Its exact Git/current/original Kotlin-generated bytes are separately pinned in supplemental_inputs; the nine World tests include the fixture correspondence. Original archive manifest and binary are preserved, not silently rewritten.",
+    "No inventory, XP or persistence schema change. Independent V0\u2013V4 queued; chemistry verification remains paused."
+  ],
+  "supplemental_inputs": {
+    "crates/world/src/simulation/fixtures/duck-queue-source.expected": {
+      "sha256": "9432680558db3149e8ded25320d8cab647366ef1bbcdc5d67a1d450cd363889d",
+      "basis": "Identical Git/current/original Kotlin-generated fixture bytes, compiled by the focused005 and shared006 tests. Not included in original rg-enumerated archive manifest."
+    }
+  }
+}

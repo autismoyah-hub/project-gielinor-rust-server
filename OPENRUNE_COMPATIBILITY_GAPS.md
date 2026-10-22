@@ -70,3 +70,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0191 `07e14085ec8eed29a574896228815191c0913b25` reconciles existingGenericPerson and fixes invalid-life greeting/continuationeffects. Owner313server718world/cache28/dualactualKotlin27+RustWorld27PASS; nativeinvalidlife/enginephase/independent remain open, chemistrypaused.
 
 - OR-MIG-0191r2 `07e14085ec8eed29a574896228815191c0913b25` healthy nativeTalk102/greetingContinue115/firstNPCreply/reconnect ownerPASS; nativeinvalidlife/flyer/retaliation/fullbranches/renderedchat and independent remain open, chemistry paused.
+
+- OR-MIG-0192 `afdd75043065374182164af3fd1fe50d2a259768`: ordinary aquatic callbacks passed owner World/cache/compiled queue-core checks. Native death/mourn/audio, following/special variants and independent acceptance remain open. Chemistry verification paused.
