@@ -1,6 +1,6 @@
 # OpenRune migration continuation ledger
 
-Active program; not complete. Branch: agent2/openrune-content. Agent 2 owns CLI commits/pushes and issue evidence. Approved elevated Git execution as backup with exact per-command safe.directory remains required. Preserve all unstaged packaging differences and ignored resources.
+Active program; not complete. Maintained authority: main, with bounded work on short-lived forge feature branches. Historical agent2/openrune-content checkpoints below are preserved. Agent 2 owns CLI commits/pushes and issue evidence. Approved elevated Git execution as backup with exact per-command safe.directory remains required. Preserve all unstaged packaging differences and ignored resources.
 
 ## Inventory boundary
 
@@ -5170,3 +5170,10 @@ Current-source before001 conversion FAIL preserved. Corrected24controlled World 
 Source `ef113b381c7a422103c4a53e19b705693dd1dd3e`. Shared selected/reference burial now refuses unsignedzeroHP/unresolved death at admission and confirmation-to-animation, and clears/refuses delayed burial before inventory/XP/preservation. VisibleHP restoration is not recovery. Chapel/Tower offering and CrateWalk branches remain unchanged. No new IDs, XP policy, timing, sound, schema or chemistry changes.
 
 Current-source before001 reproduced two failure tests/one passing live control and is preserved. Corrected focused002 PASS3:36ordinary before/during cases +3confirmation refusals, full duplicate pack/Stats/fineXP conserved;3live selected controls retain duplicate identity and56fineXP at explicit125rate. Fullshared003 PASS297server/669world/1existingignored; unchanged-source executable archive built. [Exact owner evidence](docs/openrune/verification/development/OR-MIG-0179.json) qualifies controlled Chaos fixture and all native/recovery/independent gaps. Original0051 failures remain at their pins; no whole Prayer/PG-DEF-003 acceptance or issue closure.
+
+
+## FORGE OR-MIG-0180 — Pack life and live membership eligibility
+
+Source `821c6cb0dcdd3d381af68d6a6368f4f9f77bc7f9`. Existing registered packs now refuse saving/logout, unsignedzeroHP/unresolved death and pack-specific member ineligibility before initial exchange and each weak repeat. Native startup derives eligibility from actual pack definitions, independently of output membership. Membership restoration alone does not revive a stopped queue. No new pack profiles or alternate inventory/queue engine.
+
+Preserved before001 zeroHP reproduction FAIL. Focused002 PASS6; fullshared003 PASS298server/671world/1existingignored. Actual239.1 cache probe004 PASS34member/nonmember World cases across17profiles; actual member-only pack IDs12857/13250/13252/13254/19704. Controlled transition fixture flags11881 only for testing. Source formatting followed tests; unchanged-source executable archive005 built. [Owner evidence](docs/openrune/verification/development/OR-MIG-0180.json) pins all logs and executable. Native client, expiry propagation, save/relogin/recovery and independent V0–V4 remain pending; chemistry verification stays paused.

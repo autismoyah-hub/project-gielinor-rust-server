@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0180",
+  "implementation_commit_sha": "821c6cb0dcdd3d381af68d6a6368f4f9f77bc7f9",
+  "recorded_utc": "2026-10-22T04:43:25.686648+00:00",
+  "result": "DEVELOPMENT_VALIDATION_PASS",
+  "sources": {
+    "crates/world/src/simulation.rs": "9947812bd8328f73ff5a1af98300ccab1021abd6f9722c6aee05965f5f47f593",
+    "crates/world/src/simulation/item_pack_actions.rs": "6c05f149df5670fe7074dfd6de2eb2fca55ff43255ace6a0991108d1da31f33f",
+    "crates/server/src/content.rs": "a7aca2cab4cbe9007b1ed043356b632214bd8a8f8d4636e2e5827346ac5ea338",
+    "crates/server/src/startup.rs": "e109506bbb0e2ee33377b77ee437c02a932bb4cb760039c1d0c03e80c305b050"
+  },
+  "logs": {
+    "before-001.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-world','--lib','item_pack_life')",
+      "sha256": "231c059143a67e52bca38d5a32b2ea8795c7b898fc415af943b0d17ed74d8780",
+      "result": "EXPECTED_REPRODUCTION_FAILURE",
+      "summaries": [
+        "Build CPU capacity: 5.3% sampled, ceiling70%.",
+        "Capacity: 8,341 MiB available, commit 42.8%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 670 filtered out; finished in 0.07s"
+      ]
+    },
+    "focused-002.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-world','--lib','item_pack_actions')",
+      "sha256": "5533a5fcc66b2cd2b13da2413f522ef0d824c44cb0d24ff453915c6a7f782763",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.3% sampled, ceiling70%.",
+        "Capacity: 8,331 MiB available, commit 42.8%, pages-in/s 0, disk 1.9 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 666 filtered out; finished in 0.57s"
+      ]
+    },
+    "shared-003.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-server','-p','gielinor-world','--lib')",
+      "sha256": "144faf7e8052bf8f7abdecd295f4829eb369eeda7a1fb20f13d830babb4a67a6",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.6% sampled, ceiling70%.",
+        "Capacity: 8,150 MiB available, commit 43.5%, pages-in/s 0, disk 4.4 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 298 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 49.58s",
+        "test result: ok. 671 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 31.04s"
+      ]
+    },
+    "cache-actions-004.log": {
+      "command": "build.ps1 -Action run -CargoArgs @(-p,gielinor-server,--example,pack_eligibility_cache_private,--,<private target239.1 cache>,<private symbols>)",
+      "sha256": "83d426e33ed743d5eb1d19223720fbc5cd4ef735463e67d3e7391d2d0478cf36",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.5% sampled, ceiling70%.",
+        "Capacity: 7,996 MiB available, commit 44.2%, pages-in/s 7, disk 2.8 ms.",
+        "Cargo concurrency: -j 2",
+        "REGISTRY profiles=17 member_pack_ids={12857, 13250, 13252, 13254, 19704}",
+        "PASS real239.1 pack definitions=17 membership/World action cases=34; no native client"
+      ]
+    },
+    "archive-005.log": {
+      "command": "scripts/integration-server-build.ps1 -Run openrune-pack-eligibility-20261021-001",
+      "sha256": "d26937229383b1bfd629b992dba166bc81a2aa99e5ac34d4a116fbe0738ff0e1",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 21.1% sampled, ceiling70%.",
+        "Capacity: 7,606 MiB available, commit 45.1%, pages-in/s 5, disk 3.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 3C128E99FE75195E9B0B0322652A580BB0AA1E8EF52FC607F05141C41DDBE7EC (606 source files)."
+      ]
+    }
+  },
+  "cases": {
+    "life_refusals": 6,
+    "life_dimensions": [
+      "before admission / before queued repeat",
+      "zero unsigned HP / observed DeathRequested / restored visible HP with unresolved death"
+    ],
+    "membership_transition": "initial refusal; fresh member action succeeds; removal stops repeat; restoration does not revive queue; fresh action required",
+    "cache_world_cases": 34,
+    "actual_registered_profiles": 17,
+    "actual_member_pack_ids": [
+      12857,
+      13250,
+      13252,
+      13254,
+      19704
+    ],
+    "checks": [
+      "actual pack membership independent of output flags",
+      "three packs produce300 correct noted/stackable output only if allowed",
+      "invalid-life and membership transitions preserve inventory/Stats/fineXP",
+      "existing movement/stale/full/atomic exchange regression retained"
+    ]
+  },
+  "private_probe_sha256": "27bfe1d2386a5e649dde734183d4fddc0c55c53660ce017c93b6be5f6bcdb043",
+  "server_archive": {
+    "sha256": "3C128E99FE75195E9B0B0322652A580BB0AA1E8EF52FC607F05141C41DDBE7EC",
+    "source_count": 606,
+    "source_manifest_sha256": "a20d08af1d7bf9dee6984923408975a092c7a5756c5418d9c112dca9ad294fed",
+    "before_after_sources_unchanged": true
+  },
+  "limitations": [
+    "Owner working-tree evidence retains private opt-ins/manifests; not pristine or independent acceptance.",
+    "No new pack registrations, native client, compiled Kotlin, real membership-expiry synchronization, acknowledged save/relogin or respawn recovery exercised.",
+    "World rechecks its existing trusted live member flag; external account-expiry propagation remains a separate inherited requirement.",
+    "Controlled membership-transition fixture deliberately flags feather pack11881; this is not a claim that actual feather packs are members-only.",
+    "Existing generic held modal/protection and weak repeat timing retained; no new claim that all modals cancel every pack operation. Chemistry verification stays paused."
+  ]
+}
