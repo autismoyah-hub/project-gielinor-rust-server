@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0182",
+  "implementation_commit_sha": "e01ff31f2db8b87abf5a3fd8e05112952b2a3436",
+  "recorded_utc": "2026-10-22T04:59:49.182384+00:00",
+  "result": "DEVELOPMENT_VALIDATION_PASS",
+  "sources": {
+    "crates/server/src/content.rs": "157cf535f7952e1ab47e7ef2746816f1fd00a43ab948a6b49a86951a32062bb6",
+    "crates/server/src/content/remaining_pack_tests.rs": "7c89ecbcd00b34397bfe0a4ba404ea2a7a5f85c73e69f3652e22cec58be2c5a2"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-items/src/main/kotlin/org/rsmod/content/generic/items/packs/ItemPackScript.kt",
+      "sha256": "0b230789a760d7f0c8e83bddd53ffbef59675108033fcc3b9d5bd53b0ace9dcd",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured revision 241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-items/pack/src/main/resources/pack/configs/item_packs.toml",
+      "sha256": "8a480b3886b252c2e02a4774884f7babf5606a6d42fc8c8074787a80648306a7",
+      "availability": "protected_local_reference",
+      "revision": "Local preserved donor241 reference; upstream commit unavailable"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Broad arrowhead pack",
+      "sha256": "edf8138d5045ee2b6c9743674a77f2d8357f3d436e06f77151743b15a107b3e3",
+      "availability": "protected_local_reference",
+      "revision": "15215058"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Unfinished broad bolt pack",
+      "sha256": "9aac144b4f184c7ea80550843476122d39237c50290513d04ca787d14ddc450f",
+      "availability": "protected_local_reference",
+      "revision": "15215059"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Soft clay pack",
+      "sha256": "7085a6b0bc0b5a894be893ab77f7a3e281da1e565132803318494c15ceb777c6",
+      "availability": "protected_local_reference",
+      "revision": "15185599"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Amylase pack",
+      "sha256": "ff9b1646af2dbd6118cbdda0cfc34c9de4184f28c6a272a5dde4979593dd97a5",
+      "availability": "protected_local_reference",
+      "revision": "15316439"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Eye of newt pack",
+      "sha256": "73fd52b280fde7b023cbe05c372dab828972fba3d7a7ed62e148de78ed39230a",
+      "availability": "protected_local_reference",
+      "revision": "15215037"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Box trap pack",
+      "sha256": "b91946fa557ea232dd1d300be70aafc7536da6470a791cf7157c3edf7c2dec5a",
+      "availability": "protected_local_reference",
+      "revision": "15215054"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bird snare pack",
+      "sha256": "98196a3aa0a249d35425390ae5a10e5b0641d993247b7a1d9c6e3342ffc33ead",
+      "availability": "protected_local_reference",
+      "revision": "15215055"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Magic imp box pack",
+      "sha256": "c224abe2a5167dc7b327eaf772733485e10bbfd82b6cf3dfd811dc1603305393",
+      "availability": "protected_local_reference",
+      "revision": "15215056"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bone bolt pack",
+      "sha256": "4b3bd3e2f48d565ab2c6e2dec7919cf9fe84d957dc3b97b48abf1fdb049f60d5",
+      "availability": "protected_local_reference",
+      "revision": "15186807"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Sandworms pack",
+      "sha256": "19b059b3f51523726df55b46bd70f2c97727d5b1005838a1ba7eae0f0e5dc808",
+      "availability": "protected_local_reference",
+      "revision": "15215042"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Shark lure pack",
+      "sha256": "ea75218830152e1d75f99600b92ec51fa2d64eac28902ddf51c0eecf292534d0",
+      "availability": "protected_local_reference",
+      "revision": "15331108"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Box trap",
+      "sha256": "6ef1e1ecc8b22048af2b1e235798116cd29993876b0d44f2e91f447be4dc3e7a",
+      "availability": "protected_local_reference",
+      "revision": "15316718"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bird snare",
+      "sha256": "41614ddf6ea92d0f3b5b51146053796c79ac42dba246a78fe4c65e4ebc363c12",
+      "availability": "protected_local_reference",
+      "revision": "15350945"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Magic box",
+      "sha256": "eecc1705b036357f926ebc395f73c33db597e28633cffaa18b0a2e1f34bb7a7a",
+      "availability": "protected_local_reference",
+      "revision": "15327344"
+    }
+  ],
+  "logs": {
+    "cache-candidates-001.log": {
+      "command": "build.ps1 -Action run --example remaining_pack_candidates_private -- <private cache/symbols>",
+      "sha256": "d7b5e05335114d77e4249ae7ddf2f3e42bfc810ce4bae14a4bbc2dc5ceb181fe",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.3% sampled, ceiling70%.",
+        "Capacity: 6,197 MiB available, commit 45.1%, pages-in/s 0, disk 5.2 ms.",
+        "Cargo concurrency: -j 2",
+        "ABSENT symbol=shark_lure_pack"
+      ]
+    },
+    "focused-002.log": {
+      "command": "build.ps1 -Action test -p gielinor-server --lib remaining_pack",
+      "sha256": "5d685c513243f099f349dfc1f1b1b15f1db52df30ef2626b7cccfe39a9976d86",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 14.9% sampled, ceiling70%.",
+        "Capacity: 5,784 MiB available, commit 47.8%, pages-in/s 16, disk 4.9 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 300 filtered out; finished in 5.47s"
+      ]
+    },
+    "shared-003.log": {
+      "command": "build.ps1 -Action test -p gielinor-server -p gielinor-world --lib",
+      "sha256": "2f4e415211d6308b017221c77365526c6b9a50045c5a449fa4e471b54651ff15",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.7% sampled, ceiling70%.",
+        "Capacity: 6,543 MiB available, commit 43.8%, pages-in/s 0, disk 1.9 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 304 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 75.49s",
+        "test result: ok. 671 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 45.64s"
+      ]
+    },
+    "cache-actions-004.log": {
+      "command": "build.ps1 -Action run --example remaining_pack_cache_private -- <private cache/symbols>",
+      "sha256": "b87244c34f4343c0a05cc5fe0a65d4bff2532e2584f344d0e2494561e56cd272",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.3% sampled, ceiling70%.",
+        "Capacity: 6,539 MiB available, commit 43.8%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "REGISTRY profiles=31 member_pack_ids={11885, 11887, 12641, 12740, 12742, 12744, 12857, 13193, 13250, 13252, 13254, 19704, 21698, 21701, 21704, 21707}",
+        "PASS real239.1 pack definitions=31 membership/World action cases=62; no native client"
+      ]
+    },
+    "archive-005.log": {
+      "command": "scripts/integration-server-build.ps1 -Run openrune-remaining-packs-20261021-001",
+      "sha256": "3a1ead6c427b070dc7a4c413deb95d3d4ccd2ad872a191eebad1719764a24cc6",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 14.2% sampled, ceiling70%.",
+        "Capacity: 6,272 MiB available, commit 44.8%, pages-in/s 1,029, disk 8.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 4F749F9D9A6CA511B69216B3A699DE0C19457321D15EA5EBA741BBBA80E2E45C (611 source files)."
+      ]
+    }
+  },
+  "matrix": {
+    "controlled_full_duplicate_inventory_member_cases": 60,
+    "controlled_overflow_stale_zeroHP_refusals": 30,
+    "binding_test": "10exact output/note/member policies, optional/missing outputs, wrongOpen and reciprocal note refusals; shark symbol alone does not acquire a rule",
+    "actual_cache_world_cases": 62,
+    "actual_total_profiles": 31,
+    "new_bindings": [
+      {
+        "pack": 11887,
+        "output": 11876,
+        "noted": false,
+        "member_pack": true,
+        "quantity": 100
+      },
+      {
+        "pack": 11885,
+        "output": 11874,
+        "noted": false,
+        "member_pack": true,
+        "quantity": 100
+      },
+      {
+        "pack": 12009,
+        "output": 1761,
+        "noted": true,
+        "member_pack": false,
+        "quantity": 100
+      },
+      {
+        "pack": 12641,
+        "output": 12640,
+        "noted": false,
+        "member_pack": true,
+        "quantity": 100
+      },
+      {
+        "pack": 12859,
+        "output": 221,
+        "noted": true,
+        "member_pack": false,
+        "quantity": 100
+      },
+      {
+        "pack": 12742,
+        "output": 10008,
+        "noted": false,
+        "member_pack": true,
+        "quantity": 100
+      },
+      {
+        "pack": 12740,
+        "output": 10006,
+        "noted": false,
+        "member_pack": true,
+        "quantity": 100
+      },
+      {
+        "pack": 12744,
+        "output": 10025,
+        "noted": false,
+        "member_pack": true,
+        "quantity": 100
+      },
+      {
+        "pack": 13193,
+        "output": 8882,
+        "noted": false,
+        "member_pack": true,
+        "quantity": 100
+      },
+      {
+        "pack": 13432,
+        "output": 13431,
+        "noted": false,
+        "member_pack": false,
+        "quantity": 100
+      }
+    ],
+    "checks": [
+      "selected and repeat exchange preserves other inventory and Stats/fineXP",
+      "nonmember and invalid selections preserve complete inventory",
+      "softclay1762/newteyes222 noted output; Hunter traps unnoted stackable per current Wiki/target cache",
+      "sandworms13432 pack is F2P flag despite members-only13431 output"
+    ]
+  },
+  "private_probes": {
+    "crates/server/examples/remaining_pack_candidates_private.rs": "a609e147f1fa6f650712a9ac7287177e52958f76cd7ed6c551814e8bc5240420",
+    "crates/server/examples/remaining_pack_cache_private.rs": "c1005a6bbc8d58106de8567e18466f58034f11ac8c84bf3c4fa3516b99e4988b"
+  },
+  "server_archive": {
+    "sha256": "4F749F9D9A6CA511B69216B3A699DE0C19457321D15EA5EBA741BBBA80E2E45C",
+    "source_count": 611,
+    "source_manifest_sha256": "8c7ccd40e59d83914f604e63723f8cdb030295dd1c27415fb432bb10ae55d912",
+    "before_after_sources_unchanged": true
+  },
+  "limitations": [
+    "Owner working-tree/cache evidence with retained private opt-ins and source manifest; not pristine or independent acceptance.",
+    "No genuine native menu, acknowledged save/relogin, actual membership-expiry propagation, compiled Kotlin or exact repeat-cadence acceptance in this unit.",
+    "Opening only: shops, currencies, Slayer unlocks for making/using broad ammunition, Hunter trap placement and downstream ingredient/potion use excluded.",
+    "Donor241 shark_lure_pack is absent from target239.1 symbol set and remains unbound. Current Wiki34065 is not invented as a target ID.",
+    "Only donor pack_softclay12009 is added, not separate mineral24851/stardust25533 variants. Wiki distinguishes pack item membership from acquisition access.",
+    "Chemistry independent verification campaign stays PAUSED. Amylase/newt pack opening is an ordinary inventory exchange, not potion/Herblore acceptance.",
+    "Glarial/Koschei restrictions and remaining account/lifecycle/modal differences remain independent requirements. Inventory file classification is not completion percentage."
+  ]
+}

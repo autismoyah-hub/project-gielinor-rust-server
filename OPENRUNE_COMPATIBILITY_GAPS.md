@@ -34,3 +34,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0180 `821c6cb0dcdd3d381af68d6a6368f4f9f77bc7f9` adds pack admission/repeat life and actual pack-definition membership guards. Owner6life/member transition/34cacheWorld/full298server671world pass; no new profiles. External member-expiry sync, native/recovery and independent verification remain open; historical23 evidence untouched.
 
 - OR-MIG-0181 `44fea15fd759826245ea4b72eb645c29299b080e` adds four members-only Tzhaar elemental rune opening profiles. Owner36controlled/42actual-cache World/full301server671world pass. Native/durable recovery/independent and shop/Tokkul/Glarial/Koschei restrictions remain pending; other donor pack families excluded.
+
+- OR-MIG-0182 `e01ff31f2db8b87abf5a3fd8e05112952b2a3436` adds10target-supported pack opening profiles (31total), owner90controlled/62cacheWorld/full304server671world pass. Unsupported shark pack remains unbound; other softclay variants/shops/region/downstreamskills/native/recovery/independent remain open. Pack membership is distinct from output/acquisition; no chemistry campaign resume.
