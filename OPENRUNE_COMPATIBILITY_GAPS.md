@@ -90,3 +90,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0196 `620e1c379b5d84b8bb32625e4d98a10e85d4b6e0`: normal-gold worn XP owner748world316server/cache30/Kotlin1actualresolver/native3passed. Wiki56.2/maintained22.5explicitly differs source56/22. Full source modifiers/Superheat/BlastFurnace/acquisition/nativecape/F2P/lateswaps and independent acceptance remain pending.
 
 - OR-MIG-0197 `777caa43cf53d93fd04e1514c06c96622c99cf45`: owner755world317server/helper-cache48/native3PASS for four ordinary furnace catalyst profiles. Wiki last-catalyst XP/no-free-glove/fractional-base adaptations explicit. Full donor engine/table, other furnace systems/armour/acquisition/gloves mechanics and independent acceptance pending.
+
+- OR-MIG-0198 `bdd07800973d8b027da3668037d920aabee0363f`: owner765world319server/cache30/actual3sources10recordings/native4PASS for ordinary iron forging ring. Wiki140playerwear/stop and12.5XP deliberately differ donor unlimitedring/12. Server-only62400collision guarded. Other methods/armour/acquisition/charge interactions and independent acceptance remain pending.

@@ -1,0 +1,1010 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0198",
+  "implementation_commit_sha": "bdd07800973d8b027da3668037d920aabee0363f",
+  "recorded_utc": "2026-10-22T17:25:04.786539+00:00",
+  "result": "OWNER_FORGING_RING_WORLD_CACHE_ACTUAL_SCRIPT_AND_FOUR_NATIVE_SESSIONS_PASS_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/server/src/content.rs": "fe301b20bcd6be5592b4ca7c4e37cbe7c24883ab9db247147e7c71bb655ca945",
+    "crates/server/src/content/forging_ring.rs": "e4375a3df915ef4d8d1d37a2a84ad9d8a1e4ac4cec74d5ef63722017fa89bd13",
+    "crates/server/src/runtime.rs": "3e5508ffbe88d254998f296acf4505d52eea8c8697368042cedc790d3e4d3d70",
+    "crates/server/src/runtime/equipment_buttons.rs": "5fda32f2ac850bfc451948b9cf6648a0b9ac9c1fa471fd0f374327cbcd67b41b",
+    "crates/server/src/runtime/smelting.rs": "9ca8d2b4d04247767b8ed983d9442f6c4ab2080f9d7c15a0dcd32b508b3ec8b3",
+    "crates/world/src/forging_ring.rs": "e28ca28100b4f4168eee190960138c4fc7c4d2c3428eaf52b40fa270258ade04",
+    "crates/world/src/lib.rs": "f318619b0acd8dc93ee8360b5f3c2a5c211d13d7f308da94724a76b48d9d589e",
+    "crates/world/src/simulation.rs": "babb6f5a24a2bf81d3347686be2d6cc8c2370eb59bafa70db8bc72f4b06a0534",
+    "crates/world/src/simulation/forging_ring_actions.rs": "d8ffeaa7e22df206cdcaebfa3a4f7a54a6e7a4a7cc34aeae79e633f7ac510bc8",
+    "crates/world/src/simulation/forging_ring_tests.rs": "6f3e7a4058a73f0345c2cc1b6fd50e0544929d377ab1cdbab78730492a6c7f6b",
+    "crates/world/src/simulation/smithing_actions.rs": "71cfc7079c47a3a4db5dd133ec04c5ffdccbe98a2ec38fd534f40d4021fcacd5",
+    "docs/openrune/SERVER_STATE_REGISTRY.md": "1114a8f49d98aec52a4ee0785d3be777e889e6bdda0f898c81f8fb528c87b277"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/smelting/SmeltingScript.kt",
+      "sha256": "13b6dd208704723eb134ef19440e60a34a5c075f23bb4d8138108350907a011c",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; actual script+two helpers compiled unchanged with owned recording dependencies, reflection invokes private performSmelt only."
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/smelting/SmithingSmeltXp.kt",
+      "sha256": "4cc9312f09c4ab27d4e2f7dc4fd23a2b09874874c6860f1e68c196d04e19993d",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; actual script+two helpers compiled unchanged with owned recording dependencies, reflection invokes private performSmelt only."
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/util/SmithingBonuses.kt",
+      "sha256": "cb4895214951ba5bee12a860e067883987c7ab4dd98701396d154a602619d8c6",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; actual script+two helpers compiled unchanged with owned recording dependencies, reflection invokes private performSmelt only."
+    },
+    {
+      "kind": "wiki",
+      "reference": "Ring of forging",
+      "sha256": "db5ebf930fae28f57f210bc1eedeb24814b080d492076866d27efe2ec35d64cb",
+      "availability": "protected_local_reference",
+      "revision": "15322378"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Iron bar",
+      "sha256": "c59f45cc430e0b49f21fa7375763f1585ae0b74cadecd0343ea229877a507f5f",
+      "availability": "protected_local_reference",
+      "revision": "15315108"
+    },
+    {
+      "kind": "openrune",
+      "reference": "or-cache/src/main/kotlin/dev/openrune/tables/skills/Smithing.kt",
+      "sha256": "8ae9187191965b6c8384bc3019ffc2a7058526031b7fa6d34686927f0491a144",
+      "availability": "protected_local_reference",
+      "revision": "Inspected iron15/ore1/bar1/sourceXP12 row; table not compiled, owned recording row uses12; maintainedWiki12.5 retained."
+    }
+  ],
+  "server_archive": {
+    "sha256": "FDD7E4193FEF6DA3CFD2EAC7556D132C388C42A6FC8CC52771A4E9C59AE68AB9",
+    "source_count": 683,
+    "source_manifest_sha256": "fe9b14d81611bfa9496b744626ccb23a54d7b28d2dde829572135e138bacdf32",
+    "before_after_sources_unchanged": true
+  },
+  "matrix": {
+    "world_pass": 765,
+    "world_existing_ignored": 1,
+    "server_pass": 319,
+    "ring_world_tests": 10,
+    "full_charge_lifetime": 140,
+    "transaction_life_badstate_cases": 14,
+    "held_guard_cases": 11,
+    "rate_cases": 4,
+    "factory_refusals": 41,
+    "cache_cases": 30,
+    "actual_script_cases": 10,
+    "native_sessions": 4
+  },
+  "logs": {
+    "world-002.log": {
+      "sha256": "1716d4ade11deea1f2c9e822d531aab18c0afa7809366dd3df60e8a6ff9013e8",
+      "result": "FAIL_TEST_HARNESS_BORROW_COMPILE_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 1.9% sampled, ceiling70%.",
+        "Capacity: 7,841 MiB available, commit 44.9%, pages-in/s 0, disk 4.8 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "world-003.log": {
+      "sha256": "d0a1759bab392e40eecd82a998532d5f05221142acba0e4ad3e70a961836a76b",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.4% sampled, ceiling70%.",
+        "Capacity: 7,877 MiB available, commit 44.7%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 765 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 56.09s"
+      ]
+    },
+    "server-004.log": {
+      "sha256": "e105c197f34e06ae032747bae4b5960e15ae09af76260578fe812496d989b3bd",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.0% sampled, ceiling70%.",
+        "Capacity: 7,941 MiB available, commit 44.5%, pages-in/s 0, disk 4.1 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 318 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 57.81s"
+      ]
+    },
+    "kotlin-005.log": {
+      "sha256": "280b67a13add35d63a7ece676cbc0b84b4b6f3dfacef29216b2f4fe21ffcf889",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.9% sampled, ceiling70%.",
+        "Capacity: 7,983 MiB available, commit 44.3%, pages-in/s 0, disk 2.9 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS10 actual unchanged SmeltingScript.performSmelt with two unchanged helper dependencies; owned recording inventory/XP/framework. Worn ring never loses charges in donor, even141successes; donor output refusal loses ore. Explicit Wiki/Rust adaptations required, not full engine acceptance"
+      ]
+    },
+    "server-006.log": {
+      "sha256": "312ef605272359b47b22a6c01bce5d333e4c783b7168c50561190d6a8d697cde",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.3% sampled, ceiling70%.",
+        "Capacity: 7,974 MiB available, commit 44.3%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 319 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 60.23s"
+      ]
+    },
+    "cache-007.log": {
+      "sha256": "e5d9e1c17086f8669308bad5cf491331ff6f9d2decd6ec7fa275bf951773a04b",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.6% sampled, ceiling70%.",
+        "Capacity: 7,981 MiB available, commit 44.3%, pages-in/s 0, disk 0.8 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS30 actual239.1cache selected/queued ring lifetimes with F2P/member and three rates;10actualscript recordings. Wiki140charge break/stop and12.5base versus unchanged donor unlimited ring/12XP intentional; prepared World material/output collection, not native/fullengine acceptance"
+      ]
+    },
+    "fixtures-008.log": {
+      "sha256": "35d4f05a196cb72c3cba3db14846c9f6e35c0d54f7d585a76b684f5fdfa102ad",
+      "result": "PASS",
+      "summaries": []
+    },
+    "world-009.log": {
+      "sha256": "9ed22038c452fe9953b0fdf7a0b4622af73ad456aa1b1a7e3deeba6864e3e45f",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.3% sampled, ceiling70%.",
+        "Capacity: 7,966 MiB available, commit 44.3%, pages-in/s 0, disk 5.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 765 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 57.69s"
+      ]
+    },
+    "server-010.log": {
+      "sha256": "4a8474ee843b094f26eda36548885ba446585aad4a986d3281b947d1bfb23447",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 4.3% sampled, ceiling70%.",
+        "Capacity: 8,065 MiB available, commit 44.2%, pages-in/s 0, disk 4.8 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 319 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 57.65s"
+      ]
+    },
+    "cache-011.log": {
+      "sha256": "a993eedf9b041a0b37a77b00b4a6642a1a2c7daec48cd39c1afd104542bb8a87",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.5% sampled, ceiling70%.",
+        "Capacity: 7,989 MiB available, commit 44.5%, pages-in/s 0, disk 4.9 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS30 actual239.1cache selected/queued ring lifetimes with F2P/member and three rates;10actualscript recordings. Wiki140charge break/stop and12.5base versus unchanged donor unlimited ring/12XP intentional; prepared World material/output collection, not native/fullengine acceptance"
+      ]
+    },
+    "archive-012.log": {
+      "sha256": "71ec7f69a6f90406ac204c1746f947990686a537f4ac686179c8e007fce38ad7",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.2% sampled, ceiling70%.",
+        "Capacity: 8,010 MiB available, commit 44.3%, pages-in/s 0, disk 0.6 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server FDD7E4193FEF6DA3CFD2EAC7556D132C388C42A6FC8CC52771A4E9C59AE68AB9 (683 source files)."
+      ]
+    },
+    "driver-013.log": {
+      "sha256": "f7619ffdee49130567e4a40cb820d840e3ce5606aa3a06cb254124a84fb651a1",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 6.4% sampled, ceiling70%.",
+        "Capacity: 6,118 MiB available, commit 44.6%, pages-in/s 0, disk 1.1 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "native-014.log": {
+      "sha256": "958e8490987e92b24a3a9054d2135569df4aa38cb16e0c925150efac2f219b6d",
+      "result": "FAIL_OWNED_NATIVE_UI_READINESS_PRESERVED",
+      "summaries": [
+        "Capacity: 6,174 MiB available, commit 44.3%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}"
+      ]
+    },
+    "driver-015.log": {
+      "sha256": "cccaffffdcd04ada40264992f26a8174deb49350ef778936ff206c86152af7e5",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 6.0% sampled, ceiling70%.",
+        "Capacity: 6,118 MiB available, commit 44.5%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "native-016.log": {
+      "sha256": "1c7eff3174186cecdb6f396a0c2c2595d6178cbeea7cf20b7ef7ea0bbdb0a47c",
+      "result": "FAIL_OWNED_NATIVE_UI_READINESS_PRESERVED",
+      "summaries": [
+        "Capacity: 6,147 MiB available, commit 44.4%, pages-in/s 0, disk 1.8 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}"
+      ]
+    },
+    "driver-017.log": {
+      "sha256": "aa980669bc1d391aa4d9cd4f3549fc1c9a4b30948de9ba3100a9b296005e5fe4",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 4.7% sampled, ceiling70%.",
+        "Capacity: 6,117 MiB available, commit 44.5%, pages-in/s 0, disk 2.1 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "native-018.log": {
+      "sha256": "b14fd6199d18bf9dd36b8451bf81c353e56e1a19cd9c802a6027746d077e8071",
+      "result": "PASS",
+      "summaries": [
+        "Capacity: 6,115 MiB available, commit 44.5%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}",
+        "PASS_NATIVE_FORGING_RING_CONTROL\", \"stock\": {\"before\": [2, 0, 1, 1], \"after\": [2, 0, 1, 1], \"order\": [\"iron\", \"iron_bars\", \"carried_rings\", \"worn_rings\"]}, \"used\": {\"before\": 139, \"after\": 139}, \"fine_xp_delta\": 0}",
+        "Capacity: 6,208 MiB available, commit 43.5%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}",
+        "PASS_NATIVE_FORGING_RING_SMELT\", \"stock\": {\"before\": [2, 0, 1, 1], \"after\": [1, 1, 1, 0], \"order\": [\"iron\", \"iron_bars\", \"carried_rings\", \"worn_rings\"]}, \"used\": {\"before\": 139, \"after\": 0}, \"fine_xp_delta\": 625}",
+        "Capacity: 6,314 MiB available, commit 43.0%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}",
+        "PASS_NATIVE_FORGING_RING_VERIFY\", \"stock\": {\"before\": [1, 1, 1, 0], \"after\": [1, 1, 0, 1], \"order\": [\"iron\", \"iron_bars\", \"carried_rings\", \"worn_rings\"]}, \"used\": {\"before\": 0, \"after\": 0}, \"fine_xp_delta\": 0}",
+        "Capacity: 6,293 MiB available, commit 42.8%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}",
+        "PASS_NATIVE_FORGING_RING_BREAK\", \"stock\": {\"before\": [2, 0, 1, 1], \"after\": [2, 0, 0, 1], \"order\": [\"iron\", \"iron_bars\", \"carried_rings\", \"worn_rings\"]}, \"used\": {\"before\": 37, \"after\": 0}, \"fine_xp_delta\": 0}"
+      ]
+    }
+  },
+  "actual_kotlin": {
+    "inputs": {
+      "sources": {
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\smelting\\SmeltingScript.kt": "13b6dd208704723eb134ef19440e60a34a5c075f23bb4d8138108350907a011c",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\smelting\\SmithingSmeltXp.kt": "4cc9312f09c4ab27d4e2f7dc4fd23a2b09874874c6860f1e68c196d04e19993d",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\util\\SmithingBonuses.kt": "cb4895214951ba5bee12a860e067883987c7ab4dd98701396d154a602619d8c6"
+      },
+      "stubs": {
+        "Cannonball.kt": "0677639c4eff5a52658c2bf9ef52e8c4c54faa1946623bb4708243076ae3a763",
+        "CoordGrid.kt": "e0682d5db5ed8b13f9856d6df80970782032a5b17fdd198ff457f55338ec9a04",
+        "Crafting.kt": "b307253272a04e3118fc4091abe7bbfe5ef0e77663ff7c9acbecef5969e16e36",
+        "Inject.kt": "135a38de15b48776d26c185c021acce2a4ba097776c74377fd3446609dc5dd4b",
+        "Inventory.kt": "4852e4c1951deb545037eb8708f3ea56dc03e281877f750751fc3ba9078405a0",
+        "Modifiers.kt": "4d5cb7a3b963df6fed25718a37e4bb96e2137770124d0612df9cb6541c369cf2",
+        "Player.kt": "41a5fd1ea85c009d794c8395359373f0509e8ba4aa1900d34c920d2a6bed41e6",
+        "Plugin.kt": "8e85348b190aa1a776907e87bc625eb6a0fe5e9fee441c7309fe8704d1fe79d7",
+        "ProtectedAccess.kt": "5e5da635ee06478a8fa6c0be739ad21599eb04af3b106eb6f6294f6698cafa00",
+        "RingOracle.kt": "f35ff90534a2153d44081434de35dcbba7f8c401407f873519cf43765bcf6d06",
+        "Script.kt": "29791ed9bcc1433e8ec15309edffcd8e0c59809a55c0538b850e51180001ef79",
+        "Skills.kt": "ade8353a87d3c76ef0237b22bb804595988e1c2f63f956f6b7e97b2e624ae3a2",
+        "SmithingUtils.kt": "7b20addcd8c13bb9da04b7f1540e97d72719d1b76d227a54900727512ddb0d4c",
+        "Table.kt": "6a51c869f06cf9fddecc1f41c116e389c91cf9d68f2612c50a79adce8cf06ac9"
+      }
+    },
+    "result": {
+      "scope": "Actual protected forging-ring script compiled with owned recording framework dependencies; logical callback traces only",
+      "sourcePins": {
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\smelting\\SmeltingScript.kt": "13b6dd208704723eb134ef19440e60a34a5c075f23bb4d8138108350907a011c",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\smelting\\SmithingSmeltXp.kt": "4cc9312f09c4ab27d4e2f7dc4fd23a2b09874874c6860f1e68c196d04e19993d",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\util\\SmithingBonuses.kt": "cb4895214951ba5bee12a860e067883987c7ab4dd98701396d154a602619d8c6"
+      },
+      "files": {
+        "oracle.jar": "807BC1757348A3FFA9A422F1D17DEF406A61E665D58742AFB5460B72775ADCE4",
+        "inputs.json": "FBA198633D731EE1C3F713C07AC6D85761BCF691413D9F72C25A31B40828E29C",
+        "compile.args": "EB37D37D25BC0A6AE6D96E1D21BD87D444BC171EC913A77966E9A38506C7362D"
+      },
+      "expectedSha256": "8A79AB82B72801BC152D561A2DF1766E6EC1649A4CDA6292C9155664C2575F02",
+      "cases": 10
+    },
+    "comparison": {
+      "result": "PASS30_ACTUAL_CACHE_LIFETIMES_AND10_ACTUAL_SCRIPT_RECORDINGS_WITH_EXPLICIT_ADAPTATIONS",
+      "actual_compiled_sources": 3,
+      "owned_recording_dependencies_driver": 14,
+      "actual_script_method": "Reflection invokes unchanged private SmeltingScript.performSmelt; script registration/queue/donor inventory/XP engine not exercised.",
+      "source_cases": 10,
+      "rust_cache_cases": 30,
+      "scope": "Five positive source lifetimes1/2/139/140/141each reused across free/member and rates100/250/500. Cache World replenishes one ore and collects output per independent admission; fixture operations are not native-earned140uses.",
+      "intentional_adaptations": [
+        "Wiki140player-specific charges/break/queue stop instead of unchanged source unlimited worn ring.",
+        "Maintain Wiki12.5base iron XP rather than inspected source integer12.",
+        "Rust stages modifier stock/XP/equipment/counter; owned source recording output refusal loses ore, not full-engine equivalence."
+      ],
+      "raw_source_output_sha256": "8a79ab82b72801bc152d561a2df1766e6ec1649a4cda6292c9155664c2575f02",
+      "private_probe_sha256": "05514cc9676af7f6df24f0e9c1ccbbb8ae7671348c346425e5dc2726c6f18de4"
+    }
+  },
+  "native": [
+    {
+      "run": "openrune-forging-ring-baseline-native-20261022-003",
+      "assessment_sha256": "1751cd5c11abc060e3ac8b31315afb14c2e822e72d2592230599a77b2769548d",
+      "assessment": {
+        "result": "PASS_NATIVE_FORGING_RING_CONTROL",
+        "run": "openrune-forging-ring-baseline-native-20261022-003",
+        "mode": "control",
+        "server_sha256": "FDD7E4193FEF6DA3CFD2EAC7556D132C388C42A6FC8CC52771A4E9C59AE68AB9",
+        "driver_sha256": "60612F8709E0BB4FD0DA10897ECD6D2D3C015C3DA4C0D17AF47EBA2E470108A4",
+        "native_events": [
+          {
+            "kind": "native.ring_check",
+            "button": 2,
+            "opcode": 47
+          },
+          {
+            "kind": "native.ring_checked",
+            "charges": 1
+          },
+          {
+            "kind": "native.ring_done",
+            "mode": "control",
+            "ore": 2,
+            "bars": 0,
+            "carried_rings": 1,
+            "worn_rings": 1,
+            "displayed_xp_delta": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.438,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 17:20:39"
+          }
+        },
+        "shutdown": {
+          "pid": 18756,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T17:20:40.7406845Z"
+        },
+        "saved_fine_xp_delta": 0,
+        "saved_stock": {
+          "before": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "after": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "order": [
+            "iron",
+            "iron_bars",
+            "carried_rings",
+            "worn_rings"
+          ]
+        },
+        "player_used": {
+          "before": 139,
+          "after": 139
+        },
+        "all_varp_changes": {
+          "65515": {
+            "before": 0,
+            "after": 104
+          },
+          "3079": {
+            "before": 0,
+            "after": 110
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "3077": {
+            "before": 0,
+            "after": 40890
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "6c8e4458bba0db00e46ae574c84993c880c28788c2796fc19189af71fedb3136",
+          "final-state.json": "8fe010a16ac294826c7c26e8a12d5e0462d779ad56d6f226f219bb8745d48b08",
+          "initial-state.json": "2306261a8ac61932ea51ec52a98212c2482dab6a8bd1c22c2bf7e627a5ffbc1b",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "16dce9848ea968e500815206a3690c22f70d8c319891b8e0782ac0e80da96d80",
+          "native-events.jsonl": "19663eeab27d7d872908e212f3beb745a40882c77377ebd33abc0e446ac1a4ff",
+          "native-events.ring.bmp": "eee0fb0a240a6de0522018da465b7aceb9879794c703cb281aef5c79fc6c1a85",
+          "result.json": "7f6bf0154b25cf8fe70e2aee97ce4a9aefe6cae91e460dacd1a333e15ca5c221",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "da810978b9f7a19d52a11f7d768819d7f7d1409f2fac91b6ee504367c986f693",
+          "server.log": "599b673a7f7f960ef19807b1673d47edf6e2fbcc8638704db32750326924c548",
+          "shutdown.json": "b9608ce9dac32f16081e44f8c22e1c9d38cb8e6d15aaf3169a8095023e414da9"
+        },
+        "limitations": [
+          "Prepared F2P99Smithing/5x/twoores/oneworn+onebackup ring and playerused139or37 are fixtures;139earlier uses are not native earned.",
+          "Native real Check2/Smelt2/IronCount2/last-charge crumble and five-second stop, same-save Wear3/Check140 and heldBreak6/Check reset. Each session save acknowledged/unforced0/990unchanged library files.",
+          "Maintained12.5base XP rather than source integer12; server-only62400 never-transmitted player wear, no target-ID claim. No Superheat/Varrockdoublebars/acquisition/native full140uses/death/banking/failures or independent verdict.",
+          "Actual frame requires inspection; no UI-pixel or smelting-animation claim. Chemistry independent verification paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-forging-ring-actions-native-20261022-003",
+      "assessment_sha256": "c09f84119dc92d8434313d379fa379c47d998bbd4fcf440028f034bcd1ef0a66",
+      "assessment": {
+        "result": "PASS_NATIVE_FORGING_RING_SMELT",
+        "run": "openrune-forging-ring-actions-native-20261022-003",
+        "mode": "smelt",
+        "server_sha256": "FDD7E4193FEF6DA3CFD2EAC7556D132C388C42A6FC8CC52771A4E9C59AE68AB9",
+        "driver_sha256": "60612F8709E0BB4FD0DA10897ECD6D2D3C015C3DA4C0D17AF47EBA2E470108A4",
+        "native_events": [
+          {
+            "kind": "native.ring_furnace",
+            "raw": 24009,
+            "x": 3226,
+            "z": 3256,
+            "operation": 2,
+            "opcode": 103
+          },
+          {
+            "kind": "native.iron_selection",
+            "logical": 17694737,
+            "opcode": 115,
+            "count": 2
+          },
+          {
+            "kind": "native.ring_crumbled",
+            "ore": 1,
+            "bars": 1,
+            "worn": 0,
+            "displayed_xp_delta": 62
+          },
+          {
+            "kind": "native.ring_done",
+            "mode": "smelt",
+            "ore": 1,
+            "bars": 1,
+            "carried_rings": 1,
+            "worn_rings": 0,
+            "displayed_xp_delta": 62
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.328,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 17:22:03"
+          }
+        },
+        "shutdown": {
+          "pid": 16592,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T17:22:03.9728718Z"
+        },
+        "saved_fine_xp_delta": 625,
+        "saved_stock": {
+          "before": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "after": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "order": [
+            "iron",
+            "iron_bars",
+            "carried_rings",
+            "worn_rings"
+          ]
+        },
+        "player_used": {
+          "before": 139,
+          "after": 0
+        },
+        "all_varp_changes": {
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "3077": {
+            "before": 0,
+            "after": 3262
+          },
+          "65515": {
+            "before": 0,
+            "after": 112
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "3079": {
+            "before": 0,
+            "after": 117
+          },
+          "62400": {
+            "before": 139,
+            "after": 0
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "e9a21e15e1d045096ca162be2033e4cdb83ef9e3ca770a7c998b6ad45e3ff5a2",
+          "final-state.json": "a56b984c9d0582eecce6386deb3a05717c00b3345e6fdd7d3577d560f663d44b",
+          "initial-state.json": "2306261a8ac61932ea51ec52a98212c2482dab6a8bd1c22c2bf7e627a5ffbc1b",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "e05c28ede9dab92e19f02ab4568cd8fb04749abe4dd50fd970d408a149c54eb6",
+          "native-events.before.bmp": "5cef08fe9ae81504e568dfd4653579ad88c1b6f4d3be3c42fb5732cbc8b27209",
+          "native-events.jsonl": "c9d1a3470299d744909be74eb11c61fb7a38bbc0d8f7b7dc2c2c70ad740b3068",
+          "native-events.ring.bmp": "0048bc5a2728dbefdf9ad188048996fd97752dea989e6e0fc614e6c0363d56ab",
+          "result.json": "d97933a6d4070d02e961a82195d731e53aaee655232ac556142e68a4d45c0500",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "9e5d584876afa8fddb2777c99c6c734d932d7b99bdc32e0aa671e9e4eb440c07",
+          "server.log": "879f13429adf03a2d594a948a48562745f5a1903d226571fcc07f811a2737c2a",
+          "shutdown.json": "bd02ab9370ae4f2c7b53f059ba12417ef60b72ce9c8cbc83c91fc4cee9350de5"
+        },
+        "limitations": [
+          "Prepared F2P99Smithing/5x/twoores/oneworn+onebackup ring and playerused139or37 are fixtures;139earlier uses are not native earned.",
+          "Native real Check2/Smelt2/IronCount2/last-charge crumble and five-second stop, same-save Wear3/Check140 and heldBreak6/Check reset. Each session save acknowledged/unforced0/990unchanged library files.",
+          "Maintained12.5base XP rather than source integer12; server-only62400 never-transmitted player wear, no target-ID claim. No Superheat/Varrockdoublebars/acquisition/native full140uses/death/banking/failures or independent verdict.",
+          "Actual frame requires inspection; no UI-pixel or smelting-animation claim. Chemistry independent verification paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-forging-ring-replay-native-20261022-003",
+      "assessment_sha256": "b6079d015f2dc9f680bedde4a8977a630c67c6d1b9eb0495ad38a3c70df4d1d3",
+      "assessment": {
+        "result": "PASS_NATIVE_FORGING_RING_VERIFY",
+        "run": "openrune-forging-ring-replay-native-20261022-003",
+        "mode": "verify",
+        "server_sha256": "FDD7E4193FEF6DA3CFD2EAC7556D132C388C42A6FC8CC52771A4E9C59AE68AB9",
+        "driver_sha256": "60612F8709E0BB4FD0DA10897ECD6D2D3C015C3DA4C0D17AF47EBA2E470108A4",
+        "native_events": [
+          {
+            "kind": "native.ring_wear",
+            "item": 2568,
+            "button": 3,
+            "opcode": 47
+          },
+          {
+            "kind": "native.ring_check",
+            "button": 2,
+            "opcode": 47
+          },
+          {
+            "kind": "native.ring_checked",
+            "charges": 140
+          },
+          {
+            "kind": "native.ring_done",
+            "mode": "verify",
+            "ore": 1,
+            "bars": 1,
+            "carried_rings": 0,
+            "worn_rings": 1,
+            "displayed_xp_delta": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.485,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 17:22:03"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 17:23:24"
+          }
+        },
+        "shutdown": {
+          "pid": 9384,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T17:23:25.6561414Z"
+        },
+        "saved_fine_xp_delta": 0,
+        "saved_stock": {
+          "before": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "after": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "order": [
+            "iron",
+            "iron_bars",
+            "carried_rings",
+            "worn_rings"
+          ]
+        },
+        "player_used": {
+          "before": 0,
+          "after": 0
+        },
+        "all_varp_changes": {
+          "3079": {
+            "before": 117,
+            "after": 114
+          },
+          "3077": {
+            "before": 3262,
+            "after": 25436
+          },
+          "65515": {
+            "before": 112,
+            "after": 220
+          },
+          "300": {
+            "before": 200,
+            "after": 400
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "4ccf2902973c6646b7d0a2d36e0572a432d06390cb47b82a125d65ca95c7cd7a",
+          "final-state.json": "61e81678809c15e2ed237637fd89ce7e980bdead9275b16880f2088d063b4a4a",
+          "initial-state.json": "a56b984c9d0582eecce6386deb3a05717c00b3345e6fdd7d3577d560f663d44b",
+          "logout-before.json": "aa0fadf8450fc61ed2380a7ac82aebafdb96b3344f6d53d22bbff57fffd59253",
+          "logout-observation.json": "8af8cf6c285572992150fe3bd73aa79a5a590b845e8055c969b2f8887cd4119b",
+          "native-events.jsonl": "2c459e44266f35f80aba1f13b97b7eafb5b3a2d7c1c1d12e9c57109a7f7a4df7",
+          "native-events.ring.bmp": "288f05ddd662cee7039c566aec59a7e04960ca64cdd38560a40e7533f47f1a96",
+          "result.json": "5ead9f1483fd6c3d8b6abba5206bc3165e83bdf2cf9670f25c521642eca3d649",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "a2d96f35323fed7871dd323f358eacaaf80121338574add93c34f9bbac31ae53",
+          "server.log": "603e76ad01373f943f498bce03eda9d053d22ee5b21f43be6267b73a97094408",
+          "shutdown.json": "b6b9dd36c257c7d57f087915f111ee907a0afdb2bbbb0ceb99cf5284e6f1d993"
+        },
+        "limitations": [
+          "Prepared F2P99Smithing/5x/twoores/oneworn+onebackup ring and playerused139or37 are fixtures;139earlier uses are not native earned.",
+          "Native real Check2/Smelt2/IronCount2/last-charge crumble and five-second stop, same-save Wear3/Check140 and heldBreak6/Check reset. Each session save acknowledged/unforced0/990unchanged library files.",
+          "Maintained12.5base XP rather than source integer12; server-only62400 never-transmitted player wear, no target-ID claim. No Superheat/Varrockdoublebars/acquisition/native full140uses/death/banking/failures or independent verdict.",
+          "Actual frame requires inspection; no UI-pixel or smelting-animation claim. Chemistry independent verification paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-forging-ring-break-native-20261022-003",
+      "assessment_sha256": "89bd4be2d501e7a4f491343a3865a55644c4a161efff9f6ca520078769cd9668",
+      "assessment": {
+        "result": "PASS_NATIVE_FORGING_RING_BREAK",
+        "run": "openrune-forging-ring-break-native-20261022-003",
+        "mode": "break",
+        "server_sha256": "FDD7E4193FEF6DA3CFD2EAC7556D132C388C42A6FC8CC52771A4E9C59AE68AB9",
+        "driver_sha256": "60612F8709E0BB4FD0DA10897ECD6D2D3C015C3DA4C0D17AF47EBA2E470108A4",
+        "native_events": [
+          {
+            "kind": "native.ring_check",
+            "button": 2,
+            "opcode": 47
+          },
+          {
+            "kind": "native.ring_checked",
+            "charges": 103
+          },
+          {
+            "kind": "native.ring_break",
+            "button": 6,
+            "opcode": 47
+          },
+          {
+            "kind": "native.ring_check_reset",
+            "button": 2,
+            "opcode": 47
+          },
+          {
+            "kind": "native.ring_checked_reset",
+            "charges": 140
+          },
+          {
+            "kind": "native.ring_done",
+            "mode": "break",
+            "ore": 2,
+            "bars": 0,
+            "carried_rings": 0,
+            "worn_rings": 1,
+            "displayed_xp_delta": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.578,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 17:24:52"
+          }
+        },
+        "shutdown": {
+          "pid": 18184,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T17:24:53.6903926Z"
+        },
+        "saved_fine_xp_delta": 0,
+        "saved_stock": {
+          "before": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "after": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "order": [
+            "iron",
+            "iron_bars",
+            "carried_rings",
+            "worn_rings"
+          ]
+        },
+        "player_used": {
+          "before": 37,
+          "after": 0
+        },
+        "all_varp_changes": {
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "3079": {
+            "before": 0,
+            "after": 125
+          },
+          "3077": {
+            "before": 0,
+            "after": 54156
+          },
+          "65515": {
+            "before": 0,
+            "after": 119
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "62400": {
+            "before": 37,
+            "after": 0
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "b3ca3ad9119f37e987050e3811a989fa4a0eaa6fa336dc10206b9a73ec44f301",
+          "final-state.json": "fbbbd69db9a48954f90f1cf676ae720b0f06032886f5ec60ba744eb1f92508c5",
+          "initial-state.json": "d1f779a1f97cc57bb24ed649f5660f3b91d7e8ead6c0b9d1b5ed23ca0a232b89",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "fe50f47c4ae89db94cede0571635a175725489bcc2915724b17535b7e2bfaa3c",
+          "native-events.jsonl": "d1a82e2ac946cd34059dbf75af08b955d0bd98f77dc39c89980df35bfb1eee4e",
+          "native-events.ring.bmp": "799a94525b6b39abb223685fd827742dfb6b59337d900bc01adb73b5b5722a7a",
+          "result.json": "dc3e7065fab97d24a3a1d8e69f2357f7d323034c2a83cfc6a0ef0f509f1898fd",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "828c2c8ef9876bc9570d1c6b3d68ea535bce427761acf9e56fe7a47fd2fbc78f",
+          "server.log": "ea3eb872afd315bdade6be3f53dc1709f2b7b08715e25adefb0e77f3cad5a5db",
+          "shutdown.json": "d1f3a9ceda19ec02e7ef1e3cafdb4a262da80436fee8e19ade9be73a6a386d4f"
+        },
+        "limitations": [
+          "Prepared F2P99Smithing/5x/twoores/oneworn+onebackup ring and playerused139or37 are fixtures;139earlier uses are not native earned.",
+          "Native real Check2/Smelt2/IronCount2/last-charge crumble and five-second stop, same-save Wear3/Check140 and heldBreak6/Check reset. Each session save acknowledged/unforced0/990unchanged library files.",
+          "Maintained12.5base XP rather than source integer12; server-only62400 never-transmitted player wear, no target-ID claim. No Superheat/Varrockdoublebars/acquisition/native full140uses/death/banking/failures or independent verdict.",
+          "Actual frame requires inspection; no UI-pixel or smelting-animation claim. Chemistry independent verification paused."
+        ]
+      }
+    }
+  ],
+  "frame_review": {
+    "path": "work\\integration\\runs\\openrune-forging-ring-actions-native-20261022-003\\native-events.ring.bmp",
+    "sha256": "0048bc5a2728dbefdf9ad188048996fd97752dea989e6e0fc614e6c0363d56ab",
+    "observation": "Inspected actual software BMP: furnace/world/character visible; inventory/chat panels black. No UI-pixel or smelting-animation claim. Native menu events/received state and saved character exports prove the scoped behavior."
+  },
+  "native_driver": {
+    "driver": "forging-ring-003",
+    "scenario": "playerForgingRing140ChargesAndBreak",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless actual wornCheck, last-charge furnaceIron1/count2 stop, same-save Wear/Check and heldBreak/reset; no OS input/window or independent verdict",
+    "files": {
+      "NativeForgingRingScenario3.rs": "27BC4F16745A8D88BA419D866BF9542787B0D1F210D74814EA6200EE8769EBD1",
+      "server_forging_ring3.exe": "60612F8709E0BB4FD0DA10897ECD6D2D3C015C3DA4C0D17AF47EBA2E470108A4"
+    }
+  },
+  "build_profile": {
+    "TEST_DEBUG": "0",
+    "DEV_CODEGEN_UNITS": "2",
+    "compiler_cfg": [
+      "debug_assertions",
+      "panic=\"unwind\"",
+      "target_abi=\"\"",
+      "target_arch=\"x86_64\"",
+      "target_endian=\"little\"",
+      "target_env=\"gnu\"",
+      "target_family=\"windows\"",
+      "target_feature=\"cmpxchg16b\"",
+      "target_feature=\"fxsr\"",
+      "target_feature=\"sse\"",
+      "target_feature=\"sse2\"",
+      "target_feature=\"sse3\"",
+      "target_has_atomic=\"128\"",
+      "target_has_atomic=\"16\"",
+      "target_has_atomic=\"32\"",
+      "target_has_atomic=\"64\"",
+      "target_has_atomic=\"8\"",
+      "target_has_atomic=\"ptr\"",
+      "target_has_atomic_primitive_alignment=\"128\"",
+      "target_has_atomic_primitive_alignment=\"16\"",
+      "target_has_atomic_primitive_alignment=\"32\"",
+      "target_has_atomic_primitive_alignment=\"64\"",
+      "target_has_atomic_primitive_alignment=\"8\"",
+      "target_has_atomic_primitive_alignment=\"ptr\"",
+      "target_os=\"windows\"",
+      "target_pointer_width=\"64\"",
+      "target_vendor=\"pc\"",
+      "windows"
+    ],
+    "DEV_INCREMENTAL": "false",
+    "TEST_INCREMENTAL": "false",
+    "DEV_DEBUG_ASSERTIONS": "true",
+    "scope": "Owned process environment only, unoptimized builds with debug assertions; no repository manifest or system-wide configuration change",
+    "DEV_DEBUG": "0",
+    "TEST_CODEGEN_UNITS": "2"
+  },
+  "failures_preserved": {
+    "preflight": {
+      "result": "FAIL_POWERSHELL_PARAMETER_BINDING_CARGO_NOT_STARTED",
+      "observation": "Tool invocation build.ps1 test -p gielinor-world --lib failed because -p aliases common PowerShell parameters. world-001.log retained; tool output contains diagnostic. Subsequent explicit -Action test -CargoArgs array avoids shell binding ambiguity; no production change."
+    },
+    "world002": {
+      "cause": "Owned test nested mutable and immutable World borrow; frozen source/log, separate corrected test then full PASS.",
+      "source_sha256": "e0185bae1130b7738a2094867849c6469c7bb2b4fcf639658aecb3b7e2cf3e1c"
+    },
+    "native001": {
+      "result": "FAIL_OWNED_DRIVER_UI_READY_BEFORE_ITEM_ACTION",
+      "cause": "Equipment tab scripts were not processed before inspecting the hidden worn widget. Driver002waits at most250msbetween readiness attempts and proceeds only after current layout reveals widget; unchanged server/archive/client library.",
+      "preserved_run": "openrune-forging-ring-baseline-native-20261022-001",
+      "inventory_stats_and_player_wear_unchanged": true,
+      "acknowledged_save": true,
+      "unforced_exit": 0,
+      "fresh_control": "ringbase2 copied from unstarted offline prepared ringact; failedringbase001notreset",
+      "evidence_hashes": {
+        "client.log": "58437cd9fe5ec727bea133c777c5585b35fd79284090e7d608a7552e60807990",
+        "final-state.json": "1aa353a14ba2eb2499f657899985aa7f3eebce2e9f5d97e28b3a75de30557b86",
+        "initial-state.json": "2306261a8ac61932ea51ec52a98212c2482dab6a8bd1c22c2bf7e627a5ffbc1b",
+        "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+        "logout-observation.json": "4b31e6b5006533134fbb9a7c42ec20f22b2ffea204d5ce951dbe1c42d41185f3",
+        "native-events.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "result.json": "09fb6fe5ec79c34023754441d171e1f1408585724c2897e7cc741ac14f67e1a5",
+        "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "server.json": "bcfc10180d7e96998d07bf7ee5624c27c392d28cba761a41c7c1dd82704eb7f4",
+        "server.log": "cbe518bb39897cd64d997af14f38d7258591fc2ea4c32660f278122adaf29bc2",
+        "shutdown.json": "580855cf711f871fbbe92908ec63ebbb55b91d62102eec11ec99ac8e098929a8",
+        "stop": "0bdb213cc25836b51a839770b59ed082eed86a45a111267b6d940ac7d4dd236e"
+      }
+    },
+    "native002": {
+      "result": "FAIL_OWNED_DRIVER_TAB_POINTER_ASSUMPTION_TIMEOUT",
+      "cause": "Waiting on numeric side-tab pointer did not open worn layout. Driver003uses actual native context-menu tab label dispatch already established by NativeChemistryWornScenario. Server and990client-libraryfiles unchanged.",
+      "preserved_run": "openrune-forging-ring-baseline-native-20261022-002",
+      "inventory_stats_and_used139_unchanged": true,
+      "acknowledged_save": true,
+      "unforced_exit": 0,
+      "fresh_control": "ringbase3copyfromunstartedofflinepreparedringact;failed001/002profilesnotreset",
+      "evidence_hashes": {
+        "client.log": "5aafd9b243614e8ddaccec3cdbf73fc67c765ac16cf6fdce66863ac9e0bc441c",
+        "final-state.json": "2ddd370c7a760ce70e30834884316086bc2ee1c9dcfbd899b066fd089f1afb1f",
+        "initial-state.json": "2306261a8ac61932ea51ec52a98212c2482dab6a8bd1c22c2bf7e627a5ffbc1b",
+        "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+        "logout-observation.json": "34e4f5dfb2f557ec8fcd8869ed655e8458587a157f8e84c5264ddaffb81d315a",
+        "native-events.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "result.json": "6cecb1e4e70ea3846298adfe6bff6257eb3ffc10e299e21f9316aa80fc096857",
+        "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "server.json": "7464c119dfe352cc0d4946e4a6dbe53d60687b9e75a33d460ee8c7dcd275788f",
+        "server.log": "f0541fed71ec1390af146b337e5737f11fbadd28079926a386b62c0b5998c12c",
+        "shutdown.json": "0a65ea36aba2a7b796fe6aa0f33a22f8f2bee5c87ed1263644ce0fa4e08d9815",
+        "stop": "0bdb213cc25836b51a839770b59ed082eed86a45a111267b6d940ac7d4dd236e"
+      }
+    },
+    "preparer": "Owned driver002preparer initially lacked scripts import path after writing driver/runners, before fixture copying. Separate finish helper imports correct path; all originals retained."
+  },
+  "proactive_range_guard": "After cache007PASS, review replaced eager then_some subtraction with lazy then for i32extreme saved counters. Final world009/server010/cache011pass; earlier ring source preserved separately.",
+  "known_limitations": [
+    "Ordinary canonical iron furnace recipe only:440oneore to2351onebar, level15/current12.5base, furnace-tagged Smithing jobs. No Superheat, Blast Furnace, Varrock double bars/charges, enchantment/MurkyMatt/acquisition, dismantling/alchemy/trade/death or general charged jewellery.",
+    "Actual unchanged SmeltingScript/SmithingSmeltXp/SmithingBonuses compile with14owned recording dependencies/driver. Reflection calls private performSmelt only; registration, complete queue, actual inventory/XP engine, table and full reference runtime are not executed.",
+    "Donor ring remains worn after141successes; source iron row has12XP. Rust deliberately implements pinned Wiki140player charges, break/stop and maintained12.5base. Source output-refusal recording loses ore; Rust stages its modifier transaction. These are explicit differences, not full numeric/engine parity.",
+    "Player counter62400is a new server-only permanent Never-transmitted extension, not a revision239.1ID. Factory rejects cache varp names/definitions/varbit-base collisions; registry documents semantics. No client reservation acknowledgment claimed. Existing character persistent-varp path saves zero and wear, no schema/item-instance charge changes.",
+    "Resolve worn slot12/count1/vars0 live. Carried/wrongslot/malformed rings cannot guarantee iron. Last charge removes only worn ring, resets player wear and stops repeats even if another ore/backup ring remains. Swapping rings does not refill; heldBreak6consumes exact selected ring and resets player wear; wornCheck2reports current count.",
+    "Owner765world/oneexistingignored,319server,10ringWorldtests,41factory refusals and real button decoder/claim guards passed. Thirty actual-cache lifetimes use prepared stock/output collection and three rates/F2P/member; no claim those140uses were native earned.",
+    "Four native003sessions use prepared F2P99Smithing/5x/quantity2/twoores/worn+backup rings/used139or37. ControlCheck1; actualIronCount2makesonebar/+625fineXP, breaks worn ring and stops with ore1; same-save Wearbackup/Check140addsnoXP; heldBreakbackup resetsCheck103to140. Saves acknowledged/unforced0/990unchanged library files.",
+    "Failed native001control inspected a hidden equipment widget before tab scripts completed; no item action/inventory/XP/playerwear change. Failed run/saveack/unforced0, driver001and fresh002control remain preserved. Driver003selects actual tab menu labels and waits for a visible current widget; no server change for tab dispatch. Native002numeric-pointer wait timed out without item action, stock/XP/wear changes; its evidence remains preserved.",
+    "Local opt0/dev+testdebug0/nonincremental/codegen2 builds retain debug assertions; working-tree manifests differ from published source. Not pristine independent acceptance. Inventory/chat frame pixels black; no UI-pixel or animation assertion. Independent V0-V4 queued; chemistry independent verification paused."
+  ]
+}
