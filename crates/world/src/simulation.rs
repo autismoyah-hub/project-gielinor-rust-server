@@ -53,6 +53,7 @@ mod deposit_box_actions;
 mod banknote_actions;
 mod shearing_actions;
 mod npc_flavour_actions;
+mod duck_actions;
 mod npc_item_reply_actions;
 #[cfg(test)]
 mod normal_bank_booth_tests;
@@ -137,6 +138,7 @@ struct NpcEntry {
     allocated_pending: bool,
     shear_hold: Option<shearing_actions::Hold>,
     fleece_regrowth: Option<shearing_actions::Regrowth>,
+    duck_jobs: VecDeque<duck_actions::Job>,
 }
 #[derive(Debug, Clone, Copy)]
 pub struct NpcSnapshot {
@@ -1050,6 +1052,8 @@ pub struct World {
     pub person_flyer: Option<i32>,
     pub shearing: Option<crate::shearing::Config>,
     pub npc_flavour: Option<crate::npc_flavour::Config>,
+    pub ducks: Option<crate::ducks::Config>,
+    pub npc_no_death_drops: std::collections::BTreeSet<u16>,
     pub npc_item_replies: std::collections::BTreeMap<u16,crate::npc_item_reply::Rule>,
     pub locations: crate::locations::Locations,
     pub location_types: BTreeMap<u32, crate::loc_collision::LocCollision>,
@@ -1193,6 +1197,8 @@ impl Default for World {
             person_flyer: None,
             shearing: None,
             npc_flavour: None,
+            ducks: None,
+            npc_no_death_drops: Default::default(),
             npc_item_replies: Default::default(),
             locations: Default::default(),
             location_types: BTreeMap::new(),
@@ -1391,6 +1397,7 @@ impl World {
             allocated_pending: true,
             shear_hold: None,
             fleece_regrowth: None,
+            duck_jobs: VecDeque::new(),
         });
         assert!(result.is_ok());
         Ok(id)
@@ -2520,6 +2527,7 @@ impl World {
                             continue;
                         }
                         self.process_npc_flavour(id,random);
+                        self.process_duck_callbacks(id,random);
                         if self.process_npc_combat(id, random) {
                             continue;
                         }

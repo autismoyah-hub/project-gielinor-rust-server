@@ -324,3 +324,4 @@ pub mod cinderworks_scenery;
 pub mod shearing;
 pub mod npc_flavour;
 pub mod npc_item_reply;
+pub mod ducks;

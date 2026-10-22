@@ -1,0 +1,10 @@
+adult-one|0:Quack!|
+adult-two|1:Quack!|
+child-two|1:Eep!|
+mourn|1:Cheep cheep!;3:Eep!|
+mourn-tail|1:Cheep cheep!;2:Eep!|1:4:4
+mourn-pair|1:Cheep cheep!;1:Cheep cheep!;2:Eep!;2:Eep!|
+mourn-late|2:Cheep cheep!;4:Eep!|
+mourn-wander|1:Cheep cheep!|
+paused|3:Quack!|
+cleared||

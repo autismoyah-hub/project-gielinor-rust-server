@@ -21,10 +21,14 @@ impl World {
         };
         let bones = config.bones;
         let chicken = config.chickens.get(&entry.npc.type_id).copied();
+        let suppress_drops=self.npc_no_death_drops.contains(&entry.npc.type_id);
+        let initial_hero=entry.npc.hero_points.winner();
+        let initial_type=entry.npc.type_id;
         let clock = self.clock.0;
         if entry.death_state.is_none() {
-            if let Some((config, hero)) = self.tutorial_combat.zip(entry.npc.hero_points.winner()) {
-                let type_id = entry.npc.type_id;
+            self.duck_death_reactions(id);
+            if let Some((config, hero)) = self.tutorial_combat.zip(initial_hero) {
+                let type_id = initial_type;
                 // Match findHero: use the top character UUID; never fall back to a
                 // lower-ranked online player when the winner has logged out.
                 if let Some((_, player)) = self
@@ -138,7 +142,7 @@ impl World {
                     handles: Vec::new(),
                     result: crate::npc_death::DropResult::NoEligibleOwner,
                 });
-                if let Some((owner, observer, duration)) = hero.and_then(|uuid| {
+                if let Some((owner, observer, duration)) = hero.filter(|_|!suppress_drops).and_then(|uuid| {
                     self.players
                         .iter()
                         .find(|(_, p)| p.data.character_id == uuid)
@@ -219,6 +223,7 @@ impl World {
                 entry.id.generation = self.generation;
                 entry.death_queued = false;
                 entry.death_state = None;
+                entry.duck_jobs.clear();
                 entry.hits = Default::default();
                 entry.allocated_cycle = clock;
                 entry.allocated_pending = true;

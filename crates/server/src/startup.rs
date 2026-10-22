@@ -584,6 +584,10 @@ pub fn configure<B: AccountBackend>(
         crate::npc_death_config::resolve(names, &runtime.definitions, &parameters, &sequences)
             .map_err(io::Error::other)?,
     );
+    let ducks=crate::content::ducks(n("npc"),n("content"),n("synth"),&runtime.definitions,runtime.world.npc_death.as_ref().unwrap()).map_err(io::Error::other)?;
+    if runtime.world.npc_flavour.as_ref().is_some_and(|f|f.types.keys().any(|id|ducks.contains(*id)))||ducks.adults.iter().any(|id|runtime.world.npc_no_death_drops.contains(id)){return Err(io::Error::other("Conflicting duck callback/death registration"));}
+    runtime.world.npc_no_death_drops.extend(ducks.adults.iter().copied());
+    runtime.world.ducks=Some(ducks);
     let combat_catalog =
         crate::kronos_combat::Catalog::load(Path::new(crate::kronos_combat::DEFAULT_DIRECTORY));
     if !combat_catalog.failures.is_empty() {

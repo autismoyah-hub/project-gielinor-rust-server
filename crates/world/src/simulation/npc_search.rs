@@ -32,6 +32,20 @@ impl World {
         type_id: u16,
         distance: u16,
     ) -> Result<Option<NpcId>, &'static str> {
+        self.find_npc_with_sight(center,type_id,distance,false)
+    }
+    pub fn find_npc_line_of_sight(&self,center:CoordGrid,type_id:u16,distance:u16)->Result<Option<NpcId>,&'static str>{
+        self.find_npc_with_sight(center,type_id,distance,true)
+    }
+    pub fn find_all_npcs_line_of_sight(&self,center:CoordGrid,type_id:u16,distance:u16)->Result<Vec<NpcId>,&'static str>{
+        let mut candidates=self.npc_search_candidates(center,type_id,distance,true)?.collect::<Vec<_>>();
+        candidates.sort_by_key(|((_,x,z,Reverse(order)),_)|(Reverse(*x),Reverse(*z),*order));
+        Ok(candidates.into_iter().map(|(_,id)|id).collect())
+    }
+    fn find_npc_with_sight(&self,center:CoordGrid,type_id:u16,distance:u16,sight:bool)->Result<Option<NpcId>,&'static str>{
+        Ok(self.npc_search_candidates(center,type_id,distance,sight)?.into_iter().min_by_key(|(key,_)|*key).map(|(_,id)|id))
+    }
+    fn npc_search_candidates(&self,center:CoordGrid,type_id:u16,distance:u16,sight:bool)->Result<impl Iterator<Item=((i32,i32,i32,Reverse<u64>),NpcId)>+'_ ,&'static str>{
         let origin = zone(center);
         let zone_distance = (i32::from(distance) + 7) / 8;
         // Hunt consumes the entire zone square; ZoneKey.translate throws at
@@ -46,7 +60,7 @@ impl World {
         Ok(self
             .npcs
             .iter()
-            .filter_map(|(_, entry)| {
+            .filter_map(move |(_, entry)| {
                 let npc = &entry.npc;
                 if !npc.visible
                     || npc.type_id != type_id
@@ -61,6 +75,7 @@ impl World {
                 if dx.abs().max(dz.abs()) > i32::from(distance) {
                     return None;
                 }
+                if sight&&!crate::raycast::clear(&self.collision,crate::raycast::Bounds{coords:center,width:1,length:1},crate::raycast::Bounds{coords:npc.movement.coords,width:1,length:1},true,0){return None;}
                 Some((
                     (
                         dx * dx + dz * dz,
@@ -70,9 +85,7 @@ impl World {
                     ),
                     entry.id,
                 ))
-            })
-            .min_by_key(|(key, _)| *key)
-            .map(|(_, id)| id))
+            }))
     }
 }
 

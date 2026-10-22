@@ -6,6 +6,8 @@ mod remaining_pack_tests;
 mod bank_booths;
 mod shearing;
 mod cows;
+mod ducks;
+pub use ducks::ducks;
 pub use cows::{cows,Cows};
 pub use shearing::{shearing,sheep_flavour};
 pub use bank_booths::{ordinary_bank_booths,normal_dynamic_bank_booths};
