@@ -22,6 +22,8 @@ mod autocast_actions;
 mod combat_actions;
 #[cfg(test)]
 mod consumable_tests;
+#[cfg(test)]
+mod food_life_tests;
 mod dialogue_actions;
 mod signpost_actions;
 mod fence_actions;
@@ -2171,6 +2173,11 @@ impl World {
                     _ => None,
                 };
                 let p = self.players.get_mut(id.slot as usize).unwrap();
+                // A visible HP edit does not complete the existing death lifecycle.
+                // Reject before cancellation, item/stat publication or native clocks.
+                if p.death_queued || p.data.stats.current(3) as u8 == 0 {
+                    return Err(ActionError::Protected);
+                }
                 // HeldOpScript.launchLenient cancels the previous coroutine even
                 // when objectVerify subsequently rejects the delayed operation.
                 p.begin_held_action();
