@@ -5128,3 +5128,10 @@ Validation: Build CPU capacity: 49.8% sampled, ceiling70%.; Capacity: 6,311 MiB 
 
 
 Pause requested by user: finish OR-MIG-0173, preserve all private fixtures, native and historical evidence and unrelated changes, then stop. OR-MIG-0174 has not been started. Independent acceptance and full migration remain incomplete.
+
+
+## FORGE OR-MIG-0174 — Ordinary-food lifecycle correction
+
+Source `8b3d918fa826875680f883af271805f8f8c63060`. Shared EatSlot/EatItemSlot now rejects unsigned zero HP or unresolved death before cancellation, inventory/stat publication and native clocks. Positive visible HP alone does not finish death. This addresses the food subset of independently reported PG-DEF-003; other action families and PG-DEF-008 remain open. No new items, timing, persistence or chemistry changes.
+
+Developer checks: expected pre-fix refusal test FAIL retained; corrected 72 refusal cases and eight live controls PASS. Full server/world regression and executable check passed; exact counts, command guards, source/log hashes and limitations are in [development evidence](docs/openrune/verification/development/OR-MIG-0174.json). These are working-tree implementation-owner checks, not pristine/native/independent acceptance. All prior private evidence is preserved. Independent V0–V4 requested against the exact source SHA; no issue closed.

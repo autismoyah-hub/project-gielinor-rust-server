@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0174",
+  "implementation_commit_sha": "8b3d918fa826875680f883af271805f8f8c63060",
+  "recorded_utc": "2026-10-22T03:35:30.585229+00:00",
+  "result": "DEVELOPMENT_VALIDATION_PASS",
+  "scope": "Shared ordinary-food alive/death admission correction for PG-DEF-003; no native or independent acceptance.",
+  "sources": {
+    "crates/world/src/simulation.rs": "d24adac0cf39147ddbadc38886551993a090cdef9df2c6b1bec7bc79031a7c9d",
+    "crates/world/src/simulation/food_life_tests.rs": "096f85a99df04c5d2f1d8bcc3ddbaeaa01a5eb6905847e2d4885f99509317086"
+  },
+  "logs": {
+    "before-001.log": {
+      "sha256": "6440ac9001c08a1204cea822d412a29d187e531385f8b0f7cc93c197d72c762f",
+      "result": "EXPECTED_REPRODUCTION_FAILURE",
+      "summaries": [
+        "Build CPU capacity: 1.9% sampled, ceiling70%.",
+        "Capacity: 7,993 MiB available, commit 45.3%, pages-in/s 1,937, disk 9.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 09s",
+        "test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 664 filtered out; finished in 0.13s"
+      ]
+    },
+    "focused-002.log": {
+      "sha256": "1b3123a823cdacd3f364fd8d13c0cd9146acb7cc85ecfe490ebca4912b6674d1",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.1% sampled, ceiling70%.",
+        "Capacity: 8,196 MiB available, commit 43.7%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 20.69s",
+        "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 664 filtered out; finished in 1.15s"
+      ]
+    },
+    "shared-003.log": {
+      "sha256": "a2ddc49264a96b74ede497ebb247d54bf9e48722cdce7ea9f9cf491ebf9cc7f0",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.6% sampled, ceiling70%.",
+        "Capacity: 8,177 MiB available, commit 43.7%, pages-in/s 0, disk 2.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 42.22s",
+        "test result: ok. 291 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 101.94s",
+        "test result: ok. 665 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 31.45s"
+      ]
+    },
+    "bins-004.log": {
+      "sha256": "f58df8762a237ea9c46fb284299e0adf305f807bca9fc29584ca320a18862373",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 23.8% sampled, ceiling70%.",
+        "Capacity: 7,972 MiB available, commit 44.6%, pages-in/s 11, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 19.45s"
+      ]
+    }
+  },
+  "cases": {
+    "refusal_matrix": 72,
+    "live_controls": 8
+  },
+  "refusal_dimensions": [
+    "native/legacy clocks",
+    "selected/legacy food action",
+    "plain/replacement-plus-stat-subtraction",
+    "selected slots 0/13/27 in full duplicate-filled inventory",
+    "zero HP / actual DeathRequested / positive HP restored with death still unresolved"
+  ],
+  "limitations": [
+    "Working-tree tests include preserved local manifest and private opt-in differences; no pristine-checkout claim.",
+    "Native dead-player reachability, save/relogin and compiled Kotlin comparison are untested.",
+    "PG-DEF-003 findings in other action families and PG-DEF-008 fourth-option Eat routing remain open.",
+    "Chemistry verification remains paused. No reference source, cache assets, credentials or private fixtures published."
+  ],
+  "commands": {
+    "before-001.log": "./build.ps1 -Action test -CargoArgs @('-p','gielinor-world','--lib','food_life')",
+    "focused-002.log": "./build.ps1 -Action test -CargoArgs @('-p','gielinor-world','--lib','food_life')",
+    "shared-003.log": "./build.ps1 -Action test -CargoArgs @('-p','gielinor-world','-p','gielinor-server','--lib')",
+    "bins-004.log": "./build.ps1 -Action check -CargoArgs @('-p','gielinor-server','--bins')"
+  }
+}
