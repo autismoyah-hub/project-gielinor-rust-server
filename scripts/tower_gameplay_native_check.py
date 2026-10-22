@@ -100,9 +100,14 @@ def main():
                     time.sleep(.2)
                 gateway = Gateway(directory, directory / "actions.ndjson")
                 observed = gateway.wait(lambda s: s["ready"], 90)
+                if session == 0:
+                    # Fresh registration dialogs are delivered on separate
+                    # server ticks. Wait for each expected ordinary dialog;
+                    # "ready" alone does not mean registration has finished.
+                    observed = gateway.wait(lambda s: 679 in s.get("modals", []) or 929 in s.get("modals", []), 45)
                 if 679 in observed.get("modals", []):
                     gateway.act("interface 44499018 1")
-                    observed = gateway.wait(lambda s: 679 not in s.get("modals", []), 30)
+                    observed = gateway.wait(lambda s: 929 in s.get("modals", []), 45)
                 if 929 in observed.get("modals", []):
                     gateway.act("interface 60882951 1")
                     observed = gateway.wait(lambda s: s["ready"] and 929 not in s.get("modals", []), 30)
