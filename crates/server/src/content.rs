@@ -7,6 +7,8 @@ mod bank_booths;
 mod shearing;
 mod cows;
 mod ducks;
+mod coal_bag;
+pub use coal_bag::coal_bag;
 pub use ducks::ducks;
 pub use cows::{cows,Cows};
 pub use shearing::{shearing,sheep_flavour};

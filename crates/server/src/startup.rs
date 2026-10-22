@@ -465,6 +465,7 @@ pub fn configure<B: AccountBackend>(
     runtime.configure_potions(n("obj"), n("stat"))?;
     runtime.world.consumable_rules = Some(crate::content::native_consumables(n("obj"), &runtime.definitions,
         &runtime.world.foods, &runtime.world.potions).map_err(io::Error::other)?);
+    runtime.world.coal_bag=Some(crate::content::coal_bag(n("obj"),n("varbit"),&runtime.definitions).map_err(io::Error::other)?);
     runtime.world.item_packs =
         crate::content::item_packs(n("obj"), &runtime.definitions).map_err(io::Error::other)?;
     runtime.world.member_item_packs = crate::content::item_pack_members(

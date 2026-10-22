@@ -63,6 +63,7 @@ mod worn_item_swap_actions;
 mod worn_stat_boost_actions;
 mod skillcape_vendor_actions;
 mod container_emptying_actions;
+mod coal_bag_actions;
 mod item_pack_actions;
 mod milking_actions;
 mod water_source_actions;
@@ -581,6 +582,7 @@ pub enum Action {
     SwapWornItem { slot: usize, item: i32 },
     BoostWornItem { slot: usize, item: i32 },
     ConvertHeldItem { slot: usize, item: i32 },
+    CoalBagItem {slot:usize,item:i32,operation:u8},
     EmptyContainer { slot: usize, item: i32 },
     OpenCoinPouch { slot: usize, item: i32, all: bool },
     DrinkSlot {
@@ -1028,6 +1030,7 @@ pub struct World {
     pub worn_item_swaps: BTreeMap<i32,crate::worn_item_swap::Rule>,
     pub worn_stat_boosts: BTreeMap<i32,crate::worn_stat_boost::Rule>,
     pub empty_containers: BTreeMap<i32,crate::container_emptying::Rule>,
+    pub coal_bag: Option<crate::coal_bag::Config>,
     pub coin_pouches: BTreeMap<i32,crate::item_packs::PouchRule>,
     pub prayer: Option<crate::prayer::Config>,
     pub wine: Option<crate::wine::Config>,
@@ -1162,6 +1165,7 @@ impl Default for World {
             worn_item_swaps: BTreeMap::new(),
             worn_stat_boosts: BTreeMap::new(),
             empty_containers: BTreeMap::new(),
+            coal_bag: None,
             coin_pouches: BTreeMap::new(),
             milking: None,
             water_sources: None,
@@ -2141,6 +2145,7 @@ impl World {
             Action::OpenItemPack { slot, item } => self.open_item_pack(id, slot, item)?,
             Action::SwapWornItem { slot, item } => self.swap_worn_item(id,slot,item)?,
             Action::ConvertHeldItem { slot, item } => self.convert_held_item(id,slot,item)?,
+            Action::CoalBagItem {slot,item,operation}=>self.coal_bag_item(id,slot,item,operation)?,
             Action::EmptyContainer { slot, item } => self.empty_container(id,slot,item)?,
             Action::OpenCoinPouch { slot, item, all } => self.open_coin_pouch(id,slot,item,all)?,
             Action::CleanHerb { slot, item } => self.clean_herb(id, slot, item)?,
