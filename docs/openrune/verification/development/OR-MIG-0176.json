@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0176",
+  "implementation_commit_sha": "2aaf8373bd552e0a11a4d68e5cad00d81f3d614c",
+  "recorded_utc": "2026-10-22T03:59:51.477888+00:00",
+  "result": "DEVELOPMENT_VALIDATION_PASS",
+  "sources": {
+    "crates/server/src/content/chicken_coops.rs": "b859e3caf278f71bd3c9504ed7153685bd37f737eb144e5ec3eb5da258d26cd3",
+    "crates/server/src/content.rs": "a116d28a2dd0489e83336544f3b039e68f7ce021e35e4be6539079456d2ca741",
+    "crates/server/src/startup.rs": "aad13310e3fc813ae403f7aa8376611b027284c6c5c8ae5d59870109d06869ba",
+    "crates/world/src/simulation/door_actions.rs": "d6fe8c2d0576410b5d15a1e24b233053d7e9f30480aec1cced5adc49f4c62457"
+  },
+  "logs": {
+    "cache-research-001.log": {
+      "command": "guarded cargo run --offline --locked -j2 -p gielinor-server --example coop_cache_private -- <local239.1 cache> <local symbols>; first definition-only probe",
+      "sha256": "e613855c3be5de1a15a86b286eeeaf3925689cddb33328f5d1bfe3bb1075931a",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.5% sampled, ceiling70%.",
+        "Capacity: 8,036 MiB available, commit 45.5%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 10.93s",
+        "COOP symbol=chicken_coop_empty id=5571 name=\"Coop\" ops=[Some(\"Search\"), None, None, None, None] width=2 length=1 multi=[] default=-1 varbit=-1 varp=-1",
+        "COOP symbol=chicken_coop_bare id=5572 name=\"Coop\" ops=[Some(\"Search\"), None, None, None, None] width=2 length=1 multi=[] default=-1 varbit=-1 varp=-1",
+        "COOP symbol=chicken_coop_bare2 id=5573 name=\"Coop\" ops=[Some(\"Search\"), None, None, None, None] width=2 length=1 multi=[] default=-1 varbit=-1 varp=-1",
+        "EGG id=1944 name=\"Egg\" members=false stackable=false dummy=-1 cert=0 placeholder=0 transform=0",
+        "PRESENTATION seq/human_pickuptable=832",
+        "PRESENTATION synth/pick=2581"
+      ]
+    },
+    "cache-research-002.log": {
+      "command": "guarded same private probe; enumerate actual content group47",
+      "sha256": "e0215c0e4edc8e32a073a3f3c1696c6cb46970c9e9278e6598b6a3f9622c4457",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.9% sampled, ceiling70%.",
+        "Capacity: 8,269 MiB available, commit 44.3%, pages-in/s 0, disk 2.9 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4.99s",
+        "COOP symbol=chicken_coop_empty id=5571 name=\"Coop\" ops=[Some(\"Search\"), None, None, None, None] width=2 length=1 multi=[] default=-1 varbit=-1 varp=-1",
+        "COOP symbol=chicken_coop_bare id=5572 name=\"Coop\" ops=[Some(\"Search\"), None, None, None, None] width=2 length=1 multi=[] default=-1 varbit=-1 varp=-1",
+        "COOP symbol=chicken_coop_bare2 id=5573 name=\"Coop\" ops=[Some(\"Search\"), None, None, None, None] width=2 length=1 multi=[] default=-1 varbit=-1 varp=-1",
+        "GROUP47 id=5571 name=\"Coop\"",
+        "GROUP47 id=5572 name=\"Coop\"",
+        "GROUP47 id=5573 name=\"Coop\"",
+        "EGG id=1944 name=\"Egg\" members=false stackable=false dummy=-1 cert=0 placeholder=0 transform=0",
+        "PRESENTATION seq/human_pickuptable=832",
+        "PRESENTATION synth/pick=2581"
+      ]
+    },
+    "focused-before-life-003.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-server','--lib','chicken_coops'); EXPECTED life refusal failure before shared correction",
+      "sha256": "9c1c747cb45ab05402d61e6da2cf00b44f355e131455308de149c2a89f072bef",
+      "result": "EXPECTED_LIFECYCLE_REPRODUCTION_FAILURE",
+      "summaries": [
+        "Build CPU capacity: 2.9% sampled, ceiling70%.",
+        "Capacity: 8,343 MiB available, commit 44.1%, pages-in/s 0, disk 2.6 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 35.43s",
+        "test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 291 filtered out; finished in 1.16s"
+      ]
+    },
+    "focused-004.log": {
+      "command": "same focused command, corrected life guard, four tests",
+      "sha256": "0a1fe336d5bc662709446a263ab2449489b6f405ca8252ba860f9e50e4445def",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.4% sampled, ceiling70%.",
+        "Capacity: 8,288 MiB available, commit 44.2%, pages-in/s 0, disk 5.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 29.46s",
+        "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 291 filtered out; finished in 1.33s"
+      ]
+    },
+    "shared-005.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-server','-p','gielinor-world','--lib'); includes additional arrival/late-capacity/movement regression",
+      "sha256": "0aa9cbf684bf005ae571d30bdadb52ccf24e247d32958d6a8adb3d0c86f942ed",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 21.4% sampled, ceiling70%.",
+        "Capacity: 8,189 MiB available, commit 44.7%, pages-in/s 1, disk 1.8 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 41.91s",
+        "test result: ok. 296 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 55.44s",
+        "test result: ok. 665 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 36.30s"
+      ]
+    },
+    "cache-actions-006.log": {
+      "command": "guarded same private probe extended to real target definitions -> authoritative World Search for all three coops",
+      "sha256": "6b3d3ebd9219be51a620cfee90744a81efa402000e243555caeeed3fd9672f9a",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.2% sampled, ceiling70%.",
+        "Capacity: 8,322 MiB available, commit 44.0%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 22.17s",
+        "COOP symbol=chicken_coop_empty id=5571 name=\"Coop\" ops=[Some(\"Search\"), None, None, None, None] width=2 length=1 multi=[] default=-1 varbit=-1 varp=-1",
+        "COOP symbol=chicken_coop_bare id=5572 name=\"Coop\" ops=[Some(\"Search\"), None, None, None, None] width=2 length=1 multi=[] default=-1 varbit=-1 varp=-1",
+        "COOP symbol=chicken_coop_bare2 id=5573 name=\"Coop\" ops=[Some(\"Search\"), None, None, None, None] width=2 length=1 multi=[] default=-1 varbit=-1 varp=-1",
+        "GROUP47 id=5571 name=\"Coop\"",
+        "GROUP47 id=5572 name=\"Coop\"",
+        "GROUP47 id=5573 name=\"Coop\"",
+        "EGG id=1944 name=\"Egg\" members=false stackable=false dummy=-1 cert=0 placeholder=0 transform=0",
+        "PRESENTATION seq/human_pickuptable=832",
+        "PRESENTATION synth/pick=2581",
+        "PASS target239.1 ordinary coop bindings:3; actual World Search->egg cases:3; no native client"
+      ]
+    },
+    "archive-007.log": {
+      "command": "scripts/integration-server-build.ps1 -Run openrune-coop-20261021-001",
+      "sha256": "7cd76af419eda5a295f69d134319dd37bd5dc14efb0a546fe3561392c4da7d2c",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.0% sampled, ceiling70%.",
+        "Capacity: 8,233 MiB available, commit 44.1%, pages-in/s 0, disk 3.8 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 14.06s",
+        "Archived server F16C8530CEAB5F63A8BE46DF2E52BF2457B6CC4A85008B5F070688DCF3B2E830 (604 source files)."
+      ]
+    }
+  },
+  "server_archive": {
+    "sha256": "F16C8530CEAB5F63A8BE46DF2E52BF2457B6CC4A85008B5F070688DCF3B2E830",
+    "source_count": 604,
+    "source_manifest_sha256": "35015278ac745d2e899762de3c032cfc8dd7aa2339d3cf13412bf7c6369e9b08",
+    "before_after_sources_unchanged": true
+  },
+  "private_probe": {
+    "path": "crates/server/examples/coop_cache_private.rs",
+    "sha256": "40e17ab7b0c07c41e25ac0550906c7d93309ffa449483acd250fc53dbe1a3dab",
+    "published": false
+  },
+  "limitations": [
+    "Owner working-tree checks include retained local manifests/private opt-in differences, not pristine or independent acceptance.",
+    "Actual local cache/World probe is headless. Native Search/menu/animation/synth/chat, durable same-save relogin and multiplayer remain independently required.",
+    "Target239.1 content group47 is exactly5571..5573. Member Chicken coop34500/52822 and the effective241 group population remain outside this unit; no blanket donor-file completion.",
+    "Shared pickable coordinator now refuses zero unsigned HP/unresolved death for its existing pickable classes; other action-family PG-DEF-003 findings remain open.",
+    "No depletion/respawn/RNG/XP/new persistence field or queue. Source arriveDelay uses the existing arrival/protection phase; Wiki does not establish exact tick phase. Chemistry verification remains paused."
+  ]
+}
