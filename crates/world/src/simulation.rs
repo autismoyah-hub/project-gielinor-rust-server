@@ -1030,6 +1030,7 @@ pub struct World {
     pub worn_item_swaps: BTreeMap<i32,crate::worn_item_swap::Rule>,
     pub worn_stat_boosts: BTreeMap<i32,crate::worn_stat_boost::Rule>,
     pub empty_containers: BTreeMap<i32,crate::container_emptying::Rule>,
+    pub goldsmith_smelting: Option<crate::goldsmith_smelting::Config>,
     pub coal_bag: Option<crate::coal_bag::Config>,
     pub coin_pouches: BTreeMap<i32,crate::item_packs::PouchRule>,
     pub prayer: Option<crate::prayer::Config>,
@@ -1165,6 +1166,7 @@ impl Default for World {
             worn_item_swaps: BTreeMap::new(),
             worn_stat_boosts: BTreeMap::new(),
             empty_containers: BTreeMap::new(),
+            goldsmith_smelting: None,
             coal_bag: None,
             coin_pouches: BTreeMap::new(),
             milking: None,
@@ -2800,6 +2802,7 @@ impl World {
                                                                 job,
                                                                 &self.object_types,
                                                                 self.coal_bag,
+                                                                self.goldsmith_smelting,
                                                                 self.tutorial_rules_completed_varp
                                                                     .is_some(),
                                                                 &mut self.events,

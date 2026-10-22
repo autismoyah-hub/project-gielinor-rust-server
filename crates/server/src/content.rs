@@ -7,6 +7,8 @@ mod bank_booths;
 mod shearing;
 mod cows;
 mod ducks;
+mod goldsmith_smelting;
+pub use goldsmith_smelting::goldsmith_smelting;
 mod coal_bag;
 pub use coal_bag::coal_bag;
 pub use ducks::ducks;

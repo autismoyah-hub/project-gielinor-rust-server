@@ -136,6 +136,10 @@ impl Job {
         member: bool,
         random: &mut impl crate::npc::RandomSource,
     ) -> Result<Outcome, crate::stats::InvalidXp> {
+        self.complete_awarding(inv,catalog,stats,skill,xp_rate,max_level,member,self.request.xp,random)
+    }
+    /// Trusted live furnace modifier; recipe/continuation identity stays unchanged.
+    pub(crate) fn complete_awarding(&self,inv:&mut Inventory,catalog:&Catalog,stats:&mut Stats,skill:u8,xp_rate:f64,max_level:u8,member:bool,base_xp:f64,random:&mut impl crate::npc::RandomSource)->Result<Outcome,crate::stats::InvalidXp>{
         let request = &self.request;
         if (request.members && !member)
             || i32::from(stats.current(skill) as u8) < request.required_level
@@ -152,7 +156,7 @@ impl Job {
         // Validate advancement before touching inputs. Commit it only after the
         // output succeeds, so an XP error cannot leave a free product behind.
         let mut next_stats = stats.clone();
-        let advancement = skills::advance(&mut next_stats, skill, request.xp, xp_rate, max_level)?;
+        let advancement = skills::advance(&mut next_stats, skill, base_xp, xp_rate, max_level)?;
         let impure = request.impurity && random.below(2) == 0;
         // Match the original's independent strict transactions and reinsertion
         // on failure. Refunds can relocate slots; this is not snapshot rollback.

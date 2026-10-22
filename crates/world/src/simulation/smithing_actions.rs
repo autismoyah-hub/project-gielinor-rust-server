@@ -58,11 +58,13 @@ pub(super) fn complete(
     job: Job,
     catalog: &crate::inventory::Catalog,
     coal_bag: Option<crate::coal_bag::Config>,
+    goldsmith: Option<crate::goldsmith_smelting::Config>,
     tutorial_stats: bool,
     events: &mut Vec<WorldEvent>,
     random: &mut impl RandomSource,
 ) -> Result<(), ActionError> {
     if job.furnace && (p.pending_logout || p.death_queued || p.data.stats.current(3) as u8 == 0) {return Ok(());}
+    let base_xp=goldsmith.filter(|_|job.furnace&&config.skill==13).map_or(job.request.xp,|bonus|bonus.xp(&job.request,&p.data.equipment,p.member,catalog));
     let xp_rate=config.xp_rate * p.data.xp_rate_hundreds as f64 / 100.0;
     let next = match job
         .complete_furnace(
@@ -73,6 +75,7 @@ pub(super) fn complete(
             xp_rate,
             config.max_level,
             p.member,
+            base_xp,
             random,
         )
         .map_err(|_| ActionError::InvalidStat)?
@@ -548,3 +551,7 @@ mod tests {
 #[cfg(test)]
 #[path="coal_bag_smelting_tests.rs"]
 mod coal_bag_smelting_tests;
+
+#[cfg(test)]
+#[path="goldsmith_smelting_tests.rs"]
+mod goldsmith_smelting_tests;

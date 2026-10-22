@@ -89,6 +89,7 @@ impl<B: AccountBackend> Runtime<B> {
             .as_ref()
             .ok_or_else(|| io::Error::other("Configure tutorial before smelting"))?
             .progression;
+        let goldsmith=crate::content::goldsmith_smelting(names.group("obj"),&self.definitions,&recipes).map_err(io::Error::other)?;
         let types = crate::smelting::item_types(&self.definitions.items);
         let config = Config {
             presentation: crate::skill_multi::Presentation {
@@ -117,6 +118,7 @@ impl<B: AccountBackend> Runtime<B> {
                 )),
             },
         )?;
+        self.world.goldsmith_smelting=Some(goldsmith);
         let group = names.id("content", "smithing_furnace")? as i32;
         let mut furnaces: BTreeMap<_, _> = self
             .definitions
