@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0185",
+  "implementation_commit_sha": "caf12f91995aa87c26e65f4519ea097bd00503f5",
+  "recorded_utc": "2026-10-22T08:06:14.784252+00:00",
+  "result": "DEVELOPMENT_WORLD_CACHE_NATIVE_PASS_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/world/src/dialogue.rs": "ab9827609e4d6646e2d628464ffcb2c6d9b1aa42102df29d6ed4340eb4e79ff9",
+    "crates/server/src/dialogue.rs": "f1d6477fb935c17ac987bb9494d47779f6d5a86c126fa544841e60e59bbf3b66",
+    "crates/world/src/banknote_exchange.rs": "c3a93451f6c472ce8167b1fa6595bbf98356dc6957b6fbc8b1141b7f540fb499",
+    "crates/world/src/npc_interaction.rs": "188836bedeafa1bb8fa6f6924b522575d6a7f2f030dc50cdd14d8c0500892205",
+    "crates/world/src/simulation.rs": "fb99b1147a8637674494fea67d57985d5e0f167484e3483c4a134dd7dcde23fc",
+    "crates/world/src/simulation/npc_actions.rs": "2d7ca9f065bd41f0d21bdc0ef5fed59de28df671b1ede50340b5ec309a2fb3d3",
+    "crates/world/src/simulation/banker_note_actions.rs": "3f12d85eb336e0f3c1b036230c1d070ac768ec5bf2f4192352536da66b6d963a",
+    "crates/world/src/simulation/dialogue_actions.rs": "2085c24a32a2c6a6e43dfd50d0b5bfccf76d3f02697d8f95a42aeaf408a84361",
+    "crates/server/src/runtime/npc_interaction.rs": "97a005753d510ead8697033789708c22c1d06673d143b1934e810adc1cbdb980",
+    "crates/server/src/startup.rs": "0bb3e41774103c30a35faaae7d3ce038e3916ab030c1743948da500dcdc45300"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-npcs/src/main/kotlin/org/rsmod/content/generic/npcs/banker/Banker.kt",
+      "sha256": "c9092d825c8d3d7d13759b0c88ee9eebede17170ecf31dd2f637c74780abbf57",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/interfaces/bank/src/main/kotlin/org/rsmod/content/interfaces/bank/BankUnnote.kt",
+      "sha256": "19e40b1dfd2075d13813ac627c7b4dffc2759659faafb87791685a38c9116120",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/protect/ProtectedAccess.kt",
+      "sha256": "7b1611b7e2e7ab4de6296f086c75be5c2c232386c7282cd0c5a3ecc1b3c8c6aa",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Banker",
+      "sha256": "4413e1ad1ddae49abb30272e23d7dcf8ba89c83c854d5b77a33a577b04f22a7e",
+      "availability": "protected_local_reference",
+      "revision": "15148288"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bank note",
+      "sha256": "59d28760322e01725aec0b7b1e738c40fb9a7e51a1dc5f87815f41a6502a549d",
+      "availability": "protected_local_reference",
+      "revision": "15337973"
+    }
+  ],
+  "logs": {
+    "focused-001.log": {
+      "sha256": "73a29e9a78d6135b86d3073221509407d3dbc949f4213f5c9bf07c100e1a9bf2",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.5% sampled, ceiling70%.",
+        "Capacity: 7,840 MiB available, commit 46.8%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 308 filtered out; finished in 0.00s",
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 683 filtered out; finished in 0.38s"
+      ]
+    },
+    "shared-002.log": {
+      "sha256": "377eb1636e3c7032c904c0784e66e9299829a09bcf7496864b1200e4183a4a1d",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 4.3% sampled, ceiling70%.",
+        "Capacity: 8,286 MiB available, commit 44.5%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 308 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 92.62s",
+        "test result: ok. 687 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 63.84s"
+      ]
+    },
+    "shared-003.log": {
+      "sha256": "99908a2e62c756e6000c58d96ceacec26566759cc06c6923656021d55c49cbd0",
+      "result": "FAIL_COMPILE_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 2.4% sampled, ceiling70%.",
+        "Capacity: 8,263 MiB available, commit 44.5%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "shared-004.log": {
+      "sha256": "2c6790bb74d9381c880e46deb185934cc0d0176791c27871e432a1049bccf37e",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.2% sampled, ceiling70%.",
+        "Capacity: 8,237 MiB available, commit 44.5%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 308 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 55.55s",
+        "test result: ok. 688 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 32.44s"
+      ]
+    },
+    "cache-005.log": {
+      "sha256": "1c3943e5cd732608097944fc6b95bb6498f9f2e0456f104ee0e56566888393b3",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.0% sampled, ceiling70%.",
+        "Capacity: 8,241 MiB available, commit 44.5%, pages-in/s 1, disk 5.2 ms.",
+        "Cargo concurrency: -j 2",
+        "CACHE_ROLE ordinary=16298 tutor=3227 groups=17/40 sad=[610, 611, 612, 613]",
+        "PASS target NPC-role/item/Sad bindings and prepared three-tile World NPC exchange cases=24; synthetic clear terrain/positions, no live-client or actual-map claim"
+      ]
+    },
+    "archive-006.log": {
+      "sha256": "4429cd6b7ac84ba895e8e106be22dcbecd34032b05e46de231948247441401ef",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 18.2% sampled, ceiling70%.",
+        "Capacity: 7,157 MiB available, commit 49.5%, pages-in/s 0, disk 0.6 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 9C7F2543D567C3F7269884FB3539310854D4A63FCBE11A4D1DC3E5ECA13A1E00 (620 source files)."
+      ]
+    },
+    "driver-007.log": {
+      "sha256": "65675370a11c9bdeea4202ac6661d4b6a63b4c8211ef12a1eec0171eacd7b690",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 17.5% sampled, ceiling70%.",
+        "Capacity: 7,067 MiB available, commit 48.9%, pages-in/s 0, disk 2.5 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "fixture-008.log": {
+      "sha256": "5569692ab15c8c585e6e764cdf3266c823e25fec50881ebf40d2220557c2d97d",
+      "result": "PASS",
+      "summaries": []
+    },
+    "native-batch-009.log": {
+      "sha256": "8bdc828a896b99d23c8a099fc0e55552fb9505d8c45b6ae70e7fab31b064cc3a",
+      "result": "PASS",
+      "summaries": [
+        "Integration CPU capacity: 4.8% sampled, ceiling 70%.",
+        "Capacity: 8,425 MiB available, commit 42.7%, pages-in/s 0, disk 5.2 ms.",
+        "Cargo concurrency: -j 2",
+        "Native banknote control PASS:unchanged notes/logs=(5, 0)",
+        "Integration CPU capacity: 4.1% sampled, ceiling 70%.",
+        "Capacity: 8,409 MiB available, commit 42.7%, pages-in/s 0, disk 5.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Native banknote response text=\"No\" widget=4294840983 pixel=[269, 451] opcodes=[115]",
+        "Native banknote response text=\"Yes\" widget=4294840994 pixel=[269, 425] opcodes=[115]",
+        "Native banknote No,Yes,partial2andresultContinue PASS:notes3/logs2;noXP",
+        "Integration CPU capacity: 10.2% sampled, ceiling 70%.",
+        "Capacity: 8,340 MiB available, commit 43.1%, pages-in/s 4,873, disk 0.3 ms.",
+        "Cargo concurrency: -j 2",
+        "Native banknote verify PASS:unchanged notes/logs=(3, 2)"
+      ]
+    }
+  },
+  "server_archive": {
+    "sha256": "9C7F2543D567C3F7269884FB3539310854D4A63FCBE11A4D1DC3E5ECA13A1E00",
+    "source_count": 620,
+    "source_manifest_sha256": "7844c6b8dfe1a64dc3fce548317791db469371ce583e4dcc1b0162162cf156e1",
+    "before_after_sources_unchanged": true
+  },
+  "private_probe": {
+    "path": "crates/server/examples/banker_note_cache_private.rs",
+    "sha256": "23c81dffafcfad1a2b3a1610ddcb578f83eb81852d8bdd29ce5d8489e49479e9",
+    "scope": "Actual239.1 role/item/Sad bindings, synthetic clear terrain/NPC positions, not actual-map/native evidence"
+  },
+  "native_driver": {
+    "driver": "banker-note-001",
+    "scenario": "npc3227banknote",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless software-rendered native object menu and bank widgets; no OS Window/desktop input or independent verdict",
+    "files": {
+      "server_banker_note.exe": "73D4D89613BF950D08EC7A1A3B753E8E44206769F3419F006BBEE55657C03763",
+      "NativeBankerNoteScenario.rs": "78F69E5682103B6FCD8AEB0132C12D5F353A6C41FB0B5A771A9E38FDF10F06CD"
+    }
+  },
+  "pinned_library_files_checked_after": 990,
+  "native": [
+    {
+      "reference": "work/integration/runs/openrune-banker-note-control-native-20261022-001/banknote-native-assessment.json",
+      "sha256": "d7c7cac8749f02f7a7e8dd5dd2c6513d6e5984b1aeb93c39b7fdcc62c9e73c15",
+      "assessment": {
+        "result": "PASS_NATIVE_BANKNOTE_CONTROL",
+        "run": "openrune-banker-note-control-native-20261022-001",
+        "mode": "control",
+        "server_sha256": "9C7F2543D567C3F7269884FB3539310854D4A63FCBE11A4D1DC3E5ECA13A1E00",
+        "driver_sha256": "73D4D89613BF950D08EC7A1A3B753E8E44206769F3419F006BBEE55657C03763",
+        "pinned_library_files": 990,
+        "checks": [
+          "native item149 Use on actual Banker tutor3227, No then Yes and object dialogue Continue for action run only",
+          "partial exchange exact saved slots: notes5->3, two ordinary logs into first free0/1",
+          "all other inventory types/items/vars, Stats/fineXP and position unchanged",
+          "same-save reconnect unchanged for verify only",
+          "logout advanced/offline and exit0/unforced"
+        ],
+        "all_varp_changes": {
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "3077": {
+            "before": 0,
+            "after": 26693
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "300": {
+            "before": 0,
+            "after": 100
+          },
+          "3079": {
+            "before": 0,
+            "after": 90
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "65515": {
+            "before": 0,
+            "after": 84
+          }
+        },
+        "native_events": [
+          {
+            "kind": "native.banker_note_control",
+            "notes": 5,
+            "logs": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.453,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 07:58:26"
+          }
+        },
+        "shutdown": {
+          "pid": 19548,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T07:58:26.8672522Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "643032255c1ad26ca6a548ebecda3bcd66e11c12ec8121ab9aecc7e3af76b5bf",
+          "final-state.json": "0dab3103d118c263c1afd3b81a117897e8ade0ca657bf15283f34d4d12c3fe30",
+          "client.log": "5184b28b3bf4166a54c995b73c3991a50a29c2db94766cdce178b9d7582a6ae4",
+          "native-events.jsonl": "c006c01e0e94f118aedfb954cabbd69c5ab8a2acb56cca915d4e199db1957b8c",
+          "result.json": "ede369014f97988785c04e88db8ed1d9da71273822338076c323a842adade597",
+          "server.json": "fe9a9753f516317edbe202e7eb3ac949a2e416fddb2c88daf7ef38e986df65d4",
+          "server.log": "e0ceac5bc3c7b6c04107db0f9f71d57a6eabf635e44c14900aa392b82e1ec06e",
+          "shutdown.json": "eac70a9811d08aeb8426a366b1ee2a689f82465294e8e44c2fae175e245a17d6",
+          "logout-observation.json": "f2dc3b4682abb013dc80c39c4589d477f152cb779fa9db755339b6012cbbe445"
+        },
+        "limitations": [
+          "Owner working-tree archive, not independent or pristine acceptance.",
+          "Headless offscreen software scene and native widget dispatch; no OS window, physical input or rendered dialogue pixel claim.",
+          "Native full-pack/late-life/stale-target/refusal cases not exercised by this scenario; shared World cases are separate.",
+          "All varp changes reported, no general timer/capacity/chemistry acceptance.",
+          "No compiled Kotlin run; chemistry independent campaign remains paused."
+        ]
+      }
+    },
+    {
+      "reference": "work/integration/runs/openrune-banker-note-actions-native-20261022-001/banknote-native-assessment.json",
+      "sha256": "a2450975c65ef5e73ea852123a04f54d402cde83cb2972fc503378996a1a9e4d",
+      "assessment": {
+        "result": "PASS_NATIVE_BANKNOTE_EXCHANGE",
+        "run": "openrune-banker-note-actions-native-20261022-001",
+        "mode": "exchange",
+        "server_sha256": "9C7F2543D567C3F7269884FB3539310854D4A63FCBE11A4D1DC3E5ECA13A1E00",
+        "driver_sha256": "73D4D89613BF950D08EC7A1A3B753E8E44206769F3419F006BBEE55657C03763",
+        "pinned_library_files": 990,
+        "checks": [
+          "native item149 Use on actual Banker tutor3227, No then Yes and object dialogue Continue for action run only",
+          "partial exchange exact saved slots: notes5->3, two ordinary logs into first free0/1",
+          "all other inventory types/items/vars, Stats/fineXP and position unchanged",
+          "same-save reconnect unchanged for verify only",
+          "logout advanced/offline and exit0/unforced"
+        ],
+        "all_varp_changes": {
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "3079": {
+            "before": 0,
+            "after": 114
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "65515": {
+            "before": 0,
+            "after": 109
+          },
+          "1021": {
+            "before": 0,
+            "after": 268435456
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "3077": {
+            "before": 0,
+            "after": 49861
+          }
+        },
+        "native_events": [
+          {
+            "kind": "native.banker_note_use",
+            "stage": 1,
+            "slot": 13,
+            "note": 1512,
+            "npc": 3227,
+            "index": 484,
+            "opcode": 86
+          },
+          {
+            "kind": "native.banker_note_choice",
+            "choice": "No",
+            "opcode": 115
+          },
+          {
+            "kind": "native.banker_note_use",
+            "stage": 3,
+            "slot": 13,
+            "note": 1512,
+            "npc": 3227,
+            "index": 484,
+            "opcode": 86
+          },
+          {
+            "kind": "native.banker_note_choice",
+            "choice": "Yes",
+            "opcode": 115
+          },
+          {
+            "kind": "native.banker_note_result",
+            "notes": 3,
+            "logs": 2,
+            "opcode": 115
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.313,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 07:59:48"
+          }
+        },
+        "shutdown": {
+          "pid": 20256,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T07:59:49.4992748Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "643032255c1ad26ca6a548ebecda3bcd66e11c12ec8121ab9aecc7e3af76b5bf",
+          "final-state.json": "3f632c0b237ebf7efd80f9eadd2bb554ff842405aaeab46dce84b0671576992d",
+          "client.log": "9c34c6b601e606ea7f791d5994b23d8c02a97fa73e0c63eac992d50fc093b753",
+          "native-events.jsonl": "f96abdf9e971ca467cf3fc8acd3f49f5d3516fd5ac11c3782aff18fc7860e4af",
+          "result.json": "7d8742b1f9a7bbaaa15be546ce68f3495912c1ec87e462c98d2def5e905e8d37",
+          "server.json": "042d79972c70323141784446953c0eb3b8f7ee1533bbd54b34811e810dbfaae7",
+          "server.log": "f66a93f3ac1370636d9d003cbbc2fddc0a18fe782f193a5f2f71a4a1a5500455",
+          "shutdown.json": "2741f5e0f81aeb52a6e12027c8ad713535e5fe2c7b98692721961d2dbad39415",
+          "logout-observation.json": "8dc3277517fafb3b324a4ba76426303ffc4b680dc9865bf0af775afde08ee48e"
+        },
+        "limitations": [
+          "Owner working-tree archive, not independent or pristine acceptance.",
+          "Headless offscreen software scene and native widget dispatch; no OS window, physical input or rendered dialogue pixel claim.",
+          "Native full-pack/late-life/stale-target/refusal cases not exercised by this scenario; shared World cases are separate.",
+          "All varp changes reported, no general timer/capacity/chemistry acceptance.",
+          "No compiled Kotlin run; chemistry independent campaign remains paused."
+        ]
+      }
+    },
+    {
+      "reference": "work/integration/runs/openrune-banker-note-replay-native-20261022-001/banknote-native-assessment.json",
+      "sha256": "22cf9bbc03904983e81cb75198ff29b03bfa5cf2f356518464f53b248efb9a26",
+      "assessment": {
+        "result": "PASS_NATIVE_BANKNOTE_VERIFY",
+        "run": "openrune-banker-note-replay-native-20261022-001",
+        "mode": "verify",
+        "server_sha256": "9C7F2543D567C3F7269884FB3539310854D4A63FCBE11A4D1DC3E5ECA13A1E00",
+        "driver_sha256": "73D4D89613BF950D08EC7A1A3B753E8E44206769F3419F006BBEE55657C03763",
+        "pinned_library_files": 990,
+        "checks": [
+          "native item149 Use on actual Banker tutor3227, No then Yes and object dialogue Continue for action run only",
+          "partial exchange exact saved slots: notes5->3, two ordinary logs into first free0/1",
+          "all other inventory types/items/vars, Stats/fineXP and position unchanged",
+          "same-save reconnect unchanged for verify only",
+          "logout advanced/offline and exit0/unforced"
+        ],
+        "all_varp_changes": {
+          "300": {
+            "before": 200,
+            "after": 300
+          },
+          "3077": {
+            "before": 49861,
+            "after": 56381
+          },
+          "3079": {
+            "before": 114,
+            "after": 87
+          },
+          "65515": {
+            "before": 109,
+            "after": 191
+          }
+        },
+        "native_events": [
+          {
+            "kind": "native.banker_note_verify",
+            "notes": 3,
+            "logs": 2
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.312,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 07:59:48"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 08:00:55"
+          }
+        },
+        "shutdown": {
+          "pid": 10492,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T08:00:55.8503483Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "3f632c0b237ebf7efd80f9eadd2bb554ff842405aaeab46dce84b0671576992d",
+          "final-state.json": "d5745700d4e469b2304d8efdc6d1458a5cda9b1e770bb6baca46e56837db3f4b",
+          "client.log": "6536eb5eb947a366e98646a4e5c08680f764acb1131993103eca39b5699860c5",
+          "native-events.jsonl": "3ab5211dfd747b6ca37586bf75ef90f80d7b72696bf422d155234712bb1e5050",
+          "result.json": "f875fb12d876eeca6fabcc68ea11df3151bc7bee896e651db753daed6e6df61d",
+          "server.json": "5038a3ed380a80bcb9df7bbe265618f92723e603e809d651d5c3861bf5ff7133",
+          "server.log": "3d2d4361d990dca0c2d34323bbb3fecabdf0dd9de73dd8ff4ec77052a9d9e5c1",
+          "shutdown.json": "7c882f0c67a5512f53284dc8eb73a3ac008ca00717b6b53d044b91daf0630be0",
+          "logout-observation.json": "951c1b479731357ed9fef7658799b30febe51dc8adf60b4f3d89526a3e3f62f1"
+        },
+        "limitations": [
+          "Owner working-tree archive, not independent or pristine acceptance.",
+          "Headless offscreen software scene and native widget dispatch; no OS window, physical input or rendered dialogue pixel claim.",
+          "Native full-pack/late-life/stale-target/refusal cases not exercised by this scenario; shared World cases are separate.",
+          "All varp changes reported, no general timer/capacity/chemistry acceptance.",
+          "No compiled Kotlin run; chemistry independent campaign remains paused."
+        ]
+      }
+    }
+  ],
+  "matrix": {
+    "normal_member_distance_world_cases": 6,
+    "non_note_full_world_cases": 2,
+    "late_target_actor_item_world_cases": 6,
+    "current_count_late_space_cases": 2,
+    "actual_death_before_during_restored_world_cases": 4,
+    "morph_missing_target_replacement_identity_cases": 3,
+    "actual_cache_role_item_slot_member_cases": 24,
+    "target_profiles": [
+      16298,
+      3227
+    ],
+    "sad_sequences": [
+      610,
+      611,
+      612,
+      613
+    ],
+    "shared_server_pass": 308,
+    "shared_world_pass": 688,
+    "shared_world_existing_ignored": 1
+  },
+  "failures_preserved": {
+    "shared003": "New morph test called Variables.set without typed Varp/engine flag; compile E0061 retained, corrected test to real typed variable update. No gameplay failure relabelled."
+  },
+  "limitations": [
+    "Owner working-tree build/cache/native evidence with retained local packaging/private test opt-ins; not pristine or independent acceptance.",
+    "Only held-item use for already registered Bank-operation3 NPCs. Banker talk/PIN/Collect/tutorial/slot-purchase branches and broad BankSpaceShop/account-capacity policies remain unimplemented by this unit.",
+    "Native covers one F2P actual Banker tutor3227 positive partial conversion, No/Yes/resultContinue and matching login/reconnect. Sad/no-turn non-note/full refusals and three-tile bound/morph/life cases are owner World/cache tests, not native acceptance.",
+    "Captured raw/visible NPC identity, selected slot/item, actor origin/movement, unsignedHP/death, saving/logout and current target availability are rechecked. Unresolved dynamic morphs are refused rather than falling back to raw identity.",
+    "No new protocol, UI/queue/combat/persistence engine or schema. Existing banker Bank-op3 remains two-tile; note approach uses three-tile range with inherited raycast/reach. Exact compiled Kotlin coroutine timing and normal dialogue facing parity remain unverified.",
+    "Headless actual native NPC-pick/menu and scripts/widgets, no OS window/physical input or rendered dialogue screenshot claim. Chemistry independent verification remains paused."
+  ]
+}
