@@ -1,0 +1,591 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0192",
+  "revision": 2,
+  "implementation_commit_sha": "afdd75043065374182164af3fd1fe50d2a259768",
+  "recorded_utc": "2026-10-22T12:54:06.873831+00:00",
+  "result": "OWNER_THREE_NATIVE_NATURAL_SPEECH_AND_SAVE_REGRESSIONS_PASS_DEATH_MOURN_NATIVE_PENDING_INDEPENDENT_PENDING",
+  "source_report": "docs/openrune/verification/development/OR-MIG-0192.json",
+  "sources": {
+    "crates/server/src/content.rs": "4e32f784d09770c4931df5300a84bc2a68deb92e6d06bae9ea626cdda0084cb0",
+    "crates/server/src/content/ducks.rs": "68a8945d3e174d51a58d88457837e07c5dd558a81706697fb3e528fb3a32ceaf",
+    "crates/server/src/startup.rs": "37172e2445642d8c79e83c3c6b0f4f688868eef0774e70dceb0888e75c93559c",
+    "crates/world/src/ducks.rs": "f62c1e6a0db96f1e9f13532793cde929846ddc1c830d4ce8f960bcc89091d37d",
+    "crates/world/src/lib.rs": "5467289ebc8d5b037b8f251c225b7051a9e6b997ebccfbb23afce5801fcfc6b9",
+    "crates/world/src/simulation.rs": "f444783a0752f6826bc95ed6c4d13582416babc92f7b758b18b6b5875553afa6",
+    "crates/world/src/simulation/duck_actions.rs": "8e65a23b433f9060e76c31137e60589b6bfef149a6b0c450f3d4cae8585fc29a",
+    "crates/world/src/simulation/duck_tests.rs": "d5e561117af633c2e470584ddeac40c6c47e8184df950c0af5ba9a3eb8e4f878",
+    "crates/world/src/simulation/fixtures/duck-queue-source.expected": "9432680558db3149e8ded25320d8cab647366ef1bbcdc5d67a1d450cd363889d",
+    "crates/world/src/simulation/npc_death_actions.rs": "4cae5925312a5832abba73014dea5ab1e8bd103dc144383df17951b2d084447a",
+    "crates/world/src/simulation/npc_search.rs": "87c0e730da9bd0dea52e71c5375822ab4cf6d7fd24e674a6f0216b0374d8f04c"
+  },
+  "server_archive": {
+    "sha256": "6D4C63B2442E381D465A665D3C6A388C1D3AFF7501B7B1277B0586C6DFE6E57F",
+    "source_count": 654,
+    "source_manifest_sha256": "f5e16bc275e4d8d4e972e7f41fb2c3961df9f14328fc0bf9f63c697495a0432a",
+    "before_after_sources_unchanged": true
+  },
+  "supplemental_inputs": {
+    "crates/world/src/simulation/fixtures/duck-queue-source.expected": {
+      "sha256": "9432680558db3149e8ded25320d8cab647366ef1bbcdc5d67a1d450cd363889d",
+      "basis": "Identical Git/current/original Kotlin-generated fixture bytes, compiled by the focused005 and shared006 tests. Not included in original rg-enumerated archive manifest."
+    }
+  },
+  "native": [
+    {
+      "run": "openrune-duck-family-control-native-20261022-001",
+      "assessment_sha256": "2a40500de9b99dbefaed603ea244a91e21983aa78b9c022abc8d11464f249370",
+      "assessment": {
+        "result": "PASS_NATIVE_DUCK_CONTROL",
+        "run": "openrune-duck-family-control-native-20261022-001",
+        "mode": "control",
+        "server_sha256": "6D4C63B2442E381D465A665D3C6A388C1D3AFF7501B7B1277B0586C6DFE6E57F",
+        "driver_sha256": "27B077697102DE4877FB732EFABBF6E3B20A4662B7C1C89C08C82295786B34EF",
+        "native_events": [
+          {
+            "kind": "native.duck_speech",
+            "index": 424,
+            "raw": 1838,
+            "text": "Quack!",
+            "tick": 66,
+            "x": 3239,
+            "z": 3244
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 474,
+            "raw": 2002,
+            "text": "Eep!",
+            "tick": 66,
+            "x": 3238,
+            "z": 3239
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 427,
+            "raw": 1838,
+            "text": "Quack!",
+            "tick": 66,
+            "x": 3237,
+            "z": 3237
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 432,
+            "raw": 1839,
+            "text": "Quack?",
+            "tick": 66,
+            "x": 3239,
+            "z": 3244
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 426,
+            "raw": 1838,
+            "text": "Quack!",
+            "tick": 66,
+            "x": 3242,
+            "z": 3234
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 433,
+            "raw": 1839,
+            "text": "Quack!",
+            "tick": 66,
+            "x": 3240,
+            "z": 3230
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 425,
+            "raw": 1838,
+            "text": "Quack!",
+            "tick": 66,
+            "x": 3242,
+            "z": 3231
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 431,
+            "raw": 1839,
+            "text": "Quack?",
+            "tick": 66,
+            "x": 3237,
+            "z": 3237
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 475,
+            "raw": 2002,
+            "text": "Eep!",
+            "tick": 66,
+            "x": 3238,
+            "z": 3247
+          },
+          {
+            "kind": "native.duck_done",
+            "mode": "control",
+            "speech_kinds": 3
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.328,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 12:51:04"
+          }
+        },
+        "shutdown": {
+          "pid": 16288,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T12:51:05.4311758Z"
+        },
+        "all_varp_changes": {
+          "65515": {
+            "before": 0,
+            "after": 85
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "3077": {
+            "before": 0,
+            "after": 4576
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "3079": {
+            "before": 0,
+            "after": 91
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "300": {
+            "before": 0,
+            "after": 100
+          }
+        },
+        "position_unchanged": true,
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "1976509672554f9286d5133dd34ecfe50ffd9192f1cbe3104fc8e2abd727a473",
+          "final-state.json": "7af77569b509184edc0e60ec4441d6e803cf3741d40638ff15a591d7308c27ca",
+          "initial-state.json": "52862c3a148469062d59314d50f2f5c47e9aad27c16004e08bf5dd75cf60b6d1",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "a78f2c0668840395f318ec5b69880f33f249649f1d17931f6cd85e6472fbc16e",
+          "native-events.eep.bmp": "2db8312876f8283bded385414ceb3fb0e8061d04caad37907bf2eaa6fea49028",
+          "native-events.jsonl": "cba044d8b83b49e9f5d24b5f25871a16a961ed9110c7188be6eb8427541dcd17",
+          "result.json": "d9e9495ee9c27a8077cb48c1369604bd6143855f93aa279749d5ff0f836ceb5c",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "adee0e0d3932d3ee0497b18fa3f33bc6d9ff0ae116f12f4917f8e19731a90ecc",
+          "server.log": "471d59eb8019fdec233b2392efc0f5ce32f4f8cb679de33978a6a632058d9d5e",
+          "shutdown.json": "d26834b291cc91a51230fed2283f32a03ec3604925393c81f62a9154e168ca36"
+        },
+        "limitations": [
+          "Owner natural ordinary aquatic callback observation through actual unchanged native decoding; no injected speech or direct action/packet fallback.",
+          "Received speech/timing/raw identity and conserved save state; no causal parent-child proof, seeded RNG, death/mourn/loot, audio playback or following acceptance.",
+          "Optional software captures need separate visual review before claiming rendered speech. No physical desktop input or independent verdict. Chemistry verification paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-duck-family-actions-native-20261022-001",
+      "assessment_sha256": "6d140cc158748e73108e9a3fb960c6691c71c90a862fa480e902b715094abed9",
+      "assessment": {
+        "result": "PASS_NATIVE_DUCK_OBSERVE",
+        "run": "openrune-duck-family-actions-native-20261022-001",
+        "mode": "observe",
+        "server_sha256": "6D4C63B2442E381D465A665D3C6A388C1D3AFF7501B7B1277B0586C6DFE6E57F",
+        "driver_sha256": "27B077697102DE4877FB732EFABBF6E3B20A4662B7C1C89C08C82295786B34EF",
+        "native_events": [
+          {
+            "kind": "native.duck_speech",
+            "index": 433,
+            "raw": 1839,
+            "text": "Quack!",
+            "tick": 67,
+            "x": 3240,
+            "z": 3230
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 431,
+            "raw": 1839,
+            "text": "Quack?",
+            "tick": 67,
+            "x": 3237,
+            "z": 3237
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 475,
+            "raw": 2002,
+            "text": "Eep!",
+            "tick": 67,
+            "x": 3238,
+            "z": 3247
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 474,
+            "raw": 2002,
+            "text": "Eep!",
+            "tick": 67,
+            "x": 3238,
+            "z": 3239
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 432,
+            "raw": 1839,
+            "text": "Quack?",
+            "tick": 67,
+            "x": 3239,
+            "z": 3244
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 426,
+            "raw": 1838,
+            "text": "Quack!",
+            "tick": 67,
+            "x": 3242,
+            "z": 3234
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 424,
+            "raw": 1838,
+            "text": "Quack!",
+            "tick": 67,
+            "x": 3239,
+            "z": 3244
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 425,
+            "raw": 1838,
+            "text": "Quack!",
+            "tick": 67,
+            "x": 3242,
+            "z": 3231
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 427,
+            "raw": 1838,
+            "text": "Quack!",
+            "tick": 67,
+            "x": 3237,
+            "z": 3237
+          },
+          {
+            "kind": "native.duck_done",
+            "mode": "observe",
+            "speech_kinds": 3
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.313,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 12:52:13"
+          }
+        },
+        "shutdown": {
+          "pid": 10760,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T12:52:14.4749547Z"
+        },
+        "all_varp_changes": {
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "3079": {
+            "before": 0,
+            "after": 91
+          },
+          "3077": {
+            "before": 0,
+            "after": 13995
+          },
+          "65515": {
+            "before": 0,
+            "after": 86
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "300": {
+            "before": 0,
+            "after": 100
+          }
+        },
+        "position_unchanged": true,
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "12049e1daf764d3e5bd0aa25275dc69d84b41c31f5aa8cf9d880446be50a0bbb",
+          "final-state.json": "76335acd83cb5d2eb329e77a5118cf7811d5fbd2cff79a131d71f6f3550d97e1",
+          "initial-state.json": "52862c3a148469062d59314d50f2f5c47e9aad27c16004e08bf5dd75cf60b6d1",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "9e4198d6d5963c443e6de360a41738b720c556d901310f9f2283b4691a45d1ba",
+          "native-events.jsonl": "8034310e3102ef78133aae458fc7212799b1067e14be83416a24cd283f783d78",
+          "native-events.quack.bmp": "9367721b04ba7682e2458a74553234653106702e06c2e5c962495d173385e432",
+          "result.json": "cce66eff17ab4e4b6eaf7cbf1c722ebef4fa4ef48787cda54263fa3054f489a2",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "78c8507283fdc332f2c401b5793f5e53045cfc7b754cf3c5fbf38f060858861a",
+          "server.log": "a2c3523eb1f4e3d3222369cf8e66ca8313b03d7b84b85b6b9e435cb0c000a121",
+          "shutdown.json": "f9e672dfe1f127c08aa188a5e93d5da6ed3af70e8853d1a69ea06327e48215c3"
+        },
+        "limitations": [
+          "Owner natural ordinary aquatic callback observation through actual unchanged native decoding; no injected speech or direct action/packet fallback.",
+          "Received speech/timing/raw identity and conserved save state; no causal parent-child proof, seeded RNG, death/mourn/loot, audio playback or following acceptance.",
+          "Optional software captures need separate visual review before claiming rendered speech. No physical desktop input or independent verdict. Chemistry verification paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-duck-family-replay-native-20261022-001",
+      "assessment_sha256": "14b09d828c5a044e7c518bc616aa0b9014abf106795eba1d1fcdabf05b7b9c57",
+      "assessment": {
+        "result": "PASS_NATIVE_DUCK_VERIFY",
+        "run": "openrune-duck-family-replay-native-20261022-001",
+        "mode": "verify",
+        "server_sha256": "6D4C63B2442E381D465A665D3C6A388C1D3AFF7501B7B1277B0586C6DFE6E57F",
+        "driver_sha256": "27B077697102DE4877FB732EFABBF6E3B20A4662B7C1C89C08C82295786B34EF",
+        "native_events": [
+          {
+            "kind": "native.duck_speech",
+            "index": 427,
+            "raw": 1838,
+            "text": "Quack!",
+            "tick": 66,
+            "x": 3237,
+            "z": 3237
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 432,
+            "raw": 1839,
+            "text": "Quack?",
+            "tick": 66,
+            "x": 3239,
+            "z": 3244
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 426,
+            "raw": 1838,
+            "text": "Quack!",
+            "tick": 66,
+            "x": 3242,
+            "z": 3234
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 424,
+            "raw": 1838,
+            "text": "Quack!",
+            "tick": 66,
+            "x": 3239,
+            "z": 3244
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 431,
+            "raw": 1839,
+            "text": "Quack?",
+            "tick": 66,
+            "x": 3237,
+            "z": 3237
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 474,
+            "raw": 2002,
+            "text": "Eep!",
+            "tick": 66,
+            "x": 3238,
+            "z": 3239
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 433,
+            "raw": 1839,
+            "text": "Quack!",
+            "tick": 66,
+            "x": 3240,
+            "z": 3230
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 425,
+            "raw": 1838,
+            "text": "Quack!",
+            "tick": 66,
+            "x": 3242,
+            "z": 3231
+          },
+          {
+            "kind": "native.duck_speech",
+            "index": 475,
+            "raw": 2002,
+            "text": "Eep!",
+            "tick": 66,
+            "x": 3238,
+            "z": 3247
+          },
+          {
+            "kind": "native.duck_done",
+            "mode": "verify",
+            "speech_kinds": 3
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.578,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 12:52:13"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 12:53:22"
+          }
+        },
+        "shutdown": {
+          "pid": 4416,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T12:53:23.7633271Z"
+        },
+        "all_varp_changes": {
+          "65515": {
+            "before": 86,
+            "after": 172
+          },
+          "3077": {
+            "before": 13995,
+            "after": 23499
+          },
+          "300": {
+            "before": 100,
+            "after": 200
+          }
+        },
+        "position_unchanged": true,
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "74dabaddffd96d314b7900fcef95dc7e9f11de7f835b169916c05578e7594a19",
+          "final-state.json": "b7cb00b9f30e32cf8491b0f32571a16b512f2d8d03e5f98573a807a81a028ccb",
+          "initial-state.json": "76335acd83cb5d2eb329e77a5118cf7811d5fbd2cff79a131d71f6f3550d97e1",
+          "logout-before.json": "03602ac43684867b66a5ff3355f49ed82923bb58d22808d6d4ae10a2e647c19e",
+          "logout-observation.json": "d018606703b5c04384140b1162142127fa0d0a2412cc6f7c23c69e9f35a9544f",
+          "native-events.eep.bmp": "c345e0f8766c1e72782381066e63d831cac0fb98967a7764a257df9579f3048f",
+          "native-events.jsonl": "e73f9779a881a50e16ef8a09e86f1242c0057590e62443714eaedeb84ce5e182",
+          "result.json": "123e1efb9892191417daf1b98ea5139ef2f03b8465f5329828d491f4451b3d42",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "85b9046f2e1c479660bd5858d46ce51eada085f58f34b89097b4092d0f4701e6",
+          "server.log": "63e0015cd6529ed5daabecac89f16a37b701736aeb4acee604bf5eb36cf41483",
+          "shutdown.json": "e03a204fa5ad8c63d215e41c4feb3265d943f26ce5dfea69b8355488d31fd323"
+        },
+        "limitations": [
+          "Owner natural ordinary aquatic callback observation through actual unchanged native decoding; no injected speech or direct action/packet fallback.",
+          "Received speech/timing/raw identity and conserved save state; no causal parent-child proof, seeded RNG, death/mourn/loot, audio playback or following acceptance.",
+          "Optional software captures need separate visual review before claiming rendered speech. No physical desktop input or independent verdict. Chemistry verification paused."
+        ]
+      }
+    }
+  ],
+  "driver": {
+    "driver": "duck-family-001",
+    "scenario": "ordinaryAquaticDuckNaturalSpeech",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless naturally scheduled duck NPC speech decoding and optional software captures; no interaction, death or audio-playback acceptance; no OS Window/desktop input or independent verdict",
+    "files": {
+      "server_duck.exe": "27B077697102DE4877FB732EFABBF6E3B20A4662B7C1C89C08C82295786B34EF",
+      "NativeDuckScenario.rs": "8B8DF8D300454D9BFB6148EF4DB0182AB1B37BA240F4E66A1E2D45F1B27908DE"
+    }
+  },
+  "visual_review": {
+    "path": "work/integration/runs/openrune-duck-family-control-native-20261022-001/native-events.eep.bmp",
+    "sha256": "2db8312876f8283bded385414ceb3fb0e8061d04caad37907bf2eaa6fea49028",
+    "observed": "Actual riverbank character and aquatic ducks/ducklings; Quack!, Quack? and Eep! text visible. Outer interface area black."
+  },
+  "known_limitations": [
+    "Owner working-tree validation with protected private manifest/test opt-ins; not pristine or independent acceptance.",
+    "Only aquatic adult1838/1839 and cluster2002, actual content24/25. Other duck/duckling variants, general follow behavior and wider Wiki behavior are outside this unit.",
+    "Ten queue fixtures execute actual protected NpcQueueProcessor.kt/NpcQueueList.kt with owned recording dependencies. They do not execute full Ducks.kt, Kotlin engine, hunt, coroutine death or native client. Frozen oracle result copied GenericPerson labels are explicitly corrected in compatibility_notes; source inputs identify the actual queue processor.",
+    "Prepared World/cache tests use synthetic terrain/positions and stationary modes; exact target definitions/timers are real. World death test pre-attributes hero points then queues a typeless hit: no melee/ranged accuracy or combat XP acceptance.",
+    "Mourn uses independent bounded RNG and remaining-square sampling; no Kotlin seeded RNG stream equivalence. Map-edge search fails safely rather than throwing into the tick.",
+    "The archive source enumerator excluded the then-ignored owned include_str fixture. Its exact Git/current/original Kotlin-generated bytes are separately pinned in supplemental_inputs; the nine World tests include the fixture correspondence. Original archive manifest and binary are preserved, not silently rewritten.",
+    "No inventory, XP or persistence schema change. Independent V0\u2013V4 queued; chemistry verification remains paused.",
+    "Three owner native001 sessions passed: matched control, passive natural callback observation and same-save reconnect. All received ordinary Quack!/female Quack?/cluster Eep! through unchanged client decoding; all saved offline/shutdown0 unforced/990library files unchanged. No inventory/Stats/fineXP/position mutation.",
+    "Control software frame visually inspected: riverbank character, actual ducks/ducklings and visible yellow Quack!, Quack?, Eep! overhead text. Frame has unrendered outer interface area; no full interface or audio-playback claim.",
+    "Passive observation does not establish exact parent-child causal timing, native combat/death/mourn/no-drop effects, following, excluded variants, RNG seed parity or independent acceptance. World/cache/compiled queue-core evidence remains separate."
+  ]
+}

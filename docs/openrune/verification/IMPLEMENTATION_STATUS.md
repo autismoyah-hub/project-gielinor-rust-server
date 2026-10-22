@@ -1521,3 +1521,10 @@ Source `afdd75043065374182164af3fd1fe50d2a259768` adapts adult1838/1839 and clus
 Owner validation passed314 server and727 world tests (one existing ignored), nine prepared World cases using actual cache definitions and ten logical queue fixtures from the actual compiled Kotlin list/processor. Queue append-tail timing is covered; the harness is not the full Kotlin engine. Archive `6D4C63B2442E381D465A665D3C6A388C1D3AFF7501B7B1277B0586C6DFE6E57F` contains654 pinned source files. Native and independent V0–V4 remain pending. [Owner evidence](development/OR-MIG-0192.json).
 
 Earlier borrow/test-fixture failures and archive009 disk exhaustion are preserved. Only three owned incremental compiler caches were reclaimed under the build lease; source, fixtures, evidence archives and other agents files were preserved, and archive011 passed. Discovery classifications{'not_yet_assessed': 2721, 'configuration': 661, 'framework_or_infrastructure': 21, 'eligible_gameplay_behavior': 105} across3508 files are an inventory, not a gameplay completion percentage. Chemistry verification remains paused.
+
+
+## OR-MIG-0192 revision 2 — Native river Duck speech
+
+Implementation remains `afdd75043065374182164af3fd1fe50d2a259768`, archive `6D4C63B2442E381D465A665D3C6A388C1D3AFF7501B7B1277B0586C6DFE6E57F`. Three owner native sessions passed: matched control, naturally scheduled aquatic speech observation and same-save reconnect. Actual1838/1839/2002 NPC updates delivered Quack!, Quack? and Eep! through990 unchanged client-library files. The inspected control frame visibly shows these overhead texts above river ducks and ducklings. Inventory, Stats, fine XP and character position remained unchanged; all sessions acknowledged offline saves and shut down unforced with exit0.
+
+[Additional owner evidence](development/OR-MIG-0192-native-r2.json). Observation is passive: exact parent-child causal timing, native death/mourn/no-drop behavior, audio playback, following and excluded variants remain unverified. The outer interface area is black in the captured frame. Independent V0–V4 remains queued; chemistry verification stays paused.
