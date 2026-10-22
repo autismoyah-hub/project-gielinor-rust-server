@@ -96,6 +96,11 @@ impl World {
             }
         }
         if let Some(config) = &self.regeneration {
+            // A saved zero-HP player must complete formal recovery, not revive
+            // in place when the passive health timer happens to expire.
+            if self.ordinary_death.is_some() && timer == config.health_timer
+                && (p.ordinary_death.is_some() || p.data.stats.current(config.hitpoints) as u8 == 0)
+            { return true; }
             for update in config.tick(
                 timer,
                 &mut p.data.stats,

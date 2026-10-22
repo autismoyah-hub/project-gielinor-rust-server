@@ -4,6 +4,7 @@ mod cinderworks_actions;
 mod cinderworks_entry;
 mod cinderworks_encounter_actions;
 mod cinderworks_recovery;
+mod player_death_actions;
 mod cinderworks_fishing;
 mod cinderworks_services;
 use crate::npc::{Mode, Npc, RandomSource, SeededRandom};
@@ -298,6 +299,7 @@ enum LocationAction {
 struct Player {
     cinderworks_checkpoint: Option<cinderworks_checkpoint::Pending>,
     cinderworks_recovery_at:Option<i32>,
+    ordinary_death: Option<crate::player_death::Pending>,
     dough_request: Option<crate::dough::Request>,
     tool_crafting_request:Option<crate::tool_crafting::Request>,
     counted_assembly_request:Option<crate::counted_assembly::Request>,
@@ -631,6 +633,7 @@ pub enum AdmissionError {
 #[derive(Debug)]
 pub enum WorldEvent {
     TileGraphic(crate::zones::Graphic),
+    OrdinaryDeathRecovered { actor: ActorId, stop_music: u16, jingle: u16 },
     CinderworksCheckpoint { actor:ActorId, data:PlayerData },
     CinderworksProgress { actor:ActorId, run:crate::tower_run::Run },
     CountedAssemblyMade {actor: ActorId, first: i32, second: i32, output: i32, count: i32},
@@ -981,6 +984,7 @@ pub struct World {
     pub unix_millis: u64,
     pub tower_arrival: Option<crate::tower_arrival::Config>,
     pub cinderworks:Option<crate::tower_cinderworks::Config>,
+    pub ordinary_death: Option<crate::player_death::Config>,
     pub cinderworks_encounters:[Option<crate::cinderworks_encounter::Encounter>;2],
     pub tanning: BTreeMap<u16, Vec<crate::tanning::Recipe>>,
     pub tower_tanning: Option<crate::tower_tanning::HandlerConfig>,
@@ -1133,6 +1137,7 @@ impl Default for World {
             area_sources: Default::default(),
             tower_arrival: None,
             cinderworks:None,
+            ordinary_death: None,
             cinderworks_encounters:[None,None],
             tanning: Default::default(),
             tower_tanning: None,
@@ -2457,6 +2462,7 @@ impl World {
                 Phase::ControllerMain => {
                     self.process_cinderworks_encounters();
                     self.process_cinderworks_recovery();
+                    self.process_ordinary_death(random);
                     self.active_trees.tick(self.clock.0, &self.locations);
                     // Gathering deadlines use the action clock. Processing before
                     // PlayerMain keeps N ticks of visible stump lifetime; the
@@ -3270,6 +3276,7 @@ impl World {
                         let player = Player {
                             cinderworks_checkpoint: None,
                             cinderworks_recovery_at:None,
+                            ordinary_death: None,
                             member: false,
                             dough_request: None,
                             tool_crafting_request:None,

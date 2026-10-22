@@ -1,5 +1,11 @@
 //! Revision239 MIDI_SONG_V2; stop_music is an ordinary cache MIDI identity.
 use crate::framing::Packet;
+/// Revision 239 MIDI_JINGLE: unsigned medium duration, then g2Alt3 identity.
+pub fn jingle(id: u16) -> Packet {
+    let [hi, lo] = id.to_be_bytes();
+    Packet { opcode: 118, payload: vec![0, 0, 0, lo.wrapping_add(128), hi] }
+}
+
 pub fn song(
     id: u16,
     fade_out_delay: u16,
@@ -17,5 +23,14 @@ pub fn song(
     Packet {
         opcode: 35,
         payload,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn death_jingle_matches_revision_239_wire_fields() {
+        let p=super::jingle(90);assert_eq!(p.opcode,118);assert_eq!(p.payload,vec![0,0,0,218,0]);
+        let p=super::jingle(0x12f0);assert_eq!(p.payload,vec![0,0,0,0x70,0x12]);
     }
 }

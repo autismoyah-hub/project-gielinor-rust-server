@@ -34,6 +34,7 @@ impl Names {
             "timer",
             "queue",
             "midi",
+            "jingle",
             "dbtable",
         ] {
             groups.insert(kind, symbols::load(directories, kind, None)?);
@@ -155,6 +156,14 @@ pub fn configure<B: AccountBackend>(
         boosted_timer: names.short("timer", "stat_boost_restore")?,
         health_timer: names.short("timer", "health_regen")?,
         rapid_timer: names.short("timer", "rapidrestore_regen")?,
+    });
+    runtime.world.ordinary_death = Some(gielinor_world::player_death::Config {
+        centre: gielinor_world::CoordGrid::new(3221, 3218, 0).map_err(|e| io::Error::other(format!("{e:?}")))?,
+        animation: names.short("seq", "human_death")?,
+        skills: runtime.world.regeneration.as_ref().unwrap().skills.clone(),
+        special_attack: varp("sa_attack")?,
+        stop_music: names.short("midi", "stop_music")?,
+        jingle: names.short("jingle", "death_jingle_2")?,
     });
     let prayers = crate::prayer_book::resolve(names, &runtime.definitions, &parameters, &tables)?;
     runtime.world.prayer_book = Some(gielinor_world::prayer_runtime::Config {

@@ -3287,6 +3287,27 @@ impl<B: AccountBackend> Runtime<B> {
                 WorldEvent::LoginRejected { connection, reason } => {
                     self.reject(connection, admission_status(reason))
                 }
+                WorldEvent::OrdinaryDeathRecovered { actor, stop_music, jingle } => {
+                    if let Some(active) = self.active.get_mut(&actor) {
+                        active.design.skull = -1;
+                        active.face_npc = None;
+                        active.pending_face = None;
+                        active.face_changed = true;
+                        active.exact_move = None;
+                        active.appearance_rebuild = true;
+                        if let Some(connection) = active.connection {
+                            for packet in [
+                                gielinor_protocol::music::song(stop_music, 0, 0, 0, 0),
+                                gielinor_protocol::music::jingle(jingle),
+                                gielinor_protocol::login_init::camera_reset(),
+                                gielinor_protocol::login_init::minimap(0),
+                            ] {
+                                self.transport.send(connection, packet.opcode, &packet.payload)?;
+                            }
+                        }
+                    }
+                    self.events.push(Event::World(WorldEvent::OrdinaryDeathRecovered { actor, stop_music, jingle }));
+                }
                 WorldEvent::CloseModals { actor } => {
                     let parents = self
                         .active

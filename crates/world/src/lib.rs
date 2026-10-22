@@ -1,5 +1,6 @@
 //! Pure world primitives ported from the pinned Kotlin reference.
 //! No network, persistence, clock, or global random state is used here.
+pub mod player_death;
 pub mod skillcape_vendor;
 pub mod worn_stat_boost;
 pub mod guild_passages;

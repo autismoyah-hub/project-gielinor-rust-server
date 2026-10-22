@@ -300,6 +300,11 @@ pub fn run() -> io::Result<()> {
     {
         return Err(fail("Spawn map is absent"));
     }
+    // Ordinary death must also work for a remote --spawn. Lumbridge recovery
+    // cannot silently heal in place because its collision was never loaded.
+    if !maps.iter().any(|map| map.id == 12850) {
+        maps.push(cache.map_square(12850)?.ok_or_else(|| fail("Missing ordinary respawn map 12850"))?);
+    }
     // Floor 1 copies zones outside the login map window. Resolve all template
     // sources before preparing the world, including the old dungeon square.
     let source_ids = tower_template
