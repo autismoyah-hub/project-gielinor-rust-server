@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0193",
+  "implementation_commit_sha": "277f09058c2e8613b7c7ee4ca8beb451b1617bf4",
+  "recorded_utc": "2026-10-22T13:07:33.650142+00:00",
+  "result": "OWNER_MANUAL_INVENTORY_WORLD_CACHE_PASS_NATIVE_PENDING_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/server/src/content.rs": "d81843f54d650d889de58d15a14c96f8cb5db1aa81624b03bb9172971a551b4c",
+    "crates/server/src/content/coal_bag.rs": "efa966de1e0e189a855e617936f44585ff4cae6987a656aa4944842164e32d24",
+    "crates/server/src/runtime.rs": "3867faaa9ac6e6f72ba71d8c2fd63ad687ca729fb0b1f04a2cb62a311a4e1a12",
+    "crates/server/src/startup.rs": "65fc54333c45d33a63a55ca57339042fc4bbeaea630f1d60d42307a6dd34c49c",
+    "crates/world/src/coal_bag.rs": "71e5bc015acf0d4c67f5926072f3685e9741dad5874c5c891506ede481dfd2ce",
+    "crates/world/src/lib.rs": "4fa763449c7ba2f6bb005634df39009f0124d13c69837e0c876882cc35ebbbaf",
+    "crates/world/src/simulation.rs": "2bae53d7901dfe9d2414b36cf072a623defb772047a665e820ab2d0d611fa368",
+    "crates/world/src/simulation/coal_bag_actions.rs": "845230f2e1f13661d3e98fdc7a826757965fcdf2d9466b034648fa06b70c097e",
+    "crates/world/src/simulation/coal_bag_tests.rs": "3a41a6ad106731779498ded4f16e03b58dd74808841e79a4784beb7ca7341355"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/coalbag/CoalBag.kt",
+      "sha256": "4d49434735b71da85f910b012228e733d7f884b223ee3664bcd71e798a75a8a2",
+      "availability": "protected_local_reference",
+      "revision": "Preserved donor configured241; no matching originalPG module found"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/coalbag/CoalBagScript.kt",
+      "sha256": "f0a872446f9c07c84eb42f20f8e384cae85732b098d44026b5487aa52f301f17",
+      "availability": "protected_local_reference",
+      "revision": "Preserved donor configured241; no matching originalPG module found"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/coalbag/CoalBagStorageHook.kt",
+      "sha256": "ef7e1145bf4a84f275b94c9cdc7e7edcf960148e5971ee8f0f8bcecc9d95199d",
+      "availability": "protected_local_reference",
+      "revision": "Preserved donor configured241; no matching originalPG module found"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Coal bag",
+      "sha256": "35c9d24ab7fcca3dc9c15f3e1c21b5ed88518daeebf8c5a1cb9c3951614eee79",
+      "availability": "protected_local_reference",
+      "revision": "15215029"
+    }
+  ],
+  "compatibility_notes": {
+    "scope": "Manual inventory Fill/Open/Close/Check/Empty only; no full CoalBagStorageHook migration or automatic incoming/smelting/superheat interception claim.",
+    "cache": "Actual239.1 forms12019/24480 are STACKABLE in target server cache despite Wiki nonstackable property; runtime requires one bag in selected slot, performs same-slot form exchange and preserves encoded catalog. Do not silently rewrite definitions.",
+    "persistence": "Actual storage varbit65519: base65531 bits25..30; permanent, bitprotected, Never transmitted. Use existing variables persistence, preserving neighboring bits and 36coal after cape removal.",
+    "capacity": "27 ordinary,36 with worn9795/9796/13280. Carried capes do not qualify. Donor exact three-cape list is scoped; combined/other max cape variants not automatically inferred.",
+    "source_wiki_difference": "Donor StorageHook declares StorageFirst consumption; Wiki states inventory coal used before bag when smelting/superheating. Manual operations do not exercise either policy. Resolve explicitly in later production integration; do not assert parity or silently choose donor.",
+    "restrictions": "F2P/life/saving/logout/modal/delay/stale selected slot rejected; unique one-count selected bag requirement is explicit malformed duplicate-stack safety adaptation.",
+    "future": "Bank/depositbox button paths, destroy/purchase/sellback/ownership, incoming virtual storage and production consumption are separate requirements. Do not mark full donor group complete."
+  },
+  "logs": {
+    "inspection-001.log": {
+      "sha256": "d9a649ae7698e5984e3cd7fcfdb889822ce529f5263e57415444a1dca34fdedd",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.5% sampled, ceiling70%.",
+        "Capacity: 7,947 MiB available, commit 45.5%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "focused-002.log": {
+      "sha256": "56d4f6082b86e3869651eaa0c86096eb238353e43f7c61af43bf88f7f4421c38",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.6% sampled, ceiling70%.",
+        "Capacity: 8,105 MiB available, commit 44.3%, pages-in/s 0, disk 1.9 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 314 filtered out; finished in 0.00s",
+        "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 728 filtered out; finished in 0.73s"
+      ]
+    },
+    "cache-003.log": {
+      "sha256": "519c9857388f8f675166aeab1b2dd21cc30b572d5ed3dae2614d6e90254d7461",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.0% sampled, ceiling70%.",
+        "Capacity: 8,136 MiB available, commit 44.1%, pages-in/s 0, disk 1.9 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS actual-cache8coal bag prepared World cases and12binding drifts; no actual-map/native/automatic-storage acceptance"
+      ]
+    },
+    "shared-005.log": {
+      "sha256": "67c5ef47aba27268e9ff40a0ea9a28d3973a5cec09c54d899738e7f85c454c90",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 5.8% sampled, ceiling70%.",
+        "Capacity: 8,105 MiB available, commit 44.2%, pages-in/s 0, disk 1.8 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 314 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 66.53s",
+        "test result: ok. 732 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 48.95s"
+      ]
+    },
+    "archive-006.log": {
+      "sha256": "513bc3d45e28127b35be4462277aaf716a6119f05564f0fa9f8801e0b3957afe",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.3% sampled, ceiling70%.",
+        "Capacity: 8,116 MiB available, commit 44.2%, pages-in/s 0, disk 1.2 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server DB42F4E79F96B6B221B97F4834DFBADAFC835351D4354DE41716F6FE2A93E66F (660 source files)."
+      ]
+    }
+  },
+  "server_archive": {
+    "sha256": "DB42F4E79F96B6B221B97F4834DFBADAFC835351D4354DE41716F6FE2A93E66F",
+    "source_count": 660,
+    "source_manifest_sha256": "3ee0fa82dd3f29b5f416e3e12a61edf768159f21a9194b175bf1881be78d8506",
+    "before_after_sources_unchanged": true
+  },
+  "matrix": {
+    "server_pass": 314,
+    "world_pass": 732,
+    "world_existing_ignored": 1,
+    "coal_bag_world_tests": 5,
+    "capacity_stored_matrix": 20,
+    "actual_cache_world_cases": 8,
+    "cache_binding_drifts": 12,
+    "life_selected_authority_cases": 10
+  },
+  "private_probes": {
+    "crates/server/examples/coal_bag_cache_private.rs": "f6b26ebca59aa69214c2ecddb364bffb19f32bbef1affbfef12f1e62c5788f95",
+    "crates/server/examples/coal_bag_world_cache_private.rs": "53f3338db380979b8c0ed03b73d54b8b0548f06f3a35cb5c64a0c44028ddb836"
+  },
+  "disk_cleanup": {
+    "scope": "Completed owned regenerable probe EXEs only; source/logs/private fixtures/native archives unchanged",
+    "files": [
+      {
+        "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\coal_bag_cache_private-dc711b88f7fae272.exe",
+        "bytes": 162541337,
+        "sha256": "1D541B0598EDD0C04F42ED54D8BC9D184515AA04598C7EAFD80FED7665D6A550"
+      },
+      {
+        "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\coal_bag_cache_private.exe",
+        "bytes": 162541337,
+        "sha256": "1D541B0598EDD0C04F42ED54D8BC9D184515AA04598C7EAFD80FED7665D6A550"
+      },
+      {
+        "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\duck_map_cache_private-9f6244e5284191fb.exe",
+        "bytes": 94627241,
+        "sha256": "49B837CDBDC433F81B3F0686A556E702E60A20515C4F2986CC281B52CF629218"
+      },
+      {
+        "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\duck_map_cache_private.exe",
+        "bytes": 94627241,
+        "sha256": "49B837CDBDC433F81B3F0686A556E702E60A20515C4F2986CC281B52CF629218"
+      },
+      {
+        "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\duck_profiles_private-56bc2d2cd8d37f38.exe",
+        "bytes": 160215578,
+        "sha256": "4BCBEA314340AAE9C51839368F2A49B5496D2366E35A7208270343B26E225F71"
+      },
+      {
+        "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\duck_profiles_private.exe",
+        "bytes": 160215578,
+        "sha256": "4BCBEA314340AAE9C51839368F2A49B5496D2366E35A7208270343B26E225F71"
+      },
+      {
+        "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\duck_world_cache_private-473f7975fc293534.exe",
+        "bytes": 171265076,
+        "sha256": "92DDC0689D19BE3108287EFA4D2506261C8BEE659FD2C92362E1A9DA682E502F"
+      },
+      {
+        "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\duck_world_cache_private.exe",
+        "bytes": 171265076,
+        "sha256": "92DDC0689D19BE3108287EFA4D2506261C8BEE659FD2C92362E1A9DA682E502F"
+      }
+    ],
+    "freeBeforeBytes": 901980160,
+    "freeAfterBytes": 1490636800,
+    "utc": "2026-10-22T13:02:23.0143953Z"
+  },
+  "native": [],
+  "known_limitations": [
+    "Manual inventory Fill/Open/Close/Check/Empty only. Automatic incoming virtual storage, smithing/superheat consumption, bank/depositbox buttons, destroy, purchase/sellback and global unique ownership are not implemented by this unit.",
+    "Target server cache encodes both bag forms stackable despite Wiki nonstackable property. Preserve encoded catalog; require one unmodified selected bag and swap that slot. Duplicate bag stacks are rejected as an explicit safety adaptation.",
+    "Donor CoalBagStorageHook consumes StorageFirst; pinned/current Wiki says inventory coal before bag. No automatic consumption policy is installed here. Later production integration must resolve that discrepancy explicitly.",
+    "Capacity uses only donor three worn cape IDs9795/9796/13280. Carried capes do not qualify; extra combined max-cape variants are not inferred. Removing cape preserves stored amounts above27.",
+    "Owner working-tree full/shared and prepared World tests use private manifest/test opt-ins. Not pristine, native or independent acceptance. No full Kotlin engine comparison.",
+    "Storage uses actual permanent bitprotected Never-transmitted varbit65519/base65531/bits25..30. Existing save machinery is reused; native persistence remains pending.",
+    "Independent V0\u2013V4 queued. Chemistry independent verification remains paused."
+  ]
+}

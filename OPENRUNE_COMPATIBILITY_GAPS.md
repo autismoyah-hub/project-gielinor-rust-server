@@ -74,3 +74,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0192 `afdd75043065374182164af3fd1fe50d2a259768`: ordinary aquatic callbacks passed owner World/cache/compiled queue-core checks. Native death/mourn/audio, following/special variants and independent acceptance remain open. Chemistry verification paused.
 
 - OR-MIG-0192r2 `afdd75043065374182164af3fd1fe50d2a259768`: native natural speech/control/reconnect passed; rendered Quack!/Quack?/Eep! frame reviewed. Native death/mourn/noDrop/audio/following and independent acceptance remain pending.
+
+- OR-MIG-0193 `277f09058c2e8613b7c7ee4ca8beb451b1617bf4`: manual coal-bag inventory subset passed owner checks. Native/independent, automatic storage/production, bank/depositbox, destroy/ownership remain open; donor StorageFirst/Wiki inventory-first discrepancy explicitly deferred. Target server stackable bag encoding retained.

@@ -1528,3 +1528,12 @@ Earlier borrow/test-fixture failures and archive009 disk exhaustion are preserve
 Implementation remains `afdd75043065374182164af3fd1fe50d2a259768`, archive `6D4C63B2442E381D465A665D3C6A388C1D3AFF7501B7B1277B0586C6DFE6E57F`. Three owner native sessions passed: matched control, naturally scheduled aquatic speech observation and same-save reconnect. Actual1838/1839/2002 NPC updates delivered Quack!, Quack? and Eep! through990 unchanged client-library files. The inspected control frame visibly shows these overhead texts above river ducks and ducklings. Inventory, Stats, fine XP and character position remained unchanged; all sessions acknowledged offline saves and shut down unforced with exit0.
 
 [Additional owner evidence](development/OR-MIG-0192-native-r2.json). Observation is passive: exact parent-child causal timing, native death/mourn/no-drop behavior, audio playback, following and excluded variants remain unverified. The outer interface area is black in the captured frame. Independent V0–V4 remains queued; chemistry verification stays paused.
+
+
+## OR-MIG-0193 — Manual coal-bag inventory actions
+
+Source `277f09058c2e8613b7c7ee4ca8beb451b1617bf4` adds actual inventory Fill/Open/Check/Empty/Close routing for12019/24480. Existing transactions transfer ordinary coal, apply27/36 worn-cape capacity and preserve partial-empty remainder. Storage uses permanent varbit65519/base65531/bits25–30; neighboring bits and stored coal after cape removal are retained. Full inventories allow the selected bag form swap. No XP or schema change.
+
+Owner validation passed314 server and732 world tests (one existing ignored), five World regressions, eight actual-cache prepared World cases and twelve cache drift refusals. Archive `DB42F4E79F96B6B221B97F4834DFBADAFC835351D4354DE41716F6FE2A93E66F` pins660 source files. [Owner evidence](development/OR-MIG-0193.json). Native and independent acceptance remain pending.
+
+This is the manual subset. Automatic mining/storage, smelting/superheat consumption, bank/depositbox buttons, destroy and ownership are separate. Donor StorageFirst conflicts with Wiki inventory-first consumption and is not installed. The target cache marks bag forms stackable; their encoding is preserved and malformed selected stacks are rejected. Discovery classifications{'not_yet_assessed': 2719, 'configuration': 661, 'framework_or_infrastructure': 21, 'eligible_gameplay_behavior': 107} are an inventory, not a gameplay completion percentage. Chemistry verification stays paused.
