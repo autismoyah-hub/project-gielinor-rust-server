@@ -39,6 +39,7 @@ impl Presentation {
     }
     pub fn animation(&self, expression: Expression, lines: usize) -> u16 {
         let row = match expression {
+            Expression::Sad(sequences) => return sequences[lines.saturating_sub(1).min(3)],
             Expression::Happy => 0,
             Expression::Neutral => 1,
             Expression::Angry => 2,

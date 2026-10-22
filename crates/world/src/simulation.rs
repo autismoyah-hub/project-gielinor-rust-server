@@ -49,6 +49,7 @@ pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
 mod deposit_box_actions;
 mod banknote_actions;
+mod banker_note_actions;
 mod bank_access_actions;
 mod worn_item_swap_actions;
 mod worn_stat_boost_actions;
@@ -488,6 +489,7 @@ pub enum Action {
         operation: u8,
         control: bool,
     },
+    UseNpc {target:NpcId,slot:i32,object:i32,control:bool},
     CastNpc {
         target: NpcId,
         spell: i32,
@@ -1057,6 +1059,7 @@ pub struct World {
     pub pickpocket:Option<crate::thieving::Config>,
     pub facility_crafting:BTreeMap<u32,crate::facility_crafting::Config>,
     pub npc_handlers: BTreeMap<(u16, u8), crate::npc_interaction::Handler>,
+    pub banknote_npc_sad:Option<[u16;4]>,
     location_timers: crate::loc_timers::Timers,
     players: EntityList<Player>,
     generation: u64,
@@ -1193,6 +1196,7 @@ impl Default for World {
             combat_state: None,
             npc_combat: BTreeMap::new(),
             npc_handlers: Default::default(),
+            banknote_npc_sad:None,
             pickpocket:None,
             facility_crafting:BTreeMap::new(),
             location_timers: Default::default(),
@@ -1898,6 +1902,9 @@ impl World {
             Action::ResumeDialogue { token, choice } => {
                 return self.resume_dialogue(id, token, choice, random)
             }
+            Action::UseNpc {target,slot,object,control} => {
+                return self.request_banker_note(id,target,slot,object,control);
+            }
             Action::OperateNpc {
                 target,
                 operation,
@@ -2601,6 +2608,7 @@ impl World {
                         self.process_prayer(slot,random);
                         self.resume_tutorial_fire(slot);
                         self.resume_location_action(slot);
+                        self.validate_banker_note_dialogue(slot);
                         self.resume_door(slot);
                         self.resume_pickup(slot);
                         self.validate_door(slot);

@@ -321,6 +321,8 @@ impl World {
         choice: i32,
         random: &mut impl RandomSource,
     ) -> Result<(), ActionError> {
+        self.player(actor)?;
+        self.validate_banker_note_dialogue(actor.slot as usize);
         let p = self.player(actor)?;
         if self.location_choice_token(actor).is_some(){return self.resume_location_choice(actor,token,choice);}
         if p.dialogue.as_ref().is_none_or(|d| d.token != token) {
@@ -349,6 +351,7 @@ impl World {
         match pending.conversation.pages.front() {
             Some(Page::Choice(_) | Page::TitledChoice { .. }) => {
                 let conversation = match pending.conversation.after {
+                    Effect::Banknote{ctx,confirm:true}=>self.banker_note_choice(actor,pending.npc,ctx,choice)?,
                     Effect::SkillcapeVendor {ctx,stage} => self.skillcape_vendor_choice(actor,pending.npc,ctx,stage,choice)?,
                     Effect::LectureTutor {
                         config,
@@ -396,6 +399,9 @@ impl World {
                 };
                 pending.conversation = conversation;
             }
+            Some(Page::Object{..}) if (0..=1).contains(&choice) => {
+                pending.conversation.pages.pop_front();
+            }
             Some(Page::Chat { .. } | Page::NamedChat { .. }) if choice == -1 => {
                 pending.conversation.pages.pop_front();
             }
@@ -411,6 +417,7 @@ impl World {
         }
         if pending.conversation.pages.is_empty() {
             match pending.conversation.after {
+                Effect::Banknote{..}=>{},
                 Effect::SkillcapeVendor {ctx,stage} => {pending.conversation=self.finish_skillcape_vendor(actor,pending.npc,ctx,stage)?;},
                 Effect::LectureTutor { config, stage } => {
                     let (step, open_tab) = crate::tutorial_lecture_tutor::finish(config, stage);

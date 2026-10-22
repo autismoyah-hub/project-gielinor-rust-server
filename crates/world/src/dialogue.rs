@@ -4,6 +4,7 @@ use std::collections::VecDeque;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Expression {
+    Sad([u16;4]),
     Happy,
     Neutral,
     Angry,
@@ -14,6 +15,7 @@ pub enum Expression {
 pub enum Speaker {
     Player,
     Npc,
+    NpcNoTurn,
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Page {
@@ -37,6 +39,7 @@ pub enum Page {
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Effect {
+    Banknote {ctx:crate::banknote_exchange::NpcContext,confirm:bool},
     SkillcapeVendor {ctx:crate::skillcape_vendor::Context,stage:crate::skillcape_vendor::Stage},
     LectureTutor {
         config: crate::tutorial_lecture_tutor::Config,

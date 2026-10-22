@@ -6,6 +6,16 @@ pub const OPTIONS: &[&str] = &["Yes", "No"];
 pub const MESSAGE: &str = "The bank exchanges your banknote for an item.";
 pub const FULL: &str = "You don't have any inventory space.";
 
+#[derive(Clone,Copy,Debug,PartialEq,Eq)]
+pub struct NpcContext {
+    pub raw:u16,
+    pub visible:u16,
+    pub slot:usize,
+    pub note:i32,
+    pub origin:crate::CoordGrid,
+    pub last_movement:i32,
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Error {
     InvalidSelection,

@@ -5,6 +5,15 @@ use gielinor_world::{
     ui::Component,
 };
 impl<B: AccountBackend> Runtime<B> {
+    pub fn configure_banker_banknotes(&mut self,names:&crate::startup::Names)->io::Result<()> {
+        if !self.connections.is_empty() || self.dialogue_presentation.is_none() || self.drop_presentation.is_none()
+            || self.held_component.is_none() || self.world.banknote_npc_sad.is_some()
+            || !self.world.npc_handlers.values().any(|h|*h==Handler::Bank) {
+            return Err(io::Error::other("Configure banker notes once after shared bank, held items and dialogue"));
+        }
+        let mut sad=[0;4];for (i,value)in sad.iter_mut().enumerate(){*value=names.short("seq",&format!("chatsad{}",i+1))?;}
+        self.world.banknote_npc_sad=Some(sad);Ok(())
+    }
     /// Trusted cache component-to-spell registration, before admitting sessions.
     pub fn configure_elemental_magic(
         &mut self,
@@ -68,8 +77,14 @@ impl<B: AccountBackend> Runtime<B> {
         if target.is_none() || !enabled {
             return Ok(());
         }
+        if self.held_component==Some(request.source) {
+            if let Err(error)=self.world.submit(actor,Action::UseNpc{target:target.unwrap(),slot:request.source_slot,object:request.source_object,control:request.control}) {
+                if let Some(connection)=self.connection(actor){self.events.push(Event::PacketRejected{connection,actor,opcode:86,reason:format!("{error:?}")});}
+            }
+            return Ok(());
+        }
         let Some(&spell) = self.npc_spell_buttons.get(&request.source) else {
-            // Non-spell target handlers (including item-on-NPC) are not mapped here.
+            // Item targets are handled only by the configured held component above.
             if let Some(connection) = self.connection(actor) {
                 self.events.push(Event::PacketRejected {
                     connection,

@@ -4,6 +4,7 @@ use crate::simulation::NpcId;
 pub enum Handler {
     SkillcapeVendor(crate::skillcape_vendor::Config),
     Bank,
+    Banknote {slot:usize,note:i32,raw:u16,visible:u16},
     Pickpocket,
     Tanning,
     TowerTanner,

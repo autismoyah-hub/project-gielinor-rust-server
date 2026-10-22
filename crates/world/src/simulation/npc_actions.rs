@@ -128,6 +128,12 @@ impl World {
             return false;
         }
         let actor = p.id;
+        if let Some(Handler::Banknote{raw,visible,..})=pending.handler {
+            if p.pending_logout || p.death_queued || p.data.stats.current(3) as u8==0
+                || !self.banker_note_identity(actor,pending.target,raw,visible) {
+                self.clear_npc_route(slot);return true;
+            }
+        }
         if pending.handler == Some(Handler::Combat) && p.data.stats.current(3) as u8 == 0 {
             self.clear_npc_route(slot);
             return true;
@@ -174,11 +180,12 @@ impl World {
             && source.x() + p.movement.size > target.x()
             && source.z() < target.z() + size
             && source.z() + p.movement.size > target.z();
-        let within = source.x() >= target.x() - 2
-            && source.x() <= target.x() + size - 1 + 2
-            && source.z() >= target.z() - 2
-            && source.z() <= target.z() + size - 1 + 2;
-        let bank_approach = pending.handler == Some(Handler::Bank)
+        let distance=if matches!(pending.handler,Some(Handler::Banknote{..})){3}else{2};
+        let within = source.x() >= target.x() - distance
+            && source.x() <= target.x() + size - 1 + distance
+            && source.z() >= target.z() - distance
+            && source.z() <= target.z() + size - 1 + distance;
+        let bank_approach = matches!(pending.handler,Some(Handler::Bank|Handler::Banknote{..}))
             && !overlap
             && within
             && raycast::clear(
@@ -270,6 +277,13 @@ impl World {
                 && c.work.is_some_and(|w|npc.type_id==w.fishing_spot&&crate::tower_layout::contains(c.origin,npc.spawn)));
         let fishing_approach=cinderworks_fishing&&source.chebyshev_distance(target)<=3;
         if touches || bank_approach || fishing_approach {
+            if let Some(Handler::Banknote{slot:selected,note,raw,visible})=pending.handler {
+                self.clear_npc_route(slot);
+                if let Err(error)=self.start_banker_note(actor,pending.target,selected,note,raw,visible) {
+                    self.events.push(WorldEvent::ActionRejected{actor,error});
+                }
+                return true;
+            }
             if pending.handler==Some(Handler::Pickpocket) {self.clear_npc_route(slot);self.start_pickpocket(slot,pending.target);return true;}
             if pending.handler == Some(Handler::TowerTanner) {
                 self.clear_npc_route(slot);
@@ -374,6 +388,7 @@ impl World {
             p.movement.abort();
             let event = match pending.handler {
                 Some(Handler::Bank) => Event::Bank,
+                Some(Handler::Banknote{..}) => unreachable!("Banknote dialogue handled above"),
                 Some(Handler::Tanning) => Event::Tanning(pending.target),
                 Some(Handler::Pickpocket) => unreachable!("Pickpocket handled above"),
                 Some(Handler::TowerTanner) => unreachable!("Tanning handled above"),

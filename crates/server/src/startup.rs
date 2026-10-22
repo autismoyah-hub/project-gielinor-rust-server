@@ -650,6 +650,7 @@ pub fn configure<B: AccountBackend>(
         names.id("content", "person")? as i32,
         names.id("obj", "flier")? as i32,
     )?;
+    runtime.configure_banker_banknotes(names)?;
     let creator_kits = crate::player_design::Kits::resolve(
         &cache.db_rows()?,
         &cache.db_tables()?,
