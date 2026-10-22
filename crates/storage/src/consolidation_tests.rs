@@ -254,6 +254,11 @@ fn two_floor_synthetic_contract_survives_actual_database_close_and_reopen() {
     let mut saved = snapshot(&a, "consolidation");
     saved.tower_run = victory();
     saved.tower_floors.reconcile_cinderworks(saved.tower_run);
+    saved.stats.insert(0, Stat { visible: 7, base: 7, fine_xp: 65001 });
+    saved.inventories = BTreeMap::from([
+        (93, BTreeMap::from([(0, Item { id: 995, count: 83, vars: 0 })])),
+        (94, BTreeMap::from([(3, Item { id: 1205, count: 1, vars: 0 })])),
+    ]);
     let second = FloorId::new(2).unwrap();
     let definition = Definition { id: second, prerequisites: &[FloorId::CINDERWORKS], required: 1, optional: 2 };
     let mut objectives = Objectives::new(definition).unwrap();
@@ -269,6 +274,13 @@ fn two_floor_synthetic_contract_survives_actual_database_close_and_reopen() {
     assert_eq!(loaded.inventories, saved.inventories);
     assert_eq!(loaded.stats, saved.stats);
     assert!(loaded.tower_floors.completed(second));
+    let mut stale_ledger = loaded.clone();
+    stale_ledger.tower_floors = Default::default();
+    reopened.save_checkpoint(&stale_ledger).unwrap();
+    let preserved = snapshot(&reopened, "consolidation");
+    assert!(preserved.tower_floors.completed(second));
+    assert_eq!(preserved.stats, saved.stats);
+    assert_eq!(preserved.inventories, saved.inventories);
     drop(reopened);
     std::fs::remove_file(path).unwrap();
 }
