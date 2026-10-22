@@ -33,7 +33,7 @@ def main():
     password = args.output / "password.private.txt"
     password.write_text(secrets.token_hex(12), encoding="utf-8")
     database = args.server_root / "work/state" / state_name / "accounts.sqlite"
-    report = {"server_source": args.server_source, "client_source": args.client_source,
+    report = {"state_name": state_name, "server_source": args.server_source, "client_source": args.client_source,
               "server_sha256": hashlib.sha256(args.server.read_bytes()).hexdigest(),
               "client_sha256": hashlib.sha256(args.client.read_bytes()).hexdigest(),
               "scenario": "Fresh native tools, earned kitchen milestone, portal, logout/server restart and return",
@@ -140,7 +140,6 @@ def main():
                     gateway.act(f"object {chest} 10419 105 1")
                     refused = gateway.wait(lambda s: s["ready"], 20)
                     assert conserved(refused) == conserved(admitted), "Unearned claim changed state"
-                    gateway.act("close")
                     gateway.act("interface 35913795 1")
                     for attempt in range(3):
                         walk(10438, 116)
@@ -153,8 +152,8 @@ def main():
                         caught = gateway.observe()
                         raw_item = next(i for i in caught["items"] if i["id"] == raw and i["count"] > 0)
                         previous_total = count(caught, raw) + count(caught, cooked) + count(caught, burnt)
-                        gateway.act(f"select-item {raw_item['slot']}")
                         walk(10432, 109)
+                        gateway.act(f"select-item {raw_item['slot']}")
                         gateway.act(f"use-object {symbol('loc', 'newbierange')} 10432 107")
                         cooked_state = gateway.wait(lambda s: s["ready"] and count(s, raw) == 0, 130)
                         assert count(cooked_state, cooked) + count(cooked_state, burnt) == previous_total, "Food conservation"
