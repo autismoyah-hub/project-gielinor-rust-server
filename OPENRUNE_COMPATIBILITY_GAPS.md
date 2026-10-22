@@ -54,3 +54,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0186 `0f5abb462b132cdcd23822e3e3c54e3a62945671` adds only normal-mode raw27291 Bank/held notes, owner309server692world/cache12/native3PASS. Mode1/Deadman, Collect/Deposit-box/otherbooths/capacity/PIN, native mode/life refusal and independent acceptance remain open. Chemistry stays paused.
 
 - OR-MIG-0187 `0c5912f3f831c90ba83d388facc8808a9ed90e9c` adds12normal-world picket stages through shared doors;310server698world/cache24/native3ownerPASS. Instanced/other/quest gates, native timer/refusal and independent/compiledKotlin acceptance remain open. Chemistry paused.
+
+- OR-MIG-0188 `a1e12f547dddec1b2c237ca9fa0628a2e02cd412` adds11ordinary shearing pairs through shared NPC/continuations/ground/visible snapshots; owner311server707world/cache88PASS, nativeDEFERRED before launch(sharedlease). Ambient/Baa/Zanaris/specialsheep/native/independent/compiledKotlin remain open; chemistry paused.

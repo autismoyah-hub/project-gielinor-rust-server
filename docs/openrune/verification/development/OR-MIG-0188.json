@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0188",
+  "implementation_commit_sha": "a1e12f547dddec1b2c237ca9fa0628a2e02cd412",
+  "recorded_utc": "2026-10-22T10:16:54.808795+00:00",
+  "result": "OWNER_WORLD_CACHE_PASS_NATIVE_DEFERRED_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/server/src/content.rs": "ec8475247a98d2866d5d84899608d01df125525ccc48ffd104ece8a2ec3f012c",
+    "crates/server/src/content/shearing.rs": "d5adda1838d8d46cdaeb89a18b51114dca117fb585bd843136615b438e00850b",
+    "crates/server/src/runtime.rs": "9b62f4c03518e4586ffe885c6d7df929b3263a36aa92d4cec1e79b787452e689",
+    "crates/server/src/startup.rs": "aa361dfb1216597aca720b527fc65b78c5b38ca200646b871420ed5e90243e8a",
+    "crates/world/src/lib.rs": "35c0407f7270dcf7a61970bd8709f904e6ab12b2063101b4ee0331d9705c43a6",
+    "crates/world/src/npc.rs": "c01e219ff25657c3a3e66c1b7384b8d2bba281333595e4ed306cf853ada29ef9",
+    "crates/world/src/npc_interaction.rs": "f0615a6f78658690b8b011e924f5814dd65736d4dea424906b44f8f6d70376e3",
+    "crates/world/src/shearing.rs": "b5ead589f0716325a69a945b849d5fe5c3de306690ec1577e14a9a5afd9ff885",
+    "crates/world/src/simulation.rs": "43e699b6760a6e75b97d9d9cceb060e3714d72a6f45400558f4bcdf1a0ed3672",
+    "crates/world/src/simulation/npc_actions.rs": "681d39eef1e27e0031b2f0aa29ab1f1245e7aca07a6c9d31f44d5f76e69ede57",
+    "crates/world/src/simulation/shearing_actions.rs": "4893d7650aa85113dd680ca9741eb765a94b7a1b612eca489d9c4025db9b3aef",
+    "crates/world/src/simulation/shearing_tests.rs": "b07ad3c6ebacf34168ceba505bd1e88d7562d8c61ec2dd944284d5f4e5a93393"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-npcs/src/main/kotlin/org/rsmod/content/generic/npcs/sheep/Sheep.kt",
+      "sha256": "86b47295dd5aa0a9890382f309c9f92a898ea6b5fb9a7603e5722d1bc933ca59",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/protect/ProtectedAccess.kt",
+      "sha256": "7b1611b7e2e7ab4de6296f086c75be5c2c232386c7282cd0c5a3ecc1b3c8c6aa",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "engine/game/src/main/kotlin/org/rsmod/game/entity/Npc.kt",
+      "sha256": "ef26a7c73b1718438049a7519c1110fb3d7ca1b42e2555431d701f87b31fc911",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "engine/game/src/main/kotlin/org/rsmod/game/entity/npc/NpcUid.kt",
+      "sha256": "59dd131ea4b7c09572fcec076d3931bd775c33507efa9bcd26723a319e76f52a",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "content/generic/generic-npcs/src/main/kotlin/org/rsmod/content/generic/npcs/sheep/Sheep.kt",
+      "sha256": "a21ce72d8d87bbb28d2882e40b557de15092b97c85a1fccb508e9ccdb4a8e8ef",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable; target239.1 reference"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Sheep",
+      "sha256": "243c645fe3fa53e64382f31bcd480e9150b13690dbff3f13196ce681ba67d4a8",
+      "availability": "protected_local_reference",
+      "revision": "15314863"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Wool",
+      "sha256": "ad2d8b8cb9c0c68d9b6d0fe9550f712dfa3808a58ecbf915892d98974f731320",
+      "availability": "protected_local_reference",
+      "revision": "15302669"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Shears",
+      "sha256": "85ab62973c3e0d7a7463931d9e146d5938d2c0dffe5b354e2088da52b8cf6dd6",
+      "availability": "protected_local_reference",
+      "revision": "15302672"
+    }
+  ],
+  "logs": {
+    "inspection-001.log": {
+      "sha256": "0ea95a3f2c093a875a0cc584652e869d9a4351b0728c8e44b16e191140f97603",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 9.5% sampled, ceiling70%.",
+        "Capacity: 8,175 MiB available, commit 43.7%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "focused-002.log": {
+      "sha256": "b50af28b09439f454a765d91824c2f5c11e7884129552bc123ddd3e3add0f38d",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 1.9% sampled, ceiling70%.",
+        "Capacity: 8,329 MiB available, commit 43.0%, pages-in/s 0, disk 0.9 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 310 filtered out; finished in 0.00s",
+        "test result: FAILED. 4 passed; 1 failed; 0 ignored; 0 measured; 699 filtered out; finished in 1.17s"
+      ]
+    },
+    "focused-003.log": {
+      "sha256": "b2efd668fc718afb1d70d8afb5edb180d8a551647817ade9d3331b927d89ac03",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 3.1% sampled, ceiling70%.",
+        "Capacity: 8,319 MiB available, commit 43.1%, pages-in/s 0, disk 1.9 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "focused-004.log": {
+      "sha256": "5700e1317fb2d7caa9567914a089f88af6b2192221b7acebada53952ec25b2b4",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.6% sampled, ceiling70%.",
+        "Capacity: 8,300 MiB available, commit 43.2%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 310 filtered out; finished in 0.00s",
+        "test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 699 filtered out; finished in 1.89s"
+      ]
+    },
+    "cache-005.log": {
+      "sha256": "0c6f1d97b46e96735f90d90d4bfd72b023f7d98bc8ef59d0cee7aa0742ba6fd2",
+      "result": "PRELIMINARY_PASS_SUPERSEDED_MODEL",
+      "summaries": [
+        "Build CPU capacity: 1.5% sampled, ceiling70%.",
+        "Capacity: 8,279 MiB available, commit 43.2%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS target11ordinarypairs/shears/wool/sequence/sound and prepared World cases=88; synthetic clear terrain/positions, no actual-map/native assertion"
+      ]
+    },
+    "shared-006.log": {
+      "sha256": "524765e1a312241d9ab525dc4d64da8e2cea603179bd816470e6e9b299e929c0",
+      "result": "PRELIMINARY_PASS_SUPERSEDED_MODEL",
+      "summaries": [
+        "Build CPU capacity: 3.0% sampled, ceiling70%.",
+        "Capacity: 8,280 MiB available, commit 43.2%, pages-in/s 0, disk 0.8 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 311 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 66.98s",
+        "test result: ok. 706 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 42.17s"
+      ]
+    },
+    "focused-007.log": {
+      "sha256": "6338d49de6ae1953d8e8d87660aac83e5bdffeb80f541ed40d951fef0455adcf",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 10.9% sampled, ceiling70%.",
+        "Capacity: 8,086 MiB available, commit 44.1%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 310 filtered out; finished in 0.00s",
+        "test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 699 filtered out; finished in 1.39s"
+      ]
+    },
+    "shared-008.log": {
+      "sha256": "3c23ed150d4cb873bd424ebcea31828812fe00fc4057e102f85424db873c10bf",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.6% sampled, ceiling70%.",
+        "Capacity: 8,193 MiB available, commit 43.4%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 311 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 68.88s",
+        "test result: ok. 707 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 43.25s"
+      ]
+    },
+    "cache-009.log": {
+      "sha256": "35088150e14ff1ca51517d8730b6a4e0bbeb81f5cc300245e048ebaf7af7ddf9",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 4.3% sampled, ceiling70%.",
+        "Capacity: 8,289 MiB available, commit 43.6%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS target11ordinarypairs/shears/wool/sequence/sound and prepared World cases=88; synthetic clear terrain/positions, no actual-map/native assertion"
+      ]
+    },
+    "archive-010.log": {
+      "sha256": "81064a62ab2ec44827e16e2049cbac7c37476f2875655e6c414bb7552ef20214",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 7.7% sampled, ceiling70%.",
+        "Capacity: 8,218 MiB available, commit 43.5%, pages-in/s 0, disk 3.3 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server B5CAFD96A8F063675889964F386A3B128EEF025274AC6E87C79792F7FB6E0147 (632 source files)."
+      ]
+    },
+    "driver-011.log": {
+      "sha256": "acf5f0e14f23fed8d728c38fe237031e8041afb8837c06acf9e22095ccbc79a0",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.5% sampled, ceiling70%.",
+        "Capacity: 7,987 MiB available, commit 44.9%, pages-in/s 32, disk 3.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "fixture-012.log": {
+      "sha256": "e934f59f3077efb776dfb2d560af1ea313e04a60ded69a230186ac95180490d1",
+      "result": "PASS",
+      "summaries": []
+    },
+    "native-deferral-013.json": {
+      "result": "DEFERRED_BEFORE_LAUNCH",
+      "sha256": "f34574f876d1c398197ee10e8736d99d69cea6e7f2a26fcc7188ebd76bb0ca97",
+      "powershell_tee_log_created": false,
+      "explanation": "Terminating owned-lease exception occurred before Tee created native-013.log; preserved JSON is the authoritative deferral evidence. Initial report writer stopped on missing log before publishing anything, then was corrected to record this absence."
+    }
+  },
+  "server_archive": {
+    "sha256": "B5CAFD96A8F063675889964F386A3B128EEF025274AC6E87C79792F7FB6E0147",
+    "source_count": 632,
+    "source_manifest_sha256": "a0416fecfd8511bb349ea24649db3d91b03f16cae4bd9aa7291b9dfbb47e38f5",
+    "before_after_sources_unchanged": true
+  },
+  "private_probe": {
+    "path": "crates/server/examples/shearing_world_cache2_private.rs",
+    "sha256": "2c262e61f804405edee73aa1fdc2ee2846c3904ce65401fd0a2f5a43d90b6180",
+    "scope": "Actual11pairs/item/sequence/sound definitions,88member/held/capacity/timing/regrowth prepared World cases withNoDraw; map-spawn inspection only, no actual-map World claim"
+  },
+  "native_driver": {
+    "driver": "shearing-001",
+    "scenario": "ordinaryShearingRegrowthAndOverflow",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless software-rendered scene/menu and sheep stages, regrowth and wool; no OS Window/desktop input or independent verdict",
+    "files": {
+      "server_shearing.exe": "C0EC9517532287FFC402AB9ADD3FE47DE256E6844765D05D57F715DF492D9F1E",
+      "NativeShearingScenario.rs": "14833E18D6A62C6752D5FA2052F50B05D3A7C43D1B4326CB3C1DFE8D98855CDC"
+    }
+  },
+  "pinned_library_files_checked_after": 990,
+  "native": [],
+  "native_deferral": {
+    "result": "DEFERRED_SHARED_RUNTIME_LEASE",
+    "utc": "2026-10-22T10:12:13.0182705Z",
+    "no_owned_server_or_client_launched": true,
+    "no_other_process_or_lock_modified": true
+  },
+  "matrix": {
+    "shared_server_pass": 311,
+    "shared_world_pass": 707,
+    "shared_world_existing_ignored": 1,
+    "focused_world_tests": 9,
+    "ordinary_pairs": 11,
+    "cache_cases": 88,
+    "binding_drift_cases": 12
+  },
+  "failures_preserved": {
+    "focused002": "One test incorrectly expected a protected-delay walking click to cancel; preserved. Correct tests distinguish Delayed rejection/completion once from actual forced relocation cancellation.",
+    "focused003": "Test-onlyE0433 wrong ItemType module; changed fixture to existing definitions::ItemType.",
+    "focused007": "Test hardcoded actual-cacheHP10 although synthetic Npc::new usesHP1. Corrected to compare captured actual pre-action NPC stats/spawn; production behavior unchanged."
+  },
+  "model_correction": {
+    "reason": "Source ProtectedAccess.npcChangeType retains base type, transmog changes visible definition and assignUid invalidates interactions.",
+    "earlier_passes": "Earlier88cache/311server706world passes used base-type mutation and are preliminary only; source fragments retained under private pre-visible-model-006.",
+    "final": "Final311server707world/cache88 rerun with base-preserving visible transformation and modal-held interaction cancellation; no earlier native test existed."
+  },
+  "limitations": [
+    "Owner working-tree World/cache/build validation with retained packaging/private test opt-ins; not pristine or independent acceptance.",
+    "Native NOT RUN: shared atomic runtime lease was occupied; batch deferred before launching any server/client. Six native modes/compiled driver/four fresh fixtures are prepared, not gameplay evidence. Driver compilation PASS is not native acceptance.",
+    "Only eleven ordinary static shearable pairs, Shear-op1 or selected ordinary shears1735 held use. Zanaris5843/5844 Talk-to/100tick behavior, fake/quest sheep/rams and other animal content excluded.",
+    "Sheep ambient15-34tick timers, atmospheric Baa and the post-shear Baa remain unported. NPC face hold releases after one cycle; no claim that the complete Sheep source module is finished.",
+    "Existing protected actor continuation produces at2ticks; source shears are retained, one wool/noXP, current tools/target/life/range/capacity rechecked. Per-NPC owner claim prevents simultaneous duplicate fleece; live rechecks/claim are explicit safety adaptations.",
+    "Temporary visible stage preserves base type/stats/spawn. Typed physical NpcId remains stable; pending NPC interactions are explicitly cancelled on visible changes instead of copying donor packed slot/type UID. Existing NPC encoder handles visible snapshot type changes; exact mask/coroutine parity is not claimed.",
+    "Full-bag output uses existing prevalidated ground registry/private observer identity, inherited drop-duration/default200 and reveal100. Native ownership/isolation/lifetime/persistence not accepted. Missing observer or failed ground insertion refuses before transformation.",
+    "Naturally bare sheep have no regrowth timer; only successfully sheared entries revert after50cycles. Ordinary11cache pair profiles are actual;88World cases use prepared clear terrain/NPC positions, not actual-map or native gameplay.",
+    "NPC route movement may precede the protected work; delayed walking is rejected by existing movement semantics. Forced relocation/modal/selected replacement/late tool loss/death/target loss cancel without wool. No audible/native sound-delay, compiled Kotlin or independent acceptance. Chemistry independent campaign stays paused."
+  ]
+}
