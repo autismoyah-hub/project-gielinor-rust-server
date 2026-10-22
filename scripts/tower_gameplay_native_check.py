@@ -26,8 +26,11 @@ def main():
     parser.add_argument("--server-source", required=True)
     parser.add_argument("--client-source", required=True)
     parser.add_argument("--resume", type=Path, help="Continue this driver's own preserved earned account")
+    parser.add_argument("--persistence-only", action="store_true", help="Verify a preserved earned kitchen milestone through clean native restarts")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
+    # The preserved native launcher writes its ordinary shutdown diagnostic here.
+    (args.output / "work").mkdir()
     sys.path.insert(0, str(args.adapter_directory.resolve()))
     from tower_gateway import Gateway
     config = json.loads(args.session_config.read_text(encoding="utf-8"))
@@ -38,6 +41,8 @@ def main():
         x, z, dx, dz = map(int, line.split())
         edges[(10368 + x, 64 + z)].append((10368 + x + dx, 64 + z + dz))
     previous = json.loads((args.resume / "results.private.json").read_text(encoding="utf-8")) if args.resume else None
+    if args.persistence_only and not previous:
+        raise RuntimeError("Persistence continuation requires an earned prior native attempt")
     state_name = previous["state_name"] if previous else "agent7-native-" + secrets.token_hex(6)
     password = args.output / "password.private.txt"
     if previous:
@@ -55,6 +60,8 @@ def main():
               "independent_verification": False, "accepted": False, "sessions": []}
     if previous:
         report["continued_earned_attempt"] = args.resume.name
+    if args.persistence_only:
+        report["scenario"] = "Clean native restart and portal return of the same previously earned kitchen milestone"
 
     def symbol(kind, name):
         rows = (Path(config["symbols"]) / (kind + ".sym")).read_text(encoding="utf-8").splitlines()
@@ -177,7 +184,20 @@ def main():
                         time.sleep(.2)
                     raise TimeoutError("Ordinary walking did not reach the target")
 
-                if session == 0:
+                if session == 0 and args.persistence_only:
+                    expected = previous["sessions"][-1]["snapshot"]
+                    assert json.loads(json.dumps(conserved(observed))) == expected
+                    assert "Done: Kitchen" in observed["journal"] and "Cinderworks milestones: 1/5" in observed["journal"]
+                    if observed["position"][1] < 10000:
+                        gateway.act(f"object {portal} 3225 3218 1")
+                        observed = gateway.wait(lambda s: s["ready"] and s["position"][1] > 10000, 35)
+                    assert json.loads(json.dumps(conserved(observed))) == expected
+                    walk(10427, 114)
+                    gateway.act(f"object {portal} 10428 114 1")
+                    outside = gateway.wait(lambda s: s["ready"] and s["position"][1] < 10000, 35)
+                    assert json.loads(json.dumps(conserved(outside))) == expected
+                    before_restart = conserved(outside)
+                elif session == 0:
                     if observed["position"][1] < 10000:
                         gateway.act(f"object {portal} 3225 3218 1")
                     gateway.wait(lambda s: s["ready"] and s["position"][1] > 10000, 35)
