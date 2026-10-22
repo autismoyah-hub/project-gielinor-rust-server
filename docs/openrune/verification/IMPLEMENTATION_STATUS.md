@@ -1400,3 +1400,10 @@ Focused002 PASS4 (3new plus existing pack persistence):60full duplicate inventor
 ## OR-MIG-0131 revision2 — PG-REF-003 membership provenance
 
 Implementation remains `35a5f39b72cab3a2655f32ae29bdde54284c9a4b`. Rechecked five donor file hashes and seven pinned Wiki snapshots. The inspected seller methods do not contain an explicit membership predicate; Rust member eligibility is attributed to Wiki-supported target policy. Uninspected global donor gates remain unresolved. Target-definition observations are separated from Wiki facts. Revision1 and all native/independent evidence remain immutable; no gameplay change/build or new acceptance claim. Native F2P acquisition refusal remains a separate test. [Provenance evidence](development/OR-MIG-0131-r2-provenance.json).
+
+
+## OR-MIG-0182 revision2 — Scoped headless native pack acceptance
+
+Implementation remains `e01ff31f2db8b87abf5a3fd8e05112952b2a3436`; immutable archive `4F749F9D9A6CA511B69216B3A699DE0C19457321D15EA5EBA741BBBA80E2E45C`. Two new owner drivers use990unchanged pinned client-library files and actual native149inventory widget/script dispatch, entirely headless. Fresh member opens14new profiles; F2P opens3 and retains11member packs after refused actions. All items/type/count/vars, bank/equipment, Stats/fineXP and position checked;1000coins unchanged. Two matching login/tab controls explain initial static varp initialization and two same-save reconnects preserve saved gameplay/no replay. All six successful sessions acknowledge advanced offline logout and shut down0/unforced.
+
+First strict assessment failed unaccounted initialization varps and is retained; initial long control state failed65>64 before login and is retained. Neither is relabelled a pass. [Exact owner native evidence](development/OR-MIG-0182-native-r2.json) pins controls, receipts, failure hashes and source/binary identities. This adds owner evidence at182source, not independentV0–V4 or original181pin acceptance; no rendered/physical input, native repeat/life/expiry, downstreamskill/shop/region or compiledKotlin claim. Chemistry independent campaign remains paused.

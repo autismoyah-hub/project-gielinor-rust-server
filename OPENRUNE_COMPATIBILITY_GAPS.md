@@ -38,3 +38,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0182 `e01ff31f2db8b87abf5a3fd8e05112952b2a3436` adds10target-supported pack opening profiles (31total), owner90controlled/62cacheWorld/full304server671world pass. Unsupported shark pack remains unbound; other softclay variants/shops/region/downstreamskills/native/recovery/independent remain open. Pack membership is distinct from output/acquisition; no chemistry campaign resume.
 
 - PG-REF-003: OR-MIG-0131 revision2 qualifies explicit Rust membership as Wiki-supported target policy, not an explicit inspected donor seller predicate. Owner provenance correction only; global donor gates and independent native F2P refusal unresolved.
+
+- OR-MIG-0182 revision2 adds scoped owner headless native17successful openings/11refusals, matching controls and two same-save reconnects at182archive. Original181pin/native repeats/life/expiry, shops/region/downstreamskills/compiledKotlin and independent acceptance remain open. Initial varp-assessment/setup failures retained and qualified, chemistry campaign paused.

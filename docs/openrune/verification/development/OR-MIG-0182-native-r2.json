@@ -1,0 +1,539 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0182",
+  "revision": 2,
+  "implementation_commit_sha": "e01ff31f2db8b87abf5a3fd8e05112952b2a3436",
+  "recorded_utc": "2026-10-22T05:21:45.455553+00:00",
+  "result": "DEVELOPMENT_NATIVE_VALIDATION_PASS",
+  "sources": {
+    "crates/server/src/content.rs": "157cf535f7952e1ab47e7ef2746816f1fd00a43ab948a6b49a86951a32062bb6",
+    "crates/server/src/content/remaining_pack_tests.rs": "7c89ecbcd00b34397bfe0a4ba404ea2a7a5f85c73e69f3652e22cec58be2c5a2"
+  },
+  "server_sha256": "4F749F9D9A6CA511B69216B3A699DE0C19457321D15EA5EBA741BBBA80E2E45C",
+  "drivers": {
+    "extra-packs-001": {
+      "manifest_sha256": "390dc042d91250b080313fd46e4a86a04c6bdd0f867b52a8393eb1a981b66d04",
+      "pinned_library_files_checked": 990,
+      "baseline": "client-239.1-baseline-001-build-001",
+      "files": {
+        "server_extra_packs.exe": "FC0FABF817101FEA0B4C5C041D42F5B381A08D606F58E047873A76431D175A88",
+        "NativeExtraPackScenario.rs": "C3FA450C65654D5F2208855FB5B76039D7C753D1AACF7D2A90D6BDDB862C487D"
+      }
+    },
+    "extra-packs-control-001": {
+      "manifest_sha256": "426c1ba3b2b65476a747d624ae11f855799bfb9477b0e62ebb9e5b669065ff76",
+      "pinned_library_files_checked": 990,
+      "baseline": "client-239.1-baseline-001-build-001",
+      "files": {
+        "NativeExtraPackControlScenario.rs": "2D1E8961E078263D47ECC29B0145EC48964C5BE94C1DAC2FAC4A9E380F93EB4E",
+        "server_extra_pack_control.exe": "86E23262B62577E168014C8067717AA85257DA2216E502A8BC06D788C7664BB1"
+      }
+    }
+  },
+  "pinned_library_post_check": {
+    "files_checked": 990,
+    "manifest_sha256": "0b57972892416b9c875c82a54541c1d998a2a77845bff4aea12d4a04a1a0b256"
+  },
+  "runs": [
+    {
+      "run": "openrune-extra-packs-member-native-20261021-001",
+      "assessment_sha256": "a40013bf10c1ad8417c819563c3da13b46846982e8d46d0a4809fb57ac5000cd",
+      "mode": "open",
+      "member": true,
+      "login_only_control": false,
+      "same_save_reconnect": false,
+      "eligible_openings": 14,
+      "nonmember_refusals": 0,
+      "native_widget_admitted_actions": 14,
+      "native_widget_admission_refusals": 0,
+      "client_sha256": "FC0FABF817101FEA0B4C5C041D42F5B381A08D606F58E047873A76431D175A88",
+      "evidence_hashes": {
+        "initial-state.json": "eae6a11fc77e9000e61dbe8c9d8ad9c387b0e7f01f4c0b145412084a16475686",
+        "final-state.json": "f2abee2719dec27b438b8481821a45964a90d5c672791b2b18ead16b5fbd8304",
+        "client.log": "d28d192204059b00e19d8ebb3a82daf3901dfdf41ee124bbe436011bebd593fd",
+        "server.log": "82316e7538d96b55960dcd76910216146705db40b1a982de026351b9d1a101e8",
+        "result.json": "c7aded612325e631a0ad54f2e97a6cd6bb27f2fc264db4f1eb083d48361177f5",
+        "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+        "logout-observation.json": "545801db7e35793e2aa614b908019b4843976a940c9ffeda5543e023635d146e",
+        "shutdown.json": "bf6df59c62c97a682c1ba83bde8fbf6da7cff34672e6e5bc4e546183251fd3d1"
+      },
+      "logout": {
+        "status": "PASS",
+        "save_completed": true,
+        "elapsed_seconds": 10.578,
+        "before": {
+          "world_id": null,
+          "last_logout": "2026-10-12 21:36:41"
+        },
+        "after": {
+          "world_id": null,
+          "last_logout": "2026-10-22 05:07:35"
+        }
+      },
+      "shutdown": {
+        "pid": 8876,
+        "exited": true,
+        "exitCode": 0,
+        "forced": false,
+        "utc": "2026-10-22T05:07:36.0886139Z"
+      },
+      "all_varp_changes": {
+        "18": {
+          "before": 0,
+          "after": 1
+        },
+        "20": {
+          "before": 0,
+          "after": 8519680
+        },
+        "21": {
+          "before": 0,
+          "after": 67141640
+        },
+        "25": {
+          "before": 0,
+          "after": 2
+        },
+        "300": {
+          "before": 0,
+          "after": 300
+        },
+        "3077": {
+          "before": 0,
+          "after": 36035
+        },
+        "3079": {
+          "before": 0,
+          "after": 171
+        },
+        "65515": {
+          "before": 0,
+          "after": 162
+        },
+        "65530": {
+          "before": 0,
+          "after": 800
+        },
+        "843": {
+          "before": 17,
+          "after": 0
+        }
+      },
+      "matching_login_control": "openrune-extra-packs-mctrl-native-20261021-001"
+    },
+    {
+      "run": "openrune-extra-packs-mctrl-native-20261021-001",
+      "assessment_sha256": "7fa626a3d2809b57f6ab32acbbcce26b8268918b94af9222516cc5d099dab785",
+      "mode": "control",
+      "member": true,
+      "login_only_control": true,
+      "same_save_reconnect": false,
+      "eligible_openings": 0,
+      "nonmember_refusals": 0,
+      "native_widget_admitted_actions": 0,
+      "native_widget_admission_refusals": 0,
+      "client_sha256": "86E23262B62577E168014C8067717AA85257DA2216E502A8BC06D788C7664BB1",
+      "evidence_hashes": {
+        "initial-state.json": "eae6a11fc77e9000e61dbe8c9d8ad9c387b0e7f01f4c0b145412084a16475686",
+        "final-state.json": "4c5d780d236c1db43622abf3601b000fcb27de6a6296e8d17d1ec5fee660702f",
+        "client.log": "d999093cfd9d1d74b1475f8bdbf83caa277120c0d5aca1f1cbeef53ba1d1b5a1",
+        "server.log": "4a725ffe594d63d70068bbb96ea58e60744aa3797eff6656fa209909e66f266e",
+        "result.json": "360c153730ef728772c8410106e2c2452df42b51b6609529e87bfde31d11125e",
+        "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+        "logout-observation.json": "802f0741379f5167163bdf7b719f9cf37c0dce8ebf3e05a5ed0f70a5e83bcecc",
+        "shutdown.json": "bbcc2b5bb99113e5072117ad2b11d7f0b0c176df3875b6e5f7169578fe8081eb"
+      },
+      "logout": {
+        "status": "PASS",
+        "save_completed": true,
+        "elapsed_seconds": 10.578,
+        "before": {
+          "world_id": null,
+          "last_logout": "2026-10-12 21:36:41"
+        },
+        "after": {
+          "world_id": null,
+          "last_logout": "2026-10-22 05:13:12"
+        }
+      },
+      "shutdown": {
+        "pid": 8760,
+        "exited": true,
+        "exitCode": 0,
+        "forced": false,
+        "utc": "2026-10-22T05:13:13.5539305Z"
+      },
+      "all_varp_changes": {
+        "18": {
+          "before": 0,
+          "after": 1
+        },
+        "20": {
+          "before": 0,
+          "after": 8519680
+        },
+        "21": {
+          "before": 0,
+          "after": 67141640
+        },
+        "25": {
+          "before": 0,
+          "after": 2
+        },
+        "300": {
+          "before": 0,
+          "after": 100
+        },
+        "3077": {
+          "before": 0,
+          "after": 13052
+        },
+        "3079": {
+          "before": 0,
+          "after": 89
+        },
+        "65515": {
+          "before": 0,
+          "after": 83
+        },
+        "65530": {
+          "before": 0,
+          "after": 800
+        },
+        "843": {
+          "before": 17,
+          "after": 0
+        }
+      },
+      "matching_login_control": null
+    },
+    {
+      "run": "openrune-extra-packs-member-replay-20261021-001",
+      "assessment_sha256": "6767f4735f3a0913c583054f67b4033795afdecca64b61ae0c5f61052694c2be",
+      "mode": "verify",
+      "member": true,
+      "login_only_control": false,
+      "same_save_reconnect": true,
+      "eligible_openings": 0,
+      "nonmember_refusals": 0,
+      "native_widget_admitted_actions": 0,
+      "native_widget_admission_refusals": 0,
+      "client_sha256": "FC0FABF817101FEA0B4C5C041D42F5B381A08D606F58E047873A76431D175A88",
+      "evidence_hashes": {
+        "initial-state.json": "f2abee2719dec27b438b8481821a45964a90d5c672791b2b18ead16b5fbd8304",
+        "final-state.json": "b21b6a4c6646f9d99484523e2bc9c95fef64f715bb66cb904c51e5b7bbc8f9e7",
+        "client.log": "83b9bfa19aa660bb7095288d0f359a7e8f474d26ce54c9e6bae5404556182c87",
+        "server.log": "bccf3f7ca2ebbb81e602ec2bba9a7a4c0e4d83b5ba8c924a60ce15712d89987c",
+        "result.json": "40ba7ca1096286546234c5328e755c24f959ffda35e496a643b10e3e15925ede",
+        "logout-before.json": "b9bbb61d6358312d93d961337f743d27aa38cd04c7964796a344f36ddeacc511",
+        "logout-observation.json": "0424eb6212c35e0e5a3fcbb75eefc938b4e9cb28f003c774efecbf5c21efdbf6",
+        "shutdown.json": "cf395111b15e8ee82fb8a6dccbcf939b1da75bb3385a3d9a345ca054c0af8f8e"
+      },
+      "logout": {
+        "status": "PASS",
+        "save_completed": true,
+        "elapsed_seconds": 10.219,
+        "before": {
+          "world_id": null,
+          "last_logout": "2026-10-22 05:07:35"
+        },
+        "after": {
+          "world_id": null,
+          "last_logout": "2026-10-22 05:15:37"
+        }
+      },
+      "shutdown": {
+        "pid": 15232,
+        "exited": true,
+        "exitCode": 0,
+        "forced": false,
+        "utc": "2026-10-22T05:15:37.9298645Z"
+      },
+      "all_varp_changes": {
+        "300": {
+          "before": 300,
+          "after": 400
+        },
+        "3077": {
+          "before": 36035,
+          "after": 37996
+        },
+        "3079": {
+          "before": 171,
+          "after": 88
+        },
+        "65515": {
+          "before": 162,
+          "after": 244
+        }
+      },
+      "matching_login_control": null
+    },
+    {
+      "run": "openrune-extra-packs-fctrl-native-20261021-001",
+      "assessment_sha256": "f78fc9107bc29a8a44b7c1b742f56f1e941ed87d83789fe063f50ee049db0749",
+      "mode": "free-control",
+      "member": false,
+      "login_only_control": true,
+      "same_save_reconnect": false,
+      "eligible_openings": 0,
+      "nonmember_refusals": 0,
+      "native_widget_admitted_actions": 0,
+      "native_widget_admission_refusals": 0,
+      "client_sha256": "86E23262B62577E168014C8067717AA85257DA2216E502A8BC06D788C7664BB1",
+      "evidence_hashes": {
+        "initial-state.json": "eae6a11fc77e9000e61dbe8c9d8ad9c387b0e7f01f4c0b145412084a16475686",
+        "final-state.json": "a23b7c6c47676ff28077b3e1375186d010fb233bb20d945e11bce7ecb79a2178",
+        "client.log": "6e71407f27be9c13568412cf6ffe6123a4f956872201f565bdc23f3715452301",
+        "server.log": "13bddaad3639c5f13846d1ef5b6a2975081e1d9d4dca18ebcca5b34575c2e9db",
+        "result.json": "c171776c7d405fb8b1487a1fde18f56bc9e630506459d8da7d62cdeafbcb81d2",
+        "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+        "logout-observation.json": "abf7be788360f01114860a6c93221d1c705153ea3b875add310e93be7474bfb7",
+        "shutdown.json": "d73611b81d11528d964aa7f791116c7eccdfe9b855e1b8f641bdc1c0068475d6"
+      },
+      "logout": {
+        "status": "PASS",
+        "save_completed": true,
+        "elapsed_seconds": 10.328,
+        "before": {
+          "world_id": null,
+          "last_logout": "2026-10-12 21:36:41"
+        },
+        "after": {
+          "world_id": null,
+          "last_logout": "2026-10-22 05:17:02"
+        }
+      },
+      "shutdown": {
+        "pid": 18112,
+        "exited": true,
+        "exitCode": 0,
+        "forced": false,
+        "utc": "2026-10-22T05:17:03.4292009Z"
+      },
+      "all_varp_changes": {
+        "18": {
+          "before": 0,
+          "after": 1
+        },
+        "20": {
+          "before": 0,
+          "after": 8519680
+        },
+        "21": {
+          "before": 0,
+          "after": 67141640
+        },
+        "25": {
+          "before": 0,
+          "after": 2
+        },
+        "300": {
+          "before": 0,
+          "after": 100
+        },
+        "3077": {
+          "before": 0,
+          "after": 2580
+        },
+        "3079": {
+          "before": 0,
+          "after": 96
+        },
+        "65515": {
+          "before": 0,
+          "after": 91
+        },
+        "65530": {
+          "before": 0,
+          "after": 800
+        },
+        "843": {
+          "before": 17,
+          "after": 0
+        }
+      },
+      "matching_login_control": null
+    },
+    {
+      "run": "openrune-extra-packs-free-native-20261021-001",
+      "assessment_sha256": "0d58b123b5eedb089a0e5c6c1b1b8abafee8caef72730326fd4eb960a966ccc7",
+      "mode": "free",
+      "member": false,
+      "login_only_control": false,
+      "same_save_reconnect": false,
+      "eligible_openings": 3,
+      "nonmember_refusals": 11,
+      "native_widget_admitted_actions": 14,
+      "native_widget_admission_refusals": 0,
+      "client_sha256": "FC0FABF817101FEA0B4C5C041D42F5B381A08D606F58E047873A76431D175A88",
+      "evidence_hashes": {
+        "initial-state.json": "eae6a11fc77e9000e61dbe8c9d8ad9c387b0e7f01f4c0b145412084a16475686",
+        "final-state.json": "596823098cd65e983a2bc6f7435a400181162b02ca1b4011373006bc19ececff",
+        "client.log": "7671176f5e89ccc4ee59e3e54e2f04c1636e06ab8502257e13cf4e6e91da8b01",
+        "server.log": "65603122de2386ce6c0b739adfe3c3652fdb899f47590cb6ad4ef0c17058b9a2",
+        "result.json": "1059aa1f0bfa41bf54e7e413be5e6d863d0820f0bfb8a4200d6705cf9ca6fc32",
+        "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+        "logout-observation.json": "22ee223173a2d7043e59a12f0519a9198f424456f2e68a946a49d2abe0081856",
+        "shutdown.json": "fbe0b06b4f0268b05ed2839bc1b8de8efd22133bf60d6193a3db04e2c6b2bf90"
+      },
+      "logout": {
+        "status": "PASS",
+        "save_completed": true,
+        "elapsed_seconds": 10.094,
+        "before": {
+          "world_id": null,
+          "last_logout": "2026-10-12 21:36:41"
+        },
+        "after": {
+          "world_id": null,
+          "last_logout": "2026-10-22 05:19:19"
+        }
+      },
+      "shutdown": {
+        "pid": 16228,
+        "exited": true,
+        "exitCode": 0,
+        "forced": false,
+        "utc": "2026-10-22T05:19:20.1108325Z"
+      },
+      "all_varp_changes": {
+        "18": {
+          "before": 0,
+          "after": 1
+        },
+        "20": {
+          "before": 0,
+          "after": 8519680
+        },
+        "21": {
+          "before": 0,
+          "after": 67141640
+        },
+        "25": {
+          "before": 0,
+          "after": 2
+        },
+        "300": {
+          "before": 0,
+          "after": 300
+        },
+        "3077": {
+          "before": 0,
+          "after": 19774
+        },
+        "3079": {
+          "before": 0,
+          "after": 191
+        },
+        "65515": {
+          "before": 0,
+          "after": 184
+        },
+        "65530": {
+          "before": 0,
+          "after": 800
+        },
+        "843": {
+          "before": 17,
+          "after": 0
+        }
+      },
+      "matching_login_control": "openrune-extra-packs-fctrl-native-20261021-001"
+    },
+    {
+      "run": "openrune-extra-packs-free-replay-20261021-001",
+      "assessment_sha256": "b61aceee5d9d58c2826f9cc989f4038862db248396eca52e7a87dd300f893f55",
+      "mode": "free-verify",
+      "member": false,
+      "login_only_control": false,
+      "same_save_reconnect": true,
+      "eligible_openings": 0,
+      "nonmember_refusals": 0,
+      "native_widget_admitted_actions": 0,
+      "native_widget_admission_refusals": 0,
+      "client_sha256": "FC0FABF817101FEA0B4C5C041D42F5B381A08D606F58E047873A76431D175A88",
+      "evidence_hashes": {
+        "initial-state.json": "596823098cd65e983a2bc6f7435a400181162b02ca1b4011373006bc19ececff",
+        "final-state.json": "dc1f69aac866c6fa6c1d08cb9f5e114ad0876a876c47a8c1fbbb77914bbc1054",
+        "client.log": "caeb049d3098c259f693a7e0e8d032a8dacb9d6d6769f9a2e3db818b69048802",
+        "server.log": "45f3ad4d75ae5018247427315633868743f3bddd823e66674c5070b5910ba7ef",
+        "result.json": "63e2c5a1f4294adbc5559868b08e22d76273e2243ed1287bc906b968da54da5b",
+        "logout-before.json": "22637c9f7df1ca324a41ef66df07e5329f0d9c53a6a9879019504bac64183412",
+        "logout-observation.json": "f65e7f959da9f725732c4612c9f4d5353cfd5ec62c35300ba90081e368c6f7e9",
+        "shutdown.json": "ce8d394aa512d45e0e0c0242c649f23cfce52ea53266ef01bc0b9f0583cd0faa"
+      },
+      "logout": {
+        "status": "PASS",
+        "save_completed": true,
+        "elapsed_seconds": 10.328,
+        "before": {
+          "world_id": null,
+          "last_logout": "2026-10-22 05:19:19"
+        },
+        "after": {
+          "world_id": null,
+          "last_logout": "2026-10-22 05:21:08"
+        }
+      },
+      "shutdown": {
+        "pid": 18656,
+        "exited": true,
+        "exitCode": 0,
+        "forced": false,
+        "utc": "2026-10-22T05:21:08.9963932Z"
+      },
+      "all_varp_changes": {
+        "300": {
+          "before": 300,
+          "after": 500
+        },
+        "3077": {
+          "before": 19774,
+          "after": 8385
+        },
+        "3079": {
+          "before": 191,
+          "after": 148
+        },
+        "65515": {
+          "before": 184,
+          "after": 324
+        }
+      },
+      "matching_login_control": null
+    }
+  ],
+  "summary": {
+    "successful_runtime_sessions": 6,
+    "member_pack_openings": 14,
+    "nonmember_pack_openings": 3,
+    "nonmember_refusals": 11,
+    "same_save_reconnects": 2,
+    "matching_login_tab_controls": 2,
+    "all_successful_sessions_saved_and_unforced_exit0": true
+  },
+  "preserved_failures": [
+    {
+      "reference": "work/openrune-remaining-packs-20261021/assessment-member-008.log",
+      "sha256": "ab8e031cc71ebcc25343e77633ad98c302a944f18c19e8d2b90ed9f9283398cf",
+      "classification": "Strict initial varp comparison failed; matched fresh login/tab control required before qualification. Not silently filtered.",
+      "resolution": "Original native items/Stats check preserved; control accounts for static initialization differences; two replays preserve non-session state."
+    },
+    {
+      "reference": "work/integration/runs/openrune-extra-packs-member-control-native-20261021-001",
+      "server_error_sha256": "a122549520c16ab1e3c56af3658fdafd890cbf2dd3a14104e70c180a5e0296ed",
+      "shutdown_sha256": "2045f42ab4ccfea48660ac705330959a86dda0a80fcb275f5acd0fdab4377c29",
+      "classification": "Infrastructure setup failure before native login: isolated state name65 exceeds server64 limit. Exit1/unforced; no acceptance claimed.",
+      "resolution": "Fresh shorter mctrl/fctrl states and supervisor preflight length check; failed fixture/run retained."
+    }
+  ],
+  "limitations": [
+    "Owner archived working-tree server, unchanged pinned client library and fresh disposable account fixtures; not pristine or independent acceptance.",
+    "Headless actual native widget/script dispatch with server item responses and durable SQLite checks. No OS window, visible menu click, physical input, rendered screenshot or multiplayer evidence.",
+    "One pack per profile in native fixture; native repeated opening/cancellation, invalid-life and live membership-transition cases are not newly exercised. Prior World tests remain separately scoped.",
+    "Exact session timer behavior is not accepted. Two matching login/inventory-tab controls explain initial non-session varp changes; replay preserves non-session state.",
+    "Original181 source is not independently replayed: four Tzhaar mappings exercised here at182source/archive and documented as current-source owner behavior only.",
+    "Shops/currencies, Slayer/Hunter/downstream item use, regional restrictions, unsupported shark pack and compiled Kotlin comparison remain outside scope. Chemistry verification remains paused."
+  ]
+}
