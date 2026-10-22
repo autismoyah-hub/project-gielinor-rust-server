@@ -1,0 +1,416 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0191",
+  "revision": 2,
+  "implementation_commit_sha": "07e14085ec8eed29a574896228815191c0913b25",
+  "recorded_utc": "2026-10-22T12:33:02.230648+00:00",
+  "result": "OWNER_THREE_HEALTHY_NATIVE_DIALOGUE_PERSISTENCE_PASS_INVALID_LIFE_NATIVE_PENDING_INDEPENDENT_PENDING",
+  "source_report": "docs/openrune/verification/development/OR-MIG-0191.json",
+  "sources": {
+    "crates/world/src/simulation.rs": "3352e3bf7fa137948d9a085539e1d669f72394f8afb86214dbcc1f7d72d3046d",
+    "crates/world/src/simulation/dialogue_actions.rs": "7bb45f59ec964d3dd77131bfc214194a7985d8fd725906f042a4c9f93282e535",
+    "crates/world/src/simulation/npc_actions.rs": "e8b0f533c6b4302fe1c8c0a348d91ef9ec493226de03f1eb292e55a1678733f4",
+    "crates/world/src/simulation/person_context_tests.rs": "e8b354044bc49d09a39f500dda2a056d1e44801bb035bfd0ae80a7a87c0360bc",
+    "crates/world/src/dialogue.rs": "ab9827609e4d6646e2d628464ffcb2c6d9b1aa42102df29d6ed4340eb4e79ff9",
+    "crates/server/src/runtime/dialogue.rs": "ef3f48fb65c89b1474b5490ec6fca6285920f85c6000aba639e590c2876c5f89",
+    "crates/server/src/startup.rs": "0e388df80b31abadeeecab944c1141f83ab5bed1f5146b27629e43cd64b92b9a"
+  },
+  "server_archive": {
+    "sha256": "FDC1BF1E71586D189C6B2C93A2FDA3BC7C70CB4C579D2B21358BD22684038ED3",
+    "source_count": 646,
+    "source_manifest_sha256": "6150666e40987a231b6972524e71de0fcb446a9fbecbebf4a68ba1de45f11e6f",
+    "before_after_sources_unchanged": true
+  },
+  "native": [
+    {
+      "run": "openrune-person-context-control-native-20261022-002",
+      "assessment_sha256": "7f9bc34bd7580235d2404d11f7ed6c246a7922d8ec4b73454a319d4b41524200",
+      "assessment": {
+        "result": "PASS_NATIVE_PERSON_CONTROL",
+        "run": "openrune-person-context-control-native-20261022-002",
+        "mode": "control",
+        "server_sha256": "FDC1BF1E71586D189C6B2C93A2FDA3BC7C70CB4C579D2B21358BD22684038ED3",
+        "driver_sha256": "FD4DC37CFF50756A26AC29971FBAAD964A50492110954DCE0A3A547A304F3DEE",
+        "native_events": [
+          {
+            "kind": "native.person_idle",
+            "mode": "control",
+            "flyers": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 9.89,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 12:24:20"
+          }
+        },
+        "shutdown": {
+          "pid": 4964,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T12:24:21.1967127Z"
+        },
+        "all_varp_changes": {
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "65515": {
+            "before": 0,
+            "after": 173
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "3077": {
+            "before": 0,
+            "after": 20651
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "300": {
+            "before": 0,
+            "after": 300
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "3079": {
+            "before": 0,
+            "after": 188
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          }
+        },
+        "position_before": {
+          "x": 3230,
+          "z": 3208,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3230,
+          "z": 3208,
+          "level": 0
+        },
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "081572b2851351f3b428aa56e6b382f2d55399ec0d24db72e8f8596593ada4d2",
+          "final-state.json": "93ac87dbac6928dd1c768f51a9ff205b668e799591b83813bc763013d6c16e18",
+          "initial-state.json": "df7eae266a660316700ab8999fd69bbd537494666a661babd4c821ca6c5be3ff",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "626e6070f1ca4cb60a02dc91a0c2e063594a043595e11873ccdeca1579ee5c7e",
+          "native-events.jsonl": "67ed7ff55b67c2d250128836b219ad650e5e8c7cf0688494a4ed109ea0322b03",
+          "result.json": "6d3ecc3a9be7846e5b1d1ccf31fa18f9dc233903bc0dde8af412f33a2c02d68c",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "528fe2b106a6d62d6d677ce76628e371107747b04140f852fa588007d009eb82",
+          "server.log": "647fd678cb6128b2d80ba616893f8f33b0e497f4809f588dd80fb04b92295e2c",
+          "shutdown.json": "84e86802b34465fa1251e612f0572d97c468b3c7cf40efa7a497d4b9cf536a59"
+        },
+        "limitations": [
+          "Owner actual scene actualPersonTalk-to102, visible greeting widget217Continue115, firstNPCreply231/textfromactualKotlinallowedset/portraitmatchesactualtarget. No direct packet fallback or physical desktop input.",
+          "Reply deliberately unacknowledged: native flyer grant, retaliation, all22branches/choices and invalid-life timing are NOT exercised. Those owner World/cache/Kotlin logical checks are separate.",
+          "Full bag suppresses flyer offer; exact saved inventory/Stats/fineXP unchanged, positions/energy/varps reported and reconnect does not reopen dialogue.",
+          "Software frame hash retained, no full-interface-render claim without visual review. Chemistry independent campaign paused; not independent acceptance."
+        ]
+      }
+    },
+    {
+      "run": "openrune-person-context-actions-native-20261022-002",
+      "assessment_sha256": "06886ba357dc08db8d00b8906268f947f5c92a383afaecb106c058d5d6d93db1",
+      "assessment": {
+        "result": "PASS_NATIVE_PERSON_TALK",
+        "run": "openrune-person-context-actions-native-20261022-002",
+        "mode": "talk",
+        "server_sha256": "FDC1BF1E71586D189C6B2C93A2FDA3BC7C70CB4C579D2B21358BD22684038ED3",
+        "driver_sha256": "FD4DC37CFF50756A26AC29971FBAAD964A50492110954DCE0A3A547A304F3DEE",
+        "native_events": [
+          {
+            "kind": "native.person_talk",
+            "raw": 3106,
+            "index": 350,
+            "opcode": 102
+          },
+          {
+            "kind": "native.person_greeting_continue",
+            "text": "Hello, how's it going?",
+            "component": 14221317,
+            "opcode": 115
+          },
+          {
+            "kind": "native.person_reply",
+            "raw": 3106,
+            "index": 350,
+            "text": "None of your business.",
+            "portrait": 3106,
+            "sequence": 614,
+            "npc_reply_acknowledged": false
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.328,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 12:25:31"
+          }
+        },
+        "shutdown": {
+          "pid": 14632,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T12:25:32.3510720Z"
+        },
+        "all_varp_changes": {
+          "3079": {
+            "before": 0,
+            "after": 91
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "300": {
+            "before": 0,
+            "after": 100
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "65515": {
+            "before": 0,
+            "after": 85
+          },
+          "3077": {
+            "before": 0,
+            "after": 32305
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          }
+        },
+        "position_before": {
+          "x": 3230,
+          "z": 3208,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3230,
+          "z": 3208,
+          "level": 0
+        },
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "411a026bace29e03b46b34421fe36a1028c48e2f78beca9bfe90f42be1cda539",
+          "final-state.json": "3a70ca498d1683a5f473fd9ab73021965cacab198b008e8b9368911e856a720e",
+          "initial-state.json": "df7eae266a660316700ab8999fd69bbd537494666a661babd4c821ca6c5be3ff",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "32032a244c8c8cd1a0ab8dbe9872f96e1ce0d0aac8a76d4d908adfd9ee30f67f",
+          "native-events.jsonl": "766ea5231accf3be4a98d960398e2ba61b963bac4251e83d437e063396b0ebc6",
+          "native-events.reply.bmp": "bd7c59aa6cceebe326867a212487656404cbda4af01f3100b80f3f8d0fdd7769",
+          "native-events.scene.bmp": "bd7c59aa6cceebe326867a212487656404cbda4af01f3100b80f3f8d0fdd7769",
+          "result.json": "46618d8b8286b496859e8b794fae6507a96bb5c3638205c7bf79e1f3a577c5b5",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "c8e6aa6b86ff6ced3188c885faba615772b71c80e12767f987aa804c198c1474",
+          "server.log": "7ba12ac59525976b08145c1c6c35c87e5b60a3803d5abe6db031fa65a35d6c3a",
+          "shutdown.json": "e71b794100f8437d23614dee4f49a61b6599a7a66b97f9bc19ba2022c2d3f1fe"
+        },
+        "limitations": [
+          "Owner actual scene actualPersonTalk-to102, visible greeting widget217Continue115, firstNPCreply231/textfromactualKotlinallowedset/portraitmatchesactualtarget. No direct packet fallback or physical desktop input.",
+          "Reply deliberately unacknowledged: native flyer grant, retaliation, all22branches/choices and invalid-life timing are NOT exercised. Those owner World/cache/Kotlin logical checks are separate.",
+          "Full bag suppresses flyer offer; exact saved inventory/Stats/fineXP unchanged, positions/energy/varps reported and reconnect does not reopen dialogue.",
+          "Software frame hash retained, no full-interface-render claim without visual review. Chemistry independent campaign paused; not independent acceptance."
+        ]
+      }
+    },
+    {
+      "run": "openrune-person-context-replay-native-20261022-002",
+      "assessment_sha256": "3cf4dba84f272d91b2f2fad0dc352e9931861887c5cf81285f22570c76042d78",
+      "assessment": {
+        "result": "PASS_NATIVE_PERSON_VERIFY",
+        "run": "openrune-person-context-replay-native-20261022-002",
+        "mode": "verify",
+        "server_sha256": "FDC1BF1E71586D189C6B2C93A2FDA3BC7C70CB4C579D2B21358BD22684038ED3",
+        "driver_sha256": "FD4DC37CFF50756A26AC29971FBAAD964A50492110954DCE0A3A547A304F3DEE",
+        "native_events": [
+          {
+            "kind": "native.person_idle",
+            "mode": "verify",
+            "flyers": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.234,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 12:25:31"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 12:26:33"
+          }
+        },
+        "shutdown": {
+          "pid": 10800,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T12:26:33.9614183Z"
+        },
+        "all_varp_changes": {
+          "3079": {
+            "before": 91,
+            "after": 79
+          },
+          "300": {
+            "before": 100,
+            "after": 200
+          },
+          "65515": {
+            "before": 85,
+            "after": 159
+          },
+          "3077": {
+            "before": 32305,
+            "after": 33933
+          }
+        },
+        "position_before": {
+          "x": 3230,
+          "z": 3208,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3230,
+          "z": 3208,
+          "level": 0
+        },
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "0c1f975f5e4adbe2356c362e7d1c64b6dce5b053b9ebcba2688c77457c61d2b1",
+          "final-state.json": "4fa07f46e8bb1472bd570168acf1d50fcb5ab53d39363fd6924fe956b5c29677",
+          "initial-state.json": "3a70ca498d1683a5f473fd9ab73021965cacab198b008e8b9368911e856a720e",
+          "logout-before.json": "88769f670b521b19b8d98eaaab1dcd1891f9bb5f8d239c8339a51fba20f27cc2",
+          "logout-observation.json": "59cb5063d1ae2b51e0119e37c3ba310c6de73eebcbf3f6b97939c948d9977bbb",
+          "native-events.jsonl": "7819c7dd9b7a8f7fce651603f6b04b1f7793a55e3862bdc4a8cc7379b3bd3bf4",
+          "result.json": "9b0e911e2c4252bb7f9d2fef7295dee0ba83e8a4b8c5f6edfcb83db224bf040e",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "b38421c5733dcfcb71fb32665d23cdaf273d40b2538229094c87ff1a210d2540",
+          "server.log": "c2735fc63ef11eed6d5d884c645e81c308832a2388c47f2e275fbaeac4d4b453",
+          "shutdown.json": "f3e9c6daf0cf57a1957de22000718fb8314e2f9fbd9de7f7ff4d7c5b22758466"
+        },
+        "limitations": [
+          "Owner actual scene actualPersonTalk-to102, visible greeting widget217Continue115, firstNPCreply231/textfromactualKotlinallowedset/portraitmatchesactualtarget. No direct packet fallback or physical desktop input.",
+          "Reply deliberately unacknowledged: native flyer grant, retaliation, all22branches/choices and invalid-life timing are NOT exercised. Those owner World/cache/Kotlin logical checks are separate.",
+          "Full bag suppresses flyer offer; exact saved inventory/Stats/fineXP unchanged, positions/energy/varps reported and reconnect does not reopen dialogue.",
+          "Software frame hash retained, no full-interface-render claim without visual review. Chemistry independent campaign paused; not independent acceptance."
+        ]
+      }
+    }
+  ],
+  "logs": {
+    "native-012.log": {
+      "sha256": "5ebf64540326a9c059aa4820f17bf90e9428db0a328d79c0dcb942c3e09e90f5",
+      "result": "FAIL_NATIVE_TARGET_PICK_PRESERVED"
+    },
+    "map-014.log": {
+      "sha256": "c3b1c8f6560c468c9e48da548b5a4d58bac23071dd57d9bceacc662b3f5cc984",
+      "result": "PASS"
+    },
+    "driver-015.log": {
+      "sha256": "a97a6c0976b6514be5d56186da83604e8cb0d7b357ee85ee82eb8da232829385",
+      "result": "FAIL_DRIVER_TYPE_PRESERVED"
+    },
+    "driver-016.log": {
+      "sha256": "4570ea35bb9de2bb5d9dd57708947e22f2c72bb49255cea251ec0ceafff919e9",
+      "result": "PASS"
+    },
+    "fixture-017.log": {
+      "sha256": "ed5d6368a5989b48b0913f75640542424877236d637f0bbf5e164b06481d1537",
+      "result": "PASS"
+    },
+    "native-deferral-018.json": {
+      "sha256": "ba013979c4dc9a752a959a322df64c92e2e55493ae17e560edfe60fca3db1c7c",
+      "result": "DEFERRED_BEFORE_LAUNCH"
+    },
+    "native-019.log": {
+      "sha256": "653afd1ee22db29363d3ea82c886735b20229131c2de724d00f94bfb900c36d6",
+      "result": "PASS"
+    }
+  },
+  "known_limitations": [
+    "GenericPerson22branches/threechoices/flyer/retaliation were already implemented in the maintained foundation. This checkpoint reconciles the actual source/registration and fixes actor-lifecycle admission/continuation; it does not claim a new rewrite of those existing branches.",
+    "Owner working-tree validation with retained private manifest/test opt-ins; not pristine or independent acceptance.",
+    "Both actual protected Kotlin source files were separately compiled/executed with owned recording framework dependencies.27logical transcripts/RNG/effects match byte-for-byte and Rust World authoritative NPC/ResumeDialogue actions. This is not full Kotlin engine/queue/coroutine/native scheduling equivalence.",
+    "Invalid-life guard is an explicit safety adaptation for Rust World phase ordering. The actual Kotlin callback source is a protected-access receiver; this test does not prove identical engine death-phase ordering.",
+    "Four unit regressions cover zeroHP/queueddeath greetings, replyRNG/flyer/retaliation suppression, old-token-after-revival and healthy once-only flyer/unsignedHP128. Seven actual target cache profiles\u00d7member\u00d7HP0/128 give28preparedWorld admission cases; synthetic clear terrain/positions, not actual-map/native life acceptance.",
+    "Life guard is scoped to GenericPerson handlers/unique Person effects and a matching current dialogue token. Other NPC dialogues and existing22branch content remain unchanged.",
+    "No inventory/XP/save schema change. Independent chemistry verification remains paused.",
+    "Three owner healthy native002sessions now pass at frozen191source/archive: matchedcontrol, actual Man3106 scene Talk-to102, received player greeting217, actual217:5Continue115, first NPC reply231/portrait3106/angry614, same-save reconnect with no automatic dialogue/reward. All3acknowledgedoffline/shutdown0unforced/990unchangedclientlibrary.",
+    "Native NPC reply was deliberately NOT acknowledged; full bag suppresses flyer offer. Native invalid-life/flyer credit/retaliation/all22branches/choices remain unexercised. Actor-lifecycle suppression and full callback correspondence are owner World/cache/compiledlogical evidence, not native invalid-life acceptance.",
+    "Software reply frame inspected: player and NPC among buildings, chatbox text not rendered in captured frame. NPC text/portrait/sequence are verified received widget state, not rendered portrait/chat pixels or physical desktop input.",
+    "Original001 control passed; action001deadline ended with no pick of fixed Man3107 from legacy3230,3218. Alloriginal source/driver/save/logs retained. Map014verified current spawns; distinctfresh002fixtures3230,3208 and newfrontend003accept any attested7profiles with scene diagnostics. Source2driver015E0308u16-to-i32portrait mismatch preserved; separateSource3driver016correctedconversion. Native018deferredbeforelaunch underAGENT5lease;019subsequentlypassed. No servercode change or reset of001save."
+  ],
+  "visual_review": "Inspected actions002native-events.reply.bmp: world scene/player/NPC/buildings visible, chatbox area black. No rendered dialogue/portrait claim; decoded widgets/text/model/animation are separately verified.",
+  "failed_native001": {
+    "scope": "NoTalkactionaccepted;clientdeadline1, savedoffline/shutdown0unforced retained.",
+    "hashes": {
+      "client.log": "b173ee886796392be3fc19f038b332290e55c45d4141bd1b7d61279dba9d6660",
+      "native-events.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "initial-state.json": "3bcb4ca8da72e1e646f1d24df2a1ea858aba6b5887f14079433a07537febd573",
+      "final-state.json": "1211b6d6d545579d997153bcb9a994fe0772578a7e12728cc22df301d1cd522a",
+      "result.json": "dc22b18c21c640b2741b9ed3f80848a2c8a0837c1cd74bc40d3fef3ede09c280",
+      "shutdown.json": "711f2b992f971e715ff54577f655015a37a74e0d46667765443798eef1c1bb25",
+      "logout-observation.json": "a595ee496a3f890741332983d092fe1b2e26cd26403c0b8da19d41385d1de93e"
+    }
+  },
+  "native_tee018_created": false
+}

@@ -68,3 +68,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0190r2 `678d81d964b348be56d35f2c22fc0722dd229293` six Cow/Calf ownernativeUse86/refusal/Moo-graze/reconnectPASS; no picture/audio claim. RemainingWikiCalfmilk-specific/death/specials/life/multiplayer/independent scope unchanged, chemistry paused.
 
 - OR-MIG-0191 `07e14085ec8eed29a574896228815191c0913b25` reconciles existingGenericPerson and fixes invalid-life greeting/continuationeffects. Owner313server718world/cache28/dualactualKotlin27+RustWorld27PASS; nativeinvalidlife/enginephase/independent remain open, chemistrypaused.
+
+- OR-MIG-0191r2 `07e14085ec8eed29a574896228815191c0913b25` healthy nativeTalk102/greetingContinue115/firstNPCreply/reconnect ownerPASS; nativeinvalidlife/flyer/retaliation/fullbranches/renderedchat and independent remain open, chemistry paused.
