@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-21",
+  "production_source": "1c2d4d8e0dd4d761ef156588a05f669d788d202e",
+  "strengthened_storage_tests_source": "97eb70e0bf64e7a9d9372a6105b881d636fe2249",
+  "workspace_library_results": {
+    "cache": {
+      "passed": 26,
+      "failed": 0,
+      "ignored": 0
+    },
+    "protocol": {
+      "passed": 21,
+      "failed": 0,
+      "ignored": 0
+    },
+    "server": {
+      "passed": 304,
+      "failed": 0,
+      "ignored": 0
+    },
+    "storage": {
+      "passed": 16,
+      "failed": 0,
+      "ignored": 1
+    },
+    "world": {
+      "passed": 673,
+      "failed": 0,
+      "ignored": 2
+    }
+  },
+  "total_passed": 1040,
+  "total_ignored": 3,
+  "logs": {
+    "agent7-gameplay-regression-20261021.log": "160ccc1acce2517297e4633925f1d60982035ab7adc8035e4c0bffc01a481924",
+    "agent7-gameplay-regression-20261021-02.log": "2df6029af2a3c904752f405284cd912b6a8b79743c97b98bdd4fdc8730129337",
+    "agent7-gameplay-storage-20261021.log": "121fff216771837c1e661063fab5ba85710fd17ed20d8ec46fe4333b758c31a8",
+    "agent7-gameplay-worker-20261021.log": "fc2a65ec052562c2f73cccdd33aeab1a863256cbbee09677fa6071ed7defd530"
+  },
+  "worker_example_sha256": "450b69d59c8982be2e28579f5f374417589e6bcfc23d11baaa59e993c5201671",
+  "worker_database_checks": {
+    "completion_rows": [
+      [
+        1
+      ]
+    ],
+    "run_rows": [
+      [
+        1,
+        7,
+        7,
+        1
+      ]
+    ]
+  },
+  "worker_scope": "Real SQLite/account worker/authentication; synthetic victory prerequisite, no client or earned gameplay",
+  "native_client_acceptance": false,
+  "independent_verification": false,
+  "failed_build_preserved": "Initial encoding error fixed before implementation commit; see first regression log"
+}
