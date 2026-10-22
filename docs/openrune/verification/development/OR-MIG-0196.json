@@ -1,0 +1,693 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0196",
+  "implementation_commit_sha": "620e1c379b5d84b8bb32625e4d98a10e85d4b6e0",
+  "recorded_utc": "2026-10-22T15:34:08.784924+00:00",
+  "result": "OWNER_LIVE_GOLD_FURNACE_BONUS_WORLD_CACHE_ACTUAL_SOURCE_POLICY_AND_THREE_NATIVE_SESSIONS_PASS_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/server/src/content.rs": "cce5d8521d1d2fe540345559ef97dbe85a5b15050c3280cee95645012d832b3e",
+    "crates/server/src/content/goldsmith_smelting.rs": "5469d23aaee5725bd155979c7f2d7b88a2fbe3e901b83f5126d1403305e5582d",
+    "crates/server/src/runtime/smelting.rs": "d7e72ca7d0158c948f27e556bfada9442b8e0edf1d901ffb4c6bae2ec1789e56",
+    "crates/world/src/coal_bag_smelting.rs": "b8ef1722710ba8fd24c4904a17fe47569d0feaee1d50b84059545ab327f82458",
+    "crates/world/src/goldsmith_smelting.rs": "3c3cc7af2d09b4db1a92cb965d5a044faab371cd1277e89209a3c9e0b288dd62",
+    "crates/world/src/lib.rs": "219df0b51a340772b7d3c3fc577b7c9dc797599340f71df0bbd27a327fb515ea",
+    "crates/world/src/simulation.rs": "25f75f91809beb6e56ee243f673e7f23a1a7cad9139476f23157f51468b82d91",
+    "crates/world/src/simulation/goldsmith_smelting_tests.rs": "92d88009bc47604c20099c7d35dc8566fd8ca4b8fb7a36b0e418cf627a75b353",
+    "crates/world/src/simulation/smithing_actions.rs": "95642f8d90cf274df70b9b8d28becff85b0b8eb90ef72b29d847a89fd95548c4",
+    "crates/world/src/smithing_make.rs": "0b5b95cdbb8f50d0f85eee276802ae6d8557c39b040c127ad991a005ac26609c"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/smelting/SmithingSmeltXp.kt",
+      "sha256": "4cc9312f09c4ab27d4e2f7dc4fd23a2b09874874c6860f1e68c196d04e19993d",
+      "availability": "protected_local_reference",
+      "revision": "Configured241 donor; only gold-smelt worn XP subset, sourcegold22/alternate56 versus maintained22.5/Wiki56.2"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/smelting/SmeltingScript.kt",
+      "sha256": "13b6dd208704723eb134ef19440e60a34a5c075f23bb4d8138108350907a011c",
+      "availability": "protected_local_reference",
+      "revision": "Configured241 donor; only gold-smelt worn XP subset, sourcegold22/alternate56 versus maintained22.5/Wiki56.2"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/util/SmithingBonuses.kt",
+      "sha256": "cb4895214951ba5bee12a860e067883987c7ab4dd98701396d154a602619d8c6",
+      "availability": "protected_local_reference",
+      "revision": "Configured241 donor; only gold-smelt worn XP subset, sourcegold22/alternate56 versus maintained22.5/Wiki56.2"
+    },
+    {
+      "kind": "openrune",
+      "reference": "or-cache/src/main/kotlin/dev/openrune/tables/skills/Smithing.kt",
+      "sha256": "8ae9187191965b6c8384bc3019ffc2a7058526031b7fa6d34686927f0491a144",
+      "availability": "protected_local_reference",
+      "revision": "Configured241 donor; only gold-smelt worn XP subset, sourcegold22/alternate56 versus maintained22.5/Wiki56.2"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/scripts/SmithingActions.kt",
+      "sha256": "340c8775b67f2883e573dad18663e3779d45d3ae554e500d9a55bec616285921",
+      "availability": "protected_local_reference",
+      "revision": "Retain legacy weak jobs/current fractional gold22.5base; isolated bonus adaptation"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Goldsmith gauntlets",
+      "sha256": "e9b67697ab968e07502321caf92b46c4bb3162e0abd9fa1671aa9035523e8164",
+      "availability": "protected_local_reference",
+      "revision": "15334709"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Smithing cape",
+      "sha256": "979b020fb74dae8e98d1fc1d1b13f4b43b7fdf6bad901c2d9701bd205b07a7e1",
+      "availability": "protected_local_reference",
+      "revision": "15240193"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Max cape",
+      "sha256": "3e095993488725ef438cd415126cfe72c73220869154719b7750f6b53812c899",
+      "availability": "protected_local_reference",
+      "revision": "15320227"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Gold bar",
+      "sha256": "d5f6e93c9f4e3d4c551d35d79727fdd048bde592c42dd9dc9e576089fd49aac3",
+      "availability": "protected_local_reference",
+      "revision": "15315117"
+    }
+  ],
+  "server_archive": {
+    "sha256": "C803BDAB1A3D4979828F7F4059D3BC0E9FCC37E5F2776FF7A97D08000809FE59",
+    "source_count": 674,
+    "source_manifest_sha256": "0189684250e84ec2a536fde5fce8f526e43c848070c3cb453ec86d1bb76018c0",
+    "before_after_sources_unchanged": true
+  },
+  "logs": {
+    "profiles-001.log": {
+      "sha256": "42b536f1b47b85b5ad01d88488d5bbfaaa6e239da95a0d99f32bfc2c205d83ed",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.5% sampled, ceiling70%.",
+        "Capacity: 8,458 MiB available, commit 42.0%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "world-002.log": {
+      "sha256": "8201c58dd72df005fb01ff65320440dcfc27573b4b4c43489e7a8f5ce589d8b5",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.1% sampled, ceiling70%.",
+        "Capacity: 8,418 MiB available, commit 42.0%, pages-in/s 0, disk 2.6 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 748 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 47.05s"
+      ]
+    },
+    "server-004.log": {
+      "sha256": "beef7189521d5122b9187f2f234e164d5195f9f65bce509d4a72babb2b58149b",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 7.3% sampled, ceiling70%.",
+        "Capacity: 8,407 MiB available, commit 42.1%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 316 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 66.42s"
+      ]
+    },
+    "kotlin-005.log": {
+      "sha256": "76223d1eebfd455fbe2d8b6cceaeb040a2c86163040bf4d2382a9f5e585c779b",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 0.9% sampled, ceiling70%.",
+        "Capacity: 8,416 MiB available, commit 42.0%, pages-in/s 0, disk 5.2 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS actual protected SmithingSmeltXp 30 gold/worn/carried/rate cases; owned row/modifier/player/no-coal dependencies; not full Kotlin smithing engine"
+      ]
+    },
+    "cache-006.log": {
+      "sha256": "d16115bb777a4a19f2091900e399e44c9d94e48897978a3431a4de429c1c0693",
+      "result": "FAIL_PRIVATE_HARNESS_COMPILE_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 3.2% sampled, ceiling70%.",
+        "Capacity: 8,402 MiB available, commit 42.0%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "cache-007.log": {
+      "sha256": "915712678757771829aea56c77b5a596990b7877e613b7ad1cca16b4cff2bfd5",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.0% sampled, ceiling70%.",
+        "Capacity: 8,424 MiB available, commit 41.9%, pages-in/s 0, disk 1.1 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS30actual-cache gold furnace jobs;12worn boosted/18unboosted and exact items/equipment/rates; all XP differences explicit source22/56 versus maintained22.5/Wiki56.2; prepared World entry, not native/full Kotlin engine"
+      ]
+    },
+    "archive-009.log": {
+      "sha256": "a4b54f7daaca6626f130fd30ba351597ccc23a2f68639b4bb68348317a799176",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 8.0% sampled, ceiling70%.",
+        "Capacity: 8,474 MiB available, commit 42.0%, pages-in/s 0, disk 3.6 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server C803BDAB1A3D4979828F7F4059D3BC0E9FCC37E5F2776FF7A97D08000809FE59 (674 source files)."
+      ]
+    },
+    "driver-010.log": {
+      "sha256": "653305a3ac47eac60e8079d17b4d2fafd51709f12c2e7f015af34ae5d93ef14c",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.7% sampled, ceiling70%.",
+        "Capacity: 8,294 MiB available, commit 42.1%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "fixtures-011.log": {
+      "sha256": "7b8e01d2561d1df185d6d21cf760c8492ead9a64dec58ee6b21973da4791cae4",
+      "result": "PASS",
+      "summaries": []
+    },
+    "native-012.log": {
+      "sha256": "ad7a13ec00387c9336b81ea6af798fa4d17f5ce7109edcad90567a904bbcb020",
+      "result": "PASS",
+      "summaries": [
+        "Capacity: 8,463 MiB available, commit 42.0%, pages-in/s 1, disk 1.2 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}",
+        "PASS_NATIVE_GOLDSMITH_BASELINE\", \"fine_xp_delta\": 1125, \"gold_after\": 1}",
+        "Capacity: 8,449 MiB available, commit 42.0%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}",
+        "PASS_NATIVE_GOLDSMITH_BOOST\", \"fine_xp_delta\": 2810, \"gold_after\": 1}",
+        "Capacity: 8,447 MiB available, commit 42.0%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}",
+        "PASS_NATIVE_GOLDSMITH_VERIFY\", \"fine_xp_delta\": 0, \"gold_after\": 1}"
+      ]
+    }
+  },
+  "matrix": {
+    "world_pass": 748,
+    "world_existing_ignored": 1,
+    "server_pass": 316,
+    "goldsmith_world_tests": 5,
+    "form_member_rate_cases": 40,
+    "malformed_carried_wrongslot_cases": 7,
+    "factory_refusals": 71,
+    "cache_kotlin_cases": 30,
+    "cache_boosted_cases": 12,
+    "cache_unboosted_cases": 18
+  },
+  "actual_kotlin": {
+    "inputs": {
+      "sources": {
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\smelting\\SmithingSmeltXp.kt": "4cc9312f09c4ab27d4e2f7dc4fd23a2b09874874c6860f1e68c196d04e19993d"
+      },
+      "stubs": {
+        "Bonuses.kt": "05e6b23c384c099b3ed7b28be948eb84c3b451cec7474e1a62bfe0e841e794c2",
+        "GoldsmithOracle.kt": "211589906a100e92a03eab6b28501d1ad8200e24f2094ab57d657d18100ceab0",
+        "Inventory.kt": "4852e4c1951deb545037eb8708f3ea56dc03e281877f750751fc3ba9078405a0",
+        "Modifiers.kt": "32f5e63b101a449c598335b02bf17bdd08adb33af5c974e53ee5d75fdffd9360",
+        "Player.kt": "b6e8d7a2ff23e1f5d5a247f8a54b74024e03ef6400bf3ffef72c922ac63a1e0c",
+        "Table.kt": "044bf4402e3506cb82c9e7a50cd335551609dc10a4600f7a858741e4b5036c37"
+      }
+    },
+    "result": {
+      "scope": "Actual protected Goldsmith XP compiled with owned recording framework dependencies; logical callback traces only",
+      "sourcePins": {
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\smelting\\SmithingSmeltXp.kt": "4cc9312f09c4ab27d4e2f7dc4fd23a2b09874874c6860f1e68c196d04e19993d"
+      },
+      "files": {
+        "oracle.jar": "0ECBFEC161B822D8721C4E4BCAD806E5CC9F9D891B94505694154988CE4AAECB",
+        "inputs.json": "E6413A644DE08377F2E28B78FB67EA9FE104ED064F38861EE723B657E7EEEBE1",
+        "compile.args": "CC6F1BBEB748015B08F9A645C678129F55B0E0E1A1C1AB1803B2A4EC96A43604"
+      },
+      "expectedSha256": "32CE30627EC8B8EE1919C6B9BCB68BD45E483B5A4EC8AF53E85B99085355C128",
+      "cases": 30
+    },
+    "comparison": {
+      "result": "PASS30_ACTUAL_SOURCE_AND_CACHE_GOLD_XP_POLICIES",
+      "actual_compiled_sources": 1,
+      "owned_stub_driver_files": 6,
+      "source_base_xp": 22,
+      "source_alternate_xp": 56,
+      "rust_maintained_base_xp": 22.5,
+      "rust_wiki_bonus_xp": 56.2,
+      "boosted_cases": 12,
+      "unboosted_cases": 18,
+      "all_xp_policy_differences_explicit": true,
+      "cases_sha256": "346c9ce4f803852526305b0e772f96c97e844db9fec6347a75c6ed849067407b",
+      "kotlin_raw_expected_sha256": "32ce30627ec8b8ee1919c6b9bcb68bd45e483b5a4ec8af53e85b99085355c128",
+      "probe_sha256": "227837e35f501b9cbad3e1b6077fe17194d1b8606436abffbaf0a4cb2ad0abf5",
+      "test_profile": {
+        "CARGO_PROFILE_TEST_DEBUG": "0",
+        "CARGO_PROFILE_TEST_INCREMENTAL": "false",
+        "CARGO_PROFILE_TEST_CODEGEN_UNITS": "2",
+        "debug_assertions": "default enabled, unchanged",
+        "runtime_or_manifest_changes": false
+      },
+      "scope": "Real239.1cache six item profiles and selected/queued Worldgold. Actual protected XP resolver uses owned player/inventory/row/modifier/no-coal dependencies, gold-only inputs22/56 pinned to inspected source table; table/SmithingBonuses/full smithing engine not compiled."
+    },
+    "scope": "One actual protected XP resolver; six owned gold-only dependencies/driver; data row22/56 from inspected pinned source, table and bonuses are not compiled."
+  },
+  "native": [
+    {
+      "run": "openrune-goldsmith-smelting-baseline-native-20261022-001",
+      "assessment_sha256": "5e9dbe97b24c6c1e5fedfadbb238b415245f7ae46566500315ca1cb845f7202f",
+      "assessment": {
+        "result": "PASS_NATIVE_GOLDSMITH_BASELINE",
+        "run": "openrune-goldsmith-smelting-baseline-native-20261022-001",
+        "mode": "baseline",
+        "server_sha256": "C803BDAB1A3D4979828F7F4059D3BC0E9FCC37E5F2776FF7A97D08000809FE59",
+        "driver_sha256": "5425349E317396C266159D542C469224EF25D3D44D58BE5AF4471E108A68A79F",
+        "native_events": [
+          {
+            "kind": "native.gold_furnace",
+            "raw": 24009,
+            "x": 3226,
+            "z": 3256,
+            "operation": 2,
+            "opcode": 103
+          },
+          {
+            "kind": "native.gold_selection",
+            "logical": 17694740,
+            "opcode": 115
+          },
+          {
+            "kind": "native.goldsmith_done",
+            "mode": "baseline",
+            "ore": 0,
+            "bars": 1,
+            "carried_gauntlets": 1,
+            "worn_gauntlets": 0,
+            "displayed_xp_delta": 112
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.578,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 15:28:29"
+          }
+        },
+        "shutdown": {
+          "pid": 16788,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T15:28:30.6758413Z"
+        },
+        "saved_fine_xp_delta": 1125,
+        "saved_gold_before": 0,
+        "saved_gold_after": 1,
+        "saved_ore_before": 1,
+        "saved_ore_after": 0,
+        "saved_gauntlet_inventory_before": 1,
+        "saved_gauntlet_inventory_after": 1,
+        "saved_gauntlet_worn_before": 0,
+        "saved_gauntlet_worn_after": 0,
+        "all_varp_changes": {
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "3079": {
+            "before": 0,
+            "after": 104
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "65515": {
+            "before": 0,
+            "after": 98
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "3077": {
+            "before": 0,
+            "after": 30577
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "fd0ae9987d846971c6d2384c2f026af46de407d8cf8c339c48474467e3ac998f",
+          "final-state.json": "c4bf4afbc9de7f6132286da0f4d1a127fd9dd14a3768766ff8b82bc2d2fc74ca",
+          "initial-state.json": "05dd6639667636f62fcc12eea3234e6086460ea1d0d42d12bdc3b31bbfd6d9ff",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "3fc47eb3260596b002249e48ed098a612228921c78497bc7aa75e9688113426e",
+          "native-events.before.bmp": "c43685187b111d51085e8cd4cbaf460efcbe3c0402ee42ad43b8206b257a7e9e",
+          "native-events.gold.bmp": "cb80c31284aed1c6227702bba176ef265f488e12d7fe339066b963077bc71f61",
+          "native-events.jsonl": "e9baf38038d2d4d3775a1959c6d77e0c5f0c279d7bf27943c8f3b9b2751ae091",
+          "result.json": "baddf23c00a9adccb5d65da6d462b67c7a57ca9077bf154499db3aa77f861920",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "b65177d42304d0b9129fb036531e5ba0d80f059cb91151db45ae570a9e704078",
+          "server.log": "3ebadcc7bf93d6c9f5b4c5bbc3c148f8eba286680fb8630360d3317e3628c3e3",
+          "shutdown.json": "f3cd0afa609a603c064c974586754c9928e44e533ddc58b0af10882e046796b5"
+        },
+        "limitations": [
+          "Owner native baseline/treatment start identically with one carried gauntlet and one gold ore; preparedmember99Smithing/current5x/quantity1 are fixture inputs.",
+          "Actual Wear3 precedes real furnace Smelt2/Gold1 treatment; baselinekeepscarried. Exact source-selected Wiki56.2 vs existing22.5 yields2810/1125fineXP at5x; integer client display281/112.",
+          "Same-save treatment replay adds no items/XP. No native cape variants, F2P, late swaps, Superheat/BlastFurnace/modifier or independent acceptance.",
+          "Frames require visual inspection; state/XP/equipment evidence is not a UI-pixel/animation claim; chemistry independent verification paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-goldsmith-smelting-boost-native-20261022-001",
+      "assessment_sha256": "2d43c5a11e66d4dd22872431dc2dc5bb710353245316345eb5c3d22df03cee95",
+      "assessment": {
+        "result": "PASS_NATIVE_GOLDSMITH_BOOST",
+        "run": "openrune-goldsmith-smelting-boost-native-20261022-001",
+        "mode": "boost",
+        "server_sha256": "C803BDAB1A3D4979828F7F4059D3BC0E9FCC37E5F2776FF7A97D08000809FE59",
+        "driver_sha256": "5425349E317396C266159D542C469224EF25D3D44D58BE5AF4471E108A68A79F",
+        "native_events": [
+          {
+            "kind": "native.goldsmith_wear",
+            "item": 776,
+            "button": 3,
+            "opcode": 47
+          },
+          {
+            "kind": "native.goldsmith_worn",
+            "item": 776,
+            "inventory": 0,
+            "equipment": 1
+          },
+          {
+            "kind": "native.gold_furnace",
+            "raw": 24009,
+            "x": 3226,
+            "z": 3256,
+            "operation": 2,
+            "opcode": 103
+          },
+          {
+            "kind": "native.gold_selection",
+            "logical": 17694740,
+            "opcode": 115
+          },
+          {
+            "kind": "native.goldsmith_done",
+            "mode": "boost",
+            "ore": 0,
+            "bars": 1,
+            "carried_gauntlets": 0,
+            "worn_gauntlets": 1,
+            "displayed_xp_delta": 281
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.578,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 15:29:47"
+          }
+        },
+        "shutdown": {
+          "pid": 19684,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T15:29:48.5492972Z"
+        },
+        "saved_fine_xp_delta": 2810,
+        "saved_gold_before": 0,
+        "saved_gold_after": 1,
+        "saved_ore_before": 1,
+        "saved_ore_after": 0,
+        "saved_gauntlet_inventory_before": 1,
+        "saved_gauntlet_inventory_after": 0,
+        "saved_gauntlet_worn_before": 0,
+        "saved_gauntlet_worn_after": 1,
+        "all_varp_changes": {
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "3077": {
+            "before": 0,
+            "after": 48885
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "3079": {
+            "before": 0,
+            "after": 106
+          },
+          "65515": {
+            "before": 0,
+            "after": 101
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "3ac5c1f6d1a45f18e46f85fffb72cee255ba2aecc824d30a13a1a1dae2c0fd2d",
+          "final-state.json": "8c1ed471cf5a1c11b0298ba047a2f2b9ca75cd1ec43ee4fef29d3a7155e8afd0",
+          "initial-state.json": "05dd6639667636f62fcc12eea3234e6086460ea1d0d42d12bdc3b31bbfd6d9ff",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "a2b46ac11cde52ee248a042b4f9839223afea001c65348cf26880684969cac55",
+          "native-events.before.bmp": "48130905d7d58a0a5f9b2c65085424f93157e390dc60e1a98e4e43808e44e508",
+          "native-events.gold.bmp": "3ecbc0f046c461a044f67854980abb7a16c7a25aea9e7935348f64b2244fbf0b",
+          "native-events.jsonl": "4ba0a4af9285b51f7fc02eb96800d291201fdc81f25ffbe7d3a89308074f7e03",
+          "result.json": "7958c261712c71237f5676be956ab9d7d20a1070056eaa621077bb0c6309102d",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "0da70e2e290d5983807a71bea038f758fea02710d0ea598e9f4637c74bd46f5f",
+          "server.log": "6cc172da76a9052f0ebe3456fe9ce9d922843c3d216fd7102a24ca6c8fa477aa",
+          "shutdown.json": "2fe4d0d7982929cde0aab6f9c1b1fac9237f1ba2883481e53a78c7a2cb92e580"
+        },
+        "limitations": [
+          "Owner native baseline/treatment start identically with one carried gauntlet and one gold ore; preparedmember99Smithing/current5x/quantity1 are fixture inputs.",
+          "Actual Wear3 precedes real furnace Smelt2/Gold1 treatment; baselinekeepscarried. Exact source-selected Wiki56.2 vs existing22.5 yields2810/1125fineXP at5x; integer client display281/112.",
+          "Same-save treatment replay adds no items/XP. No native cape variants, F2P, late swaps, Superheat/BlastFurnace/modifier or independent acceptance.",
+          "Frames require visual inspection; state/XP/equipment evidence is not a UI-pixel/animation claim; chemistry independent verification paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-goldsmith-smelting-replay-native-20261022-001",
+      "assessment_sha256": "f492107d9f732a2c6d2c070533c4d17c0f75418207064f85e0489722c55b27b8",
+      "assessment": {
+        "result": "PASS_NATIVE_GOLDSMITH_VERIFY",
+        "run": "openrune-goldsmith-smelting-replay-native-20261022-001",
+        "mode": "verify",
+        "server_sha256": "C803BDAB1A3D4979828F7F4059D3BC0E9FCC37E5F2776FF7A97D08000809FE59",
+        "driver_sha256": "5425349E317396C266159D542C469224EF25D3D44D58BE5AF4471E108A68A79F",
+        "native_events": [
+          {
+            "kind": "native.goldsmith_done",
+            "mode": "verify",
+            "ore": 0,
+            "bars": 1,
+            "carried_gauntlets": 0,
+            "worn_gauntlets": 1,
+            "displayed_xp_delta": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.219,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 15:29:47"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 15:30:53"
+          }
+        },
+        "shutdown": {
+          "pid": 16144,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T15:30:54.4393063Z"
+        },
+        "saved_fine_xp_delta": 0,
+        "saved_gold_before": 1,
+        "saved_gold_after": 1,
+        "saved_ore_before": 0,
+        "saved_ore_after": 0,
+        "saved_gauntlet_inventory_before": 0,
+        "saved_gauntlet_inventory_after": 0,
+        "saved_gauntlet_worn_before": 1,
+        "saved_gauntlet_worn_after": 1,
+        "all_varp_changes": {
+          "3077": {
+            "before": 48885,
+            "after": 54915
+          },
+          "300": {
+            "before": 200,
+            "after": 300
+          },
+          "3079": {
+            "before": 106,
+            "after": 86
+          },
+          "65515": {
+            "before": 101,
+            "after": 182
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "86a8d605bfa88a72e4f6dd57e47be97187ce298ac5750920b133ccd80304d735",
+          "final-state.json": "5337ba45d9ad144a61957483c834aec997dde1cda42f801be542491b503926a5",
+          "initial-state.json": "8c1ed471cf5a1c11b0298ba047a2f2b9ca75cd1ec43ee4fef29d3a7155e8afd0",
+          "logout-before.json": "8dc996bebceec9385e6f8e543715e356426d34fae88bac836dc8ac0194b78599",
+          "logout-observation.json": "f95d8558d507ffebf8fd80b77c2bc87215208f05b4def7a688dc71ff491ba123",
+          "native-events.jsonl": "27e92a7e6f6c963e8c34842d25a9eb69aa311c44381ede08c01bb2767d025d07",
+          "result.json": "f20b322d7db074a0e8857db721f8c9d7ddbc385fa038c7497ce2a3852c9fca92",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "69302373ba840d3806bcb2ffcea4892718542df5f743308c02319a3c248e05f9",
+          "server.log": "482d83ffa122e358c7be87451971084181eba01887e4f578a79d8bcfe30a3612",
+          "shutdown.json": "b039be4cdfdb6f8088916b4c32affde21526c1a4e3fab611c938574e7bd52994"
+        },
+        "limitations": [
+          "Owner native baseline/treatment start identically with one carried gauntlet and one gold ore; preparedmember99Smithing/current5x/quantity1 are fixture inputs.",
+          "Actual Wear3 precedes real furnace Smelt2/Gold1 treatment; baselinekeepscarried. Exact source-selected Wiki56.2 vs existing22.5 yields2810/1125fineXP at5x; integer client display281/112.",
+          "Same-save treatment replay adds no items/XP. No native cape variants, F2P, late swaps, Superheat/BlastFurnace/modifier or independent acceptance.",
+          "Frames require visual inspection; state/XP/equipment evidence is not a UI-pixel/animation claim; chemistry independent verification paused."
+        ]
+      }
+    }
+  ],
+  "frame_review": {
+    "path": "work\\integration\\runs\\openrune-goldsmith-smelting-boost-native-20261022-001\\native-events.gold.bmp",
+    "sha256": "3ecbc0f046c461a044f67854980abb7a16c7a25aea9e7935348f64b2244fbf0b",
+    "observation": "Inspected actual software BMP: avatar beside glowing Lumbridge furnace in visible world viewport. Inventory/chat panels black. No UI-pixel, gauntlet-cosmetic or smelting-animation claim; native menu/state/equipment/XP and saved exports prove behavior."
+  },
+  "native_driver": {
+    "driver": "goldsmith-smelting-001",
+    "scenario": "goldsmithWornVersusCarriedFurnaceXP",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless native carried versus worn Goldsmith gauntlets, real Wear3/furnace Smelt2/Gold1, XP and save/replay; no OS window, desktop input or bank-interface acceptance; no OS Window/desktop input or independent verdict",
+    "files": {
+      "NativeGoldsmithSmeltingScenario1.rs": "C1E431D78D835C9ADD83D66B4CA6C38A07E19E12434B6E03C17BBC25C3266951",
+      "server_goldsmith_smelting1.exe": "5425349E317396C266159D542C469224EF25D3D44D58BE5AF4471E108A68A79F"
+    }
+  },
+  "failures_preserved": {
+    "cache006": "Owned private probe passed Arc<Recipe> to queued Request API; compile failed before execution. Original probe/log frozen; cache2 uses actual recipe selection then queues selected Request, no production change."
+  },
+  "disk_cleanup": [
+    {
+      "proof": [
+        {
+          "sha256": "A0FE13F936DA2740E154D4CDDFBFF16BBD67B40695794D379C3C8B175CD743E0",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\gielinor-server.exe",
+          "bytes": 203186129,
+          "mtime": "2026-10-22T14:54:15.1222667Z"
+        },
+        {
+          "sha256": "A0FE13F936DA2740E154D4CDDFBFF16BBD67B40695794D379C3C8B175CD743E0",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\deps\\gielinor_server-bf272804885b22f6.exe",
+          "bytes": 203186129,
+          "mtime": "2026-10-22T14:54:15.1222667Z"
+        },
+        {
+          "sha256": "074DF9F63613D8C3661116B1DA57962561B921E899709202D0993FC1B41EF572",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\deps\\gielinor_server-d5a27b0523fbd15f.exe",
+          "bytes": 255276595,
+          "mtime": "2026-10-22T14:51:50.5875926Z"
+        }
+      ],
+      "freeAfter": 991457280,
+      "freeBefore": 532992000,
+      "scope": "Only exact own completed195 server015 testEXE and verified cache copies of native195 archive; sources/fixtures/logs/archives preserved"
+    },
+    {
+      "proof": [
+        {
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\deps\\gielinor_server-d5a27b0523fbd15f.exe",
+          "mtime": "2026-10-22T15:16:39.0639848Z",
+          "sha256": "CCF1CD01E8769C8CDF99B0605E34CD99888E7C2CD9B8D036DE5E10C74FFB1F99",
+          "bytes": 254940450
+        },
+        {
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\goldsmith_smelting_cache2_private-8a8c9a4b0b5edd2c.exe",
+          "mtime": "2026-10-22T15:20:42.2149750Z",
+          "sha256": "9506E335BB1835922540B4FFE6884A2EC7E81EF57485F3671911FF40FBE7A490",
+          "bytes": 164368005
+        },
+        {
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\goldsmith_smelting_cache2_private.exe",
+          "mtime": "2026-10-22T15:20:42.2149750Z",
+          "sha256": "9506E335BB1835922540B4FFE6884A2EC7E81EF57485F3671911FF40FBE7A490",
+          "bytes": 164368005
+        }
+      ],
+      "freeAfter": 745984000,
+      "scope": "Exact completed server004testEXE and unique owned successful cache2probe aliases, verified names/hash/timestamps; sources/privatefixtures/logs/nativearchives preserved",
+      "freeBefore": 326672384
+    }
+  ],
+  "known_limitations": [
+    "Normal-furnace ordinary one-gold-ore/one-gold-bar recipe only; no Superheat, Blast Furnace, Varrock double bars, catalysts/coal boosts, alloy recipes, gloves acquisition/quest/death/storage mechanics or other cape forms.",
+    "Source gold row uses22base/56alternate; actual unchanged SmithingSmeltXp.kt executes thirty prepared gold/worn/carried/rate cases using six owned row/player/inventory/modifier/no-coal dependencies. Rust retains existing22.5base and selects Wiki56.2bonus explicitly. No numeric source equivalence or full table/SmithingBonuses/furnace/XP-engine equivalence is claimed.",
+    "One of four current worn forms grants the bonus:776in hands9 or9795/9796/13280in cape1, count1/vars0, member and ordinary cache identities. Carried/wrongslot/malformed/nonmember/invalid gear grants no boost; simultaneous glove/cape never stacks.",
+    "Resolve XP at each queued completion; taking gear off/on changes the next result without modifying recipe identity or cached continuation XP. Preserve generic forging, current one-product recipe, old input/output/XP handling, weak cancellation, tutorial/Cinderworks events and runtime rates.",
+    "Owner748world/oneexistingignored and316server PASS. World tests use local debug-symbol-free/nonincremental/codegen2 profile to reduce disk use; debug assertions/runtime and repository manifests unchanged. Server/default native builds retain ordinary dev profile. Working-tree private manifest differences remain; not pristine acceptance.",
+    "Thirty actual-cache selected/queued World jobs check four worn forms, carried/absent controls, rates and exact stock/equipment. Twelve boosted/eighteen unboosted cases use prepared terrain/stats; source integer22/56 vs Rust22.5/56.2 is recorded for all30cases.",
+    "Three native sessions start with identical prepared99Smithing/member/quantity1/5x/ore1/carriedgauntlet1 profiles. Baseline keeps gauntlets carried and earns1125fineXP; treatment uses actual Wear3 then Smelt2/Gold1 and earns2810fineXP. Both make one gold bar. Same-save treatment replay preserves equippedslot9/output/XP with no extra reward.",
+    "Native verifies gauntlets only, not cape variants, late swaps, F2P or failure matrices; those are owner World/cache tests. Inspected world frame has black inventory/chat; no UI-pixel/animation claim. Independent V0-V4 acceptance pending, chemistry independent verification paused."
+  ]
+}

@@ -86,3 +86,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0194r2 `2c04b788150552fa1ca02a31216dfa4964c5e724`: native outer-coal nodes/storage/full-bag fallback/reconnect passed, exact+2coal/+5000fineXP at existing5x. Earlier11367at3145,3153unreached from3143,3149 stopped3143,3152 with zero mining; reachability cause remains unverified. Nativecape/full-inventory/life/global/production/bank and independent acceptance remain pending.
 
 - OR-MIG-0195 `b0ffe28757a0c98e8eb70c05c20d0875090c78ef`: open member coal-bag furnace availability/physical-first atomic consumption, owner743world315server/cache30/Kotlin7source with6intentionalorderdifferences/native3 passed. Closed/Superheat/bank/global/ownership/source modifiers and independent acceptance remain pending.
+
+- OR-MIG-0196 `620e1c379b5d84b8bb32625e4d98a10e85d4b6e0`: normal-gold worn XP owner748world316server/cache30/Kotlin1actualresolver/native3passed. Wiki56.2/maintained22.5explicitly differs source56/22. Full source modifiers/Superheat/BlastFurnace/acquisition/nativecape/F2P/lateswaps and independent acceptance remain pending.
