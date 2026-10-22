@@ -40,3 +40,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - PG-REF-003: OR-MIG-0131 revision2 qualifies explicit Rust membership as Wiki-supported target policy, not an explicit inspected donor seller predicate. Owner provenance correction only; global donor gates and independent native F2P refusal unresolved.
 
 - OR-MIG-0182 revision2 adds scoped owner headless native17successful openings/11refusals, matching controls and two same-save reconnects at182archive. Original181pin/native repeats/life/expiry, shops/region/downstreamskills/compiledKotlin and independent acceptance remain open. Initial varp-assessment/setup failures retained and qualified, chemistry campaign paused.
+
+- OR-MIG-0183 `e2266c6535da2e4279cf68225b44398c1b30aecf` adds only static18491op2 shared-bank routing and life UI request guards. Owner full308server672world/2cachemap pass; native login-only control passes, scene/transfer/reopen pending shared lease. Dynamic/Deadman, held note conversion, broad capacity/PIN/shared-storage and independent acceptance remain open.

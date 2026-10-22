@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0183",
+  "implementation_commit_sha": "e2266c6535da2e4279cf68225b44398c1b30aecf",
+  "recorded_utc": "2026-10-22T05:54:54.194146+00:00",
+  "result": "DEVELOPMENT_WORLD_VALIDATION_PASS_NATIVE_ACTION_PENDING",
+  "sources": {
+    "crates/server/src/content.rs": "3c1c9bca1e83ab029bc65d132c1ee536e31f5a309e9ca909c4eb087ac0bf95aa",
+    "crates/server/src/content/bank_booths.rs": "eb760c77d53177088925f287aa51ac1719989ebac15d5e26d5f8dd567c3c4a62",
+    "crates/server/src/runtime/location_bank.rs": "f233358fc7c68bbf14284495b3eee1aeabd59fe5b5ae0eb45bb5d4346c4baec7",
+    "crates/server/src/startup.rs": "19d135e206ac3124440ead1b4011ba65bcc5d18e09988a1c13de2df71861a5b9",
+    "crates/world/src/simulation.rs": "0a4cf6fac3ba0a2f631cd17ce09a9270f2e76354a683b66f85ebc9dea4a4eef2",
+    "crates/world/src/simulation/bank_access_actions.rs": "0465e1540df60ec68717597b2123d998df99efe48939c7c032e5cc08908a804c",
+    "crates/world/src/simulation/door_actions.rs": "9188d65bc380c961731dd94bb180b58e512b7a19832fb160d2e41842ea3e0ac7"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-locs/src/main/kotlin/org/rsmod/content/generic/locs/banks/BankBooth.kt",
+      "sha256": "5ae348ce3e5dec6da126a7d68a4a64793d55a293bbcc93074a61718234d73ab8",
+      "availability": "protected_local_reference",
+      "revision": "Local preserved reference; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bank booth",
+      "sha256": "1da86594c65720aced1afba1d85348a2a6ae1d03c9fe86bc69ba65f99aa89655",
+      "availability": "protected_local_reference",
+      "revision": "15322203"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bank",
+      "sha256": "295f5027a88d040f3809c0625c19bde0b37c6fbc668d3e9831b2b070cda3eb00",
+      "availability": "protected_local_reference",
+      "revision": "15315062"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bank note",
+      "sha256": "59d28760322e01725aec0b7b1e738c40fb9a7e51a1dc5f87815f41a6502a549d",
+      "availability": "protected_local_reference",
+      "revision": "15337973"
+    }
+  ],
+  "logs": {
+    "cache-candidates-001.log": {
+      "command": "build.ps1 -Action run --example bank_booth_cache_private -- <private target cache/symbols>",
+      "sha256": "69bf98f2303ba9ae54afb0afa1894bd499557f59e8e8535b53b8dc878655144d",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 14.3% sampled, ceiling70%.",
+        "Capacity: 5,977 MiB available, commit 47.3%, pages-in/s 28, disk 4.5 ms.",
+        "Cargo concurrency: -j 2",
+        "BANK_CONTENT_GROUP 18",
+        "PASS bank content definitions=2; inspection only/no native or gameplay action"
+      ]
+    },
+    "focused-002.log": {
+      "command": "build.ps1 -Action test -p gielinor-server --lib ordinary_bank_booth",
+      "sha256": "af934fd8d5dda93d2c875d1f46cf9d658ecb823d40bcbb4cf185c56c596cd173",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 5.2% sampled, ceiling70%.",
+        "Capacity: 6,429 MiB available, commit 45.0%, pages-in/s 0, disk 5.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 304 filtered out; finished in 0.43s"
+      ]
+    },
+    "focused-003.log": {
+      "command": "build.ps1 -Action test -p gielinor-server -p gielinor-world --lib bank_",
+      "sha256": "b46c9b05498b88ed28a074e20ca0b455dbfa999c7c5c531440697d435493eae4",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.6% sampled, ceiling70%.",
+        "Capacity: 6,314 MiB available, commit 45.5%, pages-in/s 89,863, disk 224.6 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 301 filtered out; finished in 0.95s",
+        "test result: ok. 33 passed; 0 failed; 0 ignored; 0 measured; 640 filtered out; finished in 0.94s"
+      ]
+    },
+    "cache-map-004.log": {
+      "command": "build.ps1 -Action run --example bank_booth_world_cache_private -- <private target cache/symbols>",
+      "sha256": "24b3b1729c63f23352b50492d47a7a6f9b5a895986372a7c9d85a8a1f2424f97",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.0% sampled, ceiling70%.",
+        "Capacity: 8,084 MiB available, commit 45.2%, pages-in/s 0, disk 0.9 ms.",
+        "Cargo concurrency: -j 2",
+        "SPAWN raw_id=18491 x=3208 z=3221 plane=2 shape=10 angle=2",
+        "SPAWN raw_id=27291 x=3209 z=3221 plane=2 shape=10 angle=2",
+        "PASS actual target bank binding and raw-map inspection; no native action"
+      ]
+    },
+    "shared-005.log": {
+      "command": "build.ps1 -Action test -p gielinor-server -p gielinor-world --lib",
+      "sha256": "4f24d7c9f2e043b130bf257d686ee301f9cdb44cd9b3ad74e5378ddd83b20a54",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 9.5% sampled, ceiling70%.",
+        "Capacity: 8,432 MiB available, commit 43.9%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 308 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 57.43s",
+        "test result: ok. 672 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 32.15s"
+      ]
+    },
+    "archive-006.log": {
+      "command": "scripts/integration-server-build.ps1 -Run openrune-bank-booths-20261021-001",
+      "sha256": "12abb2e0fa75d18bcc9a0b9b13a69d5a0d3b4b3219bc77e37c247498e77e1e1d",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 6.6% sampled, ceiling70%.",
+        "Capacity: 8,096 MiB available, commit 45.2%, pages-in/s 0, disk 2.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 42A96DCA07F75EC25E35C2FBE95ACF35062B13C52B21A3B2AA69B92CAAA8BD76 (614 source files)."
+      ]
+    },
+    "native-driver-007.log": {
+      "command": "forge_build_booth_bank_driver.ps1 (new separate driver, unchanged pinned library)",
+      "sha256": "e5f6e19530ef436f63e7f1c4ce2b0b3968737f147573c0e4af605ac90356c5c2",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 13.0% sampled, ceiling70%.",
+        "Capacity: 8,095 MiB available, commit 45.3%, pages-in/s 0, disk 1.9 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "native-control-008.log": {
+      "command": "forge_run_bank_booth_native.ps1 control; deferred shared atomic runtime lock before launch",
+      "sha256": "f480ee4e0f3bcd6e8e53222e00e6d9abfaeff30c667c723938b9c7271f8f404e",
+      "result": "DEFERRED_SHARED_RUNTIME_LEASE",
+      "summaries": [
+        "Integration CPU capacity: 32.3% sampled, ceiling 70%.",
+        "Capacity: 7,551 MiB available, commit 48.2%, pages-in/s 0, disk 5.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "cache-actions-009.log": {
+      "command": "build.ps1 -Action run --example bank_booth_actions_cache_private -- <private target cache/symbols>",
+      "sha256": "13f83b712afe3b5de21dec216bc50243625457fc37679dd8f3db496dec6aebda",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.5% sampled, ceiling70%.",
+        "Capacity: 8,320 MiB available, commit 44.0%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS actual target bindings/map/collision/World bank requests cases=2; no native client or transfers"
+      ]
+    },
+    "native-control-010.log": {
+      "command": "forge_run_bank_booth_native.ps1 control fresh boothctl database, successful run002",
+      "sha256": "f0b5d09f6f1c904f10a2929447d6624d1bb57211c4d2130e0fbb55e5cb3181f0",
+      "result": "PASS",
+      "summaries": [
+        "Integration CPU capacity: 2.6% sampled, ceiling 70%.",
+        "Capacity: 8,314 MiB available, commit 44.0%, pages-in/s 1, disk 3.2 ms.",
+        "Cargo concurrency: -j 2",
+        "Native booth login control PASS:no scene or bank transfer action"
+      ]
+    },
+    "native-actions-011.log": {
+      "command": "forge_run_bank_booth_native.ps1 open; deferred shared atomic runtime lock before launch",
+      "sha256": "8c73e21e8dfc06526b7497b953dc9295fda6dc7dcdfc04db7e93fe1e60f792f8",
+      "result": "DEFERRED_SHARED_RUNTIME_LEASE",
+      "summaries": [
+        "Integration CPU capacity: 1.1% sampled, ceiling 70%.",
+        "Capacity: 8,004 MiB available, commit 45.4%, pages-in/s 30, disk 1.5 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    }
+  },
+  "matrix": {
+    "binding_refusals": 10,
+    "normal_member_rotation_approach_cases": 16,
+    "wrongop_zeroHP_removedtarget_replacedaction_cases": 4,
+    "pending_request_removed_target": 1,
+    "ordinary_life_cases": 6,
+    "guild_life_cases": 6,
+    "life_dimensions": [
+      "before admission/after bank request before UI delivery",
+      "zeroHP/observed actual DeathRequested/visibleHP restored without respawn"
+    ],
+    "actual_cache_map_world_cases": 2,
+    "actual_raw_spawn": [
+      18491,
+      3208,
+      3221,
+      2,
+      10,
+      2
+    ],
+    "native_scene_actions": 0,
+    "native_transfers": 0,
+    "native_login_only_control": true
+  },
+  "server_archive": {
+    "sha256": "42A96DCA07F75EC25E35C2FBE95ACF35062B13C52B21A3B2AA69B92CAAA8BD76",
+    "source_count": 614,
+    "source_manifest_sha256": "de55f34d9be043b6a71c3a45d57d8b19a4caca5dbdc430a02acd420686471016",
+    "before_after_sources_unchanged": true
+  },
+  "private_probes": {
+    "crates/server/examples/bank_booth_cache_private.rs": "68fedec00123c9d5793fe1753748a6848512f03bda84ec4707f6a2a231fc2d1f",
+    "crates/server/examples/bank_booth_world_cache_private.rs": "9c2e448940e607453da00cd42377f703f11962080a5b608b20d1e309b7da1dce",
+    "crates/server/examples/bank_booth_actions_cache_private.rs": "328f8fb5a143e1849d2cbfe5ed4e8c333d10aae3af92c0dd3f37bb1c668cc3e8"
+  },
+  "native_driver": {
+    "manifest_sha256": "85e8a045d405073e7cf5872ad8f29330caaa1ece75a4306e475979e38c330320",
+    "files": {
+      "NativeBoothBankScenario.rs": "7DCD47D74E4E58A55FC21A69E41F4CDB68CD9058597A29A333623850C6BC9AA5",
+      "server_booth_bank.exe": "DF0E7083047D70E35CA22CCB009F55E2389D5BD06983D1808ACDDCCD66003E0F"
+    },
+    "pinned_library_files_checked": 990
+  },
+  "native_login_control": {
+    "run": "openrune-bank-booth-control-native-20261021-002",
+    "result": {
+      "mode": "control",
+      "clientExit": 0,
+      "clientHash": "DF0E7083047D70E35CA22CCB009F55E2389D5BD06983D1808ACDDCCD66003E0F",
+      "startUtc": "2026-10-22T05:46:46.3632296Z",
+      "endUtc": "2026-10-22T05:47:28.6576959Z",
+      "address": "127.0.0.1:65150"
+    },
+    "logout": {
+      "status": "PASS",
+      "save_completed": true,
+      "elapsed_seconds": 10.735,
+      "before": {
+        "world_id": null,
+        "last_logout": "2026-10-12 21:36:41"
+      },
+      "after": {
+        "world_id": null,
+        "last_logout": "2026-10-22 05:47:39"
+      }
+    },
+    "shutdown": {
+      "pid": 8716,
+      "exited": true,
+      "exitCode": 0,
+      "forced": false,
+      "utc": "2026-10-22T05:47:40.1060905Z"
+    },
+    "scope": "No scene/object/widget transfer actions; not booth gameplay acceptance."
+  },
+  "deferred_native_actions": [
+    {
+      "reference": "work/openrune-bank-booths-20261021/native-launch-deferral-008.json",
+      "sha256": "565b5e62752cbff62a6e37b58d28241e6abbcdfa3cd0db6fd9ebfcfc47c7892e",
+      "result": "DEFERRED_SHARED_RUNTIME_LEASE"
+    },
+    {
+      "reference": "work/openrune-bank-booths-20261021/native-launch-deferral-011.json",
+      "sha256": "b0ff61064e716b64891b4d761e9fc6d071c628883c7c13d4209582d41a51f828",
+      "result": "DEFERRED_SHARED_RUNTIME_LEASE"
+    }
+  ],
+  "limitations": [
+    "Owner working-tree build/tests/cache and separately pinned native driver; retained local packaging/private opt-ins mean not pristine or independent acceptance.",
+    "Only static18491/Bank operation2 opens the existing bank. Actual neighbouring raw27291/Deadman27292/selector4153, other booths, Collect/Deposit-box and held banknote exchange remain unimplemented by this unit.",
+    "Native login-only control passed; scene booth click, bank widgets/transfers and same-save bank reopen have NOT run. Two launches deferred on another run's atomic shared lease, not compiler presence or approval rejection.",
+    "Inherited bank transfer/note/tab/capacity/PIN/shared-storage policies unchanged. Existing configured800capacity is not newly validated against Wiki400/900account capacities.",
+    "Shared location-bank life guard affects request emission and final UI recheck, including existing Guild/Cinderworks routes. Owner life tests cover ordinary/Guild; native death and Cinderworks death-specific acceptance remain pending. Normal Cinderworks regressions included in full suite.",
+    "Cache action probe009 was added after the614-source server archive and built separately; its hash is separate. Seven public implementation sources exactly match archived source manifest.",
+    "Headless driver is prepared for software-rendered native menu/widget observations, not OS window/physical input. Its build log retains a copied extra14 caption; actual manifest is bank-booth-001, no14booth claim.",
+    "No compiled Kotlin/native cadence/durable bank replay acceptance yet; V0\u2013V4 independently queued and chemistry campaign remains paused."
+  ]
+}
