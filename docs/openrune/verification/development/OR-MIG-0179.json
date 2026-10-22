@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0179",
+  "implementation_commit_sha": "ef113b381c7a422103c4a53e19b705693dd1dd3e",
+  "recorded_utc": "2026-10-22T04:24:57.973415+00:00",
+  "result": "DEVELOPMENT_VALIDATION_PASS",
+  "sources": {
+    "crates/world/src/simulation/prayer_actions.rs": "ffc8983ef30d1a184ca36bd3b9a3bddfad85ccf9f847046f3808fcc13ff1e69b"
+  },
+  "logs": {
+    "before-001.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-world','--lib','burial_life')",
+      "sha256": "16f0ef3d31fe9fa66f83d553e4864789c8d7370f31a67feea440cef09243c129",
+      "result": "EXPECTED_REPRODUCTION_FAILURE",
+      "summaries": [
+        "Build CPU capacity: 1.5% sampled, ceiling70%.",
+        "Capacity: 8,341 MiB available, commit 42.7%, pages-in/s 0, disk 0.8 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 45.43s",
+        "test result: FAILED. 1 passed; 2 failed; 0 ignored; 0 measured; 667 filtered out; finished in 0.12s"
+      ]
+    },
+    "focused-002.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-world','--lib','burial_life')",
+      "sha256": "ce91f94738be7bbfb0863ee293fd4fb747cdd2ef696084f5fcafa8a50d07eaf9",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.1% sampled, ceiling70%.",
+        "Capacity: 8,391 MiB available, commit 42.7%, pages-in/s 0, disk 2.8 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 19.64s",
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 667 filtered out; finished in 1.07s"
+      ]
+    },
+    "shared-003.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-server','-p','gielinor-world','--lib')",
+      "sha256": "3e9897c8d53f9282e12a0d74fadfbf592bf8bdaecc0c6321babf626ab20774a6",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.1% sampled, ceiling70%.",
+        "Capacity: 8,393 MiB available, commit 42.7%, pages-in/s 0, disk 1.1 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 23.78s",
+        "test result: ok. 297 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 51.44s",
+        "test result: ok. 669 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 31.68s"
+      ]
+    },
+    "archive-004.log": {
+      "command": "scripts/integration-server-build.ps1 -Run openrune-burial-life-20261021-001",
+      "sha256": "c317156dee51d77c9897d5c4f32261f80aa44eb1a967aa2bdc65d41d508f253f",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 14.0% sampled, ceiling70%.",
+        "Capacity: 7,772 MiB available, commit 45.7%, pages-in/s 32, disk 1.9 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 16.69s",
+        "Archived server 342A54F631AAE19FF9B10E64676176D01E0545BEFC593242F34FDA5B6F533904 (604 source files)."
+      ]
+    }
+  },
+  "refusal_matrix": {
+    "cases": 39,
+    "ordinary_cases": 36,
+    "confirmation_cases": 3,
+    "live_controls": 3,
+    "dimensions": [
+      "selected versus legacy action",
+      "slots0/7/27 in full duplicate pack",
+      "before versus after admission",
+      "zeroHP / actual unresolved death / restored visibleHP"
+    ],
+    "checks": [
+      "all inventory/Stats/fineXP conserved",
+      "no completed burial or new invalid-admission animation",
+      "live selected output56fineXP at125rate and duplicate-slot identity",
+      "pending confirmation cannot animate/consume after invalidation"
+    ]
+  },
+  "server_archive": {
+    "sha256": "342A54F631AAE19FF9B10E64676176D01E0545BEFC593242F34FDA5B6F533904",
+    "source_count": 604,
+    "source_manifest_sha256": "2b104fc5e7a66830a498f8a3826ab8183f39ec03b48af0ae0fde4d0ce6fbd298",
+    "before_after_sources_unchanged": true
+  },
+  "limitations": [
+    "Owner working-tree regression/archive with retained local manifests/private opt-ins; not pristine or independent acceptance.",
+    "The new actions use controlled ordinary526/4.5XP/827 and explicit125rate, no necklace/robes/preservation/ashes. The confirmation fixture uses a controlled Chaos rectangle, not actual native Chaos Temple acceptance.",
+    "No genuine native dead-player menu, acknowledged save/relogin/recovery or compiled Kotlin comparison. Original exact0051 failed pin remains historical; V0\u2013V4 independently queued.",
+    "Chapel/Tower offering and CrateWalk paths are unchanged, including their existing lifecycle policy; this is a burial correction, not all Prayer or all PG-DEF-003 acceptance.",
+    "Existing delay, sound/chat projection, XP/modifiers, selected-versus-reference slot policy and persistence remain unchanged. Chemistry verification stays paused."
+  ]
+}
