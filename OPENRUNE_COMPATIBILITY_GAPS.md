@@ -60,3 +60,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0189 `a7653b0a8048baa3d6c3e727a4ad380cc1b3f895` adds ordinary sheep ambient/post-shear feedback and transient NPC speech. Owner World/cache/offline decoder PASS; liveambient/compiledphase/latejoin/specialsheep/independent remain open, chemistry paused.
 
 - OR-MIG-0188r2 `a1e12f547dddec1b2c237ca9fa0628a2e02cd412` six owner native production/regrowth/overflow/reconnect PASS. Nativeprivacy/lifetime/life/multiplayer/audio and independent remain pending; chemistry paused.
+
+- OR-MIG-0189r2 `a7653b0a8048baa3d6c3e727a4ad380cc1b3f895` live ordinary/bare speech/post-shear feedback/onewool/reconnect ownerPASS. Nativeexactaudio/RNGdistribution/latejoin/specials/independent remain open; chemistry paused.

@@ -1,0 +1,740 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0189",
+  "revision": 2,
+  "implementation_commit_sha": "a7653b0a8048baa3d6c3e727a4ad380cc1b3f895",
+  "recorded_utc": "2026-10-22T11:02:43.120660+00:00",
+  "result": "OWNER_THREE_NATIVE_SPEECH_POSTSHEAR_PERSISTENCE_PASS_INDEPENDENT_PENDING",
+  "source_report": "docs/openrune/verification/development/OR-MIG-0189.json",
+  "sources": {
+    "crates/cache/src/npcs.rs": "2e5c5d46cc7d21398175460fa2e226bad7da1ff3529fe07f02ef8dec2cbc85ee",
+    "crates/protocol/src/combat_updates.rs": "6f09bc2c75b71faa5e6a9349e4c035fecefbaf9e031106db113b8a700b31ffbb",
+    "crates/server/src/combat_display.rs": "631913bb8c709b943f72f09bc032e28995c9a082287a53487c44bef69b643a29",
+    "crates/server/src/content.rs": "48e0f08f7b5fd8fb8a76c5dab9addbd90f62f91cb4579e0f2041e5c9574c4c8b",
+    "crates/server/src/content/shearing.rs": "e1d90db65a3b6b12e702d8fb6c29e1cf9c8f6e1c6e8e8bc4addb948479cc839a",
+    "crates/server/src/runtime.rs": "1cb6b17ee0c47ec1f8011eee7332e74242ffb8579bd4035b61b56fd8a1f9cdd9",
+    "crates/server/src/startup.rs": "21dab2c04b6e19b1d10e8dc8c3a47ff208d98ba1149d86e31f796825f1a7fa71",
+    "crates/server/src/synchronization.rs": "8f292404affab5f14ed79fbaf6b6d4090e2c9fe012aebaaf73a9c8f74e8e6a7e",
+    "crates/world/src/lib.rs": "21d0f2bd9e06350578a1615589436acfd44e4331a9ee9fb1b9076d78ed5fd195",
+    "crates/world/src/npc.rs": "454d6b99f6bcc5d76d80bf40e27ab8d8a15d998b5993278480af1d33d3062709",
+    "crates/world/src/npc_flavour.rs": "94e845b750f58a82123b9c3320cfde742375a83be57de4fa6c592f2fd8428772",
+    "crates/world/src/simulation.rs": "cc86f1379458b2db01ec1f16d6616535c5b3b437991342b13d72350c13c8461e",
+    "crates/world/src/simulation/npc_flavour_actions.rs": "d3c66baa93ce12ab46fab4dfb02e8f21573b1fa68dd9e2ea7e4bde6fdd1cfd86",
+    "crates/world/src/simulation/shearing_actions.rs": "0ab9ac937a078b683d26028999f5a4733b4d860717e0c22f47beff9f16120857",
+    "crates/world/src/simulation/shearing_tests.rs": "3b589fae8bdf2e6934378833f0649a57db6782fab02f9628a1b41f086ecb0510"
+  },
+  "server_archive": {
+    "sha256": "CEB5A461DD641BF8BA5F3884EBF0E3FE26B445141857B8C59538BF0B5638311C",
+    "source_count": 636,
+    "source_manifest_sha256": "87cccb68fbaaea67fefb16cde997256caf60da02a548be6b302b9cc63bf33d37",
+    "before_after_sources_unchanged": true
+  },
+  "native": [
+    {
+      "run": "openrune-sheep-ambient-control-native-20261022-002",
+      "assessment_sha256": "56fef5e41f30319cedc5e9a80a502247d2066f511b9a432933f399925ae035b6",
+      "assessment": {
+        "result": "PASS_NATIVE_SHEEP_AMBIENT_CONTROL",
+        "mode": "control",
+        "run": "openrune-sheep-ambient-control-native-20261022-002",
+        "server_sha256": "CEB5A461DD641BF8BA5F3884EBF0E3FE26B445141857B8C59538BF0B5638311C",
+        "driver_sha256": "CE3DEF7D73D18CF1133C1DCE15627E8E9CA5A02E9E55FD3F990899E727D48C0D",
+        "pinned_library_files": 990,
+        "native_events": [
+          {
+            "kind": "native.sheep_speech",
+            "index": 578,
+            "visible": 2787,
+            "tick": 66,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 449,
+            "visible": 2694,
+            "tick": 66,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 255,
+            "visible": 2693,
+            "tick": 66,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 579,
+            "visible": 2786,
+            "tick": 66,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 453,
+            "visible": 2699,
+            "tick": 66,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 450,
+            "visible": 2693,
+            "tick": 66,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 254,
+            "visible": 2699,
+            "tick": 66,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 451,
+            "visible": 2699,
+            "tick": 66,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.shearing_control",
+            "wool": 0,
+            "shears": 1
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.672,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 10:57:16"
+          }
+        },
+        "shutdown": {
+          "pid": 5948,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T10:57:17.1369671Z"
+        },
+        "all_varp_changes": {
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "300": {
+            "before": 0,
+            "after": 100
+          },
+          "65515": {
+            "before": 0,
+            "after": 87
+          },
+          "3079": {
+            "before": 0,
+            "after": 93
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "3077": {
+            "before": 0,
+            "after": 16728
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          }
+        },
+        "position_before": {
+          "x": 3211,
+          "z": 3262,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3211,
+          "z": 3262,
+          "level": 0
+        },
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "initial-state.json": "a372b103f0405e8a9e8333e25061bbf0801f1bd70c070d7900ce946f062c3183",
+          "final-state.json": "2fd448942a859340b4a9450fe46d55b9cf26954624c7d6ddd07b64c576190927",
+          "client.log": "647aa47dc3995ef70cf7f78d808bd725e3ec0604ea2bcd292459a74248f4041d",
+          "native-events.jsonl": "4f33baee7772a83cb015c63225db42fd78a5792e22c421e0e44cc8d9e0507b6a",
+          "result.json": "0e3755d0817209de7860775d08dee2c2c0b2210b8157146b179b2fb49f49e5b1",
+          "server.json": "1b41a5d1b6cf400bfcc8319c0e328a7dfe0236ed803537d9e3824e219df2659b",
+          "server.log": "19ea4be5391aa404ff263756b7ac364960c0372fa16b7b413e462b1e86be316c",
+          "shutdown.json": "876342c39c71425cb1a06f7bf68e4d9f68945bdfbb5fac7bb07273288fbcfe76",
+          "logout-observation.json": "4713a05c74ca479263f52336c7c797fcb6674e483e3f1bc6bab1c01c96ebd0db"
+        },
+        "limitations": [
+          "Owner working-tree evidence; independent verification remains queued.",
+          "Headless actual scene/menu/widget packets, synchronized sheep types/wool and live NPC speech rising lifetime100. Captured software frame is not physical desktop interaction. No audible playback or exact sound packet acceptance claim.",
+          "This ambient002 action covers one actual Shear production, ordinary/bare Baa and same-target next-tick feedback; it does not repeat188native regrowth/overflow/duplicate coverage. Exact callback RNG probability is World scope.",
+          "Full action proves one received ground wool and unchanged saved inventory; private ownership/isolation/lifetime are World tests, not another-native-observer acceptance. Ground objects/NPC temporary stages are not character database persistence claims.",
+          "Player may walk to reach sheep; position, run energy and all varp changes are reported.",
+          "Native life/stale/multiplayer/other sheep family coverage remains separate; chemistry independent campaign stays paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-sheep-ambient-actions-native-20261022-002",
+      "assessment_sha256": "7538551e62bb0cc707403cf910ea3eb16ee15d3b141b5d588f830408482d5fd5",
+      "assessment": {
+        "result": "PASS_NATIVE_SHEEP_AMBIENT_EXCHANGE",
+        "mode": "exchange",
+        "run": "openrune-sheep-ambient-actions-native-20261022-002",
+        "server_sha256": "CEB5A461DD641BF8BA5F3884EBF0E3FE26B445141857B8C59538BF0B5638311C",
+        "driver_sha256": "CE3DEF7D73D18CF1133C1DCE15627E8E9CA5A02E9E55FD3F990899E727D48C0D",
+        "pinned_library_files": 990,
+        "native_events": [
+          {
+            "kind": "native.sheep_speech",
+            "index": 451,
+            "visible": 2699,
+            "tick": 132,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 452,
+            "visible": 2693,
+            "tick": 132,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 453,
+            "visible": 2699,
+            "tick": 132,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 254,
+            "visible": 2699,
+            "tick": 132,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 450,
+            "visible": 2693,
+            "tick": 132,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 449,
+            "visible": 2694,
+            "tick": 132,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 577,
+            "visible": 2695,
+            "tick": 132,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 579,
+            "visible": 2786,
+            "tick": 132,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 578,
+            "visible": 2787,
+            "tick": 132,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.shearing_action",
+            "stage": 1,
+            "index": 577,
+            "raw": 2695,
+            "visible": 2695,
+            "held": false,
+            "opcode": 102
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 577,
+            "visible": 2695,
+            "tick": 141,
+            "stage": 2,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.shearing_result",
+            "visible": 1300,
+            "wool": 1,
+            "ground_added": 0,
+            "tick": 147
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 577,
+            "visible": 1300,
+            "tick": 148,
+            "stage": 8,
+            "remaining": 100,
+            "bare": true
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 252,
+            "visible": 2787,
+            "tick": 149,
+            "stage": 8,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_ambient_summary",
+            "speech_count": 12,
+            "bare_speech_count": 1,
+            "captured": true
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.563,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 10:59:21"
+          }
+        },
+        "shutdown": {
+          "pid": 17500,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T10:59:22.2243020Z"
+        },
+        "all_varp_changes": {
+          "300": {
+            "before": 0,
+            "after": 300
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "3077": {
+            "before": 0,
+            "after": 21936
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "65515": {
+            "before": 0,
+            "after": 168
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "3079": {
+            "before": 0,
+            "after": 175
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          }
+        },
+        "position_before": {
+          "x": 3211,
+          "z": 3262,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3207,
+          "z": 3266,
+          "level": 0
+        },
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "initial-state.json": "a372b103f0405e8a9e8333e25061bbf0801f1bd70c070d7900ce946f062c3183",
+          "final-state.json": "4c85f4aa17b88e1c2bfadfcf623c96302005120b7e05926690f78e9b72b6fcd8",
+          "client.log": "ec54292975ce414701400c454307ad86e6490894dc87ebdb338f9996ce35e037",
+          "native-events.jsonl": "34483d7dfc7764c914fdbf002fddfa79e24469ab3c36d395a271b64f6b891a06",
+          "result.json": "976354384f1efbcd58c4bed2bf304dcc409b595507e2294c9eeadfcc0e07e542",
+          "server.json": "f21b65cf569702fa11a5afeb2c16e4a5b60e812a6151ada77d88874620062621",
+          "server.log": "14c1863d10aea4ac0ca3a2850c68213e1681d7c61de0bb89f67f8810ffb75390",
+          "shutdown.json": "34ca865c6e722535f7bdac44bcf7cb25e33543f9d018e7d04337efedf9165528",
+          "logout-observation.json": "44b0dfaf335cc45e19b9543898e79c1d8b312cf90ac82fb08f4b0a9605981e89"
+        },
+        "limitations": [
+          "Owner working-tree evidence; independent verification remains queued.",
+          "Headless actual scene/menu/widget packets, synchronized sheep types/wool and live NPC speech rising lifetime100. Captured software frame is not physical desktop interaction. No audible playback or exact sound packet acceptance claim.",
+          "This ambient002 action covers one actual Shear production, ordinary/bare Baa and same-target next-tick feedback; it does not repeat188native regrowth/overflow/duplicate coverage. Exact callback RNG probability is World scope.",
+          "Full action proves one received ground wool and unchanged saved inventory; private ownership/isolation/lifetime are World tests, not another-native-observer acceptance. Ground objects/NPC temporary stages are not character database persistence claims.",
+          "Player may walk to reach sheep; position, run energy and all varp changes are reported.",
+          "Native life/stale/multiplayer/other sheep family coverage remains separate; chemistry independent campaign stays paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-sheep-ambient-replay-native-20261022-002",
+      "assessment_sha256": "485a68760fd2c92be13b88458f171f3e423773512f675c425e205f9697121534",
+      "assessment": {
+        "result": "PASS_NATIVE_SHEEP_AMBIENT_VERIFY",
+        "mode": "verify",
+        "run": "openrune-sheep-ambient-replay-native-20261022-002",
+        "server_sha256": "CEB5A461DD641BF8BA5F3884EBF0E3FE26B445141857B8C59538BF0B5638311C",
+        "driver_sha256": "CE3DEF7D73D18CF1133C1DCE15627E8E9CA5A02E9E55FD3F990899E727D48C0D",
+        "pinned_library_files": 990,
+        "native_events": [
+          {
+            "kind": "native.sheep_speech",
+            "index": 254,
+            "visible": 2699,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 115,
+            "visible": 2693,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 252,
+            "visible": 2787,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 453,
+            "visible": 2699,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 256,
+            "visible": 2693,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 255,
+            "visible": 2693,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 578,
+            "visible": 2787,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 449,
+            "visible": 2694,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 577,
+            "visible": 2695,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 579,
+            "visible": 2786,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 450,
+            "visible": 2693,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 113,
+            "visible": 2786,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 451,
+            "visible": 2699,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 253,
+            "visible": 2786,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.sheep_speech",
+            "index": 452,
+            "visible": 2693,
+            "tick": 227,
+            "stage": 0,
+            "remaining": 100,
+            "bare": false
+          },
+          {
+            "kind": "native.shearing_verify",
+            "wool": 1,
+            "shears": 1
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 9.875,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 10:59:21"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 11:02:15"
+          }
+        },
+        "shutdown": {
+          "pid": 16216,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T11:02:17.1544215Z"
+        },
+        "all_varp_changes": {
+          "300": {
+            "before": 300,
+            "after": 800
+          },
+          "3077": {
+            "before": 21936,
+            "after": 16280
+          },
+          "65515": {
+            "before": 168,
+            "after": 422
+          },
+          "3079": {
+            "before": 175,
+            "after": 261
+          }
+        },
+        "position_before": {
+          "x": 3207,
+          "z": 3266,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3207,
+          "z": 3266,
+          "level": 0
+        },
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "initial-state.json": "4c85f4aa17b88e1c2bfadfcf623c96302005120b7e05926690f78e9b72b6fcd8",
+          "final-state.json": "30b23b4c3bf03da50cfa594107a1bb9c1ecde6a394c1a716691148b0bff49b75",
+          "client.log": "329ba1aa356d895e78cbca5d73ce101056d0aba4d35a12e78e2c25d01e405e5f",
+          "native-events.jsonl": "9973abf9a671638a466d74b2c36f6a3a345039a78e35b83ac6dc2962f8833881",
+          "result.json": "6f16c1687a8d53106ba57cfd7d9b5189702abc809f4d743efd8113fc2afc0227",
+          "server.json": "451cb1a94c03c570eb605815ff7968149d4867284a7ce6b6aaab7d96abf1b5fd",
+          "server.log": "7d95fcdb05719cf23a5e9d5dbbc33ae31f5dce93c087a804f9e83bdc61d4667d",
+          "shutdown.json": "98e821c65b2057d2607bc24adb51d285e8be520e60694e929dc56a372c2fe8a9",
+          "logout-observation.json": "561576fbf49d78e5256065c3f9275475e52f3c17f6589b150911f564cb95c990"
+        },
+        "limitations": [
+          "Owner working-tree evidence; independent verification remains queued.",
+          "Headless actual scene/menu/widget packets, synchronized sheep types/wool and live NPC speech rising lifetime100. Captured software frame is not physical desktop interaction. No audible playback or exact sound packet acceptance claim.",
+          "This ambient002 action covers one actual Shear production, ordinary/bare Baa and same-target next-tick feedback; it does not repeat188native regrowth/overflow/duplicate coverage. Exact callback RNG probability is World scope.",
+          "Full action proves one received ground wool and unchanged saved inventory; private ownership/isolation/lifetime are World tests, not another-native-observer acceptance. Ground objects/NPC temporary stages are not character database persistence claims.",
+          "Player may walk to reach sheep; position, run energy and all varp changes are reported.",
+          "Native life/stale/multiplayer/other sheep family coverage remains separate; chemistry independent campaign stays paused."
+        ]
+      }
+    }
+  ],
+  "logs": {
+    "driver-010.log": {
+      "sha256": "566237101623ac9a0ad9846d62e0c753795c35c7c11bb0686a514abec2adcff1",
+      "result": "PASS"
+    },
+    "fixture-011.log": {
+      "sha256": "bb0e12be22b5a1f2b6ec8e76c68b0d3d6e5759c1a0aad1e3ecc2224b0331aa5e",
+      "result": "PASS"
+    },
+    "native-012.log": {
+      "sha256": "ea36b20e9cd69a38f1333528aa5770b17675e358aecfd987a6900db73c2c057e",
+      "result": "FAIL_NATIVE_DRIVER_PRESERVED"
+    },
+    "driver-013.log": {
+      "sha256": "53e0d8f6c81f3d3f6552e780612947bb009489c8cb92d9ad7aa4aac6d4825a89",
+      "result": "PASS"
+    },
+    "fixture-014.log": {
+      "sha256": "5eae2b77ff7fa97dad42b41d338730b3ed765d5f9b1878baf87160623b0e856e",
+      "result": "PASS"
+    },
+    "native-015.log": {
+      "sha256": "1cd98c0c5a73ed2a03162abbc5a0d9e379009eaa1b8e07fd9277a4123d71d011",
+      "result": "PASS"
+    }
+  },
+  "known_limitations": [
+    "Owner working-tree validation with preserved manifest/private test opt-ins; not pristine or independent acceptance.",
+    "Only22 ordinary sheep/base and naturally bare profiles. Zanaris, fake/quest/rams and other animals excluded. This does not complete the entire source Sheep module or full NPC AI timer infrastructure.",
+    "Uses existing World NPC phase after resolved hits and before mode processing. No compiled Kotlin coroutine/phase/RNG stream equivalence claim; scripted bounded draws verify this callback contract.",
+    "Speech is transient one-frame display state; offline quiet-frame probe proves no retransmission/restart. Live late join, out-of-view, simultaneous NPC speech and audible sound need independent/native checks.",
+    "Shearing production/regrowth remains OR-MIG-0188 exact source and has a separate native acceptance campaign; no native188 results are implied for189.",
+    "No inventory/XP/save-schema changes. Chemistry independent campaign remains paused.",
+    "Three owner native002sessions now pass: matched control, actual scene Shear102 plus live ordinary/bare Baa and same-target feedback at productionTick+1, exact1wool/shearskept/noXP, same-save reconnect; acknowledgedoffline/shutdown0unforced throughout.",
+    "No audible output/exact area-sound packet acceptance, native probability/RNG distribution, special sheep/multiplayer/life/stale/late-join equivalence claim. Native speech comes from unchanged decoder overlay; software frames retained.",
+    "Original native001control passed; actions001 produced1wool and bareBaa then driver failed repicking wandering target. Source resetMode callback intentionally restores Wander. Faileddriver/source/save retained; separate002driver tests one production and feedback instead of incorrectly requiring stationary repeated target. Fresh002fixtures are distinct; earned001wool never reset."
+  ],
+  "failed_native001": {
+    "scope": "Preserved successful production/feedback followed by driver pick failure; not an acceptance PASS.",
+    "hashes": {
+      "client.log": "e60b34ac9a9a4b364afeb7736f340fbf719e26e2353f09aadd89e7b336c214f0",
+      "native-events.jsonl": "1b15c4749aae85a872a1ad22730b8d4d2a5cc9e59252ab4001f1be9d6c84ebf9",
+      "initial-state.json": "a372b103f0405e8a9e8333e25061bbf0801f1bd70c070d7900ce946f062c3183",
+      "final-state.json": "0e268170b8aa86d312b3966c4c95743be2afae9305516f7d26797a83d7be4172",
+      "result.json": "9b550fcb5e351c9821a61722300eddf02659672fad0c9bb5cc66a2b50218d598",
+      "shutdown.json": "b70ead912a2e38697bdb15b867baa8848aff840db09782c50498c0319c2a1f34",
+      "logout-observation.json": "ac4e5b5183664931f198bffc1375238358dcb522f64c55befd8b0292b462c929"
+    }
+  },
+  "software_frames": {
+    "work/integration/runs/openrune-sheep-ambient-control-native-20261022-002/native-events.ambient.bmp": "66a684d71225d98a52184a1a60b2ece6a5e4fbe6875b9596398c020c6469bb10",
+    "work/integration/runs/openrune-sheep-ambient-actions-native-20261022-002/native-events.ambient.bmp": "2e7a78568eb8dc78d7ace889ab33f171a178f78ff0a959ef3a4ff5680b67aa6e",
+    "work/integration/runs/openrune-sheep-ambient-actions-native-20261022-002/native-events.before.bmp": "2e7a78568eb8dc78d7ace889ab33f171a178f78ff0a959ef3a4ff5680b67aa6e",
+    "work/integration/runs/openrune-sheep-ambient-replay-native-20261022-002/native-events.ambient.bmp": "e676773acb5d48164f5b8bd2b7d370645e20af87c6bbda0fa01bd66b9ae0c0bf"
+  },
+  "visual_review": "Actions002 native-events.ambient.bmp inspected: software scene shows player among sheep with yellow Baa! over two sheep. Black interface area is not a full rendered interface claim; no physical desktop input or audible output."
+}
