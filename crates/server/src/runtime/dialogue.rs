@@ -278,6 +278,11 @@ impl<B: AccountBackend> Runtime<B> {
                     .map_err(protocol)?,
             )?;
         }
+        // The objectbox on-load scripts size the message layer from the
+        // preceding type115 chat message, as in the shared drop presentation.
+        if let Page::Object{text,..}=&dialogue.page {
+            self.dialogue_packet(actor,gielinor_protocol::chat::game(115,None,text).map_err(protocol)?)?;
+        }
         self.set_varbit(actor, presentation.unclamp, mode)?;
         self.dialogue_packet(actor, client_script::run(2379, &[]).map_err(protocol)?)?;
         self.open_interface(
@@ -344,7 +349,6 @@ impl<B: AccountBackend> Runtime<B> {
             }
             Page::Object{item,zoom,text} => {
                 let object=self.drop_presentation.ok_or_else(||io::Error::other("Object dialogue presentation missing"))?;
-                self.dialogue_packet(actor,gielinor_protocol::chat::game(115,None,text).map_err(protocol)?)?;
                 self.dialogue_packet(actor,client_script::run(2868,&[Argument::String("Click here to continue".into())]).map_err(protocol)?)?;
                 self.set_interface_events(actor,dialogue.button,0,1,1)?;
                 self.dialogue_packet(actor,interfaces::object(object.object_model.0,*item,i32::from(*zoom)))?;
