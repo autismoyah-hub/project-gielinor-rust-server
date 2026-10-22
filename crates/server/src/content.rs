@@ -5,6 +5,8 @@ mod tzhaar_pack_tests;
 mod remaining_pack_tests;
 mod bank_booths;
 mod shearing;
+mod spider_drops;
+pub use spider_drops::{spider_drops,SpiderDrops};
 mod bear_drops;
 pub use bear_drops::{bear_drops,BearDrops};
 mod imp_drops;

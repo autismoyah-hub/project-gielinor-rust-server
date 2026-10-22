@@ -600,6 +600,10 @@ pub fn configure<B: AccountBackend>(
     if bears.profiles.iter().any(|(id,p)|runtime.world.npc_no_death_drops.contains(id)||runtime.world.npc_guaranteed_extras.contains_key(id)||runtime.world.npc_death.as_ref().unwrap().chickens.contains_key(id)||runtime.world.npc_loot_profiles.contains_key(id)||!p.validate_catalog(&runtime.world.object_types)){return Err(io::Error::other("Conflicting or invalid ordinary bear drop registration"));}
     runtime.world.npc_death.as_mut().unwrap().definitions.extend(bears.deaths);
     runtime.world.npc_loot_profiles.extend(bears.profiles);
+    let spiders=crate::content::spider_drops(n("npc"),n("seq"),&runtime.definitions,runtime.world.npc_death.as_ref().unwrap()).map_err(io::Error::other)?;
+    if spiders.profiles.iter().any(|(id,p)|runtime.world.npc_no_death_drops.contains(id)||runtime.world.npc_guaranteed_extras.contains_key(id)||runtime.world.npc_death.as_ref().unwrap().chickens.contains_key(id)||runtime.world.npc_loot_profiles.contains_key(id)||!p.validate_catalog(&runtime.world.object_types)){return Err(io::Error::other("Conflicting small-spider normal loot registration"));}
+    runtime.world.npc_death.as_mut().unwrap().definitions.extend(spiders.deaths);
+    runtime.world.npc_loot_profiles.extend(spiders.profiles);
     let death=runtime.world.npc_death.as_ref().unwrap();
     if runtime.world.npc_guaranteed_extras.keys().any(|id|death.chickens.contains_key(id)||!death.definitions.get(id).is_some_and(|d|d.animation_ticks>0)){return Err(io::Error::other("Missing or conflicting guaranteed-drop death profile"));}
     let ducks=crate::content::ducks(n("npc"),n("content"),n("synth"),&runtime.definitions,runtime.world.npc_death.as_ref().unwrap()).map_err(io::Error::other)?;
