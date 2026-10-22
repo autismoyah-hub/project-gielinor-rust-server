@@ -16,6 +16,9 @@ impl World {
             .players
             .get_mut(actor.slot as usize)
             .ok_or(ActionError::StaleActor)?;
+        if p.death_queued || p.data.stats.current(3) as u8 == 0 {
+            return Err(ActionError::Protected);
+        }
         p.begin_held_action();
         if p.protection.delayed() {
             return Err(ActionError::Delayed);
@@ -56,6 +59,9 @@ impl World {
             .players
             .get_mut(actor.slot as usize)
             .ok_or(ActionError::StaleActor)?;
+        if p.death_queued || p.data.stats.current(3) as u8 == 0 {
+            return Err(ActionError::Protected);
+        }
         let config = self.prayer.as_ref().ok_or(ActionError::InvalidItem)?;
         let mut pending=if let Some(slot)=slot {
             if self.prayer_member_bones.contains(&bone) && !p.member {return Err(ActionError::InvalidItem);}
@@ -202,6 +208,9 @@ impl World {
         };
         p.prayer = None;
         p.protection.suspended = false;
+        if offering.is_none() && (p.death_queued || p.data.stats.current(3) as u8 == 0) {
+            return;
+        }
         let Some(config) = &self.prayer else { return };
         let mut tower_completion = None;
         let completed = if let Some((_, _, xp, _)) = offering {
@@ -287,6 +296,84 @@ impl World {
         }
         if let Some((actor, continuation, offered)) = tower_completion {
             self.finish_tower_offering(actor, continuation, offered);
+        }
+    }
+}
+
+#[cfg(test)]
+mod life_tests {
+    use super::*;
+    use crate::{hits::{Hit,Style,Target},inventory::Item};
+    struct Never;
+    impl RandomSource for Never {fn below(&mut self,_:u32)->u32{panic!("ordinary burial drew RNG")}}
+    fn setup(chaos:bool)->(World,ActorId) {
+        let mut w=World::default();w.collision.allocate(3200,3200,0);
+        w.prayer=Some(crate::prayer::Config{skill:5,animation:827,bones:[(526,4.5)].into(),necklace:None,
+            restore:Default::default(),worn_xp_percent:Default::default(),chaos:chaos.then_some([3190,3190,3210,3210])});
+        let mut p=PlayerData::new(1,"Burial life".into(),CoordGrid::new(3200,3200,0).unwrap(),Stats::default());p.xp_rate_hundreds=125;
+        for slot in 0..28 {p.inventory.restore_slot(slot,Some(Item{id:526,count:1,vars:0})).unwrap();}
+        w.queue_login(1,p).unwrap();w.tick_with_random(&mut Never).unwrap();let actor=w.actors().next().unwrap();w.drain_events();(w,actor)
+    }
+    fn action(slot:usize,selected:bool)->Action {
+        if selected {Action::BuryItemSlot{slot,item:526}} else {Action::BurySlot{slot}}
+    }
+    fn hit(w:&mut World,actor:ActorId) {
+        w.queue_hit(Target::Player(actor),Hit{display:None,source:None,style:Style::Typeless,damage:99},0).unwrap();
+    }
+    fn death(events:&[WorldEvent],actor:ActorId)->bool {
+        events.iter().any(|e|matches!(e,WorldEvent::DeathRequested(Target::Player(a))if *a==actor))
+    }
+    fn completed(events:&[WorldEvent])->bool {
+        events.iter().any(|e|matches!(e,WorldEvent::Prayer{event:Event::Completed{..},..}))
+    }
+    #[test]
+    fn burial_life_before_or_after_admission_conserves_selected_and_legacy_full_pack_and_xp() {
+        let mut cases=0;
+        for selected in [false,true] {for slot in [0,7,27] {for late in [false,true] {for phase in 0..3 {
+            let(mut w,actor)=setup(false);
+            if late {
+                w.submit(actor,action(slot,selected)).unwrap();
+                // Input admits the delay before this clock's actual lethal hit is processed.
+                if phase>0 {hit(&mut w,actor);}
+                w.tick_with_random(&mut Never).unwrap();assert_eq!(w.data(actor).unwrap().stats.fine_xp(5),0);
+                if phase>0 {assert!(death(&w.drain_events(),actor));}
+            }
+            if phase==0 {w.data_mut(actor).unwrap().stats.set_current(3,0);}else{
+                if !late {hit(&mut w,actor);w.tick_with_random(&mut Never).unwrap();assert!(death(&w.drain_events(),actor));}
+                if phase==2 {w.data_mut(actor).unwrap().stats.set_current(3,10);}
+            }
+            let before=w.data(actor).unwrap().clone();w.drain_events();
+            if !late {w.submit(actor,action(slot,selected)).unwrap();}
+            for _ in 0..5 {w.tick_with_random(&mut Never).unwrap();}
+            let after=w.data(actor).unwrap();assert_eq!(after.inventory.slots(),before.inventory.slots(),"case {cases}");assert_eq!(after.stats,before.stats,"case {cases}");
+            let events=w.drain_events();assert!(!completed(&events),"case {cases}");
+            if !late {assert!(!events.iter().any(|e|matches!(e,WorldEvent::Prayer{event:Event::Animation(_),..})),"case {cases}");}
+            cases+=1;
+        }}}}
+        assert_eq!(cases,36);
+    }
+    #[test]
+    fn burial_life_confirmation_cannot_reanimate_or_consume_after_death() {
+        for phase in 0..3 {
+            let(mut w,actor)=setup(true);w.submit(actor,action(27,true)).unwrap();w.tick_with_random(&mut Never).unwrap();
+            let token=w.drain_events().iter().find_map(|e|if let WorldEvent::Prayer{event:Event::Confirm{token},..}=e{Some(*token)}else{None}).unwrap();
+            if phase==0 {w.data_mut(actor).unwrap().stats.set_current(3,0);}else{
+                hit(&mut w,actor);w.tick_with_random(&mut Never).unwrap();assert!(death(&w.drain_events(),actor));
+                if phase==2 {w.data_mut(actor).unwrap().stats.set_current(3,10);}
+            }
+            let before=w.data(actor).unwrap().clone();w.drain_events();w.submit(actor,Action::ResumeBury{token,choice:1}).unwrap();
+            for _ in 0..5 {w.tick_with_random(&mut Never).unwrap();}
+            let after=w.data(actor).unwrap();assert_eq!(after.inventory.slots(),before.inventory.slots());assert_eq!(after.stats,before.stats);
+            let events=w.drain_events();assert!(!completed(&events));assert!(!events.iter().any(|e|matches!(e,WorldEvent::Prayer{event:Event::Animation(_),..})));
+        }
+    }
+    #[test]
+    fn burial_life_live_selected_controls_keep_fractional_xp_and_duplicate_slot_identity() {
+        for slot in [0,7,27] {
+            let(mut w,actor)=setup(false);w.submit(actor,action(slot,true)).unwrap();
+            for _ in 0..5 {w.tick_with_random(&mut Never).unwrap();}
+            let after=w.data(actor).unwrap();assert!(after.inventory.get(slot).is_none());assert_eq!(after.inventory.get((slot+1)%28).unwrap().id,526);
+            assert_eq!(after.stats.fine_xp(5),56);assert!(completed(&w.drain_events()));
         }
     }
 }
