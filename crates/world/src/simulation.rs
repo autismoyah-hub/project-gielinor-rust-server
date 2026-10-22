@@ -25,6 +25,8 @@ mod consumable_tests;
 #[cfg(test)]
 mod food_life_tests;
 mod dialogue_actions;
+#[cfg(test)]
+mod person_context_tests;
 mod signpost_actions;
 mod fence_actions;
 mod location_choice_actions;

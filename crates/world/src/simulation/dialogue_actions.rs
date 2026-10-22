@@ -112,7 +112,11 @@ impl World {
         }
         Ok(cancelled)
     }
+    pub(super) fn person_actor_alive(&self,actor:ActorId)->bool {
+        self.player(actor).is_ok_and(|p|!p.saving&&!p.pending_logout&&!p.death_queued&&p.data.stats.current(3)as u8!=0)
+    }
     pub(super) fn start_person(&mut self, actor: ActorId, npc: NpcId) -> Result<(), ActionError> {
+        if !self.person_actor_alive(actor){return Err(ActionError::Protected);}
         self.show_dialogue(
             actor,
             Pending {
@@ -322,6 +326,14 @@ impl World {
         random: &mut impl RandomSource,
     ) -> Result<(), ActionError> {
         self.player(actor)?;
+        let person=self.player(actor)?.dialogue.as_ref().is_some_and(|d|d.token==token&&(
+            matches!(d.conversation.after,Effect::RollPersonResponse|Effect::GiveFlyer|Effect::Retaliate)
+            ||self.npc(d.npc).is_some_and(|n|self.npc_handlers.get(&(n.type_id,1))==Some(&crate::npc_interaction::Handler::Person))));
+        if person&&!self.person_actor_alive(actor){
+            self.cancel_dialogue(actor)?;
+            self.events.push(WorldEvent::Dialogue{actor,event:Event::Closed});
+            return Ok(());
+        }
         self.validate_banker_note_dialogue(actor.slot as usize);
         let p = self.player(actor)?;
         if self.location_choice_token(actor).is_some(){return self.resume_location_choice(actor,token,choice);}

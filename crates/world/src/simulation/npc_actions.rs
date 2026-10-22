@@ -128,6 +128,7 @@ impl World {
             return false;
         }
         let actor = p.id;
+        if pending.handler==Some(Handler::Person)&&!self.person_actor_alive(actor){self.clear_npc_route(slot);return true;}
         if let Some(Handler::HeldItemReply{raw,slot:selected,item})=pending.handler {
             if !self.npc_item_reply_valid(actor,pending.target,raw,selected,item){self.clear_npc_route(slot);return true;}
         }
