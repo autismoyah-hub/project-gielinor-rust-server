@@ -44,6 +44,8 @@ def main():
         return next(int(row.split()[0]) for row in rows if len(row.split()) == 2 and row.split()[1] == name)
 
     tool_ids = [symbol("obj", name) for name in ["bronze_axe", "bronze_pickaxe", "net", "hammer", "tinderbox", "knife"]]
+    # Pinned maintained floor anchors, also asserted by cinderworks_floor_check.
+    # Historical experimental coordinates are intentionally not used.
     plaque, chest, portal = [symbol("loc", name) for name in ["plaque", "threshold_chest", "threshold_portal"]]
     fishing = symbol("npc", "0_48_48_newbiefishing")
     raw, cooked, burnt = [symbol("obj", name) for name in ["raw_shrimp", "shrimp", "burnt_shrimp"]]
@@ -128,14 +130,14 @@ def main():
                     if observed["position"][1] < 10000:
                         gateway.act(f"object {portal} 3225 3218 1")
                     gateway.wait(lambda s: s["ready"] and s["position"][1] > 10000, 35)
-                    walk(10422, 114)
-                    gateway.act(f"object {plaque} 10422 115 1")
+                    walk(10418, 106)
+                    gateway.act(f"object {plaque} 10418 105 1")
                     admitted = gateway.wait(lambda s: "run 1" in s["journal"] and all(count(s, tool) == 1 for tool in tool_ids), 35)
                     assert "Cinderworks milestones: 0/5" in admitted["journal"]
-                    gateway.act(f"object {plaque} 10422 115 1")
+                    gateway.act(f"object {plaque} 10418 105 1")
                     duplicate = gateway.wait(lambda s: s["ready"], 20)
                     assert conserved(duplicate) == conserved(admitted), "Repeated recovery changed possessions or XP"
-                    gateway.act(f"object {chest} 10423 115 1")
+                    gateway.act(f"object {chest} 10419 105 1")
                     refused = gateway.wait(lambda s: s["ready"], 20)
                     assert conserved(refused) == conserved(admitted), "Unearned claim changed state"
                     gateway.act("close")
@@ -152,7 +154,8 @@ def main():
                         raw_item = next(i for i in caught["items"] if i["id"] == raw and i["count"] > 0)
                         previous_total = count(caught, raw) + count(caught, cooked) + count(caught, burnt)
                         gateway.act(f"select-item {raw_item['slot']}")
-                        gateway.act(f"use-object {symbol('loc', 'newbierange')} 10435 117")
+                        walk(10432, 109)
+                        gateway.act(f"use-object {symbol('loc', 'newbierange')} 10432 107")
                         cooked_state = gateway.wait(lambda s: s["ready"] and count(s, raw) == 0, 130)
                         assert count(cooked_state, cooked) + count(cooked_state, burnt) == previous_total, "Food conservation"
                         if "Cinderworks milestones: 1/5" in cooked_state["journal"]:
@@ -166,8 +169,8 @@ def main():
                     report["earned_fishing_xp_delta"] = cooked_state["xp"][10] - admitted["xp"][10]
                     report["earned_cooking_xp_delta"] = cooked_state["xp"][7] - admitted["xp"][7]
                     assert report["earned_fishing_xp_delta"] > 0 and report["earned_cooking_xp_delta"] > 0
-                    walk(10431, 124)
-                    gateway.act(f"object {portal} 10432 124 1")
+                    walk(10427, 114)
+                    gateway.act(f"object {portal} 10428 114 1")
                     outside = gateway.wait(lambda s: s["ready"] and s["position"][1] < 10000, 35)
                     assert "Cinderworks milestones: 1/5" in outside["journal"]
                     before_restart = conserved(outside)
