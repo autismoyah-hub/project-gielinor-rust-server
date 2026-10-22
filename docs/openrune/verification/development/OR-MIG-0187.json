@@ -1,0 +1,611 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0187",
+  "implementation_commit_sha": "0c5912f3f831c90ba83d388facc8808a9ed90e9c",
+  "recorded_utc": "2026-10-22T09:30:19.932843+00:00",
+  "result": "OWNER_WORLD_CACHE_NATIVE_PASS_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/world/src/doors.rs": "ee5a10f070f8eb082c250e33c44a31886a993cefecb4b3b3c3cb1c37970d3ad3",
+    "crates/world/src/picket_gate_tests.rs": "cc06e3e7dd0a74e39c91309d21f88c418e78588fcba73ab5f2cb3d73f2507c0c",
+    "crates/world/src/simulation/door_actions.rs": "7c0a6a95fc710b32ce3a8ddfa88ea7ef8bfbb63d8d892b9083062b43e9da180e",
+    "crates/server/src/doors.rs": "89c0e7478250d662033e9e369d913a594d2dbdd0c81d3d47288e2d3667ebb57e",
+    "crates/server/src/startup.rs": "43eb21266b4fef8e39c158bf6ce7ceea578a3b1ffb85e6cfcda3d9c2b6bd481d"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-locs/src/main/kotlin/org/rsmod/content/generic/locs/gate/PicketGate.kt",
+      "sha256": "0f7e9567a220c3e246fe8375f001a3d2a34a48e5120d75c5a13c7519f405fcea",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-locs/src/main/kotlin/org/rsmod/content/generic/locs/gate/GateTranslations.kt",
+      "sha256": "9f8dc57879e846b0eb48776bfaa04fba2df8a05ff244dd8627d6ed7cc8449e0e",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-locs/src/main/kotlin/org/rsmod/content/generic/locs/gate/GateConfigs.kt",
+      "sha256": "4dedd292f2472840b8647c8ad34da8223e61443f3fe169739bd727cb7f87f22b",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "content/generic/generic-locs/src/main/kotlin/org/rsmod/content/generic/locs/gate/PicketGate.kt",
+      "sha256": "3ac8490097f6c507efb3922d1c00b4efe5788ff4ed934b284a475fcf4d62acaf",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable; target239.1 reference"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "content/generic/generic-locs/src/main/kotlin/org/rsmod/content/generic/locs/gate/GateTranslations.kt",
+      "sha256": "6549d1dbd0ae1dd3080b4c6acd38f3c6a7faee647b57c3e4b02f3310c777cb29",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable; target239.1 reference"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "content/generic/generic-locs/src/main/kotlin/org/rsmod/content/generic/locs/gate/GateConfigs.kt",
+      "sha256": "b7d60b6a87f11c8ab1752fdd86bfd9ea4685e78d73f73ecddf077b2455497e67",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable; target239.1 reference"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Door",
+      "sha256": "990d34c3392e012586f709b26c94ac3956302a658c04e24d89094b4c37e16b90",
+      "availability": "protected_local_reference",
+      "revision": "15319903"
+    }
+  ],
+  "logs": {
+    "inspection-001.log": {
+      "sha256": "3dab3c065048734def01c3368000cc8826a16d3ba0e9309f0cd18eea62d0fdaf",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.9% sampled, ceiling70%.",
+        "Capacity: 8,303 MiB available, commit 43.1%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "focused-002.log": {
+      "sha256": "b40a88b9c02e9f88ad2c81a7cc88fe0f6d9e2fbbd9aa4cdeef40579047a123d9",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 1.6% sampled, ceiling70%.",
+        "Capacity: 8,261 MiB available, commit 43.1%, pages-in/s 0, disk 5.1 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 693 filtered out; finished in 0.15s"
+      ]
+    },
+    "focused-003.log": {
+      "sha256": "962e76643883c34e1d6ccf1853fb14257596cc286bc62015a8575fbf1480b9b3",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 2.4% sampled, ceiling70%.",
+        "Capacity: 8,395 MiB available, commit 43.0%, pages-in/s 0, disk 1.8 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 309 filtered out; finished in 0.00s",
+        "test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 693 filtered out; finished in 1.54s"
+      ]
+    },
+    "shared-004.log": {
+      "sha256": "6458c918969d0b135eebcb8d9d7978088e7f65a0c0a8bf532afdfeb8af39ed9a",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.1% sampled, ceiling70%.",
+        "Capacity: 8,392 MiB available, commit 43.0%, pages-in/s 0, disk 1.3 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 310 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 55.57s",
+        "test result: ok. 696 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 37.46s"
+      ]
+    },
+    "fixture-005.log": {
+      "sha256": "8544a9ee16fb57db8978e6966d93ef98656673baaa4791a9a144e84c917f4376",
+      "result": "PASS",
+      "summaries": []
+    },
+    "shared-006.log": {
+      "sha256": "8a0dfbbcc6177a4bdcf231a4df305ce482d856b80986fcfef88b47762386ace0",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.7% sampled, ceiling70%.",
+        "Capacity: 8,357 MiB available, commit 43.1%, pages-in/s 0, disk 5.3 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 310 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 56.12s",
+        "test result: ok. 697 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 36.00s"
+      ]
+    },
+    "focused-007.log": {
+      "sha256": "a890c9799dd96a7ac66f8120f3778c8d1d5ecc2d97542bad8250df51e41256d0",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.4% sampled, ceiling70%.",
+        "Capacity: 8,343 MiB available, commit 43.1%, pages-in/s 0, disk 5.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 309 filtered out; finished in 0.00s",
+        "test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 693 filtered out; finished in 1.74s"
+      ]
+    },
+    "cache-008.log": {
+      "sha256": "760c071c0ef94f40dc4120c67596f7e32b5beeb76c354243a323fa32ce507af9",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 2.1% sampled, ceiling70%.",
+        "Capacity: 8,312 MiB available, commit 43.1%, pages-in/s 0, disk 3.9 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "cache-009.log": {
+      "sha256": "8873b2d78bfb1ddb5b3d00062e89c972254a94daee36a8428f181e1b244fad1f",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.0% sampled, ceiling70%.",
+        "Capacity: 8,313 MiB available, commit 43.1%, pages-in/s 0, disk 1.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS actual target12gateprofiles/6map-pairs/collision World cases=24; no native claim"
+      ]
+    },
+    "shared-010.log": {
+      "sha256": "f9519d0ebf0fff6467ba9dfd145168aed8ae66548a2d1d1a54368d4b59ea1c88",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.3% sampled, ceiling70%.",
+        "Capacity: 8,379 MiB available, commit 43.1%, pages-in/s 0, disk 5.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 310 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 56.40s",
+        "test result: ok. 698 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 38.65s"
+      ]
+    },
+    "archive-011.log": {
+      "sha256": "cbcba5babdaaa82c5923ac21aebcf0811dea0b73c1b59563e45db83e5e9dd76b",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.4% sampled, ceiling70%.",
+        "Capacity: 8,369 MiB available, commit 43.1%, pages-in/s 0, disk 4.1 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 9BE6910F931AE0FD1BDF41605F368362536B91D25D2E0531DF549EE2A6B37F95 (625 source files)."
+      ]
+    },
+    "driver-012.log": {
+      "sha256": "635d59d58d0bb70dc20bb90f1bef2157289864215ac401b6e2ca5fb1d855c570",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 6.4% sampled, ceiling70%.",
+        "Capacity: 8,274 MiB available, commit 43.3%, pages-in/s 0, disk 1.9 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "driver-014.log": {
+      "sha256": "014eae9e291f2b2980ed7c4d5d83f4f6991fbc88eebbb97b0640829ac3ea2adb",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.4% sampled, ceiling70%.",
+        "Capacity: 8,337 MiB available, commit 43.3%, pages-in/s 0, disk 0.8 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "native-015.log": {
+      "sha256": "025db72af94b48c3d979bd51aef657d467bedc22d2bbfe3f098399af861b4e4f",
+      "result": "PASS",
+      "summaries": [
+        "Integration CPU capacity: 4.7% sampled, ceiling 70%.",
+        "Capacity: 8,331 MiB available, commit 43.3%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Native picket control PASS:actual closed pair",
+        "Integration CPU capacity: 2.8% sampled, ceiling 70%.",
+        "Capacity: 8,333 MiB available, commit 43.2%, pages-in/s 0, disk 2.7 ms.",
+        "Cargo concurrency: -j 2",
+        "Native picket synchronized pair step=2 opened=true",
+        "Native picket synchronized pair step=3 opened=false",
+        "Native picket leftOpen/leftClose/rightOpen/rightClose PASS;noXP",
+        "Integration CPU capacity: 2.1% sampled, ceiling 70%.",
+        "Capacity: 8,312 MiB available, commit 43.3%, pages-in/s 0, disk 3.6 ms.",
+        "Cargo concurrency: -j 2",
+        "Native picket verify PASS:actual closed pair"
+      ]
+    }
+  },
+  "server_archive": {
+    "sha256": "9BE6910F931AE0FD1BDF41605F368362536B91D25D2E0531DF549EE2A6B37F95",
+    "source_count": 625,
+    "source_manifest_sha256": "7be1dca2ef762e9234cea32361a4443f4619bb6decf2ca3a0c25ed61aaa5a1d8",
+    "before_after_sources_unchanged": true
+  },
+  "private_probe": {
+    "path": "crates/server/examples/picket_gate_world_cache_private.rs",
+    "sha256": "b545132f1222c9ca8e60ab1d5e4851363310f25cd1bd7b2fff341f327351b76e",
+    "scope": "Actual twelve cache profiles, six mapped pairs on12850/12851, real collision/routing, member/free open and other-half close,24cases"
+  },
+  "native_driver": {
+    "driver": "picket-gates-002",
+    "scenario": "actualSheepPenPicketPair",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless software-rendered scene/menu and synchronized gate objects; no OS Window/desktop input or independent verdict",
+    "files": {
+      "NativePicketGateScenario2.rs": "7BAE0C5383551236F757D66B198064F3C4FDF7501025FC5FEB6A353954BB57E4",
+      "server_picket_gates2.exe": "084579980C97CBFD2F077E463EBB6E4640304AB505000BC78FEFCAF5001C1C3B"
+    }
+  },
+  "pinned_library_files_checked_after": 990,
+  "native": [
+    {
+      "reference": "work/integration/runs/openrune-picket-gates-control-native-20261022-001/picket-native-assessment.json",
+      "sha256": "79db2d158864f14556c4a96cbfd71b81e2303912eb2e2c2e125575a7dedb593f",
+      "assessment": {
+        "result": "PASS_NATIVE_PICKET_CONTROL",
+        "mode": "control",
+        "run": "openrune-picket-gates-control-native-20261022-001",
+        "server_sha256": "9BE6910F931AE0FD1BDF41605F368362536B91D25D2E0531DF549EE2A6B37F95",
+        "driver_sha256": "084579980C97CBFD2F077E463EBB6E4640304AB505000BC78FEFCAF5001C1C3B",
+        "pinned_library_files": 990,
+        "native_events": [
+          {
+            "kind": "native.picket_control",
+            "closed_pair": true
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.828,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 09:27:23"
+          }
+        },
+        "shutdown": {
+          "pid": 15148,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T09:27:23.8562938Z"
+        },
+        "all_varp_changes": {
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "300": {
+            "before": 0,
+            "after": 100
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "65515": {
+            "before": 0,
+            "after": 84
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "3077": {
+            "before": 0,
+            "after": 23617
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "3079": {
+            "before": 0,
+            "after": 90
+          }
+        },
+        "position_before": {
+          "x": 3214,
+          "z": 3261,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3214,
+          "z": 3261,
+          "level": 0
+        },
+        "evidence_hashes": {
+          "initial-state.json": "7aeaa018676a1563186e0005db32e2238003e1751367662030152a71b26b7118",
+          "final-state.json": "c792d1ee73dc08a31b2da6dc95096a0899a0f335815517c77562482cbbb43149",
+          "client.log": "bd1abce388570275a6aafb2b752f64efd309b6546123cd5f6fe8c04ae0cb9a20",
+          "native-events.jsonl": "f320829c17f2fc6cb96c2a1c7b87c150e4b52f6784e890581e2c55cef73e21a1",
+          "result.json": "00e9f2ac10ccbc60c0b83c1affd0f5732c0819b963dfafe627b447aecfadce5c",
+          "server.json": "c84161c3b0cab18ea4aed1377c9eef76d97849caa72c4f02434c289d86bca7c4",
+          "server.log": "6c562deb7f4858566bd358264b6a3c852f321f7671166d72fbdb240dbf86ab5f",
+          "shutdown.json": "fb54b3a529370daaca1bf001fd682c8902da8c01bf5d89ddb9736452606203df",
+          "logout-observation.json": "b609ebd0ad23c01b3ef3f0068235b822b9653ff419fe504506b11d2bf5d584b2"
+        },
+        "limitations": [
+          "Owner working-tree, not independent acceptance.",
+          "Headless actual native scene/menu and synchronized object shapes/rotations; no OSwindow/physical input.",
+          "Native duration500/member/stale/life/refusals not exercised; World/cache evidence is separate.",
+          "Character may move to reach opened halves; positions reported. Items/Stats/fineXP are unchanged.",
+          "Chemistry independent campaign remains paused."
+        ]
+      }
+    },
+    {
+      "reference": "work/integration/runs/openrune-picket-gates-actions-native-20261022-001/picket-native-assessment.json",
+      "sha256": "e3c9b6093e95c31342210ddd144757601f7c7290785228284659347bc4597c11",
+      "assessment": {
+        "result": "PASS_NATIVE_PICKET_EXCHANGE",
+        "mode": "exchange",
+        "run": "openrune-picket-gates-actions-native-20261022-001",
+        "server_sha256": "9BE6910F931AE0FD1BDF41605F368362536B91D25D2E0531DF549EE2A6B37F95",
+        "driver_sha256": "084579980C97CBFD2F077E463EBB6E4640304AB505000BC78FEFCAF5001C1C3B",
+        "pinned_library_files": 990,
+        "native_events": [
+          {
+            "kind": "native.picket_action",
+            "step": 0,
+            "raw": 12986,
+            "x": 3213,
+            "z": 3261,
+            "opcode": 73
+          },
+          {
+            "kind": "native.picket_observed",
+            "step": 0,
+            "opened_pair": true
+          },
+          {
+            "kind": "native.picket_action",
+            "step": 1,
+            "raw": 12988,
+            "x": 3212,
+            "z": 3261,
+            "opcode": 73
+          },
+          {
+            "kind": "native.picket_observed",
+            "step": 1,
+            "opened_pair": false
+          },
+          {
+            "kind": "native.picket_action",
+            "step": 2,
+            "raw": 12987,
+            "x": 3213,
+            "z": 3262,
+            "opcode": 73
+          },
+          {
+            "kind": "native.picket_observed",
+            "step": 2,
+            "opened_pair": true
+          },
+          {
+            "kind": "native.picket_action",
+            "step": 3,
+            "raw": 12989,
+            "x": 3211,
+            "z": 3261,
+            "opcode": 73
+          },
+          {
+            "kind": "native.picket_observed",
+            "step": 3,
+            "opened_pair": false
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.313,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 09:28:50"
+          }
+        },
+        "shutdown": {
+          "pid": 15436,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T09:28:51.2143708Z"
+        },
+        "all_varp_changes": {
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "65515": {
+            "before": 0,
+            "after": 116
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "3077": {
+            "before": 0,
+            "after": 51622
+          },
+          "3079": {
+            "before": 0,
+            "after": 122
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          }
+        },
+        "position_before": {
+          "x": 3214,
+          "z": 3261,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3212,
+          "z": 3261,
+          "level": 0
+        },
+        "evidence_hashes": {
+          "initial-state.json": "7aeaa018676a1563186e0005db32e2238003e1751367662030152a71b26b7118",
+          "final-state.json": "93f91600d4f19887471825d7fd5186fe7c3dc1e0b949eb5946ee8c774f65ed9b",
+          "client.log": "b850c116e9cc9ac9273ffce780af34674a116904d4410cbcc96b6ca5e168cdb6",
+          "native-events.jsonl": "76a258cad8ee28987bb86bc05122a49c0f7e2035c4c60ed858ef508cb716749b",
+          "result.json": "2f1fdfe402e5aeede390c4b8dab6f1cabf09fe0cbe8cc7c68152ce9714ae42a8",
+          "server.json": "977abd867c9c7b25885dbb15b0bcece080b2eb60ee1edf93220d802449b51cb7",
+          "server.log": "5ea70f89fbc11e757de269ca8a71c0eb24286dd726eafa61ae25b0f3cb31684c",
+          "shutdown.json": "688684b684ac7b4eb96ffcc1fe8657554226e96ef832d69aeea555d2f67570f3",
+          "logout-observation.json": "912ee26169ef9eca3ebd4b440d3728f1c042ae3e2e5acb8bc0118f4bce66f5ed"
+        },
+        "limitations": [
+          "Owner working-tree, not independent acceptance.",
+          "Headless actual native scene/menu and synchronized object shapes/rotations; no OSwindow/physical input.",
+          "Native duration500/member/stale/life/refusals not exercised; World/cache evidence is separate.",
+          "Character may move to reach opened halves; positions reported. Items/Stats/fineXP are unchanged.",
+          "Chemistry independent campaign remains paused."
+        ]
+      }
+    },
+    {
+      "reference": "work/integration/runs/openrune-picket-gates-replay-native-20261022-001/picket-native-assessment.json",
+      "sha256": "0810e200bd3fe5473c66867e7ac3163b209503421a9c589de0072220f4ec3095",
+      "assessment": {
+        "result": "PASS_NATIVE_PICKET_VERIFY",
+        "mode": "verify",
+        "run": "openrune-picket-gates-replay-native-20261022-001",
+        "server_sha256": "9BE6910F931AE0FD1BDF41605F368362536B91D25D2E0531DF549EE2A6B37F95",
+        "driver_sha256": "084579980C97CBFD2F077E463EBB6E4640304AB505000BC78FEFCAF5001C1C3B",
+        "pinned_library_files": 990,
+        "native_events": [
+          {
+            "kind": "native.picket_verify",
+            "closed_pair": true
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.328,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 09:28:50"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 09:29:58"
+          }
+        },
+        "shutdown": {
+          "pid": 20368,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T09:29:59.6859793Z"
+        },
+        "all_varp_changes": {
+          "300": {
+            "before": 200,
+            "after": 300
+          },
+          "65515": {
+            "before": 116,
+            "after": 200
+          },
+          "3077": {
+            "before": 51622,
+            "after": 60284
+          },
+          "3079": {
+            "before": 122,
+            "after": 90
+          }
+        },
+        "position_before": {
+          "x": 3212,
+          "z": 3261,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3212,
+          "z": 3261,
+          "level": 0
+        },
+        "evidence_hashes": {
+          "initial-state.json": "93f91600d4f19887471825d7fd5186fe7c3dc1e0b949eb5946ee8c774f65ed9b",
+          "final-state.json": "09c624c3568e75675cbfd6a2481294b6698f04cc2a6f23f64ba7c31c8d82df05",
+          "client.log": "c05f24f5c5261b032eccf5f6bb883749022e678d4ea6e916bf65e1a3b6730ad9",
+          "native-events.jsonl": "725a5d8e118453d44a86d06331a2ab29e06a24e438037241e280c1096d0491b9",
+          "result.json": "52f7aaa9413c82624baa66469bd6bb8b68b329ce6118a78f1c6fa5743268a739",
+          "server.json": "c4327bb71ef236d3db034fa5df4690f9ee0e5460b8cae73d848e573b07391e86",
+          "server.log": "2f8dd3819ac97fb9e7f7541b272e8603a9bbcd8d073ef74ddf2d3cc8561d45eb",
+          "shutdown.json": "011f892929ca11636471b329c51467ba07f4b9e6a60073df9cbcdfbf0f2cd1f8",
+          "logout-observation.json": "ee41713adba498fdf57caf4e992dda83b79683ca79d24506b54cf467ebdfa768"
+        },
+        "limitations": [
+          "Owner working-tree, not independent acceptance.",
+          "Headless actual native scene/menu and synchronized object shapes/rotations; no OSwindow/physical input.",
+          "Native duration500/member/stale/life/refusals not exercised; World/cache evidence is separate.",
+          "Character may move to reach opened halves; positions reported. Items/Stats/fineXP are unchanged.",
+          "Chemistry independent campaign remains paused."
+        ]
+      }
+    }
+  ],
+  "matrix": {
+    "shared_server_pass": 310,
+    "shared_world_pass": 698,
+    "shared_world_existing_ignored": 1,
+    "world_angle_open_close_side_combinations": 16,
+    "literal_hinge_coordinate_vectors": 8,
+    "cache_profile_drift_cases": 10,
+    "world_life_cases": 3,
+    "world_stale_revision_cases": 1,
+    "actual_cache_member_side_map_cases": 24
+  },
+  "failures_preserved": {
+    "focused002": "World-action fixture assumed same-tick arrival. Geometry cases passed; changed test to wait for reached action without changing gameplay.",
+    "focused003": "Reached action passed; test assumed pre-Late timer boundary. Corrected to assert exact existing action-clock+500 deadline, preserving inherited timer behavior.",
+    "cache008": "Private probe compileE0277: CoordError is not std::error::Error. Mapped probe error explicitly; failed probe source snapshot retained.",
+    "driver012": "Private native frontend compileE0277 compared native tile[u16;2] with variables[i32;2]. Original frontend/example/log retained; new separately pinned second frontend uses checked-known-world coordinate casts. No client-library edit or gameplay change."
+  },
+  "limitations": [
+    "Owner working-tree evidence with retained private test/packaging differences; not pristine or independent acceptance.",
+    "Only twelve attested static stages across ordinary, sheep-pen and rustic picket families, operation1/shape0, normal world x<6432. Constructed regions, other gate families, quest locks and generic door expansion are not inferred.",
+    "Donor/PG geometry, matching opposite role/angle and500-cycle duration guide adaptation. Occupied unrelated wall, missing definition, unsupported geometry/normal-world bound or invalid deadline refuses before mutations; a genuinely absent partner permits the selected half. Normal source sound event is generated before finish-time refusal.",
+    "Native exercises one F2P actual sheep-pen pair, leftOpen/leftClose/rightOpen/rightClose and both synchronized half models; native500duration, member/life/stale/occupied/missing-partner/refusal coverage remains separate. World tests cover all angles, collision crossing, exact shared late-clock deadline and safety paths.",
+    "Existing shared door timer processes at Late/NPC synchronization, unlike the separate gathering replacement timer. No new timer engine or claimed compiled Kotlin coroutine/phase parity.",
+    "Headless native software scene/menu and received object changes; no OSwindow/physicalinput or independent verdict. Player movement for reach is allowed and reported, with unchanged inventories/Stats/fineXP. Chemistry independent campaign remains paused."
+  ]
+}
