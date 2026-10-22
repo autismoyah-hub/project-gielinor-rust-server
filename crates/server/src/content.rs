@@ -1,6 +1,8 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
 #[cfg(test)]
 mod tzhaar_pack_tests;
+#[cfg(test)]
+mod remaining_pack_tests;
 mod chicken_coops;
 pub use chicken_coops::chicken_coops;
 mod spade_tool;
@@ -314,6 +316,17 @@ pub fn item_packs(
         ("pack_waterrune_tzhaar", "waterrune", false),
         ("pack_earthrune_tzhaar", "earthrune", false),
         ("pack_firerune_tzhaar", "firerune", false),
+        ("pack_slayer_broad_bolt_unfinished", "slayer_broad_bolt_unfinished", false),
+        ("pack_slayer_broad_arrowhead", "slayer_broad_arrowhead", false),
+        ("pack_softclay", "softclay", true),
+        ("pack_amylase", "amylase", false),
+        ("pack_eye_newt", "eye_of_newt", true),
+        ("pack_box_trap", "hunting_box_trap", false),
+        ("pack_ojibway_bird_snare", "hunting_ojibway_bird_snare", false),
+        ("pack_magic_imp_box", "magic_imp_box", false),
+        ("pack_bone_bolt", "dttd_bone_crossbow_bolt", false),
+        ("piscarilius_pack_sandworms", "piscarilius_sandworms", false),
+
     ] {
         let Some(&pack) = symbols.get(pack_name) else {
             continue;
