@@ -110,6 +110,8 @@ impl AccountBackend for Worker {
     }
 }
 pub enum Event {
+    LocationTargetReceived {actor:ActorId,target:gielinor_protocol::loc_input::Target,held_component:Option<u32>},
+    LocationTargetChecked {actor:ActorId,target:gielinor_protocol::loc_input::Target,exists:bool,source_open:bool,flags:u64,enabled:bool},
     SkillMultiSelected {
         actor: ActorId,
         selection: Option<crate::skill_multi::Selection>,
@@ -2086,6 +2088,7 @@ impl<B: AccountBackend> Runtime<B> {
                             }
                         }
                         Ok(crate::gameplay::Request::LocationTarget(target)) => {
+                            self.events.push(Event::LocationTargetReceived{actor,target,held_component:self.held_component});
                             if self.held_component == Some(target.source) {
                                 self.location_target(actor, target)?;
                             } else {

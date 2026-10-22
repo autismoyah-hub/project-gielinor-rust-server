@@ -89,6 +89,8 @@ fn seed() -> io::Result<u64> {
 fn report(events: Vec<runtime::Event>) {
     for event in events {
         match event {
+            runtime::Event::LocationTargetReceived{actor,target,held_component}=>println!("Location target received: actor={actor:?} target={target:?} inventory_component={held_component:?}"),
+            runtime::Event::LocationTargetChecked{actor,target,exists,source_open,flags,enabled}=>println!("Location target checked: actor={actor:?} target={target:?} exists={exists} source_open={source_open} flags={flags:#x} enabled={enabled}"),
             runtime::Event::World(gielinor_world::simulation::WorldEvent::BankCount(trace)) => {
                 println!("Bank count: {}", trace.json());
             }
@@ -158,6 +160,8 @@ fn report(events: Vec<runtime::Event>) {
             runtime::Event::World(gielinor_world::simulation::WorldEvent::LocationRestoration(trace)) => {
                 println!("Location restoration: {}", trace.json());
             }
+            runtime::Event::PacketRejected {connection,actor,opcode,reason} => println!("Packet rejected: connection={connection} actor={actor:?} opcode={opcode} reason={reason}"),
+            runtime::Event::World(gielinor_world::simulation::WorldEvent::ActionRejected {actor,error}) => println!("World action rejected: actor={actor:?} error={error:?}"),
             runtime::Event::SaveFailed { actor, reason } => {
                 eprintln!("Save failed for {actor:?}; retry pending: {reason}")
             }

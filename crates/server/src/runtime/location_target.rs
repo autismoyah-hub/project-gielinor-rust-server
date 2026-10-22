@@ -28,6 +28,10 @@ impl<B: AccountBackend> Runtime<B> {
                     component.events,
                 )
             });
+        let component=Component(target.source);let ui=&self.active[&actor].ui;
+        let source_open=ui.modals.contains_interface(component.interface())||ui.overlays.contains_interface(component.interface());
+        let flags=ui.events.get(component,target.source_slot).unwrap_or_else(||self.components.get(&target.source).map_or(0,|c|u64::from(c.events as u32)));
+        self.events.push(Event::LocationTargetChecked{actor,target,exists,source_open,flags,enabled});
         if !exists || !enabled {
             if let Some(connection) = self.active[&actor].connection {
                 let packet = gielinor_protocol::game::clear_map_flag();
