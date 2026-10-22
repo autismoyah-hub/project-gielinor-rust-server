@@ -2,8 +2,8 @@
 use super::{Definitions, Edible, Symbols};
 use std::collections::{BTreeMap, BTreeSet};
 const PROFILES: &[(&str, i32, &str, u8, i32)] = &[
-    ("dwellberries", 2126, "Dwellberries", 5, 2),
-    ("caerula_berries", 30937, "Caerula berries", 5, 2),
+    ("dwellberries", 2126, "Dwellberries", 6, 2),
+    ("caerula_berries", 30937, "Caerula berries", 6, 2),
     ("pot_of_cream", 2130, "Pot of cream", 2, 1),
 ];
 pub fn berries_cream_food(
@@ -23,7 +23,7 @@ pub fn berries_cream_food(
                     || d.placeholder.template != 0
                     || d.transform.template != 0
                     || crate::food_operations::button_operation(d) != Some(op)
-                    || d.inventory_ops[(op - 2) as usize].as_deref() != Some("Eat")
+                    || d.inventory_ops[if op == 6 { 3 } else { 0 }].as_deref() != Some("Eat")
             })
         {
             return Err(format!("Unattested or duplicate berry/cream food {symbol}"));
@@ -69,7 +69,7 @@ mod tests {
             objects.insert(symbol.into(), id);
             let mut d = gielinor_cache::definitions::ItemType::decode(&[16, 0]).unwrap();
             d.name = name.into();
-            d.inventory_ops[(op - 2) as usize] = Some("Eat".into());
+            d.inventory_ops[if op == 6 { 3 } else { 0 }] = Some("Eat".into());
             defs.items.insert(id as u32, d);
         }
         (objects, defs)
@@ -114,7 +114,7 @@ mod tests {
         }
     }
     #[test]
-    fn berries_cream_food_native_op5_berries_are_food_not_combo_and_potion_can_follow_with_selected_healing(
+    fn berries_cream_food_native_op6_berries_are_food_not_combo_and_potion_can_follow_with_selected_healing(
     ) {
         for &(_, id, _, op, heal) in PROFILES {
             for hp in [50, 98, 99, 115] {
@@ -183,7 +183,7 @@ mod tests {
                     gielinor_protocol::buttons::button(&p).unwrap()
                 };
                 assert!(crate::food_operations::held_action(
-                    &button(if op == 2 { 5 } else { 2 }),
+                    &button(5),
                     27,
                     id,
                     &w.foods,

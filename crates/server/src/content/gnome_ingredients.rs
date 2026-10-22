@@ -3,7 +3,7 @@ use super::{Definitions, Edible, Symbols};
 use std::collections::{BTreeMap, BTreeSet};
 const PROFILES: [(&str, i32, &str, u8, i32); 2] = [
     ("equa_leaves", 2128, "Equa leaves", 2, 1),
-    ("toads_legs", 2152, "Toad's legs", 5, 3),
+    ("toads_legs", 2152, "Toad's legs", 6, 3),
 ];
 pub fn gnome_ingredients(
     objects: &Symbols,
@@ -66,7 +66,7 @@ mod tests {
             objects.insert(symbol.into(), id);
             let mut d = gielinor_cache::definitions::ItemType::decode(&[16, 0]).unwrap();
             d.name = name.into();
-            d.inventory_ops[(op - 2) as usize] = Some("Eat".into());
+            d.inventory_ops[if op == 6 { 3 } else { 0 }] = Some("Eat".into());
             defs.items.insert(id as u32, d);
         }
         (objects, defs)
@@ -183,7 +183,7 @@ mod tests {
         )
         .is_none());
         let toad =
-            crate::food_operations::held_action(&make(2152, 5), 27, 2152, &w.foods, &defs, true)
+            crate::food_operations::held_action(&make(2152, 6), 27, 2152, &w.foods, &defs, true)
                 .unwrap();
         w.submit(a, toad.clone()).unwrap();
         w.tick().unwrap();

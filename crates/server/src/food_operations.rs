@@ -3,13 +3,14 @@ use gielinor_cache::{definitions::ItemType, game::Definitions};
 use gielinor_protocol::buttons::Button;
 use gielinor_world::{food::Edible, simulation::Action};
 use std::collections::BTreeMap;
-/// The held component reserves operation1 for Use; cache options1..4 map to2..5.
+/// Inventory widget operations reserve 1 for Use and 5 for a separate action.
+/// Original target HeldOpScript maps held options 1..4 to widget 2/3/4/6.
 pub(crate) fn button_operation(item: &ItemType) -> Option<u8> {
     item.inventory_ops
         .iter()
         .take(4)
         .position(|op| matches!(op.as_deref(), Some("Eat" | "Drink")))
-        .map(|index| index as u8 + 2)
+        .map(|index| [2, 3, 4, 6][index])
 }
 pub(crate) fn held_action(
     button: &Button,
@@ -80,7 +81,7 @@ mod tests {
         for index in 0..5 {
             let mut d = ItemType::decode(&[0]).unwrap();
             d.inventory_ops[index] = Some("Drink".into());
-            assert_eq!(button_operation(&d), (index < 4).then_some(index as u8 + 2));
+            assert_eq!(button_operation(&d), [Some(2), Some(3), Some(4), Some(6), None][index]);
         }
         let mut d = ItemType::decode(&[0]).unwrap();
         d.inventory_ops[3] = Some("Eat".into());
@@ -93,7 +94,7 @@ mod tests {
     fn native_food_first_and_fourth_decoded_buttons_require_correct_operation_and_preserve_stale_claim(
     ) {
         let (d, f) = fixture();
-        for (id, want) in [(1, 2), (2152, 5)] {
+        for (id, want) in [(1, 2), (2152, 6)] {
             for op in 0..=7 {
                 let a = held_action(&packet(id, op), 27, id, &f, &d, true);
                 assert_eq!(a.is_some(), op == want);
@@ -103,7 +104,7 @@ mod tests {
             }
         }
         assert!(matches!(
-            held_action(&packet(2152, 5), 27, 1, &f, &d, true),
+            held_action(&packet(2152, 6), 27, 1, &f, &d, true),
             Some(Action::EatItemSlot {
                 slot: 27,
                 item: 2152
@@ -118,7 +119,7 @@ mod tests {
     fn native_food_missing_definition_unknown_identity_or_wrong_slot_does_not_create_an_action() {
         let (mut d, f) = fixture();
         d.items.remove(&2152);
-        assert!(held_action(&packet(2152, 5), 27, 2152, &f, &d, true).is_none());
+        assert!(held_action(&packet(2152, 6), 27, 2152, &f, &d, true).is_none());
         assert!(held_action(&packet(999, 2), 27, 999, &f, &d, true).is_none());
         assert!(held_action(&packet(1, 2), 26, 1, &f, &d, true).is_none());
     }
@@ -130,6 +131,6 @@ mod tests {
             held_action(&packet(1, 2), 27, 2152, &f, &d, false),
             Some(Action::EatItemSlot { slot: 27, item: 1 })
         ));
-        assert!(held_action(&packet(2152, 5), 27, 2152, &f, &d, false).is_none());
+        assert!(held_action(&packet(2152, 6), 27, 2152, &f, &d, false).is_none());
     }
 }
