@@ -51,6 +51,7 @@ mod deposit_box_actions;
 mod banknote_actions;
 mod shearing_actions;
 mod npc_flavour_actions;
+mod npc_item_reply_actions;
 #[cfg(test)]
 mod normal_bank_booth_tests;
 mod banker_note_actions;
@@ -1047,6 +1048,7 @@ pub struct World {
     pub person_flyer: Option<i32>,
     pub shearing: Option<crate::shearing::Config>,
     pub npc_flavour: Option<crate::npc_flavour::Config>,
+    pub npc_item_replies: std::collections::BTreeMap<u16,crate::npc_item_reply::Rule>,
     pub locations: crate::locations::Locations,
     pub location_types: BTreeMap<u32, crate::loc_collision::LocCollision>,
     pub location_approach: BTreeMap<u32, u8>,
@@ -1189,6 +1191,7 @@ impl Default for World {
             person_flyer: None,
             shearing: None,
             npc_flavour: None,
+            npc_item_replies: Default::default(),
             locations: Default::default(),
             location_types: BTreeMap::new(),
             location_approach: BTreeMap::new(),

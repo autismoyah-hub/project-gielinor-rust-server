@@ -22,6 +22,7 @@ fn release(n:&mut NpcEntry) {
 impl World {
     pub(super) fn request_held_npc(&mut self,actor:ActorId,target:NpcId,slot:i32,item:i32,control:bool)->Result<(),ActionError> {
         let raw=self.npc(target).ok_or(ActionError::InvalidItem)?.type_id;
+        if self.npc_item_replies.contains_key(&raw){return self.request_npc_item_reply(actor,target,slot,item,control);}
         if !self.shearing.as_ref().is_some_and(|c|c.targets.contains_key(&raw)) {return self.request_banker_note(actor,target,slot,item,control);}
         let c=self.shearing.as_ref().unwrap();let p=self.player(actor)?;
         let selected=usize::try_from(slot).map_err(|_|ActionError::InvalidItem)?;

@@ -6,6 +6,7 @@ pub enum Handler {
     Bank,
     Banknote {slot:usize,note:i32,raw:u16,visible:u16},
     Shear {raw:u16,selected:Option<usize>},
+    HeldItemReply {raw:u16,slot:usize,item:i32},
     Pickpocket,
     Tanning,
     TowerTanner,

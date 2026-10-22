@@ -5,6 +5,8 @@ mod tzhaar_pack_tests;
 mod remaining_pack_tests;
 mod bank_booths;
 mod shearing;
+mod cows;
+pub use cows::{cows,Cows};
 pub use shearing::{shearing,sheep_flavour};
 pub use bank_booths::{ordinary_bank_booths,normal_dynamic_bank_booths};
 mod chicken_coops;

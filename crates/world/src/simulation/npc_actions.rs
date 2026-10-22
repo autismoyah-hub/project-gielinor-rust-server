@@ -128,6 +128,9 @@ impl World {
             return false;
         }
         let actor = p.id;
+        if let Some(Handler::HeldItemReply{raw,slot:selected,item})=pending.handler {
+            if !self.npc_item_reply_valid(actor,pending.target,raw,selected,item){self.clear_npc_route(slot);return true;}
+        }
         if let Some(Handler::Shear{raw,selected})=pending.handler {
             if !self.sheep_admission(actor,pending.target,raw,selected){self.clear_npc_route(slot);return true;}
         }
@@ -280,6 +283,9 @@ impl World {
                 && c.work.is_some_and(|w|npc.type_id==w.fishing_spot&&crate::tower_layout::contains(c.origin,npc.spawn)));
         let fishing_approach=cinderworks_fishing&&source.chebyshev_distance(target)<=3;
         if touches || bank_approach || fishing_approach {
+            if let Some(Handler::HeldItemReply{raw,slot:selected,item})=pending.handler {
+                self.clear_npc_route(slot);self.finish_npc_item_reply(actor,pending.target,raw,selected,item);return true;
+            }
             if let Some(Handler::Shear{raw,selected})=pending.handler {
                 self.clear_npc_route(slot);self.start_shearing(slot,pending.target,raw,selected);return true;
             }
@@ -396,6 +402,7 @@ impl World {
                 Some(Handler::Bank) => Event::Bank,
                 Some(Handler::Banknote{..}) => unreachable!("Banknote dialogue handled above"),
                 Some(Handler::Shear{..}) => unreachable!("Shearing handled above"),
+                Some(Handler::HeldItemReply{..}) => unreachable!("Held refusal handled above"),
                 Some(Handler::Tanning) => Event::Tanning(pending.target),
                 Some(Handler::Pickpocket) => unreachable!("Pickpocket handled above"),
                 Some(Handler::TowerTanner) => unreachable!("Tanning handled above"),

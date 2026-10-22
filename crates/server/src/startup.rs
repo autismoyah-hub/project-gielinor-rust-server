@@ -479,6 +479,11 @@ pub fn configure<B: AccountBackend>(
     for &raw in shearing.targets.keys(){runtime.world.npc_handlers.insert((raw,1),gielinor_world::npc_interaction::Handler::Shear{raw,selected:None});}
     runtime.world.npc_flavour=Some(crate::content::sheep_flavour(&shearing,n("synth"),&runtime.definitions).map_err(io::Error::other)?);
     runtime.world.shearing=Some(shearing);
+    let cows=crate::content::cows(n("npc"),n("content"),n("obj"),n("seq"),n("synth"),&runtime.definitions).map_err(io::Error::other)?;
+    let flavour=runtime.world.npc_flavour.as_mut().ok_or_else(||io::Error::other("Missing ambient registration"))?;
+    if cows.flavour.types.keys().any(|id|flavour.types.contains_key(id)){return Err(io::Error::other("Conflicting cow flavour registration"));}
+    flavour.types.extend(cows.flavour.types);
+    runtime.world.npc_item_replies=cows.replies;
     runtime.world.doors =
         crate::doors::resolve(n("content"), n("param"), &parameters, &runtime.definitions)
             .map_err(io::Error::other)?;
