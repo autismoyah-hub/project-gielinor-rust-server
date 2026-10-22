@@ -10,6 +10,19 @@ use crate::{
 };
 use std::{collections::BTreeMap, sync::Arc};
 pub(crate) const QUEUE: i32 = -2391016;
+/// Host-authoritative facility policy; existing facilities keep Crafting with
+/// no additional tool requirement. Item/recipe identifiers are not policy tags.
+#[derive(Clone,Copy,Debug,PartialEq,Eq)]
+pub struct Policy {pub skill:u8,pub tools:Option<Tools>}
+impl Default for Policy {fn default()->Self{Self{skill:12,tools:None}}}
+#[derive(Clone,Copy,Debug,PartialEq,Eq)]
+pub struct Tools {pub carried:&'static [i32],pub worn:&'static [(usize,i32)],pub message:&'static str}
+impl Tools {
+ pub fn available(self,inventory:&Inventory,equipment:&Inventory,catalog:&Catalog)->bool{
+  self.carried.iter().any(|&id|catalog.ordinary_nonstackable(id)&&inventory.slots().iter().flatten().any(|i|*i==crate::inventory::Item{id,count:1,vars:0}))
+   ||self.worn.iter().any(|&(slot,id)|catalog.ordinary_nonstackable(id)&&equipment.get(slot)==Some(crate::inventory::Item{id,count:1,vars:0}))
+ }
+}
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Recipe {
     pub input: i32,
@@ -157,6 +170,7 @@ impl Request {
 }
 #[derive(Clone, Debug)]
 pub(crate) struct Pending {
+    pub policy: Policy,
     pub request: Request,
     pub recipe: Recipe,
     pub groups: Arc<Vec<Vec<usize>>>,
@@ -190,6 +204,10 @@ pub fn prepare_group(
     rate: i32,
     member: bool,
 ) -> Result<(Inventory, Stats, Option<Advancement>), Error> {
+    prepare_group_for_skill(recipe,slots,inventory,catalog,stats,rate,member,12,1.0)
+}
+pub fn prepare_group_for_skill(recipe:Recipe,slots:&[usize],inventory:&Inventory,catalog:&Catalog,stats:&Stats,rate:i32,member:bool,skill:u8,xp_multiplier:f64)->Result<Prepared,Error>{
+    if !xp_multiplier.is_finite()||xp_multiplier<=0.0{return Err(Error::Policy);}
     if !(1..=99).contains(&recipe.level)
         || !(1..=28).contains(&recipe.input_count)
         || !(1..=28).contains(&recipe.output_count)
@@ -212,7 +230,7 @@ pub fn prepare_group(
     if recipe.members && !member {
         return Err(Error::Members);
     }
-    if (stats.current(12) as u8) < recipe.level {
+    if (stats.current(skill) as u8) < recipe.level {
         return Err(Error::Level);
     }
     if recipe.required_inventory_tools.iter().any(|id| {
@@ -234,7 +252,7 @@ pub fn prepare_group(
     let next = assembly::exchange_slots(inventory, catalog, &inputs, &outputs, true)
         .map_err(Error::Exchange)?;
     let (next_stats, advanced) =
-        assembly::prepare_reward_value(stats, 12, f64::from(recipe.xp_tenths) / 10.0, rate)
+        assembly::prepare_reward_value(stats, skill, f64::from(recipe.xp_tenths) / 10.0*xp_multiplier, rate)
             .map_err(Error::Exchange)?;
     Ok((next, next_stats, advanced))
 }
@@ -260,7 +278,10 @@ pub fn resolve_group(
     member: bool,
     random: &mut impl crate::npc::RandomSource,
 ) -> Result<(Prepared, bool), Error> {
-    let success = prepare_group(recipe, slots, inventory, catalog, stats, rate, member)?;
+    resolve_group_for_skill(recipe,slots,inventory,catalog,stats,rate,member,12,1.0,random)
+}
+pub fn resolve_group_for_skill(recipe:Recipe,slots:&[usize],inventory:&Inventory,catalog:&Catalog,stats:&Stats,rate:i32,member:bool,skill:u8,xp_multiplier:f64,random:&mut impl crate::npc::RandomSource)->Result<(Prepared,bool),Error>{
+    let success = prepare_group_for_skill(recipe, slots, inventory, catalog, stats, rate, member,skill,xp_multiplier)?;
     let Some(failure) = recipe.failure else {
         return Ok((success, true));
     };
@@ -280,9 +301,9 @@ pub fn resolve_group(
     let failed_inventory = assembly::exchange_slots(inventory, catalog, &inputs, &outputs, true)
         .map_err(Error::Exchange)?;
     let (failed_stats, failed_advanced) =
-        assembly::prepare_reward_value(stats, 12, f64::from(failure.xp_tenths) / 10.0, rate)
+        assembly::prepare_reward_value(stats, skill, f64::from(failure.xp_tenths) / 10.0*xp_multiplier, rate)
             .map_err(Error::Exchange)?;
-    let level = (stats.current(12) as u8).clamp(1, 99) as i32;
+    let level = (stats.current(skill) as u8).clamp(1, 99) as i32;
     let threshold = (crate::skills::success_rate(failure.low, failure.high, level, 99) * 256.0)
         .clamp(0.0, 256.0) as u32;
     if random.below(256) < threshold {

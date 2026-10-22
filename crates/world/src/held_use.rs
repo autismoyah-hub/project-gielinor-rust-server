@@ -26,6 +26,7 @@ pub struct Preparation {
 }
 #[derive(Clone, Debug)]
 pub enum Handler {
+    Message(&'static str),
     CountedAssembly(crate::counted_assembly::Recipe),
     AssemblyBatch(std::sync::Arc<crate::assembly::BatchRecipe>),
     Assembly(crate::assembly::Recipe),

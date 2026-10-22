@@ -149,6 +149,7 @@ impl World {
             }
         }
         match handler {
+            Some(Handler::Message(text))=>self.events.push(WorldEvent::GameMessage{actor,text:text.into()}),
             Some(Handler::CountedAssembly(recipe)) => self.request_counted_assembly(actor,recipe,request)?,
             Some(Handler::AssemblyProduction{recipe,cycle_ticks}) => self.request_assembly_production(actor,recipe,cycle_ticks,request)?,
             Some(Handler::AssemblyImmediate(recipe)) => {

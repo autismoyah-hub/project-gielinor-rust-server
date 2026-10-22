@@ -1007,6 +1007,10 @@ pub fn configure<B: AccountBackend>(
         &runtime.definitions,
         &tables,
     )?)?;
+    let forge=crate::content::godsword_forging(n("obj"),n("loc"),n("seq"),n("stat"),n("content"),&runtime.definitions,&runtime.world.anvils).map_err(io::Error::other)?;
+    for &id in forge.facility.locations.keys(){if runtime.world.facility_crafting.insert(id,forge.facility.clone()).is_some()||runtime.world.facility_policies.insert(id,forge.policy).is_some(){return Err(io::Error::other("Conflicting Godsword forge facility"));}}
+    for first in 0..forge.parts.len(){for second in first+1..forge.parts.len(){runtime.world.held_use_handlers.register(gielinor_world::held_use::Scope::Types,forge.parts[first],forge.parts[second],gielinor_world::held_use::Handler::Message("These blade pieces need to be joined on an anvil.")).map_err(|e|io::Error::other(format!("Godsword shard feedback registration: {e:?}")))?;}}
+
     for (&id, npc) in &runtime.definitions.npcs {
         if npc.ops[1]
             .as_deref()

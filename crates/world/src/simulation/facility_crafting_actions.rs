@@ -30,6 +30,8 @@ impl World {
                 return;
             }
         }
+        let policy=self.facility_policies.get(&location.id).copied().unwrap_or_default();
+        if let Some(tools)=policy.tools {if !tools.available(&p.data.inventory,&p.data.equipment,&self.object_types){self.events.push(WorldEvent::GameMessage{actor:p.id,text:tools.message.into()});return;}}
         let recipes: Vec<_> = config
             .recipes
             .iter()
@@ -99,7 +101,9 @@ impl World {
         let groups = request
             .groups(recipe, &p.data.inventory, count as usize)
             .ok_or(ActionError::InvalidItem)?;
-        if let Err(error) = crate::facility_crafting::prepare_group(
+        let policy=self.facility_policies.get(&request.location.id).copied().unwrap_or_default();
+        if let Some(tools)=policy.tools{if !tools.available(&p.data.inventory,&p.data.equipment,&self.object_types){self.events.push(WorldEvent::GameMessage{actor,text:tools.message.into()});return Ok(());}}
+        if let Err(error) = crate::facility_crafting::prepare_group_for_skill(
             recipe,
             &groups[0],
             &p.data.inventory,
@@ -107,14 +111,17 @@ impl World {
             &p.data.stats,
             p.data.xp_rate_hundreds,
             p.member,
+            policy.skill,
+            if policy.skill==13{self.smithing.map_or(1.0,|c|c.xp_rate)}else{1.0},
         ) {
-            refusal(actor, error, request.action, &mut self.events);
+            refusal(actor, error, request.action, policy.skill, &mut self.events);
             return Ok(());
         }
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         p.begin_held_action();
         p.queues.clear_weak();
         let pending = Pending {
+            policy,
             request,
             recipe,
             groups: std::sync::Arc::new(groups),
@@ -125,10 +132,10 @@ impl World {
         Ok(())
     }
 }
-fn refusal(actor: ActorId, error: Error, action: &str, events: &mut Vec<WorldEvent>) {
+fn refusal(actor: ActorId, error: Error, action: &str, skill:u8, events: &mut Vec<WorldEvent>) {
     let text = match error {
         Error::Members => format!("You need to be a member to {action} that item."),
-        Error::Level => format!("You need a higher Crafting level to {action} that item."),
+        Error::Level => format!("You need a higher {} level to {action} that item.",if skill==13{"Smithing"}else{"Crafting"}),
         _ => format!("You can't {action} that item right now."),
     };
     events.push(WorldEvent::GameMessage { actor, text });
@@ -169,11 +176,13 @@ pub(super) fn complete(
     mut pending: Pending,
     catalog: &crate::inventory::Catalog,
     revision: Option<u64>,
+    policy: crate::facility_crafting::Policy,
+    smithing_rate:f64,
     tutorial: bool,
     events: &mut Vec<WorldEvent>,
     random: &mut impl RandomSource,
 ) {
-    if revision != Some(pending.request.revision)
+    if policy!=pending.policy || revision != Some(pending.request.revision)
         || p.pending_logout
         || p.saving
         || p.has_modal
@@ -187,10 +196,11 @@ pub(super) fn complete(
     {
         return;
     }
+    if let Some(tools)=policy.tools{if !tools.available(&p.data.inventory,&p.data.equipment,catalog){events.push(WorldEvent::GameMessage{actor:p.id,text:tools.message.into()});return;}}
     let Some(slots) = pending.groups.get(pending.index) else {
         return;
     };
-    match crate::facility_crafting::resolve_group(
+    match crate::facility_crafting::resolve_group_for_skill(
         pending.recipe,
         slots,
         &p.data.inventory,
@@ -198,10 +208,12 @@ pub(super) fn complete(
         &p.data.stats,
         p.data.xp_rate_hundreds,
         p.member,
+        policy.skill,
+        if policy.skill==13{smithing_rate}else{1.0},
         random,
     ) {
         Err(error) => {
-            refusal(p.id, error, pending.request.action, events);
+            refusal(p.id, error, pending.request.action, policy.skill, events);
             return;
         }
         Ok(((inventory, stats, advanced), success)) => {
@@ -210,7 +222,7 @@ pub(super) fn complete(
             if let Some(advancement) = advanced {
                 if tutorial
                     && p.stat_events
-                        .advance(&crate::tutorial_rules::bindings(), 12, advancement)
+                        .advance(&crate::tutorial_rules::bindings(), policy.skill, advancement)
                         .is_err()
                 {
                     p.pending_logout = true;
@@ -221,10 +233,11 @@ pub(super) fn complete(
                 }
                 events.push(WorldEvent::SkillAdvanced {
                     actor: p.id,
-                    skill: 12,
+                    skill: policy.skill,
                     advancement,
                 });
             }
+            if success&&policy.skill==13{events.push(WorldEvent::SmithingProductMade{actor:p.id,product:pending.recipe.output,count:i32::from(pending.recipe.output_count)});}
             events.push(WorldEvent::GameMessage {
                 actor: p.id,
                 text: if success {
@@ -560,6 +573,27 @@ mod tests {
             );
         }
     }
+
+    fn smithing_policy_fixture()->(World,ActorId,Location){
+        let(mut w,a,loc)=fixture(true);
+        let rules=w.facility_crafting.get_mut(&loc.id).unwrap();for recipe in std::sync::Arc::make_mut(&mut rules.recipes){recipe.level=80;recipe.xp_tenths=1000;}
+        w.facility_policies.insert(loc.id,crate::facility_crafting::Policy{skill:13,tools:Some(crate::facility_crafting::Tools{carried:&[2347,25644,29775],worn:&[(3,25644),(5,29775)],message:"You need a hammer."})});
+        w.smithing=Some(crate::smithing_make::Config{queue:901,skill:13,max_level:99,xp_rate:1.0,tutorial:None});let p=w.data_mut(a).unwrap();p.stats.set_base(13,80);p.stats.set_current(13,80);p.stats.set_base(12,1);p.stats.set_current(12,1);p.inventory.restore_slot(0,Some(Item{id:2347,count:1,vars:0})).unwrap();(w,a,loc)
+    }
+    #[test]
+    fn facility_host_policy_uses_smithing_level_xp_global_rate_and_product_events(){
+        for(global,expected)in[(1.0,1250),(2.0,2500)]{let(mut w,a,loc)=smithing_policy_fixture();w.smithing.as_mut().unwrap().xp_rate=global;let r=request(&mut w,a,loc,true,true);w.start_facility_crafting(a,r,0,1).unwrap();for _ in 0..5{w.tick_with_random(&mut NoDraw).unwrap();}assert_eq!(w.data(a).unwrap().stats.fine_xp(13),expected);assert_eq!(w.data(a).unwrap().stats.fine_xp(12),0);assert_eq!(w.data(a).unwrap().inventory.get(0),Some(Item{id:2347,count:1,vars:0}));assert!(w.drain_events().iter().any(|e|matches!(e,WorldEvent::SmithingProductMade{product:1777,count:1,..})));}
+        let(mut w,a,loc)=smithing_policy_fixture();w.data_mut(a).unwrap().stats.set_current(13,79);w.data_mut(a).unwrap().stats.set_current(12,99);let r=request(&mut w,a,loc,true,true);let before=w.data(a).unwrap().clone();w.start_facility_crafting(a,r,0,1).unwrap();for _ in 0..5{w.tick().unwrap();}assert_eq!(w.data(a).unwrap().inventory,before.inventory);assert_eq!(w.data(a).unwrap().stats,before.stats);assert!(w.drain_events().iter().any(|e|matches!(e,WorldEvent::GameMessage{text,..}if text.contains("Smithing level"))));
+    }
+    #[test]
+    fn facility_equivalent_tools_are_live_and_use_exact_equipped_slots(){
+        for case in 0..7{let(mut w,a,loc)=smithing_policy_fixture();let r=request(&mut w,a,loc,true,true);w.start_facility_crafting(a,r,0,1).unwrap();w.tick().unwrap();w.data_mut(a).unwrap().inventory.restore_slot(0,None).unwrap();match case{0=>{},1=>w.data_mut(a).unwrap().equipment.restore_slot(3,Some(Item{id:25644,count:1,vars:0})).unwrap(),2=>w.data_mut(a).unwrap().equipment.restore_slot(5,Some(Item{id:29775,count:1,vars:0})).unwrap(),3=>w.data_mut(a).unwrap().equipment.restore_slot(11,Some(Item{id:25644,count:1,vars:0})).unwrap(),4=>w.data_mut(a).unwrap().inventory.restore_slot(0,Some(Item{id:29775,count:1,vars:0})).unwrap(),5=>w.data_mut(a).unwrap().equipment.restore_slot(3,Some(Item{id:25644,count:2,vars:0})).unwrap(),_=>w.data_mut(a).unwrap().equipment.restore_slot(3,Some(Item{id:25644,count:1,vars:7})).unwrap()};let gear=w.data(a).unwrap().equipment.clone();for _ in 0..5{w.tick_with_random(&mut NoDraw).unwrap();}assert_eq!(w.data(a).unwrap().stats.fine_xp(13),if matches!(case,1|2|4){1250}else{0},"toolcase{case}");assert_eq!(w.data(a).unwrap().equipment,gear);}
+    }
+    #[test]
+    fn facility_policy_change_or_invalid_live_smithing_rate_cannot_commit(){
+        for case in 0..5{let(mut w,a,loc)=smithing_policy_fixture();let r=request(&mut w,a,loc,true,true);w.start_facility_crafting(a,r,0,1).unwrap();w.tick().unwrap();match case{0=>{w.facility_policies.remove(&loc.id);},1=>w.smithing.as_mut().unwrap().xp_rate=f64::INFINITY,2=>w.smithing.as_mut().unwrap().xp_rate=f64::NAN,3=>w.smithing.as_mut().unwrap().xp_rate=0.0,_=>w.smithing.as_mut().unwrap().xp_rate=-1.0};let before=w.data(a).unwrap().clone();for _ in 0..5{w.tick().unwrap();}assert_eq!(w.data(a).unwrap().inventory,before.inventory);assert_eq!(w.data(a).unwrap().stats,before.stats);}
+    }
+
 }
 #[cfg(test)]
 mod grouped_tests {
@@ -1194,8 +1228,7 @@ mod firing_tests {
                 before
             );
         }
-    }
-}
+    }}
 
 #[cfg(test)]
 mod sand_pit_tests {

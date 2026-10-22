@@ -225,6 +225,8 @@ mod glassblowing;
 pub use glassblowing::glassblowing;
 mod ordinary_stringing;
 pub use ordinary_stringing::ordinary_stringing;
+mod godsword_forging;
+pub use godsword_forging::godsword_forging;
 mod godsword_assembly;
 pub use godsword_assembly::godsword_attachments;
 mod amulet_stringing;

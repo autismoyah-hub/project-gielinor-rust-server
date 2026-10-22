@@ -1087,6 +1087,7 @@ pub struct World {
     pub combat_state: Option<crate::combat_state::Config>,
     pub npc_combat: BTreeMap<u16, crate::npc_combat::Definition>,
     pub pickpocket:Option<crate::thieving::Config>,
+    pub facility_policies: BTreeMap<u32,crate::facility_crafting::Policy>,
     pub facility_crafting:BTreeMap<u32,crate::facility_crafting::Config>,
     pub npc_handlers: BTreeMap<(u16, u8), crate::npc_interaction::Handler>,
     pub banknote_npc_sad:Option<[u16;4]>,
@@ -1238,6 +1239,7 @@ impl Default for World {
             npc_handlers: Default::default(),
             banknote_npc_sad:None,
             pickpocket:None,
+            facility_policies: Default::default(),
             facility_crafting:BTreeMap::new(),
             location_timers: Default::default(),
             players: EntityList::players(),
@@ -2793,7 +2795,7 @@ impl World {
                                                     self.events.push(WorldEvent::LocationMessage{actor:p.id,message:crate::assembly::outcome_message_for_skill(outcome,skill)});
                                                 }
                                                 Deferred::Runecrafting(pending)=>{let revision=self.locations.revision(pending.location);runecrafting_actions::complete(p,pending,self.runecrafting.as_ref(),&self.object_types,revision,self.tutorial_rules_completed_varp.is_some(),random,&mut self.events);}
-                                                Deferred::FacilityCrafting(pending) => {let revision=self.locations.revision(pending.request.location);facility_crafting_actions::complete(p,queues,pending,&self.object_types,revision,self.tutorial_rules_completed_varp.is_some(),&mut self.events,random);}
+                                                Deferred::FacilityCrafting(pending) => {let revision=self.locations.revision(pending.request.location);let policy=self.facility_policies.get(&pending.request.location.id).copied().unwrap_or_default();facility_crafting_actions::complete(p,queues,pending,&self.object_types,revision,policy,self.smithing.map_or(1.0,|c|c.xp_rate),self.tutorial_rules_completed_varp.is_some(),&mut self.events,random);}
                                                 Deferred::AssemblyProduction(pending) => {assembly_production_actions::complete(p,queues,pending,&self.object_types,[self.wine,self.zamorak_wine],self.clock.0,&mut self.events);}
                                                 Deferred::Assembly(pending) => {
                                                     held_use_actions::complete_assembly_reward_with_tools(p,pending.job,&self.object_types,pending.queued_at,self.clock.0,pending.xp_tenths,pending.required_tools,&mut self.events);
