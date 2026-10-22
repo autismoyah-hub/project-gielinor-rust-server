@@ -32,3 +32,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0179 `ef113b381c7a422103c4a53e19b705693dd1dd3e` corrects burial admission/confirmation/completion life gates (original0051 PG-DEF-003 subset),39refusals+3live controls/full297server669world pass. Native/member/ash/robe/recovery and independent retest remain pending. Tower chapel offering/CrateWalk and inherited timing/sound policies stay unchanged; no whole Prayer or actor-life acceptance.
 
 - OR-MIG-0180 `821c6cb0dcdd3d381af68d6a6368f4f9f77bc7f9` adds pack admission/repeat life and actual pack-definition membership guards. Owner6life/member transition/34cacheWorld/full298server671world pass; no new profiles. External member-expiry sync, native/recovery and independent verification remain open; historical23 evidence untouched.
+
+- OR-MIG-0181 `44fea15fd759826245ea4b72eb645c29299b080e` adds four members-only Tzhaar elemental rune opening profiles. Owner36controlled/42actual-cache World/full301server671world pass. Native/durable recovery/independent and shop/Tokkul/Glarial/Koschei restrictions remain pending; other donor pack families excluded.

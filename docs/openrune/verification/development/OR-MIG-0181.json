@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0181",
+  "implementation_commit_sha": "44fea15fd759826245ea4b72eb645c29299b080e",
+  "recorded_utc": "2026-10-22T04:51:12.538784+00:00",
+  "result": "DEVELOPMENT_VALIDATION_PASS",
+  "sources": {
+    "crates/server/src/content.rs": "09da8f389cd312d3dad2cf0021a3e3fbaa3161c676a7193764d9dbd1df01b903",
+    "crates/server/src/content/tzhaar_pack_tests.rs": "b20b3582ebc7c0f3c09c7ba702e6d948fa5a6bad839aff288c76c38eca972e92"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-items/src/main/kotlin/org/rsmod/content/generic/items/packs/ItemPackScript.kt",
+      "sha256": "0b230789a760d7f0c8e83bddd53ffbef59675108033fcc3b9d5bd53b0ace9dcd",
+      "availability": "protected_local_reference",
+      "revision": "Local archive; upstream commit unavailable; configured revision 241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-items/pack/src/main/resources/pack/configs/item_packs.toml",
+      "sha256": "8a480b3886b252c2e02a4774884f7babf5606a6d42fc8c8074787a80648306a7",
+      "availability": "protected_local_reference",
+      "revision": "Local preserved donor241 reference; upstream commit unavailable"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Tzhaar air rune pack",
+      "sha256": "26e7f45a12f454a6fbf4272eae81bfe9d72b1e30f5751f30a5e20166fd93d465",
+      "availability": "protected_local_reference",
+      "revision": "15188503"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Tzhaar water rune pack",
+      "sha256": "a560cab7c1b61ecfc8bf37fdbb8cdb32816060374a43dd3ea66b2266b0edb0dc",
+      "availability": "protected_local_reference",
+      "revision": "15188502"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Tzhaar earth rune pack",
+      "sha256": "656ea13af10f19379ab5d197af0a66b114440699abc1e041819ee9e38f5f19ea",
+      "availability": "protected_local_reference",
+      "revision": "15188504"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Tzhaar fire rune pack",
+      "sha256": "2832391cb4a5114a9ee8f4259f0935a06cb835bc5545b411587d30e7e3a29a75",
+      "availability": "protected_local_reference",
+      "revision": "15188501"
+    }
+  ],
+  "logs": {
+    "focused-001.log": {
+      "command": "build.ps1 -Action test -CargoArgs @(-p,gielinor-server,--lib,tzhaar_pack)",
+      "sha256": "c01144383cdd82c1da8534f931c8af3b5377e8e7e41b6b0e4c77c9bb7b015ff1",
+      "result": "BUILD_FAILURE_TEST_FIXTURE_NONCLONE_DEFINITIONS",
+      "summaries": [
+        "Build CPU capacity: 8.6% sampled, ceiling70%.",
+        "Capacity: 7,608 MiB available, commit 45.5%, pages-in/s 1, disk 2.6 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "focused-002.log": {
+      "command": "build.ps1 -Action test -CargoArgs @(-p,gielinor-server,--lib,tzhaar_pack)",
+      "sha256": "912325e38add2ad1478a8b0d673aeb93d58b62248b190378e0bef878cd79d46c",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.4% sampled, ceiling70%.",
+        "Capacity: 7,508 MiB available, commit 45.5%, pages-in/s 0, disk 2.6 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 298 filtered out; finished in 2.51s"
+      ]
+    },
+    "shared-003.log": {
+      "command": "build.ps1 -Action test -CargoArgs @(-p,gielinor-server,-p,gielinor-world,--lib)",
+      "sha256": "824ffc53262036e14ffe71d660d0b949b9eeb477ef463a9f2b13c994844023ef",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 13.6% sampled, ceiling70%.",
+        "Capacity: 7,009 MiB available, commit 48.7%, pages-in/s 1,204, disk 0.3 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 301 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 77.24s",
+        "test result: ok. 671 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 40.34s"
+      ]
+    },
+    "cache-actions-004.log": {
+      "command": "build.ps1 -Action run -CargoArgs @(-p,gielinor-server,--example,tzhaar_pack_cache_private,--,<private target cache>,<private symbols>)",
+      "sha256": "29a311c9c17607de87de1c53e265a0eace2a563b98cb4ef668fb9082b543787d",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 4.0% sampled, ceiling70%.",
+        "Capacity: 7,691 MiB available, commit 45.1%, pages-in/s 0, disk 1.4 ms.",
+        "Cargo concurrency: -j 2",
+        "REGISTRY profiles=21 member_pack_ids={12857, 13250, 13252, 13254, 19704, 21698, 21701, 21704, 21707}",
+        "PASS real239.1 pack definitions=21 membership/World action cases=42; no native client"
+      ]
+    },
+    "archive-005.log": {
+      "command": "scripts/integration-server-build.ps1 -Run openrune-tzhaar-packs-20261021-001",
+      "sha256": "7668cffceb434686157844a319b5125c12616af4f802355ed0bf3cea130a7911",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 6.3% sampled, ceiling70%.",
+        "Capacity: 7,894 MiB available, commit 45.1%, pages-in/s 0, disk 5.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 7397A3309DB5D7214970A0A45ED43122D185445B2C65A3D1AD623542B955EBA7 (608 source files)."
+      ]
+    }
+  },
+  "matrix": {
+    "controlled_full_inventory_member_and_nonmember_cases": 24,
+    "controlled_overflow_stale_zeroHP_refusals": 12,
+    "binding_test": "all4 outputs/count/Open/stackability/missing optional and missing required output",
+    "actual_cache_world_cases": 42,
+    "actual_total_profiles": 21,
+    "new_pack_to_rune": {
+      "21698": 556,
+      "21701": 555,
+      "21704": 557,
+      "21707": 554
+    },
+    "count_each": 100,
+    "checks": [
+      "selected and repeat exchange preserves other inventory and Stats",
+      "nonmember and invalid selections preserve full duplicate inventory",
+      "actual target pack metadata is member-only; outputs remain ordinary unnoted runes"
+    ]
+  },
+  "private_probe_sha256": "93397ac7cc1bc7b5f4f81d69b5f4a5e9a695181f76c05819f7b4f751a82d3730",
+  "server_archive": {
+    "sha256": "7397A3309DB5D7214970A0A45ED43122D185445B2C65A3D1AD623542B955EBA7",
+    "source_count": 608,
+    "source_manifest_sha256": "a403fae38050c7f574127822105fa1bae7a557fbeba799001e16a3dd616162ee",
+    "before_after_sources_unchanged": true
+  },
+  "limitations": [
+    "Owner working-tree/cache evidence with retained private opt-ins and source manifest; not pristine or independent acceptance.",
+    "No new native-client menu, save/relogin, actual membership-expiry propagation, compiled Kotlin or exact repeat-cadence acceptance.",
+    "TzHaar-Mej-Roh shop stock/pricing/Tokkul transactions and Glarial/Koschei location restrictions are outside this opening-only contract.",
+    "Other donor pack families remain unported under this contract. Existing filled plant-pot correction remains unchanged. Chemistry independent verification remains paused."
+  ]
+}
