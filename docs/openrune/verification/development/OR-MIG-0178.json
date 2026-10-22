@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0178",
+  "implementation_commit_sha": "6db4f380ef39dc34d3300d30ccda56192be2678e",
+  "recorded_utc": "2026-10-22T04:16:18.390442+00:00",
+  "result": "DEVELOPMENT_VALIDATION_PASS",
+  "sources": {
+    "crates/world/src/simulation/cooking_actions.rs": "861729aa2b0ed568d4519a4d40ae94ab86870139773e90f28cea25f9d93367c6"
+  },
+  "logs": {
+    "before-001.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-world','--lib','cooking_life_refuses')",
+      "sha256": "e2d2d00ec9d6dd9f51bf8e30257412f1662a57360b06977c561555daa57500ca",
+      "result": "EXPECTED_REPRODUCTION_FAILURE",
+      "summaries": [
+        "Build CPU capacity: 12.2% sampled, ceiling70%.",
+        "Capacity: 8,252 MiB available, commit 43.4%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 56.64s",
+        "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 666 filtered out; finished in 0.09s"
+      ]
+    },
+    "focused-002.log": {
+      "command": "same focused command after correction",
+      "sha256": "970291977199504848d5fc34e2d096ec94c8855126955261025270a0a7c57222",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.0% sampled, ceiling70%.",
+        "Capacity: 8,312 MiB available, commit 42.8%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 12.34s",
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 666 filtered out; finished in 0.82s"
+      ]
+    },
+    "shared-003.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-server','-p','gielinor-world','--lib')",
+      "sha256": "54fa0e2e37fc8b1c11c350ce4a96a0fb198b326df47bcea5511a16394a80fe16",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.4% sampled, ceiling70%.",
+        "Capacity: 8,341 MiB available, commit 42.8%, pages-in/s 0, disk 0.7 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 22.45s",
+        "test result: ok. 297 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 52.36s",
+        "test result: ok. 666 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 31.61s"
+      ]
+    },
+    "archive-004.log": {
+      "command": "scripts/integration-server-build.ps1 -Run openrune-cooking-life-20261021-001",
+      "sha256": "73f5f47e738fafdc427e3d706a2021921ff9c11663866ce7f4fee936b4d13fc3",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 10.0% sampled, ceiling70%.",
+        "Capacity: 8,264 MiB available, commit 43.1%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 17.84s",
+        "Archived server 9AF669263583A6D39684C4C00CA592B86F9FC0A82ED33DD22EE3D4916A2C97E8 (604 source files)."
+      ]
+    }
+  },
+  "controlled_refusal_matrix": {
+    "cases": 24,
+    "dimensions": [
+      "fallback versus explicit surface registry",
+      "ordinary chance versus guaranteed success policy",
+      "before admission versus during admitted four-tick job",
+      "zeroHP / actual unresolved DeathRequested / restored visibleHP"
+    ],
+    "checks": [
+      "full28duplicate raw inventory conserved",
+      "all Stats/fineXP conserved",
+      "zero chance draws",
+      "no reward/start animation after invalidation or CookingMade/SkillAdvanced over eight completion clocks"
+    ]
+  },
+  "server_archive": {
+    "sha256": "9AF669263583A6D39684C4C00CA592B86F9FC0A82ED33DD22EE3D4916A2C97E8",
+    "source_count": 604,
+    "source_manifest_sha256": "7af044d844f2cf7423d6c221997504bbed0cc79bb71fb568903dc010ba1c6909",
+    "before_after_sources_unchanged": true
+  },
+  "limitations": [
+    "Owner working-tree regression/archive with preserved local manifests and private opt-ins; not pristine or independent acceptance.",
+    "New24negative fixtures use explicitly controlled raw10/cooked20/burnt30 and synthetic location1 in fallback/explicit-surface registries; not native fire/range identity or actual gauntlet/cape gameplay.",
+    "Earlier real-binding and modifier-positive regression cases remain in the full suite, but exact132/133 negative modifier/native/save/recovery matrices must be independently rerun at this correction SHA.",
+    "No changed recipe, native item/location ID, XP policy, modifier rule, queue delay, tutorial rule, persistence schema or Cinderworks resource. Chemistry verification remains paused.",
+    "Other PG-DEF-003 families, including selected burial, remain open. Original exact132/133 failures are retained, never rewritten as acceptance."
+  ]
+}
