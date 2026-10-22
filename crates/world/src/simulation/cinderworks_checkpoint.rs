@@ -203,9 +203,12 @@ mod tests {
             WorldEvent::CinderworksCheckpoint { data, .. } => Some(data), _ => None,
         }).unwrap();
         assert!(staged.tower_floors.completed(FloorId::CINDERWORKS));
+        assert_eq!(staged.tower_floors.achieved(FloorId::CINDERWORKS),31);
+        assert_eq!(world.data(actor).unwrap().tower_floors.achieved(FloorId::CINDERWORKS),0);
         assert!(world.cinderworks_checkpoint_pending(actor));
         world.cinderworks_checkpoint_saved(actor).unwrap();
         assert!(world.data(actor).unwrap().tower_floors.completed(FloorId::CINDERWORKS));
+        assert_eq!(world.data(actor).unwrap().tower_floors.achieved(FloorId::CINDERWORKS),31);
         assert_eq!(world.data(actor).unwrap().inventory, inventory);
         assert!(world.data(actor).unwrap().tower_run.reward_pending);
         assert!(world.cinderworks_checkpoint_saved(actor).is_err());

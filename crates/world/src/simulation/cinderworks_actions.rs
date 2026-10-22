@@ -1,5 +1,5 @@
 use super::*;
-use crate::{inventory::Insert, tower_run::Reward};
+use crate::tower_run::Reward;
 impl World {
     /// Called only after ordinary location routing and approach validation.
     pub(super) fn cinderworks_location(
@@ -39,6 +39,9 @@ impl World {
             if !inside && loc.coords != config.outside {
                 return false;
             }
+            if !inside && !crate::tower_floor_catalogue::CINDERWORKS.definition.eligible(&p.data.tower_floors) {
+                return true;
+            }
             let destination = if inside {
                 config.outside.translate(-1, 0, 0).unwrap()
             } else {
@@ -65,29 +68,19 @@ impl World {
             return false;
         }
         if loc.id == config.plaque {
-            let mut staged = p.data.inventory.clone();
-            let mut grants = false;
-            for &tool in &config.tools {
-                let owned = p
-                    .data
-                    .inventory
-                    .slots()
-                    .iter()
-                    .chain(p.data.equipment.slots())
-                    .chain(p.data.bank.slots())
-                    .flatten()
-                    .any(|item| item.id == tool);
-                if !owned {
-                    if staged
-                        .insert(&self.object_types, Insert::new(tool, 1))
-                        .is_err()
-                    {
-                        self.events.push(WorldEvent::GameMessage { actor, text:"Make room for the sanctuary's recovery tools, then read the plaque again.".into() });
-                        return true;
-                    }
-                    grants = true;
+            let missing = match crate::tower_rewards::missing_tools(&config.tools,
+                &[&p.data.inventory, &p.data.equipment, &p.data.bank]) {
+                Ok(missing) => missing,
+                Err(_) => return true,
+            };
+            let grants = !missing.is_empty();
+            let staged = match crate::tower_rewards::stage(&p.data.inventory, &self.object_types, &missing) {
+                Ok(inventory) => inventory,
+                Err(_) => {
+                    self.events.push(WorldEvent::GameMessage { actor, text:"Make room for the sanctuary's recovery tools, then read the plaque again.".into() });
+                    return true;
                 }
-            }
+            };
             // Both run admission and recovery tools use the same acknowledged
             // snapshot boundary as claims. Never expose an unsaved starter kit.
             let mut run = p.data.tower_run;
@@ -129,17 +122,16 @@ impl World {
             } else {
                 25
             };
-            let mut inventory = p.data.inventory.clone();
-            if inventory
-                .insert(&self.object_types, Insert::new(config.coins, count))
-                .is_err()
-                || inventory
-                    .insert(&self.object_types, Insert::new(config.beer, 1))
-                    .is_err()
-            {
-                self.events.push(WorldEvent::GameMessage { actor, text:"Your reward is safe. Make room for coins and a beer, then search the chest again.".into() });
-                return true;
-            }
+            let inventory = match crate::tower_rewards::stage(&p.data.inventory, &self.object_types, &[
+                crate::tower_rewards::Grant { id: config.coins, count },
+                crate::tower_rewards::Grant { id: config.beer, count: 1 },
+            ]) {
+                Ok(inventory) => inventory,
+                Err(_) => {
+                    self.events.push(WorldEvent::GameMessage { actor, text:"Your reward is safe. Make room for coins and a beer, then search the chest again.".into() });
+                    return true;
+                }
+            };
             let mut run = p.data.tower_run;
             if run.paid(run.id) {
                 self.checkpoint_cinderworks(actor, inventory, run,
@@ -157,6 +149,7 @@ impl World {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::inventory::Insert;
     use crate::{
         loc_collision::LocCollision, locations::Location, tower_cinderworks::Config,
         tower_run::Service,

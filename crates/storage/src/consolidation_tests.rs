@@ -61,7 +61,8 @@ fn fresh_and_existing_forge_v12_keep_chemistry_and_add_empty_tower_run() {
         )]),
     )]);
     a.save(&s).unwrap();
-    a.db.execute("DROP TABLE tower_floor_completion", &[]).unwrap();
+    a.db.execute("DROP TABLE tower_objective_history", &[]).unwrap();
+        a.db.execute("DROP TABLE tower_floor_completion", &[]).unwrap();
     a.db.execute("DROP TABLE tower_run", &[]).unwrap();
     a.db.execute("DELETE FROM _rust_migrations WHERE version>=13", &[])
         .unwrap();
@@ -76,7 +77,7 @@ fn fresh_and_existing_forge_v12_keep_chemistry_and_add_empty_tower_run() {
     assert_eq!(
         a.db.query("SELECT MAX(version) FROM _rust_migrations", &[], 1)
             .unwrap()[0][0],
-        int(14)
+        int(15)
     );
 }
 
@@ -197,8 +198,9 @@ fn v13_backfill_preserves_pending_rewards_and_replay_unlocks_without_grants() {
         }
         a.save(&saved).unwrap();
         let original = snapshot(&a, "consolidation");
+        a.db.execute("DROP TABLE tower_objective_history", &[]).unwrap();
         a.db.execute("DROP TABLE tower_floor_completion", &[]).unwrap();
-        a.db.execute("DELETE FROM _rust_migrations WHERE version=14", &[]).unwrap();
+        a.db.execute("DELETE FROM _rust_migrations WHERE version>=14", &[]).unwrap();
         a.initialize().unwrap();
         a.initialize().unwrap();
         let loaded = snapshot(&a, "consolidation");
@@ -283,4 +285,70 @@ fn two_floor_synthetic_contract_survives_actual_database_close_and_reopen() {
     assert_eq!(preserved.inventories, saved.inventories);
     drop(reopened);
     std::fs::remove_file(path).unwrap();
+}
+
+#[test]
+fn v15_backfill_uses_only_proven_objectives_and_preserves_pending_reward_and_replay() {
+    use gielinor_world::tower_progression::FloorId;
+    for phase in 0..4 {
+        let mut a = database();
+        let mut saved = snapshot(&a, "consolidation");
+        saved.tower_run.begin();
+        saved.tower_run.service(Service::Kitchen);
+        if phase > 0 { saved.tower_run = victory(); }
+        if phase == 2 { saved.tower_run.paid(saved.tower_run.id); saved.tower_run.begin(); }
+        if phase == 3 { saved.tower_run = Run::default(); }
+        a.save_checkpoint(&saved).unwrap();
+        let before = snapshot(&a, "consolidation");
+        a.db.execute("DROP TABLE tower_objective_history", &[]).unwrap();
+        a.db.execute("DELETE FROM _rust_migrations WHERE version=15", &[]).unwrap();
+        a.initialize().unwrap(); a.initialize().unwrap();
+        let after = snapshot(&a, "consolidation");
+        assert_eq!(after.tower_floors.achieved(FloorId::CINDERWORKS), match phase { 0 => 2, 3 => 0, _ => 31 });
+        assert_eq!(after.tower_run, before.tower_run);
+        assert_eq!(after.inventories, before.inventories);
+        assert_eq!(after.stats, before.stats);
+    }
+}
+
+#[test]
+fn history_preserves_full_u64_masks_stale_snapshots_and_separate_floor_identities() {
+    use gielinor_world::tower_progression::FloorId;
+    let mut a = database();
+    let mut saved = snapshot(&a, "consolidation");
+    let other = FloorId::new(2).unwrap();
+    saved.tower_floors.restore_history(other, 1u64 << 63);
+    a.save_checkpoint(&saved).unwrap();
+    saved.tower_floors = Default::default();
+    saved.tower_floors.restore_history(other, 3);
+    a.save_checkpoint(&saved).unwrap(); a.save_checkpoint(&saved).unwrap();
+    let loaded = snapshot(&a, "consolidation");
+    assert_eq!(loaded.tower_floors.achieved(other), (1u64 << 63) | 3);
+    assert_eq!(loaded.tower_floors.achieved(FloorId::CINDERWORKS), 0);
+    assert_eq!(loaded.tower_floors.floors().count(), 0);
+    a.create("other history", "fixture-hash-only", 1).unwrap();
+    assert_eq!(a.load("other history", 1).unwrap().unwrap().tower_floors.achieved(other), 0);
+}
+
+#[test]
+fn history_rolls_back_with_inventory_and_invalid_v13_refuses_v15_without_mutation() {
+    use gielinor_world::tower_progression::FloorId;
+    let mut a = database();
+    let mut saved = snapshot(&a, "consolidation");
+    saved.tower_run.begin(); saved.tower_run.service(Service::Forge);
+    saved.inventories = BTreeMap::from([(93, BTreeMap::from([(0, Item { id: 995, count: 12, vars: 0 })]))]);
+    a.db.migration_script("CREATE TRIGGER history_inventory_failure BEFORE INSERT ON inventory_objs BEGIN SELECT RAISE(ABORT,'history rollback'); END;").unwrap();
+    assert!(a.save_checkpoint(&saved).is_err());
+    assert_eq!(snapshot(&a, "consolidation").tower_floors.achieved(FloorId::CINDERWORKS), 0);
+    a.db.execute("DROP TRIGGER history_inventory_failure", &[]).unwrap();
+    a.save_checkpoint(&saved).unwrap();
+    a.db.execute("DROP TABLE tower_objective_history", &[]).unwrap();
+    a.db.execute("DELETE FROM _rust_migrations WHERE version=15", &[]).unwrap();
+    // Structurally allowed V13 values, semantically invalid: Imp before services.
+    a.db.execute("UPDATE tower_run SET flags=1 WHERE character_id=?", &[int(saved.character_id)]).unwrap();
+    let before = a.db.query("SELECT * FROM tower_run", &[], 1).unwrap();
+    assert!(a.initialize().is_err());
+    assert_eq!(a.db.query("SELECT * FROM tower_run", &[], 1).unwrap(), before);
+    assert_eq!(a.db.query("SELECT MAX(version) FROM _rust_migrations", &[], 1).unwrap()[0][0], int(14));
+    assert!(a.db.query("SELECT * FROM tower_objective_history", &[], 1).is_err());
 }

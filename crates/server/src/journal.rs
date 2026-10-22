@@ -134,11 +134,14 @@ mod tests {
         let legacy=data.tower_diary;
         data.tower_run.begin();
         data.tower_run.service(gielinor_world::tower_run::Service::Forge);
-        let current=journal.opened_for_run(259,&mut ui,&data.variables,3,journal.marks(&data),&crate::interface_hooks::Hooks::default(),data.tower_run).unwrap();
+        let current=journal.opened_for_run(259,&mut ui,&data.variables,3,journal.marks(&data),&crate::interface_hooks::Hooks::default(),data.tower_run,&data.tower_floors).unwrap();
         let body=String::from_utf8_lossy(&current.last().unwrap().payload);
         assert!(body.contains("Cinderworks"));
         assert!(body.contains("Done: Workshop"));
         assert!(body.contains("Next: Kitchen"));
+        assert!(body.contains("Permanent record"));
+        assert!(body.contains("Cinderworks milestones: 1/5"));
+        assert!(body.contains("Ash Warden: not defeated"));
         assert!(!body.contains("Hides"));
         assert_eq!(journal.login_packets(&data).unwrap(),current);
         assert_eq!(data.tower_diary,legacy);
@@ -176,8 +179,8 @@ impl Diary {
     ) -> Result<Vec<Packet>, String> {
         self.text_packets(&gielinor_world::tower_diary_ui::body(marks),10)
     }
-    pub(crate) fn cinderworks_packets(&self,run:gielinor_world::tower_run::Run)->Result<Vec<Packet>,String> {
-        self.text_packets(&run.journal(),14)
+    pub(crate) fn cinderworks_packets(&self,run:gielinor_world::tower_run::Run,progress:&gielinor_world::tower_progression::Progress)->Result<Vec<Packet>,String> {
+        self.text_packets(&gielinor_world::tower_floor_catalogue::journal(progress,run),14)
     }
     fn text_packets(&self,text:&str,line_height:i32)->Result<Vec<Packet>,String> {
         let mut packets = self.hidden.map(|c| interfaces::hide(c, true)).to_vec();
@@ -194,17 +197,17 @@ impl Diary {
 }
 impl Journal {
     pub fn opened_for_run(&self,interface:u16,ui:&mut State,vars:&Variables,combat:i32,
-        marks:Option<gielinor_world::tower_diary::Marks>,hooks:&crate::interface_hooks::Hooks,run:gielinor_world::tower_run::Run)->Result<Vec<Packet>,String> {
+        marks:Option<gielinor_world::tower_diary::Marks>,hooks:&crate::interface_hooks::Hooks,run:gielinor_world::tower_run::Run,progress:&gielinor_world::tower_progression::Progress)->Result<Vec<Packet>,String> {
         let mut packets=self.opened(interface,ui,vars,combat,if run.id>0 || self.cinderworks {None}else{marks},hooks)?;
         if (run.id>0 || self.cinderworks) && (interface==self.interface || interface==self.tabs[2]) {
-            if let Some(diary)=&self.diary {packets.extend(diary.cinderworks_packets(run)?);}
+            if let Some(diary)=&self.diary {packets.extend(diary.cinderworks_packets(run,progress)?);}
         }
         Ok(packets)
     }
     pub fn switch_for_run(&self,tab:usize,ui:&mut State,vars:&mut Variables,combat:i32,member:bool,logged_in:bool,
-        marks:Option<gielinor_world::tower_diary::Marks>,hooks:&crate::interface_hooks::Hooks,run:gielinor_world::tower_run::Run)->Result<Vec<Packet>,String> {
+        marks:Option<gielinor_world::tower_diary::Marks>,hooks:&crate::interface_hooks::Hooks,run:gielinor_world::tower_run::Run,progress:&gielinor_world::tower_progression::Progress)->Result<Vec<Packet>,String> {
         let mut packets=self.switch(tab,ui,vars,combat,member,logged_in,if run.id>0 || self.cinderworks {None}else{marks},hooks)?;
-        if run.id>0 || self.cinderworks {if let Some(diary)=&self.diary {packets.extend(diary.cinderworks_packets(run)?);}}
+        if run.id>0 || self.cinderworks {if let Some(diary)=&self.diary {packets.extend(diary.cinderworks_packets(run,progress)?);}}
         Ok(packets)
     }
 
@@ -216,7 +219,7 @@ impl Journal {
         data: &gielinor_world::simulation::PlayerData,
     ) -> Result<Vec<Packet>, String> {
         if data.tower_run.id>0 || self.cinderworks {
-            return self.diary.as_ref().map_or_else(||Ok(Vec::new()),|diary|diary.cinderworks_packets(data.tower_run));
+            return self.diary.as_ref().map_or_else(||Ok(Vec::new()),|diary|diary.cinderworks_packets(data.tower_run,&data.tower_floors));
         }
         match (&self.diary, self.marks(data)) {
             (Some(diary), Some(marks)) => diary.packets(marks),

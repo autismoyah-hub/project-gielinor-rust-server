@@ -444,6 +444,7 @@ mod tests {
                 expected|=1<<service;assert_eq!(w.data(actor).unwrap().tower_run.services,expected,"order {order:?}");
             }
             let data=w.data(actor).unwrap();assert_eq!(data.tower_run.services,7);
+            assert_eq!(data.tower_floors.achieved(crate::tower_progression::FloorId::CINDERWORKS),7);
             for id in [317,526,436,438,2349] {assert_eq!(crate::smithing_make::total(&data.inventory,&w.object_types,id),0);}
             for id in [315,13,2347,303] {assert_eq!(crate::smithing_make::total(&data.inventory,&w.object_types,id),1);}
             assert!(data.stats.fine_xp(5)>0 && data.stats.fine_xp(7)>0 && data.stats.fine_xp(13)>0);

@@ -34,6 +34,9 @@ impl World {
         let Some(p) = self.players.get_mut(slot) else {
             return;
         };
+        if !crate::tower_floor_catalogue::CINDERWORKS.definition.eligible(&p.data.tower_floors) {
+            return;
+        }
         let age = self.clock.0.wrapping_sub(p.login_cycle);
         if p.saving
             || p.pending_logout

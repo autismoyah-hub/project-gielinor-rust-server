@@ -71,6 +71,7 @@ impl Config {
         if !crate::tower_layout::contains(self.origin, coords) || !data.tower_run.service(service) {
             return None;
         }
+        data.tower_floors.reconcile_cinderworks(data.tower_run);
         Some(match service {
             Service::Forge => "The workshop is restored. Its blast furnace burns again. Your forged bronze weapon can pierce the foundry guardians.",
             Service::Kitchen => "The kitchen is restored. The sluice wheel turns again. Keep cooked food for the vent gallery and foundry.",

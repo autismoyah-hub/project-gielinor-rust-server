@@ -22,6 +22,14 @@ pub enum Reward {
     Replay,
 }
 impl Run {
+    pub fn objective_mask(self) -> u64 {
+        u64::from(self.services) | (u64::from(self.imp) << 3) | (u64::from(self.victory) << 4)
+    }
+    fn credit_objective(&self, bit: u64) -> bool {
+        let floor = crate::tower_floor_catalogue::CINDERWORKS;
+        let Ok(mut objectives) = floor.restore(self.objective_mask()) else { return false; };
+        floor.credit(&mut objectives, bit)
+    }
     pub fn journal(self) -> String {
         if self.id == 0 {
             return "<col=ffb83f>The Cinderworks</col><br><br>Restore three services:<br>Workshop, kitchen, altar.<br><br>Silence the Ash Imp.<br>Quench the Ash Warden.<br><br>Smoke warns of eruptions.<br>Move before it ignites.<br><br>Read the sanctuary plaque<br>to begin and collect tools.".into();
@@ -111,7 +119,7 @@ impl Run {
         true
     }
     pub fn service(&mut self, service: Service) -> bool {
-        if !self.active() || self.imp {
+        if !self.active() || self.imp || !self.credit_objective(service as u64) {
             return false;
         }
         let before = self.services;
@@ -119,14 +127,14 @@ impl Run {
         self.services != before
     }
     pub fn defeat_imp(&mut self) -> bool {
-        if !self.active() || self.services != 7 || self.imp {
+        if !self.active() || !self.credit_objective(crate::tower_floor_catalogue::IMP) {
             return false;
         }
         self.imp = true;
         true
     }
     pub fn defeat_warden(&mut self) -> bool {
-        if !self.active() || !self.imp {
+        if !self.active() || !self.credit_objective(crate::tower_floor_catalogue::WARDEN) {
             return false;
         }
         let Some(clears) = self.clears.checked_add(1) else {

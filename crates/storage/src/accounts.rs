@@ -1,7 +1,7 @@
 use crate::sqlite::{Database, Error, Value};
 use gielinor_world::{inventory::Item, CoordGrid};
 use std::collections::BTreeMap;
-const MIGRATIONS: [&str; 14] = [
+const MIGRATIONS: [&str; 15] = [
     include_str!("../migrations/V1__init.sql"),
     include_str!("../migrations/V2__add_run_energy_to_characters.sql"),
     include_str!("../migrations/V3__add_realm_config_columns.sql"),
@@ -16,6 +16,7 @@ const MIGRATIONS: [&str; 14] = [
     include_str!("../migrations/V12__chemistry_state.sql"),
     include_str!("../migrations/V13__tower_run.sql"),
     include_str!("../migrations/V14__tower_floor_completion.sql"),
+    include_str!("../migrations/V15__tower_objective_history.sql"),
 ];
 fn int(v: i64) -> Value {
     Value::Integer(v)
@@ -196,6 +197,7 @@ impl Accounts {
             }
             for (index, migration) in MIGRATIONS.iter().enumerate().skip(applied.len()) {
                 db.migration_script(migration)?;
+                if index == 14 { crate::tower_progression::backfill(db)?; }
                 db.execute(
                     "INSERT INTO _rust_migrations VALUES(?)",
                     &[int(index as i64 + 1)],
@@ -710,6 +712,7 @@ mod tests {
         )
         .unwrap();
         // Reconstruct the preceding owned schema entirely in this memory database.
+        a.db.execute("DROP TABLE tower_objective_history", &[]).unwrap();
         a.db.execute("DROP TABLE tower_floor_completion", &[]).unwrap();
         a.db.execute("DROP TABLE tower_run", &[]).unwrap();
         a.db.execute("DROP TABLE chemistry_state", &[]).unwrap();
@@ -730,6 +733,7 @@ mod tests {
         let mut a=Accounts::from_database(Database::memory().unwrap());a.initialize().unwrap();
         let (_,id)=a.create("Chemistry migration","fixture-hash-only",1).unwrap();
         a.db.execute("UPDATE characters SET run_energy=4321 WHERE id=?",&[int(id)]).unwrap();
+        a.db.execute("DROP TABLE tower_objective_history", &[]).unwrap();
         a.db.execute("DROP TABLE tower_floor_completion", &[]).unwrap();
         a.db.execute("DROP TABLE tower_run",&[]).unwrap();
         a.db.execute("DROP TABLE chemistry_state",&[]).unwrap();

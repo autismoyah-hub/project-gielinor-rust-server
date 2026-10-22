@@ -1338,6 +1338,7 @@ impl<B: AccountBackend> Runtime<B> {
                     journal.marks(data),
                     &self.interface_hooks,
                     data.tower_run,
+                    &data.tower_floors,
                 )
                 .map_err(io::Error::other)?
             {
@@ -2438,6 +2439,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                     marks,
                                                     &self.interface_hooks,
                                                     data.tower_run,
+                    &data.tower_floors,
                                                 ) {
                                                     Ok(packets) => {
                                                         for packet in packets {
@@ -3076,7 +3078,7 @@ impl<B: AccountBackend> Runtime<B> {
                     ) {
                         let run=self.world.data(actor).map_err(|e|io::Error::other(format!("{e:?}")))?.tower_run;
                         let current=run.id>0 || self.world.cinderworks.is_some();
-                        let packets=if current {diary.cinderworks_packets(run)} else {diary.packets(marks)};
+                        let packets=if current {diary.cinderworks_packets(run,&self.world.data(actor).map_err(|e|io::Error::other(format!("{e:?}")))?.tower_floors)} else {diary.packets(marks)};
                         for packet in packets.map_err(io::Error::other)? {
                             self.transport
                                 .send(connection, packet.opcode, &packet.payload)?;
@@ -3087,7 +3089,7 @@ impl<B: AccountBackend> Runtime<B> {
                 }
                 WorldEvent::CinderworksProgress{actor,run}=>{
                     if let (Some(connection),Some(diary))=(self.connection(actor),self.journal.as_ref().and_then(|j|j.diary.as_ref())) {
-                        for packet in diary.cinderworks_packets(run).map_err(io::Error::other)? {self.transport.send(connection,packet.opcode,&packet.payload)?;}
+                        for packet in diary.cinderworks_packets(run,&self.world.data(actor).map_err(|e|io::Error::other(format!("{e:?}")))?.tower_floors).map_err(io::Error::other)? {self.transport.send(connection,packet.opcode,&packet.payload)?;}
                     }
                     self.events.push(Event::World(WorldEvent::CinderworksProgress{actor,run}));
                 }
@@ -4104,6 +4106,7 @@ impl<B: AccountBackend> Runtime<B> {
                                 journal.marks(data),
                                 &self.interface_hooks,
                     data.tower_run,
+                    &data.tower_floors,
                             )
                             .map_err(io::Error::other)?,
                     );

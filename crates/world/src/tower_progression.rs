@@ -1,6 +1,6 @@
 //! Permanent solo floor accomplishments, independent of active encounters.
 //! Definitions are supplied by content; this module grants no items, XP or credits.
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct FloorId(u16);
@@ -38,6 +38,14 @@ pub struct Objectives {
     completed: u64,
 }
 impl Objectives {
+    pub fn restore(definition: Definition<'_>, completed: u64) -> Result<Self, &'static str> {
+        if !definition.valid() || completed & !(definition.required | definition.optional) != 0 {
+            return Err("Invalid floor objective state");
+        }
+        Ok(Self { floor: definition.id, completed })
+    }
+    pub fn floor(&self) -> FloorId { self.floor }
+    pub fn mask(&self) -> u64 { self.completed }
     pub fn new(definition: Definition<'_>) -> Result<Self, &'static str> {
         if !definition.valid() { return Err("Invalid floor definition"); }
         Ok(Self { floor: definition.id, completed: 0 })
@@ -57,10 +65,29 @@ pub enum Conquest { First, Replay }
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct Progress {
     completed: BTreeSet<FloorId>,
+    achieved: BTreeMap<FloorId, u64>,
 }
 impl Progress {
     pub fn restore(completed: impl IntoIterator<Item = FloorId>) -> Self {
-        Self { completed: completed.into_iter().collect() }
+        Self { completed: completed.into_iter().collect(), achieved: BTreeMap::new() }
+    }
+    /// Storage restores historical masks without requiring today's content
+    /// catalogue. Removed/changed content must not erase prior accomplishments.
+    pub fn restore_history(&mut self, floor: FloorId, mask: u64) {
+        if mask != 0 { *self.achieved.entry(floor).or_default() |= mask; }
+    }
+    pub fn history(&self) -> impl Iterator<Item = (FloorId, u64)> + '_ {
+        self.achieved.iter().map(|(floor, mask)| (*floor, *mask))
+    }
+    pub fn achieved(&self, floor: FloorId) -> u64 { self.achieved.get(&floor).copied().unwrap_or(0) }
+    pub fn observe(&mut self, definition: Definition<'_>, objectives: &Objectives) -> Result<bool, &'static str> {
+        if !definition.eligible(self) || objectives.floor != definition.id
+            || objectives.completed & !(definition.required | definition.optional) != 0 {
+            return Err("Invalid or ineligible objective observation");
+        }
+        let before = self.achieved(definition.id);
+        self.restore_history(definition.id, objectives.completed);
+        Ok(self.achieved(definition.id) != before)
     }
     pub fn floors(&self) -> impl Iterator<Item = FloorId> + '_ {
         self.completed.iter().copied()
@@ -73,12 +100,18 @@ impl Progress {
             || objectives.completed & definition.required != definition.required {
             return Err("Floor completion prerequisites not met");
         }
+        self.observe(definition, objectives)?;
         Ok(if self.completed.insert(definition.id) { Conquest::First } else { Conquest::Replay })
     }
     /// Import only an existing proven victory. Replay resets and reward claims
     /// must never remove conquest, grant another reward or manufacture milestones.
     pub fn reconcile_cinderworks(&mut self, run: crate::tower_run::Run) {
-        if run.valid() && run.clears > 0 { self.completed.insert(FloorId::CINDERWORKS); }
+        if !run.valid() { return; }
+        // An existing completed run proves all five mandatory objectives. An
+        // incomplete run proves only its committed service/guardian flags.
+        let mask = if run.clears > 0 { 31 } else { run.objective_mask() };
+        self.restore_history(FloorId::CINDERWORKS, mask);
+        if run.clears > 0 { self.completed.insert(FloorId::CINDERWORKS); }
     }
 }
 
