@@ -22,7 +22,9 @@ impl World {
             return;
         };
         let p = self.players.get_mut(slot).unwrap();
-        if p.location_revision != Some(revision)
+        if p.death_queued
+            || p.data.stats.current(3) as u8 == 0
+            || p.location_revision != Some(revision)
             || c.tutorial.is_some_and(|v| v.active(&p.data.variables))
         {
             return;
@@ -87,7 +89,9 @@ pub(super) fn complete(
     events: &mut Vec<WorldEvent>,
     random: &mut impl RandomSource,
 ) {
-    if p.location_interaction.is_some()
+    if p.death_queued
+        || p.data.stats.current(3) as u8 == 0
+        || p.location_interaction.is_some()
         || p.npc_interaction.is_some()
         || p.object_interaction.is_some()
         || p.pending_logout
@@ -262,6 +266,35 @@ mod tests {
             object: 10,
             control: false,
         }
+    }
+    #[test]
+    fn cooking_life_refuses_before_admission_or_completion_with_both_surface_registries() {
+        use crate::hits::{Hit,Style,Target};
+        struct Draws(u32);
+        impl RandomSource for Draws { fn below(&mut self,bound:u32)->u32 {assert_eq!(bound,256);self.0+=1;0} }
+        let mut cases=0;
+        for explicit in [false,true] {for guaranteed in [false,true] {for late in [false,true] {for phase in 0..3 {
+            let(mut w,actor,loc)=fixture();let mut random=Draws(0);
+            let c=w.cooking.as_mut().unwrap();let mut recipe=c.recipes[&10];recipe.ticks=4;
+            if !guaranteed {recipe.stop_burn=None;recipe.low=0;recipe.high=0;}
+            c.recipes.insert(10,recipe);
+            if explicit {c.surfaces.insert(loc.id,crate::cooking::Surface{animation:896,recipes:[(10,recipe)].into()});}
+            for slot in 0..28 {w.data_mut(actor).unwrap().inventory.restore_slot(slot,Some(Item{id:10,count:1,vars:0})).unwrap();}
+            if late {w.submit(actor,action(loc)).unwrap();w.tick_with_random(&mut random).unwrap();assert_eq!(random.0,0);}
+            if phase==0 {w.data_mut(actor).unwrap().stats.set_current(3,0);}else{
+                w.queue_hit(Target::Player(actor),Hit{display:None,source:None,style:Style::Typeless,damage:99},0).unwrap();
+                w.tick_with_random(&mut random).unwrap();assert!(w.drain_events().iter().any(|e|matches!(e,WorldEvent::DeathRequested(Target::Player(a))if *a==actor)));
+                if phase==2 {w.data_mut(actor).unwrap().stats.set_current(3,10);}
+            }
+            let before=w.data(actor).unwrap().clone();w.drain_events();
+            if !late {w.submit(actor,action(loc)).unwrap();}
+            for _ in 0..8 {w.tick_with_random(&mut random).unwrap();}
+            let after=w.data(actor).unwrap();assert_eq!(after.inventory.slots(),before.inventory.slots(),"case {cases}");assert_eq!(after.stats,before.stats,"case {cases}");
+            assert_eq!(random.0,0,"case {cases}");
+            assert!(!w.drain_events().iter().any(|e|matches!(e,WorldEvent::CookingMade{..}|WorldEvent::SkillAdvanced{..}|WorldEvent::PlayerCombatAnimation{..})),"case {cases}");
+            cases+=1;
+        }}}}
+        assert_eq!(cases,24);
     }
     #[test]
     fn actual_location_use_one_or_four_ticks_exact_slot_and_no_repeat() {
