@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0177",
+  "implementation_commit_sha": "1e1af49843769872a68ce344b7593284b9b7cd1d",
+  "recorded_utc": "2026-10-22T04:07:37.176365+00:00",
+  "result": "DEVELOPMENT_VALIDATION_PASS",
+  "sources": {
+    "crates/world/src/simulation/tool_crafting_actions.rs": "0c49411ef5e79b1cfec325481f2abcf6d52e01180cd6094d5650473758a3790b",
+    "crates/server/src/content/light_sources.rs": "1ed7e1cc5a138be67d14449c658b1fc85fca3fb211f362a23a8265395a460a16"
+  },
+  "logs": {
+    "before-001.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-server','--lib','light_sources_life_boundary')",
+      "sha256": "16a1aaea5b96cf8077bc14af1655bdfb4d574b190d5627a972d7749ffa63b890",
+      "result": "EXPECTED_REPRODUCTION_FAILURE",
+      "summaries": [
+        "Build CPU capacity: 2.3% sampled, ceiling70%.",
+        "Capacity: 8,371 MiB available, commit 43.1%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 40.25s",
+        "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 296 filtered out; finished in 0.02s"
+      ]
+    },
+    "focused-002.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-server','--lib','light_sources')",
+      "sha256": "ce6b27fbc7ac083d64de1dbc6f6f041868555748a5d9762c6791af7398687ee7",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 18.4% sampled, ceiling70%.",
+        "Capacity: 8,228 MiB available, commit 43.5%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 19.36s",
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 294 filtered out; finished in 6.58s"
+      ]
+    },
+    "shared-003.log": {
+      "command": "build.ps1 -Action test -CargoArgs @('-p','gielinor-server','-p','gielinor-world','--lib')",
+      "sha256": "12611b1acdf99bffb1aa019e170567319ed5b8c3e797fd35cb95258c1e1a09e8",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 14.7% sampled, ceiling70%.",
+        "Capacity: 8,308 MiB available, commit 43.2%, pages-in/s 0, disk 4.4 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 10.01s",
+        "test result: ok. 297 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 49.97s",
+        "test result: ok. 665 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 31.89s"
+      ]
+    },
+    "archive-004.log": {
+      "command": "scripts/integration-server-build.ps1 -Run openrune-immediate-life-20261021-001",
+      "sha256": "ca47bc00ec9e724a4f055d9d766ad8909f26ccb7e270255c5b08441cb14ee08e",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.3% sampled, ceiling70%.",
+        "Capacity: 8,408 MiB available, commit 43.1%, pages-in/s 1, disk 0.8 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 8.95s",
+        "Archived server CAC49C8D9E30BC7019B14D988D7640A58F0A99CE0ADADF17FA4DEE381569245F (604 source files)."
+      ]
+    }
+  },
+  "refusal_matrix": {
+    "cases": 108,
+    "dimensions": [
+      "nine registered lighting profiles",
+      "both held-use directions",
+      "request prepared before or after life-state change",
+      "zero HP / actual unresolved DeathRequested / visible HP restored without lifecycle completion"
+    ],
+    "checks": [
+      "Protected refusal",
+      "full duplicate-pack contents unchanged",
+      "all Stats and fineXP unchanged",
+      "no success chat, reward animation, SkillAdvanced or delayed conversion"
+    ]
+  },
+  "server_archive": {
+    "sha256": "CAC49C8D9E30BC7019B14D988D7640A58F0A99CE0ADADF17FA4DEE381569245F",
+    "source_count": 604,
+    "source_manifest_sha256": "394b1a8c0873f74ee4372ad7298bdc6123ce9a13ed879256420d1bbff3b0c84c",
+    "before_after_sources_unchanged": true
+  },
+  "limitations": [
+    "Implementation-owner working-tree regression and source archive; preserved local Cargo/private opt-ins mean no pristine or independent acceptance.",
+    "No genuine native dead-player input, native save/relogin or compiled Kotlin differential run in this correction. Original independent0084 failure stays at its original SHA.",
+    "Generic held prepare/finish retains existing face/dialog/cancellation ordering before immediate completion. Only recipe resolution/reward publication is newly refused; no claim of zero host-side UI events.",
+    "Already prepared requests are refused while death remains unresolved. Proper respawn/reconnect and replay semantics require independent V3; no new durable context token or persistence field.",
+    "Existing queued tool recipes and held extinguish already have life checks and are unchanged. Other PG-DEF-003 action-family findings remain open. Chemistry verification remains paused."
+  ]
+}
