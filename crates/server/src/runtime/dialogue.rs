@@ -369,6 +369,8 @@ impl<B: AccountBackend> Runtime<B> {
                 self.set_interface_events(actor, dialogue.button, 1, options.len() as i32, 1)?;
             }
         }
+        self.world.set_main_modal(actor,self.active[&actor].ui.modals.get(presentation.parent)).map_err(|e|io::Error::other(format!("{e:?}")))?;
+        self.world.location_dialogue_presented(actor,dialogue.token,dialogue.button.interface()).map_err(|e|io::Error::other(format!("{e:?}")))?;
         self.active.get_mut(&actor).unwrap().dialogue = Some(dialogue);
         Ok(())
     }

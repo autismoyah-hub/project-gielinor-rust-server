@@ -95,6 +95,7 @@ pub(super) enum Continuation {
 }
 #[derive(Clone, Copy)]
 pub(super) struct Pending {
+    pub(super) dialogue_modal: Option<u16>,
     pub(super) location: Location,
     pub(super) revision: u64,
     pub(super) action: Continuation,
@@ -143,6 +144,7 @@ impl World {
         }
         let p = self.players.get_mut(slot).unwrap();
         p.pending_location_action = Some(Pending {
+            dialogue_modal: None,
             location: current,
             revision,
             action: Continuation::Swap(rule),

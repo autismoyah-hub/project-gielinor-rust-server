@@ -76,6 +76,7 @@ impl World {
         p.dialog_generation = token;
         p.dialogue = None;
         p.pending_location_action = Some(Pending {
+            dialogue_modal: None,
             location,
             revision,
             origin: p.movement.coords,
@@ -106,6 +107,26 @@ impl World {
             _ => None,
         }
     }
+    /// A successfully projected page owns only its exact main-modal interface.
+    /// Opening an unrelated modal must still invalidate the continuation.
+    pub fn location_dialogue_presented(
+        &mut self,
+        actor: ActorId,
+        token: u64,
+        interface: u16,
+    ) -> Result<(), ActionError> {
+        self.player(actor)?;
+        if self.location_choice_token(actor) == Some(token) {
+            self.players
+                .get_mut(actor.slot as usize)
+                .unwrap()
+                .pending_location_action
+                .as_mut()
+                .unwrap()
+                .dialogue_modal = Some(interface);
+        }
+        Ok(())
+    }
     pub(super) fn validate_location_choice(&mut self, slot: usize) {
         let Some(p) = self.players.get(slot) else {
             return;
@@ -121,7 +142,8 @@ impl World {
         }
         let invalid = p.saving
             || p.pending_logout
-            || p.has_modal
+            || (p.has_modal
+                && (pending.dialogue_modal.is_none() || p.main_modal != pending.dialogue_modal))
             || (p.death_queued || p.data.stats.current(3) as u8 == 0)
             || p.movement.coords != pending.origin
             || p.movement.last_movement != pending.last_movement

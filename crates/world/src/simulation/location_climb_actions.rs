@@ -63,6 +63,7 @@ impl World {
         }
         let p = self.players.get_mut(slot).unwrap();
         p.pending_location_action = Some(location_swap_actions::Pending {
+            dialogue_modal: None,
             location,
             revision,
             action: location_swap_actions::Continuation::Climb(destination),

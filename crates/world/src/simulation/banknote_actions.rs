@@ -406,6 +406,33 @@ mod tests {
     }
 
     #[test]
+    fn banknote_world_owns_only_projected_choice_and_result_modal() {
+        let (mut w, a, l) = setup(13, 2, 5);
+        use_note(&mut w, a, l, 13, 1512);
+        let token = w.dialogue_token(a).unwrap().unwrap();
+        w.set_main_modal(a, Some(219)).unwrap();
+        w.set_modal_open(a, true).unwrap();
+        w.location_dialogue_presented(a, token, 219).unwrap();
+        w.tick().unwrap();
+        assert_eq!(w.dialogue_token(a).unwrap(), Some(token));
+        reply(&mut w, a, token, 1);
+        assert_eq!((total(&w, a, 1512), total(&w, a, 1511)), (3, 2));
+        let notice = w.dialogue_token(a).unwrap().unwrap();
+        w.set_main_modal(a, Some(193)).unwrap();
+        w.location_dialogue_presented(a, notice, 193).unwrap();
+        w.tick().unwrap();
+        assert_eq!(w.dialogue_token(a).unwrap(), Some(notice));
+        w.location_dialogue_presented(a, token, 777).unwrap();
+        w.tick().unwrap();
+        assert_eq!(w.dialogue_token(a).unwrap(), Some(notice));
+        w.set_main_modal(a, Some(777)).unwrap();
+        w.tick().unwrap();
+        assert_eq!(w.dialogue_token(a).unwrap(), None);
+        reply(&mut w, a, notice, 0);
+        assert_eq!((total(&w, a, 1512), total(&w, a, 1511)), (3, 2));
+    }
+
+    #[test]
     fn banknote_world_life_before_and_during_confirmation_cannot_consume_or_revive() {
         use crate::hits::{Hit, Style, Target};
         for late in [false, true] {
