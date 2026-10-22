@@ -3425,6 +3425,13 @@ impl<B: AccountBackend> Runtime<B> {
                     if let Some(active)=self.active.get_mut(&actor){active.sequence=Some((sequence,0));}
                     self.events.push(Event::World(event));
                 }
+                event @ WorldEvent::PlayerDelayedSound{actor,sound,delay} => {
+                    if let Some(connection)=self.active.get(&actor).and_then(|a|a.connection) {
+                        let packet=gielinor_protocol::game::synth_sound(sound,1,delay);
+                        self.transport.send(connection,packet.opcode,&packet.payload)?;
+                    }
+                    self.events.push(Event::World(event));
+                }
                 event @ (WorldEvent::CombatSound {actor,sound}|WorldEvent::PlayerSound{actor,sound}) => {
                     if let Some(connection) = self.active.get(&actor).and_then(|a| a.connection) {
                         let packet = gielinor_protocol::game::synth_sound(sound, 1, 0);

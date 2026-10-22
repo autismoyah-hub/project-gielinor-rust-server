@@ -52,6 +52,8 @@ pub enum Mode {
 #[derive(Debug, Clone)]
 pub struct Npc {
     pub type_id: u16,
+    /// Temporary visual definition; base stats, spawn and AI identity remain intact.
+    pub transformation: Option<u16>,
     /// Initial low-resolution facing; RSProt retains this across movement steps.
     pub respawn_direction: u8,
     pub movement: Movement,
@@ -91,6 +93,7 @@ pub struct Npc {
     pub patrol_pause: i32,
 }
 impl Npc {
+    pub fn visible_type(&self)->u16 {self.transformation.unwrap_or(self.type_id)}
     pub fn new(
         type_id: u16,
         spawn: CoordGrid,
@@ -123,6 +126,7 @@ impl Npc {
         };
         Ok(Self {
             type_id,
+            transformation: None,
             respawn_direction: 6,
             movement,
             spawn,

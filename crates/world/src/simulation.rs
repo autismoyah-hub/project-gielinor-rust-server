@@ -49,6 +49,7 @@ pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
 mod deposit_box_actions;
 mod banknote_actions;
+mod shearing_actions;
 #[cfg(test)]
 mod normal_bank_booth_tests;
 mod banker_note_actions;
@@ -130,6 +131,8 @@ struct NpcEntry {
     death_state: Option<crate::npc_death::State>,
     allocated_cycle: i32,
     allocated_pending: bool,
+    shear_hold: Option<shearing_actions::Hold>,
+    fleece_regrowth: Option<shearing_actions::Regrowth>,
 }
 #[derive(Debug, Clone, Copy)]
 pub struct NpcSnapshot {
@@ -333,6 +336,7 @@ struct Player {
     woodcutting_animation_at: i32,
     pending_location_action: Option<location_swap_actions::Pending>,
     pending_door: Option<crate::doors::Pending>,
+    pending_shearing: Option<shearing_actions::Job>,
     observer_id: Option<i64>,
     autocast_picker_defensive: Option<bool>,
     loot_drop_duration: Option<i32>,
@@ -370,6 +374,7 @@ impl Player {
     }
     fn pickpocket_stunned(&self)->bool {self.pickpocket_stun_until>self.protection.processed_clock}
     fn begin_held_action(&mut self) {
+        self.pending_shearing=None;
         self.queues.remove_all(spade_actions::QUEUE);
         self.queues.remove_all(bookcase_actions::QUEUE);
         self.queues.remove_all(crate::thieving::QUEUE);
@@ -737,6 +742,8 @@ pub enum WorldEvent {
     PlayerExactMove {actor:ActorId,from:CoordGrid,to:CoordGrid,offsets:[i8;4],delays:[u16;2],direction:u16,sequence:u16,sequence_delay:u8},
     PlayerAnimation {actor:ActorId,sequence:u16},
     PlayerSound {actor:ActorId,sound:u16},
+    PlayerDelayedSound {actor:ActorId,sound:u16,delay:u16},
+    SheepSheared {actor:ActorId,npc:NpcId,from:u16,to:u16,wool:i32,in_inventory:bool,regrow_at:i32},
     PickableCollected {actor:ActorId,location:crate::locations::Location,item:i32},
     PickableDepletion {actor:ActorId,trace:crate::pickables::ChanceTransition},
     PickableAdvanced {actor:ActorId,trace:crate::pickables::Transition},
@@ -1036,6 +1043,7 @@ pub struct World {
     pub pickup_policy: crate::ground_transfer::PickupPolicy,
     pub dropping: Option<crate::drop_actions::Config>,
     pub person_flyer: Option<i32>,
+    pub shearing: Option<crate::shearing::Config>,
     pub locations: crate::locations::Locations,
     pub location_types: BTreeMap<u32, crate::loc_collision::LocCollision>,
     pub location_approach: BTreeMap<u32, u8>,
@@ -1176,6 +1184,7 @@ impl Default for World {
             pickup_policy: Default::default(),
             dropping: None,
             person_flyer: None,
+            shearing: None,
             locations: Default::default(),
             location_types: BTreeMap::new(),
             location_approach: BTreeMap::new(),
@@ -1371,6 +1380,8 @@ impl World {
             death_state: None,
             allocated_cycle: self.clock.0,
             allocated_pending: true,
+            shear_hold: None,
+            fleece_regrowth: None,
         });
         assert!(result.is_ok());
         Ok(id)
@@ -1907,7 +1918,7 @@ impl World {
                 return self.resume_dialogue(id, token, choice, random)
             }
             Action::UseNpc {target,slot,object,control} => {
-                return self.request_banker_note(id,target,slot,object,control);
+                return self.request_held_npc(id,target,slot,object,control);
             }
             Action::OperateNpc {
                 target,
@@ -2442,6 +2453,7 @@ impl World {
                     }
                 }
                 Phase::NpcMain => {
+                    self.process_shearing_npcs();
                     let mut failed = vec![];
                     let ids: Vec<_> = self.npcs.iter().map(|(_, entry)| entry.id).collect();
                     for id in ids {
@@ -2556,7 +2568,7 @@ impl World {
                             .filter(|(_, e)| e.npc.visible)
                             .map(|(_, e)| NpcSnapshot {
                                 actor: e.id,
-                                type_id: e.npc.type_id,
+                                type_id: e.npc.visible_type(),
                                 movement: MovementSnapshot::from(&e.npc.movement),
                                 direction: e.npc.respawn_direction,
                                 face_player: e.npc.face_player,
@@ -2612,6 +2624,7 @@ impl World {
                         self.process_prayer(slot,random);
                         self.resume_tutorial_fire(slot);
                         self.resume_location_action(slot);
+                        self.resume_shearing(slot);
                         self.validate_banker_note_dialogue(slot);
                         self.resume_door(slot);
                         self.resume_pickup(slot);
@@ -3261,6 +3274,7 @@ impl World {
                             woodcutting_animation_at: 0,
                             pending_location_action: None,
                             pending_door: None,
+                            pending_shearing: None,
                             observer_id: None,
                             autocast_picker_defensive: None,
                             loot_drop_duration: None,

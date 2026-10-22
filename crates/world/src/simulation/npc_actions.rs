@@ -21,7 +21,7 @@ impl World {
             && !npc.delayed
             && self
                 .npc_options
-                .has_operation(npc.type_id, &p.data.variables, op)
+                .has_operation(npc.visible_type(), &p.data.variables, op)
     }
     pub(super) fn clear_npc_route(&mut self, slot: usize) {
         if let Some(p) = self.players.get_mut(slot) {
@@ -71,8 +71,8 @@ impl World {
         }
         let visible = self
             .npc_options
-            .morph(npc.type_id, &p.data.variables)
-            .unwrap_or(npc.type_id);
+            .morph(npc.visible_type(), &p.data.variables)
+            .unwrap_or(npc.visible_type());
         let handler = self
             .npc_handlers
             .get(&(visible, operation))
@@ -128,6 +128,9 @@ impl World {
             return false;
         }
         let actor = p.id;
+        if let Some(Handler::Shear{raw,selected})=pending.handler {
+            if !self.sheep_admission(actor,pending.target,raw,selected){self.clear_npc_route(slot);return true;}
+        }
         if let Some(Handler::Banknote{raw,visible,..})=pending.handler {
             if p.pending_logout || p.death_queued || p.data.stats.current(3) as u8==0
                 || !self.banker_note_identity(actor,pending.target,raw,visible) {
@@ -277,6 +280,9 @@ impl World {
                 && c.work.is_some_and(|w|npc.type_id==w.fishing_spot&&crate::tower_layout::contains(c.origin,npc.spawn)));
         let fishing_approach=cinderworks_fishing&&source.chebyshev_distance(target)<=3;
         if touches || bank_approach || fishing_approach {
+            if let Some(Handler::Shear{raw,selected})=pending.handler {
+                self.clear_npc_route(slot);self.start_shearing(slot,pending.target,raw,selected);return true;
+            }
             if let Some(Handler::Banknote{slot:selected,note,raw,visible})=pending.handler {
                 self.clear_npc_route(slot);
                 if let Err(error)=self.start_banker_note(actor,pending.target,selected,note,raw,visible) {
@@ -389,6 +395,7 @@ impl World {
             let event = match pending.handler {
                 Some(Handler::Bank) => Event::Bank,
                 Some(Handler::Banknote{..}) => unreachable!("Banknote dialogue handled above"),
+                Some(Handler::Shear{..}) => unreachable!("Shearing handled above"),
                 Some(Handler::Tanning) => Event::Tanning(pending.target),
                 Some(Handler::Pickpocket) => unreachable!("Pickpocket handled above"),
                 Some(Handler::TowerTanner) => unreachable!("Tanning handled above"),

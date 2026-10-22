@@ -474,6 +474,10 @@ pub fn configure<B: AccountBackend>(
     for &id in pickpocket.targets.keys() {if runtime.world.npc_handlers.contains_key(&(id,3)){return Err(io::Error::other("Conflicting pickpocket operation"));}}
     for &id in pickpocket.targets.keys() {runtime.world.npc_handlers.insert((id,3),gielinor_world::npc_interaction::Handler::Pickpocket);}
     runtime.world.pickpocket=Some(pickpocket);
+    let shearing=crate::content::shearing(n("npc"),n("obj"),n("content"),n("param"),n("seq"),n("synth"),&runtime.definitions).map_err(io::Error::other)?;
+    if shearing.targets.keys().any(|&id|runtime.world.npc_handlers.contains_key(&(id,1))){return Err(io::Error::other("Conflicting sheep operation"));}
+    for &raw in shearing.targets.keys(){runtime.world.npc_handlers.insert((raw,1),gielinor_world::npc_interaction::Handler::Shear{raw,selected:None});}
+    runtime.world.shearing=Some(shearing);
     runtime.world.doors =
         crate::doors::resolve(n("content"), n("param"), &parameters, &runtime.definitions)
             .map_err(io::Error::other)?;
