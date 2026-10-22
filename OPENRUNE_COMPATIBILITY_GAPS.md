@@ -36,3 +36,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0181 `44fea15fd759826245ea4b72eb645c29299b080e` adds four members-only Tzhaar elemental rune opening profiles. Owner36controlled/42actual-cache World/full301server671world pass. Native/durable recovery/independent and shop/Tokkul/Glarial/Koschei restrictions remain pending; other donor pack families excluded.
 
 - OR-MIG-0182 `e01ff31f2db8b87abf5a3fd8e05112952b2a3436` adds10target-supported pack opening profiles (31total), owner90controlled/62cacheWorld/full304server671world pass. Unsupported shark pack remains unbound; other softclay variants/shops/region/downstreamskills/native/recovery/independent remain open. Pack membership is distinct from output/acquisition; no chemistry campaign resume.
+
+- PG-REF-003: OR-MIG-0131 revision2 qualifies explicit Rust membership as Wiki-supported target policy, not an explicit inspected donor seller predicate. Owner provenance correction only; global donor gates and independent native F2P refusal unresolved.

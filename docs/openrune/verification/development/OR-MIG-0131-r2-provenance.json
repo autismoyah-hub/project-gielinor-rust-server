@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0131",
+  "revision": 2,
+  "implementation_commit_sha": "35a5f39b72cab3a2655f32ae29bdde54284c9a4b",
+  "recorded_utc": "2026-10-22T05:01:35.151536+00:00",
+  "result": "PROVENANCE_CORRECTION_ONLY",
+  "finding": "PG-REF-003",
+  "checks": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/npcs/CraftingGuildMasterCrafter.kt",
+      "sha256": "f70a93c9e3026caea05e181f754f7fbd4170dc61fac97694d0d642d575975990",
+      "revision": "Local archive;upstream commit unavailable;configured241",
+      "result": "MATCH"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/CraftingGuildRequirements.kt",
+      "sha256": "02347c4b64021c68416a985e4c5649d4f64ea0ae153644bdad5ade64c78780d5",
+      "revision": "Local archive;upstream commit unavailable;configured241",
+      "result": "MATCH"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/crafting/src/main/kotlin/org/rsmod/content/skills/crafting/util/CraftingConstants.kt",
+      "sha256": "393d05fa5a5645b2dd712fcfb8f8814845376846a7594dafe16909422fe2008f",
+      "revision": "Local archive;upstream commit unavailable;configured241",
+      "result": "MATCH"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/cooking/src/main/kotlin/org/rsmod/content/skills/cooking/CookingGuildHeadChef.kt",
+      "sha256": "84d9a040e83b1a4319c46c75a5ef3386096f136b05c783854872c64f8e330080",
+      "revision": "Local archive;upstream commit unavailable;configured241",
+      "result": "MATCH"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/cooking/src/main/kotlin/org/rsmod/content/skills/cooking/CookingGuildRequirements.kt",
+      "sha256": "39ec0100b37442b0cbd44cee9a4b020fce0ab8ceb87791a9131d9c55ffa2ad17",
+      "revision": "Local archive;upstream commit unavailable;configured241",
+      "result": "MATCH"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Crafting cape",
+      "sha256": "028213832f24caa2f774ce2c6b1cf2f8c65715132cc870875b472a5805758713",
+      "revision": "15232507",
+      "result": "MATCH"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cooking cape",
+      "sha256": "4e1cd1bb1e63425b7b43604e3664c1fa9a97ce1f1164c5932bb5731f36cbf6a5",
+      "revision": "15327004",
+      "result": "MATCH"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Crafting hood",
+      "sha256": "8015944f09ef2692cbbb5a45cf2d8a7f3b95de1ec66161ff35d98d91bc9b9f53",
+      "revision": "15185284",
+      "result": "MATCH"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cooking hood",
+      "sha256": "58d2147eb72754824c3c35e59b28807773585f8f3b712ada3cd4f5a49e4c2d1a",
+      "revision": "15185283",
+      "result": "MATCH"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Master Crafter",
+      "sha256": "4cbd604c910ed5649f04f1dbb59e4d932078cb9c86bd6c0926cea3464c0858fb",
+      "revision": "15318686",
+      "result": "MATCH"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Head chef",
+      "sha256": "e743dcedb9bcdec425ce31a28fb1119edd9d2f7f0c08cd990c76254de9bdb68e",
+      "revision": "15318610",
+      "result": "MATCH"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cape of Accomplishment",
+      "sha256": "f7ce09c7e07bfe8dc57dbf5d53807ebb4113b894ed5e96b75f841327f06041b7",
+      "revision": "15327887",
+      "result": "MATCH"
+    }
+  ],
+  "changes": [
+    "Correct attribution of membership: Wiki-supported target Rust policy, not explicit donor seller-method predicate.",
+    "Move target definition observation out of Wiki-supported facts."
+  ],
+  "limitations": [
+    "No gameplay/source/acceptance changes or new build/native run.",
+    "Global donor gates unresolved; native F2P refusal remains independent.",
+    "Original immutable contract revision1 and all verification evidence preserved."
+  ]
+}
