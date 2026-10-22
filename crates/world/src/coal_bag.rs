@@ -10,6 +10,8 @@ pub struct Config {
 }
 impl Config {
     pub fn contains(self,item:i32)->bool {item==self.closed||item==self.open}
+    /// Held options 1..4 use widget buttons 2/3/4/6; button5 is reserved.
+    pub fn accepts_operation(self,operation:u8)->bool {matches!(operation,2|3|4|6)}
     pub fn capacity(self,worn:&crate::inventory::Inventory)->i32 {
         if worn.slots().iter().flatten().any(|item|self.capes.contains(&item.id)){36}else{27}
     }

@@ -2511,7 +2511,7 @@ impl<B: AccountBackend> Runtime<B> {
                                                 .ok()
                                                 .and_then(|data| data.inventory.get(slot))
                                             {
-                                                if item.id==button.object && matches!(button.op,2..=5) && self.world.coal_bag.is_some_and(|c|c.contains(button.object)) {
+                                                if item.id==button.object && self.world.coal_bag.is_some_and(|c|c.contains(button.object)&&c.accepts_operation(button.op)) {
                                                     return Some(Action::CoalBagItem{slot,item:button.object,operation:button.op});
                                                 }
                                                 if button.op==2 && self.world.spade.is_some_and(|r|r.item==button.object) {

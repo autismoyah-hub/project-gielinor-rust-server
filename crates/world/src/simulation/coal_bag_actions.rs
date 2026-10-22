@@ -7,7 +7,7 @@ impl World {
         p.begin_held_action();p.queues.clear_weak();
         if p.protection.delayed(){return Err(ActionError::Delayed);}
         if p.has_modal{return Err(ActionError::Protected);}
-        if !p.member||!config.contains(item)||!matches!(operation,2..=5)||p.data.inventory.get(slot)!=Some(crate::inventory::Item{id:item,count:1,vars:0}){return Err(ActionError::InvalidItem);}
+        if !p.member||!config.contains(item)||!config.accepts_operation(operation)||p.data.inventory.get(slot)!=Some(crate::inventory::Item{id:item,count:1,vars:0}){return Err(ActionError::InvalidItem);}
         let current=p.data.variables.bit(config.stored).map_err(|_|ActionError::InvalidItem)?;
         let capacity=config.capacity(&p.data.equipment);
         let mut inventory=p.data.inventory.clone();let mut variables=p.data.variables.clone();let mut next=current;let mut message=None;
@@ -21,7 +21,7 @@ impl World {
             }
             3=>{inventory.restore_slot(slot,Some(crate::inventory::Item{id:if item==config.closed{config.open}else{config.closed},count:1,vars:0})).map_err(|_|ActionError::InvalidItem)?;}
             4=>{message=Some(if current<=0{"Your coal bag is empty.".to_owned()}else{format!("Your coal bag contains {current} of {capacity} coal.")});}
-            5=>{
+            6=>{
                 if current<=0{message=Some("Your coal bag is empty.".to_owned());}
                 else{let mut query=crate::inventory::Insert::new(config.coal,current);query.strict=false;let amount=inventory.insert(&self.object_types,query).map_err(|_|ActionError::InvalidItem)?.completed;
                     if amount==0{message=Some("You don't have any free space in your inventory.".to_owned());}else{next-=amount;message=Some(format!("You empty {amount} coal from the coal bag."));}}
