@@ -28,6 +28,18 @@ pub fn shearing(npcs:&Symbols,items:&Symbols,content:&Symbols,params:&Symbols,se
     Ok(Config{targets,shears:1735,wool:1737,sequence:893,sound:761})
 }
 
+pub fn sheep_flavour(shearing:&Config,sounds:&Symbols,d:&Definitions)->Result<gielinor_world::npc_flavour::Config,String> {
+    if sounds.get("sheep_atmospheric1")!=Some(&2053)||shearing.targets.len()!=11{return Err("Unattested sheep ambient binding".into());}
+    let mut types=std::collections::BTreeMap::new();
+    for(&raw,&bare)in &shearing.targets {for(id,group,op)in [(raw,41,Some("Shear")),(bare,42,None)] {
+        let t=d.npcs.get(&(id as u32)).ok_or("Missing ambient sheep")?;
+        if t.timer!=1||t.content_group!=group||t.name!="Sheep"||t.size!=1||t.ops[0].as_deref()!=op||!t.multi.is_empty(){return Err("Unattested ambient sheep profile".into());}
+        types.insert(id,gielinor_world::npc_flavour::Rule{text:"Baa!",sound:2053,radius:5,animation:None});
+    }}
+    if types.len()!=22{return Err("Overlapping ambient sheep stages".into());}
+    Ok(gielinor_world::npc_flavour::Config{types})
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -39,7 +51,7 @@ mod tests {
         for i in 0..11 {
             npcs.insert(format!("sheepunsheered{}",suffix[i]),raw[i]);npcs.insert(format!("sheepsheered{}",suffix[i]),next[i]);
             for(id,group)in [(raw[i],41),(next[i],42)] {
-                let mut ty=gielinor_cache::npcs::NpcType::decode(&[0]).unwrap();ty.name="Sheep".into();ty.content_group=group;
+                let mut ty=gielinor_cache::npcs::NpcType::decode(&[0]).unwrap();ty.name="Sheep".into();ty.content_group=group;ty.timer=1;
                 if group==41{ty.ops[0]=Some("Shear".into());ty.params.insert(65443,Param::Integer(next[i]));}
                 d.npcs.insert(id as u32,ty);
             }
@@ -68,5 +80,12 @@ mod tests {
             }
             assert!(shearing(&n,&i,&c,&p,&s,&a,&d).is_err(),"late drift {mode}");
         }
+    }
+    #[test]
+    fn sheep_ambient_binding_keeps_22_timer_profiles_and_excludes_talking_variants() {
+        let(n,i,c,p,s,a,mut d)=fixture();let shear=shearing(&n,&i,&c,&p,&s,&a,&d).unwrap();let sounds=[("sheep_atmospheric1".into(),2053)].into();
+        let rules=sheep_flavour(&shear,&sounds,&d).unwrap();assert_eq!(rules.types.len(),22);assert!(!rules.types.contains_key(&5843));assert_eq!(rules.types[&1178].radius,5);assert_eq!(rules.types[&2789].sound,2053);
+        d.npcs.get_mut(&2692).unwrap().timer=-1;assert!(sheep_flavour(&shear,&sounds,&d).is_err());
+        assert!(sheep_flavour(&shear,&[("sheep_atmospheric1".into(),2054)].into(),&d).is_err());
     }
 }

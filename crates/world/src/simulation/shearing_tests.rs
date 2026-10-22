@@ -111,6 +111,18 @@ fn shearing_visible_change_preserves_base_and_cancels_modal_held_npc_interaction
     for _ in 0..51{w.tick().unwrap();}assert_eq!(w.npc(n).unwrap().visible_type(),2693);assert_eq!(w.npc(n).unwrap().type_id,2693);w.set_modal_open(b,false).unwrap();
     for _ in 0..4{w.tick().unwrap();}assert_eq!(count(&w,b,1737),0);assert_eq!(count(&w,a,1737),1);
 }
+
+#[test]
+fn shearing_successful_face_reset_bleats_once_next_tick_while_cancel_does_not(){
+    for cancel in [false,true]{
+        let(mut w,a,n)=fixture(false,true);let rule=crate::npc_flavour::Rule{text:"Baa!",sound:2053,radius:5,animation:None};w.npc_flavour=Some(crate::npc_flavour::Config{types:[(2693,rule),(1178,rule)].into()});w.npc_mut(n).unwrap().wander_radius=0;
+        begin(&mut w,a,n,false);w.tick().unwrap();if cancel{w.set_modal_open(a,true).unwrap();}w.tick().unwrap();assert!(!w.drain_events().iter().any(|e|matches!(e,WorldEvent::NpcOverhead{..})));
+        w.tick().unwrap();let events=w.drain_events();assert_eq!(events.iter().filter(|e|matches!(e,WorldEvent::NpcOverhead{text:"Baa!",..})).count(),usize::from(!cancel));
+        assert!(w.npc(n).unwrap().dialogue_face.is_none());assert_eq!(count(&w,a,1737),i32::from(!cancel));
+        if !cancel{assert!(matches!(w.npc(n).unwrap().mode,Mode::Wander));}
+        w.tick().unwrap();assert!(!w.drain_events().iter().any(|e|matches!(e,WorldEvent::NpcOverhead{..})));
+    }
+}
 #[test]
 fn shearing_unresolved_death_before_completion_never_rewards_or_revives() {
     use crate::hits::{Hit,Style,Target};

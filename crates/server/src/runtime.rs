@@ -3481,6 +3481,11 @@ impl<B: AccountBackend> Runtime<B> {
                         slot,
                     }));
                 }
+                event @ WorldEvent::NpcOverhead{actor,text} => {
+                    let mut say=Vec::new();gielinor_protocol::appearance::string(&mut say,text).map_err(|e|io::Error::other(format!("{e:?}")))?;
+                    self.combat_updates.entry(gielinor_world::hits::Target::Npc(actor)).or_default().say=Some(say);
+                    self.events.push(Event::World(event));
+                }
                 WorldEvent::NpcCombatAnimation { actor, sequence } => {
                     self.combat_updates
                         .entry(gielinor_world::hits::Target::Npc(actor))
@@ -4330,6 +4335,7 @@ impl<B: AccountBackend> Runtime<B> {
                             })
                             .transpose()?;
                         let mut blocks = gielinor_protocol::combat_updates::NpcUpdates {
+                            say: display.and_then(|d|d.say.as_deref()),
                             hitmarks: hits.as_deref(),
                             headbars: bars.as_deref(),
                             sequence: display.and_then(|d| d.sequence),

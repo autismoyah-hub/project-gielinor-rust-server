@@ -344,6 +344,7 @@ mod tests {
             observer.cycle(&avatars).unwrap();
         }
         let display = crate::combat_display::Display {
+            say: None,
             spot_animations: vec![],
             sequence: None,
             hits: vec![Hitmark {

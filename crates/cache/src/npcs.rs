@@ -253,6 +253,7 @@ impl NpcType {
         };
         let mut npc = Npc::new(id, coords, self.size as i32, self.restrict, self.block_walk)?;
         npc.mode = mode;
+        npc.ai_timer = self.timer;
         npc.respawn_direction = self.respawn_direction;
         npc.wander_radius = self.wander_range as i32;
         npc.base_stats = self.stats;
@@ -268,6 +269,11 @@ impl NpcType {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn npc_ai_countdown_is_loaded_without_changing_spawn_stats(){
+        let mut d=NpcType::decode(&[0]).unwrap();d.timer=1;let npc=d.spawn(2693,CoordGrid::new(3200,3200,0).unwrap()).unwrap();assert_eq!(npc.ai_timer,1);assert_eq!(npc.stats,d.stats);assert_eq!(npc.type_id,2693);assert_eq!(npc.visible_type(),2693);
+        d.timer=-1;assert_eq!(d.spawn(2693,CoordGrid::new(3200,3200,0).unwrap()).unwrap().ai_timer,-1);
+    }
     #[test]
     fn enriched_fields_and_null_transform_do_not_fall_back() {
         let d = NpcType::decode(&[

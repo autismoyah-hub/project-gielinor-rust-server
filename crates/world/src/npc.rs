@@ -54,6 +54,8 @@ pub struct Npc {
     pub type_id: u16,
     /// Temporary visual definition; base stats, spawn and AI identity remain intact.
     pub transformation: Option<u16>,
+    /// Source AI countdown; content handlers reschedule it in the shared NPC phase.
+    pub ai_timer: i32,
     /// Initial low-resolution facing; RSProt retains this across movement steps.
     pub respawn_direction: u8,
     pub movement: Movement,
@@ -127,6 +129,7 @@ impl Npc {
         Ok(Self {
             type_id,
             transformation: None,
+            ai_timer: -1,
             respawn_direction: 6,
             movement,
             spawn,

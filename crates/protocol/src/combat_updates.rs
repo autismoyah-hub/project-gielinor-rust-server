@@ -12,6 +12,8 @@ pub struct NpcUpdates<'a> {
     pub hitmarks: Option<&'a [u8]>,
     pub headbars: Option<&'a [u8]>,
     pub sequence: Option<(u16, u8)>,
+    /// Pre-encoded CP1252 overhead speech including its terminator.
+    pub say: Option<&'a [u8]>,
     pub spot_animations: Option<&'a [u8]>,
     pub face: Option<&'a [u8]>,
 }
@@ -33,6 +35,7 @@ impl NpcUpdates<'_> {
             body.extend(id.to_be_bytes());
             body.push(delay.wrapping_neg());
         }
+        if let Some(say)=self.say {mask|=2;body.extend(say);}
         if let Some(spots) = self.spot_animations {
             mask |= 0x40000;
             body.extend(spots);
@@ -67,6 +70,20 @@ impl NpcUpdates<'_> {
         }
         out.extend(body);
         out
+    }
+}
+
+#[cfg(test)]
+mod speech_tests {
+    use super::*;
+    #[test]
+    fn npc_speech_uses_target_flag_two_after_sequence_before_face() {
+        let say=b"Baa!\0";
+        assert_eq!(NpcUpdates{say:Some(say),..Default::default()}.encode(),b"\x02Baa!\0");
+        let update=NpcUpdates{sequence:Some((893,0)),say:Some(say),face:Some(&[1,2,3]),..Default::default()}.encode();
+        assert_eq!(update,vec![138,3,125,0,66,97,97,33,0,1,2,3]);
+        let extended=NpcUpdates{combat:Some(7),say:Some(say),..Default::default()}.encode();
+        assert_eq!(extended,vec![66,128,7,0,0,0,66,97,97,33,0]);
     }
 }
 #[derive(Clone, Copy, Debug)]

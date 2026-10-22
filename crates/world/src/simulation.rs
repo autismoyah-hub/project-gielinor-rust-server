@@ -50,6 +50,7 @@ mod elemental_spell_actions;
 mod deposit_box_actions;
 mod banknote_actions;
 mod shearing_actions;
+mod npc_flavour_actions;
 #[cfg(test)]
 mod normal_bank_booth_tests;
 mod banker_note_actions;
@@ -743,6 +744,7 @@ pub enum WorldEvent {
     PlayerAnimation {actor:ActorId,sequence:u16},
     PlayerSound {actor:ActorId,sound:u16},
     PlayerDelayedSound {actor:ActorId,sound:u16,delay:u16},
+    NpcOverhead {actor:NpcId,text:&'static str},
     SheepSheared {actor:ActorId,npc:NpcId,from:u16,to:u16,wool:i32,in_inventory:bool,regrow_at:i32},
     PickableCollected {actor:ActorId,location:crate::locations::Location,item:i32},
     PickableDepletion {actor:ActorId,trace:crate::pickables::ChanceTransition},
@@ -1044,6 +1046,7 @@ pub struct World {
     pub dropping: Option<crate::drop_actions::Config>,
     pub person_flyer: Option<i32>,
     pub shearing: Option<crate::shearing::Config>,
+    pub npc_flavour: Option<crate::npc_flavour::Config>,
     pub locations: crate::locations::Locations,
     pub location_types: BTreeMap<u32, crate::loc_collision::LocCollision>,
     pub location_approach: BTreeMap<u32, u8>,
@@ -1185,6 +1188,7 @@ impl Default for World {
             dropping: None,
             person_flyer: None,
             shearing: None,
+            npc_flavour: None,
             locations: Default::default(),
             location_types: BTreeMap::new(),
             location_approach: BTreeMap::new(),
@@ -2510,6 +2514,7 @@ impl World {
                         if self.process_npc_death(id, random) {
                             continue;
                         }
+                        self.process_npc_flavour(id,random);
                         if self.process_npc_combat(id, random) {
                             continue;
                         }

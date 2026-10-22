@@ -95,14 +95,21 @@ impl World {
     pub(super) fn process_shearing_npcs(&mut self) {
         let clock=self.clock.0;
         let mut restored=Vec::new();
+        let mut flavour_resets=Vec::new();
         for(_,n)in self.npcs.iter_mut() {
             if let Some(r)=n.fleece_regrowth.filter(|r|clock>=r.due) {if n.npc.type_id==r.original&&n.npc.transformation==Some(r.sheared){n.npc.transformation=None;restored.push(n.id);}n.fleece_regrowth=None;}
             if let Some(h)=n.shear_hold {
                 let valid=h.release_at.map_or_else(||self.players.get(h.owner.slot as usize).is_some_and(|p|p.id==h.owner&&alive(p)&&p.pending_shearing.is_some_and(|j|j.target==n.id&&j.raw==n.npc.type_id)),|at|clock<at);
-                if !valid{release(n);}
+                if !valid{
+                    if h.release_at.is_some_and(|at|clock>=at)&&self.npc_flavour.as_ref().is_some_and(|c|c.types.contains_key(&n.npc.visible_type())) {
+                        n.npc.mode=Mode::Wander;flavour_resets.push(n.id);
+                    }
+                    release(n);
+                }
             }
         }
         for target in restored{self.invalidate_sheep_target(target);}
+        for target in flavour_resets{self.npc_flavour_say(target);}
     }
     /// Model the source's type-dependent interaction UID without respawning
     /// the authoritative NPC or resetting its base stats and AI state.

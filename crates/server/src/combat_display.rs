@@ -18,6 +18,7 @@ pub struct Config {
 }
 #[derive(Default)]
 pub struct Display {
+    pub say: Option<Vec<u8>>,
     pub spot_animations: Vec<gielinor_protocol::spot_animation::Animation>,
     pub sequence: Option<(u16, u8)>,
     pub hits: Vec<Hitmark>,

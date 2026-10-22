@@ -477,6 +477,7 @@ pub fn configure<B: AccountBackend>(
     let shearing=crate::content::shearing(n("npc"),n("obj"),n("content"),n("param"),n("seq"),n("synth"),&runtime.definitions).map_err(io::Error::other)?;
     if shearing.targets.keys().any(|&id|runtime.world.npc_handlers.contains_key(&(id,1))){return Err(io::Error::other("Conflicting sheep operation"));}
     for &raw in shearing.targets.keys(){runtime.world.npc_handlers.insert((raw,1),gielinor_world::npc_interaction::Handler::Shear{raw,selected:None});}
+    runtime.world.npc_flavour=Some(crate::content::sheep_flavour(&shearing,n("synth"),&runtime.definitions).map_err(io::Error::other)?);
     runtime.world.shearing=Some(shearing);
     runtime.world.doors =
         crate::doors::resolve(n("content"), n("param"), &parameters, &runtime.definitions)
