@@ -160,6 +160,14 @@ impl<B: AccountBackend> Runtime<B> {
                     Ok(())
                 }
             }
+            DialogueEvent::LocationObject {token,item,zoom,text} => {
+                let object=self.drop_presentation.ok_or_else(||io::Error::other("Object dialogue presentation missing"))?;
+                if object.parent!=presentation.parent || object.unclamp!=presentation.unclamp {return Err(io::Error::other("Object dialogue parent mismatch"));}
+                self.active.get_mut(&actor).unwrap().dialogue=Some(crate::dialogue::Active{
+                    token:*token,npc:None,page:Page::Object{item:*item,zoom:*zoom,text},remaining:Default::default(),button:object.object_button,
+                });
+                self.show_dialogue_page(actor)
+            }
             DialogueEvent::LocationChoice {
                 token,
                 title,
@@ -208,15 +216,16 @@ impl<B: AccountBackend> Runtime<B> {
                     Page::Choice(_) | Page::TitledChoice { .. } => {
                         (presentation.choice, Default::default())
                     }
+                    Page::Object{..} => (self.drop_presentation.ok_or_else(||io::Error::other("Object dialogue presentation missing"))?.object_interface,Default::default()),
                 };
-                let button = Component(
+                let button = if matches!(page,Page::Object{..}) {self.drop_presentation.unwrap().object_button} else {Component(
                     (interface as u32) << 16
                         | if matches!(page, Page::Choice(_) | Page::TitledChoice { .. }) {
                             1
                         } else {
                             5
                         },
-                );
+                )};
                 self.active.get_mut(&actor).unwrap().dialogue = Some(crate::dialogue::Active {
                     token: *token,
                     npc: Some(*npc),
@@ -238,7 +247,7 @@ impl<B: AccountBackend> Runtime<B> {
             |e: gielinor_protocol::buffer::DecodeError| io::Error::other(format!("{e:?}"));
         let mode = match dialogue.page {
             Page::Chat { .. } | Page::NamedChat { .. } => 0,
-            Page::Choice(_) | Page::TitledChoice { .. } => 1,
+            Page::Choice(_) | Page::TitledChoice { .. } | Page::Object{..} => 1,
         };
         let text_page = dialogue.remaining.pop_front();
         let title = match &dialogue.page {
@@ -332,6 +341,14 @@ impl<B: AccountBackend> Runtime<B> {
                     interfaces::text(dialogue.button.0, "Click here to continue")
                         .map_err(protocol)?,
                 )?;
+            }
+            Page::Object{item,zoom,text} => {
+                let object=self.drop_presentation.ok_or_else(||io::Error::other("Object dialogue presentation missing"))?;
+                self.dialogue_packet(actor,gielinor_protocol::chat::game(115,None,text).map_err(protocol)?)?;
+                self.dialogue_packet(actor,client_script::run(2868,&[Argument::String("Click here to continue".into())]).map_err(protocol)?)?;
+                self.set_interface_events(actor,dialogue.button,0,1,1)?;
+                self.dialogue_packet(actor,interfaces::object(object.object_model.0,*item,i32::from(*zoom)))?;
+                self.dialogue_packet(actor,interfaces::text(object.object_text.0,text).map_err(protocol)?)?;
             }
             Page::Choice(options) | Page::TitledChoice { options, .. } => {
                 let title = match &dialogue.page {

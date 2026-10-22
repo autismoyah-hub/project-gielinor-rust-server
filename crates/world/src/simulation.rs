@@ -48,6 +48,7 @@ mod movement_actions;
 pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
 mod deposit_box_actions;
+mod banknote_actions;
 mod bank_access_actions;
 mod worn_item_swap_actions;
 mod worn_stat_boost_actions;

@@ -104,7 +104,7 @@ impl World {
     pub fn cancel_dialogue(&mut self, actor: ActorId) -> Result<bool, ActionError> {
         self.player(actor)?;
         let p = self.players.get_mut(actor.slot as usize).unwrap();
-        let choice=p.pending_location_action.is_some_and(|pending|matches!(pending.action,location_swap_actions::Continuation::Choice{..}));
+        let choice=p.pending_location_action.is_some_and(|pending|matches!(pending.action,location_swap_actions::Continuation::Choice{..}|location_swap_actions::Continuation::Message{..}));
         if choice {p.pending_location_action=None;}
         let cancelled = p.dialogue.take().is_some() || choice;
         if cancelled {

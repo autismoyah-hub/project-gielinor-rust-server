@@ -85,12 +85,13 @@ impl World {
 }
 /// Actor-owned continuation; the existing protection clock supplies its delay.
 #[derive(Clone,Copy)]
-pub(super) enum ChoiceAfter {Jump,Climb{animation:u16,delay:i32}}
+pub(super) enum ChoiceAfter {Jump,Climb{animation:u16,delay:i32},Banknote{slot:usize,note:i32}}
 #[derive(Clone, Copy)]
 pub(super) enum Continuation {
     Swap(Swap),
     Climb(CoordGrid),
     Choice { token:u64, destinations:[Option<CoordGrid>;2], after:ChoiceAfter },
+    Message { token:u64 },
 }
 #[derive(Clone, Copy)]
 pub(super) struct Pending {
@@ -160,7 +161,7 @@ impl World {
         }
     }
     pub(super) fn resume_location_action(&mut self, slot: usize) {
-        if self.players.get(slot).and_then(|p|p.pending_location_action).is_some_and(|p|matches!(p.action,Continuation::Choice{..})){
+        if self.players.get(slot).and_then(|p|p.pending_location_action).is_some_and(|p|matches!(p.action,Continuation::Choice{..}|Continuation::Message{..})){
             self.validate_location_choice(slot);return;
         }
         let pending = {
@@ -195,7 +196,7 @@ impl World {
             return;
         }
         match pending.action {
-            Continuation::Choice{..} => unreachable!("choices wait for authenticated replies"),
+            Continuation::Choice{..}|Continuation::Message{..} => unreachable!("choices wait for authenticated replies"),
             Continuation::Swap(mut rule) => {
                 rule.animation = None;
                 rule.sound = None;

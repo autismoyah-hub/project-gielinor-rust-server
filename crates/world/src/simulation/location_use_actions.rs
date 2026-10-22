@@ -28,6 +28,7 @@ impl World {
             }
             return;
         }
+        if self.ordinary_bank_booths.contains(&loc.id){self.start_banknote_exchange(slot,loc,inv_slot as usize,object);return;}
         if self.facility_crafting.get(&loc.id).is_some_and(|c|c.locations.contains_key(&loc.id)&&c.recipes.iter().any(|r|r.accepts_input(object))) {
             self.request_facility_crafting(slot,loc,Some((inv_slot as usize,object)));return;
         }

@@ -39,7 +39,7 @@ impl World {
             },
         );
     }
-    fn start_location_choice(
+    pub(super) fn start_location_choice(
         &mut self,
         slot: usize,
         location: Location,
@@ -59,7 +59,7 @@ impl World {
         if p.saving
             || p.pending_logout
             || p.has_modal
-            || p.data.stats.current(3) <= 0
+            || (p.death_queued || p.data.stats.current(3) as u8 == 0)
             || options.len() != 2
         {
             return;
@@ -102,7 +102,7 @@ impl World {
             return None;
         }
         match p.pending_location_action?.action {
-            Continuation::Choice { token, .. } => Some(token),
+            Continuation::Choice { token, .. } | Continuation::Message { token } => Some(token),
             _ => None,
         }
     }
@@ -113,13 +113,16 @@ impl World {
         let Some(pending) = p.pending_location_action else {
             return;
         };
-        if !matches!(pending.action, Continuation::Choice { .. }) {
+        if !matches!(
+            pending.action,
+            Continuation::Choice { .. } | Continuation::Message { .. }
+        ) {
             return;
         }
         let invalid = p.saving
             || p.pending_logout
             || p.has_modal
-            || p.data.stats.current(3) <= 0
+            || (p.death_queued || p.data.stats.current(3) as u8 == 0)
             || p.movement.coords != pending.origin
             || p.movement.last_movement != pending.last_movement
             || p.location_interaction.is_some()
@@ -154,6 +157,23 @@ impl World {
         if p.protection.delayed() {
             return Err(ActionError::Delayed);
         }
+        let message = matches!(
+            p.pending_location_action.unwrap().action,
+            Continuation::Message { .. }
+        );
+        if message {
+            if !(0..=1).contains(&choice) {
+                return Ok(());
+            }
+            let p = self.players.get_mut(actor.slot as usize).unwrap();
+            p.pending_location_action = None;
+            p.protection.suspended = false;
+            self.events.push(WorldEvent::Dialogue {
+                actor,
+                event: crate::dialogue::Event::Closed,
+            });
+            return Ok(());
+        }
         if !(1..=2).contains(&choice) {
             return Ok(());
         }
@@ -168,12 +188,18 @@ impl World {
         else {
             unreachable!()
         };
+        if let ChoiceAfter::Banknote { slot, note } = after {
+            return self.finish_banknote_choice(actor, pending, slot, note, choice == 1);
+        }
         self.events.push(WorldEvent::Dialogue {
             actor,
             event: crate::dialogue::Event::Closed,
         });
         if let Some(destination) = destinations[(choice - 1) as usize] {
             match after {
+                ChoiceAfter::Banknote { .. } => {
+                    unreachable!("banknotes do not select a destination")
+                }
                 ChoiceAfter::Jump => self.finish_location_climb(
                     actor.slot as usize,
                     pending.location,
@@ -257,6 +283,47 @@ mod tests {
         assert!(w.drain_events().iter().any(|e|matches!(e,WorldEvent::Dialogue{event:crate::dialogue::Event::LocationChoice{title:"Climb up or down the stairs?",options,..},..}if *options==["Climb up the stairs.","Climb down the stairs."])));
         token
     }
+    #[test]
+    fn scenery_choice_accepts_unsigned_high_hitpoints_but_death_remains_terminal() {
+        use crate::hits::{Hit, Style, Target};
+        for mill in [false, true] {
+            let (mut w, a, l) = if mill { windmill_fixture() } else { fixture() };
+            w.data_mut(a).unwrap().stats.set_current(3, 150u8 as i8);
+            let token = if mill {
+                open_windmill(&mut w, a, l)
+            } else {
+                open(&mut w, a, l)
+            };
+            w.queue_hit(
+                Target::Player(a),
+                Hit {
+                    display: None,
+                    source: None,
+                    style: Style::Typeless,
+                    damage: 255,
+                },
+                0,
+            )
+            .unwrap();
+            w.tick().unwrap();
+            assert!(w
+                .drain_events()
+                .iter()
+                .any(|e| matches!(e,WorldEvent::DeathRequested(Target::Player(id))if *id==a)));
+            w.data_mut(a).unwrap().stats.set_current(3, 10);
+            let origin = w.data(a).unwrap().coords;
+            w.submit(a, Action::ResumeDialogue { token, choice: 1 })
+                .unwrap();
+            w.tick().unwrap();
+            assert_eq!(w.dialogue_token(a).unwrap(), None);
+            assert_eq!(w.data(a).unwrap().coords, origin);
+            assert!(!w
+                .drain_events()
+                .iter()
+                .any(|e| matches!(e, WorldEvent::LocationClimbed { .. })));
+        }
+    }
+
     #[test]
     fn spiral_choice_waits_without_npc_and_commits_only_selected_server_landing_once() {
         for (choice, expected) in [(1, (3206, 3204, 2)), (2, (3205, 3203, 0))] {
