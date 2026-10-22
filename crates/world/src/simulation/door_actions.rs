@@ -248,6 +248,16 @@ impl World {
             LocationAction::HeldUse { .. } => 0,
         };
         let actor = p.id;
+        if self.location_handlers.get(&(loc.id, operation)).is_some_and(|h| h.is_pickable())
+            && (p.death_queued || p.data.stats.current(3) as u8 == 0)
+        {
+            let p = self.players.get_mut(slot).unwrap();
+            p.location_interaction = None;
+            p.movement.interacting = false;
+            p.movement.abort();
+            self.events.push(WorldEvent::ActionRejected { actor, error: ActionError::Protected });
+            return;
+        }
         if self.locations.find_type(loc.coords, loc.id) != Some(loc)
             || (self.location_handlers.get(&(loc.id,operation)).is_some_and(|h|h.is_pickable())
                 && self.locations.revision(loc)!=p.location_revision) {

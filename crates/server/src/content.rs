@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+mod chicken_coops;
+pub use chicken_coops::chicken_coops;
 mod spade_tool;
 pub use spade_tool::spade_tool;
 mod windmill_ladders;

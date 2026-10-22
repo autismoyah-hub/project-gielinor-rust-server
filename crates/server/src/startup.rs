@@ -193,6 +193,9 @@ pub fn configure<B: AccountBackend>(
             prayer: stat("prayer")?,
         },
     );
+    let coops=crate::content::chicken_coops(n("obj"),n("loc"),n("content"),n("seq"),n("synth"),&runtime.definitions).map_err(io::Error::other)?;
+    if coops.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting ordinary coop handlers"));}
+    runtime.world.location_handlers.extend(coops);
     let pickables=crate::content::perpetual_pickables(n("obj"),n("loc"),n("seq"),n("synth"),&runtime.definitions).map_err(io::Error::other)?;
     if pickables.keys().any(|&(id,op)|runtime.world.has_location_handler(id,op)){return Err(io::Error::other("Conflicting pickable location handlers"));}
     runtime.world.location_handlers.extend(pickables);
