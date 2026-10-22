@@ -48,3 +48,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0184 `29b7b763a66f3f2818f30ac967c4ea9cb3ea8228` adds selected static18491 held-note confirmation and conversion; owner shared308/682/cache12/native3 pass. Broader bank/banker/dynamic population, native refusal/life, compiledKotlin and independentV0–V4 remain open; chemistry campaign paused.
 
 - OR-MIG-0185 `caf12f91995aa87c26e65f4519ea097bd00503f5` adds registered Banker/tutor held notes using common exchange/dialogue, owner308server688world/cache24/nativeTutor3pass. Native Sad/no-turn refusals, actual ordinary-banker population, broader speech/PIN/Collect/tutorial/slot shop/capacity, compiledKotlin and independent verification remain open. Chemistry stays paused.
+
+- OR-MIG-0185r2 adds owner native tutor3227 full/non-note Sad/no-turn refusal coverage at unchanged`caf12f91995aa87c26e65f4519ea097bd00503f5`. No independent/portrait-pixel/native-life/range/ordinarypopulation claim; broader Banker branches/capacity still open.

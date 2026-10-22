@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0185",
+  "revision": 2,
+  "implementation_commit_sha": "caf12f91995aa87c26e65f4519ea097bd00503f5",
+  "recorded_utc": "2026-10-22T08:35:28.854994+00:00",
+  "result": "OWNER_NATIVE_FULL_AND_NONNOTE_REFUSALS_PASS_INDEPENDENT_PENDING",
+  "prior_report": "docs/openrune/verification/development/OR-MIG-0185.json",
+  "sources": {
+    "crates/world/src/dialogue.rs": "ab9827609e4d6646e2d628464ffcb2c6d9b1aa42102df29d6ed4340eb4e79ff9",
+    "crates/server/src/dialogue.rs": "f1d6477fb935c17ac987bb9494d47779f6d5a86c126fa544841e60e59bbf3b66",
+    "crates/world/src/banknote_exchange.rs": "c3a93451f6c472ce8167b1fa6595bbf98356dc6957b6fbc8b1141b7f540fb499",
+    "crates/world/src/npc_interaction.rs": "188836bedeafa1bb8fa6f6924b522575d6a7f2f030dc50cdd14d8c0500892205",
+    "crates/world/src/simulation.rs": "fb99b1147a8637674494fea67d57985d5e0f167484e3483c4a134dd7dcde23fc",
+    "crates/world/src/simulation/npc_actions.rs": "2d7ca9f065bd41f0d21bdc0ef5fed59de28df671b1ede50340b5ec309a2fb3d3",
+    "crates/world/src/simulation/banker_note_actions.rs": "3f12d85eb336e0f3c1b036230c1d070ac768ec5bf2f4192352536da66b6d963a",
+    "crates/world/src/simulation/dialogue_actions.rs": "2085c24a32a2c6a6e43dfd50d0b5bfccf76d3f02697d8f95a42aeaf408a84361",
+    "crates/server/src/runtime/npc_interaction.rs": "97a005753d510ead8697033789708c22c1d06673d143b1934e810adc1cbdb980",
+    "crates/server/src/startup.rs": "0bb3e41774103c30a35faaae7d3ce038e3916ab030c1743948da500dcdc45300"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-npcs/src/main/kotlin/org/rsmod/content/generic/npcs/banker/Banker.kt",
+      "sha256": "c9092d825c8d3d7d13759b0c88ee9eebede17170ecf31dd2f637c74780abbf57",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/interfaces/bank/src/main/kotlin/org/rsmod/content/interfaces/bank/BankUnnote.kt",
+      "sha256": "19e40b1dfd2075d13813ac627c7b4dffc2759659faafb87791685a38c9116120",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/protect/ProtectedAccess.kt",
+      "sha256": "7b1611b7e2e7ab4de6296f086c75be5c2c232386c7282cd0c5a3ecc1b3c8c6aa",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Banker",
+      "sha256": "4413e1ad1ddae49abb30272e23d7dcf8ba89c83c854d5b77a33a577b04f22a7e",
+      "availability": "protected_local_reference",
+      "revision": "15148288"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bank note",
+      "sha256": "59d28760322e01725aec0b7b1e738c40fb9a7e51a1dc5f87815f41a6502a549d",
+      "availability": "protected_local_reference",
+      "revision": "15337973"
+    }
+  ],
+  "server_archive": {
+    "sha256": "9C7F2543D567C3F7269884FB3539310854D4A63FCBE11A4D1DC3E5ECA13A1E00",
+    "source_count": 620,
+    "all620_sources_still_unchanged": true,
+    "source_manifest_sha256": "7844c6b8dfe1a64dc3fce548317791db469371ce583e4dcc1b0162162cf156e1",
+    "new_server_build_or_gameplay_change": false
+  },
+  "driver": {
+    "driver": "banker-refusal-001",
+    "scenario": "npc3227refusals",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless software-rendered native object menu and bank widgets; no OS Window/desktop input or independent verdict",
+    "files": {
+      "NativeBankerRefusalScenario.rs": "93325F3C8ACA1540DB1F5C2E5B59BC328324C949888646731F43B7CBDFC03639",
+      "server_banker_refusal.exe": "1A1B8F623975F3051C7FD843C7A02EF684816E8BB11C6CCE190E518F46534EE2"
+    }
+  },
+  "pinned_library_files_checked_after": 990,
+  "native": [
+    {
+      "reference": "work/integration/runs/openrune-banker-refusal-full-native-20261022-001/banker-refusal-native-assessment.json",
+      "sha256": "05fe223bd590ada099a2734373b8e5910c7465be666d51f3cbaf52fa0d591641",
+      "assessment": {
+        "result": "PASS_NATIVE_BANKER_REFUSAL",
+        "run": "openrune-banker-refusal-full-native-20261022-001",
+        "mode": "full",
+        "implementation_commit_sha": "caf12f91995aa87c26e65f4519ea097bd00503f5",
+        "server_sha256": "9C7F2543D567C3F7269884FB3539310854D4A63FCBE11A4D1DC3E5ECA13A1E00",
+        "client_sha256": "1A1B8F623975F3051C7FD843C7A02EF684816E8BB11C6CCE190E518F46534EE2",
+        "native_events": [
+          {
+            "kind": "native.banker_refusal_use",
+            "mode": "full",
+            "npc": 3227,
+            "index": 484,
+            "slot": 13,
+            "item": 1512,
+            "opcode": 86
+          },
+          {
+            "kind": "native.banker_refusal_observed",
+            "mode": "full",
+            "npc": 3227,
+            "head": 3227,
+            "sad_sequence": 610,
+            "facing_unchanged": true,
+            "angle_before": [
+              0,
+              0
+            ],
+            "angle_after": [
+              0,
+              0
+            ]
+          },
+          {
+            "kind": "native.banker_refusal_continue",
+            "component": 15138821,
+            "subcomponent": -1,
+            "opcode": 115
+          }
+        ],
+        "all_varp_changes": {
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "3079": {
+            "before": 0,
+            "after": 100
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "65515": {
+            "before": 0,
+            "after": 94
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "3077": {
+            "before": 0,
+            "after": 41901
+          }
+        },
+        "checks": [
+          "real149Use-on-NPC3227 pixel/menu86",
+          "exact refusal text/native231 NPC portrait3227 and bound Sad610-613 sequence; no confirmation219",
+          "same NPC facing packet-state and turn angle/target before/after refusal",
+          "actual231:5 Continue115/-1 closes dialogue without exchange",
+          "exact saved inventory/items/vars,otherinventories,Stats/fineXP,position unchanged; advanced offline logout and0/unforced shutdown"
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.328,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 08:24:40"
+          }
+        },
+        "shutdown": {
+          "pid": 16084,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T08:24:41.7312884Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "5d690aaf38600a610bf2b6dc5a98137146248c943ec9f7fc4918cf19b10c03eb",
+          "final-state.json": "f02332c2b2a9e0b9541f44b84760fb34e2fce7112986e7b3e4d5b9e45e562c50",
+          "native-events.jsonl": "cd45a891a5952f135c9fc7e3d0894f75d7971f35c3ab2778e258f41d64e1c7be",
+          "client.log": "e6c7d83f5826db1e788655a6cfdf5f38c04eb86ac665da4986012ee38115613d",
+          "server.log": "a0eb19647e34d5f66a4371a959dec2d7e5ab7253e65ad77fdd5eca94a704207f",
+          "server.json": "88415e3ca74126e0df9f61424fcd631c95945bc2b9598272fddfa1f7fa7382c2",
+          "result.json": "3e8f2aedf84e73fdc01f26acde9bf2ae6001a1d8bdaeed39108ff6a64dfc726a",
+          "logout-observation.json": "2189f458c5bd14f8517424e56cd18071831e8f4b8ffc64d6eac1d63ca37a603e",
+          "shutdown.json": "1c536f55557039f240842ccf5231d58f360e9a4020eed5f0d26f6e32bb5e979d"
+        },
+        "limitations": [
+          "Owner same working-tree archive; not pristine or independent acceptance.",
+          "Sad/portrait assertion covers received native UI model/sequence/text state, not rendered animated portrait pixels or physical input.",
+          "No actor/NPC life, stale identity, exact coroutine timing or ordinary16298 scene acceptance added.",
+          "All varp changes reported; no broad variable/timer/bank-capacity/chemistry semantics accepted. Chemistry campaign remains paused."
+        ]
+      }
+    },
+    {
+      "reference": "work/integration/runs/openrune-banker-refusal-nonnote-native-20261022-001/banker-refusal-native-assessment.json",
+      "sha256": "6804c8d8fe4ba208e47a32e2a92ddad6d725438c2b4add4e611787b62818069c",
+      "assessment": {
+        "result": "PASS_NATIVE_BANKER_REFUSAL",
+        "run": "openrune-banker-refusal-nonnote-native-20261022-001",
+        "mode": "nonnote",
+        "implementation_commit_sha": "caf12f91995aa87c26e65f4519ea097bd00503f5",
+        "server_sha256": "9C7F2543D567C3F7269884FB3539310854D4A63FCBE11A4D1DC3E5ECA13A1E00",
+        "client_sha256": "1A1B8F623975F3051C7FD843C7A02EF684816E8BB11C6CCE190E518F46534EE2",
+        "native_events": [
+          {
+            "kind": "native.banker_refusal_use",
+            "mode": "nonnote",
+            "npc": 3227,
+            "index": 484,
+            "slot": 13,
+            "item": 995,
+            "opcode": 86
+          },
+          {
+            "kind": "native.banker_refusal_observed",
+            "mode": "nonnote",
+            "npc": 3227,
+            "head": 3227,
+            "sad_sequence": 611,
+            "facing_unchanged": true,
+            "angle_before": [
+              0,
+              0
+            ],
+            "angle_after": [
+              0,
+              0
+            ]
+          },
+          {
+            "kind": "native.banker_refusal_continue",
+            "component": 15138821,
+            "subcomponent": -1,
+            "opcode": 115
+          }
+        ],
+        "all_varp_changes": {
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "3077": {
+            "before": 0,
+            "after": 55743
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "65515": {
+            "before": 0,
+            "after": 93
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "3079": {
+            "before": 0,
+            "after": 99
+          }
+        },
+        "checks": [
+          "real149Use-on-NPC3227 pixel/menu86",
+          "exact refusal text/native231 NPC portrait3227 and bound Sad610-613 sequence; no confirmation219",
+          "same NPC facing packet-state and turn angle/target before/after refusal",
+          "actual231:5 Continue115/-1 closes dialogue without exchange",
+          "exact saved inventory/items/vars,otherinventories,Stats/fineXP,position unchanged; advanced offline logout and0/unforced shutdown"
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.328,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 08:25:54"
+          }
+        },
+        "shutdown": {
+          "pid": 15812,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T08:25:55.2366229Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "82f0ab0f651f1ab78e5cef2a33c7cdce46ebf285574cfe7e2d2eb5005b960fdf",
+          "final-state.json": "a5cba3815b9da07720e1981e75132c260f76fea33a761ee84303b42b68e685a0",
+          "native-events.jsonl": "ba701d98a905b72f4b3272911aaa21fc63289c0a24d1e6cfbf2ed547755a84de",
+          "client.log": "c11bb65479f69fefb3130acf1f2aee5df829058adfd8860eb294cb8ae07a7a23",
+          "server.log": "4ba4bc948345cdd1e0f929da2e13dc73c1970f821cdfe103a2df53cb6c6e6e13",
+          "server.json": "9cf8201dd272426ab4caa64e0819cd3be4adead651b570b14962b7f37f9f9b44",
+          "result.json": "b77ab89bce24eaadd0907b9dfb90644988f3df8e15e25a06aa9cbaeed8f39563",
+          "logout-observation.json": "96b00e587ad8462bb55f431fd4713793986c7afe6b10827c35828ad3af49b573",
+          "shutdown.json": "6ae46ed2f629253e72421df5599b166b854f547bf9df43aed2de58ce3a9f8ea1"
+        },
+        "limitations": [
+          "Owner same working-tree archive; not pristine or independent acceptance.",
+          "Sad/portrait assertion covers received native UI model/sequence/text state, not rendered animated portrait pixels or physical input.",
+          "No actor/NPC life, stale identity, exact coroutine timing or ordinary16298 scene acceptance added.",
+          "All varp changes reported; no broad variable/timer/bank-capacity/chemistry semantics accepted. Chemistry campaign remains paused."
+        ]
+      }
+    }
+  ],
+  "logs": {
+    "refusal-driver-010.log": {
+      "sha256": "c188202d6b0f78f0c9e2bec61506377df7d1530115c41142abc8777197f4d7a0",
+      "result": "PASS",
+      "summaries": [
+        "Capacity: 7,941 MiB available, commit 44.9%, pages-in/s 1, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "refusal-fixture-011.log": {
+      "sha256": "960c502338d455091e436db51af9eceb970c1a6b1ea09f40218d628cea959a45",
+      "result": "FAIL_PREPARATION_SYNTAX_PRESERVED",
+      "summaries": []
+    },
+    "refusal-fixture-012.log": {
+      "sha256": "074c6c53c80fc870127e6bd9afd40bce0989b32e999e4032e7708575f5859988",
+      "result": "PASS",
+      "summaries": []
+    },
+    "refusal-native-013.log": {
+      "sha256": "989ad863fda361fd99dd833d174d9bd8976eac574d380282a01fa73d547e29ff",
+      "result": "PASS",
+      "summaries": [
+        "Integration CPU capacity: 2.2% sampled, ceiling 70%.",
+        "Capacity: 8,304 MiB available, commit 43.6%, pages-in/s 0, disk 0.2 ms.",
+        "Cargo concurrency: -j 2",
+        "Native Banker full refusal PASS:exact text/head/Sad610-613,unchanged NPC facing+angle,unchanged inventory+XP,realContinue115",
+        "Integration CPU capacity: 1.8% sampled, ceiling 70%.",
+        "Capacity: 8,299 MiB available, commit 43.5%, pages-in/s 0, disk 4.2 ms.",
+        "Cargo concurrency: -j 2",
+        "Native Banker nonnote refusal PASS:exact text/head/Sad610-613,unchanged NPC facing+angle,unchanged inventory+XP,realContinue115"
+      ]
+    }
+  },
+  "preserved_preparation_failure": {
+    "reference": "work/openrune-banker-notes-20261022/refusal-fixture-failed-011.py",
+    "sha256": "1acf851057ca3c5880634f3306e58de415df6b1d269aa891b75b3a0e203ca87e",
+    "reason": "Missing space in Python conditional expression; parser failed before cloning/writing any fixture. Corrected helper generated new isolated full/nonnote fixtures; no prior database reset."
+  },
+  "limitations": [
+    "Additional owner native evidence at unchangedcaf12/9C7working-tree archive; not pristine or independent acceptance.",
+    "Received native231portrait/text/Sad sequence and synchronized NPC facing/turn state checked, not rendered animated portrait pixels or physical input.",
+    "One F2P actual tutor3227; native three-tile bound/life/stale/morph cases and ordinary16298scene population remain separate owner World/cache or pending native scope.",
+    "Initial UI/session varp changes reported completely; no broad variable/timer/account-capacity/PIN/collection/shop semantics accepted. Banker talk/tutorial/slot shop remain unported; chemistry independent campaign paused."
+  ]
+}
