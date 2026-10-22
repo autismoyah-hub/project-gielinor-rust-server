@@ -1,0 +1,636 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0183",
+  "revision": 2,
+  "implementation_commit_sha": "e2266c6535da2e4279cf68225b44398c1b30aecf",
+  "recorded_utc": "2026-10-22T06:10:11.080268+00:00",
+  "result": "DEVELOPMENT_NATIVE_VALIDATION_PASS",
+  "sources": {
+    "crates/server/src/content.rs": "3c1c9bca1e83ab029bc65d132c1ee536e31f5a309e9ca909c4eb087ac0bf95aa",
+    "crates/server/src/content/bank_booths.rs": "eb760c77d53177088925f287aa51ac1719989ebac15d5e26d5f8dd567c3c4a62",
+    "crates/server/src/runtime/location_bank.rs": "f233358fc7c68bbf14284495b3eee1aeabd59fe5b5ae0eb45bb5d4346c4baec7",
+    "crates/server/src/startup.rs": "19d135e206ac3124440ead1b4011ba65bcc5d18e09988a1c13de2df71861a5b9",
+    "crates/world/src/simulation.rs": "0a4cf6fac3ba0a2f631cd17ce09a9270f2e76354a683b66f85ebc9dea4a4eef2",
+    "crates/world/src/simulation/bank_access_actions.rs": "0465e1540df60ec68717597b2123d998df99efe48939c7c032e5cc08908a804c",
+    "crates/world/src/simulation/door_actions.rs": "9188d65bc380c961731dd94bb180b58e512b7a19832fb160d2e41842ea3e0ac7"
+  },
+  "server_archive": {
+    "sha256": "42A96DCA07F75EC25E35C2FBE95ACF35062B13C52B21A3B2AA69B92CAAA8BD76",
+    "source_count": 614,
+    "source_manifest_sha256": "de55f34d9be043b6a71c3a45d57d8b19a4caca5dbdc430a02acd420686471016"
+  },
+  "native_driver": {
+    "manifest_sha256": "85e8a045d405073e7cf5872ad8f29330caaa1ece75a4306e475979e38c330320",
+    "files": {
+      "NativeBoothBankScenario.rs": "7DCD47D74E4E58A55FC21A69E41F4CDB68CD9058597A29A333623850C6BC9AA5",
+      "server_booth_bank.exe": "DF0E7083047D70E35CA22CCB009F55E2389D5BD06983D1808ACDDCCD66003E0F"
+    },
+    "pinned_library_files_checked_before_build_and_after_runs": 990
+  },
+  "private_harness_hashes": {
+    "forge_run_bank_booth_native.ps1": "524f88f675a511ad9781652ef2fed79f98f44e423cb76a29897e89ae077ace24",
+    "forge_finish_bank_booth_native.ps1": "ec78ad985fca05f16e9702f2e341504c2e5926e0d2502ce2bcbbb161fa9e4b6c",
+    "forge_assess_bank_booth_native.py": "f0ec755c840f30a3b2d7df40e9e5bca00ad17bd65a602ce4d66c0cfeaebf97cc"
+  },
+  "runs": [
+    {
+      "run": "openrune-bank-booth-control-native-20261021-002",
+      "assessment_sha256": "7c032f27e35e03454295706899ffcc459fb94f832374a314970011636c17bd3d",
+      "assessment": {
+        "status": "PASS_NATIVE_LOGIN_CONTROL",
+        "run": "openrune-bank-booth-control-native-20261021-002",
+        "mode": "control",
+        "server_sha256": "42A96DCA07F75EC25E35C2FBE95ACF35062B13C52B21A3B2AA69B92CAAA8BD76",
+        "client_sha256": "DF0E7083047D70E35CA22CCB009F55E2389D5BD06983D1808ACDDCCD66003E0F",
+        "same_save_reopen": false,
+        "bank_open_actions": 0,
+        "deposit_actions": 0,
+        "withdraw_actions": 0,
+        "checks": [
+          "native actual raw18491 pixel/menu Bankop2 or login-only control explicitly distinguished",
+          "actual bank widgets and observed five deltas or unchanged same-save reopen",
+          "exact saved item/type/count/vars, other inventories,Stats/fineXP/position conserved as expected",
+          "advanced offline logout and exit0/unforced",
+          "actual bank tab/currenttab/capacity/note varbits checked where bank opened"
+        ],
+        "all_varp_changes": {
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "3077": {
+            "before": 0,
+            "after": 40243
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "300": {
+            "before": 0,
+            "after": 100
+          },
+          "3079": {
+            "before": 0,
+            "after": 88
+          },
+          "65515": {
+            "before": 0,
+            "after": 82
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          }
+        },
+        "saved_bank_bits": {},
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.735,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 05:47:39"
+          }
+        },
+        "shutdown": {
+          "pid": 8716,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T05:47:40.1060905Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "df37c94837445fe938d6af602181afedb07dec9b2bdd864d0bf3897f29e93960",
+          "final-state.json": "7daed0822c64f02c6f6f194ca21d683f4954eba1e18891416cceeabfc3f8b5bb",
+          "native-events.jsonl": "deae6851f7a23b56716ba82c90aa2bee57af94e61cffdf91266b8b53a401737c",
+          "client.log": "a840d0335f60e7b87558812d47c56f4a157eb16f398ac6a3ae39587250711303",
+          "server.log": "4b442f7a53122585c5bdf5c3b0e8fb4a96be0f04b8850adcc24218f873dcda22",
+          "result.json": "cb2fe265c6ee12f2a1d1a708fbd34b66b04313f60b22ccd1f928e4fdad075858",
+          "logout-observation.json": "6aed971fc0ea5cc8f8ef2719df8f3090d21270c6843b577b825829c30bac16da",
+          "shutdown.json": "422fda8f628890092da6115b71dfe86bdc1f8c615c1d4e881cdc010b0a755604"
+        },
+        "limitations": [
+          "Owner working-tree archive and unchanged pinned native library, not independent or pristine acceptance.",
+          "Software-rendered offscreen pixel/menu and native script/widgets; no OS window or physical desktop input.",
+          "Opening includes first-login and bank/sidebar variable changes, all reported; broad variable/timer semantics not accepted.",
+          "Single coin transfers only; full/partial/note/count-dialog/capacity/PIN/shared-storage/Deadman/held-note exchange excluded.",
+          "Chemistry campaign remains paused; no compiled Kotlin run."
+        ]
+      }
+    },
+    {
+      "run": "openrune-bank-booth-actions-native-20261021-002",
+      "assessment_sha256": "9468ca8c2dfb2cf79504ffe58994844fd5736c1c44b9ffa6a33ddb4d3100cbce",
+      "assessment": {
+        "status": "PASS_NATIVE_SCENE_BOOTH_AND_COIN_TRANSFERS",
+        "run": "openrune-bank-booth-actions-native-20261021-002",
+        "mode": "open",
+        "server_sha256": "42A96DCA07F75EC25E35C2FBE95ACF35062B13C52B21A3B2AA69B92CAAA8BD76",
+        "client_sha256": "DF0E7083047D70E35CA22CCB009F55E2389D5BD06983D1808ACDDCCD66003E0F",
+        "same_save_reopen": false,
+        "bank_open_actions": 1,
+        "deposit_actions": 3,
+        "withdraw_actions": 2,
+        "checks": [
+          "native actual raw18491 pixel/menu Bankop2 or login-only control explicitly distinguished",
+          "actual bank widgets and observed five deltas or unchanged same-save reopen",
+          "exact saved item/type/count/vars, other inventories,Stats/fineXP/position conserved as expected",
+          "advanced offline logout and exit0/unforced",
+          "actual bank tab/currenttab/capacity/note varbits checked where bank opened"
+        ],
+        "all_varp_changes": {
+          "65515": {
+            "before": 0,
+            "after": 117
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "3079": {
+            "before": 0,
+            "after": 122
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "3077": {
+            "before": 0,
+            "after": 18880
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "65532": {
+            "before": 0,
+            "after": 1
+          }
+        },
+        "saved_bank_bits": {
+          "bank_tab_main": {
+            "id": 65531,
+            "base": 65532,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 1,
+            "definition_sha256": "e378736246540e6cbb398b9c9567a4e1b22250171da105c896cc01d3754378bb"
+          },
+          "bank_tab_1": {
+            "id": 4171,
+            "base": 867,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "85beff0cb839d21a9a1621470c4124a91dc6f95aaa4bc991c7a70aeb0f99ba3f"
+          },
+          "bank_tab_2": {
+            "id": 4172,
+            "base": 867,
+            "lsb": 13,
+            "msb": 25,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "fd616d7cc4c4a1d9e546b3206be11272ef1bef6a7d249158f52be0504bde9923"
+          },
+          "bank_tab_3": {
+            "id": 4173,
+            "base": 1052,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "b71d5a51b39bbdb9a41874d03f82dec6c76f485c0a34a9cf37c84b4de5d555c1"
+          },
+          "bank_tab_4": {
+            "id": 4174,
+            "base": 1052,
+            "lsb": 13,
+            "msb": 25,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "a9b1979dcca310a1598d03d6c7f6fdd84ec2184e1929c85cfc0419a2e20e8f95"
+          },
+          "bank_tab_5": {
+            "id": 4175,
+            "base": 1053,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "bcac72c4160a722ed074f74f1891c2642c3a400c530d6a9d066afabe8be52cc0"
+          },
+          "bank_tab_6": {
+            "id": 4176,
+            "base": 1053,
+            "lsb": 13,
+            "msb": 25,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "5a6ee8b4c5d11c01b485c5ae1b22c6e93000f563b714810ae1d9e98cdaba9c41"
+          },
+          "bank_tab_7": {
+            "id": 4177,
+            "base": 1793,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "8a13ee784298d557e4aa28674e1b76491dd1dbfdda892faacab4b182f7a7b363"
+          },
+          "bank_tab_8": {
+            "id": 4178,
+            "base": 1793,
+            "lsb": 13,
+            "msb": 25,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "5079c84e1815fd216c14d7841536ca38e0a30bebf81860a88c641549083b4b5f"
+          },
+          "bank_tab_9": {
+            "id": 4179,
+            "base": 3750,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "e44716df897636e529c58cd62bb30d35fecb6e066c9ecadded69092f23519ee0"
+          },
+          "bank_currenttab": {
+            "id": 4150,
+            "base": 115,
+            "lsb": 4,
+            "msb": 7,
+            "width": 4,
+            "max_nonnegative_input": 15,
+            "saved_value": 0,
+            "definition_sha256": "7d109f547fde055db1313aa4ba4652ab33cc838711d6f6ca719c6e1488b527ae"
+          },
+          "bank_capacity": {
+            "id": 65518,
+            "base": 65530,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 800,
+            "definition_sha256": "b258e6355dc73e6f4f4873045d186d0fdfe5df6a1f20d559db02b71440bdbea0"
+          },
+          "bank_withdrawnotes": {
+            "id": 3958,
+            "base": 115,
+            "lsb": 0,
+            "msb": 0,
+            "width": 1,
+            "max_nonnegative_input": 1,
+            "saved_value": 0,
+            "definition_sha256": "ea707d7f8badbfb1e38cb4abf6ba89a211d8a6262b4175346ff12433075db7f8"
+          }
+        },
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.828,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 06:04:18"
+          }
+        },
+        "shutdown": {
+          "pid": 9592,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T06:04:19.2417965Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "df37c94837445fe938d6af602181afedb07dec9b2bdd864d0bf3897f29e93960",
+          "final-state.json": "7fc4ddc7ef49df435702a1da5287e399c7c17dcd2d4214489492e96ebcea5305",
+          "native-events.jsonl": "698f653b5ff0ff28502297324d0eed16ab82540ab677287c2ed0ae5fdfed6464",
+          "client.log": "74d317540731fb8ed1efafeada9f60ff7de09d9a81b9f23ffb49086a50399b03",
+          "server.log": "4961811aecb58bf85653f00b92906807cb969fe6bca4e21976928bc427c99dab",
+          "result.json": "8e67adea5b57f08483ad23419ac3c8707b30abd716004f05d4920fa6185dcf42",
+          "logout-observation.json": "a590ea627770aaeebfe4b799e144e6708d1d5b154373925c51055757779aca85",
+          "shutdown.json": "7abd6802f7553a91fb15a4cf7975d6901cdbb5bfb889fa46ca5058a5979be9bd"
+        },
+        "limitations": [
+          "Owner working-tree archive and unchanged pinned native library, not independent or pristine acceptance.",
+          "Software-rendered offscreen pixel/menu and native script/widgets; no OS window or physical desktop input.",
+          "Opening includes first-login and bank/sidebar variable changes, all reported; broad variable/timer semantics not accepted.",
+          "Single coin transfers only; full/partial/note/count-dialog/capacity/PIN/shared-storage/Deadman/held-note exchange excluded.",
+          "Chemistry campaign remains paused; no compiled Kotlin run."
+        ]
+      },
+      "scene_frame": {
+        "sha256": "d48a153d025955cc5f39c8ff6afd3aac9516e3a4bdc49598701a2d99311d2148",
+        "width": 765,
+        "height": 503,
+        "scope": "Actual headless software scene before native booth menu dispatch; bank UI after opening is not pictured."
+      }
+    },
+    {
+      "run": "openrune-bank-booth-replay-native-20261021-001",
+      "assessment_sha256": "de75c3162ecbff7265061b87251d0fb477e3f3def05eec68ff051feee3c874f8",
+      "assessment": {
+        "status": "PASS_SAME_SAVE_NATIVE_BANK_REOPEN",
+        "run": "openrune-bank-booth-replay-native-20261021-001",
+        "mode": "verify",
+        "server_sha256": "42A96DCA07F75EC25E35C2FBE95ACF35062B13C52B21A3B2AA69B92CAAA8BD76",
+        "client_sha256": "DF0E7083047D70E35CA22CCB009F55E2389D5BD06983D1808ACDDCCD66003E0F",
+        "same_save_reopen": true,
+        "bank_open_actions": 1,
+        "deposit_actions": 0,
+        "withdraw_actions": 0,
+        "checks": [
+          "native actual raw18491 pixel/menu Bankop2 or login-only control explicitly distinguished",
+          "actual bank widgets and observed five deltas or unchanged same-save reopen",
+          "exact saved item/type/count/vars, other inventories,Stats/fineXP/position conserved as expected",
+          "advanced offline logout and exit0/unforced",
+          "actual bank tab/currenttab/capacity/note varbits checked where bank opened"
+        ],
+        "all_varp_changes": {
+          "3079": {
+            "before": 122,
+            "after": 105
+          },
+          "3077": {
+            "before": 18880,
+            "after": 37804
+          },
+          "300": {
+            "before": 200,
+            "after": 400
+          },
+          "65515": {
+            "before": 117,
+            "after": 217
+          }
+        },
+        "saved_bank_bits": {
+          "bank_tab_main": {
+            "id": 65531,
+            "base": 65532,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 1,
+            "definition_sha256": "e378736246540e6cbb398b9c9567a4e1b22250171da105c896cc01d3754378bb"
+          },
+          "bank_tab_1": {
+            "id": 4171,
+            "base": 867,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "85beff0cb839d21a9a1621470c4124a91dc6f95aaa4bc991c7a70aeb0f99ba3f"
+          },
+          "bank_tab_2": {
+            "id": 4172,
+            "base": 867,
+            "lsb": 13,
+            "msb": 25,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "fd616d7cc4c4a1d9e546b3206be11272ef1bef6a7d249158f52be0504bde9923"
+          },
+          "bank_tab_3": {
+            "id": 4173,
+            "base": 1052,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "b71d5a51b39bbdb9a41874d03f82dec6c76f485c0a34a9cf37c84b4de5d555c1"
+          },
+          "bank_tab_4": {
+            "id": 4174,
+            "base": 1052,
+            "lsb": 13,
+            "msb": 25,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "a9b1979dcca310a1598d03d6c7f6fdd84ec2184e1929c85cfc0419a2e20e8f95"
+          },
+          "bank_tab_5": {
+            "id": 4175,
+            "base": 1053,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "bcac72c4160a722ed074f74f1891c2642c3a400c530d6a9d066afabe8be52cc0"
+          },
+          "bank_tab_6": {
+            "id": 4176,
+            "base": 1053,
+            "lsb": 13,
+            "msb": 25,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "5a6ee8b4c5d11c01b485c5ae1b22c6e93000f563b714810ae1d9e98cdaba9c41"
+          },
+          "bank_tab_7": {
+            "id": 4177,
+            "base": 1793,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "8a13ee784298d557e4aa28674e1b76491dd1dbfdda892faacab4b182f7a7b363"
+          },
+          "bank_tab_8": {
+            "id": 4178,
+            "base": 1793,
+            "lsb": 13,
+            "msb": 25,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "5079c84e1815fd216c14d7841536ca38e0a30bebf81860a88c641549083b4b5f"
+          },
+          "bank_tab_9": {
+            "id": 4179,
+            "base": 3750,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 0,
+            "definition_sha256": "e44716df897636e529c58cd62bb30d35fecb6e066c9ecadded69092f23519ee0"
+          },
+          "bank_currenttab": {
+            "id": 4150,
+            "base": 115,
+            "lsb": 4,
+            "msb": 7,
+            "width": 4,
+            "max_nonnegative_input": 15,
+            "saved_value": 0,
+            "definition_sha256": "7d109f547fde055db1313aa4ba4652ab33cc838711d6f6ca719c6e1488b527ae"
+          },
+          "bank_capacity": {
+            "id": 65518,
+            "base": 65530,
+            "lsb": 0,
+            "msb": 12,
+            "width": 13,
+            "max_nonnegative_input": 8191,
+            "saved_value": 800,
+            "definition_sha256": "b258e6355dc73e6f4f4873045d186d0fdfe5df6a1f20d559db02b71440bdbea0"
+          },
+          "bank_withdrawnotes": {
+            "id": 3958,
+            "base": 115,
+            "lsb": 0,
+            "msb": 0,
+            "width": 1,
+            "max_nonnegative_input": 1,
+            "saved_value": 0,
+            "definition_sha256": "ea707d7f8badbfb1e38cb4abf6ba89a211d8a6262b4175346ff12433075db7f8"
+          }
+        },
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.812,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 06:04:18"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 06:05:36"
+          }
+        },
+        "shutdown": {
+          "pid": 14520,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T06:05:37.7319178Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "7fc4ddc7ef49df435702a1da5287e399c7c17dcd2d4214489492e96ebcea5305",
+          "final-state.json": "6430b969f36e0b0ac12d92f13ade85be6434fb1816b2fa261767b15da9faa32a",
+          "native-events.jsonl": "220d56d396ea095760a78d160ceec519cd3ed145e9b86b0cadd59e0f07e5b847",
+          "client.log": "4ccc77c1743d4d5ce4d48703fec275dac7036ba20d98fe40adb4f002733842c4",
+          "server.log": "bc281ac8a7130f85c44abaf04145125d172d208c2cafb1abbc60fa29307b51b9",
+          "result.json": "353f34b1eae27dbaccd073072d520c4f909d0c8963256ef4d30a84dd26065a4a",
+          "logout-observation.json": "6f7e7ed23600597ba05a1cdce4932b0f3b723e0747e5cc89a7b139a0bf26025c",
+          "shutdown.json": "a6e1e8164a974eb11d84f3ca54d4491176648cc4958246981742f41b84578b21"
+        },
+        "limitations": [
+          "Owner working-tree archive and unchanged pinned native library, not independent or pristine acceptance.",
+          "Software-rendered offscreen pixel/menu and native script/widgets; no OS window or physical desktop input.",
+          "Opening includes first-login and bank/sidebar variable changes, all reported; broad variable/timer semantics not accepted.",
+          "Single coin transfers only; full/partial/note/count-dialog/capacity/PIN/shared-storage/Deadman/held-note exchange excluded.",
+          "Chemistry campaign remains paused; no compiled Kotlin run."
+        ]
+      },
+      "scene_frame": {
+        "sha256": "75466373b6e9fcd86a72fc93c31cfdb90e1e7c854e54695a4496ead2a51073f9",
+        "width": 765,
+        "height": 503,
+        "scope": "Actual headless software scene before native booth menu dispatch; bank UI after opening is not pictured."
+      }
+    }
+  ],
+  "summary": {
+    "successful_sessions": 3,
+    "matching_login_only_control": 1,
+    "native_scene_bank_opens_including_reopen": 2,
+    "native_booth_opcode": 103,
+    "native_widget_opcode": 47,
+    "deposits": 3,
+    "withdrawals": 2,
+    "saved_carried_coins": 9,
+    "saved_banked_coins": 1,
+    "same_save_reopen": true,
+    "all_successful_sessions_offline_logout_advanced_and_exit0_unforced": true
+  },
+  "preserved_infrastructure_evidence": [
+    {
+      "reference": "work/openrune-bank-booths-20261021/native-launch-deferral-008.json",
+      "sha256": "565b5e62752cbff62a6e37b58d28241e6abbcdfa3cd0db6fd9ebfcfc47c7892e",
+      "classification": "Shared atomic runtime lease deferral before any owned process, not gameplay or compiler failure."
+    },
+    {
+      "reference": "work/openrune-bank-booths-20261021/native-launch-deferral-011.json",
+      "sha256": "b0ff61064e716b64891b4d761e9fc6d071c628883c7c13d4209582d41a51f828",
+      "classification": "Shared atomic runtime lease deferral before any owned process, not gameplay or compiler failure."
+    },
+    {
+      "reference": "work/openrune-bank-booths-20261021/native-control-assessment-014.log",
+      "sha256": "f04704dd631caf7bac1163a594d6d003030317e6a1d5d2db08ee9e849169c033",
+      "classification": "Owner assessor initially rejected blank/non-record symbol lines after successful control; corrected parser, no gameplay source/test-state change. Failed log and old assessor preserved."
+    }
+  ],
+  "limitations": [
+    "Owner archived working-tree server and unchanged pinned native library; not pristine or independent acceptance.",
+    "Actual software-rendered raw18491 scene pixel/menu Bankop2 and native bank widgets/server responses were exercised. Scene-before-opening frames are recorded; rendered bank UI pixels after opening, OS window and physical desktop input were not captured.",
+    "Native case uses F2P account,10coins/emptybank and only five single-coin transfers. Member/life/interruption, notes/quantity/capacity boundaries, PIN/shared storage and other booths remain separate.",
+    "Same-save reopen checks exact inventories, Stats/fineXP/position and non-session varps; initial bank/sidebar/login varp changes are fully reported with matched login control. Session clock correctness is not accepted.",
+    "Static18491 only; dynamic27291/Deadman27292/selector4153, held banknote conversion and Collect/Deposit-box remain unported in this unit.",
+    "Configured800capacity and actual bank varbit values were observed, not accepted as Wiki400/900default-capacity parity. Existing bank engine/defaults unchanged.",
+    "No compiled Kotlin/donor241 runtime comparison or original-independent verification verdict. Chemistry independent campaign remains paused."
+  ]
+}
