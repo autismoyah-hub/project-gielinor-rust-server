@@ -25,6 +25,7 @@ def main():
         parser.add_argument("--" + name.replace("_", "-"), type=Path, required=True)
     parser.add_argument("--server-source", required=True)
     parser.add_argument("--client-source", required=True)
+    parser.add_argument("--resume", type=Path, help="Continue this driver's own preserved earned account")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     sys.path.insert(0, str(args.adapter_directory.resolve()))
@@ -36,9 +37,15 @@ def main():
     for line in args.walk_edges.read_text(encoding="utf-8").splitlines()[1:]:
         x, z, dx, dz = map(int, line.split())
         edges[(10368 + x, 64 + z)].append((10368 + x + dx, 64 + z + dz))
-    state_name = "agent7-native-" + secrets.token_hex(6)
+    previous = json.loads((args.resume / "results.private.json").read_text(encoding="utf-8")) if args.resume else None
+    state_name = previous["state_name"] if previous else "agent7-native-" + secrets.token_hex(6)
     password = args.output / "password.private.txt"
-    password.write_text(secrets.token_hex(12), encoding="utf-8")
+    if previous:
+        assert previous["server_sha256"] == hashlib.sha256(args.server.read_bytes()).hexdigest()
+        assert previous["client_sha256"] == hashlib.sha256(args.client.read_bytes()).hexdigest()
+        password.write_bytes((args.resume / "password.private.txt").read_bytes())
+    else:
+        password.write_text(secrets.token_hex(12), encoding="utf-8")
     database = args.server_root / "work/state" / state_name / "accounts.sqlite"
     report = {"state_name": state_name, "server_source": args.server_source, "client_source": args.client_source,
               "server_sha256": hashlib.sha256(args.server.read_bytes()).hexdigest(),
@@ -46,6 +53,8 @@ def main():
               "navigation_export_sha256": hashlib.sha256(args.walk_edges.read_bytes()).hexdigest(),
               "scenario": "Fresh native tools, earned kitchen milestone, portal, logout/server restart and return",
               "independent_verification": False, "accepted": False, "sessions": []}
+    if previous:
+        report["continued_earned_attempt"] = args.resume.name
 
     def symbol(kind, name):
         rows = (Path(config["symbols"]) / (kind + ".sym")).read_text(encoding="utf-8").splitlines()
@@ -118,7 +127,7 @@ def main():
                     time.sleep(.2)
                 gateway = Gateway(directory, directory / "actions.ndjson")
                 observed = gateway.wait(lambda s: s["ready"], 90)
-                if session == 0:
+                if session == 0 and not previous:
                     # Fresh registration dialogs are delivered on separate
                     # server ticks. Wait for each expected ordinary dialog;
                     # "ready" alone does not mean registration has finished.
@@ -173,8 +182,12 @@ def main():
                         gateway.act(f"object {portal} 3225 3218 1")
                     gateway.wait(lambda s: s["ready"] and s["position"][1] > 10000, 35)
                     walk(10418, 106)
+                    initial = gateway.observe()
+                    initial_uid = max((e["uid"] for e in initial["message_events"]), default=-1)
                     gateway.act(f"object {plaque} 10418 105 1")
-                    admitted = gateway.wait(lambda s: "run 1" in s["journal"] and all(count(s, tool) == 1 for tool in tool_ids), 35)
+                    admitted = gateway.wait(lambda s: "run 1" in s["journal"] and all(count(s, tool) == 1 for tool in tool_ids)
+                        and any(e["uid"] > initial_uid and (e["text"].startswith("Cinderworks run ")
+                            or e["text"].startswith("Restore services in any order")) for e in s["message_events"]), 35)
                     assert "Cinderworks milestones: 0/5" in admitted["journal"]
                     gateway.act(f"object {plaque} 10418 105 1")
                     duplicate = gateway.wait(lambda s: s["ready"] and any(
@@ -200,16 +213,25 @@ def main():
                         visible = gateway.wait(lambda s: any(n["id"] == fishing for n in s["npcs"]), 15)
                         target = min((n for n in visible["npcs"] if n["id"] == fishing),
                                      key=lambda n: abs(n["x"] - shore[0]) + abs(n["z"] - shore[1]))
+                        required_raw = max(8, count(visible, raw) + 1)
                         gateway.act(f"npc {target['index']} 1")
-                        gateway.wait(lambda s: count(s, raw) >= 8, 130)
+                        gateway.wait(lambda s: count(s, raw) >= required_raw, 130)
                         walk(*edges[shore][0])  # Interrupt gathering through ordinary movement.
                         caught = gateway.observe()
-                        raw_item = next(i for i in caught["items"] if i["id"] == raw and i["count"] > 0)
                         previous_total = count(caught, raw) + count(caught, cooked) + count(caught, burnt)
                         walk(10432, 109)
-                        gateway.act(f"select-item {raw_item['slot']}")
-                        gateway.act(f"use-object {symbol('loc', 'newbierange')} 10432 107")
-                        cooked_state = gateway.wait(lambda s: s["ready"] and count(s, raw) == 0, 130)
+                        # Maintained cooking consumes one selected input per
+                        # ordinary use, rather than the old experiment's batch.
+                        # Explicitly select and cook each raw item; never change
+                        # server rates, recipe queues or the character's state.
+                        cooked_state = gateway.observe()
+                        for _ in range(count(cooked_state, raw)):
+                            remaining = count(cooked_state, raw)
+                            raw_item = next(i for i in cooked_state["items"] if i["id"] == raw and i["count"] > 0)
+                            gateway.act(f"select-item {raw_item['slot']}")
+                            gateway.act(f"use-object {symbol('loc', 'newbierange')} 10432 107")
+                            cooked_state = gateway.wait(lambda s: s["ready"] and count(s, raw) < remaining, 25)
+                        assert count(cooked_state, raw) == 0
                         assert count(cooked_state, cooked) + count(cooked_state, burnt) == previous_total, "Food conservation"
                         if "Cinderworks milestones: 1/5" in cooked_state["journal"]:
                             break
