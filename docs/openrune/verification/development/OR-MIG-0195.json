@@ -1,0 +1,816 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0195",
+  "implementation_commit_sha": "b0ffe28757a0c98e8eb70c05c20d0875090c78ef",
+  "recorded_utc": "2026-10-22T15:04:11.790470+00:00",
+  "result": "OWNER_FURNACE_WORLD_CACHE_KOTLIN_POLICY_CHARACTERIZATION_AND_THREE_NATIVE_SESSIONS_PASS_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/server/src/runtime/smelting.rs": "f61fb8f706332128e5d33d89ff612cf47006cd3e1eab647ca6fe826f2b21ba7b",
+    "crates/world/src/coal_bag.rs": "2701a93a60bea3228312206e797c37030c3f946c5179f11416a52ff26b313651",
+    "crates/world/src/coal_bag_smelting.rs": "468fc28b5b625e01de0b0841eafc84b407066ad63ef8749e9cb7dc54b44d8dc9",
+    "crates/world/src/lib.rs": "c6b571adf959231ad49846527a056e8fca999fb15625400aac346c80fd215794",
+    "crates/world/src/simulation.rs": "9d1e18a71d55de25d3856eb8e020d86f63df1cea740dee90b5b6672df99f9d49",
+    "crates/world/src/simulation/coal_bag_smelting_tests.rs": "7f6f9ab1d8e256236a800bc12797f8b07d994faf5ab1549485f65899fc0cc219",
+    "crates/world/src/simulation/smithing_actions.rs": "fc6a37b38e502b80f05a47b86ace4754003554a4a9628f8ba15b39467f3aa04e",
+    "crates/world/src/smelting.rs": "79713d094e79eb909eb66b816fd16024cd7f8c90e25c68cdc37e806df4b60600",
+    "crates/world/src/smithing_make.rs": "b569f689b65056049f393212a6a61e46c53993dcdabdd4c84ebd08c62849d880"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/coalbag/CoalBag.kt",
+      "sha256": "4d49434735b71da85f910b012228e733d7f884b223ee3664bcd71e798a75a8a2",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; scoped virtual consumption and furnace dependency only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/coalbag/CoalBagStorageHook.kt",
+      "sha256": "ef7e1145bf4a84f275b94c9cdc7e7edcf960148e5971ee8f0f8bcecc9d95199d",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; scoped virtual consumption and furnace dependency only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/inv-storage/src/main/kotlin/org/rsmod/api/inv/storage/PlayerItemStorage.kt",
+      "sha256": "3048645a2bfba76569ebcc7a47f5ff7ad0b47c87e4c40c3caa829cc52e1f0fa5",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; scoped virtual consumption and furnace dependency only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/inv-storage/src/main/kotlin/org/rsmod/api/inv/storage/PlayerItemStorageHook.kt",
+      "sha256": "cfcd4ac1ffd10352428daf6a10961307cf1cb9d06aac2415d5640189a56e83e4",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; scoped virtual consumption and furnace dependency only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/inv-storage/src/main/kotlin/org/rsmod/api/inv/storage/PlayerItemStorageContext.kt",
+      "sha256": "0266eaadc07b1ad8658c3fd15c98e16b355bb51459320b72a20f961f8ad75df9",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; scoped virtual consumption and furnace dependency only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/inv-storage/src/main/kotlin/org/rsmod/api/inv/storage/VirtualItemConsumePolicy.kt",
+      "sha256": "46ad2c96e469c46016df861cf2b03bfdcbb551d1276f0645d05a4dd70d973db3",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; scoped virtual consumption and furnace dependency only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/invtx/src/main/kotlin/org/rsmod/api/invtx/VirtualInvTransactions.kt",
+      "sha256": "52c95307fc9bfae02901d77a5a0e4478da4eb3aa913b2d7ac64ee0ee1cb187fa",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; scoped virtual consumption and furnace dependency only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/smelting/SmeltingScript.kt",
+      "sha256": "13b6dd208704723eb134ef19440e60a34a5c075f23bb4d8138108350907a011c",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; scoped virtual consumption and furnace dependency only"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/scripts/SmithingActions.kt",
+      "sha256": "340c8775b67f2883e573dad18663e3779d45d3ae554e500d9a55bec616285921",
+      "availability": "protected_local_reference",
+      "revision": "Target239.1legacy linked recipe ingredients, weakqueue and XP behavior retained"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Coal bag",
+      "sha256": "35c9d24ab7fcca3dc9c15f3e1c21b5ed88518daeebf8c5a1cb9c3951614eee79",
+      "availability": "protected_local_reference",
+      "revision": "15215029"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Steel bar",
+      "sha256": "89e819d78b28e0673deb6a62ca4be1ef4149021bab0cdaed73673b7b720aebb9",
+      "availability": "protected_local_reference",
+      "revision": "15315116"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Mithril bar",
+      "sha256": "76e1ac6bbd6f6067af021075afd61416e9a007363858384b21574f3c5ba1ffb2",
+      "availability": "protected_local_reference",
+      "revision": "15315118"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Adamantite bar",
+      "sha256": "4b35f1095ea1ccbf2c29245f94b60e239a12961f7c37e3ba70467226dd47998e",
+      "availability": "protected_local_reference",
+      "revision": "15332236"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Runite bar",
+      "sha256": "3e33f9d087be30ff7a7a443e1e5b54f022589bf6324ec7fe823cf3c2670aacf7",
+      "availability": "protected_local_reference",
+      "revision": "15346872"
+    }
+  ],
+  "server_archive": {
+    "sha256": "A0FE13F936DA2740E154D4CDDFBFF16BBD67B40695794D379C3C8B175CD743E0",
+    "source_count": 668,
+    "source_manifest_sha256": "475c7fb016faf095bde3c8a558dadc2be38703d10bad47b205ded8e5c97d1c40",
+    "before_after_sources_unchanged": true
+  },
+  "logs": {
+    "focused-002.log": {
+      "sha256": "8ce3b58c8c663c8d9e07886bfd311f2cbc47835035ff9b3c87a22974031d3ef2",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 2.4% sampled, ceiling70%.",
+        "Capacity: 8,373 MiB available, commit 43.6%, pages-in/s 0, disk 1.3 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: FAILED. 3 passed; 2 failed; 0 ignored; 0 measured; 738 filtered out; finished in 1.74s"
+      ]
+    },
+    "focused-003.log": {
+      "sha256": "45b758783a1d388fd874696d36d67372aeefd66da27ee64a8df7865f2f0babc9",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.1% sampled, ceiling70%.",
+        "Capacity: 8,262 MiB available, commit 43.7%, pages-in/s 0, disk 5.3 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 738 filtered out; finished in 1.25s"
+      ]
+    },
+    "world-004.log": {
+      "sha256": "a44ed3abef6fda8fad63aca6eb5e807abbb921239807a1d79aab5ea772f2299a",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.6% sampled, ceiling70%.",
+        "Capacity: 8,324 MiB available, commit 43.6%, pages-in/s 1, disk 4.8 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 742 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 51.98s"
+      ]
+    },
+    "kotlin-006.log": {
+      "sha256": "c162ecdb3a9cac7c885a1ea8cd6bc99d48f108b8fbdafa7da9c9273f68dfb4af",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.4% sampled, ceiling70%.",
+        "Capacity: 8,286 MiB available, commit 43.6%, pages-in/s 0, disk 1.1 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS actual protected virtual deletion/CoalBag storage 24 logical cases; owned raw inventory/result dependencies, not full smithing/XP engine"
+      ]
+    },
+    "server-008.log": {
+      "sha256": "a732a7f076a5f921c79f94e9a52faa539294fd7ae36ee54132152cdfa3df8f73",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 7.5% sampled, ceiling70%.",
+        "Capacity: 8,288 MiB available, commit 43.6%, pages-in/s 0, disk 1.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 315 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 70.05s"
+      ]
+    },
+    "world-010.log": {
+      "sha256": "662cce0d5231731082f56a1abe0457c1039f9146530b389132c572f94421ca1b",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 8.1% sampled, ceiling70%.",
+        "Capacity: 8,439 MiB available, commit 41.9%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 743 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 53.63s"
+      ]
+    },
+    "kotlin-012.log": {
+      "sha256": "9f83bf2b57c2ee21df16689c55a42d68830b22b76cd0f0a43090e98d508ba689",
+      "result": "PASS",
+      "summaries": [
+        "PASS actual protected virtual deletion/CoalBag storage 30 logical cases; owned raw inventory/result dependencies, not full smithing/XP engine"
+      ]
+    },
+    "cache-013.log": {
+      "sha256": "8e422cbe0685b4554e1450d58048bf8b24b8e96e277f19aaba445041ba98f00e",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 1.5% sampled, ceiling70%.",
+        "Capacity: 8,444 MiB available, commit 41.8%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "cache-014.log": {
+      "sha256": "69ae9d0ffaa7e9cd3510c1975d4ed7971bcf23936d725a705ae47e863b62adb3",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.5% sampled, ceiling70%.",
+        "Capacity: 8,385 MiB available, commit 41.8%, pages-in/s 0, disk 3.2 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS30actual-cache furnace selections and queued production; exact items/XP/packed variables, actual Kotlin virtual-delete comparison with 6 intentional inventory-first policy differences; prepared furnace admission, not native or full Kotlin smithing"
+      ]
+    },
+    "server-015.log": {
+      "sha256": "482f3c915d4fb52b0ab05684e53dea5540ef95378cf5067b400e61ff5124a4fa",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.2% sampled, ceiling70%.",
+        "Capacity: 8,420 MiB available, commit 41.9%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 315 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 68.78s"
+      ]
+    },
+    "archive-016.log": {
+      "sha256": "8a9f7629fb7289abdf85fa2beff7780b488495b0f00a0a18e52c83590e82ea05",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 6.7% sampled, ceiling70%.",
+        "Capacity: 8,431 MiB available, commit 41.9%, pages-in/s 0, disk 0.5 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server A0FE13F936DA2740E154D4CDDFBFF16BBD67B40695794D379C3C8B175CD743E0 (668 source files)."
+      ]
+    },
+    "driver-017.log": {
+      "sha256": "4b81778dd83a77dcd26d81bd841c627c6b149942beadfdc73d53b6da2f182db5",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 2.3% sampled, ceiling70%.",
+        "Capacity: 8,295 MiB available, commit 42.0%, pages-in/s 0, disk 2.8 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "driver-019.log": {
+      "sha256": "348fbc163aa882def4def80f1399f69e9c51c6f9b0b998660d05ed64caad9dda",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 5.4% sampled, ceiling70%.",
+        "Capacity: 8,389 MiB available, commit 42.0%, pages-in/s 0, disk 1.2 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "fixtures-020.log": {
+      "sha256": "8341d3e5c07c388c34454195d167b04337cb776eb25761c1fe7f0a2f7f042958",
+      "result": "PASS",
+      "summaries": []
+    },
+    "native-021.log": {
+      "sha256": "1f8732e054b4a8203f6166e26766eb97e4efaf2a5c9b5dbdf952454b497278b5",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Capacity: 8,420 MiB available, commit 41.9%, pages-in/s 0, disk 0.4 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}",
+        "PASS_NATIVE_COAL_SMELTING_CONTROL\", \"run\": \"openrune-coal-bag-smelting-control-native-20261022-001\", \"stock\": {\"physical_coal_before\": 1, \"physical_coal_after\": 1, \"stored_before\": 2, \"stored_after\": 2, \"iron_before\": 1, \"iron_after\": 1, \"steel_before\": 0, \"steel_after\": 0}, \"fine_xp_delta\": 0}",
+        "Capacity: 8,416 MiB available, commit 41.9%, pages-in/s 0, disk 0.2 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}"
+      ]
+    },
+    "driver-022.log": {
+      "sha256": "3ab6def12e094ce45c9d5e177cc5d5883d0741d683b9208f1bfe428840652040",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 6.5% sampled, ceiling70%.",
+        "Capacity: 8,378 MiB available, commit 42.0%, pages-in/s 0, disk 3.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "fixtures-023.log": {
+      "sha256": "7e8d866a8055c0250d3363e1cde1d190696cab08e55596d6bad50b36a1991b72",
+      "result": "PASS",
+      "summaries": []
+    },
+    "native-024.log": {
+      "sha256": "88fa50a21160af1e803433ee92a0429863d46039b8d6751d3e8eca318cb80aea",
+      "result": "PASS",
+      "summaries": [
+        "Capacity: 8,363 MiB available, commit 42.1%, pages-in/s 0, disk 0.6 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}",
+        "PASS_NATIVE_COAL_SMELTING_SMELT\", \"run\": \"openrune-coal-bag-smelting-actions-native-20261022-002\", \"stock\": {\"physical_coal_before\": 1, \"physical_coal_after\": 0, \"stored_before\": 2, \"stored_after\": 1, \"iron_before\": 1, \"iron_after\": 0, \"steel_before\": 0, \"steel_after\": 1}, \"fine_xp_delta\": 875}",
+        "Capacity: 8,527 MiB available, commit 41.2%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS\"}",
+        "PASS_NATIVE_COAL_SMELTING_VERIFY\", \"run\": \"openrune-coal-bag-smelting-replay-native-20261022-002\", \"stock\": {\"physical_coal_before\": 0, \"physical_coal_after\": 0, \"stored_before\": 1, \"stored_after\": 1, \"iron_before\": 0, \"iron_after\": 0, \"steel_before\": 1, \"steel_after\": 1}, \"fine_xp_delta\": 0}"
+      ]
+    }
+  },
+  "matrix": {
+    "world_pass": 743,
+    "world_existing_ignored": 1,
+    "server_pass": 315,
+    "furnace_tests": 6,
+    "physical_stored_cases": 24,
+    "late_authority_cases": 7,
+    "life_departure_cases": 6,
+    "cache_kotlin_cases": 30,
+    "intentional_policy_differences": 6
+  },
+  "actual_kotlin": {
+    "inputs": {
+      "sources": {
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\coalbag\\CoalBag.kt": "4d49434735b71da85f910b012228e733d7f884b223ee3664bcd71e798a75a8a2",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\coalbag\\CoalBagStorageHook.kt": "ef7e1145bf4a84f275b94c9cdc7e7edcf960148e5971ee8f0f8bcecc9d95199d",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\PlayerItemStorage.kt": "3048645a2bfba76569ebcc7a47f5ff7ad0b47c87e4c40c3caa829cc52e1f0fa5",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\PlayerItemStorageHook.kt": "cfcd4ac1ffd10352428daf6a10961307cf1cb9d06aac2415d5640189a56e83e4",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\PlayerItemStorageContext.kt": "0266eaadc07b1ad8658c3fd15c98e16b355bb51459320b72a20f961f8ad75df9",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\VirtualItemConsumePolicy.kt": "46ad2c96e469c46016df861cf2b03bfdcbb551d1276f0645d05a4dd70d973db3",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\invtx\\src\\main\\kotlin\\org\\rsmod\\api\\invtx\\VirtualInvTransactions.kt": "52c95307fc9bfae02901d77a5a0e4478da4eb3aa913b2d7ac64ee0ee1cb187fa"
+      },
+      "stubs": {
+        "Annotations.kt": "401c0529183500424aa7dfaf8bdaaff91423b2941281628f689655c034c16199",
+        "ConsumeOracle.kt": "a0e122d74e0847a5c0e2316dfebd65249bb3a6c2e2e236269e89d9b6e524f411",
+        "Inventory.kt": "432781916b6db508117ad90cef6733e9cd711170a8683e350487ae1542a3d0d0",
+        "Player.kt": "e560c711f3290dc6b1a1de85d43170a98769460cfd6f73b7b5a0dd811466b949",
+        "Transactions.kt": "569d68c3cd992752e22e2d544a45d3fb482934cb2edb4d7027ac0a819ae023e8",
+        "Vars.kt": "b8fb9d672fcc2458013b53670737f2926e2b49ffc348b035af6872dd1c3eb2e1"
+      }
+    },
+    "result": {
+      "scope": "Actual protected CoalBag consumption compiled with owned recording framework dependencies; logical callback traces only",
+      "sourcePins": {
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\coalbag\\CoalBag.kt": "4d49434735b71da85f910b012228e733d7f884b223ee3664bcd71e798a75a8a2",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\coalbag\\CoalBagStorageHook.kt": "ef7e1145bf4a84f275b94c9cdc7e7edcf960148e5971ee8f0f8bcecc9d95199d",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\PlayerItemStorage.kt": "3048645a2bfba76569ebcc7a47f5ff7ad0b47c87e4c40c3caa829cc52e1f0fa5",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\PlayerItemStorageHook.kt": "cfcd4ac1ffd10352428daf6a10961307cf1cb9d06aac2415d5640189a56e83e4",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\PlayerItemStorageContext.kt": "0266eaadc07b1ad8658c3fd15c98e16b355bb51459320b72a20f961f8ad75df9",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\VirtualItemConsumePolicy.kt": "46ad2c96e469c46016df861cf2b03bfdcbb551d1276f0645d05a4dd70d973db3",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\invtx\\src\\main\\kotlin\\org\\rsmod\\api\\invtx\\VirtualInvTransactions.kt": "52c95307fc9bfae02901d77a5a0e4478da4eb3aa913b2d7ac64ee0ee1cb187fa"
+      },
+      "files": {
+        "compile.args": "7BF8DD0916897B4FED310A55382D8B47A1D5703FE1B5705348B087C390199D38",
+        "inputs.json": "A6AB11871ACB2E01C763F0EB0E2EEEBF6C4EFEC31AC9D00AFB150B18B6ACE969",
+        "oracle.jar": "577EAB63026B05860790462A4383422EEB65528C8206D229437EA6000E0C945A"
+      },
+      "expectedSha256": "DF3F62590A7117BD8AFC8DD43DD5E70F14A0384BBA0A50304D7AA4DC461000F4",
+      "cases": 24
+    },
+    "comparison": {
+      "result": "PASS30_ACTUAL_CACHE_FURNACE_AND_DONOR_ORACLE",
+      "intentional_inventory_first_differences": 6,
+      "supported_recipe_ratios": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "cases_sha256": "d3c98d69428ca47a3663bddee9dbe1e88aca81935bfea71d4f13ccf717f170fd",
+      "kotlin_raw_expected_sha256": "10940ed34e382f7b306d9c1c6ffeec5a70f3cb2475aed2ed58c066735bb15953",
+      "oracle_jar_sha256": "577eab63026b05860790462a4383422eeb65528c8206d229437ea6000e0c945a",
+      "probe": "crates/server/examples/coal_bag_smelting_cache2_private.rs",
+      "probe_sha256": "fab77327f952f347dc0f3dc120696b698095d75f540cf45b6ecbfad9b54835fd",
+      "scope": "Actual239.1cache forms/ore/bars/packed storage; prepared terrain/furnace entry plus actual UI selection domain and scheduled World completion; actual7Kotlin sources executed with6owned stub/driver dependencies, not native or full donor smithing engine"
+    },
+    "scope": "Seven actual unchanged Kotlin storage/hook/virtual-transaction files; six owned dependency/driver files; raw physical transactions are recording dependencies; not full Kotlin furnace/XP engine."
+  },
+  "native": [
+    {
+      "run": "openrune-coal-bag-smelting-control-native-20261022-001",
+      "assessment_sha256": "8c3908c090674f6753ed937cfa30c9944700ce136bc198766d8449a07635e750",
+      "assessment": {
+        "result": "PASS_NATIVE_COAL_SMELTING_CONTROL",
+        "run": "openrune-coal-bag-smelting-control-native-20261022-001",
+        "mode": "control",
+        "server_sha256": "A0FE13F936DA2740E154D4CDDFBFF16BBD67B40695794D379C3C8B175CD743E0",
+        "driver_sha256": "C6688B1FE65E64D8F66CD0B6D105D0F66737C9566AC759069E28E5895FCFB703",
+        "native_events": [
+          {
+            "kind": "native.coal_check",
+            "button": 4,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_smelting_done",
+            "mode": "control",
+            "stored": 2,
+            "steel": 0,
+            "physical_coal": 1,
+            "iron": 1,
+            "displayed_xp_delta": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.329,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 14:57:38"
+          }
+        },
+        "shutdown": {
+          "pid": 19700,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T14:57:39.4469472Z"
+        },
+        "saved_stock": {
+          "physical_coal_before": 1,
+          "physical_coal_after": 1,
+          "stored_before": 2,
+          "stored_after": 2,
+          "iron_before": 1,
+          "iron_after": 1,
+          "steel_before": 0,
+          "steel_after": 0
+        },
+        "saved_fine_xp_delta": 0,
+        "all_varp_changes": {
+          "65515": {
+            "before": 0,
+            "after": 85
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "3077": {
+            "before": 0,
+            "after": 39564
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "3079": {
+            "before": 0,
+            "after": 91
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "300": {
+            "before": 0,
+            "after": 100
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "c26b184ed466c627323866a829861f7b1d0f11515013b47b5dec6f2dc5f9aa43",
+          "final-state.json": "4eecdbc70f86db6356810238739a847a76fe975bcd6175d7f636986abcb7a5e1",
+          "initial-state.json": "da1cb90cba198ff161a42403406eca3a40ada3c917fbcaf7bc9eacfffd2dbac1",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "a29d887caf6fdfd020d9fc06bfb7f20e0771ddc915ddc920d0ae16cc33136d50",
+          "native-events.jsonl": "31bf5f471896e9a3f8063e18ffae8c049bee4a9a85a94cf368e4778d7fd31a81",
+          "result.json": "e5c65364d510b218763102ae81416f421506ddfec56146e2b9342cfaa39629a6",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "50af29ff153ac096a09f93311fac38345d3ba9c5efe059fe01179864aa540197",
+          "server.log": "38c8ddc4c89daf93901ab82959ce9a0d4cc33bf2322f421b36b21ab69bfbe41d",
+          "shutdown.json": "348ae3343ac681f1bcd5adeff49586e03ddbd00bf7750a295d0b7861aa998ba2"
+        },
+        "limitations": [
+          "Owner real-map furnace Smelt2/native Steel1/bag Check4. Prepared99Smithing/openbag/stored2/coal1/iron1/quantity1/current5x are fixtures, not earned progression.",
+          "Wiki inventory-first consumes physical1 then stored1, retaining bag1; exact steel1/+875fineXP saved. No Superheat, closed-bag consumption, modifiers, bank/global incoming or independent acceptance.",
+          "Frames require visual inspection; native widget/inventory/message evidence is not an inventory/chat pixel claim. Chemistry verification remains paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-coal-bag-smelting-actions-native-20261022-002",
+      "assessment_sha256": "675f72f81baf0f265e0e9bf5e4c366e8d32f1d9a9ad23637de5a69ee82d1984f",
+      "assessment": {
+        "result": "PASS_NATIVE_COAL_SMELTING_SMELT",
+        "run": "openrune-coal-bag-smelting-actions-native-20261022-002",
+        "mode": "smelt",
+        "server_sha256": "A0FE13F936DA2740E154D4CDDFBFF16BBD67B40695794D379C3C8B175CD743E0",
+        "driver_sha256": "FC8CEAC3910A00A8E54B30D5C895201BE4C14D8306CE15187B39E1207640FDD3",
+        "native_events": [
+          {
+            "kind": "native.furnace_smelt",
+            "raw": 24009,
+            "x": 3226,
+            "z": 3256,
+            "operation": 2,
+            "opcodes": [
+              103
+            ]
+          },
+          {
+            "kind": "native.steel_selection",
+            "logical": 17694739,
+            "child": -1,
+            "item": -1,
+            "immediate_opcodes": [
+              115
+            ]
+          },
+          {
+            "kind": "native.steel_made",
+            "steel": 1,
+            "coal": 0,
+            "iron": 0,
+            "displayed_xp_delta": 87
+          },
+          {
+            "kind": "native.coal_check",
+            "button": 4,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_smelting_done",
+            "mode": "smelt",
+            "stored": 1,
+            "steel": 1,
+            "physical_coal": 0,
+            "iron": 0,
+            "displayed_xp_delta": 87
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.313,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 15:02:49"
+          }
+        },
+        "shutdown": {
+          "pid": 15940,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T15:02:50.3311291Z"
+        },
+        "saved_stock": {
+          "physical_coal_before": 1,
+          "physical_coal_after": 0,
+          "stored_before": 2,
+          "stored_after": 1,
+          "iron_before": 1,
+          "iron_after": 0,
+          "steel_before": 0,
+          "steel_after": 1
+        },
+        "saved_fine_xp_delta": 875,
+        "all_varp_changes": {
+          "65515": {
+            "before": 0,
+            "after": 105
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "3077": {
+            "before": 0,
+            "after": 50716
+          },
+          "65531": {
+            "before": 67108864,
+            "after": 33554432
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "3079": {
+            "before": 0,
+            "after": 111
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "9c56262bbcda514f264d4af11f670de3d4de3767862fba76cf56d2463a3e792e",
+          "final-state.json": "c1bf55a290b9e0aa50c150af1a544a0df2a7b06fccbc7a31a496fef30a4b21fb",
+          "initial-state.json": "da1cb90cba198ff161a42403406eca3a40ada3c917fbcaf7bc9eacfffd2dbac1",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "f4416b5e3f3b3206b1d047c6947548f5c674a30068f118e3a0924f28b8d486b4",
+          "native-events.before.bmp": "919e03f76f240352cd37217f1804564ef4245bf8d07c06cad83fbb6d797cb224",
+          "native-events.jsonl": "99a21c5aac1a0ec951f83e900796b0a325c907ba9570e5021eb3d43e16fd2740",
+          "native-events.steel.bmp": "3aef5717ae8ead7500067cadf2a79485c2fc3d002d570a40c2b094bf5dda7b34",
+          "result.json": "dc934eab4ea60cdc1131581917e9f605ab8526c25a5fd664146b160694869abb",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "155813b607daf8ea4373e512a873af2f59672ef2d80fe79e29a0623a2408f367",
+          "server.log": "4ee3151066580a5065673a34b86ee2a8e9e9d61bb977b7892654f4ee17008706",
+          "shutdown.json": "837fb70fab9da787b1d99fe986c7f3be9c7e65d57315333a1539b3e0b1af0871"
+        },
+        "limitations": [
+          "Owner real-map furnace Smelt2/native Steel1/bag Check4. Prepared99Smithing/openbag/stored2/coal1/iron1/quantity1/current5x are fixtures, not earned progression.",
+          "Wiki inventory-first consumes physical1 then stored1, retaining bag1; exact steel1/+875fineXP saved. No Superheat, closed-bag consumption, modifiers, bank/global incoming or independent acceptance.",
+          "Frames require visual inspection; native widget/inventory/message evidence is not an inventory/chat pixel claim. Chemistry verification remains paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-coal-bag-smelting-replay-native-20261022-002",
+      "assessment_sha256": "e28bc28e7805347ab01b5c7c20e9ac2224e79a5f07341fc8c9e5ec045fd83d5d",
+      "assessment": {
+        "result": "PASS_NATIVE_COAL_SMELTING_VERIFY",
+        "run": "openrune-coal-bag-smelting-replay-native-20261022-002",
+        "mode": "verify",
+        "server_sha256": "A0FE13F936DA2740E154D4CDDFBFF16BBD67B40695794D379C3C8B175CD743E0",
+        "driver_sha256": "FC8CEAC3910A00A8E54B30D5C895201BE4C14D8306CE15187B39E1207640FDD3",
+        "native_events": [
+          {
+            "kind": "native.coal_check",
+            "button": 4,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_smelting_done",
+            "mode": "verify",
+            "stored": 1,
+            "steel": 1,
+            "physical_coal": 0,
+            "iron": 0,
+            "displayed_xp_delta": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.328,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 15:02:49"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 15:03:58"
+          }
+        },
+        "shutdown": {
+          "pid": 18184,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T15:03:59.0714631Z"
+        },
+        "saved_stock": {
+          "physical_coal_before": 0,
+          "physical_coal_after": 0,
+          "stored_before": 1,
+          "stored_after": 1,
+          "iron_before": 0,
+          "iron_after": 0,
+          "steel_before": 1,
+          "steel_after": 1
+        },
+        "saved_fine_xp_delta": 0,
+        "all_varp_changes": {
+          "3079": {
+            "before": 111,
+            "after": 91
+          },
+          "65515": {
+            "before": 105,
+            "after": 190
+          },
+          "300": {
+            "before": 200,
+            "after": 300
+          },
+          "3077": {
+            "before": 50716,
+            "after": 59657
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "e401656760eecfa113fc43dae1a1c621f86d2b7c6f6f62e859bc515959b620ea",
+          "final-state.json": "c8ca291560fffd6124a894da24f7677ba64d4cf5fa967dc855bdb53deb758ac7",
+          "initial-state.json": "c1bf55a290b9e0aa50c150af1a544a0df2a7b06fccbc7a31a496fef30a4b21fb",
+          "logout-before.json": "0ec4f02eea2323e0cdc0671ef8587c83074ec76d97cee50247b31611eafe1f6e",
+          "logout-observation.json": "a15f1e949f27e71b8f494dce081c3da332af3980f4d4598eebe02355736284da",
+          "native-events.jsonl": "9d61d38741591a34bdb6d87d67cf83b6ad65dff394b6097096d495851892ef9e",
+          "result.json": "78d74f88d6c71128b0db64e793dceb58025e0d053ed9827934885b9807415ade",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "8f600d3bac8d65be4c072874b9a6510e5acecab7562e0ae76d38eb318edf3ea4",
+          "server.log": "b2d63433bc97acdd3b7023394323e907f48564912ddeb0547411a4dd96348762",
+          "shutdown.json": "9441318bc6efd2c0856abbf4c5f164863cd66baf5717c7fcceb00f9523021f17"
+        },
+        "limitations": [
+          "Owner real-map furnace Smelt2/native Steel1/bag Check4. Prepared99Smithing/openbag/stored2/coal1/iron1/quantity1/current5x are fixtures, not earned progression.",
+          "Wiki inventory-first consumes physical1 then stored1, retaining bag1; exact steel1/+875fineXP saved. No Superheat, closed-bag consumption, modifiers, bank/global incoming or independent acceptance.",
+          "Frames require visual inspection; native widget/inventory/message evidence is not an inventory/chat pixel claim. Chemistry verification remains paused."
+        ]
+      }
+    }
+  ],
+  "frame_review": {
+    "path": "work\\integration\\runs\\openrune-coal-bag-smelting-actions-native-20261022-002\\native-events.steel.bmp",
+    "sha256": "3aef5717ae8ead7500067cadf2a79485c2fc3d002d570a40c2b094bf5dda7b34",
+    "observation": "Inspected actual BMP: avatar beside glowing Lumbridge furnace/building, NPC and yellow duck speech visible in world viewport. Outer inventory/chat panels black. No inventory/chat-pixel or smelting-animation claim; stock/XP/Check proven by received native state and saved exports."
+  },
+  "prior_control_driver": {
+    "driver": "coal-bag-smelting-002",
+    "scenario": "openCoalBagFurnaceInventoryFirst",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless real-map furnace Smelt2/native Steel selection/bag Check4, inventory-first virtual coal consumption; no OS window, desktop input or bank-interface acceptance; no OS Window/desktop input or independent verdict",
+    "files": {
+      "NativeCoalSmeltingScenario2.rs": "320D7C0BC63D079CF6EBD5047144CCD1B8A59B2435027EE71A507A5239FE752D",
+      "server_coal_smelting2.exe": "C6688B1FE65E64D8F66CD0B6D105D0F66737C9566AC759069E28E5895FCFB703"
+    }
+  },
+  "native_driver": {
+    "driver": "coal-bag-smelting-003",
+    "scenario": "openCoalBagFurnaceInventoryFirst",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless real-map furnace Smelt2/native Steel selection/bag Check4, inventory-first virtual coal consumption; no OS window, desktop input or bank-interface acceptance; no OS Window/desktop input or independent verdict",
+    "files": {
+      "NativeCoalSmeltingScenario3.rs": "203AB373304840CE3ED0B5352665521CAC22012036DC6E21551117C569DB6828",
+      "server_coal_smelting3.exe": "FC8CEAC3910A00A8E54B30D5C895201BE4C14D8306CE15187B39E1207640FDD3"
+    }
+  },
+  "failures_preserved": {
+    "focused002": "Three tests passed, two fixture assertions failed: NaN is intentionally a characterized zero-XP conversion, not an InvalidXp; recipe resolution scans carried bag and needs its type. Corrected tests use Infinity and the bag type; failed log preserved.",
+    "cache013": "Private harness attempted to call crate-private item_types; compile failed before execution. Frozen probe1/log retained; separate cache2 builds the equivalent owned cache projection without changing production visibility.",
+    "native021": "Matched control001passed. Actions001timed out before selecting furnace: owned driver compared raw id rather than scene tag id+1, independently confirmed in unchanged world_mesh.rs. No item/XP changes; acknowledged offline save/unforced shutdown retained. Separate003frontend and fresh002actions/replay reuse matched control001; no server change.",
+    "driver017": "First owned frontend example emitted invalid quoted JSON literals; compile failed before native launch. Frozen001source/log; separate002driver uses raw JSON literals. Client library990files unchanged."
+  },
+  "known_limitations": [
+    "Furnace-only consumption from current open carried single unmodified bag for members; no Superheat Item, closed-bag consumption, bank/deposit-box-held controls, global incoming storage, acquisition/destroy/global ownership or full donor smithing port.",
+    "Donor CoalBagStorageHook is StorageFirst; pinned Coal bag Wiki revision15215029 says inventory coal is consumed first. Actual seven protected Kotlin files execute virtual deletion with owned raw inventory/result/property dependencies. Thirty cache World cases include six deliberate final-stock differences, not claimed Kotlin equivalence.",
+    "Current open/member/bag/count/vars/level and physical stock are checked at delayed completion. Saved coal36after cape removal remains spendable; no capacity clipping or deletion. F2P/closed/absent storage is inaccessible; ordinary physical-only production retains legacy handling.",
+    "Virtual recipe inputs/output/packed variables/Stats stage on clones and commit together. NoSpace/invalidXP/missing/changed inputs cannot leak spent stored coal. Weak queue cancellation, legacy cadence, normal XP multipliers, tutorial and Cinderworks product events are reused.",
+    "Owner working-tree743world/oneexistingignored and315server pass at source b0ffe287; six furnace tests include24physical/stored combinations,7late authority/cache cases and6life/departure cases. Existing private manifests differ from pristine Git; this is owner evidence.",
+    "Native fixtures prepare99Smithing/openbag2stored/onephysicalcoal/oneiron/quantity1/maintained5x. Actual Smelt2 and native Steel1 should consume physical1/stored1, make1steel and save875fineXP; client integer XP display rises87. Same-save replay must add no XP or output.",
+    "Prepared-cache tests cover ordinary steel/mithril/adamantite/runite ratios2/4/6/8. Existing other recipes, furnace geography, smithing catalyst/armour/double bars/modifiers and donor timing are not newly accepted.",
+    "Chemistry independent verification remains paused; V0-V4 independent acceptance is still pending. Discovery classifications are not a gameplay completion percentage."
+  ],
+  "disk_cache_cleanup": [
+    {
+      "proof": [
+        {
+          "sha256": "31B171C701297EF6FE297705AF2DA7257BB0C012C71B931C21431E9BBACD6616",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\gielinor-server.exe",
+          "mtime": "2026-10-22T13:56:18.2953011Z",
+          "bytes": 203216231
+        },
+        {
+          "sha256": "31B171C701297EF6FE297705AF2DA7257BB0C012C71B931C21431E9BBACD6616",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\deps\\gielinor_server-bf272804885b22f6.exe",
+          "mtime": "2026-10-22T13:56:18.2953011Z",
+          "bytes": 203216231
+        }
+      ],
+      "freeBefore": 427737088,
+      "freeAfter": 630956032,
+      "archive": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\integration\\server\\31B171C701297EF6FE297705AF2DA7257BB0C012C71B931C21431E9BBACD6616\\gielinor-server.exe",
+      "scope": "Only two verified cache copies of owned archived native194 build; archive/source/fixtures/evidence preserved"
+    },
+    {
+      "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe",
+      "mtime": "2026-10-22T14:39:26.8311198Z",
+      "bytes": 239006394,
+      "freeBefore": 412717056,
+      "sha256": "2B7160EFB627BC5EA45560F46FC9F6D6919DBBA01962F07B3B88BDF1CA7F6E1F",
+      "freeAfter": 651726848,
+      "proof": "Own focused003 build plus world004 completed742tests exact executable/timestamps"
+    },
+    {
+      "scope": "Only exact completed owned server008 test EXE; source/evidence/archives preserved",
+      "mtime": "2026-10-22T14:43:32.7291391Z",
+      "bytes": 255137107,
+      "sha256": "8019E14ACC187428DC124032E7B57C0CFBA506F7E05AFBA6269E8042326326B6",
+      "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\deps\\gielinor_server-d5a27b0523fbd15f.exe",
+      "freeAfter": 622612480,
+      "freeBefore": 367472640
+    },
+    {
+      "freeBefore": 363499520,
+      "freeAfter": 1496526848,
+      "scope": "Only the two exact verified owned cache targets in disk-cache-011-proof.json"
+    }
+  ]
+}
