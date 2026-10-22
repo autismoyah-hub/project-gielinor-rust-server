@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0186",
+  "implementation_commit_sha": "0f5abb462b132cdcd23822e3e3c54e3a62945671",
+  "recorded_utc": "2026-10-22T09:03:25.488970+00:00",
+  "result": "OWNER_WORLD_CACHE_NATIVE_PASS_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/server/src/content.rs": "7be7d2b3e6828c627bfa85980a129defd79cea3e87b9e5dc1352c74d3925f8cd",
+    "crates/server/src/content/bank_booths.rs": "7db79573c7bcf333315a6b579962ac75de0d1615f2020dc7d8e91d70906aa98e",
+    "crates/server/src/runtime/location_bank.rs": "e339e10393888d77d6c38fe1e1f14644b17bf4fab75f9e412c0a53aa27c98fc4",
+    "crates/world/src/simulation.rs": "41eb0c36d194e001f2978a9e852df3a20b99d87cf8b4a609292642daaac0a8e7",
+    "crates/world/src/simulation/bank_access_actions.rs": "ef9ccfcd1493786b03753ea2a82c973dcd3f55bb328f041f5a457136a40047e4",
+    "crates/world/src/simulation/banknote_actions.rs": "8b5985f09856b28b733d0557a8fda69b5948181a4faaa01b88d57aee15d47bcc",
+    "crates/world/src/simulation/location_choice_actions.rs": "8aae60f3043af825fa131c81eb8dda3656f798d11d628d7052fbb8a5c0da6878",
+    "crates/world/src/simulation/location_use_actions.rs": "58e61021820c281774ad14d50b363fe680f4048fe3528ec943085b2607aeb9c2",
+    "crates/world/src/simulation/normal_bank_booth_tests.rs": "1580b186fbf82abc9a12677c641d3c6084ca6fc02252cc0e80604d91eb9c913c"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-locs/src/main/kotlin/org/rsmod/content/generic/locs/banks/BankBooth.kt",
+      "sha256": "5ae348ce3e5dec6da126a7d68a4a64793d55a293bbcc93074a61718234d73ab8",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/interfaces/bank/src/main/kotlin/org/rsmod/content/interfaces/bank/BankUnnote.kt",
+      "sha256": "19e40b1dfd2075d13813ac627c7b4dffc2759659faafb87791685a38c9116120",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/protect/ProtectedAccess.kt",
+      "sha256": "7b1611b7e2e7ab4de6296f086c75be5c2c232386c7282cd0c5a3ecc1b3c8c6aa",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bank note",
+      "sha256": "59d28760322e01725aec0b7b1e738c40fb9a7e51a1dc5f87815f41a6502a549d",
+      "availability": "protected_local_reference",
+      "revision": "15337973"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bank booth",
+      "sha256": "1da86594c65720aced1afba1d85348a2a6ae1d03c9fe86bc69ba65f99aa89655",
+      "availability": "protected_local_reference",
+      "revision": "15322203"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bank",
+      "sha256": "295f5027a88d040f3809c0625c19bde0b37c6fbc668d3e9831b2b070cda3eb00",
+      "availability": "protected_local_reference",
+      "revision": "15315062"
+    }
+  ],
+  "logs": {
+    "focused-001.log": {
+      "sha256": "cfd93b3e58b8f393c2030ca7600f47e5e2605a54b8135a3632533fd1057b142b",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 2.2% sampled, ceiling70%.",
+        "Capacity: 8,352 MiB available, commit 42.9%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "focused-002.log": {
+      "sha256": "2637099bfc76f5a802668434b6add9d2c9e92673d4d543b69e760412d75ab31c",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.0% sampled, ceiling70%.",
+        "Capacity: 8,357 MiB available, commit 42.9%, pages-in/s 0, disk 1.8 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 309 filtered out; finished in 0.00s",
+        "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 689 filtered out; finished in 1.36s"
+      ]
+    },
+    "shared-003.log": {
+      "sha256": "57e7d1508e87d5369b3bb6e3a1721096abf6fa36f60d5fa63cc371f82d1c7df4",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.0% sampled, ceiling70%.",
+        "Capacity: 8,317 MiB available, commit 43.0%, pages-in/s 0, disk 2.2 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 309 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 57.37s",
+        "test result: ok. 692 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 36.53s"
+      ]
+    },
+    "fixture-004.log": {
+      "sha256": "879b3d344657fbd4a125101337e9d7068864b066a6e34df530339f207131a6c1",
+      "result": "PASS",
+      "summaries": []
+    },
+    "cache-005.log": {
+      "sha256": "d3ecf53da82f4a1229eb6d5b8cf77e459148cb2fb588d5f2884cacc2c34de59c",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.3% sampled, ceiling70%.",
+        "Capacity: 8,310 MiB available, commit 43.0%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS actual target dynamic booth Bank/current-mode/reciprocal notes/map/collision/held World exchange cases=12; no native-client assertion"
+      ]
+    },
+    "archive-006.log": {
+      "sha256": "cbbcb2f0606611934002c3ff330688f90025c956301e9818b786cd53b3d75b33",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.3% sampled, ceiling70%.",
+        "Capacity: 8,212 MiB available, commit 43.1%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 898F412A811DC9BBE7AA426CF30B3AA4FCE2BEBDCA5E79BA5F3F89DADB9E7630 (622 source files)."
+      ]
+    },
+    "driver-007.log": {
+      "sha256": "d436f5adaecddffadd73dbe9fde971b11aeda08428f19ece607514704773b3d2",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.0% sampled, ceiling70%.",
+        "Capacity: 8,195 MiB available, commit 43.1%, pages-in/s 0, disk 2.5 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "native-008.log": {
+      "sha256": "f8eae35a23cea113342af6776ca1b3e91d92518e1bb9cedd1073091681c09a9e",
+      "result": "PASS",
+      "summaries": [
+        "Integration CPU capacity: 9.6% sampled, ceiling 70%.",
+        "Capacity: 8,222 MiB available, commit 43.1%, pages-in/s 0, disk 3.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Integration CPU capacity: 10.7% sampled, ceiling 70%.",
+        "Capacity: 8,271 MiB available, commit 43.1%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Native normal dynamic Bank and note No/Yes/partial2/resultContinue PASS",
+        "Integration CPU capacity: 7.9% sampled, ceiling 70%.",
+        "Capacity: 8,275 MiB available, commit 43.1%, pages-in/s 0, disk 4.3 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    }
+  },
+  "server_archive": {
+    "sha256": "898F412A811DC9BBE7AA426CF30B3AA4FCE2BEBDCA5E79BA5F3F89DADB9E7630",
+    "source_count": 622,
+    "source_manifest_sha256": "d02513ab33f9079c88f73cca482710e474faf664877102bdc24ccfccd2782e77",
+    "before_after_sources_unchanged": true
+  },
+  "private_probe": {
+    "path": "crates/server/examples/normal_booth_cache_private.rs",
+    "sha256": "9feca701d5bfe17f4deb6d0a2c4d4001f72675973604e1bd8e926f17f1a77a39",
+    "scope": "Actual239.1 map12850 raw27291 at3209,3221,2/shape10angle2, real collision/Bank/current-selector/held-note World actions"
+  },
+  "native_driver": {
+    "driver": "normal-booth-001",
+    "scenario": "normal27291bankandnotes",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless software-rendered native object menu and bank widgets; no OS Window/desktop input or independent verdict",
+    "files": {
+      "NativeNormalBoothScenario.rs": "76129264CD45956FF67F2DA949B68BEDF04CB731473315314F9102A99FD17A25",
+      "server_normal_booth.exe": "E09C2205777FCAB1E61CE88411DFE456F6D77E50D713E14CB34B9EC5CA612EDB"
+    }
+  },
+  "pinned_library_files_checked_after": 990,
+  "native": [
+    {
+      "reference": "work/integration/runs/openrune-normal-booth-control-native-20261022-001/banknote-native-assessment.json",
+      "sha256": "25f946ee924beb6412a33ac05971d97536d281fcb53db3abefbb48a742ae1421",
+      "assessment": {
+        "result": "PASS_NATIVE_BANKNOTE_CONTROL",
+        "run": "openrune-normal-booth-control-native-20261022-001",
+        "mode": "control",
+        "server_sha256": "898F412A811DC9BBE7AA426CF30B3AA4FCE2BEBDCA5E79BA5F3F89DADB9E7630",
+        "driver_sha256": "E09C2205777FCAB1E61CE88411DFE456F6D77E50D713E14CB34B9EC5CA612EDB",
+        "pinned_library_files": 990,
+        "checks": [
+          "native item149 Use on raw dynamic27291, No then Yes and object dialogue Continue for action run only",
+          "partial exchange exact saved slots: notes5->3, two ordinary logs into first free0/1",
+          "all other inventory types/items/vars, Stats/fineXP and position unchanged",
+          "same-save reconnect unchanged for verify only",
+          "logout advanced/offline and exit0/unforced"
+        ],
+        "all_varp_changes": {
+          "3079": {
+            "before": 0,
+            "after": 87
+          },
+          "300": {
+            "before": 0,
+            "after": 100
+          },
+          "65515": {
+            "before": 0,
+            "after": 81
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "3077": {
+            "before": 0,
+            "after": 42021
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          }
+        },
+        "native_events": [
+          {
+            "kind": "native.banknote_control",
+            "notes": 5,
+            "logs": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.328,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 09:00:41"
+          }
+        },
+        "shutdown": {
+          "pid": 13640,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T09:00:41.8325071Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "39e83e99e2e3bb6ac25e152637e72f301dcdc01b555082671d1acd362f29ec76",
+          "final-state.json": "92ac5f2d5b4d701a6b95ce674edd7eab5273b4412f755bbcd68f9c45d4600f8d",
+          "client.log": "7f27d36a0d5ac69ce4fc4a7b5ef9ae04888a817b1f2db6f814a2a57cee9c52a2",
+          "native-events.jsonl": "482ca2b2e08cb9dc38a0116a7346d6d38509ddb9ba1374936fab189f7e5b8265",
+          "result.json": "d15973b9c148182c46d614de51010443d10f3ea93cafe4c71c2dd2175c11f043",
+          "server.json": "8a524d3f52b5cfa4f8c8aa544f54334a561f4e7d59ceb6a819f83226421ea4cc",
+          "server.log": "a090e26af051fc13ab7cd4d9a0108c3c0ef634a2936692f0861d46390d140434",
+          "shutdown.json": "e76121828723b0c2b1a9acc61332312b6f41a9d6648f1a5cfa873ab61dcdcb3e",
+          "logout-observation.json": "05459724342576293b92871684d114344f49ee85f7c0cb919ee0bb3aa7874a6a"
+        },
+        "limitations": [
+          "Owner working-tree archive, not independent or pristine acceptance.",
+          "Headless offscreen software scene and native widget dispatch; no OS window, physical input or rendered dialogue pixel claim.",
+          "Native full-pack/late-life/stale-target/refusal cases not exercised by this scenario; shared World cases are separate.",
+          "All varp changes reported, no general timer/capacity/chemistry acceptance.",
+          "No compiled Kotlin run; chemistry independent campaign remains paused."
+        ]
+      }
+    },
+    {
+      "reference": "work/integration/runs/openrune-normal-booth-actions-native-20261022-001/banknote-native-assessment.json",
+      "sha256": "a2730e3201aa233c90e949c7c3e02d9bf0214dab162a2b48d04b62c0da8a350b",
+      "assessment": {
+        "result": "PASS_NATIVE_BANKNOTE_EXCHANGE",
+        "run": "openrune-normal-booth-actions-native-20261022-001",
+        "mode": "exchange",
+        "server_sha256": "898F412A811DC9BBE7AA426CF30B3AA4FCE2BEBDCA5E79BA5F3F89DADB9E7630",
+        "driver_sha256": "E09C2205777FCAB1E61CE88411DFE456F6D77E50D713E14CB34B9EC5CA612EDB",
+        "pinned_library_files": 990,
+        "checks": [
+          "native item149 Use on raw dynamic27291, No then Yes and object dialogue Continue for action run only",
+          "partial exchange exact saved slots: notes5->3, two ordinary logs into first free0/1",
+          "all other inventory types/items/vars, Stats/fineXP and position unchanged",
+          "same-save reconnect unchanged for verify only",
+          "logout advanced/offline and exit0/unforced"
+        ],
+        "all_varp_changes": {
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "3079": {
+            "before": 0,
+            "after": 122
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "3077": {
+            "before": 0,
+            "after": 8641
+          },
+          "1021": {
+            "before": 0,
+            "after": 268435456
+          },
+          "65515": {
+            "before": 0,
+            "after": 117
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          }
+        },
+        "native_events": [
+          {
+            "kind": "native.banknote_use",
+            "stage": 1,
+            "slot": 13,
+            "note": 1512,
+            "location": 27291,
+            "opcode": 62
+          },
+          {
+            "kind": "native.banknote_choice",
+            "choice": "No",
+            "opcode": 115
+          },
+          {
+            "kind": "native.banknote_use",
+            "stage": 3,
+            "slot": 13,
+            "note": 1512,
+            "location": 27291,
+            "opcode": 62
+          },
+          {
+            "kind": "native.banknote_choice",
+            "choice": "Yes",
+            "opcode": 115
+          },
+          {
+            "kind": "native.banknote_result",
+            "notes": 3,
+            "logs": 2,
+            "opcode": 115
+          },
+          {
+            "kind": "native.dynamic_bank_open",
+            "location": 27291,
+            "operation": 2,
+            "opcode": 103,
+            "interface": 12
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.313,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 09:02:08"
+          }
+        },
+        "shutdown": {
+          "pid": 19248,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T09:02:09.2441890Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "39e83e99e2e3bb6ac25e152637e72f301dcdc01b555082671d1acd362f29ec76",
+          "final-state.json": "759112a15beda8e65f4ef5fecb3cebc7fe46b9f3871b9bc4ee39a47146a9eb25",
+          "client.log": "64f75c30e95ddfbffac171844c6670810bc9f354737406a0c19b6ed52ac597d8",
+          "native-events.jsonl": "2de7ca646b91396bab1ceef8334fb398f32c50948b995006dd4d02e8a5d4b8fb",
+          "result.json": "1debd5adf3f416f40faaa7e05c90a7ad208c1897e7b037b7ec758992a9a93345",
+          "server.json": "4930b167388021400b7ea32ed666fadc41c0854ce5519f51124770b7cc5d3021",
+          "server.log": "c4dd206d9098f13fffbc4f075a0c4afb9b1cedbf029ced71329eb043dc2a8a3a",
+          "shutdown.json": "6882b5ee5f9a1faf422bf8c7878a864776fed9afbd4be17df1f46273dc662a6b",
+          "logout-observation.json": "3cd6de6713ef734e7dd01016bb6f370bbf8d4438fd90aafab1d8c6cbf0c12898"
+        },
+        "limitations": [
+          "Owner working-tree archive, not independent or pristine acceptance.",
+          "Headless offscreen software scene and native widget dispatch; no OS window, physical input or rendered dialogue pixel claim.",
+          "Native full-pack/late-life/stale-target/refusal cases not exercised by this scenario; shared World cases are separate.",
+          "All varp changes reported, no general timer/capacity/chemistry acceptance.",
+          "No compiled Kotlin run; chemistry independent campaign remains paused."
+        ]
+      }
+    },
+    {
+      "reference": "work/integration/runs/openrune-normal-booth-replay-native-20261022-001/banknote-native-assessment.json",
+      "sha256": "01f5a5f5a3a82547d529158d597d6cdadf9994de0997d9bb71b58d6dee33bbc5",
+      "assessment": {
+        "result": "PASS_NATIVE_BANKNOTE_VERIFY",
+        "run": "openrune-normal-booth-replay-native-20261022-001",
+        "mode": "verify",
+        "server_sha256": "898F412A811DC9BBE7AA426CF30B3AA4FCE2BEBDCA5E79BA5F3F89DADB9E7630",
+        "driver_sha256": "E09C2205777FCAB1E61CE88411DFE456F6D77E50D713E14CB34B9EC5CA612EDB",
+        "pinned_library_files": 990,
+        "checks": [
+          "native item149 Use on raw dynamic27291, No then Yes and object dialogue Continue for action run only",
+          "partial exchange exact saved slots: notes5->3, two ordinary logs into first free0/1",
+          "all other inventory types/items/vars, Stats/fineXP and position unchanged",
+          "same-save reconnect unchanged for verify only",
+          "logout advanced/offline and exit0/unforced"
+        ],
+        "all_varp_changes": {
+          "300": {
+            "before": 200,
+            "after": 300
+          },
+          "3079": {
+            "before": 122,
+            "after": 89
+          },
+          "3077": {
+            "before": 8641,
+            "after": 16780
+          },
+          "65515": {
+            "before": 117,
+            "after": 200
+          }
+        },
+        "native_events": [
+          {
+            "kind": "native.banknote_verify",
+            "notes": 3,
+            "logs": 2
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.563,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 09:02:08"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 09:03:16"
+          }
+        },
+        "shutdown": {
+          "pid": 14436,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T09:03:17.1945588Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "759112a15beda8e65f4ef5fecb3cebc7fe46b9f3871b9bc4ee39a47146a9eb25",
+          "final-state.json": "3069ece6f0a16899f215bf130aa118cdfb0fbee40e24ac48d8f13e125dfb5bc9",
+          "client.log": "2b7a4489ee7bdba8f6ed2416e67e82dbf5c5ee7bc6453945439ce1ef66881d8b",
+          "native-events.jsonl": "de46d96b3ac9d0a6f15b449bb2003bdd91bdf69eb80521a5adc6313127dc1c73",
+          "result.json": "40b156bc538118b76a0f910c0177ceed13403868806d4a346f9a8675471f7b7b",
+          "server.json": "d4c17f86e05cc7952abcd415a1edd55f3910f8009203be6aa11a43cf99ade913",
+          "server.log": "dea42b51ce1ed090f231c836058402f2347901ec8232b9bab1d778476ed89044",
+          "shutdown.json": "bd72e7b205381aa504673538c58edc265fa1702604fe9fe63f96c2f6ed53fb83",
+          "logout-observation.json": "1e64b7b64621d6694962bf854eb5ea82183bbffea57f9ed3408d0585dba3dae6"
+        },
+        "limitations": [
+          "Owner working-tree archive, not independent or pristine acceptance.",
+          "Headless offscreen software scene and native widget dispatch; no OS window, physical input or rendered dialogue pixel claim.",
+          "Native full-pack/late-life/stale-target/refusal cases not exercised by this scenario; shared World cases are separate.",
+          "All varp changes reported, no general timer/capacity/chemistry acceptance.",
+          "No compiled Kotlin run; chemistry independent campaign remains paused."
+        ]
+      }
+    }
+  ],
+  "matrix": {
+    "shared_server_pass": 309,
+    "shared_world_pass": 692,
+    "shared_world_existing_ignored": 1,
+    "normal_mode_angles_member_bit_values": 72,
+    "binding_drift_cases": 16,
+    "actual_cache_member_note_slot_cases": 12
+  },
+  "failures_preserved": {
+    "focused001": "Compile E0502: whole-World helper borrowed self while dispatcher retained mutable player borrow. Resolved by computing booth type before borrowing player. Original log retained."
+  },
+  "limitations": [
+    "Owner working-tree evidence with retained packaging/private opt-ins; not pristine or independent acceptance.",
+    "Only exact raw27291 parent selecting normal18491 is newly supported. Mode1/Deadman27292, Collect and Deposit-box are not admitted by this registration; other booth population and broad Deadman banking remain separate.",
+    "Native action covers F2P raw27291 item149 Use62, No/Yes115, partial note conversion/resultContinue, scene Bank-op2/103 and received bank12 interface; control and same-save reconnect are separate sessions. Native mode flips, death/full/stale/range cases and bank transfers are not exercised by this scenario.",
+    "Mode bit4153/base1293 bit0 and all exact IDs/profile facts are observed239.1 cache details, not Wiki assertions. Other bits are preserved; inherited capacity800 is not Wiki capacity acceptance.",
+    "No compiled Kotlin scheduling, OS window/physical input or rendered bank/dialogue UI-pixel acceptance. Software scene only; independentV0-V4 queued and chemistry independent campaign paused."
+  ]
+}
