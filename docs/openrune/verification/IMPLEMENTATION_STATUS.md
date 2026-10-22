@@ -3,9 +3,9 @@
 <!-- forge-current:start -->
 ## Current implementation checkpoint
 
-OR-MIG-0173: Selected ordinary spade Dig and protected content hook boundary; source [cec5b1e](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/cec5b1e125021b606371fc70488a67635b7213c9). Spade shared002/bins001 PASS with 574 unchanged source hashes. Independent V0–V4 queued in [#134](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/134).
+OR-MIG-0200: six ordinary cow/calf guaranteed bone, cowhide and raw-beef drops; source [0b9f3c0](https://github.com/autismoyah-hub/project-gielinor-rust-server/commit/0b9f3c0b523cb3ab73e1007081728273b1226dc1). Owner768World-library/oneignored,4cow-integration,13existingNPC-death,329server and12actual-cache cases passed. Native matchedcontrol, realAttack, receivedprivatepile and Walk passed; Take and earned-item reconnect remain unaccepted because the pinned client rendered zero ground-item pixels. Evidence sent to ORACLE; independent verification pending under [#88](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/88) and [#14](https://github.com/autismoyah-hub/project-gielinor-rust-server/issues/14).
 
-173 units / 185 append-only records; discovery 3,508 = {'not_yet_assessed': 2733, 'configuration': 660, 'framework_or_infrastructure': 20, 'eligible_gameplay_behavior': 95}. Partial obligations remain; counts do not establish completion.
+Previous four-session native checkpoint: OR-MIG-0199 Godsword forging, metadata3ff52fe8. Discovery3,508 remains {'not_yet_assessed': 2716, 'configuration': 661, 'framework_or_infrastructure': 22, 'eligible_gameplay_behavior': 109};200units across224append-onlyrecords are an implementation inventory, not gameplay completion. Conditional cow clues/special variants and native pickup remain open.
 <!-- forge-current:end -->
 
 
@@ -1624,3 +1624,16 @@ Owner768world/oneexistingignored and328server tests passed, including180recipe/t
 Four native002sessions passed: heldfeedback control; lonepartial refusal/noXP; two real item-on-anvil/skillmulti joins followed by existing Armadyl hilt attachment; acknowledged same-save earned AGS reconnect/no replay. Actual joins award10000fineXP at prepared5x. Inputs/member99Smithing/tool/position are fixtures, not earned drops. All saves acknowledged/unforced0/990unchanged client library files. Inspected smithy frames show the world/character, with inventory/chat black; no item-icon/UI-pixel/animation claim. Initial native001 and diagnostic map-window failures preserved unchanged: runner omitted Varrockspawn, so the client rendered an anvil absent from the server Lumbridge map window. Corrected runner uses explicit3187,3426,0, retaining original server archive and client. UI/location permissions unchanged.
 
 [Owner evidence](development/OR-MIG-0199.json). Archive `C7F3D919BD9B4F69B1798BC1C4373C7C99D5A3B2337E70F9081F41D385D46658` pins690source files. Exact animation phase/audio, other join/tool native cases, broader Smithing/weapon behavior and independentV0-V4 remain pending; chemistry independent verification paused. Discovery classifications{'not_yet_assessed': 2716, 'configuration': 661, 'framework_or_infrastructure': 22, 'eligible_gameplay_behavior': 109} are not a gameplay completion percentage.
+
+
+## OR-MIG-0200 — Guaranteed cow and calf drops; native pickup pending
+
+Source `0b9f3c0b523cb3ab73e1007081728273b1226dc1` adds one cowhide and raw beef to the existing guaranteed bone drop for six attested ordinary cow/calf types. It reuses authoritative hero selection and the atomic private ground batch; chicken drops, duck suppression and current XP logic remain unchanged.
+
+Owner768World library/oneexistingignored, four new cow integration,13existing NPC-death and329server tests passed, including30factory item refusals and12actual239.1cache death cases. Five variants use existing farm map spawns; cow_beef2795uses the actual target definition on a prepared farm tile. Two actual source TOML tables parsed with standard tomllib confirm guaranteedhide/beef and separate conditionalclues; the donor Kotlin drop engine was not executed.
+
+Native007matched passive control passed. Actual Attack13, received private3itempile, authoritative selected_cow trace and native Walk114also passed. The character saved its additional combat XP, with unchanged carried inventory. No Take was generated and earned-item reconnect was not run. The pinned client built558groundtriangles but rendered0visible/0isolated pixels; inspected isolated image is blank. ORACLE received this evidence. No fabricatedTake or permission bypass substitutes for acceptance.
+
+Earlier001attack-hidden,003/004Settings and005/006pickup-driver failures remain preserved. Final007control/treatment are exact backups of failed006state, preserving both prior earned combat XP gains/position/HP/variables. Earlier separate copies enabled only normal NPCattack preference1306=0. Original saves and earned XP were never reset. Settings/default integration remains unaccepted. Archive and all990pinned client-library files remain unchanged.
+
+[Owner evidence](development/OR-MIG-0200.json). Archive `10F25DFBF0F4681DBB77002A7A2D4ACB76716E83D8ADCFB48924D38AA43D8B45` pins692source files. Fairy/specialcalfvariants, beginner clue handling, account restrictions/ties, full drop/combat engine and independentV0-V4 remain open. Discovery classifications{'not_yet_assessed': 2716, 'configuration': 661, 'framework_or_infrastructure': 22, 'eligible_gameplay_behavior': 109} are not gameplay completion. Chemistry independent verification remains paused.

@@ -1,0 +1,700 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0200",
+  "implementation_commit_sha": "0b9f3c0b523cb3ab73e1007081728273b1226dc1",
+  "recorded_utc": "2026-10-22T19:34:15.862064+00:00",
+  "result": "OWNER_WORLD_CACHE_SOURCE_TABLE_PASS_NATIVE_ATTACK_PILE_WALK_PARTIAL_PICKUP_BLOCKED_CLIENT_RENDERING",
+  "sources": {
+    "crates/server/src/content/cows.rs": "479524be1cf7eedb4d3dd7aa9a4f79b81f7b13e5c78ad987c5bbbb50054a321b",
+    "crates/server/src/startup.rs": "91bb89c5e19bb352354cbb66e289b93b31b30d5d017065bb8137af4e2c5ab661",
+    "crates/world/src/npc_death.rs": "d617bc7ae3f8f2cc55a0c0f1e5503a6f57890e656aee736e538b0b23f3d4df53",
+    "crates/world/src/simulation.rs": "5d400ef0a7e99347270fbe7d32c209a5cc2e3f1ef15c3e38b70b3302e136fb8c",
+    "crates/world/src/simulation/npc_death_actions.rs": "2c21854378bcb27a8dacf6be7f5ae34bf0180822dbde7672dc1de6ce0d738a7b",
+    "crates/world/tests/cow_drops.rs": "58cd6ecddb05f9593ec7d944e0c6618a24d2d685c65ed37ea30556d578188342"
+  },
+  "source_references": [
+    {
+      "kind": "wiki",
+      "reference": "Cow",
+      "revision": "15254984",
+      "sha256": "96215b02be02de56764fc9167dd8c385b578364b8a6884aa8798932bbae9bc46",
+      "availability": "protected_local_reference"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cow calf",
+      "revision": "15199604",
+      "sha256": "99d36912150a8f3312d931367807ae6941d6239bf74f51d536e260eab37b894f",
+      "availability": "protected_local_reference"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/drops/src/main/resources/drops/tables/monsters/cow.toml",
+      "sha256": "0f67137a8733a43b2111341c520cc26002c9bd756c38df17f074dd89e67fc99c",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; actual TOML inspected; guaranteedhide/beef and conditional clue table separate."
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/drops/src/main/resources/drops/tables/monsters/cow_calf.toml",
+      "sha256": "82ac3d00aa71c0fcac2e9711393d134360e16999c813aeb0082ebcab65987334",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; actual TOML inspected; guaranteedhide/beef and conditional clue table separate."
+    }
+  ],
+  "server_archive": {
+    "sha256": "10F25DFBF0F4681DBB77002A7A2D4ACB76716E83D8ADCFB48924D38AA43D8B45",
+    "source_count": 692,
+    "source_manifest_sha256": "30ca433fe6d241b1bb37a5602a4afa544c6ccbd36088a603e7cd37d78a194717"
+  },
+  "validation_order_note": "Server329tests precede final startup-only positive-death/conflict guard; final guard compiled in immutable archive008 and exercised by all native startup sessions. World768lib+4cow+13existingdeath and factory30refusals passed; no full pristine acceptance.",
+  "matrix": {
+    "world_library_passed": 768,
+    "world_existing_ignored": 1,
+    "new_cow_drop_integration_passed": 4,
+    "existing_npc_death_integration_passed": 13,
+    "server_passed": 329,
+    "factory_drop_material_refusals": 30,
+    "actual_cache_free_member_death_cases": 12
+  },
+  "logs": {
+    "archive-008.log": {
+      "reference": "work/openrune-cow-drops-20261022/archive-008.log",
+      "sha256": "c495afc88341a7b9349c91a3683583b6f222cec5eef036052a082e2ec6f34326"
+    },
+    "cache-003.log": {
+      "reference": "work/openrune-cow-drops-20261022/cache-003.log",
+      "sha256": "39e9d47781178919bcc2057c9b674e860393098e53fed23afe41e5573799d999"
+    },
+    "cache-004.log": {
+      "reference": "work/openrune-cow-drops-20261022/cache-004.log",
+      "sha256": "42f01f727b1840bfb41ec7e2a295104b459190338543ba99d85086a96158fe2f"
+    },
+    "driver-009.log": {
+      "reference": "work/openrune-cow-drops-20261022/driver-009.log",
+      "sha256": "e1f9cb400c32ff83b3c19e131b7ef4f7dd8b69b9885b8030bc755eabb4a85627"
+    },
+    "driver-011.log": {
+      "reference": "work/openrune-cow-drops-20261022/driver-011.log",
+      "sha256": "81d22de04b5af0d2365a63b05d6263f5993987da7fcaa76ea58e08fd18178215"
+    },
+    "driver-013.log": {
+      "reference": "work/openrune-cow-drops-20261022/driver-013.log",
+      "sha256": "9a1dfd335722ae9cd020507e6f2ccf63e91a52fd5b73aab8f17db36b080d3a5e"
+    },
+    "driver-015.log": {
+      "reference": "work/openrune-cow-drops-20261022/driver-015.log",
+      "sha256": "34684da2369f60bfcb607ceef45f0d7809aef6487b4e30125631d5633c70e8cb"
+    },
+    "driver-020.log": {
+      "reference": "work/openrune-cow-drops-20261022/driver-020.log",
+      "sha256": "22df085657fc34ce204ce6d33e8eca5e2070687308681266453d4ff7010d8dc1"
+    },
+    "driver-024.log": {
+      "reference": "work/openrune-cow-drops-20261022/driver-024.log",
+      "sha256": "5ed68533177742842334d07882044c736dfcc2ccd4997a1ad1d284eba3ed74fb"
+    },
+    "fixtures-007.log": {
+      "reference": "work/openrune-cow-drops-20261022/fixtures-007.log",
+      "sha256": "ac90243333989ef37bcc0653c535362ff204d9f03f01e82a0804d712a44c8b4b"
+    },
+    "native-010.log": {
+      "reference": "work/openrune-cow-drops-20261022/native-010.log",
+      "sha256": "840db219591b2e4b651a8b6a200fa1db08736829010dda652708149a4ba3993b"
+    },
+    "native-014.log": {
+      "reference": "work/openrune-cow-drops-20261022/native-014.log",
+      "sha256": "2d9f18495656bbcd554d879305295e9872bd8407ea00adad8972bfe464113c97"
+    },
+    "native-016.log": {
+      "reference": "work/openrune-cow-drops-20261022/native-016.log",
+      "sha256": "5a71dc9217ab3240a659cadd30c2347c8c414d613b56f874db86d66067bc917a"
+    },
+    "native-018.log": {
+      "reference": "work/openrune-cow-drops-20261022/native-018.log",
+      "sha256": "dd00a579f46de51bb8217243ee61f6d269c4924938aa72f820a2e94fb487ed78"
+    },
+    "native-021.log": {
+      "reference": "work/openrune-cow-drops-20261022/native-021.log",
+      "sha256": "5263f60bf7314ab54310ed68841f2230aa30491cfb5e670d928bed8f6d5a7715"
+    },
+    "native-025.log": {
+      "reference": "work/openrune-cow-drops-20261022/native-025.log",
+      "sha256": "3ac884464e4ecf3acb1515b9a87ce5de76d4380e628932fbc77833a07cbd665a"
+    },
+    "server-002.log": {
+      "reference": "work/openrune-cow-drops-20261022/server-002.log",
+      "sha256": "c17f4e8ae5649c738bb2e5ede640dc7819bc462ffbbf74912cd9ce6f0c230032"
+    },
+    "world-drops-001.log": {
+      "reference": "work/openrune-cow-drops-20261022/world-drops-001.log",
+      "sha256": "7148dab58b34e49bd68a581e2ff94ee4bfa27261e0035df61e0f917f4003c3a4"
+    },
+    "world-lib-006.log": {
+      "reference": "work/openrune-cow-drops-20261022/world-lib-006.log",
+      "sha256": "f4ebce3a5f6a0b29ecb356691e23b0dbd05fc8c4e3bd4b59fd7887e5bdc4d249"
+    }
+  },
+  "source_table_characterization": {
+    "result": "PASS_ACTUAL_TWO_SOURCE_TOML_TABLES",
+    "parser": "Python3standard tomllib; actual donor data, not Kotlin registration/drop engine",
+    "tables": [
+      {
+        "table": "cow.toml",
+        "sha256": "0f67137a8733a43b2111341c520cc26002c9bd756c38df17f074dd89e67fc99c",
+        "ordinary_symbols": [
+          "cow",
+          "cow2",
+          "cow3",
+          "cow_beef"
+        ],
+        "unported_symbols": [
+          "fairy_cow"
+        ],
+        "guaranteed": [
+          {
+            "obj": "obj.cow_hide",
+            "count": 1
+          },
+          {
+            "obj": "obj.raw_beef",
+            "count": 1
+          }
+        ],
+        "tertiary_unported": [
+          {
+            "numerator": 1,
+            "denominator": 128,
+            "obj": "obj.trail_clue_beginner",
+            "count": 1,
+            "clue_scroll_box": true
+          }
+        ]
+      },
+      {
+        "table": "cow_calf.toml",
+        "sha256": "82ac3d00aa71c0fcac2e9711393d134360e16999c813aeb0082ebcab65987334",
+        "ordinary_symbols": [
+          "cow2_calf",
+          "cow3_calf"
+        ],
+        "unported_symbols": [
+          "calf"
+        ],
+        "guaranteed": [
+          {
+            "obj": "obj.cow_hide",
+            "count": 1
+          },
+          {
+            "obj": "obj.raw_beef",
+            "count": 1
+          }
+        ],
+        "tertiary_unported": [
+          {
+            "numerator": 1,
+            "denominator": 128,
+            "obj": "obj.trail_clue_beginner",
+            "count": 1,
+            "clue_scroll_box": true
+          }
+        ]
+      }
+    ],
+    "adaptation": "Retain existing shared bones guaranteed path, confirmed Wiki. Six already attested ordinary cow/calf variants only; fairy_cow/calf/conditional clue boxes remain unported."
+  },
+  "native": [
+    {
+      "run": "openrune-cow-drops-baseline-native-20261022-007",
+      "result": "PASS_NATIVE_COW_DROPS_CONTROL",
+      "assessment_sha256": "6c3d5aabeb30140f5b636a18b17afc93bf8ccdab406bf81c3fcb04ef0d05b667",
+      "assessment": {
+        "result": "PASS_NATIVE_COW_DROPS_CONTROL",
+        "run": "openrune-cow-drops-baseline-native-20261022-007",
+        "server_sha256": "10F25DFBF0F4681DBB77002A7A2D4ACB76716E83D8ADCFB48924D38AA43D8B45",
+        "driver_sha256": "162E1FA729FD58EEE90BE8E5CE4C932DC9FCB014C5B6B21EFE6258C0B89F51F9",
+        "native_events": [
+          {
+            "kind": "native.cow_drops_done",
+            "mode": "control",
+            "stock": [
+              0,
+              0,
+              0
+            ],
+            "display_xp_deltas": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "native_reveal_walks": [],
+        "server_drop_traces": [],
+        "saved_fine_xp_deltas": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 0,
+          "12": 0,
+          "13": 0,
+          "14": 0,
+          "15": 0,
+          "16": 0,
+          "17": 0,
+          "18": 0,
+          "19": 0,
+          "20": 0,
+          "21": 0,
+          "22": 0,
+          "23": 0,
+          "24": 0
+        },
+        "saved_stock": {
+          "ids": [
+            526,
+            1739,
+            2132
+          ],
+          "before": [
+            0,
+            0,
+            0
+          ],
+          "after": [
+            0,
+            0,
+            0
+          ]
+        },
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.484,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 19:20:25"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 19:24:28"
+          }
+        },
+        "shutdown": {
+          "pid": 14576,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T19:24:28.9039714Z"
+        },
+        "evidence_hashes": {
+          "client.log": "577b2ebffa5f6d670982ba6e2ca0aa26562549c08a85601a0952a1a2ab73de15",
+          "final-state.json": "d1bd3d4561059fd282b73556941c124cfe30fba31920afa9189ab0f857a95441",
+          "initial-state.json": "d50b1c7c1ca496f4fb5a18f781fa0d589d0746461f96c8b476270bc2de2e5825",
+          "logout-before.json": "a1ba3ea265e54afdd9f04da8c2eebad4c6bcbf56131ffc738f3a8ed4a232f194",
+          "logout-observation.json": "ec5db93b3b7418b11acd19f15f11b6c5ddb82561dff7e2ea4ac647f13c3703bb",
+          "native-events.before.bmp": "c3dac84914696ca131bdaca1e8c9600893249814311ff55d7b5e7eedaee676f2",
+          "native-events.done.bmp": "c3dac84914696ca131bdaca1e8c9600893249814311ff55d7b5e7eedaee676f2",
+          "native-events.jsonl": "532cfb193cbfc4ff305dce0cd6ebe198410bd51706f910796a04bc59f637863d",
+          "result.json": "53f3ca3bbd32b3d14c4fa94bb66e7cf856df44bcf2060b6e619fe185ceaae85f",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "1bd35a5826217e1eed27738cd6a4e6cd1acfdcab0da50094656037a2bcf8ba01",
+          "server.log": "95aa4a9497d3da648a938ab3a72996a9c39fed49cae4c9d77d7baae6197f6f3a",
+          "shutdown.json": "e9091b01b37333e72f1fef21a97e15c18b85efce7de8809669a891997377fde0"
+        }
+      },
+      "scope": "Passive control only; no Attack/Take/replay assertion."
+    },
+    {
+      "run": "openrune-cow-drops-actions-native-20261022-007",
+      "result": "PARTIAL_REAL_ATTACK_PRIVATE_PILE_AND_WALK_PASS_TAKE_BLOCKED",
+      "client_exit": 1,
+      "server_sha256": "10F25DFBF0F4681DBB77002A7A2D4ACB76716E83D8ADCFB48924D38AA43D8B45",
+      "driver_sha256": "162E1FA729FD58EEE90BE8E5CE4C932DC9FCB014C5B6B21EFE6258C0B89F51F9",
+      "native_events": [
+        {
+          "kind": "native.cow_attack",
+          "index": 401,
+          "raw": 2793,
+          "opcode": 13,
+          "tile": [
+            3251,
+            3289
+          ]
+        },
+        {
+          "kind": "native.cow_death_pile",
+          "index": 401,
+          "raw": 2793,
+          "tile": [
+            3251,
+            3289
+          ],
+          "bones": 1,
+          "cowhide": 1,
+          "beef": 1
+        },
+        {
+          "kind": "native.cow_reveal_walk",
+          "opcode": 114,
+          "tile": [
+            3253,
+            3289
+          ]
+        }
+      ],
+      "server_drop_traces": [
+        {
+          "schema": 1,
+          "tick": 79,
+          "npc_slot": 401,
+          "npc_generation": 401,
+          "npc_type": 2793,
+          "coords": [
+            3251,
+            3289,
+            0
+          ],
+          "actor_slot": 1,
+          "actor_generation": 554,
+          "policy": "selected_cow",
+          "result": "committed",
+          "draw": null,
+          "products": [
+            [
+              526,
+              1
+            ],
+            [
+              1739,
+              1
+            ],
+            [
+              2132,
+              1
+            ]
+          ],
+          "handles": [
+            [
+              34
+            ],
+            [
+              35
+            ],
+            [
+              36
+            ]
+          ]
+        }
+      ],
+      "saved_combat_fine_xp_deltas": {
+        "0": 1600,
+        "1": 0,
+        "2": 0,
+        "3": 531,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0,
+        "21": 0,
+        "22": 0,
+        "23": 0,
+        "24": 0
+      },
+      "carried_inventory_unchanged": true,
+      "logout": {
+        "status": "PASS",
+        "save_completed": true,
+        "elapsed_seconds": 10.578,
+        "before": {
+          "world_id": null,
+          "last_logout": "2026-10-22 19:20:25"
+        },
+        "after": {
+          "world_id": null,
+          "last_logout": "2026-10-22 19:27:54"
+        }
+      },
+      "shutdown": {
+        "pid": 1324,
+        "exited": true,
+        "exitCode": 0,
+        "forced": false,
+        "utc": "2026-10-22T19:27:55.1381647Z"
+      },
+      "evidence_hashes": {
+        "client.log": "64e92df1b30d870c15fc6a54ae213f387bac8366aea01dffa4a9d37757a7c42c",
+        "final-state.json": "6145cc9c76e41a97ab14a852f3e725bce606239d063c182be15566b2a4852884",
+        "initial-state.json": "d50b1c7c1ca496f4fb5a18f781fa0d589d0746461f96c8b476270bc2de2e5825",
+        "logout-before.json": "a1ba3ea265e54afdd9f04da8c2eebad4c6bcbf56131ffc738f3a8ed4a232f194",
+        "logout-observation.json": "78b96f935f6e1d7d1055ae161cfdb1eabbd076764df707cb38c5a1fd95cbb234",
+        "native-events.before.bmp": "d383b0cbfefe05dcb8ec97a0c462ee1a0f89fa588e9bcfbb8fffac9410cae7ae",
+        "native-events.jsonl": "9a6d5d68c61ef7aeecbafe45fc5639841fd731bea7e19a6234387a1024272686",
+        "native-events.pile.bmp": "d29d6e549a881b133e56499b44a05e0da05e599ad3896d65bcf17eb7e990742d",
+        "result.json": "88d188dd2a8896173543c6213d7645ed34b9c7e048dce2e67b23ae68738bc8b7",
+        "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "server.json": "4e7285a74d2d14bde9ddf3d09a6bd600a12fce9f58db6cd4ac5f8e31f0167484",
+        "server.log": "4d3c4f0043842b5ee02cdec9485c5917a329c78d7f99f9f8ca74f1335a727ea0",
+        "shutdown.json": "4e6f9a8210d373aee2aa1f52cc0babd65c30ed7f9e4462d6d8358e4d9bba4811",
+        "stop": "0bdb213cc25836b51a839770b59ed082eed86a45a111267b6d940ac7d4dd236e"
+      },
+      "replay": "NOT_RUN: no items picked up; earned-item reconnect acceptance remains pending"
+    }
+  ],
+  "frame_review": {
+    "inspected": true,
+    "frames": [
+      {
+        "reference": "work/integration/runs/openrune-cow-drops-actions-native-20261022-007/native-events.pile.bmp",
+        "sha256": "d29d6e549a881b133e56499b44a05e0da05e599ad3896d65bcf17eb7e990742d"
+      },
+      {
+        "reference": "work/integration/runs/openrune-cow-drops-actions-native-20261022-007/work/ground-isolated-diagnostic.bmp",
+        "sha256": "21f0a7e0c5d93c8204166bf66fb6367413a8fd49e6b7ab7b49c4f190df14174b"
+      }
+    ],
+    "observation": "Actual native farm/avatar/cows visible, inventory/chat panels black; isolated ground diagnostic image blank. No ground-item/UI-pixel/pickup/animation acceptance. Received pile and authoritative trace are partial state evidence; Take and earned-item reconnect remain unaccepted."
+  },
+  "native_driver": {
+    "driver": "cow-drops-007",
+    "scenario": "nativeCowKillThreeTakeAndEarnedReplay",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless actual shard heldfeedback,lonepartialrefusal,twoanviljoins+existinghilt,same-save earnedreplay; no OS window/input or independent verdict",
+    "files": {
+      "server_cow_drops7.exe": "162E1FA729FD58EEE90BE8E5CE4C932DC9FCB014C5B6B21EFE6258C0B89F51F9",
+      "NativeCowDropsScenario7.rs": "6BC1268C9416536A61F79614CCF99E48E8B1AEB9D04A8118719F6FE76E9C91DB"
+    }
+  },
+  "failures_preserved": [
+    {
+      "reference": "work/openrune-cow-drops-20261022/cache-003.log",
+      "failed_source_sha256": "a4a9504e7f962fd31969489381398d83aed7c42b846e112a12b0f62173271dcc",
+      "scope": "Owned private probe used ? on ActionError lacking std::error::Error; compiler refusal preserved. Corrected owned probe with explicit fixture unwraps; no gameplay logic change."
+    }
+  ],
+  "native_fixture_preference": {
+    "varp": 1306,
+    "value": 0,
+    "scope": "Final007control/treatment are exact backups of preserved failed006-pickup character retaining earned XP/position/HP/all variables. Earlier isolated copies enabled only preference1306=0; no original state or earned XP reset. Settings remains unverified."
+  },
+  "native_failure_record": {
+    "result": "NATIVE_HIDDEN_ATTACK_PREFERENCE_NO_GAMEPLAY_ACTION",
+    "run": "openrune-cow-drops-actions-native-20261022-001",
+    "inventory_and_stats_unchanged": true,
+    "native_events": 0,
+    "save_acknowledged": true,
+    "unforced_server_exit": 0,
+    "cause": "Pinned client Settings default npc_attack=3(Hidden); ordinary login preserves unset preference. No native Attack menu entry despite visible cows. Existing login behavior unchanged; next driver selects preference through actual native Settings UI.",
+    "evidence_hashes": {
+      "client.log": "22dc1ff50aab829ba87e2d87261de33205926f1b6ffba1c87cecd8b9c8ce142d",
+      "final-state.json": "476b5e3f707985e3857a9b7d143bc8fa50e6926d0645416843034434b2c683e9",
+      "initial-state.json": "606aa1e45d5d0a45381a911fce7570ea5401ec489d12cdfa56e75361685513d4",
+      "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+      "logout-observation.json": "5b9907a6a82d0feaeb5a6a70debcb1755c58aa359ced3db467123cfc940e6723",
+      "native-events.before.bmp": "40c7cc2b0c1461dc34f321247a6907e6a46b623b4a13065a1880965984876fb6",
+      "native-events.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result.json": "57d6d46df260e6f6e433f49ae14542c93addf0d81da13b3cb619556b690f964d",
+      "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "server.json": "7dd68b37507c19d79124225130816b42ca05fde8f630aaa43afcd6217cbc044e",
+      "server.log": "c3d9309a2402f2cae9417f73bfb317869b824aa0b6983209905dfcd4952a4c65",
+      "shutdown.json": "7f6a93ed939d96ee9fbfc19650c1bfe410bb8427d0657821f0651f5308d5e3f6",
+      "stop": "0bdb213cc25836b51a839770b59ed082eed86a45a111267b6d940ac7d4dd236e"
+    }
+  },
+  "native_pickup_failure_record": {
+    "result": "NATIVE_REAL_KILL_AND_PRIVATE_PILE_PASS_PICKUP_DRIVER_TAG_FAILURE",
+    "events": [
+      {
+        "kind": "native.cow_attack",
+        "index": 400,
+        "raw": 2793,
+        "opcode": 13,
+        "tile": [
+          3250,
+          3281
+        ]
+      },
+      {
+        "kind": "native.cow_death_pile",
+        "index": 400,
+        "raw": 2793,
+        "tile": [
+          3250,
+          3281
+        ],
+        "bones": 1,
+        "cowhide": 1,
+        "beef": 1
+      }
+    ],
+    "earned_fine_xp_deltas": {
+      "0": 1600,
+      "1": 0,
+      "2": 0,
+      "3": 531,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 0,
+      "18": 0,
+      "19": 0,
+      "20": 0,
+      "21": 0,
+      "22": 0,
+      "23": 0,
+      "24": 0
+    },
+    "inventory_unchanged": true,
+    "save_acknowledged": true,
+    "unforced_exit": 0,
+    "cause": "Driver1looked for terrain0x8000000000000000; actual client live_runtime ground menu branch is0x1000000000000000. No Take packet sent. Driver6corrects only that flag; original source/driver/run/profile retained.",
+    "evidence_hashes": {
+      "client.log": "8c5e5f1400c1cbff136eacef20b1fca57c3a89fc2c9855270fd2b8a8b341c602",
+      "final-state.json": "cfac54bca24427bdc6121bfa4ba2d2abe3f3ad635150291acc47a083ed7722b3",
+      "initial-state.json": "bbb6b1a3a4a07ee0107674387eb144a99603679f301f8dd1fec20f3c6888b137",
+      "logout-before.json": "8b015e2f5380f597193b96befe94d52aee6ecd5948322b6f832a1b98fafabe86",
+      "logout-observation.json": "83774e82ca966744808d6ca9b9a6520b710f5b7be6ffc8a1e3f94946c077d913",
+      "native-events.before.bmp": "4447637c41c84f3b29f89aa3c1a3c1d011f86dfa54d0aba77d2cb9387b38d0bb",
+      "native-events.jsonl": "3b418f7a27932893df29a3e7c024e396da78d708a20fd8435f8cc6104a887339",
+      "native-events.pile.bmp": "d0f0131b026fc2868290f8825bfb2c439f663f1aab884b5d2402749b3f958488",
+      "result.json": "569845539394c1bfafb5750073f8165b93afbb8d71b703280e6c5d585aafe139",
+      "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "server.json": "454a92538a57c5ef7a8234ea83336fbf4a4bcbb39448d361a5118474de6f6702",
+      "server.log": "1af917b9ed3d9176d944d8e2f5e32930a45780417a9d2c0c24a4bb0d59f6fd0e",
+      "shutdown.json": "c95e1c7a361387e8fad5a93df73fad90f15800e453ea6305cee4cf1eed4c5ba3",
+      "stop": "0bdb213cc25836b51a839770b59ed082eed86a45a111267b6d940ac7d4dd236e"
+    }
+  },
+  "native_second_pickup_failure_record": {
+    "result": "NATIVE_KILL_PILE_PASS_STABLE_PIXEL_PICKUP_NOT_ACCEPTED",
+    "run": "openrune-cow-drops-actions-native-20261022-006",
+    "events": [
+      {
+        "kind": "native.cow_attack",
+        "index": 419,
+        "raw": 2790,
+        "opcode": 13,
+        "tile": [
+          3257,
+          3287
+        ]
+      },
+      {
+        "kind": "native.cow_death_pile",
+        "index": 419,
+        "raw": 2790,
+        "tile": [
+          3257,
+          3287
+        ],
+        "bones": 1,
+        "cowhide": 1,
+        "beef": 1
+      }
+    ],
+    "scope": "Correct groundtag0x100 but3x3stable pixel picker did not issue Take. Preserve acknowledged earned XP/position/HP; final007uses native reveal Walk and existing pick_visible API. No server/client-library or mask changes.",
+    "final_state_sha256": "d50b1c7c1ca496f4fb5a18f781fa0d589d0746461f96c8b476270bc2de2e5825"
+  },
+  "native_render_gap": {
+    "result": "NATIVE_PICKUP_BLOCKED_PINNED_CLIENT_ZERO_GROUND_PIXELS",
+    "scope": "Real native Attack, received3itempile, realWalkclear succeeded; no fabricatedTake. Existing client diagnostic558triangles/0visible/0isolated despite decodedcowhide/bones/beef meshes. No clientlibrary/server mask changes.",
+    "run": "openrune-cow-drops-actions-native-20261022-007",
+    "logs_sha256": "64e92df1b30d870c15fc6a54ae213f387bac8366aea01dffa4a9d37757a7c42c",
+    "frames": {
+      "ground-isolated-diagnostic.bmp": "21f0a7e0c5d93c8204166bf66fb6367413a8fd49e6b7ab7b49c4f190df14174b",
+      "ground-scene-diagnostic.bmp": "3c6fab896f5b4998b7a2d9ad3da03f943caced03593bbecc8d733c041e12d6b0"
+    },
+    "oracle_coordination_sent": true,
+    "owner_verdict": "Partial native kill/drop PASS; pickup/save-earned-items not accepted; continue independently testable content.",
+    "snapshot_scope": "Final closed run after acknowledged logout and unforced0server shutdown. Earlier025record retains an in-progress log-prefix hash; it is preserved unchanged.",
+    "earlier_in_progress_record_sha256": "56c105ffe9ce903de7638f06353bad43758f7404bbae23b64ff1d76faf0ff3e1",
+    "client_exit": 1,
+    "save_acknowledged": true,
+    "server_unforced_exit": 0
+  },
+  "native_settings_failures": [
+    {
+      "run": "openrune-cow-drops-baseline-native-20261022-003",
+      "scope": "Settings tab menu operation did not expose native dropdown within25seconds; no gameplay action."
+    },
+    {
+      "run": "openrune-cow-drops-baseline-native-20261022-004",
+      "scope": "Settings pointer route likewise not accepted; no gameplay action. Driver2compileE0277EntryDebug preserved; driver3/4archives and sources retained."
+    }
+  ],
+  "known_limitations": [
+    "Native final007control passes; real Attack/pile/Walk passes, but Take and earned-item reconnect NOT ACCEPTED. Pinned client diagnostic builds558groundtriangles and renders0visible/0isolated pixels despite decoded1739/526/2132meshes. No synthesizedTake/serverpermission bypass. ORACLE coordination sent; owner client gap does not establish server pickup or full native parity.",
+    "Six already attested ordinary cow/calf types2790..2795 only. Guaranteed526bones/1739cowhide/2132rawbeef, one each. Fairy cow, alternate calf, undead/unicow and other drop tables remain separate.",
+    "Actual source cow.toml/cow_calf.toml parsed unchanged with Python standard tomllib: two guaranteed products, conditional1/128beginner clue and8registered symbols. Rust covers6ordinary symbols; common bones retained and independently confirmed Wiki. Donor Kotlin table registration/DSL, drop engine and full reference runtime were not executed.",
+    "Ordinary account/hero path only. Official ties, Ironman/GroupIronman outsider restrictions, Wilderness and special account/drop qualification remain unresolved under existing #88; no new credit policy or account-profile closure.",
+    "No beginner clue roll/transform/box, clue ownership limits, Ring of wealth/conditional key changes, collection logs or acquisition/quest expansion. Existing bones/chicken/drop suppression paths retained; configuration discovery counts remain file classifications, not gameplay completion.",
+    "World integration uses trusted queued lethal hits to exercise the real death lifecycle/hero/ground publication. Twelve actual-cache cases use real farm terrain and source NPC definitions; five variants have existing map spawns, cow_beef2795is explicitly spawned from target definition at a prepared farm tile. These are not native combat-roll assertions.",
+    "Native fixture is F2Pbase99melee/HP,5x, empty inventory/equipment and real farm position. Actual native Attack13kills one selected ordinary profile; received pile/private server trace and native Walk pass, but Take and earned-item reconnect are NOT ACCEPTED. Existing positive melee/HP displayed and saved XP is observed; full damage/roll/style/magic/ranged/prayer acceptance is separate.",
+    "Original native001 attack-hidden timeout and Settings003/004selection failures preserve unchanged inventory/XP/zero gameplay. Final007runs use exact backups of the acknowledged failed006-pickup character, retaining its prior earned combat XP and explicit normal NPCattack preference1306=0. The original preference-enabled copies changed only that preference from zero-action failed profiles. Original saves remain unchanged; no inventory/XP reset, server mask/permission bypass or ordinary-login default fix. Settings interaction remains independently unverified.",
+    "Local lean opt0/debug assertions/dev+testdebug0/nonincremental/codegen2 and private manifests differ from published tree. Not pristine independent acceptance. Independent V0-V4 pending; chemistry independent verification paused."
+  ],
+  "native_acceptance": {
+    "control": true,
+    "real_attack": true,
+    "received_private_pile": true,
+    "real_walk": true,
+    "take": false,
+    "earned_item_reconnect": false,
+    "independent": false
+  }
+}
