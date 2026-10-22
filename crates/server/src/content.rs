@@ -361,6 +361,77 @@ pub fn item_packs(
     }
     Ok(rules)
 }
+/// Membership is startup metadata; keep the existing public exchange rule stable.
+pub fn item_pack_members(
+    packs: &BTreeMap<i32, gielinor_world::item_packs::Rule>,
+    defs: &Definitions,
+) -> Result<std::collections::BTreeSet<i32>, String> {
+    let mut members = std::collections::BTreeSet::new();
+    for &id in packs.keys() {
+        let key = u32::try_from(id).map_err(|_| "Invalid registered pack ID")?;
+        let ty = defs
+            .items
+            .get(&key)
+            .ok_or("Missing registered pack membership definition")?;
+        if ty.members {
+            members.insert(id);
+        }
+    }
+    Ok(members)
+}
+#[cfg(test)]
+mod item_pack_members_tests {
+    use super::*;
+    #[test]
+    fn pack_membership_uses_registered_pack_not_output_and_refuses_missing_or_negative_types() {
+        let mut defs = Definitions {
+            inventories: Default::default(),
+            locations: Default::default(),
+            npcs: Default::default(),
+            items: Default::default(),
+            varbits: Default::default(),
+            varps: Default::default(),
+            stats: Default::default(),
+        };
+        for (id, member) in [(10, true), (11, false), (20, false), (21, true)] {
+            let mut item = gielinor_cache::definitions::ItemType::decode(&[0]).unwrap();
+            item.members = member;
+            defs.items.insert(id, item);
+        }
+        let rules: BTreeMap<_, _> = [
+            (
+                10,
+                gielinor_world::item_packs::Rule {
+                    output: 20,
+                    count: 100,
+                    noted: false,
+                },
+            ),
+            (
+                11,
+                gielinor_world::item_packs::Rule {
+                    output: 21,
+                    count: 100,
+                    noted: false,
+                },
+            ),
+        ]
+        .into();
+        assert_eq!(item_pack_members(&rules, &defs).unwrap(), [10].into());
+        defs.items.remove(&11);
+        assert!(item_pack_members(&rules, &defs).is_err());
+        let negative = [(
+            -1,
+            gielinor_world::item_packs::Rule {
+                output: 20,
+                count: 100,
+                noted: false,
+            },
+        )]
+        .into();
+        assert!(item_pack_members(&negative, &defs).is_err());
+    }
+}
 pub fn foods(symbols: &Symbols, defs: &Definitions) -> Result<BTreeMap<i32, Edible>, String> {
     let resolve = |name: &str| {
         symbols

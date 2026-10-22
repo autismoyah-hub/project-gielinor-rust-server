@@ -1004,6 +1004,7 @@ pub struct World {
     pub swamp_tar: Option<crate::swamp_tar::Config>,
     pub herb_cleaning: Option<crate::herb_cleaning::Config>,
     pub item_packs: BTreeMap<i32, crate::item_packs::Rule>,
+    pub member_item_packs: std::collections::BTreeSet<i32>,
     /// Legacy field name; this single registry also owns ordinary light extinguishing.
     pub worn_item_swaps: BTreeMap<i32,crate::worn_item_swap::Rule>,
     pub worn_stat_boosts: BTreeMap<i32,crate::worn_stat_boost::Rule>,
@@ -1130,6 +1131,7 @@ impl Default for World {
             slot_preserving_foods: Default::default(),
             potions: BTreeMap::new(),
             item_packs: BTreeMap::new(),
+            member_item_packs: Default::default(),
             worn_item_swaps: BTreeMap::new(),
             worn_stat_boosts: BTreeMap::new(),
             empty_containers: BTreeMap::new(),
@@ -2660,6 +2662,7 @@ impl World {
                                                         &self.object_types,
                                                         pack,
                                                         rule,
+                                                        self.member_item_packs.contains(&pack),
                                                         &mut self.events,
                                                     );
                                                 }
