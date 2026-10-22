@@ -59,6 +59,7 @@ pub(super) fn complete(
     catalog: &crate::inventory::Catalog,
     coal_bag: Option<crate::coal_bag::Config>,
     goldsmith: Option<crate::goldsmith_smelting::Config>,
+    catalyst: Option<&crate::smithing_catalyst::Config>,
     tutorial_stats: bool,
     events: &mut Vec<WorldEvent>,
     random: &mut impl RandomSource,
@@ -67,10 +68,11 @@ pub(super) fn complete(
     let base_xp=goldsmith.filter(|_|job.furnace&&config.skill==13).map_or(job.request.xp,|bonus|bonus.xp(&job.request,&p.data.equipment,p.member,catalog));
     let xp_rate=config.xp_rate * p.data.xp_rate_hundreds as f64 / 100.0;
     let next = match job
-        .complete_furnace(
+        .complete_catalyzed(
             &mut p.data,
             catalog,
             coal_bag,
+            catalyst,
             config.skill,
             xp_rate,
             config.max_level,
@@ -555,3 +557,7 @@ mod coal_bag_smelting_tests;
 #[cfg(test)]
 #[path="goldsmith_smelting_tests.rs"]
 mod goldsmith_smelting_tests;
+
+#[cfg(test)]
+#[path="smithing_catalyst_tests.rs"]
+mod smithing_catalyst_tests;

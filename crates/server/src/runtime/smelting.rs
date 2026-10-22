@@ -90,6 +90,7 @@ impl<B: AccountBackend> Runtime<B> {
             .ok_or_else(|| io::Error::other("Configure tutorial before smelting"))?
             .progression;
         let goldsmith=crate::content::goldsmith_smelting(names.group("obj"),&self.definitions,&recipes).map_err(io::Error::other)?;
+        let catalyst=crate::content::smithing_catalyst(names.group("obj"),&self.definitions,&recipes).map_err(io::Error::other)?;
         let types = crate::smelting::item_types(&self.definitions.items);
         let config = Config {
             presentation: crate::skill_multi::Presentation {
@@ -119,6 +120,7 @@ impl<B: AccountBackend> Runtime<B> {
             },
         )?;
         self.world.goldsmith_smelting=Some(goldsmith);
+        self.world.smithing_catalyst=Some(catalyst);
         let group = names.id("content", "smithing_furnace")? as i32;
         let mut furnaces: BTreeMap<_, _> = self
             .definitions
@@ -303,7 +305,7 @@ impl<B: AccountBackend> Runtime<B> {
             .data(actor)
             .map_err(|e| io::Error::other(format!("{e:?}")))?;
         let outcome = recipe
-            .select_with_coal_bag(
+            .select_with_catalyst(
                 &data.inventory,
                 &self.world.object_types,
                 &config.types,
@@ -314,6 +316,7 @@ impl<B: AccountBackend> Runtime<B> {
                 self.world.coal_bag,
                 &data.variables,
                 self.active[&actor].character.identity.member,
+                self.world.smithing_catalyst.as_ref(),
             )
             .map_err(|e| io::Error::other(format!("{e:?}")))?;
         match outcome {

@@ -141,6 +141,9 @@ impl Recipe {
         self.select_with_coal_bag(inv,catalog,types,stats,skill,animation,count,None,&crate::variables::Variables::default(),false)
     }
     pub fn select_with_coal_bag(&self, inv:&Inventory, catalog:&Catalog, types:&BTreeMap<i32,ItemType>, stats:&Stats, skill:u8, animation:u16, count:i32, bag:Option<crate::coal_bag::Config>, variables:&crate::variables::Variables, member:bool)->Result<Selection,Error>{
+        self.select_with_catalyst(inv,catalog,types,stats,skill,animation,count,bag,variables,member,None)
+    }
+    pub fn select_with_catalyst(&self,inv:&Inventory,catalog:&Catalog,types:&BTreeMap<i32,ItemType>,stats:&Stats,skill:u8,animation:u16,count:i32,bag:Option<crate::coal_bag::Config>,variables:&crate::variables::Variables,member:bool,catalyst:Option<&crate::smithing_catalyst::Config>)->Result<Selection,Error>{
         // The overload resolves all ingredients before the level check. Kotlin's
         // associate retains the first key position but replaces duplicate values.
         let mut consumed: Vec<(i32, i32)> = vec![];
@@ -175,7 +178,9 @@ impl Recipe {
             required_level: self.level,
             required_tools: vec![],
         });
-        if request
+        let effective=catalyst.and_then(|c|c.effective(&request,inv,catalog,member));
+        let costs=effective.as_ref().unwrap_or(request.as_ref());
+        if costs
             .affordable_count_with_stock(inv, catalog, count, bag.filter(|c|catalog.ordinary_nonstackable(c.coal)).map(|c|(c.coal,c.consumable(inv,variables,member))))
             .map_err(|_| Error::ZeroIngredientAmount)?
             <= 0
