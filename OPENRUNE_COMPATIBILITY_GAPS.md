@@ -80,3 +80,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0193r2 `737d6e4ea66aef61e422c9a711521111681421c3` corrects native-discovered Empty widget5→6, with shared operation guard and decoded packet test. Full315server732world/1ignored plus15actual Kotlin/Rust logical cases pass. Native retry/earned-state recovery and independent acceptance remain pending.
 
 - OR-MIG-0193r3 `737d6e4ea66aef61e422c9a711521111681421c3`: corrected native five-action cycle/control/reconnect and both earned26coal recoveries passed without reset. Native cape/full-bag/life/bank/automatic/destroy and independent acceptance remain open; no rendered inventory/chat claim.
+
+- OR-MIG-0194 `2c04b788150552fa1ca02a31216dfa4964c5e724`: incoming ordinary-mining subset passed owner World/cache/compiled-storage checks, retaining full-inventory refusal and atomic scenery/reward commit. Native/independent and global storage/bank/production/destroy/ownership remain pending.

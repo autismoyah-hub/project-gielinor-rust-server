@@ -1,0 +1,362 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0194",
+  "implementation_commit_sha": "2c04b788150552fa1ca02a31216dfa4964c5e724",
+  "recorded_utc": "2026-10-22T14:08:06.045388+00:00",
+  "result": "OWNER_ATOMIC_MINING_STORAGE_WORLD_CACHE_AND_ACTUAL_KOTLIN_INCOMING_PASS_NATIVE_PENDING_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/world/src/coal_bag.rs": "fec1aada83e19a8d0ace43ae8d8901d2b655655f49e8f78a382293ee47ea4c61",
+    "crates/world/src/gathering.rs": "02753fc9d029b8efd898cd21041e9881a04d82a83bab73245e2eb39472d2b7a5",
+    "crates/world/src/simulation/coal_bag_mining_tests.rs": "cd9ceb322f9dd7fc565c7a747c1c665de781206c9b6a6b0b145fa7d46565feb9",
+    "crates/world/src/simulation/mining_actions.rs": "6306eb64ffad8db6ee493f1dea71499ae4833f1177e882bd44941d2177efc877",
+    "crates/world/src/simulation/woodcutting_actions.rs": "b20e8c9503b6b191d8c49b5a8ecbeedf1fb2b93ac4c15221f76a7d1b0fb85c83"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/coalbag/CoalBag.kt",
+      "sha256": "4d49434735b71da85f910b012228e733d7f884b223ee3664bcd71e798a75a8a2",
+      "availability": "protected_local_reference",
+      "revision": "Preserved configured241 donor; single incoming mining unit only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/coalbag/CoalBagStorageHook.kt",
+      "sha256": "ef7e1145bf4a84f275b94c9cdc7e7edcf960148e5971ee8f0f8bcecc9d95199d",
+      "availability": "protected_local_reference",
+      "revision": "Preserved configured241 donor; single incoming mining unit only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/inv-storage/src/main/kotlin/org/rsmod/api/inv/storage/PlayerItemStorage.kt",
+      "sha256": "3048645a2bfba76569ebcc7a47f5ff7ad0b47c87e4c40c3caa829cc52e1f0fa5",
+      "availability": "protected_local_reference",
+      "revision": "Preserved configured241 donor; single incoming mining unit only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/inv-storage/src/main/kotlin/org/rsmod/api/inv/storage/PlayerItemStorageHook.kt",
+      "sha256": "cfcd4ac1ffd10352428daf6a10961307cf1cb9d06aac2415d5640189a56e83e4",
+      "availability": "protected_local_reference",
+      "revision": "Preserved configured241 donor; single incoming mining unit only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/inv-storage/src/main/kotlin/org/rsmod/api/inv/storage/PlayerItemStorageContext.kt",
+      "sha256": "0266eaadc07b1ad8658c3fd15c98e16b355bb51459320b72a20f961f8ad75df9",
+      "availability": "protected_local_reference",
+      "revision": "Preserved configured241 donor; single incoming mining unit only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/inv-storage/src/main/kotlin/org/rsmod/api/inv/storage/VirtualItemConsumePolicy.kt",
+      "sha256": "46ad2c96e469c46016df861cf2b03bfdcbb551d1276f0645d05a4dd70d973db3",
+      "availability": "protected_local_reference",
+      "revision": "Preserved configured241 donor; single incoming mining unit only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/mining/src/main/kotlin/org/rsmod/content/skills/mining/scripts/Mining.kt",
+      "sha256": "0c59e7f23989374cb6e2126ff30acaa8097166b0eeecce185fff7091b30cbcce",
+      "availability": "protected_local_reference",
+      "revision": "Preserved configured241 donor; single incoming mining unit only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/skilling/SkillingProducts.kt",
+      "sha256": "7b4f6eadef4022d6411d3f4acf60245fbd8bd9941c42c58a38ad0222e7992a00",
+      "availability": "protected_local_reference",
+      "revision": "Preserved configured241 donor; single incoming mining unit only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/invtx/src/main/kotlin/org/rsmod/api/invtx/VirtualInvTransactions.kt",
+      "sha256": "52c95307fc9bfae02901d77a5a0e4478da4eb3aa913b2d7ac64ee0ee1cb187fa",
+      "availability": "protected_local_reference",
+      "revision": "Preserved configured241 donor; single incoming mining unit only"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/protect/ProtectedAccess.kt",
+      "sha256": "7b1611b7e2e7ab4de6296f086c75be5c2c232386c7282cd0c5a3ecc1b3c8c6aa",
+      "availability": "protected_local_reference",
+      "revision": "Preserved configured241 donor; single incoming mining unit only"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "content/skills/mining/src/main/kotlin/org/rsmod/content/skills/mining/scripts/Mining.kt",
+      "sha256": "f942833f7ac6d20c3e7bfc7515d32f1f517f5f5dc95f4bda04aa794a23b885ef",
+      "availability": "protected_local_reference",
+      "revision": "Target239.1 reference; existing full-inventory guards and ordinary mining context"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Coal bag",
+      "sha256": "35c9d24ab7fcca3dc9c15f3e1c21b5ed88518daeebf8c5a1cb9c3951614eee79",
+      "availability": "protected_local_reference",
+      "revision": "15215029"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Coal rocks",
+      "sha256": "a408cbbb72e6a7865851214b28b12f3661b945002da9db1aaeddfed606873b44",
+      "availability": "protected_local_reference",
+      "revision": "15329260"
+    }
+  ],
+  "compatibility_notes": {
+    "scope": "Only ordinary mining incoming coal redirect into an open carried single unmodified bag; other ores, membership rules, old mining RNG/cadence/depletion/outfits preserved. Not global virtual storage, bank incoming, smithing/superheat consumption, extra ores or full SkillingProduct framework.",
+    "guards": "Donor Mining.kt attempt and mine and originalPG mining guard reject full inventory. Existing Rust full-inventory guard intentionally remains even when bag has room; no unsupported capacity bypass.",
+    "transaction": "Stage cloned permanent variables alongside inventory/Stats, then commit only after existing scenery preflight/depletion succeeds. Source generic virtual add may mutate storage before subsequent work; Rust preserves maintained atomic reward architecture rather than reproducing failure leakage.",
+    "trace": "Ordinary gathering JSON unchanged when stored_delta0. Virtual mining reports physical product_delta0 and optional stored_delta1; sum is one awarded coal. Older fixed-product mining ledgers stay scoped to their ordinary fixtures; new virtual acceptance must count saved bag+physical stock.",
+    "kotlin": "Actual CoalBag.kt/StorageHook plus PlayerItemStorage/core interface/context/consume-policy compile unchanged in place with owned inventory/property/annotation/virtual-interface dependencies. Twelve incoming logical cases compare to actual-cache Rust mining; no full Kotlin mining engine/XP/queue comparison.",
+    "adaptations": "F2P and malformed bag count/vars do not auto-store; current form/member/cape authority rechecked at reward. Late dummy/nonordinary coal or invalid bit state rejects reward. No seeded Kotlin RNG stream equivalence.",
+    "deferred": "Global virtual storage, incoming bank/ground pickup coal, smithing/superheat inventory-first consumption, destroy/ownership and native acceptance remain separate. DonorStorageFirst/Wikiinventory-first remains unresolved and uninstalled.",
+    "wiki": "Pinned Coal bag/Coal rocks plus current web search support open automatic mined-coal storage,27/36capacity, ordinary coal level30/50XP/onecoal and30second respawn. Direct web fetch robots-blocked; exact current timings and IDs are independently source/cache-backed."
+  },
+  "logs": {
+    "focused-002.log": {
+      "sha256": "11c90f8e298e70eacbadea8d87e61800978350d220d608e211928b4a519c0110",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 6.4% sampled, ceiling70%.",
+        "Capacity: 8,089 MiB available, commit 44.4%, pages-in/s 0, disk 0.6 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: FAILED. 1 passed; 3 failed; 0 ignored; 0 measured; 733 filtered out; finished in 0.32s"
+      ]
+    },
+    "focused-003.log": {
+      "sha256": "8918876ac876875eb4cec43509796efe356d707bbbf92f793ccfe3fcbd9c1fee",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.1% sampled, ceiling70%.",
+        "Capacity: 8,090 MiB available, commit 44.3%, pages-in/s 0, disk 0.8 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 733 filtered out; finished in 3.84s"
+      ]
+    },
+    "focused-004.log": {
+      "sha256": "d8f9b3b0f25f63a32f586fe38836f42623dd3abd1cf5f647e707e9557f7d2afa",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.0% sampled, ceiling70%.",
+        "Capacity: 8,088 MiB available, commit 44.4%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 733 filtered out; finished in 4.07s"
+      ]
+    },
+    "shared-005.log": {
+      "sha256": "075c4fe64c1efbda55c6f3f1e62711c2b02aca6d684a3d07140f7b642721996f",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.5% sampled, ceiling70%.",
+        "Capacity: 8,088 MiB available, commit 44.4%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 315 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 67.01s",
+        "test result: ok. 737 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 49.00s"
+      ]
+    },
+    "kotlin-006.log": {
+      "sha256": "97c8bb1fc8d41aaf6b6cdc55f4c35620eb07f65159a9c3fb9cbb0182d291a4a7",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.3% sampled, ceiling70%.",
+        "Capacity: 8,124 MiB available, commit 43.7%, pages-in/s 0, disk 4.2 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS actual protected incoming storage/CoalBag helper hook 12logical cases; owned inventory/property dependencies, not full Kotlin engine/mining"
+      ]
+    },
+    "cache-008.log": {
+      "sha256": "c9c2d21c3cf218bd8aae6244ae31d0a4fb992d43b0147f643152453b196a91ac",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 7.8% sampled, ceiling70%.",
+        "Capacity: 8,284 MiB available, commit 43.5%, pages-in/s 0, disk 0.9 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "archive-009.log": {
+      "sha256": "b64af738e965e2eaedc7f6e3f8b464a6beeabbc729a542ce83d07a2052ef556b",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.9% sampled, ceiling70%.",
+        "Capacity: 8,261 MiB available, commit 43.5%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 31B171C701297EF6FE297705AF2DA7257BB0C012C71B931C21431E9BBACD6616 (664 source files)."
+      ]
+    },
+    "driver-010.log": {
+      "sha256": "437c26a8acd7d951df201200fed81e8c14e71df6c6fd793c0876f7c408eb41b5",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 6.2% sampled, ceiling70%.",
+        "Capacity: 8,323 MiB available, commit 42.6%, pages-in/s 0, disk 5.1 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "fixture-011.log": {
+      "sha256": "388fb9bb6b8c50562b66a3d7ee19df8b9f98e0deabd7af89d1b6ec360f03828d",
+      "result": "PASS",
+      "summaries": []
+    },
+    "driver-014.log": {
+      "sha256": "3b53976fd9f67924c915845e7aa70a8be06d96b8c1dc7813b70016284ab26a2b",
+      "result": "PASS",
+      "scope": "New native002preparation with existingFloor5x rule; original001artifacts retained"
+    },
+    "fixture-015.log": {
+      "sha256": "383d625743244874158298c8e98eebb83653412dd395b025dca73d2f6e1d7228",
+      "result": "PASS",
+      "scope": "New native002preparation with existingFloor5x rule; original001artifacts retained"
+    }
+  },
+  "server_archive": {
+    "sha256": "31B171C701297EF6FE297705AF2DA7257BB0C012C71B931C21431E9BBACD6616",
+    "source_count": 664,
+    "source_manifest_sha256": "297d41db713805f9d54b32314bf8e1d5e95ea1dd237612ccbbac888f4c57d047",
+    "before_after_sources_unchanged": true
+  },
+  "matrix": {
+    "server_pass": 315,
+    "world_pass": 737,
+    "world_existing_ignored": 1,
+    "coal_mining_world_tests": 5,
+    "form_member_capacity_cases": 120,
+    "late_authority_cases": 5,
+    "actual_cache_kotlin_incoming_cases": 12
+  },
+  "actual_kotlin_oracle": {
+    "inputs": {
+      "sources": {
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\coalbag\\CoalBag.kt": "4d49434735b71da85f910b012228e733d7f884b223ee3664bcd71e798a75a8a2",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\coalbag\\CoalBagStorageHook.kt": "ef7e1145bf4a84f275b94c9cdc7e7edcf960148e5971ee8f0f8bcecc9d95199d",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\PlayerItemStorage.kt": "3048645a2bfba76569ebcc7a47f5ff7ad0b47c87e4c40c3caa829cc52e1f0fa5",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\PlayerItemStorageHook.kt": "cfcd4ac1ffd10352428daf6a10961307cf1cb9d06aac2415d5640189a56e83e4",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\PlayerItemStorageContext.kt": "0266eaadc07b1ad8658c3fd15c98e16b355bb51459320b72a20f961f8ad75df9",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\VirtualItemConsumePolicy.kt": "46ad2c96e469c46016df861cf2b03bfdcbb551d1276f0645d05a4dd70d973db3"
+      },
+      "stubs": {
+        "Annotations.kt": "401c0529183500424aa7dfaf8bdaaff91423b2941281628f689655c034c16199",
+        "IncomingOracle.kt": "e745a5e10d343c2310fcdc91788c8a8ec1a32147e65d4be5fd0dafa3ee400133",
+        "Inventory.kt": "eb66dde9e536270db18a9ba286a09c3084366f048683c4e7ac728800ad1246b0",
+        "Player.kt": "495c84c80601ab6398541c6dfe4452284853d4f2b5a7d2d0f066f82bb5c01b90",
+        "Vars.kt": "b8fb9d672fcc2458013b53670737f2926e2b49ffc348b035af6872dd1c3eb2e1"
+      }
+    },
+    "result": {
+      "scope": "Actual protected CoalBag incoming compiled with owned recording framework dependencies; logical callback traces only",
+      "sourcePins": {
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\coalbag\\CoalBag.kt": "4d49434735b71da85f910b012228e733d7f884b223ee3664bcd71e798a75a8a2",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\coalbag\\CoalBagStorageHook.kt": "ef7e1145bf4a84f275b94c9cdc7e7edcf960148e5971ee8f0f8bcecc9d95199d",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\PlayerItemStorage.kt": "3048645a2bfba76569ebcc7a47f5ff7ad0b47c87e4c40c3caa829cc52e1f0fa5",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\PlayerItemStorageHook.kt": "cfcd4ac1ffd10352428daf6a10961307cf1cb9d06aac2415d5640189a56e83e4",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\PlayerItemStorageContext.kt": "0266eaadc07b1ad8658c3fd15c98e16b355bb51459320b72a20f961f8ad75df9",
+        "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\api\\inv-storage\\src\\main\\kotlin\\org\\rsmod\\api\\inv\\storage\\VirtualItemConsumePolicy.kt": "46ad2c96e469c46016df861cf2b03bfdcbb551d1276f0645d05a4dd70d973db3"
+      },
+      "files": {
+        "oracle.jar": "A8823FE03193BFBFDDE36AC754A1D23D7664A5C3C4D30C5744711468EAF7C2E8",
+        "compile.args": "28CFD4E8EC5C5AACDCA830E783D7534F4FFDC911005780DF2ACC67FA4165803E",
+        "inputs.json": "6E82BCA57B4B7023AF067DB33A4DB9137E4C52712F86B0DEAEBDB12682E6FA25"
+      },
+      "expectedSha256": "E5D7A0B24E0D7AAB63C4D683F3A156FCA4E2B5E70413F4EBE4D589AF341E1EFD",
+      "cases": 12
+    },
+    "cases_sha256": "95355ff78984667ec4aca09bd129c0824032163e9e8facefa863189ed2895d97",
+    "raw_expected_sha256": "e5d7a0b24e0d7aab63c4d683f3a156fca4e2b5e70413f4ebe4d589af341e1efd",
+    "scope": "Actual CoalBag.kt/StorageHook plus PlayerItemStorage/core interface/context/consume-policy compile unchanged in place with owned inventory/property/annotation/virtual-interface dependencies. Twelve incoming logical cases compare to actual-cache Rust mining; no full Kotlin mining engine/XP/queue comparison."
+  },
+  "private_probe": {
+    "path": "crates/server/examples/coal_bag_mining_cache_private.rs",
+    "sha256": "efb75bbb3a241f99e48e166847adebb1e3debbfbdee903798555dbe2e6d3de59",
+    "scope": "Real239.1bag/coal/cape/ore definitions,12member prepared World mines forced bounded success; maps12593 inspected separately."
+  },
+  "failures_preserved": {
+    "focused002": "Three fixture assertions failed: expected fine XP used100rather than engine10 units, and removed location definition is a valid noncolliding type rather than a preflight failure. Corrected only tests:500/502fineXP and actual out-of-map depleted footprint; source reward code unchanged."
+  },
+  "disk_cleanup": [
+    {
+      "scope": "Only exact two completed owned test cache EXEs from shared019; other agent hashes, source, logs, fixtures and native archives untouched",
+      "files": [
+        {
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\deps\\gielinor_server-d5a27b0523fbd15f.exe",
+          "proof": "Own completed shared019 execution log plus unchanged size/write time",
+          "bytes": 254893698,
+          "sha256": "C097471EDBE30D3C59AE1EA6FFA5BABF6FCA7DD85200AA6C32144F57B8319F61"
+        },
+        {
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe",
+          "proof": "Own completed shared019 execution log plus unchanged size/write time",
+          "bytes": 235591310,
+          "sha256": "850A112DBE1AC03A2C0C4436C54453FB8664854CBBF2EA90A96AB07B233204FC"
+        }
+      ],
+      "freeBeforeBytes": 703893504,
+      "freeAfterBytes": 1194381312,
+      "utc": "2026-10-22T13:42:49.4034918Z"
+    },
+    {
+      "scope": "Only exact two completed owned Rust test cache EXEs from current shared005; source/logs/fixtures/native archives and other hashes untouched",
+      "files": [
+        {
+          "proof": "Own completed mining shared005 execution log and unchanged size/write time",
+          "bytes": 254993155,
+          "sha256": "87BF16952D77EA16481FCC1A64ED464638B17CD74A5CA059B1FD50BB0A851E2D",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\deps\\gielinor_server-d5a27b0523fbd15f.exe"
+        },
+        {
+          "proof": "Own completed mining shared005 execution log and unchanged size/write time",
+          "bytes": 239166359,
+          "sha256": "CEE4C3A960F791B6CA91E2AC15366EF501993C241E10830FA2FFE7900E758276",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe"
+        }
+      ],
+      "freeBeforeBytes": 493858816,
+      "freeAfterBytes": 988024832,
+      "utc": "2026-10-22T13:53:17.2692993Z"
+    }
+  ],
+  "native_driver": {
+    "driver": "coal-bag-mining-002",
+    "scenario": "openCoalBagRealMiningAndFullCapacityFallback",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless real-map Mine1 and native bag Check4, natural RNG and storage/full-capacity fallback; no OS window, desktop input or bank-interface acceptance; no OS Window/desktop input or independent verdict",
+    "files": {
+      "NativeCoalMiningScenario2.rs": "A7DBD0D7F285271FD9C8DA4E294B835C60F93F9BBDF3F8BBC6A9608F0B053BB8",
+      "server_coal_mining2.exe": "CB3316308B53593191DBA668E000A916D42A16CF4D2DAC5EEAC5820932A611A6"
+    }
+  },
+  "native": [],
+  "known_limitations": [
+    "Incoming ordinary mining coal only; not global virtual storage, bank/ground pickup interception, smithing/superheat consumption, destroy/ownership or full donor SkillingProduct framework.",
+    "Both source Mining implementations reject full inventory before mining. Rust preserves that guard even if an open bag has capacity; no unsupported bypass is inferred from the Wiki.",
+    "Actual protected CoalBag/StorageHook and generic incoming storage/interface/context/consume-policy sources compile unchanged with owned recording dependencies. Twelve logical incoming cases match real-cache Rust mining; full Kotlin mining/XP/coroutine engine and seeded RNG equivalence are not tested.",
+    "F2P and malformed variable/duplicate-count bags do not capture; current form/member/cape is rechecked at reward. These are explicit maintained-engine safety policies, not proof of donor membership/death scheduling.",
+    "Bag variables, inventory and Stats are staged until existing location preflight/depletion succeeds. A failed output or out-of-world scenery footprint commits no coal or XP; this retains Rust atomic reward architecture rather than reproducing generic donor partial-add failure behavior.",
+    "Virtual trace separates physical product_delta0 from optional stored_delta1. Ordinary traces omit the new field and retain their prior JSON shape; existing ordinary fixed-product ledgers are not claimed as virtual-storage acceptance.",
+    "Owner working-tree315server737world/1ignored, five World regressions including120capacity/form/member cases and12actual-cache/Kotlin logical cases passed. Terrain/positions and success RNG are prepared in cache tests; actual map spawns separately inspected. Not pristine or independent acceptance.",
+    "First native control received Check26 with unchanged stock/Stats and clean saved exit, but assessment failed because requested1x normalized to maintainedFloor5x. Failure preserved, no production change. Separate002driver/fixtures use5x (250XP per50base-XP coal), native gameplay acceptance pending; chemistry verification paused."
+  ],
+  "initial_native_control_failure": {
+    "run": "openrune-coal-bag-mining-control-native-20261022-001",
+    "result": "CLIENT_CHECK26_PASS_BUT_ASSESSOR_FAILED_FIXTURE_RATE_NORMALIZATION",
+    "reason": "Maintained Floor progression unconditionally sets effective5xXP on login. Fixture requested1x and assessor expected100; no mining occurred, stock/Stats unchanged. Original driver/fixture/run/log retained, fresh0025x inputs prepared without production change.",
+    "artifacts": {
+      "initial-state.json": "033c0f6f29ce05f64bfaec75cbb02dac58c394fad2ca0e406ebae61374caf96a",
+      "final-state.json": "1d207027a0d3ba8ef9fd03263f99334301b70a7b1e46e0b076f4134c569ded3d",
+      "result.json": "c5fc36f81a2125a48c46026e08b4f42ae608e8f3040dfa4585b31dd983298ba7",
+      "shutdown.json": "8b9f086acec1d9ed714d41ffd74297bd7e519fb58b9cd8716be339c4181525ee",
+      "logout-observation.json": "93c6ed2dde50d42eec602f8868c43e99df94e835ebdc147e06e1306edf15fc36",
+      "client.log": "512472a0052f9b3ddaed5ffda22670211e3861f85934b2b6f812a9104769825d",
+      "native-events.jsonl": "d9043e28e4c2967463850eeeb1c4e5a040ff1e0df1eed5951c0fb4ad638cc221"
+    }
+  },
+  "native_rate_policy": {
+    "path": "crates/world/src/floor_progression.rs",
+    "sha256": "4d67a9ae171e2971fc8f92ddc19fe979615add4ed45cef2d42f262cecd2e884c",
+    "effective_rate_hundreds": 500,
+    "base_coal_xp": 50,
+    "native_expected_xp_per_coal": 250,
+    "changed_production_policy": false
+  }
+}
