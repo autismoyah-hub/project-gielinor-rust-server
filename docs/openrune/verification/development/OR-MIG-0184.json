@@ -1,0 +1,859 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0184",
+  "implementation_commit_sha": "29b7b763a66f3f2818f30ac967c4ea9cb3ea8228",
+  "recorded_utc": "2026-10-22T07:24:41.812261+00:00",
+  "result": "DEVELOPMENT_WORLD_CACHE_NATIVE_PASS_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/world/src/banknote_exchange.rs": "d5785c463fa37f45ac7f7a71069e98c74e5db833ffbedb29b935c33efa678840",
+    "crates/world/src/simulation/banknote_actions.rs": "b9bfa7ddeda8cae463fb441ee430f0fb2aa632ce35e22153c2bee4bac0e098fb",
+    "crates/world/src/lib.rs": "3336347d6474cb65247171f784f0fbad946e00b65f0fcddb1e30a4ef274f090a",
+    "crates/world/src/simulation.rs": "58645f7be262e56e341357596144ea79d16268292726384c1fc7a2705907e327",
+    "crates/world/src/dialogue.rs": "7b2d6133ca4fb39dc4b0a6d32fe5584cb7d012194bd0cc91996843ed14869890",
+    "crates/world/src/simulation/dialogue_actions.rs": "23ec2d5d31a7a691f178d4b7229b0e896b8db7a43ad5bafbd45d5f3ae5f16f5f",
+    "crates/world/src/simulation/location_choice_actions.rs": "c2cf9783f0be3c73a5662bdfe9817b1e79b0855792482e788f2cf3da28ffcc15",
+    "crates/world/src/simulation/location_swap_actions.rs": "f9322c6e48b0c317e1f4252e1fb997d7e0b2a7d79d68373327a6cac14a524315",
+    "crates/world/src/simulation/location_use_actions.rs": "574bda94a16f19512f83d591471a721f3ac81b53c82779774d1dcfb585e1c059",
+    "crates/server/src/runtime/dialogue.rs": "ef3f48fb65c89b1474b5490ec6fca6285920f85c6000aba639e590c2876c5f89",
+    "crates/world/src/simulation/location_climb_actions.rs": "9cde27cf5613deafdbe866c30098e358e9ecce8f03003c989817e45698718642"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-locs/src/main/kotlin/org/rsmod/content/generic/locs/banks/BankBooth.kt",
+      "sha256": "5ae348ce3e5dec6da126a7d68a4a64793d55a293bbcc93074a61718234d73ab8",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/interfaces/bank/src/main/kotlin/org/rsmod/content/interfaces/bank/BankUnnote.kt",
+      "sha256": "19e40b1dfd2075d13813ac627c7b4dffc2759659faafb87791685a38c9116120",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/protect/ProtectedAccess.kt",
+      "sha256": "7b1611b7e2e7ab4de6296f086c75be5c2c232386c7282cd0c5a3ecc1b3c8c6aa",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local archive; upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bank note",
+      "sha256": "59d28760322e01725aec0b7b1e738c40fb9a7e51a1dc5f87815f41a6502a549d",
+      "availability": "protected_local_reference",
+      "revision": "15337973"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bank booth",
+      "sha256": "1da86594c65720aced1afba1d85348a2a6ae1d03c9fe86bc69ba65f99aa89655",
+      "availability": "protected_local_reference",
+      "revision": "15322203"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bank",
+      "sha256": "295f5027a88d040f3809c0625c19bde0b37c6fbc668d3e9831b2b070cda3eb00",
+      "availability": "protected_local_reference",
+      "revision": "15315062"
+    }
+  ],
+  "logs": {
+    "focused-001.log": {
+      "sha256": "bf687ad0aa1ea20b383337dc0d67f397f1ba23530767a1d6df09a76cc6b6af19",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.4% sampled, ceiling70%.",
+        "Capacity: 8,401 MiB available, commit 42.9%, pages-in/s 0, disk 4.3 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 308 filtered out; finished in 0.00s",
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 673 filtered out; finished in 0.02s"
+      ]
+    },
+    "focused-002.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": "FAIL_PRESERVED",
+      "summaries": []
+    },
+    "focused-003.log": {
+      "sha256": "a6879c64251ce50f6de5f9ab90297939f4941b451336db36289f73eae0b6d0b1",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 13.6% sampled, ceiling70%.",
+        "Capacity: 8,334 MiB available, commit 43.0%, pages-in/s 48, disk 3.5 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 308 filtered out; finished in 0.00s",
+        "test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 673 filtered out; finished in 0.48s"
+      ]
+    },
+    "shared-004.log": {
+      "sha256": "ce500b916be110b06af7a2335dcd268d2cd9a04df747b22aa5be2059d1f15205",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 2.2% sampled, ceiling70%.",
+        "Capacity: 8,388 MiB available, commit 43.0%, pages-in/s 0, disk 1.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 308 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 55.25s",
+        "test result: FAILED. 680 passed; 1 failed; 1 ignored; 0 measured; 0 filtered out; finished in 32.54s"
+      ]
+    },
+    "shared-005.log": {
+      "sha256": "b847d848c2d8e9bb7b8e52bd96664f927030a0a5978b28a6c30c6e131cbd7376",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.3% sampled, ceiling70%.",
+        "Capacity: 8,374 MiB available, commit 43.0%, pages-in/s 0, disk 2.7 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 308 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 60.59s",
+        "test result: ok. 681 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 38.81s"
+      ]
+    },
+    "fixture-006.log": {
+      "sha256": "72f8c665216ed221e9c87d84b30380ead1858c515bedb1d9f4bea2c2267c5482",
+      "result": "PASS",
+      "summaries": []
+    },
+    "cache-007.log": {
+      "sha256": "a5d74279ed0d28a99ab7edc5fb79ccf5d4a9c859df6538d72f5853d5c46c8884",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 1.9% sampled, ceiling70%.",
+        "Capacity: 8,340 MiB available, commit 43.0%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "cache-009.log": {
+      "sha256": "434f5137ae5e8a92c342e2e26b8cbd3965d08a407444c1e7ec63ea92409ebadc",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.9% sampled, ceiling70%.",
+        "Capacity: 8,317 MiB available, commit 43.0%, pages-in/s 0, disk 5.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS actual target reciprocal notes/map/collision/held World exchange cases=12; no native-client assertion"
+      ]
+    },
+    "driver-010.log": {
+      "sha256": "9992f877b89f68e3cf543dc1aa67a180c32892c58fb9fee2538111c39f1213c6",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.9% sampled, ceiling70%.",
+        "Capacity: 8,317 MiB available, commit 43.1%, pages-in/s 0, disk 0.5 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "archive-011.log": {
+      "sha256": "539f0fa321ba2e09185073b9ef7923b3b2025e7cb5fab3f911566261c4e8f813",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.0% sampled, ceiling70%.",
+        "Capacity: 8,317 MiB available, commit 43.1%, pages-in/s 0, disk 0.8 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 85B9F3844C734BB8AB05EB4CCF33B6A67CB573E8502D2A21DF501B2FF05294B7 (618 source files)."
+      ]
+    },
+    "native-batch-012.log": {
+      "sha256": "cd1dc9f4b52b22615b4474a456b96825d70bc2c7236823fe4f069c74f31b9f35",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Integration CPU capacity: 10.2% sampled, ceiling 70%.",
+        "Capacity: 8,170 MiB available, commit 43.7%, pages-in/s 1, disk 3.8 ms.",
+        "Cargo concurrency: -j 2",
+        "Native banknote control PASS:unchanged notes/logs=(5, 0)",
+        "Integration CPU capacity: 17.2% sampled, ceiling 70%.",
+        "Capacity: 8,253 MiB available, commit 43.3%, pages-in/s 1, disk 1.1 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "shared-013.log": {
+      "sha256": "3c8586d399a7961e1c1350624a5d55e0cd2fdf4b0ea5eb814c1aa314adbe4dcb",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.7% sampled, ceiling70%.",
+        "Capacity: 8,338 MiB available, commit 43.0%, pages-in/s 0, disk 3.0 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 308 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 55.44s",
+        "test result: ok. 682 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 32.81s"
+      ]
+    },
+    "fixture-014.log": {
+      "sha256": "b57cc33c5a130d17fa7eb3c01ac3c95ab045ece0ca547014f405b8e69cfcd006",
+      "result": "PASS",
+      "summaries": [
+        "PASS new notesctl2 matches failed-action offline state exactly; original unchanged"
+      ]
+    },
+    "archive-015.log": {
+      "sha256": "25becca8b1899d1ff3c01696396c3af3b75b77bdf168088a00e207756297e894",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.3% sampled, ceiling70%.",
+        "Capacity: 8,314 MiB available, commit 43.0%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 8692369455F6225511CBC74E3FE9F1B416BF24E7FD11B73064A5B8A5518A42C4 (618 source files)."
+      ]
+    },
+    "native-batch-016.log": {
+      "sha256": "a159bca6187936ebd4bab8f168e752e1e56874d6365f9bda290f0127235a0817",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Integration CPU capacity: 3.1% sampled, ceiling 70%.",
+        "Capacity: 8,196 MiB available, commit 43.0%, pages-in/s 0, disk 3.1 ms.",
+        "Cargo concurrency: -j 2",
+        "Native banknote control PASS:unchanged notes/logs=(5, 0)",
+        "Integration CPU capacity: 1.5% sampled, ceiling 70%.",
+        "Capacity: 8,292 MiB available, commit 43.0%, pages-in/s 0, disk 0.8 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "driver-017.log": {
+      "sha256": "e8a2fae874325d29e3fd5e847bc9539758a896085599d0ead2ed406edc18098f",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.2% sampled, ceiling70%.",
+        "Capacity: 8,270 MiB available, commit 43.1%, pages-in/s 0, disk 4.9 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "fixture-018.log": {
+      "sha256": "51b16bb7545b101a40741aa907cd5efbf9318bc5a82ca4720cb57b0efcd5f763",
+      "result": "PASS",
+      "summaries": []
+    },
+    "native-batch-019.log": {
+      "sha256": "9335fb9fd666a30c38d7c6c0bb9419c163ecc33aa7ef5591c07827e2cfc4168f",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Integration CPU capacity: 4.3% sampled, ceiling 70%.",
+        "Capacity: 8,262 MiB available, commit 43.1%, pages-in/s 8, disk 0.2 ms.",
+        "Cargo concurrency: -j 2",
+        "Native banknote control PASS:unchanged notes/logs=(5, 0)",
+        "Integration CPU capacity: 2.0% sampled, ceiling 70%.",
+        "Capacity: 8,239 MiB available, commit 43.2%, pages-in/s 17, disk 2.8 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "server-020.log": {
+      "sha256": "b3c21c460d61a4957e624e105d63147d09b43ba2fb00d59e68bc35045ce808e3",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.3% sampled, ceiling70%.",
+        "Capacity: 7,817 MiB available, commit 45.8%, pages-in/s 0, disk 1.8 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 308 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 64.29s"
+      ]
+    },
+    "archive-021.log": {
+      "sha256": "223c623b7ca68397dfb2f7e6178212f1500a4f5615fa2cce61c5b5c70f36878a",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 22.5% sampled, ceiling70%.",
+        "Capacity: 8,122 MiB available, commit 45.0%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 8FE148A6D82754DD92E44554830FB9C22A7661417B9D7212B36D9C608AEFEF7C (618 source files)."
+      ]
+    },
+    "driver-022.log": {
+      "sha256": "cc90ad46bd4a08ef938fade828e58fc41485269072812d86248ed4fe4b835c38",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.9% sampled, ceiling70%.",
+        "Capacity: 7,927 MiB available, commit 45.1%, pages-in/s 0, disk 2.5 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "fixture-023.log": {
+      "sha256": "df12416fb8b57c2e7f4e1c45c44d3b1fe7374751dc14bf172705d3bd4f34b2d2",
+      "result": "PASS",
+      "summaries": []
+    },
+    "native-batch-024.log": {
+      "sha256": "dd3cd969ad33c1a0f3a5606bc214e8f45b7a7607b4e43dfe576e290149cedf3e",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Integration CPU capacity: 4.7% sampled, ceiling 70%.",
+        "Capacity: 8,122 MiB available, commit 45.0%, pages-in/s 0, disk 1.2 ms.",
+        "Cargo concurrency: -j 2",
+        "Native banknote control PASS:unchanged notes/logs=(5, 0)",
+        "Integration CPU capacity: 32.2% sampled, ceiling 70%.",
+        "Capacity: 8,122 MiB available, commit 45.0%, pages-in/s 0, disk 0.8 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "objectbox-audit-026.log": {
+      "sha256": "1a19c7fdc2ca836f02cb8866045454a6302b9fd8b3183f5d37144d18832e5c41",
+      "result": "PASS",
+      "summaries": [
+        "PASS actual script2868 completed"
+      ]
+    },
+    "objectbox-menu-audit-027.log": {
+      "sha256": "039e5188bc5eeb5f55d75cc5ea42e4803ce8299524a59a1103c45be710d9f56d",
+      "result": "FAIL_PRESERVED",
+      "summaries": []
+    },
+    "objectbox-menu-audit-028.log": {
+      "sha256": "dace1d70ad3b0de972aade63b0aa41cf58680790b13cc6afe072472f03629863",
+      "result": "PASS",
+      "summaries": [
+        "PASS actual script2868/menu child2 onOp2869 emits115 universe/slot0; offline client only"
+      ]
+    },
+    "driver-029.log": {
+      "sha256": "2e5ef1025350bada54e24b836a86f3db4143e22c5b38930b15d80d72aea56512",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 19.6% sampled, ceiling70%.",
+        "Capacity: 7,818 MiB available, commit 46.8%, pages-in/s 0, disk 1.8 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "fixture-030.log": {
+      "sha256": "1c78601457a19823425800747e5fd4348e08379e1f90b808bb1ec33d063cee00",
+      "result": "PASS",
+      "summaries": []
+    },
+    "native-batch-031.log": {
+      "sha256": "aee5694553ccc9d9f6d8458e590db36c4877dcfb3dffcdc1e0ec0691b4a104a3",
+      "result": "PASS",
+      "summaries": [
+        "Integration CPU capacity: 4.3% sampled, ceiling 70%.",
+        "Capacity: 7,950 MiB available, commit 46.0%, pages-in/s 0, disk 5.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Native banknote control PASS:unchanged notes/logs=(5, 0)",
+        "Integration CPU capacity: 9.7% sampled, ceiling 70%.",
+        "Capacity: 8,091 MiB available, commit 45.9%, pages-in/s 0, disk 1.8 ms.",
+        "Cargo concurrency: -j 2",
+        "Native banknote response text=\"No\" widget=4294840983 pixel=[269, 451] opcodes=[115]",
+        "Native banknote response text=\"Yes\" widget=4294840994 pixel=[269, 425] opcodes=[115]",
+        "Native banknote No,Yes,partial2andresultContinue PASS:notes3/logs2;noXP",
+        "Integration CPU capacity: 1.0% sampled, ceiling 70%.",
+        "Capacity: 8,006 MiB available, commit 46.0%, pages-in/s 2, disk 1.8 ms.",
+        "Cargo concurrency: -j 2",
+        "Native banknote verify PASS:unchanged notes/logs=(3, 2)"
+      ]
+    },
+    "cache-032.log": {
+      "sha256": "c2ae1785fb1f8b7a05256acc07ac6049d8a81b686f572faa27683cbb3b88808d",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.5% sampled, ceiling70%.",
+        "Capacity: 8,023 MiB available, commit 45.9%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS actual target reciprocal notes/map/collision/held World exchange cases=12; no native-client assertion"
+      ]
+    }
+  },
+  "server_archive": {
+    "sha256": "8FE148A6D82754DD92E44554830FB9C22A7661417B9D7212B36D9C608AEFEF7C",
+    "source_count": 618,
+    "source_manifest_sha256": "2ef562a66c0e6c7eaca14835b1992b4985fb3e0de2c28f0555156ba0afc9e2af",
+    "before_after_sources_unchanged": true
+  },
+  "private_probe": {
+    "path": "crates/server/examples/banknote_cache_private.rs",
+    "sha256": "a98aa8a81ddee6bb910ff436fa261e395a4950bd07b0cddc2b8e9510c373da71"
+  },
+  "native_driver": {
+    "driver": "banknote-004",
+    "scenario": "static18491banknote",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless software-rendered native object menu and bank widgets; no OS Window/desktop input or independent verdict",
+    "files": {
+      "NativeBanknoteScenario4.rs": "4D45121E00AE3A22B8D08944AC4D5FD7C9D6BC1E22EB35799939DEB735216DBC",
+      "server_banknote4.exe": "E5179FE19F646ADF0B2EB7F4E7A72E67A4BD6232A0C451F75BDE2E198CE807F9"
+    }
+  },
+  "final_server_runtime_tests": 308,
+  "pinned_library_files_checked_after": 990,
+  "native": [
+    {
+      "reference": "work/integration/runs/openrune-banknote-control-native-20261021-005/banknote-native-assessment.json",
+      "sha256": "dc113703900df6dc06a75ded1ff2bab483ad95a630d72077148bea8d51d35578",
+      "assessment": {
+        "result": "PASS_NATIVE_BANKNOTE_CONTROL",
+        "run": "openrune-banknote-control-native-20261021-005",
+        "mode": "control",
+        "server_sha256": "8FE148A6D82754DD92E44554830FB9C22A7661417B9D7212B36D9C608AEFEF7C",
+        "driver_sha256": "E5179FE19F646ADF0B2EB7F4E7A72E67A4BD6232A0C451F75BDE2E198CE807F9",
+        "pinned_library_files": 990,
+        "checks": [
+          "native item149 Use on raw static18491, No then Yes and object dialogue Continue for action run only",
+          "partial exchange exact saved slots: notes5->3, two ordinary logs into first free0/1",
+          "all other inventory types/items/vars, Stats/fineXP and position unchanged",
+          "same-save reconnect unchanged for verify only",
+          "logout advanced/offline and exit0/unforced"
+        ],
+        "all_varp_changes": {
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "3079": {
+            "before": 0,
+            "after": 89
+          },
+          "65515": {
+            "before": 0,
+            "after": 83
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "300": {
+            "before": 0,
+            "after": 100
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "3077": {
+            "before": 0,
+            "after": 53042
+          }
+        },
+        "native_events": [
+          {
+            "kind": "native.banknote_control",
+            "notes": 5,
+            "logs": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.875,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 07:20:51"
+          }
+        },
+        "shutdown": {
+          "pid": 18024,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T07:20:52.6427050Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "643032255c1ad26ca6a548ebecda3bcd66e11c12ec8121ab9aecc7e3af76b5bf",
+          "final-state.json": "0d6005e28d5c3c2581000696ece9a5d087d714d295985f617cfe5c3870853ac3",
+          "client.log": "e5723dd7ea8a92ea3669aa677843942e3808e3beabef84a93d7033e3e481ffdc",
+          "native-events.jsonl": "482ca2b2e08cb9dc38a0116a7346d6d38509ddb9ba1374936fab189f7e5b8265",
+          "result.json": "c404f20811044d662aca8daa2faa5ae31c03db2192958cb5064491479cbc54ec",
+          "server.json": "00b6a17c9f53993e78b72a8d78fc39eb182284b48d143a9863f2c9ced0bfa08b",
+          "server.log": "77f0a2b188bde7534bf576d4b8e33064180e6efc62c1b11b541f9767c3b43e43",
+          "shutdown.json": "ae1572d696de5c375c358b41ee6bf1d96d13113ed3dd2bea0b24bb7a7ae29c7b",
+          "logout-observation.json": "af1c805dddf1d7ad3be3882f35de84fb5e9e1905078acb95ba6c37bfa8bc9923"
+        },
+        "limitations": [
+          "Owner working-tree archive, not independent or pristine acceptance.",
+          "Headless offscreen software scene and native widget dispatch; no OS window, physical input or rendered dialogue pixel claim.",
+          "Native full-pack/late-life/stale-target/refusal cases not exercised by this scenario; shared World cases are separate.",
+          "All varp changes reported, no general timer/capacity/chemistry acceptance.",
+          "No compiled Kotlin run; chemistry independent campaign remains paused."
+        ]
+      }
+    },
+    {
+      "reference": "work/integration/runs/openrune-banknote-actions-native-20261021-005/banknote-native-assessment.json",
+      "sha256": "eaab472acc9328abcca640ae154234289f68438bd96f82b9af1d6dd18a43262f",
+      "assessment": {
+        "result": "PASS_NATIVE_BANKNOTE_EXCHANGE",
+        "run": "openrune-banknote-actions-native-20261021-005",
+        "mode": "exchange",
+        "server_sha256": "8FE148A6D82754DD92E44554830FB9C22A7661417B9D7212B36D9C608AEFEF7C",
+        "driver_sha256": "E5179FE19F646ADF0B2EB7F4E7A72E67A4BD6232A0C451F75BDE2E198CE807F9",
+        "pinned_library_files": 990,
+        "checks": [
+          "native item149 Use on raw static18491, No then Yes and object dialogue Continue for action run only",
+          "partial exchange exact saved slots: notes5->3, two ordinary logs into first free0/1",
+          "all other inventory types/items/vars, Stats/fineXP and position unchanged",
+          "same-save reconnect unchanged for verify only",
+          "logout advanced/offline and exit0/unforced"
+        ],
+        "all_varp_changes": {
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "3077": {
+            "before": 0,
+            "after": 16692
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "3079": {
+            "before": 0,
+            "after": 117
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "65515": {
+            "before": 0,
+            "after": 112
+          },
+          "1021": {
+            "before": 0,
+            "after": 268435456
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          }
+        },
+        "native_events": [
+          {
+            "kind": "native.banknote_use",
+            "stage": 1,
+            "slot": 13,
+            "note": 1512,
+            "location": 18491,
+            "opcode": 62
+          },
+          {
+            "kind": "native.banknote_choice",
+            "choice": "No",
+            "opcode": 115
+          },
+          {
+            "kind": "native.banknote_use",
+            "stage": 3,
+            "slot": 13,
+            "note": 1512,
+            "location": 18491,
+            "opcode": 62
+          },
+          {
+            "kind": "native.banknote_choice",
+            "choice": "Yes",
+            "opcode": 115
+          },
+          {
+            "kind": "native.banknote_result",
+            "notes": 3,
+            "logs": 2,
+            "opcode": 115
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.063,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 07:22:16"
+          }
+        },
+        "shutdown": {
+          "pid": 17032,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T07:22:17.1008631Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "643032255c1ad26ca6a548ebecda3bcd66e11c12ec8121ab9aecc7e3af76b5bf",
+          "final-state.json": "47e1d39a33f93a90fee7e23f7b4e5d30d83c69c0efff5315998718fb3b8a6737",
+          "client.log": "d0d0bff8b2c439ea1f141ae632a176b3dbee6d9f39cecceeb0bfe599326e6efb",
+          "native-events.jsonl": "98f6bec3b29e31c99a3fb4e5bc0f17a37605e557d72322ea545b5c1ea36ea6e6",
+          "result.json": "f8edc43a369d73b90e6a93c1f91169cb139e89be8956fecbed23827ef088196c",
+          "server.json": "5e92d744021c12985dc998e14e0ebea4103046d8f9be96103452f0c8e4d146ac",
+          "server.log": "0504cdd6dcb946b5533172bde8b3d9f78c2a4bbc25bb3a83069a14bbbe4ff8aa",
+          "shutdown.json": "8f115ed71c66ea82288f58b05c19c445eb2019eda7d60cf08cc545ce1cd390b2",
+          "logout-observation.json": "b9442ddd40f4b5048251b70996d709b6e10054ff51535c7500136c918a521e11"
+        },
+        "limitations": [
+          "Owner working-tree archive, not independent or pristine acceptance.",
+          "Headless offscreen software scene and native widget dispatch; no OS window, physical input or rendered dialogue pixel claim.",
+          "Native full-pack/late-life/stale-target/refusal cases not exercised by this scenario; shared World cases are separate.",
+          "All varp changes reported, no general timer/capacity/chemistry acceptance.",
+          "No compiled Kotlin run; chemistry independent campaign remains paused."
+        ]
+      }
+    },
+    {
+      "reference": "work/integration/runs/openrune-banknote-replay-native-20261021-005/banknote-native-assessment.json",
+      "sha256": "f2a6a4baf8647949c2788a7c87e322e60cf3d7b20f9590b004a6cede1cf14c6b",
+      "assessment": {
+        "result": "PASS_NATIVE_BANKNOTE_VERIFY",
+        "run": "openrune-banknote-replay-native-20261021-005",
+        "mode": "verify",
+        "server_sha256": "8FE148A6D82754DD92E44554830FB9C22A7661417B9D7212B36D9C608AEFEF7C",
+        "driver_sha256": "E5179FE19F646ADF0B2EB7F4E7A72E67A4BD6232A0C451F75BDE2E198CE807F9",
+        "pinned_library_files": 990,
+        "checks": [
+          "native item149 Use on raw static18491, No then Yes and object dialogue Continue for action run only",
+          "partial exchange exact saved slots: notes5->3, two ordinary logs into first free0/1",
+          "all other inventory types/items/vars, Stats/fineXP and position unchanged",
+          "same-save reconnect unchanged for verify only",
+          "logout advanced/offline and exit0/unforced"
+        ],
+        "all_varp_changes": {
+          "3079": {
+            "before": 117,
+            "after": 88
+          },
+          "65515": {
+            "before": 112,
+            "after": 194
+          },
+          "300": {
+            "before": 200,
+            "after": 300
+          },
+          "3077": {
+            "before": 16692,
+            "after": 23757
+          }
+        },
+        "native_events": [
+          {
+            "kind": "native.banknote_verify",
+            "notes": 3,
+            "logs": 2
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.562,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 07:22:16"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 07:23:23"
+          }
+        },
+        "shutdown": {
+          "pid": 9236,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T07:23:23.9968037Z"
+        },
+        "evidence_hashes": {
+          "initial-state.json": "47e1d39a33f93a90fee7e23f7b4e5d30d83c69c0efff5315998718fb3b8a6737",
+          "final-state.json": "1a44fafeff55176e14294270bd9a2aa5cfe3861cba075cb3dc2d085822d6f25e",
+          "client.log": "e7a584cb6a285bdfcf55e3e9f0d6f0300414251f2f85523881efd4056b9c5fbe",
+          "native-events.jsonl": "de46d96b3ac9d0a6f15b449bb2003bdd91bdf69eb80521a5adc6313127dc1c73",
+          "result.json": "f305bad817512ddcd17894e2daec8980b94f38e2dba93bbf027c562f9d02bb00",
+          "server.json": "ec868e412d51edc1817aebccc7b6399f60c3b10b96e7e705d4369c83accdcf75",
+          "server.log": "5961ede11786306e23258314b666d1e301346632ca7cb81fdb2d5bb51995c3e1",
+          "shutdown.json": "dc1a925fb2d0383d6c4e127c75b804d2578eda7281894c3e5300baf1db9b038a",
+          "logout-observation.json": "4b66d4702ef377efaa09e249593120f59d81268a25c6be92fdee6950a96738f8"
+        },
+        "limitations": [
+          "Owner working-tree archive, not independent or pristine acceptance.",
+          "Headless offscreen software scene and native widget dispatch; no OS window, physical input or rendered dialogue pixel claim.",
+          "Native full-pack/late-life/stale-target/refusal cases not exercised by this scenario; shared World cases are separate.",
+          "All varp changes reported, no general timer/capacity/chemistry acceptance.",
+          "No compiled Kotlin run; chemistry independent campaign remains paused."
+        ]
+      }
+    }
+  ],
+  "matrix": {
+    "pure_cap_slot_quantity_cases": 420,
+    "normal_world_member_selected_slot_cases": 6,
+    "life_before_and_during_cases": 6,
+    "actual_cache_world_cases": 12,
+    "shared_server_pass": 308,
+    "shared_world_pass": 682,
+    "shared_world_existing_ignored": 1
+  },
+  "failures_preserved": {
+    "focused002": "PowerShell -p ambiguity before resource checks/Cargo; invocation fixed to CargoArgs.",
+    "shared004": "New saving test incorrectly submitted after admission protection; corrected to assert LoggingOut then tick cancellation.",
+    "cache007": "Probe bootstrapped map/catalog but omitted Runtime-held-type population; corrected probe to mirror cache-defined startup population; failing probe snapshot preserved."
+  },
+  "limitations": [
+    "Owner working-tree build/tests/cache/native archive with pre-existing local packaging/private opt-ins; not pristine or independent verification.",
+    "Only current registered static18491 booth accepts held-note conversion. Dynamic27291/Deadman27292/selector4153, bankers and other bank locations are not accepted by this unit.",
+    "Native covers one F2P logs-note partial exchange, No/Yes/resultContinue and same-save reconnect; full bag, stale target and life are World tests, not native exercises.",
+    "Nonzero item variables, malformed reciprocal note graphs, dummy/placeholders/transforms and unsupported output types are intentionally refused. No general unusual-note policy acceptance.",
+    "Bank capacity800 remains inherited; no new tab/PIN/shared-storage, timer, potion/chemistry or compiled Kotlin scheduling acceptance.",
+    "Headless software scene and real client widget/script packets; no OS window, physical input or rendered dialogue screenshot acceptance. Chemistry independent campaign remains paused."
+  ],
+  "preserved_native_failure": {
+    "run": "openrune-banknote-actions-native-20261021-001",
+    "source_sha": "da7c5697dbdf2bdc57bb8f37d705cb93fe66250a",
+    "server_sha256": "85B9F3844C734BB8AB05EB4CCF33B6A67CB573E8502D2A21DF501B2FF05294B7",
+    "result": {
+      "mode": "exchange",
+      "clientExit": 1,
+      "clientHash": "154DBA0B544E2B0FA71ECCE4289EBB6B2AE464D555519285614BA8FEC5DE6CF5",
+      "startUtc": "2026-10-22T06:46:58.4506866Z",
+      "endUtc": "2026-10-22T06:49:30.3048171Z",
+      "address": "127.0.0.1:56471"
+    },
+    "shutdown": {
+      "pid": 19608,
+      "exited": true,
+      "exitCode": 0,
+      "forced": false,
+      "utc": "2026-10-22T06:49:41.1927524Z"
+    },
+    "inventory_unchanged": true,
+    "reason": "Actual Use packet62 dispatched but projected choice was canceled as an unrelated modal on next tick; deadline stage2. Corrected by exact token/interface ownership, not bypassing native UI.",
+    "hashes": {
+      "client.log": "d66ae08536673d98023d720f4d1fb3722a8037380846208cdaff2b6efbc27e4d",
+      "server.log": "ed09fc87f07aefd64367e7221cfc25d3cbc378ff1d3e94622113339f3f6c792d",
+      "initial-state.json": "643032255c1ad26ca6a548ebecda3bcd66e11c12ec8121ab9aecc7e3af76b5bf",
+      "final-state.json": "5674cf3f18494db32e737a1f2521ea9e1eb9035eccd81fb71825e489dff27e5d",
+      "native-events.jsonl": "49d22cefbb84ab542acf2d6d844bc344081613dc631caab5b5b7694ac362de15",
+      "result.json": "163fa79160eb6dae08e0762b34ec3064213009691db24a1ee307b58f3228e8d1",
+      "shutdown.json": "f0c895f8102efa6f53d9f02a7fdc3d5089d121d6cbd98a146c81c559f8213c47",
+      "logout-observation.json": "4fbbcbefb2bc6bed2749d80235beb23187872876d5516888ae9018e2a85d3011"
+    }
+  },
+  "preserved_native_driver_failure": {
+    "run": "openrune-banknote-actions-native-20261021-002",
+    "source_sha": "d551b080858f602a5c7508c2fede6fee74ca50e4",
+    "server_sha256": "8692369455F6225511CBC74E3FE9F1B416BF24E7FD11B73064A5B8A5518A42C4",
+    "result": {
+      "mode": "exchange",
+      "clientExit": 1,
+      "clientHash": "154DBA0B544E2B0FA71ECCE4289EBB6B2AE464D555519285614BA8FEC5DE6CF5",
+      "startUtc": "2026-10-22T06:57:11.1539682Z",
+      "endUtc": "2026-10-22T06:59:42.8891866Z",
+      "address": "127.0.0.1:52535"
+    },
+    "shutdown": {
+      "pid": 10168,
+      "exited": true,
+      "exitCode": 0,
+      "forced": false,
+      "utc": "2026-10-22T06:59:53.9995157Z"
+    },
+    "reason": "No/Yes/partial2 and objectbox193 reached, deadline stage5, not a passed native campaign. First driver searched text-child Continue; broader universe-menu driver also failed in003 before server message ordering correction. Original save retained at notes3/logs2.",
+    "hashes": {
+      "client.log": "8268ed032e9ad8b5a017389892aaeeaddba2535db463b8df1ee7755cec54f54c",
+      "server.log": "fbc7ea3c70396b4514e1430b3d42169698891d57f947f4bcb727e13c3489245e",
+      "initial-state.json": "5674cf3f18494db32e737a1f2521ea9e1eb9035eccd81fb71825e489dff27e5d",
+      "final-state.json": "27e4f4baa045f0797b1d429cf1580c73c37effa575163233ef4139a64c67896c",
+      "native-events.jsonl": "aa5dda6a343a6c376a6b75d5a4d9bd7e70b23bba1b4c9e75c8670100667c6f5e",
+      "result.json": "c9276784b2315f3c213d483ba66f36c371991a5af20cf65bc463b96b769b8dae",
+      "shutdown.json": "b530a316f586383d7a43c7b1f8729c20d77f985c53226af4eadb52c7d841d667",
+      "logout-observation.json": "161e5c5d206a347874685af59d4479000e41ff3bab7bde695b60c4d1fd179535"
+    }
+  },
+  "preserved_native_result_layout_failure": {
+    "run": "openrune-banknote-actions-native-20261021-003",
+    "source_sha": "d551b080858f602a5c7508c2fede6fee74ca50e4",
+    "server_sha256": "8692369455F6225511CBC74E3FE9F1B416BF24E7FD11B73064A5B8A5518A42C4",
+    "result": {
+      "mode": "exchange",
+      "clientExit": 1,
+      "clientHash": "53D6350268880A0976CB98D26D745132F844556F71F2FD3C36B7E42C3C4731A1",
+      "startUtc": "2026-10-22T07:02:16.1270153Z",
+      "endUtc": "2026-10-22T07:04:47.9391798Z",
+      "address": "127.0.0.1:50671"
+    },
+    "shutdown": {
+      "pid": 16904,
+      "exited": true,
+      "exitCode": 0,
+      "forced": false,
+      "utc": "2026-10-22T07:04:59.1282611Z"
+    },
+    "reason": "Driver corrected to universe menu, but stage5 resultContinue still unreachable with message sent after interface open. Final source sends type115 before open, matching existing objectbox path. No client-library edit.",
+    "hashes": {
+      "client.log": "67db43f0e4c7dd2cf003353f929896a40e40144518952ff2f2c7cbee9fb5f152",
+      "server.log": "437c9c95315e76c17fa1cf1637f12fea25f7e2a3be1b067cbf7040fc92e42769",
+      "initial-state.json": "643032255c1ad26ca6a548ebecda3bcd66e11c12ec8121ab9aecc7e3af76b5bf",
+      "final-state.json": "482f90cf4745c7b9e81e06b43007fb99823e3c4400e77067b8a56682f1ebe233",
+      "native-events.jsonl": "aa5dda6a343a6c376a6b75d5a4d9bd7e70b23bba1b4c9e75c8670100667c6f5e",
+      "result.json": "93e3091c7bcd8a32cf4855637bfe211ca3a4fe082529ac4c52b5ff6d2e8e483a",
+      "shutdown.json": "fc6cf99f47c39256ae061157d494af2f1f8cc7e9a93df7a7c7115335749cd9d3",
+      "logout-observation.json": "f0cf636124e45730119eacabc97c64b492f56c21b882d7752bc3fb04d5f30b0a"
+    }
+  },
+  "preserved_native_diagnostic_failure": {
+    "run": "openrune-banknote-actions-native-20261021-004",
+    "source_sha": "29b7b763a66f3f2818f30ac967c4ea9cb3ea8228",
+    "server_sha256": "8FE148A6D82754DD92E44554830FB9C22A7661417B9D7212B36D9C608AEFEF7C",
+    "result": {
+      "mode": "exchange",
+      "clientExit": 1,
+      "clientHash": "6229C9AE9439A6EE2DC2BE796A8795E56605B5AB5A4B3265EB698652EB14F844",
+      "startUtc": "2026-10-22T07:10:04.2720684Z",
+      "endUtc": "2026-10-22T07:12:36.1968197Z",
+      "address": "127.0.0.1:61219"
+    },
+    "shutdown": {
+      "pid": 8084,
+      "exited": true,
+      "exitCode": 0,
+      "forced": false,
+      "utc": "2026-10-22T07:12:47.4923453Z"
+    },
+    "reason": "Diagnostic root/child layouts showed correct notes3/logs2, visible child2 Click here to continue with scripted interface operation; driver incorrectly restricted menu to direct Continue actions. Earlier chat ordering hypothesis did not fix it. Offline actual2868/menu/onOp2869 now proves correct dispatch, without client library modification.",
+    "hashes": {
+      "client.log": "8fbd93b1d3d7f4a248c81f15b8c7e9aec4293673f0bb7244207adf5ddd7dd44c",
+      "server.log": "3447b191c1b410430c0ad061b7604e176e56d61c945e07129deb14721180d353",
+      "initial-state.json": "643032255c1ad26ca6a548ebecda3bcd66e11c12ec8121ab9aecc7e3af76b5bf",
+      "final-state.json": "d981e99995d977109ba390b1bf0688549a39dabba86430cf1a2a970dc8baf0bb",
+      "native-events.jsonl": "aa5dda6a343a6c376a6b75d5a4d9bd7e70b23bba1b4c9e75c8670100667c6f5e",
+      "result.json": "e484c1341931c44dc86fecc8f32e44a27309614b3480aa21ceae6b1257dfbfad",
+      "shutdown.json": "145efdc7cf72727c3b4a129d423bded077cf139a0f5d4f3bef434609be78f90b",
+      "logout-observation.json": "35b72596a3cace0c542091c0dc43f714ff1b855ff08419cf4e286c373e0771c6"
+    }
+  },
+  "offline_client_menu_audit": {
+    "scope": "Offline actual target script2868 and native interface_menu -> onOp2869 ->115 universe/slot0. No live gameplay claim.",
+    "script2868_sha256": "101f0ee731d1bdbf9d5ea01aa2c7197b46c14e188271f713bdb59fa4412eea42",
+    "script_arguments": {
+      "ints": 0,
+      "strings": 1,
+      "longs": 0
+    },
+    "source_sha256": "7e0867500be50100c379a96acaa7005c4b068ca6ad51e28aeb9bf31b55499a2e",
+    "log_reference": "work/openrune-banknote-exchange-20261021/objectbox-menu-audit-028.log",
+    "log_sha256": "dace1d70ad3b0de972aade63b0aa41cf58680790b13cc6afe072472f03629863",
+    "failed_compile_027_preserved": true
+  }
+}
