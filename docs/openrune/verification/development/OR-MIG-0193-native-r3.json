@@ -1,0 +1,775 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0193",
+  "revision": 3,
+  "implementation_commit_sha": "737d6e4ea66aef61e422c9a711521111681421c3",
+  "recorded_utc": "2026-10-22T13:35:57.570488+00:00",
+  "result": "OWNER_FIVE_NATIVE_MANUAL_ACTION_SAVE_RECONNECT_AND_EARNED_NONZERO_RECOVERY_PASS_INDEPENDENT_PENDING",
+  "source_report": "docs/openrune/verification/development/OR-MIG-0193-correction-r2.json",
+  "sources": {
+    "crates/server/src/content.rs": "d81843f54d650d889de58d15a14c96f8cb5db1aa81624b03bb9172971a551b4c",
+    "crates/server/src/content/coal_bag.rs": "bfcc160b23c1514dbe57e1cfd257021bab5430c95704ebf8642980e989c6b9a8",
+    "crates/server/src/food_operations.rs": "0b186e0da556ce9b7404871d8c6e17e6a92610641a1023a552ac6e9655475cf7",
+    "crates/server/src/runtime.rs": "7948de3c6253029977eba548831ebe098009f61780a5947fccbbdc8af9db0df6",
+    "crates/server/src/startup.rs": "65fc54333c45d33a63a55ca57339042fc4bbeaea630f1d60d42307a6dd34c49c",
+    "crates/world/src/coal_bag.rs": "8c43b3b1798f33e200bb6d66cd968e748c1d2b6eaa6ab8733f0a72583e71d3de",
+    "crates/world/src/lib.rs": "4fa763449c7ba2f6bb005634df39009f0124d13c69837e0c876882cc35ebbbaf",
+    "crates/world/src/simulation.rs": "2bae53d7901dfe9d2414b36cf072a623defb772047a665e820ab2d0d611fa368",
+    "crates/world/src/simulation/coal_bag_actions.rs": "5abb28edc85a452274ce81787a87fec2070f7607d094f1602416887a56ee94c4",
+    "crates/world/src/simulation/coal_bag_tests.rs": "062b53daae31f29d635ffd47960f348611c83814e2bc303b8c7ffdb479886b4b"
+  },
+  "server_archive": {
+    "sha256": "12FE92978B3AEB1086DE4E9D8EB8CBC7934DB8C3C571598DBD2C8790F69D606E",
+    "source_count": 662,
+    "source_manifest_sha256": "7da902e355ece63dcd5df2e5637ec816be0eb667d4b901b9a25b741c4dc44e82",
+    "before_after_sources_unchanged": true
+  },
+  "native": [
+    {
+      "run": "openrune-coal-bag-control-native-20261022-003",
+      "assessment_sha256": "19a41e8ddd4f5bbf61418d9a7c6f44b655f7e85a2aba89cdef14b18d9d1d7839",
+      "assessment": {
+        "result": "PASS_NATIVE_COAL_BAG_CONTROL",
+        "run": "openrune-coal-bag-control-native-20261022-003",
+        "mode": "control",
+        "server_sha256": "12FE92978B3AEB1086DE4E9D8EB8CBC7934DB8C3C571598DBD2C8790F69D606E",
+        "driver_sha256": "B1D5B70157058A53D4C4E5530D32BA1F7844DCC10691CC1266E2044512DED516",
+        "native_events": [
+          {
+            "kind": "native.coal_idle",
+            "mode": "control",
+            "coal": 26,
+            "closed": 1
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.063,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 13:29:10"
+          }
+        },
+        "shutdown": {
+          "pid": 17580,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T13:29:11.4796659Z"
+        },
+        "all_varp_changes": {
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "3077": {
+            "before": 0,
+            "after": 10925
+          },
+          "65515": {
+            "before": 0,
+            "after": 74
+          },
+          "3079": {
+            "before": 0,
+            "after": 80
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "300": {
+            "before": 0,
+            "after": 100
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          }
+        },
+        "coal_storage_initial_final": [
+          0,
+          0
+        ],
+        "position_unchanged": true,
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "dcee8c279d66479dd57957c6b384d2f4f4f29e7fdb07774e6e20d2c82469f223",
+          "final-state.json": "3390686703546e11cbea65216f5536a3cb93aca33cd31dadd95393f6b68824e0",
+          "initial-state.json": "e6343ac57f9a8b818e0c5e73b1dba02e779f44755b07ef0a56a99e8c02dd278a",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "169bc4669c671dc78c1b6ddc682117731d5bd0d3b9c1cb271fb68ae5a64aa26c",
+          "native-events.jsonl": "3b66594fd7e93e803306a1c28bb7dacb0b215d57cbb2dfc0bdee2570f8c5861e",
+          "result.json": "39be13f73a08a76f3cb0d68a91e9b699a24a50ccb3ec63615374dfd0f67999f3",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "4ccd7cf9b273954aefec81aef0560d36a2a2e14ebc85593335ea1cd15c2af6cb",
+          "server.log": "6ae8faf57320ae539f8930fc53de0b907ca4a00701a474b3cca675ea62bf3a64",
+          "shutdown.json": "b6c54ab7e27f86737fe367c3197fda54bcee820cf9e8682a873e27608e6b594d"
+        },
+        "limitations": [
+          "Owner actual native inventory menus and received inventory/form/message effects, exact same-save conservation. No direct packet injection or physical desktop input.",
+          "Check verifies26stored before empty. Recovery modes resume the original failed001closed/002open saves with26stored and returns all26coal without reset; other three sessions test the full successful cycle and matched control/replay.",
+          "No native cape/partial fullbag/life/bank/depositbox/destroy/automatic mining/production-storage acceptance; owner World/cache matrices are separate.",
+          "Software captures need separate visual review. Chemistry independent verification paused; not independent verdict."
+        ]
+      }
+    },
+    {
+      "run": "openrune-coal-bag-actions-native-20261022-003",
+      "assessment_sha256": "0305389e3577c72489259741c2e2e691322ce3f5deff2b12a9eac5555a2047ca",
+      "assessment": {
+        "result": "PASS_NATIVE_COAL_BAG_OPERATE",
+        "run": "openrune-coal-bag-actions-native-20261022-003",
+        "mode": "operate",
+        "server_sha256": "12FE92978B3AEB1086DE4E9D8EB8CBC7934DB8C3C571598DBD2C8790F69D606E",
+        "driver_sha256": "B1D5B70157058A53D4C4E5530D32BA1F7844DCC10691CC1266E2044512DED516",
+        "native_events": [
+          {
+            "kind": "native.coal_action",
+            "stage": 0,
+            "label": "Fill",
+            "item": 12019,
+            "slot": 27,
+            "button": 2,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_effect",
+            "stage": 0,
+            "coal": 0,
+            "closed": 1,
+            "open": 0
+          },
+          {
+            "kind": "native.coal_action",
+            "stage": 1,
+            "label": "Open",
+            "item": 12019,
+            "slot": 27,
+            "button": 3,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_effect",
+            "stage": 1,
+            "coal": 0,
+            "closed": 0,
+            "open": 1
+          },
+          {
+            "kind": "native.coal_action",
+            "stage": 2,
+            "label": "Check",
+            "item": 24480,
+            "slot": 27,
+            "button": 4,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_effect",
+            "stage": 2,
+            "coal": 0,
+            "closed": 0,
+            "open": 1
+          },
+          {
+            "kind": "native.coal_action",
+            "stage": 3,
+            "label": "Empty",
+            "item": 24480,
+            "slot": 27,
+            "button": 6,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_effect",
+            "stage": 3,
+            "coal": 26,
+            "closed": 0,
+            "open": 1
+          },
+          {
+            "kind": "native.coal_action",
+            "stage": 4,
+            "label": "Close",
+            "item": 24480,
+            "slot": 27,
+            "button": 3,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_effect",
+            "stage": 4,
+            "coal": 26,
+            "closed": 1,
+            "open": 0
+          },
+          {
+            "kind": "native.coal_done",
+            "stages": 5,
+            "coal": 26,
+            "closed": 1
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.579,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 13:30:35"
+          }
+        },
+        "shutdown": {
+          "pid": 9236,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T13:30:35.9984552Z"
+        },
+        "all_varp_changes": {
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "3079": {
+            "before": 0,
+            "after": 115
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "3077": {
+            "before": 0,
+            "after": 36048
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "65515": {
+            "before": 0,
+            "after": 110
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          }
+        },
+        "coal_storage_initial_final": [
+          0,
+          0
+        ],
+        "position_unchanged": true,
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "21c5cc4edaf2d0eb32bcdb77c8dc9e969579fa3b3b520582a9f61c9230053555",
+          "final-state.json": "8db62d7b1217ba6a63add84f52e7c0867e73acd550c07411f6f044078f46c13d",
+          "initial-state.json": "e6343ac57f9a8b818e0c5e73b1dba02e779f44755b07ef0a56a99e8c02dd278a",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "d51159e576486fb9bb9e535791196017177fa68795fef803c95f84c5d9008548",
+          "native-events.jsonl": "126c559985e0e22986857ff70825ac0c157144f4270b7d87c02667451f9d8450",
+          "native-events.stage0.bmp": "0807561e8968b6dc4d7195ed4ca93f8171102e0db32c4c0e1080b3900e720451",
+          "native-events.stage1.bmp": "0807561e8968b6dc4d7195ed4ca93f8171102e0db32c4c0e1080b3900e720451",
+          "native-events.stage2.bmp": "0807561e8968b6dc4d7195ed4ca93f8171102e0db32c4c0e1080b3900e720451",
+          "native-events.stage3.bmp": "0807561e8968b6dc4d7195ed4ca93f8171102e0db32c4c0e1080b3900e720451",
+          "native-events.stage4.bmp": "0807561e8968b6dc4d7195ed4ca93f8171102e0db32c4c0e1080b3900e720451",
+          "result.json": "cb6c84674e1ac86c5f1c9ef2e6af7f76957b8e081325edbd9e5417ec267b21f6",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "230b93f59a1448ce78ba4cbcddc90d9c450294b18266712b54a932dcede90fcc",
+          "server.log": "83fabf0bd2fc9346953c636b7be774a055a138f8bfa109754a0e17ecc37896ff",
+          "shutdown.json": "a02e7f0a12193bc09ef24d31ff6eeaa97b0d4c5113aa6ffb68bb0f8d5ff11c09"
+        },
+        "limitations": [
+          "Owner actual native inventory menus and received inventory/form/message effects, exact same-save conservation. No direct packet injection or physical desktop input.",
+          "Check verifies26stored before empty. Recovery modes resume the original failed001closed/002open saves with26stored and returns all26coal without reset; other three sessions test the full successful cycle and matched control/replay.",
+          "No native cape/partial fullbag/life/bank/depositbox/destroy/automatic mining/production-storage acceptance; owner World/cache matrices are separate.",
+          "Software captures need separate visual review. Chemistry independent verification paused; not independent verdict."
+        ]
+      }
+    },
+    {
+      "run": "openrune-coal-bag-replay-native-20261022-003",
+      "assessment_sha256": "500142d88d49e9ec410dd43740a1c69801c6e2db74546dccb9e295343da6888e",
+      "assessment": {
+        "result": "PASS_NATIVE_COAL_BAG_VERIFY",
+        "run": "openrune-coal-bag-replay-native-20261022-003",
+        "mode": "verify",
+        "server_sha256": "12FE92978B3AEB1086DE4E9D8EB8CBC7934DB8C3C571598DBD2C8790F69D606E",
+        "driver_sha256": "B1D5B70157058A53D4C4E5530D32BA1F7844DCC10691CC1266E2044512DED516",
+        "native_events": [
+          {
+            "kind": "native.coal_idle",
+            "mode": "verify",
+            "coal": 26,
+            "closed": 1
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.563,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 13:30:35"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 13:31:38"
+          }
+        },
+        "shutdown": {
+          "pid": 1396,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T13:31:39.4396690Z"
+        },
+        "all_varp_changes": {
+          "300": {
+            "before": 200,
+            "after": 300
+          },
+          "65515": {
+            "before": 110,
+            "after": 186
+          },
+          "3079": {
+            "before": 115,
+            "after": 82
+          },
+          "3077": {
+            "before": 36048,
+            "after": 39563
+          }
+        },
+        "coal_storage_initial_final": [
+          0,
+          0
+        ],
+        "position_unchanged": true,
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "93ac29f63a96f1ff5e7369bb630dfd7f0e69b70e0516fc981d3e88192e4ce0bb",
+          "final-state.json": "de2ece199e7aad353f91c3df95fd7175257ba51a2af001933ad167ce60a720a5",
+          "initial-state.json": "8db62d7b1217ba6a63add84f52e7c0867e73acd550c07411f6f044078f46c13d",
+          "logout-before.json": "05ae72b6f5f2a51ba7cb770decc70fb6901a14fdc242f9a5fa0a4dd3dd0513b0",
+          "logout-observation.json": "052570622be0af1f60075cdbc1ea60169a20529839bbaacadda2965b2763565e",
+          "native-events.jsonl": "003e583ae9fd3947b1e7707fa86dfe271e83e26e609004f3a2fe6aabc943d71a",
+          "result.json": "a01664b5d1c8a197a52a2252082af850824a65fc949f10b507eb962010e5d843",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "3c7b67ef8c6e27c1ecd1cd4d18ef847587370cfbb83c8680fecb82e80bedd82a",
+          "server.log": "5090c3deb5ec9225d24b97be2f7cf1275fb87fe9a78b2e1c9d32a091ed722bac",
+          "shutdown.json": "800f2611087798dd2af76fe89ba536e9b399cf5dd653c49654fe2aaed9643393"
+        },
+        "limitations": [
+          "Owner actual native inventory menus and received inventory/form/message effects, exact same-save conservation. No direct packet injection or physical desktop input.",
+          "Check verifies26stored before empty. Recovery modes resume the original failed001closed/002open saves with26stored and returns all26coal without reset; other three sessions test the full successful cycle and matched control/replay.",
+          "No native cape/partial fullbag/life/bank/depositbox/destroy/automatic mining/production-storage acceptance; owner World/cache matrices are separate.",
+          "Software captures need separate visual review. Chemistry independent verification paused; not independent verdict."
+        ]
+      }
+    },
+    {
+      "run": "openrune-coal-bag-recovery-native-20261022-001",
+      "assessment_sha256": "afa265be6672415269bdd27d412072f0b757f5be76618ad7c3da1092fe593bfb",
+      "assessment": {
+        "result": "PASS_NATIVE_COAL_BAG_RECOVER",
+        "run": "openrune-coal-bag-recovery-native-20261022-001",
+        "mode": "recover",
+        "server_sha256": "12FE92978B3AEB1086DE4E9D8EB8CBC7934DB8C3C571598DBD2C8790F69D606E",
+        "driver_sha256": "B1D5B70157058A53D4C4E5530D32BA1F7844DCC10691CC1266E2044512DED516",
+        "native_events": [
+          {
+            "kind": "native.coal_action",
+            "stage": 1,
+            "label": "Open",
+            "item": 12019,
+            "slot": 27,
+            "button": 3,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_effect",
+            "stage": 1,
+            "coal": 0,
+            "closed": 0,
+            "open": 1
+          },
+          {
+            "kind": "native.coal_action",
+            "stage": 2,
+            "label": "Check",
+            "item": 24480,
+            "slot": 27,
+            "button": 4,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_effect",
+            "stage": 2,
+            "coal": 0,
+            "closed": 0,
+            "open": 1
+          },
+          {
+            "kind": "native.coal_action",
+            "stage": 3,
+            "label": "Empty",
+            "item": 24480,
+            "slot": 27,
+            "button": 6,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_effect",
+            "stage": 3,
+            "coal": 26,
+            "closed": 0,
+            "open": 1
+          },
+          {
+            "kind": "native.coal_action",
+            "stage": 4,
+            "label": "Close",
+            "item": 24480,
+            "slot": 27,
+            "button": 3,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_effect",
+            "stage": 4,
+            "coal": 26,
+            "closed": 1,
+            "open": 0
+          },
+          {
+            "kind": "native.coal_done",
+            "stages": 5,
+            "coal": 26,
+            "closed": 1
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.344,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 13:10:57"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 13:32:55"
+          }
+        },
+        "shutdown": {
+          "pid": 8732,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T13:32:56.4127605Z"
+        },
+        "all_varp_changes": {
+          "65515": {
+            "before": 80,
+            "after": 179
+          },
+          "65531": {
+            "before": 872415232,
+            "after": 0
+          },
+          "300": {
+            "before": 100,
+            "after": 300
+          },
+          "3077": {
+            "before": 58975,
+            "after": 56935
+          },
+          "3079": {
+            "before": 85,
+            "after": 105
+          }
+        },
+        "coal_storage_initial_final": [
+          26,
+          0
+        ],
+        "position_unchanged": true,
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "c37003151f47684f43bbeb1fbd650676ade6348083edc1690899299c2bc2cf39",
+          "final-state.json": "6934d1b26f1fe2908d0e87bbc3d770d0a7a73240de72e16275a51b9cdc02897d",
+          "initial-state.json": "d8e2ce6c5007fd5b8ee94a7c636ea15a9505ee9f1131a791f3b688975add53c1",
+          "logout-before.json": "9d2bf637b6834f56a2c90072a6ba9fa8357b561f0725c116f988ee4975fca462",
+          "logout-observation.json": "cb5145699ffa4d848a5472c21591946fc0280f677a753f9f8fa60855d43d0db1",
+          "native-events.jsonl": "420b5bf6461167b77d25b4ed40bcb667eeacbb3b52c0d3d7fbfa996010b2fd9f",
+          "native-events.stage1.bmp": "19c4f74b47712bc721e3624b1fa94b5224c4c72cf60883a90790fdac85f3ec4a",
+          "native-events.stage2.bmp": "e306e01ac1c9ee3e85d4b6869ea046f0f9df97d55c3a3f9e35e69ae6e81a7dae",
+          "native-events.stage3.bmp": "e306e01ac1c9ee3e85d4b6869ea046f0f9df97d55c3a3f9e35e69ae6e81a7dae",
+          "native-events.stage4.bmp": "e306e01ac1c9ee3e85d4b6869ea046f0f9df97d55c3a3f9e35e69ae6e81a7dae",
+          "result.json": "ba5f077f5989062c395937cc7934b6d8d5d31c8a7c127a076cfa1f836eedde40",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "36bc13ca4132dc832c68031c4149f6de102179f283368d4402fda6f8571e4c38",
+          "server.log": "e29a1368a7d2f8496c9c4a8d77eac66281b0e7527abdbf97b8799c5302943cfe",
+          "shutdown.json": "5a16faec790a99fc6a46acec61856eea53e99ed3ce5e88c3c11e051a74da2559"
+        },
+        "limitations": [
+          "Owner actual native inventory menus and received inventory/form/message effects, exact same-save conservation. No direct packet injection or physical desktop input.",
+          "Check verifies26stored before empty. Recovery modes resume the original failed001closed/002open saves with26stored and returns all26coal without reset; other three sessions test the full successful cycle and matched control/replay.",
+          "No native cape/partial fullbag/life/bank/depositbox/destroy/automatic mining/production-storage acceptance; owner World/cache matrices are separate.",
+          "Software captures need separate visual review. Chemistry independent verification paused; not independent verdict."
+        ]
+      }
+    },
+    {
+      "run": "openrune-coal-bag-recovery-native-20261022-002",
+      "assessment_sha256": "75967f7204816c66beec235c033bfd3f4cf3d13e116c58b9a98b378d0380ed7c",
+      "assessment": {
+        "result": "PASS_NATIVE_COAL_BAG_RECOVEROPEN",
+        "run": "openrune-coal-bag-recovery-native-20261022-002",
+        "mode": "recoveropen",
+        "server_sha256": "12FE92978B3AEB1086DE4E9D8EB8CBC7934DB8C3C571598DBD2C8790F69D606E",
+        "driver_sha256": "B1D5B70157058A53D4C4E5530D32BA1F7844DCC10691CC1266E2044512DED516",
+        "native_events": [
+          {
+            "kind": "native.coal_action",
+            "stage": 2,
+            "label": "Check",
+            "item": 24480,
+            "slot": 27,
+            "button": 4,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_effect",
+            "stage": 2,
+            "coal": 0,
+            "closed": 0,
+            "open": 1
+          },
+          {
+            "kind": "native.coal_action",
+            "stage": 3,
+            "label": "Empty",
+            "item": 24480,
+            "slot": 27,
+            "button": 6,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_effect",
+            "stage": 3,
+            "coal": 26,
+            "closed": 0,
+            "open": 1
+          },
+          {
+            "kind": "native.coal_action",
+            "stage": 4,
+            "label": "Close",
+            "item": 24480,
+            "slot": 27,
+            "button": 3,
+            "opcode": 47
+          },
+          {
+            "kind": "native.coal_effect",
+            "stage": 4,
+            "coal": 26,
+            "closed": 1,
+            "open": 0
+          },
+          {
+            "kind": "native.coal_done",
+            "stages": 5,
+            "coal": 26,
+            "closed": 1
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.719,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 13:17:16"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 13:34:09"
+          }
+        },
+        "shutdown": {
+          "pid": 11520,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T13:34:10.3766817Z"
+        },
+        "all_varp_changes": {
+          "65515": {
+            "before": 315,
+            "after": 409
+          },
+          "3079": {
+            "before": 320,
+            "after": 100
+          },
+          "3077": {
+            "before": 17004,
+            "after": 9795
+          },
+          "300": {
+            "before": 600,
+            "after": 800
+          },
+          "65531": {
+            "before": 872415232,
+            "after": 0
+          }
+        },
+        "coal_storage_initial_final": [
+          26,
+          0
+        ],
+        "position_unchanged": true,
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "b883dee8e3677da41d7f73eba0ddbb93cdf572ae5797d69b9436c53e89b53c47",
+          "final-state.json": "c80a453a33cb3ef4639a66796723b89b2723e05b069a62c74f10ea6409daab01",
+          "initial-state.json": "99e9a09d6df04600b2342729ca3eed344ffb5fa0cde3dc274e7a88a176e4c39b",
+          "logout-before.json": "f51cdb67c651f94ccf17afd937f7d2e8d4869b54e35821f5504db0d44022fe90",
+          "logout-observation.json": "e9bc8a6b319fc04d0a842a74c374fea0a98b76ad8d0a6330a1c251539f3e88e1",
+          "native-events.jsonl": "eb06abc66a10c4b37e70a6d44eb7922ffe769abf10777688656705604f9dafed",
+          "native-events.stage2.bmp": "4c42aac3f0805274ca30fe0d1b8c621b6f8b827662d64e53355e4dbaee0b719b",
+          "native-events.stage3.bmp": "2b40fc18b9bad86ea49cd79ee86329b94387dac2ed93dbbabf414fe6834f6b82",
+          "native-events.stage4.bmp": "2b40fc18b9bad86ea49cd79ee86329b94387dac2ed93dbbabf414fe6834f6b82",
+          "result.json": "591b501d11847f1afe7f3b30c5ca1201548e4fb696db64c5ff18064fc8b07cbb",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "7dc822eeb6dbca4fa79db9a4e8c78b61f3bdb21d15a73bbe14d91481de694c7b",
+          "server.log": "a257bed16e485bad345825a4b8eb11ef452fccdbee291edb62edd7ef0776467f",
+          "shutdown.json": "5ec53bdd32de3ecafa32e88d708c9fae5604a9a8151039eed6a65733b020a760"
+        },
+        "limitations": [
+          "Owner actual native inventory menus and received inventory/form/message effects, exact same-save conservation. No direct packet injection or physical desktop input.",
+          "Check verifies26stored before empty. Recovery modes resume the original failed001closed/002open saves with26stored and returns all26coal without reset; other three sessions test the full successful cycle and matched control/replay.",
+          "No native cape/partial fullbag/life/bank/depositbox/destroy/automatic mining/production-storage acceptance; owner World/cache matrices are separate.",
+          "Software captures need separate visual review. Chemistry independent verification paused; not independent verdict."
+        ]
+      }
+    }
+  ],
+  "original_failures": [
+    {
+      "run": "openrune-coal-bag-actions-native-20261022-001",
+      "cause": "Client XP baseline before complete login Stats; actual saved XP unchanged, Fill persisted26 in closed bag.",
+      "artifacts": {
+        "initial-state.json": "e6343ac57f9a8b818e0c5e73b1dba02e779f44755b07ef0a56a99e8c02dd278a",
+        "final-state.json": "d8e2ce6c5007fd5b8ee94a7c636ea15a9505ee9f1131a791f3b688975add53c1",
+        "result.json": "85b01fe5f12a1c334fff25629a1584e1096ee633f96ad560515991f04c776864",
+        "shutdown.json": "367303fab4bccbe754a7eca2b7ff64b76040ee3ec971a44d5f77fac473ab6e85",
+        "logout-observation.json": "99d621f1ac3da62258d384f145bb110d9e7191cf631ef425cf25ab31d6ffbe03",
+        "client.log": "12eb9e5edffb02a4e581d0432a08232640b081957bb49f76cabc40556d5584da",
+        "native-events.jsonl": "01c494787153c623db8eaa1209efade6be93b2917053f187e91595aab7690701"
+      },
+      "saved_coal": 26,
+      "earned_state_preserved": true
+    },
+    {
+      "run": "openrune-coal-bag-actions-native-20261022-002",
+      "cause": "Actual native Fill/Open/Check passed; Empty menu was held button6 but Rust bound5. Deadline stage3; saved26 in open bag.",
+      "artifacts": {
+        "initial-state.json": "e6343ac57f9a8b818e0c5e73b1dba02e779f44755b07ef0a56a99e8c02dd278a",
+        "final-state.json": "99e9a09d6df04600b2342729ca3eed344ffb5fa0cde3dc274e7a88a176e4c39b",
+        "result.json": "2eeb43e3287a653eae865ad8a607355ddb6f6bb2402245df22fbbfa925ad4c4c",
+        "shutdown.json": "06f041952840515e7fd5752091ef60af58e3e48328d5b199a2f0fd4c37a9c5f2",
+        "logout-observation.json": "b0c5261bb2741995e1321919054c16f3f5210812552f74e5c979a4fcb7842830",
+        "client.log": "8bb5b6316da4cbda99643ec91c4c922c9cc4af324c40346569b2a45ab16d135f",
+        "native-events.jsonl": "b7bc6c2cc09ccb7d917841db26c0e7ef982f5ed39af290105c31776d6134fe90"
+      },
+      "saved_coal": 26,
+      "earned_state_preserved": true
+    }
+  ],
+  "native_driver": {
+    "driver": "coal-bag-004",
+    "scenario": "manualCoalBagInventoryMenus",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless actual inventory Fill/Open/Check/Empty/Close and conservation; no automatic storage or bank-interface acceptance; no OS Window/desktop input or independent verdict",
+    "files": {
+      "NativeCoalBagScenario4.rs": "53C2510F5B372D19E2C57355CE98DDDCA4CDBF723F23B0288BDD713127FBED7B",
+      "server_coal_bag4.exe": "B1D5B70157058A53D4C4E5530D32BA1F7844DCC10691CC1266E2044512DED516"
+    }
+  },
+  "visual_review": {
+    "path": "work/integration/runs/openrune-coal-bag-actions-native-20261022-003/native-events.stage3.bmp",
+    "sha256": "0807561e8968b6dc4d7195ed4ca93f8171102e0db32c4c0e1080b3900e720451",
+    "observed": "World/avatar/buildings visible; outer inventory/chat area black. Decoded inventory/message checks are not pixel claims."
+  },
+  "known_limitations": [
+    "Manual inventory Fill/Open/Close/Check/Empty only. Automatic incoming virtual storage, smithing/superheat consumption, bank/depositbox buttons, destroy, purchase/sellback and global unique ownership are not implemented by this unit.",
+    "Target server cache encodes both bag forms stackable despite Wiki nonstackable property. Preserve encoded catalog; require one unmodified selected bag and swap that slot. Duplicate bag stacks are rejected as an explicit safety adaptation.",
+    "Donor CoalBagStorageHook consumes StorageFirst; pinned/current Wiki says inventory coal before bag. No automatic consumption policy is installed here. Later production integration must resolve that discrepancy explicitly.",
+    "Capacity uses only donor three worn cape IDs9795/9796/13280. Carried capes do not qualify; extra combined max-cape variants are not inferred. Removing cape preserves stored amounts above27.",
+    "Independent V0\u2013V4 queued. Chemistry independent verification remains paused.",
+    "Revision1 incorrectly assumed held fourth-option button5. Native002 exposed the ignored Empty; shared Config now permits2/3/4/6, World empties6, runtime uses same mapping. New actual decoded IFBUTTONX6-vs5 test prevents recurrence. Do not accept r1 native Empty.",
+    "Actual protected CoalBag.kt and CoalBagScript.kt compiled unchanged in place against five owned recording dependencies; fifteen manual logical cases match actual-cache Rust World inventory/storage/messages. Windows fixture CRLF is normalized only at comparison boundary; failed first raw-byte comparison preserved. Not full Kotlin engine or automatic StorageHook execution.",
+    "Five owner native sessions now pass on corrected source/archive: matched control, real Fill/Open/Check/Empty/Close, same-save reconnect, recovery of original001closed and002open saves with26stored each. Recorded IFBUTTONX47 buttons2/3/4/6/3, actual form/inventory/message effects; all offline-acknowledged/shutdown0unforced/990libraryfiles unchanged.",
+    "Both recovery initial exports exactly match the original failed run final exports, proving continuation of earned saves rather than reset. Each nonzero26 count survives reconnect, is reported by Check, and empties once to26physical coal with no saved Stats/fineXP/position or neighboring-bit changes.",
+    "Inspected stage3 software frame shows world/avatar/buildings, with outer inventory/chat area black. Menu/widget/received state and chat assertions are headless native evidence; no rendered inventory/chat pixels or physical desktop interaction claimed.",
+    "Native cases cover ordinary27capacity and26coal. Worn36capacity, partial/full-bag/life/native bank/depositbox/destroy/automatic storage remain separate. Full315server732world1ignored and15actual Kotlin logical comparisons are owner working-tree evidence; independent acceptance remains queued."
+  ]
+}
