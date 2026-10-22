@@ -76,3 +76,5 @@ Target OSRS 239.1. OpenRune config says 241; its AGENTS introduction says 240.2.
 - OR-MIG-0192r2 `afdd75043065374182164af3fd1fe50d2a259768`: native natural speech/control/reconnect passed; rendered Quack!/Quack?/Eep! frame reviewed. Native death/mourn/noDrop/audio/following and independent acceptance remain pending.
 
 - OR-MIG-0193 `277f09058c2e8613b7c7ee4ca8beb451b1617bf4`: manual coal-bag inventory subset passed owner checks. Native/independent, automatic storage/production, bank/depositbox, destroy/ownership remain open; donor StorageFirst/Wiki inventory-first discrepancy explicitly deferred. Target server stackable bag encoding retained.
+
+- OR-MIG-0193r2 `737d6e4ea66aef61e422c9a711521111681421c3` corrects native-discovered Empty widget5→6, with shared operation guard and decoded packet test. Full315server732world/1ignored plus15actual Kotlin/Rust logical cases pass. Native retry/earned-state recovery and independent acceptance remain pending.

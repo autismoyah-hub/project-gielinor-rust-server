@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0193",
+  "revision": 2,
+  "implementation_commit_sha": "737d6e4ea66aef61e422c9a711521111681421c3",
+  "superseded_implementation_commit_sha": "277f09058c2e8613b7c7ee4ca8beb451b1617bf4",
+  "recorded_utc": "2026-10-22T13:28:37.666987+00:00",
+  "result": "OWNER_NATIVE_DISCOVERED_EMPTY_MAPPING_CORRECTED_WORLD_CACHE_KOTLIN_LOGICAL_PASS_NATIVE_RETEST_PENDING_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/server/src/content.rs": "d81843f54d650d889de58d15a14c96f8cb5db1aa81624b03bb9172971a551b4c",
+    "crates/server/src/content/coal_bag.rs": "bfcc160b23c1514dbe57e1cfd257021bab5430c95704ebf8642980e989c6b9a8",
+    "crates/server/src/food_operations.rs": "0b186e0da556ce9b7404871d8c6e17e6a92610641a1023a552ac6e9655475cf7",
+    "crates/server/src/runtime.rs": "7948de3c6253029977eba548831ebe098009f61780a5947fccbbdc8af9db0df6",
+    "crates/server/src/startup.rs": "65fc54333c45d33a63a55ca57339042fc4bbeaea630f1d60d42307a6dd34c49c",
+    "crates/world/src/coal_bag.rs": "8c43b3b1798f33e200bb6d66cd968e748c1d2b6eaa6ab8733f0a72583e71d3de",
+    "crates/world/src/lib.rs": "4fa763449c7ba2f6bb005634df39009f0124d13c69837e0c876882cc35ebbbaf",
+    "crates/world/src/simulation.rs": "2bae53d7901dfe9d2414b36cf072a623defb772047a665e820ab2d0d611fa368",
+    "crates/world/src/simulation/coal_bag_actions.rs": "5abb28edc85a452274ce81787a87fec2070f7607d094f1602416887a56ee94c4",
+    "crates/world/src/simulation/coal_bag_tests.rs": "062b53daae31f29d635ffd47960f348611c83814e2bc303b8c7ffdb479886b4b"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/coalbag/CoalBag.kt",
+      "sha256": "4d49434735b71da85f910b012228e733d7f884b223ee3664bcd71e798a75a8a2",
+      "availability": "protected_local_reference",
+      "revision": "Preserved donor configured241; no matching originalPG module found"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/coalbag/CoalBagScript.kt",
+      "sha256": "f0a872446f9c07c84eb42f20f8e384cae85732b098d44026b5487aa52f301f17",
+      "availability": "protected_local_reference",
+      "revision": "Preserved donor configured241; no matching originalPG module found"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/coalbag/CoalBagStorageHook.kt",
+      "sha256": "ef7e1145bf4a84f275b94c9cdc7e7edcf960148e5971ee8f0f8bcecc9d95199d",
+      "availability": "protected_local_reference",
+      "revision": "Preserved donor configured241; no matching originalPG module found"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Coal bag",
+      "sha256": "35c9d24ab7fcca3dc9c15f3e1c21b5ed88518daeebf8c5a1cb9c3951614eee79",
+      "availability": "protected_local_reference",
+      "revision": "15215029"
+    }
+  ],
+  "server_archive": {
+    "sha256": "12FE92978B3AEB1086DE4E9D8EB8CBC7934DB8C3C571598DBD2C8790F69D606E",
+    "source_count": 662,
+    "source_manifest_sha256": "7da902e355ece63dcd5df2e5637ec816be0eb667d4b901b9a25b741c4dc44e82",
+    "before_after_sources_unchanged": true
+  },
+  "logs": {
+    "native-010.log": {
+      "sha256": "ba22a6e7588116f8201cec80041e727bb7d1f73f5c9c08632474993abc1d947a",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Capacity: 8,162 MiB available, commit 44.2%, pages-in/s 0, disk 3.5 ms.",
+        "Cargo concurrency: -j 2",
+        "Capacity: 8,126 MiB available, commit 44.3%, pages-in/s 0, disk 1.8 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "native-014.log": {
+      "sha256": "9be9601bbf883df2539f9bd02fa06f00b2ec35a3f1a7fd2bc7755d5a18c07c3e",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Capacity: 8,098 MiB available, commit 44.4%, pages-in/s 0, disk 2.6 ms.",
+        "Cargo concurrency: -j 2",
+        "Capacity: 8,068 MiB available, commit 44.5%, pages-in/s 0, disk 1.9 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "kotlin-015.log": {
+      "sha256": "76944adebb1e9dec83cd12aba2a490ed9d76b2fd05c37bca86620726062adc19",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 15.2% sampled, ceiling70%.",
+        "Capacity: 7,572 MiB available, commit 46.8%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS actual protected CoalBag/CoalBagScript logical 15manual cases; recording inventory/property dependencies, not full Kotlin engine"
+      ]
+    },
+    "differential-017.log": {
+      "sha256": "f58b31a452300ac423df06c98b0b8a92e408034fd028cd69bf03b5f0e2539f5e",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 3.5% sampled, ceiling70%.",
+        "Capacity: 8,023 MiB available, commit 44.4%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "differential-018.log": {
+      "sha256": "56965dc5b453208f4fab18166b739582b291169155d7a7e8abd8d2e4f13f32cc",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.1% sampled, ceiling70%.",
+        "Capacity: 8,229 MiB available, commit 44.2%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS 15actual Kotlin CoalBag/Script logical cases match actual-cache Rust World messages/storage/inventory, widget2/3/4/6; recording framework, not full Kotlin engine/native acceptance"
+      ]
+    },
+    "shared-019.log": {
+      "sha256": "62eb9c1378a60c673163834139a053e85611e9c36332002dcfcc79b4bab8c9c0",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 6.0% sampled, ceiling70%.",
+        "Capacity: 8,215 MiB available, commit 44.3%, pages-in/s 0, disk 0.7 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 315 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 68.15s",
+        "test result: ok. 732 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 45.51s"
+      ]
+    },
+    "archive-020.log": {
+      "sha256": "6e6a17d9ec82337abf1eebd1b91be3945158d8bef1866e7f197fe99421e5bc87",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 6.1% sampled, ceiling70%.",
+        "Capacity: 8,240 MiB available, commit 43.5%, pages-in/s 0, disk 2.3 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 12FE92978B3AEB1086DE4E9D8EB8CBC7934DB8C3C571598DBD2C8790F69D606E (662 source files)."
+      ]
+    }
+  },
+  "native_failures": [
+    {
+      "run": "openrune-coal-bag-actions-native-20261022-001",
+      "cause": "Client XP baseline before complete login Stats; actual saved XP unchanged, Fill persisted26 in closed bag.",
+      "artifacts": {
+        "initial-state.json": "e6343ac57f9a8b818e0c5e73b1dba02e779f44755b07ef0a56a99e8c02dd278a",
+        "final-state.json": "d8e2ce6c5007fd5b8ee94a7c636ea15a9505ee9f1131a791f3b688975add53c1",
+        "result.json": "85b01fe5f12a1c334fff25629a1584e1096ee633f96ad560515991f04c776864",
+        "shutdown.json": "367303fab4bccbe754a7eca2b7ff64b76040ee3ec971a44d5f77fac473ab6e85",
+        "logout-observation.json": "99d621f1ac3da62258d384f145bb110d9e7191cf631ef425cf25ab31d6ffbe03",
+        "client.log": "12eb9e5edffb02a4e581d0432a08232640b081957bb49f76cabc40556d5584da",
+        "native-events.jsonl": "01c494787153c623db8eaa1209efade6be93b2917053f187e91595aab7690701"
+      },
+      "saved_coal": 26,
+      "earned_state_preserved": true
+    },
+    {
+      "run": "openrune-coal-bag-actions-native-20261022-002",
+      "cause": "Actual native Fill/Open/Check passed; Empty menu was held button6 but Rust bound5. Deadline stage3; saved26 in open bag.",
+      "artifacts": {
+        "initial-state.json": "e6343ac57f9a8b818e0c5e73b1dba02e779f44755b07ef0a56a99e8c02dd278a",
+        "final-state.json": "99e9a09d6df04600b2342729ca3eed344ffb5fa0cde3dc274e7a88a176e4c39b",
+        "result.json": "2eeb43e3287a653eae865ad8a607355ddb6f6bb2402245df22fbbfa925ad4c4c",
+        "shutdown.json": "06f041952840515e7fd5752091ef60af58e3e48328d5b199a2f0fd4c37a9c5f2",
+        "logout-observation.json": "b0c5261bb2741995e1321919054c16f3f5210812552f74e5c979a4fcb7842830",
+        "client.log": "8bb5b6316da4cbda99643ec91c4c922c9cc4af324c40346569b2a45ab16d135f",
+        "native-events.jsonl": "b7bc6c2cc09ccb7d917841db26c0e7ef982f5ed39af290105c31776d6134fe90"
+      },
+      "saved_coal": 26,
+      "earned_state_preserved": true
+    }
+  ],
+  "actual_kotlin_oracle": {
+    "inputs": {
+      "source": "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\coalbag\\CoalBag.kt",
+      "source_sha256": "4d49434735b71da85f910b012228e733d7f884b223ee3664bcd71e798a75a8a2",
+      "extra_source": "C:\\Projects\\OSRSRSPS\\source-reference\\OpenRune-Server-main\\OpenRune-Server-main\\content\\skills\\smithing\\src\\main\\kotlin\\org\\rsmod\\content\\skills\\smithing\\coalbag\\CoalBagScript.kt",
+      "extra_source_sha256": "f0a872446f9c07c84eb42f20f8e384cae85732b098d44026b5487aa52f301f17",
+      "stubs": {
+        "Access.kt": "461a8bf0c7f464044ac5cf94208cb252e5dadcd9795412919a218a8f7b87293b",
+        "CoalBagOracle.kt": "c4dc65b74423c5e65bcc7c082862a38e3e78f0c88a0eed759e9ead111e5c3acd",
+        "Ops.kt": "cff0f6ee571c4e6b21e7c7b56c102b448d072d9863b2a881520619dfafbb5bab",
+        "Player.kt": "495c84c80601ab6398541c6dfe4452284853d4f2b5a7d2d0f066f82bb5c01b90",
+        "Plugin.kt": "b018e4b5b9b8b879c9297a8875438a1fa6cdb081a6b31a3c4bc6fc5f3b31df1b",
+        "Vars.kt": "b8fb9d672fcc2458013b53670737f2926e2b49ffc348b035af6872dd1c3eb2e1"
+      }
+    },
+    "result": {
+      "scope": "Actual protected CoalBag manual compiled with owned recording framework dependencies; logical callback traces only",
+      "sourceSha256": "4d49434735b71da85f910b012228e733d7f884b223ee3664bcd71e798a75a8a2",
+      "files": {
+        "compile.args": "0523B70FBCAD92BF6CEF8614627F0C6279663F57A17A731B375C7BA76F6E5B1E",
+        "inputs.json": "0C6CD750766655DA6E7B0E7BD05D60C9A51D90BB25DB230245A21C75E3403F27",
+        "oracle.jar": "737B8C34BF5F760C8FA31B6E88C5252D6BE3C9EC231484BC5ADBA92406A7BBE8"
+      },
+      "expectedSha256": "C0F17BD5460A9BD889647F0CDE5345E0C4EDFFF782173F122EFE844DB4481CEF",
+      "cases": 15
+    },
+    "cases_sha256": "53f1cf28e94026b457c0e32ce5307bf8500223fc9a2e4ef71d016c4e300cf308",
+    "raw_fixture_sha256": "c0f17bd5460a9bd889647f0cde5345e0c4edfff782173f122efe844db4481cef",
+    "scope": "Actual protected two source files, owned property/inventory/registration dependencies;15logical cases, no full Kotlin engine."
+  },
+  "private_probes": {
+    "crates/server/examples/coal_bag_callbacks_private.rs": "e53639a009a0aba4ca45ea38e19144cb8a547b115ea332d8a29f44801ff77c61",
+    "crates/server/examples/coal_bag_callbacks2_private.rs": "617b9dd07034992e52d09cf434b78346213269628a6b4940c388108daa0aac51"
+  },
+  "disk_cleanup": [
+    {
+      "scope": "Only two exact completed Agent2 test binaries proven by own shared005log and unchanged timestamps/sizes; other test hashes untouched; all native archives/source/fixtures/logs retained",
+      "files": [
+        {
+          "bytes": 254911835,
+          "sha256": "A12E85E3B60D423128F8F03BBA4430E13A54EBB3040E8CBD1E74411E619C95AA",
+          "owned_evidence": "Agent2 shared-005 completed run/log; exact artifact path/write time/size unchanged",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\deps\\gielinor_server-d5a27b0523fbd15f.exe"
+        },
+        {
+          "bytes": 235447998,
+          "sha256": "6801A6292A6F2473A92BE1772D1E4F54E6113C6E8AF349EA32E045DD6B5DAEF6",
+          "owned_evidence": "Agent2 shared-005 completed run/log; exact artifact path/write time/size unchanged",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\deps\\gielinor_world-379bc28e5667f47e.exe"
+        }
+      ],
+      "freeBeforeBytes": 838459392,
+      "freeAfterBytes": 1328824320,
+      "utc": "2026-10-22T13:20:23.5233076Z"
+    },
+    {
+      "scope": "Exact six completed Agent2 probe cache files proven by own execution logs, unchanged timestamps/sizes and matching hash pairs; source/fixtures/logs/native archives untouched",
+      "files": [
+        {
+          "sha256": "870567FFC91321505C47DD64E5C02AF6A1AF1EA26245FD4099F4B802548118AE",
+          "bytes": 164564454,
+          "owned_execution_log": "cache-003.log",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\coal_bag_world_cache_private.exe"
+        },
+        {
+          "sha256": "870567FFC91321505C47DD64E5C02AF6A1AF1EA26245FD4099F4B802548118AE",
+          "bytes": 164564454,
+          "owned_execution_log": "cache-003.log",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\coal_bag_world_cache_private-41d958dcba70b2c5.exe"
+        },
+        {
+          "sha256": "1D87B5FE7C8B8A2420ECD392584E6AFF1F526AEACD76C9E1E1938DC5C25F263E",
+          "bytes": 164514804,
+          "owned_execution_log": "differential-017.log",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\coal_bag_callbacks_private.exe"
+        },
+        {
+          "sha256": "1D87B5FE7C8B8A2420ECD392584E6AFF1F526AEACD76C9E1E1938DC5C25F263E",
+          "bytes": 164514804,
+          "owned_execution_log": "differential-017.log",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\coal_bag_callbacks_private-ce85635a037f68c4.exe"
+        },
+        {
+          "sha256": "886F163D99417DEB67A37856D77F2A89107CBD7C5EC480ECD8EBA1C83D5938C0",
+          "bytes": 164516543,
+          "owned_execution_log": "differential-018.log",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\coal_bag_callbacks2_private.exe"
+        },
+        {
+          "sha256": "886F163D99417DEB67A37856D77F2A89107CBD7C5EC480ECD8EBA1C83D5938C0",
+          "bytes": 164516543,
+          "owned_execution_log": "differential-018.log",
+          "path": "C:\\Projects\\OSRSRSPS\\rust-server\\work\\target\\debug\\examples\\coal_bag_callbacks2_private-cdc8f47ed23bf4bb.exe"
+        }
+      ],
+      "freeBeforeBytes": 466821120,
+      "freeAfterBytes": 960421888,
+      "utc": "2026-10-22T13:26:29.2386565Z"
+    }
+  ],
+  "auto_review": {
+    "rejected": "Broad matching test-cache deletion was rejected before execution because ownership of all matching artifacts was unproven.",
+    "resolved": "Read own completed shared005 execution log and exact artifact write times/sizes, then deleted only the two proven owned test files. Other hashes untouched. Later exact own probe files proven by own logs/times/hash pairs only. All source, logs, private fixtures and native archives retained."
+  },
+  "matrix": {
+    "server_pass": 315,
+    "world_pass": 732,
+    "world_existing_ignored": 1,
+    "coal_world_tests": 5,
+    "decoded_button_boundary_tests": 1,
+    "actual_kotlin_rust_logical_cases": 15
+  },
+  "known_limitations": [
+    "Manual inventory Fill/Open/Close/Check/Empty only. Automatic incoming virtual storage, smithing/superheat consumption, bank/depositbox buttons, destroy, purchase/sellback and global unique ownership are not implemented by this unit.",
+    "Target server cache encodes both bag forms stackable despite Wiki nonstackable property. Preserve encoded catalog; require one unmodified selected bag and swap that slot. Duplicate bag stacks are rejected as an explicit safety adaptation.",
+    "Donor CoalBagStorageHook consumes StorageFirst; pinned/current Wiki says inventory coal before bag. No automatic consumption policy is installed here. Later production integration must resolve that discrepancy explicitly.",
+    "Capacity uses only donor three worn cape IDs9795/9796/13280. Carried capes do not qualify; extra combined max-cape variants are not inferred. Removing cape preserves stored amounts above27.",
+    "Storage uses actual permanent bitprotected Never-transmitted varbit65519/base65531/bits25..30. Existing save machinery is reused; native persistence remains pending.",
+    "Independent V0\u2013V4 queued. Chemistry independent verification remains paused.",
+    "Revision1 incorrectly assumed held fourth-option button5. Native002 exposed the ignored Empty; shared Config now permits2/3/4/6, World empties6, runtime uses same mapping. New actual decoded IFBUTTONX6-vs5 test prevents recurrence. Do not accept r1 native Empty.",
+    "Actual protected CoalBag.kt and CoalBagScript.kt compiled unchanged in place against five owned recording dependencies; fifteen manual logical cases match actual-cache Rust World inventory/storage/messages. Windows fixture CRLF is normalized only at comparison boundary; failed first raw-byte comparison preserved. Not full Kotlin engine or automatic StorageHook execution.",
+    "Two failed native runs saved26coal in closed001/open002 bags with no saved XP change, acknowledged logout and unforced exit0. Both earned saves retained for recovery; no reset or reinterpretation of failure as pass. Corrected native acceptance remains pending.",
+    "Owner working-tree315server732world/1ignored and current-cache/Kotlin logical comparison passed, not pristine or independent acceptance. Native004 retry is separately prepared."
+  ],
+  "native": []
+}
