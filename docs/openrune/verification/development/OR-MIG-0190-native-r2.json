@@ -1,0 +1,1046 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0190",
+  "revision": 2,
+  "implementation_commit_sha": "678d81d964b348be56d35f2c22fc0722dd229293",
+  "recorded_utc": "2026-10-22T11:31:12.887270+00:00",
+  "result": "OWNER_SIX_NATIVE_REFUSAL_FLAVOUR_PERSISTENCE_PASS_INDEPENDENT_PENDING",
+  "source_report": "docs/openrune/verification/development/OR-MIG-0190.json",
+  "sources": {
+    "crates/server/src/content.rs": "02281d05e20d3e498b3c0a7353ed392229f26ba8afd4ccc6cf11aa26d4ad0964",
+    "crates/server/src/content/cows.rs": "6e28b72938c3e54dcee4dd472f480087ba13764551b94b2a9c49ebe2e136e1f2",
+    "crates/server/src/startup.rs": "0e388df80b31abadeeecab944c1141f83ab5bed1f5146b27629e43cd64b92b9a",
+    "crates/world/src/lib.rs": "1114928912c0509f3db204aecce6aa155e2a3f98b0fff624bd2813e1eefc6989",
+    "crates/world/src/npc_interaction.rs": "faa9fa471826abd530153414bce115177b3f34cbefbe7f62dba7fea4f0cea38c",
+    "crates/world/src/npc_item_reply.rs": "84401e200afb9532d052f3ea0b2f6c60ca96605a024378bc58199689cc38010a",
+    "crates/world/src/simulation.rs": "45ff38bdfdbb5fb2181160996a397f2986564e9bd6ecf870269494ec6261895f",
+    "crates/world/src/simulation/npc_actions.rs": "2fa6499b12129cc2a8ac557680560446a13dd68e9cbae460674d78ea81dc80dc",
+    "crates/world/src/simulation/npc_item_reply_actions.rs": "5f665ffde7e32536c8d3475d00ac4418c33e87e58a6e57bccf1576e036d26bfe",
+    "crates/world/src/simulation/shearing_actions.rs": "7d97bc3517a2676c51204efc64559c1a90582bd1db39d6a2596846f85ce80156"
+  },
+  "server_archive": {
+    "sha256": "0AFE669F643F68022CF3D96D10B1AF50D903A3C13C3BDEA84D967D284B882759",
+    "source_count": 643,
+    "source_manifest_sha256": "f6f53f6c32521cd95475b3effc667e6e50330791db753f0bb630f78ee30c9b7f",
+    "before_after_sources_unchanged": true
+  },
+  "native": [
+    {
+      "run": "openrune-cow-interactions-cow-control-native-20261022-001",
+      "assessment_sha256": "19655b0c63d29dd923b2d41b6ad6e695f434e42bdacbedb17143eb3a1af8f599",
+      "assessment": {
+        "result": "PASS_NATIVE_COW_CONTROLCOW",
+        "run": "openrune-cow-interactions-cow-control-native-20261022-001",
+        "mode": "controlcow",
+        "server_sha256": "0AFE669F643F68022CF3D96D10B1AF50D903A3C13C3BDEA84D967D284B882759",
+        "driver_sha256": "ED91021019C82390D617F00FD846037244D0C0CDCF26FDF7C8865D3B606CA687",
+        "native_events": [
+          {
+            "kind": "native.cow_flavour",
+            "index": 537,
+            "raw": 2790,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 540,
+            "raw": 2790,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 539,
+            "raw": 2790,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 542,
+            "raw": 2790,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 530,
+            "raw": 2791,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 520,
+            "raw": 2793,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 541,
+            "raw": 2790,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 533,
+            "raw": 2791,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_idle",
+            "mode": "controlcow",
+            "moos": 8
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.078,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 11:16:58"
+          }
+        },
+        "shutdown": {
+          "pid": 1128,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T11:16:59.5940975Z"
+        },
+        "all_varp_changes": {
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "65515": {
+            "before": 0,
+            "after": 105
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "3077": {
+            "before": 0,
+            "after": 60084
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "3079": {
+            "before": 0,
+            "after": 112
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          }
+        },
+        "position_before": {
+          "x": 3255,
+          "z": 3276,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3255,
+          "z": 3276,
+          "level": 0
+        },
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "565688a8dceb830f473105b3e130f002c519e9fe71e72e229d55a5045a42a2cb",
+          "final-state.json": "3070e01e1f2a8297ebc98c8c2d9d99aaed87008ff9c6b87ec865b77116cba559",
+          "initial-state.json": "63634ace2742f83519b3bed710b11312b4e2355288c9be74332d8c38c10c3e7b",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "b45ed511d0f97716c1faccc6ec5f63f6305d15fe15ba77b2e567a7573c1526cc",
+          "native-events.jsonl": "052d10e445f794fabba920b43424a8eee4dd68227c1d6486ac41d1436594d85e",
+          "result.json": "adb9206215e28611c299fbfd4b117bdfe601ca87d02887772f97ee6280897943",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "35d01a69e57f51c797f3a5eb1384eff3f6d9222637a59dc43d0951cabe28f760",
+          "server.log": "1a622ce5df5cb07a543577c7d9b84bd1a7cc80dd339174f79e0aa9e62cd99a84",
+          "shutdown.json": "652e571a7f70e9d32a08c4bf74c4831b78311b1363a25e05ce3ce4a05d4a2b1b"
+        },
+        "limitations": [
+          "Owner headless native actual scene/149held menus86, received exact refusals, native Moo/graze5854 and unchanged saved inventory/stats; not independent acceptance.",
+          "No audible sound/exact radius native acceptance or RNG probability/native life/stale/multiplayer claim; World/cache tests are separate.",
+          "Dairy harvesting is existingOR28; PG custom Cow death, special/revision variants and Wiki-only calf milk-bucket reply not exercised.",
+          "Positions/runenergy/allvarps reported; character state comparison excludes session varps and actual approach movement. Chemistry independent campaign paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-cow-interactions-cow-actions-native-20261022-001",
+      "assessment_sha256": "4d829ad1ac1f2d8fd81c2b274dd41da86d6210ed089d755890788dc1042d1227",
+      "assessment": {
+        "result": "PASS_NATIVE_COW_COW",
+        "run": "openrune-cow-interactions-cow-actions-native-20261022-001",
+        "mode": "cow",
+        "server_sha256": "0AFE669F643F68022CF3D96D10B1AF50D903A3C13C3BDEA84D967D284B882759",
+        "driver_sha256": "ED91021019C82390D617F00FD846037244D0C0CDCF26FDF7C8865D3B606CA687",
+        "native_events": [
+          {
+            "kind": "native.cow_flavour",
+            "index": 540,
+            "raw": 2790,
+            "tick": 60,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 537,
+            "raw": 2790,
+            "tick": 60,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 527,
+            "raw": 2791,
+            "tick": 60,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 523,
+            "raw": 2793,
+            "tick": 60,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 542,
+            "raw": 2790,
+            "tick": 60,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_use",
+            "stage": 0,
+            "raw": 2793,
+            "index": 520,
+            "item": 1925,
+            "opcode": 86
+          },
+          {
+            "kind": "native.cow_refusal",
+            "stage": 0,
+            "text": "Only dairy cows are suitable for milking."
+          },
+          {
+            "kind": "native.cow_use",
+            "stage": 1,
+            "raw": 2791,
+            "index": 531,
+            "item": 1513,
+            "opcode": 86
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 520,
+            "raw": 2793,
+            "tick": 72,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_refusal",
+            "stage": 1,
+            "text": "The cow doesn't want that."
+          },
+          {
+            "kind": "native.cow_done",
+            "moos": 6,
+            "refusals": 2
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.828,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 11:18:15"
+          }
+        },
+        "shutdown": {
+          "pid": 18824,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T11:18:16.3969847Z"
+        },
+        "all_varp_changes": {
+          "3079": {
+            "before": 0,
+            "after": 103
+          },
+          "65515": {
+            "before": 0,
+            "after": 98
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "3077": {
+            "before": 0,
+            "after": 15959
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          }
+        },
+        "position_before": {
+          "x": 3255,
+          "z": 3276,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3255,
+          "z": 3285,
+          "level": 0
+        },
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "374c6f9763f02cd4b86cc5c1e182fbc7633ae45aa6a152ff4176e52c0eb039ab",
+          "final-state.json": "d30a3483b7e365df8009314d3bb5506ca1e89095cac15d36712e68a1cde154a7",
+          "initial-state.json": "63634ace2742f83519b3bed710b11312b4e2355288c9be74332d8c38c10c3e7b",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "e6a566fd7d3ed77332fa67c985d1261c7c9212612df86a329b09ad8cd64592c2",
+          "native-events.jsonl": "295a5c1560def3280ca7ef7234bac201cd7b6e52f8e8b313ce712ffad5eb2c09",
+          "result.json": "b55fefc31d74d0594bc754f55e58e96172b02e59b5dcf37883996a7918e16b98",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "034fc950524c60a7127b8031fe8d473bbd13bb54074387ab1b39e5cb20a4b20e",
+          "server.log": "c3742d5fd35e5af27c27db5d165a82ad1f3e634b8a870a03019c7ece0e3f526b",
+          "shutdown.json": "0a556124001a6508ff0c868007dfc74892c83c873c311c2012d1c8e6b46b183b"
+        },
+        "limitations": [
+          "Owner headless native actual scene/149held menus86, received exact refusals, native Moo/graze5854 and unchanged saved inventory/stats; not independent acceptance.",
+          "No audible sound/exact radius native acceptance or RNG probability/native life/stale/multiplayer claim; World/cache tests are separate.",
+          "Dairy harvesting is existingOR28; PG custom Cow death, special/revision variants and Wiki-only calf milk-bucket reply not exercised.",
+          "Positions/runenergy/allvarps reported; character state comparison excludes session varps and actual approach movement. Chemistry independent campaign paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-cow-interactions-cow-replay-native-20261022-001",
+      "assessment_sha256": "f29249ffe04fa75b6bad650f009d1a38b15fbc7071e2832ff85f219c53e44686",
+      "assessment": {
+        "result": "PASS_NATIVE_COW_VERIFYCOW",
+        "run": "openrune-cow-interactions-cow-replay-native-20261022-001",
+        "mode": "verifycow",
+        "server_sha256": "0AFE669F643F68022CF3D96D10B1AF50D903A3C13C3BDEA84D967D284B882759",
+        "driver_sha256": "ED91021019C82390D617F00FD846037244D0C0CDCF26FDF7C8865D3B606CA687",
+        "native_events": [
+          {
+            "kind": "native.cow_flavour",
+            "index": 521,
+            "raw": 2793,
+            "tick": 134,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 533,
+            "raw": 2791,
+            "tick": 134,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 528,
+            "raw": 2791,
+            "tick": 134,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 519,
+            "raw": 2793,
+            "tick": 134,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 530,
+            "raw": 2791,
+            "tick": 134,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 529,
+            "raw": 2791,
+            "tick": 134,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 537,
+            "raw": 2790,
+            "tick": 134,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 527,
+            "raw": 2791,
+            "tick": 134,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 532,
+            "raw": 2791,
+            "tick": 134,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 539,
+            "raw": 2790,
+            "tick": 134,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_idle",
+            "mode": "verifycow",
+            "moos": 10
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.406,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 11:18:15"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 11:23:46"
+          }
+        },
+        "shutdown": {
+          "pid": 17996,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T11:23:47.7658345Z"
+        },
+        "all_varp_changes": {
+          "3079": {
+            "before": 103,
+            "after": 167
+          },
+          "300": {
+            "before": 200,
+            "after": 500
+          },
+          "3077": {
+            "before": 15959,
+            "after": 48070
+          },
+          "65515": {
+            "before": 98,
+            "after": 251
+          }
+        },
+        "position_before": {
+          "x": 3255,
+          "z": 3285,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3255,
+          "z": 3285,
+          "level": 0
+        },
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "f0793ccd01adc233072fd3554b8d962ddccdbe63a7e13d0082f44eee053ab1cf",
+          "final-state.json": "e754893a6aa90229d3eb76fc9b64008c54d0d71bce1cb67927ab81d672febab4",
+          "initial-state.json": "d30a3483b7e365df8009314d3bb5506ca1e89095cac15d36712e68a1cde154a7",
+          "logout-before.json": "1c35a143fca11b50960f159a2c01e5cccec5d9059dcc7fb3b34fe155904d7aa9",
+          "logout-observation.json": "96d462ab74bcc22749c946e6cecc6b5a56b848af26f7ebe68ed4a98db9427b64",
+          "native-events.jsonl": "de4cc1885944082852f359ce2f16aaa9f8f363b69ce615651b926336f606d7a7",
+          "result.json": "00bbc6cc8c24e7fed7c5015201605a87350a688a6620c597384647a54c289728",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "fcd95529d719fbd090b4dad5a32ce8b4a22a5d24c98de69bb4f169ddd1bd800c",
+          "server.log": "810e5d9f813aef9e2cdda48d1056e2fe7645050cb6e4a652388efa111b7f3a49",
+          "shutdown.json": "df2b3f95d33a2941008fe2b0b626a27e94a7d3b61469cbf59c098b9e69bc15d3"
+        },
+        "limitations": [
+          "Owner headless native actual scene/149held menus86, received exact refusals, native Moo/graze5854 and unchanged saved inventory/stats; not independent acceptance.",
+          "No audible sound/exact radius native acceptance or RNG probability/native life/stale/multiplayer claim; World/cache tests are separate.",
+          "Dairy harvesting is existingOR28; PG custom Cow death, special/revision variants and Wiki-only calf milk-bucket reply not exercised.",
+          "Positions/runenergy/allvarps reported; character state comparison excludes session varps and actual approach movement. Chemistry independent campaign paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-cow-interactions-calf-control-native-20261022-001",
+      "assessment_sha256": "2e987eaea5dca61ded06d302a4b1336d589a8c5af9e05f038f8997d77fca2bc9",
+      "assessment": {
+        "result": "PASS_NATIVE_COW_CONTROLCALF",
+        "run": "openrune-cow-interactions-calf-control-native-20261022-001",
+        "mode": "controlcalf",
+        "server_sha256": "0AFE669F643F68022CF3D96D10B1AF50D903A3C13C3BDEA84D967D284B882759",
+        "driver_sha256": "ED91021019C82390D617F00FD846037244D0C0CDCF26FDF7C8865D3B606CA687",
+        "native_events": [
+          {
+            "kind": "native.cow_flavour",
+            "index": 549,
+            "raw": 2794,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 547,
+            "raw": 2794,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 548,
+            "raw": 2794,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 550,
+            "raw": 2794,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 552,
+            "raw": 2792,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 551,
+            "raw": 2792,
+            "tick": 86,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_idle",
+            "mode": "controlcalf",
+            "moos": 6
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.313,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 11:25:07"
+          }
+        },
+        "shutdown": {
+          "pid": 2276,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T11:25:08.6908331Z"
+        },
+        "all_varp_changes": {
+          "3079": {
+            "before": 0,
+            "after": 110
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          },
+          "3077": {
+            "before": 0,
+            "after": 8065
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "65515": {
+            "before": 0,
+            "after": 104
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          }
+        },
+        "position_before": {
+          "x": 3255,
+          "z": 3276,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3255,
+          "z": 3276,
+          "level": 0
+        },
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "91c6445231cd19d19d0ac9956027152984c1e856fa295020b40f260d5ddae5c0",
+          "final-state.json": "fa984fc4d0fa447adbed0cdcede0e85ed80e667089a1f4a8c7afe5a7e9e6212c",
+          "initial-state.json": "63634ace2742f83519b3bed710b11312b4e2355288c9be74332d8c38c10c3e7b",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "0e2a83acca1c1c01399af46a39dfbbae216af74691ea21898e87c6ed95f258c8",
+          "native-events.jsonl": "da7f73e2c18eb6e0d803eeec21d0687565e63b068999df85c5896044c728e98d",
+          "result.json": "af2e68332cb2e1329aaea24401a1d42269fd0be9d7a27d432cdc176ae6fca1f1",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "9fd090b2ef09a51dfb71435c22eabe60a433578beb21378ee24e52fd24d5e667",
+          "server.log": "9433b39fc537301e49dcd5844e5d5ea7c962ca388ec64ac94ec5cd89ca443bb4",
+          "shutdown.json": "fdc721a0cfb58053cb064791cfdf67ac471ba59688c4cf942828c0277f9e3660"
+        },
+        "limitations": [
+          "Owner headless native actual scene/149held menus86, received exact refusals, native Moo/graze5854 and unchanged saved inventory/stats; not independent acceptance.",
+          "No audible sound/exact radius native acceptance or RNG probability/native life/stale/multiplayer claim; World/cache tests are separate.",
+          "Dairy harvesting is existingOR28; PG custom Cow death, special/revision variants and Wiki-only calf milk-bucket reply not exercised.",
+          "Positions/runenergy/allvarps reported; character state comparison excludes session varps and actual approach movement. Chemistry independent campaign paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-cow-interactions-calf-actions-native-20261022-001",
+      "assessment_sha256": "c557bcb93ba15eb8682676a99e045a9cfb7b0dffcacee00bb0c1dab06506d18b",
+      "assessment": {
+        "result": "PASS_NATIVE_COW_CALF",
+        "run": "openrune-cow-interactions-calf-actions-native-20261022-001",
+        "mode": "calf",
+        "server_sha256": "0AFE669F643F68022CF3D96D10B1AF50D903A3C13C3BDEA84D967D284B882759",
+        "driver_sha256": "ED91021019C82390D617F00FD846037244D0C0CDCF26FDF7C8865D3B606CA687",
+        "native_events": [
+          {
+            "kind": "native.cow_flavour",
+            "index": 549,
+            "raw": 2794,
+            "tick": 71,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 552,
+            "raw": 2792,
+            "tick": 71,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 550,
+            "raw": 2794,
+            "tick": 71,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 547,
+            "raw": 2794,
+            "tick": 71,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 551,
+            "raw": 2792,
+            "tick": 71,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_use",
+            "stage": 0,
+            "raw": 2794,
+            "index": 548,
+            "item": 1925,
+            "opcode": 86
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 548,
+            "raw": 2794,
+            "tick": 77,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 550,
+            "raw": 2794,
+            "tick": 82,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_refusal",
+            "stage": 0,
+            "text": "Calves are too young to be milked."
+          },
+          {
+            "kind": "native.cow_use",
+            "stage": 1,
+            "raw": 2794,
+            "index": 550,
+            "item": 1513,
+            "opcode": 86
+          },
+          {
+            "kind": "native.cow_refusal",
+            "stage": 1,
+            "text": "The calf doesn't want that."
+          },
+          {
+            "kind": "native.cow_done",
+            "moos": 7,
+            "refusals": 2
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 9.859,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 11:26:36"
+          }
+        },
+        "shutdown": {
+          "pid": 6504,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T11:26:37.3101936Z"
+        },
+        "all_varp_changes": {
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "21": {
+            "before": 0,
+            "after": 67141640
+          },
+          "65515": {
+            "before": 0,
+            "after": 117
+          },
+          "20": {
+            "before": 0,
+            "after": 8519680
+          },
+          "3079": {
+            "before": 0,
+            "after": 123
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "3077": {
+            "before": 0,
+            "after": 37178
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          },
+          "25": {
+            "before": 0,
+            "after": 2
+          }
+        },
+        "position_before": {
+          "x": 3255,
+          "z": 3276,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3264,
+          "z": 3283,
+          "level": 0
+        },
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "fc2842f060a4b5a472f65dd892cd68ca83bbd43e3269b4f787c950d469ee3780",
+          "final-state.json": "550733271d66c0b24b9feedb2a16146e50796839f74efd142ff7d66ca61de485",
+          "initial-state.json": "63634ace2742f83519b3bed710b11312b4e2355288c9be74332d8c38c10c3e7b",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "eeae253378b2d0ea7d5bf50161d2af6a10280b73ea11a188eb2f4fbaea173452",
+          "native-events.jsonl": "f3e74f0772e8882c53e93a2df9e1ed8b938c2ab0f3221eefbd3c251c4ecf9bf2",
+          "result.json": "456ed18169bb65e3f845c6cf7d57d89ee629713e8e46e9e3ce30901ba9d5b443",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "0bad86f6d7093eab08d396f8ec183bbea3519d26286fdf5968f4fddacb2fee57",
+          "server.log": "21e1ff37d5e52d80c0ff4f13c11532b162141908613ee39f053afc337f041fcc",
+          "shutdown.json": "1d1168000f3d00cf36322d6326962e219f8644826cf728466269f2bada166165"
+        },
+        "limitations": [
+          "Owner headless native actual scene/149held menus86, received exact refusals, native Moo/graze5854 and unchanged saved inventory/stats; not independent acceptance.",
+          "No audible sound/exact radius native acceptance or RNG probability/native life/stale/multiplayer claim; World/cache tests are separate.",
+          "Dairy harvesting is existingOR28; PG custom Cow death, special/revision variants and Wiki-only calf milk-bucket reply not exercised.",
+          "Positions/runenergy/allvarps reported; character state comparison excludes session varps and actual approach movement. Chemistry independent campaign paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-cow-interactions-calf-replay-native-20261022-001",
+      "assessment_sha256": "d8b50b33373c353163444cb3586b4a56916a98459eca0fe20a97aab30b19f68e",
+      "assessment": {
+        "result": "PASS_NATIVE_COW_VERIFYCALF",
+        "run": "openrune-cow-interactions-calf-replay-native-20261022-001",
+        "mode": "verifycalf",
+        "server_sha256": "0AFE669F643F68022CF3D96D10B1AF50D903A3C13C3BDEA84D967D284B882759",
+        "driver_sha256": "ED91021019C82390D617F00FD846037244D0C0CDCF26FDF7C8865D3B606CA687",
+        "native_events": [
+          {
+            "kind": "native.cow_flavour",
+            "index": 553,
+            "raw": 2792,
+            "tick": 150,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 548,
+            "raw": 2794,
+            "tick": 150,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 549,
+            "raw": 2794,
+            "tick": 150,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 550,
+            "raw": 2794,
+            "tick": 150,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 547,
+            "raw": 2794,
+            "tick": 150,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_flavour",
+            "index": 552,
+            "raw": 2792,
+            "tick": 150,
+            "sequence": 5854
+          },
+          {
+            "kind": "native.cow_idle",
+            "mode": "verifycalf",
+            "moos": 6
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 10.156,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 11:26:36"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 11:28:40"
+          }
+        },
+        "shutdown": {
+          "pid": 19800,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T11:28:41.5409099Z"
+        },
+        "all_varp_changes": {
+          "3077": {
+            "before": 37178,
+            "after": 41606
+          },
+          "65515": {
+            "before": 117,
+            "after": 286
+          },
+          "300": {
+            "before": 200,
+            "after": 500
+          },
+          "3079": {
+            "before": 123,
+            "after": 177
+          }
+        },
+        "position_before": {
+          "x": 3264,
+          "z": 3283,
+          "level": 0
+        },
+        "position_after": {
+          "x": 3264,
+          "z": 3283,
+          "level": 0
+        },
+        "run_energy": {
+          "before": 10000,
+          "after": 10000
+        },
+        "evidence_hashes": {
+          "client.log": "49de09bd5ba3886a0bd5803354cd7b3f970491dff7f30c07b88230b04e3234f0",
+          "final-state.json": "262b72747f4c29a5feb8c5d688c895338d0fc49fde40b76ee18b2ab9f1aef68e",
+          "initial-state.json": "550733271d66c0b24b9feedb2a16146e50796839f74efd142ff7d66ca61de485",
+          "logout-before.json": "06c4b5d55a8e209f0e09d65663876cf2aee068862367480ab08560ac8d196e5c",
+          "logout-observation.json": "59f9d44c144ee4b9394612445d37a744b598e0b55b731a120d133c2cd8ec3aa0",
+          "native-events.jsonl": "83383ab151e0702233102a304a3e3953b4493eaf6c76ecf524b247fc02d261b4",
+          "result.json": "500a5e76f4a2769503b3f588803c4f1bd0f28593b75b1645f905e7b4e291459b",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "5b7f8bbe2d5d7e286a70449a0daba1b6d0ff8cec241642e5b706832fb64d8e49",
+          "server.log": "35d2f35db4ac0e2dd18514d63326891b363693849a4cc21118326cc40a0e41d2",
+          "shutdown.json": "cd87b5b3891263e815406ff0782cc56920c97d805bfed0dd4b794507964fb228"
+        },
+        "limitations": [
+          "Owner headless native actual scene/149held menus86, received exact refusals, native Moo/graze5854 and unchanged saved inventory/stats; not independent acceptance.",
+          "No audible sound/exact radius native acceptance or RNG probability/native life/stale/multiplayer claim; World/cache tests are separate.",
+          "Dairy harvesting is existingOR28; PG custom Cow death, special/revision variants and Wiki-only calf milk-bucket reply not exercised.",
+          "Positions/runenergy/allvarps reported; character state comparison excludes session varps and actual approach movement. Chemistry independent campaign paused."
+        ]
+      }
+    }
+  ],
+  "logs": {
+    "native-deferral-011.json": {
+      "sha256": "fb2f2808d1d7447e39355991c669f51bc514e7db79a902416a44d04a725c5cb0",
+      "result": "DEFERRED_BEFORE_LAUNCH"
+    },
+    "native-013.log": {
+      "sha256": "a6a0c83b185f04f7b593e88f98cc13ab5da73bee5d652a09853a18de436715e0",
+      "result": "FAIL_ASSESSOR_OPTIONAL_FRAME_PRESERVED"
+    },
+    "assessment-014.log": {
+      "sha256": "c5221d7f29fd6cd280826ae8d0352c3e08172fa8384dd22ebfe1a759e2fd12f9",
+      "result": "PASS"
+    },
+    "native-015.log": {
+      "sha256": "388d72937e7b8fa4366bb7ff785855ff7896c21932f095d63bb9ba8a074c1f4d",
+      "result": "PASS"
+    }
+  },
+  "known_limitations": [
+    "Owner working-tree validation with retained private test/manifest opt-ins, not pristine or independent acceptance.",
+    "Only six ordinary target239.1static profiles. Does not replace existing combat/loot, dairy harvestingOR28 or Tower/Cinderworks death/progression behavior. OriginalPG Cow has local death/drop/Floor extensions beyond donor callbacks; no new death adaptation claimed.",
+    "Cow calf Wiki15199604 additionally describes milk-bucket refusal. Both reviewed OpenRune and originalPG Calf source have only empty-bucket override and generic other-item response. Current narrow port follows targetPG/OpenRune for unspecified other items; Wiki milk-bucket-specific extension remains explicitly unimplemented, not claimed complete.",
+    "Ambient timing/chance use existing189positive-countdown callback and draw order. Radius10/sound3044/Moo/graze5854 are source/cache facts; compiled Kotlin phase/RNGstream/audio playback not verified.",
+    "Held replies use existing attested op2 touch route with captured behavior replaced before processing, never dispatching attack. Current actor/target/life/visible stage/selected item/config checked at request and resume. No item debit, milk/reward/XP or persistence schema change.",
+    "Prepared World cases use synthetic clear terrain/positions; separate map-spawn inspection is not actual-map/native interaction acceptance. Native movement/modal/stale/life/multiplayer and full rendering remain pending.",
+    "Independent chemistry verification remains paused.",
+    "Six owner headless native sessions now pass at frozen190source/archive: Cow and Calf each matchedcontrol/actual149Use86emptybucket-and-log/defaultrefusals/same-save reconnect. Actual Cow2791 and Calf2794 action targets; native does not cover every6profile variant.",
+    "Native decoder observed Moo with grazing5854 for the selected family; no audible sound/radius/RNGdistribution/physical desktop/native life-stale-multiplayer acceptance claim. No Cow screenshot claim:001capture flag could be overwritten by multiple Moo events in one poll.",
+    "All six acknowledged offline logout/shutdown0unforced; exact saved inventory/Stats/fineXP/sessionbaseline checks, with actual movement/runenergy/allvarps reported. No item/milk/XP award.",
+    "First native013 batch stopped after successful Cow gameplay when assessor required optional missing BMP. Original driver/source/log/save retained. Separate assessor2 retains Use86/messages/Moo/graze/conservation checks and omits picture requirement; same saved artifacts reassessed014 without replay/reset, remaining4sessions015 passed."
+  ],
+  "assessor_sha256": "2d1ae8f03f62c5f3c63f6ba8d39ba7fb2f2e48743ebf314809104904c0ce5772",
+  "native_tee011_created": false,
+  "software_screenshot_claim": false
+}
