@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0175",
+  "implementation_commit_sha": "122c512d8ddbac7f0b0ec906692758a8b852f620",
+  "recorded_utc": "2026-10-22T03:45:46.462204+00:00",
+  "result": "DEVELOPMENT_VALIDATION_PASS",
+  "sources": {
+    "crates/server/src/food_operations.rs": "0b186e0da556ce9b7404871d8c6e17e6a92610641a1023a552ac6e9655475cf7",
+    "crates/server/src/content/gnome_ingredients.rs": "fd56135413d0cd19fa2bb35791a54d86e6c9d9b48cd608bdb19301c41b1343e2",
+    "crates/server/src/content/berries_cream_food.rs": "6627ec599c7d880eff6b099d195ad6061f4367e0f42942993c4dbaee4b4f119d"
+  },
+  "logs": {
+    "before-001.log": {
+      "command": "./build.ps1 -Action test -CargoArgs @('-p','gielinor-server','--lib','food_operations')",
+      "sha256": "5ff7d9fb1e9df2dae92de15e267bdf9870ab4bfafbf667654d7250b09efb268d",
+      "result": "EXPECTED_REPRODUCTION_FAILURE",
+      "summaries": [
+        "Build CPU capacity: 1.6% sampled, ceiling70%.",
+        "Capacity: 8,211 MiB available, commit 44.5%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 17.78s",
+        "test result: FAILED. 2 passed; 2 failed; 0 ignored; 0 measured; 287 filtered out; finished in 0.00s"
+      ]
+    },
+    "focused-002.log": {
+      "command": "./build.ps1 -Action test -CargoArgs @('-p','gielinor-server','--lib','food_operations')",
+      "sha256": "7ea19387f88cf8ae612d109d40c5abeb75f59df3fd4bf4f2f689c193ed68bd78",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 2.0% sampled, ceiling70%.",
+        "Capacity: 8,281 MiB available, commit 44.5%, pages-in/s 0, disk 1.9 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 15.62s",
+        "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 287 filtered out; finished in 0.00s"
+      ]
+    },
+    "shared-003.log": {
+      "command": "./build.ps1 -Action test -CargoArgs @('-p','gielinor-server','--lib')",
+      "sha256": "f092cfe5fc0e5bc16d177ac3855509ceea1a85343f7551783b26a14543560f44",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.8% sampled, ceiling70%.",
+        "Capacity: 8,249 MiB available, commit 44.6%, pages-in/s 2, disk 1.1 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s",
+        "test result: ok. 291 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 79.68s"
+      ]
+    },
+    "cache-actions-004.log": {
+      "command": "./build.ps1 -Action run -CargoArgs @('-p','gielinor-server','--example','food_native_cache_private','--','<preserved local239.1 game cache>','<preserved local symbols>')",
+      "sha256": "c382ef277a136afd9eba5365013bc80cc94af26025903dec21a9515bf1806d6b",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.4% sampled, ceiling70%.",
+        "Capacity: 8,253 MiB available, commit 44.5%, pages-in/s 5,510, disk 0.5 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 15.47s",
+        "DEFINITION id=2126 name=\"Dwellberries\" cache_index=3 widget_operation=6 members=true",
+        "DEFINITION id=2128 name=\"Equa leaves\" cache_index=0 widget_operation=2 members=true",
+        "DEFINITION id=2130 name=\"Pot of cream\" cache_index=0 widget_operation=2 members=true",
+        "DEFINITION id=2152 name=\"Toad's legs\" cache_index=3 widget_operation=6 members=true",
+        "DEFINITION id=30937 name=\"Caerula berries\" cache_index=3 widget_operation=6 members=true",
+        "PASS actual239.1 definitions:5; decoded-button/World cases:60; no rendered native acceptance"
+      ]
+    },
+    "bins-005.log": {
+      "command": "./build.ps1 -Action check -CargoArgs @('-p','gielinor-server','--bins')",
+      "sha256": "b50f55cb78da44b464641b1d2de68294830b6524f7e51b3c3fc5b171fe999fa5",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 1.6% sampled, ceiling70%.",
+        "Capacity: 8,217 MiB available, commit 44.2%, pages-in/s 0, disk 1.5 ms.",
+        "Cargo concurrency: -j 2",
+        "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.47s"
+      ]
+    }
+  },
+  "private_cache_probe": {
+    "path": "crates/server/examples/food_native_cache_private.rs",
+    "sha256": "a1933d0b0de99cabc760a5d4aee17c20462a6602e18d6997868270dfe34865c8",
+    "published": false,
+    "cases": 60,
+    "definition_ids": [
+      2128,
+      2152,
+      2126,
+      30937,
+      2130
+    ],
+    "scope": "Actual local239.1 definitions and symbols; decoded buttons -> maintained food adapter -> authoritative World. Full duplicate-filled pack; selected0/13/27; member/nonmember; correct/stale claim; exact outputs/HP/fineXP/no RNG. No native client."
+  },
+  "mapping": {
+    "cache_option_indexes": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "widget_operations": [
+      2,
+      3,
+      4,
+      6
+    ],
+    "rejected_old_fourth_operation": 5,
+    "fifth_cache_option_not_food": true
+  },
+  "limitations": [
+    "Working-tree owner checks include preserved local Cargo/private opt-in differences; not pristine or independent acceptance.",
+    "Decoded-button/World cache probe is headless, not genuine rendered native menu or native save/relogin acceptance. Original independent native op6 observation remains at its original failed152 pin.",
+    "No item IDs, recipes, healing, category clocks, persistence schema, client source, cache or symbols changed. Chemistry verification stays paused.",
+    "PG-DEF-003 in other action families remains unresolved. Prior152/154 exact-SHA contracts and independent failures are preserved, not rewritten or accepted by this correction."
+  ],
+  "server_archive": {
+    "command": "scripts/integration-server-build.ps1 -Run openrune-food-corrections-20261021-001",
+    "result": "PASS",
+    "sha256": "83B8BB6B758154CF66D2E6E09EA48810E91F77FA4C20026C55072D88B2681EF1",
+    "source_count": 602,
+    "source_manifest_sha256": "abdf608078a38ef40630052452ce09c58f3b8a3210c575235ab06818ab80bd00",
+    "log_sha256": "167c8626a5ae5a09fa8ace4c448029975c2b496e304a1c242ab701de50b8b514",
+    "limitations": "Working-tree archive with unchanged pre/post source manifest. Not native acceptance or pristine-checkout equivalence."
+  }
+}
