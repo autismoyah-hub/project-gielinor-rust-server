@@ -22,6 +22,8 @@ impl World {
         let bones = config.bones;
         let chicken = config.chickens.get(&entry.npc.type_id).copied();
         let extras = self.npc_guaranteed_extras.get(&entry.npc.type_id).cloned();
+        let weighted = self.npc_loot_profiles.get(&entry.npc.type_id).cloned();
+        let conflicting = weighted.is_some() && (chicken.is_some() || extras.is_some());
         let suppress_drops=self.npc_no_death_drops.contains(&entry.npc.type_id);
         let initial_hero=entry.npc.hero_points.winner();
         let initial_type=entry.npc.type_id;
@@ -132,7 +134,7 @@ impl World {
                 entry.death_state = Some(State::Respawn {
                     at: clock.wrapping_add(npc.respawn_rate),
                 });
-                let mut trace = chicken.map(|_| crate::npc_death::DropPolicy::Chicken).or_else(||extras.as_ref().map(|e|e.policy)).map(|policy| crate::npc_death::DropTrace {
+                let mut trace = weighted.as_ref().map(|p|p.policy()).or_else(||chicken.map(|_| crate::npc_death::DropPolicy::Chicken)).or_else(||extras.as_ref().map(|e|e.policy)).map(|policy| crate::npc_death::DropTrace {
                     policy,
                     tick: clock,
                     npc: id,
@@ -144,7 +146,10 @@ impl World {
                     handles: Vec::new(),
                     result: crate::npc_death::DropResult::NoEligibleOwner,
                 });
-                if let Some((owner, observer, duration)) = hero.filter(|_|!suppress_drops).and_then(|uuid| {
+                if conflicting {
+                    if let Some(trace)=&mut trace{trace.result=crate::npc_death::DropResult::Rejected;}
+                    self.events.push(WorldEvent::NpcCombatError{actor:id,error:ActionError::InvalidItem});
+                } else if let Some((owner, observer, duration)) = hero.filter(|_|!suppress_drops).and_then(|uuid| {
                     self.players
                         .iter()
                         .find(|(_, p)| p.data.character_id == uuid)
@@ -154,7 +159,17 @@ impl World {
                             })
                         })
                 }) {
-                    let mut products = vec![(bones, 1)];
+                    if let Some(trace) = &mut trace { trace.owner=Some(owner); }
+                    let invalid = weighted.as_ref().is_some_and(|p|!p.validate_catalog(&self.object_types));
+                    if invalid {
+                        if let Some(trace)=&mut trace{trace.result=crate::npc_death::DropResult::Rejected;}
+                        self.events.push(WorldEvent::NpcCombatError{actor:id,error:ActionError::InvalidItem});
+                    } else {
+                    let mut products = if let Some(profile)=&weighted{
+                        let draw=profile.bound().map(|bound|random.below(bound));
+                        if let Some(trace)=&mut trace{trace.draw=draw;}
+                        profile.products(draw).expect("RandomSource must return a value below its exclusive bound")
+                    }else{vec![(bones,1)]};
                     if let Some(extras) = &extras { products.extend_from_slice(&extras.products); }
                     if let Some(trace) = &mut trace { trace.owner=Some(owner); }
                     if let Some(profile) = chicken {
@@ -211,6 +226,7 @@ impl World {
                         }
                     }
                 }
+                    }
                 if let Some(trace) = trace {
                     self.events.push(WorldEvent::NpcDrop(trace));
                 }

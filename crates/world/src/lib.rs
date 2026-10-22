@@ -218,6 +218,7 @@ pub mod music_player;
 pub mod music_playlist;
 pub mod npc_bind;
 pub mod npc_death;
+pub mod npc_loot;
 pub mod npc_route;
 pub mod player_regen;
 pub mod player_timers;

@@ -5,6 +5,8 @@ mod tzhaar_pack_tests;
 mod remaining_pack_tests;
 mod bank_booths;
 mod shearing;
+mod imp_drops;
+pub use imp_drops::imp_drops;
 mod cows;
 mod farm_chicken_drops;
 pub use farm_chicken_drops::{farm_chicken_drops,FarmChickenDrops};
