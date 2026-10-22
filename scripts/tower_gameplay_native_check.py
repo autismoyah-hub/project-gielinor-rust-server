@@ -14,13 +14,14 @@ import sqlite3
 import subprocess
 import sys
 import time
+from collections import defaultdict, deque
 from pathlib import Path
 
 
 def main():
     parser = argparse.ArgumentParser(__doc__)
     for name in ["server", "client", "server_root", "content_root", "content_descriptor",
-                 "session_config", "adapter_directory", "output"]:
+                 "session_config", "adapter_directory", "walk_edges", "output"]:
         parser.add_argument("--" + name.replace("_", "-"), type=Path, required=True)
     parser.add_argument("--server-source", required=True)
     parser.add_argument("--client-source", required=True)
@@ -29,6 +30,12 @@ def main():
     sys.path.insert(0, str(args.adapter_directory.resolve()))
     from tower_gateway import Gateway
     config = json.loads(args.session_config.read_text(encoding="utf-8"))
+    # Navigation observations exported by the maintained read-only floor checker.
+    # These guide visible native walking; they cannot modify server collision.
+    edges = defaultdict(list)
+    for line in args.walk_edges.read_text(encoding="utf-8").splitlines()[1:]:
+        x, z, dx, dz = map(int, line.split())
+        edges[(10368 + x, 64 + z)].append((10368 + x + dx, 64 + z + dz))
     state_name = "agent7-native-" + secrets.token_hex(6)
     password = args.output / "password.private.txt"
     password.write_text(secrets.token_hex(12), encoding="utf-8")
@@ -36,6 +43,7 @@ def main():
     report = {"state_name": state_name, "server_source": args.server_source, "client_source": args.client_source,
               "server_sha256": hashlib.sha256(args.server.read_bytes()).hexdigest(),
               "client_sha256": hashlib.sha256(args.client.read_bytes()).hexdigest(),
+              "navigation_export_sha256": hashlib.sha256(args.walk_edges.read_bytes()).hexdigest(),
               "scenario": "Fresh native tools, earned kitchen milestone, portal, logout/server restart and return",
               "independent_verification": False, "accepted": False, "sessions": []}
 
@@ -121,7 +129,33 @@ def main():
                         if s["ready"] and s["position"][1:] == [x, z]:
                             return s
                         if s["ready"] and time.monotonic() >= retry:
-                            gateway.act(f"walk {x} {z}")
+                            start, goal = tuple(s["position"][1:]), (x, z)
+                            # Follow exported parent edges in short visible
+                            # segments. All movement goes through the client.
+                            parents, queue = {start: None}, deque([start])
+                            while queue and goal not in parents:
+                                at = queue.popleft()
+                                for neighbor in edges[at]:
+                                    if neighbor not in parents:
+                                        parents[neighbor] = at
+                                        queue.append(neighbor)
+                            if goal not in parents:
+                                raise RuntimeError("No maintained navigation route to native target")
+                            route, at = [], goal
+                            while at != start:
+                                route.append(at)
+                                at = parents[at]
+                            route.reverse()
+                            target = route[min(3, len(route) - 1)]
+                            try:
+                                gateway.act(f"walk {target[0]} {target[1]}")
+                            except RuntimeError as error:
+                                if "action is not in the visible native menu" not in str(error):
+                                    raise
+                                # The rejected menu sent no action; try the
+                                # nearest visible step, never replay a timed-out action.
+                                target = route[0]
+                                gateway.act(f"walk {target[0]} {target[1]}")
                             retry = time.monotonic() + 4
                         time.sleep(.2)
                     raise TimeoutError("Ordinary walking did not reach the target")
