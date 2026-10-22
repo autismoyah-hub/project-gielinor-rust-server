@@ -15,6 +15,7 @@ impl World {
         inv_slot: i32,
         object: i32,
     ) {
+        let ordinary_booth = self.is_ordinary_bank_booth_type(loc.id);
         let p = self.players.get_mut(slot).unwrap();
         let valid = self.held_use_types.contains_key(&object)
             && usize::try_from(inv_slot)
@@ -28,7 +29,7 @@ impl World {
             }
             return;
         }
-        if self.ordinary_bank_booths.contains(&loc.id){self.start_banknote_exchange(slot,loc,inv_slot as usize,object);return;}
+        if ordinary_booth {self.start_banknote_exchange(slot,loc,inv_slot as usize,object);return;}
         if self.facility_crafting.get(&loc.id).is_some_and(|c|c.locations.contains_key(&loc.id)&&c.recipes.iter().any(|r|r.accepts_input(object))) {
             self.request_facility_crafting(slot,loc,Some((inv_slot as usize,object)));return;
         }

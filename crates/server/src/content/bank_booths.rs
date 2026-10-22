@@ -1,6 +1,6 @@
-//! Target-backed static booth opening; transfers remain in shared banking.
+//! Target-backed booth opening; transfers remain in shared banking.
 use super::{Definitions, Symbols};
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap,BTreeSet};
 
 pub fn ordinary_bank_booths(
     locations: &Symbols,
@@ -31,6 +31,22 @@ pub fn ordinary_bank_booths(
     // Raw27291 switches between18491 and Deadman27292 using4153. Registering
     // it as an ordinary static object would bypass effective-definition policy.
     Ok([18491].into())
+}
+
+/// Raw parent27291 is ordinary only while its effective definition is18491.
+pub fn normal_dynamic_bank_booths(locations:&Symbols,contents:&Symbols,varbits:&Symbols,defs:&Definitions)->Result<BTreeMap<u32,gielinor_world::bank_actions::Binding>,String> {
+    ordinary_bank_booths(locations,contents,defs)?;
+    if locations.get("aide_bankbooth_multi")!=Some(&27291) || locations.get("aide_bankbooth_deadman")!=Some(&27292)
+        || varbits.get("deadman_mode")!=Some(&4153) {return Err("Unattested dynamic bank booth symbols".into());}
+    let parent=defs.locations.get(&27291).ok_or("Missing dynamic bank booth parent")?;
+    if parent.name!="null" || parent.content_group!=18 || parent.multi!=[18491,27292] || parent.multi_default!=-1
+        || parent.multi_varbit!=4153 || parent.multi_varp!=-1 || parent.collision.width!=1 || parent.collision.length!=1
+        || parent.ops!=[None,Some("Bank".into()),Some("Collect".into()),Some("Deposit-box".into()),None]
+        || !defs.locations.contains_key(&27292) {return Err("Unattested dynamic bank booth profile".into());}
+    let bit=*defs.varbits.get(&4153).ok_or("Missing deadman_mode selector")?;
+    let base=*defs.varps.get(&(bit.base as u32)).ok_or("Missing deadman selector base")?;
+    if bit.base!=1293 || bit.lsb!=0 || bit.msb!=0 || base.id!=1293 {return Err("Unattested deadman selector binding".into());}
+    Ok([(27291,gielinor_world::bank_actions::Binding{base,bit})].into())
 }
 
 #[cfg(test)]
@@ -101,6 +117,50 @@ mod tests {
             id: loc.id,
             operation,
             control: false,
+        }
+    }
+    fn dynamic_definitions() -> (Symbols, Symbols, Symbols, Definitions) {
+        use gielinor_world::variables::{Transmit,Varbit,Varp};
+        let (mut l,c,mut d)=definitions();
+        l.extend([("aide_bankbooth_multi".into(),27291),("aide_bankbooth_deadman".into(),27292)]);
+        let mut parent=gielinor_cache::locations::LocationType::decode(&[0]).unwrap();
+        parent.name="null".into();parent.content_group=18;
+        parent.ops=[None,Some("Bank".into()),Some("Collect".into()),Some("Deposit-box".into()),None];
+        parent.multi=vec![18491,27292];parent.multi_varbit=4153;
+        d.locations.insert(27291,parent);
+        // The Deadman child is present, but deliberately not admitted as an ordinary booth.
+        d.locations.insert(27292,gielinor_cache::locations::LocationType::decode(&[0]).unwrap());
+        d.varbits.insert(4153,Varbit{base:1293,lsb:0,msb:0});
+        d.varps.insert(1293,Varp{id:1293,permanent:true,transmit:Transmit::Always,bit_protect:false,client_code:-1});
+        (l,c,[("deadman_mode".into(),4153)].into(),d)
+    }
+    #[test]
+    fn normal_dynamic_bank_booth_binding_checks_parent_child_and_selector_drift() {
+        let(l,c,v,d)=dynamic_definitions();
+        let bound=normal_dynamic_bank_booths(&l,&c,&v,&d).unwrap();
+        assert_eq!(bound.keys().copied().collect::<Vec<_>>(),vec![27291]);
+        assert_eq!(bound[&27291].bit.base,1293);
+        for mode in 0..16 {
+            let(mut l,c,mut v,mut d)=dynamic_definitions();
+            match mode {
+                0=>{l.remove("aide_bankbooth_multi");},
+                1=>{l.insert("aide_bankbooth_deadman".into(),27293);},
+                2=>{v.insert("deadman_mode".into(),4154);},
+                3=>{d.locations.remove(&27291);},
+                4=>d.locations.get_mut(&27291).unwrap().multi.reverse(),
+                5=>d.locations.get_mut(&27291).unwrap().multi_default=18491,
+                6=>d.locations.get_mut(&27291).unwrap().ops[2]=None,
+                7=>d.locations.get_mut(&27291).unwrap().multi_varp=1293,
+                8=>d.locations.get_mut(&27291).unwrap().content_group=0,
+                9=>{d.locations.remove(&27292);},
+                10=>d.locations.get_mut(&18491).unwrap().ops[1]=None,
+                11=>{d.varbits.remove(&4153);},
+                12=>d.varbits.get_mut(&4153).unwrap().base=1294,
+                13=>d.varbits.get_mut(&4153).unwrap().msb=1,
+                14=>{d.varps.remove(&1293);},
+                _=>d.varps.get_mut(&1293).unwrap().id=1294,
+            }
+            assert!(normal_dynamic_bank_booths(&l,&c,&v,&d).is_err(),"drift {mode}");
         }
     }
     fn request(w: &mut World) -> Option<gielinor_world::bank_access::Request> {

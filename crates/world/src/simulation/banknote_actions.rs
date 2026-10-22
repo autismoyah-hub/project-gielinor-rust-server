@@ -13,7 +13,8 @@ impl World {
     ) {
         let p = self.players.get(slot).unwrap();
         let actor = p.id;
-        if p.saving || p.pending_logout || p.death_queued || p.data.stats.current(3) as u8 == 0 {
+        if p.saving || p.pending_logout || p.death_queued || p.data.stats.current(3) as u8 == 0
+            || !self.ordinary_bank_booth_allowed(actor,location.id) {
             self.events.push(WorldEvent::ActionRejected {
                 actor,
                 error: ActionError::Protected,

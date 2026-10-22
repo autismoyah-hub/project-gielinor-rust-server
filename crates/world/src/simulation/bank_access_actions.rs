@@ -1,9 +1,16 @@
 use super::*;
 use crate::bank_access::Request;
 impl World {
+    pub(super) fn is_ordinary_bank_booth_type(&self,id:u32)->bool {
+        self.ordinary_bank_booths.contains(&id)||self.normal_bank_booth_modes.contains_key(&id)
+    }
+    pub(super) fn ordinary_bank_booth_allowed(&self,actor:ActorId,id:u32)->bool {
+        self.player(actor).is_ok_and(|p|self.ordinary_bank_booths.contains(&id)
+            ||self.normal_bank_booth_modes.get(&id).is_some_and(|binding|binding.get(&p.data.variables).is_ok_and(|mode|mode==0)))
+    }
     pub(super) fn is_location_bank_operation(&self, id:u32, operation:u8)->bool {
         operation==1 && self.location_banks.contains_key(&id)
-            || operation==2 && self.ordinary_bank_booths.contains(&id)
+            || operation==2 && self.is_ordinary_bank_booth_type(id)
     }
     pub(super) fn cinderworks_bank(&self, location:crate::locations::Location)->bool {
         location.id==crate::tower_cinderworks::BANK_BOOTH && location.shape==10 && location.angle==0
@@ -16,11 +23,12 @@ impl World {
     ) {
         let p = self.players.get(slot).unwrap();
         let actor = p.id;
-        if p.death_queued || p.data.stats.current(3) as u8 == 0 {
+        if p.death_queued || p.data.stats.current(3) as u8 == 0
+            || self.is_ordinary_bank_booth_type(location.id) && !self.ordinary_bank_booth_allowed(actor,location.id) {
             let p=self.players.get_mut(slot).unwrap();p.location_interaction=None;p.movement.interacting=false;p.movement.abort();
             self.events.push(WorldEvent::ActionRejected{actor,error:ActionError::Protected});return;
         }
-        let kind=if self.cinderworks_bank(location) || self.ordinary_bank_booths.contains(&location.id) {
+        let kind=if self.cinderworks_bank(location) || self.ordinary_bank_booth_allowed(actor,location.id) {
             crate::bank_access::Kind::Full
         } else {
             let Some(gate)=self.location_banks.get(&location.id) else {return;};
@@ -57,7 +65,7 @@ impl World {
                 == Some(request.location)
             && (self.location_banks.get(&request.location.id).is_some_and(|g| {
                     g.kind == request.kind && g.allows(p.member, &p.data.stats, &p.data.variables)
-                }) || request.kind==crate::bank_access::Kind::Full && (self.cinderworks_bank(request.location) || self.ordinary_bank_booths.contains(&request.location.id)))
+                }) || request.kind==crate::bank_access::Kind::Full && (self.cinderworks_bank(request.location) || self.ordinary_bank_booth_allowed(actor,request.location.id)))
             && self.door_target(request.location).is_ok_and(|target| {
                 target.reached(&self.collision, p.movement.coords, p.movement.size)
             })

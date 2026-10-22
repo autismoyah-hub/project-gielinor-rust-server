@@ -49,6 +49,8 @@ pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
 mod deposit_box_actions;
 mod banknote_actions;
+#[cfg(test)]
+mod normal_bank_booth_tests;
 mod banker_note_actions;
 mod bank_access_actions;
 mod worn_item_swap_actions;
@@ -1042,6 +1044,7 @@ pub struct World {
     pub deposit_box: Option<crate::deposit_box::Config>,
     pub location_banks: BTreeMap<u32,crate::bank_access::Gate>,
     pub ordinary_bank_booths: std::collections::BTreeSet<u32>,
+    pub normal_bank_booth_modes: BTreeMap<u32,crate::bank_actions::Binding>,
     pub runecrafting:Option<crate::runecrafting::Config>,
     pub location_handlers: BTreeMap<(u32, u8), crate::location_content::Handler>,
     pub npc_options: crate::npc_options::Catalog,
@@ -1181,6 +1184,7 @@ impl Default for World {
             deposit_box: None,
             location_banks: BTreeMap::new(),
             ordinary_bank_booths: Default::default(),
+            normal_bank_booth_modes: Default::default(),
             location_handlers: Default::default(),
             runecrafting:None,
             npc_options: Default::default(),

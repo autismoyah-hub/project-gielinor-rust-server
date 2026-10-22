@@ -140,7 +140,9 @@ impl World {
         ) {
             return;
         }
+        let requires_booth=matches!(pending.action,Continuation::Choice{after:ChoiceAfter::Banknote{..},..}|Continuation::Message{..});
         let invalid = p.saving
+            || requires_booth && !self.ordinary_bank_booth_allowed(p.id,pending.location.id)
             || p.pending_logout
             || (p.has_modal
                 && (pending.dialogue_modal.is_none() || p.main_modal != pending.dialogue_modal))

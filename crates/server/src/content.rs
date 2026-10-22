@@ -4,7 +4,7 @@ mod tzhaar_pack_tests;
 #[cfg(test)]
 mod remaining_pack_tests;
 mod bank_booths;
-pub use bank_booths::ordinary_bank_booths;
+pub use bank_booths::{ordinary_bank_booths,normal_dynamic_bank_booths};
 mod chicken_coops;
 pub use chicken_coops::chicken_coops;
 mod spade_tool;
