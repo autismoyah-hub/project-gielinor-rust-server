@@ -66,3 +66,20 @@ inside the existing save transaction, backfills positive V13 clears without
 grants, and stages its World visibility behind the existing acknowledgement.
 FORGE review and exact-source native acceptance remain required before integration.
 Pin the complete charter/addenda before broadening gameplay and economy rules.
+
+## Continued implementation reconciliation
+
+At `c606b56b86eed52594734724940abce4b7bf0740`, durable V15 history now closes the
+gap between replay-reset objectives and permanent service/guardian accomplishments.
+The real Floor One Run gates consume the reusable content objective graph;
+the catalogue validates future floor graphs and exposes read-only boss discovery.
+The task journal displays permanent milestones and boss records outside the floor
+as well as inside it. Plaque recovery and chest payment now use the same reusable
+atomic grant helper, while their established eligibility and save barrier remain.
+
+Headless acceptance passed (1,047 tests, 3 existing ignores). Current-source native
+earned kitchen/XP/tool persistence, clean server restart and portal return passed
+on the same legitimately earned character. Full native boss/replay payment remains
+outside that new acceptance. Boss-only replay, Boss Credits,
+assignments and group policies remain unimplemented/open; catalogue records must
+not be mistaken for those systems. No new floor environment or economy exists.

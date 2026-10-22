@@ -77,3 +77,44 @@ ORACLE: confirm presentation requirements only after floor contracts are agreed.
 Independent reviewer: replay, interrupted-save, migration and group isolation
 acceptance on exact published implementation SHAs. No coordination message has
 been sent: these agent identities were not found among accessible active chats.
+
+## Floor One systems increment — 2026-10-21
+
+Owner requested continued implementation of applicable Floor One/lobby/later-floor
+systems. Maintained main was synchronized through
+`074eb3adc8f9989b619eec49911c179eb4eb25c1`; this upstream
+increment changed verification metadata, not gameplay. Production implementation:
+`c606b56b86eed52594734724940abce4b7bf0740`.
+
+- The existing five objectives now have one content definition and dependency
+  graph. Workshop/kitchen/altar remain independent; Imp requires all three and
+  Warden requires the Imp. Run mutations, entry eligibility and catalogue queries
+  use these shared contracts. Optional objectives cannot become dependencies of
+  required objectives. Unknown floors, duplicate content IDs and cycles fail
+  catalogue validation. No new skill gate or balance rule was added.
+- Floor identity 1 is Cinderworks. Its permanent objective bits are workshop 1,
+  kitchen 2, altar 4, Imp 8 and Warden 16. Preserve these meanings; do not recycle
+  retired bits. Boss catalogue identities 1 and 2 are stable Tower identities,
+  independent of cache NPC IDs.
+- Additive V15 stores historical objective masks as exactly eight little-endian
+  bytes. This supports all 64 bits without SQLite signed-integer loss. Observed
+  accomplishments merge by union inside the existing account transaction; stale
+  snapshots cannot remove them. Current attempts remain V13-owned, independently
+  of the permanent record. No second active-run engine was introduced.
+- Migration batches validated V13 records. An incomplete run proves only its
+  committed flags; an existing clear proves the five required objectives. Invalid
+  legacy lifecycle state aborts migration and its version marker together.
+  Unknown historical masks remain preserved even if content is later removed.
+- Permanent objective marks are accomplishments, with no new item, XP, currency
+  or achievement bonus. The existing task overlay shows their count and a
+  read-only boss catalogue both inside and outside the floor. Catalogue discovery
+  does not authorize boss-only replay or mint Boss Credits.
+- Reward bundles and missing-tool recovery now stage through a reusable helper
+  backed by the normal inventory engine. Floor One keeps its established 500/25
+  coin plus beer rewards, eligibility flags and acknowledgement barrier. Recovery
+  checks carried, worn and banked items, and deduplicates configured tool IDs;
+  it does not fabricate combat equipment or resources.
+
+Boss Credit policies, boss-only replay, assignments, group economics, new equipment
+tiers and authored later-floor content remain open. These changes are on the
+gameplay branch for FORGE review; maintained main and client sources are untouched.

@@ -1,0 +1,137 @@
+{
+  "production_source": "c606b56b86eed52594734724940abce4b7bf0740",
+  "maintained_main": "074eb3adc8f9989b619eec49911c179eb4eb25c1",
+  "headless": {
+    "cache": {
+      "passed": 26,
+      "failed": 0,
+      "ignored": 0
+    },
+    "protocol": {
+      "passed": 21,
+      "failed": 0,
+      "ignored": 0
+    },
+    "server": {
+      "passed": 304,
+      "failed": 0,
+      "ignored": 0
+    },
+    "storage": {
+      "passed": 19,
+      "failed": 0,
+      "ignored": 1
+    },
+    "world": {
+      "passed": 677,
+      "failed": 0,
+      "ignored": 2
+    }
+  },
+  "total_passed": 1047,
+  "total_ignored": 3,
+  "logs_sha256": {
+    "agent7-gameplay-systems-check-20261021.log": "6c63271033142173c0c100ee2d5cb5f72a62ebf3cc4fe374833a7824d2a9ca61",
+    "agent7-gameplay-systems-regression-20261021.log": "d3a91e66236ebe970596f3b1fe3f6561fb33ddc0673cd5f99dc51b381ff4566b",
+    "agent7-gameplay-systems-native-build-20261021.log": "f776da0270663bb2a5333a0cc38a422070d57100eb26204c8d4c73dc6f8dade2"
+  },
+  "native_status": "PASS_EARNED_KITCHEN_AND_CLEAN_NATIVE_RESTART",
+  "independent_verification": false,
+  "private_resources_published": false,
+  "native": {
+    "server_source": "c606b56b86eed52594734724940abce4b7bf0740",
+    "client_source": "0ed67a5670272c17191a3f9f691db66c44750f4c",
+    "server_sha256": "873cdf5bbbc72f48905a21cbc9a30e56e60b9305842876775694a2335b0464a1",
+    "client_sha256": "7857f7e23e7be31a4193427472ed086c690128e52b284f80597a6e091273bb42",
+    "final_run": [
+      [
+        1,
+        2,
+        0,
+        0
+      ]
+    ],
+    "final_milestones": [
+      [
+        1,
+        2
+      ]
+    ],
+    "final_floor_conquests": [],
+    "driver_source": "9aa63ea424eac8ff025081097225e1fc42fddbb3",
+    "earned_gameplay_attempts": [
+      "-07",
+      "-08"
+    ],
+    "clean_persistence_attempt": "-11",
+    "same_character_continued": true,
+    "database_edits": false,
+    "caught": 9,
+    "cooked": 7,
+    "burnt": 2,
+    "raw_remaining": 0,
+    "tools_retained": 6,
+    "fishing_xp": 450,
+    "cooking_xp": 1050,
+    "clean_native_sessions": 2,
+    "scope": "Normal native fishing and single-item cooking; real burns; kernel source unchanged across retained earned attempts and clean restarts. No new boss victory/replay payment, later-floor native content, group rendering or broad visual/audio acceptance.",
+    "attempts": {
+      "agent7-floor-native-20261021": {
+        "result": "observation bootstrap",
+        "controller_log_sha256": "a7fbaa4274154209f5b2597ce51c21dd6666fb050e96966ab30e49826d33610f",
+        "private_receipt_sha256": "0bedf0227623d300586605feac4bef06602e220b286eacf3d88bb69f2fbdaf37"
+      },
+      "agent7-floor-native-20261021-02": {
+        "result": "registration dialog timing",
+        "controller_log_sha256": "0dfa275b176ac521e7e8a2e6fda4c63c34e204c0ada87957e579e3f532acfcbf",
+        "private_receipt_sha256": "405fd19c6c74a1375e36c93733a8f5fbf17f351eff7d557614d6e7a2a78da647"
+      },
+      "agent7-floor-native-20261021-03": {
+        "result": "obsolete interaction anchors",
+        "controller_log_sha256": "5ebb0871583c765839a54269672bd441ba0e21e0db5f0b949882898a2f237070",
+        "private_receipt_sha256": "405fd19c6c74a1375e36c93733a8f5fbf17f351eff7d557614d6e7a2a78da647"
+      },
+      "agent7-floor-native-20261021-04": {
+        "result": "close with no modal",
+        "controller_log_sha256": "d837fe634e8e7e9e2e6aedd69e9babeb864736af1af8ddb699cebbc2455cfdb1",
+        "private_receipt_sha256": "405fd19c6c74a1375e36c93733a8f5fbf17f351eff7d557614d6e7a2a78da647"
+      },
+      "agent7-floor-native-20261021-05": {
+        "result": "obsolete fishing stance",
+        "controller_log_sha256": "97a9fed91c4ed8895d75102192a604c5fb5d39c3336b9430cfab2defdbecab50",
+        "private_receipt_sha256": "c45724328ddcdf82da3307a43277422d9fd54825853459d3f2fbf7a51c436b70"
+      },
+      "agent7-floor-native-20261021-06": {
+        "result": "NPC not retained before shore approach",
+        "controller_log_sha256": "0c91294624f765d62fd70025807547924faac861155d7e4f8cc74726e406eb39",
+        "private_receipt_sha256": "5555161119d75799996767deedb48726fea3a75ffb34cd9bf4c3bef8b62c667e"
+      },
+      "agent7-floor-native-20261021-07": {
+        "result": "old batch cooking assumption after real fishing and burn",
+        "controller_log_sha256": "fd8b76ed5ec7393bb480b37510ad39c7730c263b83226c33c84c962b52cf7864",
+        "private_receipt_sha256": "b98e5b54a5edf9183af795b037a908131864b03ac68ab4ee36d2c8a1049ea82a"
+      },
+      "agent7-floor-native-20261021-08": {
+        "result": "missing relative client diagnostics directory after seven earned cooks",
+        "controller_log_sha256": "9d55ce3290798f4c7d71b221464acc51f2a0b9a82a2b9d4bcbd86f5a94c6a229",
+        "private_receipt_sha256": "16844b2cf70c6d93b8131a8e8b08c725844e0462988d1316e96994034c2fca41"
+      },
+      "agent7-floor-native-20261021-09": {
+        "result": "outside portal occluded in initial camera view",
+        "controller_log_sha256": "8c78a566b8864f1efbeb937b18462492a3cc9a2267e7f8cf53aa84ec3438fdbb",
+        "private_receipt_sha256": "9645cb1515aef29b939ce591c6c8e0058a4870d9de82793d93931049f5813e73"
+      },
+      "agent7-floor-native-20261021-10": {
+        "result": "inside portal occluded after outside camera rotation",
+        "controller_log_sha256": "d0c4c0f293b60e65494f2394fb6dc6c54b698caec6270ed31f54820b3a3fa0cb",
+        "private_receipt_sha256": "e27fc55fb998c5c13a208978c22b25a93cae125a986653b21538246766e04dfa"
+      },
+      "agent7-floor-native-20261021-11": {
+        "result": "PASS clean native persistence and portal return",
+        "controller_log_sha256": "84f0bc27958b5f411eb2322f420b619ef89bb7d73b473040dcffd86b11fcea2a",
+        "private_receipt_sha256": "98e92eded1464a18bea8f7bfa91c84c53477da6d6e78fe6771fca388e481ff16"
+      }
+    },
+    "ordinary_portal_departure_and_return": true
+  }
+}
