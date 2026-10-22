@@ -21,6 +21,7 @@ impl World {
         };
         let bones = config.bones;
         let chicken = config.chickens.get(&entry.npc.type_id).copied();
+        let extras = self.npc_guaranteed_extras.get(&entry.npc.type_id).cloned();
         let suppress_drops=self.npc_no_death_drops.contains(&entry.npc.type_id);
         let initial_hero=entry.npc.hero_points.winner();
         let initial_type=entry.npc.type_id;
@@ -131,7 +132,8 @@ impl World {
                 entry.death_state = Some(State::Respawn {
                     at: clock.wrapping_add(npc.respawn_rate),
                 });
-                let mut trace = chicken.map(|_| crate::npc_death::DropTrace {
+                let mut trace = chicken.map(|_| crate::npc_death::DropPolicy::Chicken).or_else(||extras.as_ref().map(|e|e.policy)).map(|policy| crate::npc_death::DropTrace {
+                    policy,
                     tick: clock,
                     npc: id,
                     npc_type,
@@ -153,6 +155,8 @@ impl World {
                         })
                 }) {
                     let mut products = vec![(bones, 1)];
+                    if let Some(extras) = &extras { products.extend_from_slice(&extras.products); }
+                    if let Some(trace) = &mut trace { trace.owner=Some(owner); }
                     if let Some(profile) = chicken {
                         products.push((profile.raw, 1));
                         let draw = random.below(128);

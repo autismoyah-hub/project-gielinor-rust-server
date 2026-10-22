@@ -29,6 +29,12 @@ impl Chicken {
         }
     }
 }
+/// Additional guaranteed products use the existing private, atomic death batch.
+#[derive(Clone, Debug)]
+pub struct GuaranteedExtras { pub products: Vec<(u16, i32)>, pub policy: DropPolicy }
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum DropPolicy { Chicken, Cow }
+impl DropPolicy { pub fn name(self) -> &'static str { match self { Self::Chicken => "selected_chicken", Self::Cow => "selected_cow" } } }
 /// Authoritative selected-profile drop boundary, independent of hit/XP acceptance.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum DropResult {
@@ -38,6 +44,7 @@ pub enum DropResult {
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct DropTrace {
+    pub policy: DropPolicy,
     pub tick: i32,
     pub npc: crate::simulation::NpcId,
     pub npc_type: u16,
@@ -68,11 +75,11 @@ impl DropTrace {
         };
         format!(concat!("{{\"schema\":1,\"tick\":{},\"npc_slot\":{},\"npc_generation\":{},\"npc_type\":{},",
             "\"coords\":[{},{},{}],\"actor_slot\":{},\"actor_generation\":{},",
-            "\"policy\":\"selected_chicken\",\"result\":\"{}\",\"draw\":{},\"products\":[{}],\"handles\":{:?}}}"),
+            "\"policy\":\"{}\",\"result\":\"{}\",\"draw\":{},\"products\":[{}],\"handles\":{:?}}}"),
             self.tick,self.npc.slot,self.npc.generation,self.npc_type,
             self.coords.x(),self.coords.z(),self.coords.level(),
             optional(self.owner.map(|a| a.slot as u64)),optional(self.owner.map(|a| a.generation as u64)),
-            result,optional(self.draw.map(u64::from)),products,self.handles)
+            self.policy.name(),result,optional(self.draw.map(u64::from)),products,self.handles)
     }
 }
 #[derive(Clone, Copy, Debug)]

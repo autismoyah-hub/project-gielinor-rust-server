@@ -485,6 +485,10 @@ pub fn configure<B: AccountBackend>(
     if cows.flavour.types.keys().any(|id|flavour.types.contains_key(id)){return Err(io::Error::other("Conflicting cow flavour registration"));}
     flavour.types.extend(cows.flavour.types);
     runtime.world.npc_item_replies=cows.replies;
+    for(id,profile)in cows.drops {
+        if runtime.world.npc_no_death_drops.contains(&id)||runtime.world.npc_guaranteed_extras.contains_key(&id)||runtime.world.npc_death.as_ref().is_some_and(|c|c.chickens.contains_key(&id)){return Err(io::Error::other("Conflicting cow death drop registration"));}
+        runtime.world.npc_guaranteed_extras.insert(id,profile);
+    }
     runtime.world.doors =
         crate::doors::resolve(n("content"), n("param"), &parameters, &runtime.definitions)
             .map_err(io::Error::other)?;
@@ -585,6 +589,8 @@ pub fn configure<B: AccountBackend>(
         crate::npc_death_config::resolve(names, &runtime.definitions, &parameters, &sequences)
             .map_err(io::Error::other)?,
     );
+    let death=runtime.world.npc_death.as_ref().unwrap();
+    if runtime.world.npc_guaranteed_extras.keys().any(|id|death.chickens.contains_key(id)||!death.definitions.get(id).is_some_and(|d|d.animation_ticks>0)){return Err(io::Error::other("Missing or conflicting guaranteed-drop death profile"));}
     let ducks=crate::content::ducks(n("npc"),n("content"),n("synth"),&runtime.definitions,runtime.world.npc_death.as_ref().unwrap()).map_err(io::Error::other)?;
     if runtime.world.npc_flavour.as_ref().is_some_and(|f|f.types.keys().any(|id|ducks.contains(*id)))||ducks.adults.iter().any(|id|runtime.world.npc_no_death_drops.contains(id)){return Err(io::Error::other("Conflicting duck callback/death registration"));}
     runtime.world.npc_no_death_drops.extend(ducks.adults.iter().copied());
