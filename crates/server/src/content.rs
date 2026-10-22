@@ -1,4 +1,6 @@
 //! Resolve content's symbolic references against the same immutable type inputs as Kotlin.
+#[cfg(test)]
+mod tzhaar_pack_tests;
 mod chicken_coops;
 pub use chicken_coops::chicken_coops;
 mod spade_tool;
@@ -308,6 +310,10 @@ pub fn item_packs(
         ("pack_firerune", "firerune", false),
         ("pack_mindrune", "mindrune", false),
         ("pack_chaosrune", "chaosrune", false),
+        ("pack_airrune_tzhaar", "airrune", false),
+        ("pack_waterrune_tzhaar", "waterrune", false),
+        ("pack_earthrune_tzhaar", "earthrune", false),
+        ("pack_firerune_tzhaar", "firerune", false),
     ] {
         let Some(&pack) = symbols.get(pack_name) else {
             continue;
