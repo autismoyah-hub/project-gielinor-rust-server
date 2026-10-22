@@ -89,6 +89,10 @@ def main():
                                password, config["public_key"], directory, "classic", "1", "--exposure=0.8"]
                 client = subprocess.Popen(list(map(str, client_args)), cwd=args.output, stdout=client_log,
                                           stderr=subprocess.STDOUT, creationflags=subprocess.CREATE_NO_WINDOW)
+                # The native adapter emits state only in response to a command.
+                # Publish one read-only bootstrap observation, then let Gateway
+                # advance from its acknowledged sequence without redispatching it.
+                (directory / "command.txt").write_text("1 observe\n", encoding="utf-8")
                 deadline = time.monotonic() + 100
                 while not (directory / "state.json").exists():
                     if client.poll() is not None or time.monotonic() >= deadline:
