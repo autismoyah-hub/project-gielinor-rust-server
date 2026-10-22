@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0201",
+  "implementation_commit_sha": "a6b49327a735849d8f10f2bd95b8e5f79d0c4982",
+  "recorded_utc": "2026-10-22T20:03:43.974478+00:00",
+  "result": "OWNER_FARM_CATALOG_WORLD_CACHE_TABLE_INITIALIZER_AND_APPLICATION_CHECK_PASS_NATIVE_PENDING",
+  "sources": {
+    "crates/server/src/content.rs": "d6bf7f62658d8a2084811ed589afa16cb81434ab27eecda70d63bcdf02507566",
+    "crates/server/src/content/farm_chicken_drops.rs": "cd686775f88cb17bcef8a845ab1f4d1592fd77df95d549b716d03fe413bd96a6",
+    "crates/server/src/startup.rs": "37e27357a0b5ada2669a7d8268068a55ef004e327d679f5e95d47011de6b64ed",
+    "crates/world/tests/farm_chicken_drops.rs": "39b262de3ea81f3fe4b60357fbdf656362a34057d9bd8ea9d65a271a9413f3b1"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/drops/src/main/kotlin/org/rsmod/content/drops/tables/monsters/ChickenDropTable.kt",
+      "sha256": "db84505a6025ebe62c343986ae443a881b02cbecd5bcdd12833b6626b3ecd0d2",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; actual DSL table inspected, source registration12variants; rareclue/ringNothing separate."
+    },
+    {
+      "kind": "wiki",
+      "reference": "Chicken",
+      "revision": "15283952",
+      "sha256": "85a657f406c135b6ba0cc1a19dc157c0075b596712d5b6a4fbc03e03b308efbd",
+      "availability": "protected_local_reference"
+    }
+  ],
+  "server_archive": {
+    "sha256": "F35E98026D6D223F43BE573108B5238373B1B39739C0C8BB833A566B81985722",
+    "source_count": 697,
+    "source_manifest_sha256": "1b590a3da4118fbac386b69d3f9453f6f12eb909e24e8c1735fd2cbfd58af6ff"
+  },
+  "matrix": {
+    "server_passed": 331,
+    "selected_world_integration_passed": 20,
+    "new_farm_world_tests": 3,
+    "weighted_profile_member_cases": 938,
+    "timing_refusal_cases": 21,
+    "fresh_life_cases": 7,
+    "factory_refusals": 180,
+    "actual_cache_prepared_deaths": 84,
+    "owned_source_weight_selections": 128
+  },
+  "logs": {
+    "application-check-012.log": {
+      "reference": "work/openrune-farm-chicken-drops-20261022/application-check-012.log",
+      "sha256": "6aee78d0ea7e34f7d4fb43b4fcd91a9f156440afc401a1f8809490054a9f3251"
+    },
+    "archive-011.log": {
+      "reference": "work/openrune-farm-chicken-drops-20261022/archive-011.log",
+      "sha256": "652549b44391b4c2f4659a6d367d31206db1ca172d49b57aaa31fee79c9b3568"
+    },
+    "cache-010.log": {
+      "reference": "work/openrune-farm-chicken-drops-20261022/cache-010.log",
+      "sha256": "6ce70286f450d84b0dbceeb57788410125e00402e539edccbd6a976d8ec9c870"
+    },
+    "check-capacity-012.log": {
+      "reference": "work/openrune-farm-chicken-drops-20261022/check-capacity-012.log",
+      "sha256": "192cdbae898803c3a972ba9a8f8a6b8408ced95139c96f88d1899aa76b5e75ca"
+    },
+    "kotlin-005.log": {
+      "reference": "work/openrune-farm-chicken-drops-20261022/kotlin-005.log",
+      "sha256": "c80953e86745cfe3e588800020e4b1a2fd600ba0cb4929363c9450569a5bc8a1"
+    },
+    "profiles-001.log": {
+      "reference": "work/openrune-farm-chicken-drops-20261022/profiles-001.log",
+      "sha256": "f231a207a7114e1c109bd5af23d35af1953a0af5f87a34e49cfd8b9235219a40"
+    },
+    "profiles-006.log": {
+      "reference": "work/openrune-farm-chicken-drops-20261022/profiles-006.log",
+      "sha256": "ff8ba68a4f47fefa326accc70c95607c4b483582c1bd95a3dda2a12db6e91b57"
+    },
+    "server-002.log": {
+      "reference": "work/openrune-farm-chicken-drops-20261022/server-002.log",
+      "sha256": "2478f14791bdfe355e757e8185a5d3b8e084ab6b4be97782a05d7c9b752b155d"
+    },
+    "server-008.log": {
+      "reference": "work/openrune-farm-chicken-drops-20261022/server-008.log",
+      "sha256": "9ef7da83596f76e804dd13824f2de890dec686a2f61ca565a553e58511503fae"
+    },
+    "world-003.log": {
+      "reference": "work/openrune-farm-chicken-drops-20261022/world-003.log",
+      "sha256": "13fc80a6617051a28381a201ff1868f234e1929ab7bc6afc602666546ab2abdc"
+    },
+    "world-009.log": {
+      "reference": "work/openrune-farm-chicken-drops-20261022/world-009.log",
+      "sha256": "bbc5f1146d4195dcb4aaac96e2c149295d23d9ce295cead0754000857d61d183"
+    }
+  },
+  "actual_kotlin": {
+    "unchanged_sources": 1,
+    "owned_recording_dependencies_driver": 5,
+    "input_manifest_sha256": "2d482a3e223e2ed9e4dbe80d00a98ab51572b9acbb8af626b6b35c100eadc972",
+    "jar_sha256": "52b80c6861e8ebe24834151e1f34d5ba3dc3cea33b68fcbbbaa326bfa02fd309",
+    "output_sha256": "0bacbae46d2e2845d5b75fc04a8147ed39486a8f10b3732bf7f6c643b78e1920",
+    "scope": "Actual unchanged protected ChickenDropTable top-level initializer compiled with5owned recording dependencies/driver. This observes12NPCsymbols,raw1guarantee,3weightrows,total128 and1/300tertiary declaration. The128weighted selections are OWNED fixture-order enumeration from recorded weights, not execution of donor roll/RNG/wealth/clue/player engine or OSRS seed ordering."
+  },
+  "lifecycle_adaptation": {
+    "result": "EXPLICIT_CHICKEN_FAMILY_BINDING_REPLACES_MISSING_PARAMETER_HUMAN_FALLBACK",
+    "observed": {
+      "param": 65502,
+      "default": 836,
+      "new_farm_explicit_death": null,
+      "baseline_explicit_death": 5389,
+      "shared_ready_walk": [
+        5386,
+        5385
+      ],
+      "baseline_death": [
+        5389,
+        4,
+        356
+      ],
+      "bounded_maps_scanned": 48,
+      "farm_variant_spawns_found": 0
+    },
+    "policy": "Only seven strictly attested ordinary farm rigs inherit the existing two baseline chicken death definitions. No whole-world absence or exact donor table timing claim. Native animation/audio/scene binding remain pending; misc/tutorial separate.",
+    "superseded_inputs": {
+      "factory_sha256": "e0957a5ad99f695f12b1ee6b5008d7a61a5748c847bec2f21d86e59b4624d1f3",
+      "world_snapshot_sha256": "841a735d69799cf67c46b52649b163aa143ea23ed29df8420ca2a80158f25e7f"
+    }
+  },
+  "lifecycle_snapshot_hash_correction": {
+    "scope": "Correct only the preparation record factory snapshot hash: helper variable old was reused for a replacement needle. Original record preserved; actual snapshot source bytes unchanged.",
+    "supersedes_record_sha256": "7748326210c5ec5a5e117b7df3046a062c2be03119b19e113bdc2d1202468879",
+    "factory_snapshot_sha256": "68c619fd35c7215ffef177d95b26b48d0358214fc8aab724052c6943095de53e",
+    "world_snapshot_sha256": "841a735d69799cf67c46b52649b163aa143ea23ed29df8420ca2a80158f25e7f"
+  },
+  "native": {
+    "status": "NOT_RUN",
+    "natural_scene_binding": "NOT_ACCEPTED: bounded48mapscan0newfarmspawns; not global absence",
+    "animation_audio": "NOT_ACCEPTED: explicit sharedfamily binding requires native verification",
+    "pickup_and_earned_item_reconnect": "NOT_ACCEPTED: existing OR200pinnedclient zero-ground-pixels gap; no new native run",
+    "oracle_coordination": "OR200rendering evidence already handed off; no client library edits"
+  },
+  "superseded_receipts": [
+    {
+      "reference": "server-002.log/world-003.log",
+      "scope": "Initial tests exercised observed generic836/2tickfallback, not accepted chicken-family animation; immutable source snapshots retained. Final008/009tests supersede after explicit family adaptation."
+    },
+    {
+      "reference": "kotlin-launch-004.json",
+      "scope": "Redirection directory typo before JVM/compiler launch; no compilation ran or evidence overwritten."
+    }
+  ],
+  "known_limitations": [
+    "Seven ordinary farm variants only. Preserve the original two selected profiles/kernel, adding7for9selected registrations from12source symbols. Misc3661/3662 and tutorial9488remain separate. Raw1/bones1 and main5feathers64/128,15feathers32/128,Nothing32/128; no generic drop-engine replacement.",
+    "Actual unchanged protected ChickenDropTable top-level initializer compiled with5owned recording dependencies/driver. This observes12NPCsymbols,raw1guarantee,3weightrows,total128 and1/300tertiary declaration. The128weighted selections are OWNED fixture-order enumeration from recorded weights, not execution of donor roll/RNG/wealth/clue/player engine or OSRS seed ordering.",
+    "No Ring of wealth/Nothing modifier, beginner clue roll/ownership/transform/box, clue-step key, restricted-account, official tie or broader chicken content acceptance. Current ordinary hero/private ground batch behavior retained; independent checks pending.",
+    "Actual target farm definitions omit death_anim65502 and inherit generic human_death836/2ticks/no sound. Their ready/walk rig exactly matches baseline1173/1174, which explicitly bind lore_chicken_death5389/4ticks/sound356. The content adapter deliberately copies that existing family lifecycle to seven attested matching rigs, leaving both original profiles and cache data unchanged. This is a family-based adaptation/inference, not timing/audio supplied by the donor drop table. Native animation/audio acceptance remains pending.",
+    "Bounded actual-cache scene inspection found0newfarm variant spawns across48available squares at x48..53/z49..56. This is not whole-world absence. Actual-cache World tests explicitly prepare the target definitions on real12851terrain; natural scene/reach/native registration acceptance remains untested.",
+    "No native201run or collected-loot reconnect acceptance. Prior OR200native007realAttack/pile/Walk succeeded, but the pinned client built558groundtriangles with0visible/0isolatedpixels. ORACLE received the preserved rendering evidence. No fabricatedTake or relaxed permission is substituted for native acceptance.",
+    "Local lean opt0/debug assertions/dev+testdebug0/nonincremental/codegen2 and private working-tree manifests differ from published tree; no pristine acceptance. IndependentV0-V4pending and chemistry independent verification remains paused. Discovery/registration counts are not gameplay completion."
+  ]
+}
