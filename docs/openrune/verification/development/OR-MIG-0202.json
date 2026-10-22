@@ -1,0 +1,362 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0202",
+  "implementation_commit_sha": "fab385ec643ef9622b38e0e3b7fb9c6337833f19",
+  "recorded_utc": "2026-10-22T20:58:20.044643+00:00",
+  "result": "OWNER_WEIGHTED_FACTORY_WORLD_CACHE_AND_PARTIAL_NATIVE_PASS_PICKUP_RECONNECT_PENDING",
+  "sources": {
+    "crates/server/src/content.rs": "8f45c3713eebf6e3ce883003e71dd5ad24f74de8fe9ff513d1d98a583c0cb0df",
+    "crates/server/src/content/imp_drops.rs": "6f3b54afa34464acae962600ac59f645c21cd7876e8ea5928c6f3c834759df95",
+    "crates/server/src/startup.rs": "1975f6ac491c085b21e7655a4f8dbf1c2953fbe8cff069d4e9581446a23bc644",
+    "crates/world/src/lib.rs": "77b247783ae98dba1a6beaad9e18aa04799e8a71ad246091048d69f6d7fffbce",
+    "crates/world/src/npc_death.rs": "f7d694b1ed068ce8da99e25d7b496a06f70037732b1793a9464f052ff210fa0d",
+    "crates/world/src/npc_loot.rs": "9c9e701d361ff257680161c5ac53b783480b39a6ed28af3c53bd1afa9079c472",
+    "crates/world/src/simulation.rs": "7c7c2df559672e874367c458f466355094d4eebcb12cbca20a88760b140ea8cc",
+    "crates/world/src/simulation/npc_death_actions.rs": "847403dd775b3a59013d6a5d9c15028fb130288ac3a3f951a6c1d997c05404ab",
+    "crates/world/tests/imp_drops.rs": "32cdff7e73de29a9d7080d04e6c50e202544ea324b95cf28d9cb39db5be58514"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/drops/src/main/resources/drops/tables/monsters/imp.toml",
+      "sha256": "57b5837fa4a95843899dbcceab45e90abc086ea109914809430a351b24eaf336",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; actual32fixed-main-row128weight TOML inspected;2sourceNPCsymbols/3conditionaltertiaries separate."
+    },
+    {
+      "kind": "wiki",
+      "reference": "Imp",
+      "revision": "15271036",
+      "sha256": "c70d520056faa69e10de4603ce5777f5dd2aa8772e9bfd826299b464d895d02d",
+      "availability": "protected_local_reference"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Fiendish ashes",
+      "revision": "15270842",
+      "sha256": "b0422a0b6d329d0d3270caa3a2bcb39e855288f9c68c4716ba5973eb6e47c072",
+      "availability": "protected_local_reference"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Potion (Apothecary)",
+      "revision": "15184185",
+      "sha256": "7dda89b9b825531125d565b6ef782d2645801717df7f54e9e7a554fdf7824fee",
+      "availability": "protected_local_reference"
+    }
+  ],
+  "server_archive": {
+    "sha256": "E2EF812D03AF32B66E717F92386BCBF1962D1D24714E66564A86774FEECE6D27",
+    "source_count": 702,
+    "source_manifest_sha256": "5c7b85d840be58a0ca154ad7e28c389c3ea458b3c297f2c5670a5b44ac5d22a5"
+  },
+  "matrix": {
+    "world_library_passed": 770,
+    "world_library_ignored": 1,
+    "selected_world_integration_passed": 24,
+    "new_imp_integration_tests": 4,
+    "new_weighted_core_tests": 2,
+    "server_passed": 333,
+    "factory_refusals": 272,
+    "owned_source_weight_choices": 128,
+    "actual_cache_prepared_deaths": 256
+  },
+  "logs": {
+    "application-check-016.log": {
+      "reference": "work/openrune-imp-drops-20261022/application-check-016.log",
+      "sha256": "4dd7b860c2d44cf97b74bcccf528a55e43836f3188a3b8baab2ab7ef828139b4"
+    },
+    "application-check-018.log": {
+      "reference": "work/openrune-imp-drops-20261022/application-check-018.log",
+      "sha256": "f3ad93d4120d67426f86f698b3753258fc73f1af922fe9913259a611cd353b94"
+    },
+    "archive-014.log": {
+      "reference": "work/openrune-imp-drops-20261022/archive-014.log",
+      "sha256": "fafc5971c4843041375fd840dc7ac504bbf7d1599e78395feb338e30c9e08f14"
+    },
+    "cache-011.log": {
+      "reference": "work/openrune-imp-drops-20261022/cache-011.log",
+      "sha256": "45115c998bd37dac43602339037e2098ab463e2798eb2032b56949b3b29f6f97"
+    },
+    "cache-012.log": {
+      "reference": "work/openrune-imp-drops-20261022/cache-012.log",
+      "sha256": "af28d4ce97a20a7fcad5b9619b31c116c70be93763e551c153a31fac1a668148"
+    },
+    "items-001.log": {
+      "reference": "work/openrune-imp-drops-20261022/items-001.log",
+      "sha256": "e7fc846f9582e67839b60ba2d3f7f857e49a6a0c49b3197da1ca3bd6c4005774"
+    },
+    "native-batch-017.log": {
+      "reference": "work/openrune-imp-drops-20261022/native-batch-017.log",
+      "sha256": "edd0770398a6435b7effe4a7cab5e1a20a5b701d98275c8bf9ae1100dcec69a5"
+    },
+    "native-batch-019.log": {
+      "reference": "work/openrune-imp-drops-20261022/native-batch-019.log",
+      "sha256": "d738f34924ca6f974981b2792e27f32300b7857adc02d0b555352266c4799824"
+    },
+    "native-batch-022.log": {
+      "reference": "work/openrune-imp-drops-20261022/native-batch-022.log",
+      "sha256": "95bae78b1618b0aafacc19ea6b23ba2e93e462b96c16109fe4b6e8c4190e1c7e"
+    },
+    "native-batch-027.log": {
+      "reference": "work/openrune-imp-drops-20261022/native-batch-027.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "native-driver-013.log": {
+      "reference": "work/openrune-imp-drops-20261022/native-driver-013.log",
+      "sha256": "87e44681bf9c22e71270f68ebfe25bf02b663244383ee5e64d5203522967cfe1"
+    },
+    "native-driver-020.log": {
+      "reference": "work/openrune-imp-drops-20261022/native-driver-020.log",
+      "sha256": "b038f649bb87f07b6877f7e313fb6d35697e6b621b526b322b1b2705bb2f7b08"
+    },
+    "native-driver-026.log": {
+      "reference": "work/openrune-imp-drops-20261022/native-driver-026.log",
+      "sha256": "2e8ebc691fccf1e9d3c919905aba6e4fc3386b2c4c46e3935345ba807ea462f1"
+    },
+    "npc-002.log": {
+      "reference": "work/openrune-imp-drops-20261022/npc-002.log",
+      "sha256": "dba77ab8c67f593133803f48ac7e70a287b1497bafa1994578023e4bfad45ee6"
+    },
+    "profiles-capacity-001.log": {
+      "reference": "work/openrune-imp-drops-20261022/profiles-capacity-001.log",
+      "sha256": "b9809691078c3f2af5963639aa80d58dc20e961283f2a92a164ae90cedc405be"
+    },
+    "server-009.log": {
+      "reference": "work/openrune-imp-drops-20261022/server-009.log",
+      "sha256": "f8218898622ccfd4735b7184798f51268bcaebaa282a5be100e52861d30023ab"
+    },
+    "server-010.log": {
+      "reference": "work/openrune-imp-drops-20261022/server-010.log",
+      "sha256": "1b0c14fa2eb0e851cacf85f1835f7406d493c7d01007296e5dfbfdbc95bddf53"
+    },
+    "world-integration-007.log": {
+      "reference": "work/openrune-imp-drops-20261022/world-integration-007.log",
+      "sha256": "bca06defd8f1dd54b04f85f4ffe73e8b7c558bc6043e887b049d091b708ef541"
+    },
+    "world-lib-004.log": {
+      "reference": "work/openrune-imp-drops-20261022/world-lib-004.log",
+      "sha256": "7639996b750dfbae30d16e2e7259ae09413a4e82642afb1dfaeed8144d239fc2"
+    },
+    "queue-029.log": {
+      "reference": "work/openrune-imp-drops-20261022/queue-029.log",
+      "sha256": "e7978f9626ca11fc448d653825ab3f3600cc01565775f76694493084ed77adcd"
+    },
+    "queue-030.log": {
+      "reference": "work/openrune-imp-drops-20261022/queue-030.log",
+      "sha256": "d48eff9c7b746f2d611544e2ed860d5b5baed04661ed50d54b12375445aadaa0"
+    }
+  },
+  "pinned_wiki_identity": {
+    "literal_matches": 31,
+    "confirmed_alias_item": 195,
+    "alias": {
+      "identity": "Wiki Potion (Apothecary) revision15184185 explicitly id195,namePotion,membersNo; Imp15271036 mainrow quantity1/weight1of128.",
+      "comparison": "31literal-name matches in003 plus independently resolved item195alias in005; all32weights/counts corroborated.",
+      "scope": "No live current-Wiki check claimed; pinned local Wiki snapshot used. No change to preserved original003/005."
+    }
+  },
+  "original_pg_comparison": {
+    "original_pg_local_reference": {
+      "reference": "reference/kotlin/api/death/src/main/kotlin/org/rsmod/api/death/NpcDeath.kt",
+      "sha256": "ea1f3b12f75ce8cdf229878c33e7721e39540afa0143e053ea1dc6332d3fb584",
+      "scope": "Inspected local reference Npc.spawnDeathDrops has drop-table TODO/findHero/private default bones add. This is source comparison, not Kotlin runtime execution or independent baseline provenance."
+    },
+    "intentional_adaptation": "OrdinaryImp5007 explicit guaranteedfiendish25766 and32fixed main products replace commonbones fallback only for this profile. Wiki guarantee plus observedcache46=25766; no universalsemantic interpretation of unnamedparameter46. ExistingChicken/Cow/Tower unchanged.",
+    "weighted_order": "Owned row-order enumeration confirms128discrete choices from actualTOMLweights; no claim about donorRNG/OSRSseedorder or tertiary/wealth/account behavior.",
+    "existing_ashes_scope": "prayer.rs/configure_ashes already binds Fiendish25766Scatter10baseXP. OR202does not reimplement or claim fresh native validation of that feature."
+  },
+  "native": {
+    "status": "PARTIAL_NATIVE002_EARNED_BEAD_SAVED_CORRECTED003_LEASE_DEFERRED",
+    "receipts": {
+      "001_baseline": {
+        "reference": "work/integration/runs/openrune-imp-drops-baseline-native-20261022-001/imp-drops-native-assessment.json",
+        "sha256": "a061c9b34c5f58571e3f1fd6f744a922a6c21c67399a86dde5102a9288c2cebf",
+        "result": "PASS_NATIVE_IMP_CONTROL"
+      },
+      "001_actions": {
+        "reference": "work/integration/runs/openrune-imp-drops-actions-native-20261022-001/imp-drops-native-assessment.json",
+        "sha256": "d0757cccb1a8afe6f3bacad2d1325a55545e4561fb3e64d16263775b234b4050",
+        "result": "NATIVE_IMP_ACTION_INCOMPLETE"
+      },
+      "002_baseline": {
+        "reference": "work/integration/runs/openrune-imp-drops-baseline-native-20261022-002/imp-drops-native-assessment.json",
+        "sha256": "0cf0203cb21fda87463f3000e52b97c69e6339ad1b484bea4632a343e0250f88",
+        "result": "PASS_NATIVE_IMP_CONTROL"
+      },
+      "002_actions": {
+        "reference": "work/integration/runs/openrune-imp-drops-actions-native-20261022-002/imp-drops-native-assessment.json",
+        "sha256": "901d8e9a975277d27ccd853ab33c36275630e76b042d7a6f1d75fb49afd740cb",
+        "result": "NATIVE_IMP_ACTION_INCOMPLETE"
+      }
+    },
+    "actual_two_item_pile": [
+      {
+        "schema": 1,
+        "tick": 96,
+        "npc_slot": 352,
+        "npc_generation": 352,
+        "npc_type": 5007,
+        "coords": [
+          3217,
+          3225,
+          0
+        ],
+        "actor_slot": 1,
+        "actor_generation": 614,
+        "policy": "selected_imp",
+        "result": "committed",
+        "draw": 5,
+        "products": [
+          [
+            25766,
+            1
+          ],
+          [
+            1470,
+            1
+          ]
+        ],
+        "handles": [
+          [
+            47
+          ],
+          [
+            48
+          ]
+        ]
+      }
+    ],
+    "actual_take_packets": 1,
+    "saved_earned_items": [
+      [
+        1470,
+        1
+      ]
+    ],
+    "saved_combat_fine_xp_deltas": {
+      "0": 1600,
+      "1": 0,
+      "2": 0,
+      "3": 532,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 0,
+      "18": 0,
+      "19": 0,
+      "20": 0,
+      "21": 0,
+      "22": 0,
+      "23": 0,
+      "24": 0
+    },
+    "both_product_pickup": false,
+    "earned_item_native_reconnect": false,
+    "continuation": {
+      "utc": "2026-10-22T20:55:53.461192+00:00",
+      "result": "DEFERRED_SHARED_NATIVE_LEASE",
+      "owner": "AGENT5",
+      "owner_pid": 3936,
+      "owner_feature": "OR-MIG-0177",
+      "owned_runtime_launched": false,
+      "preserved": {
+        "driver": "imp-drops-003",
+        "matched_fixtures": [
+          "integration-prep-openrune-impctl3-20261022-001",
+          "integration-prep-openrune-impact3-20261022-001"
+        ],
+        "earned_before": [
+          [
+            1470,
+            1
+          ]
+        ],
+        "fine_xp_preserved_from_failed002": {
+          "attack": 1600,
+          "hitpoints": 532
+        }
+      },
+      "scope": "Lease deferral, not failed build or low-memory/compiler-presence exclusion. Approved verifier coordinated; no preemption/process changes. Continue lightweight work and retry when lease is released."
+    }
+  },
+  "preserved_failures": {
+    "scope": "Distinct retained failed attempts; not successes and not resource deferrals. No prior failures overwritten.",
+    "failures": [
+      {
+        "file": "server-009.log",
+        "sha256": "f8218898622ccfd4735b7184798f51268bcaebaa282a5be100e52861d30023ab"
+      },
+      {
+        "file": "cache-011.log",
+        "sha256": "45115c998bd37dac43602339037e2098ab463e2798eb2032b56949b3b29f6f97"
+      },
+      {
+        "file": "cache-011-failed-probe.rs",
+        "sha256": "87a496a1191b7a44940b0c2d511b1ea240040c568f8b259c16868381e71ee974"
+      },
+      {
+        "file": "application-check-016.log",
+        "sha256": "4dd7b860c2d44cf97b74bcccf528a55e43836f3188a3b8baab2ab7ef828139b4"
+      },
+      {
+        "file": "native-batch-017.log",
+        "sha256": "edd0770398a6435b7effe4a7cab5e1a20a5b701d98275c8bf9ae1100dcec69a5"
+      }
+    ],
+    "explanations": [
+      "server009:E0369BlockWalk lacks PartialEq in new factory guard; corrected with matches! in sourcefab385ec/server010333PASS.",
+      "cache011:E0618privateprobe tile variable accidentally called as function; exact failed source retained, corrected012PASS256.",
+      "applicationcheck016:missingjs5CLIoption; config check aborted before runtime/sessionlease/socket; corrected018PASS.",
+      "native001controlPASS; actions001deadline without Attack/pile/Take/XP; acknowledged saved finalstate/unforced0 preserved.002uses exact backed-up state and actual visible-pixel API, no fabricated actions or reset."
+    ],
+    "native001_receipts": {
+      "baseline": "a061c9b34c5f58571e3f1fd6f744a922a6c21c67399a86dde5102a9288c2cebf",
+      "actions": "d0757cccb1a8afe6f3bacad2d1325a55545e4561fb3e64d16263775b234b4050"
+    }
+  },
+  "known_limitations": [
+    "Ordinary imp5007only; source also lists GodWars3134, explicitly excluded.32fixed main entries/count1/total128; guaranteedfiendishashes25766 from pinnedWiki and attested targetmetadata. No defaultbones526 for this profile.",
+    "Conditional corpse/lootingbag/champion-scroll tertiaries, wealth/modifiers, account exceptions/official tie policies, nested tables/ranges and donorRNG/OSRSseed ordering are unported or unaccepted. This is a fixed-table adapter, not full generic drop-engine parity.",
+    "SourceTOML parsed with standardPython tomllib;128owned row-order expected choices compared to Rust factory and256actualcache preparedWorlddeaths. Donor Kotlin drop engine was not executed. Original local PG death reference has drop-table TODO/bones fallback; this is a deliberate Wiki-backed content expansion.",
+    "Native001passive controlPASS but action timed out with noAttack/noXP. Native002passivePASS and actualAttack13/private2productpile/Walk114/Take7 delivered and saved1470redbead, Attack1600fineXP+HP532fineXP. Owned harness then incorrectly kept requiring viewing3219,3225afterTakeautopathed toloot3217,3225. This is partial native evidence, not both-product pickup/reconnect acceptance.",
+    "Corrected driver003 compiled with990unchanged pinned client files; matched exact failed002saved-state copies preserve earnedbead/XP/HP/position/variables. Native003deferred beforelaunch because AGENT5owns sharedruntime forOR177. No process changes/preemption/reset/fabricated Take; retry remains pending.",
+    "Prepared F2P99combat/5x and explicit normalattackpreference1306=0 isolate still-unaccepted default/Settings behavior. Naturalimp scene attested at3217,3226, currentwander3217,3225. Frame shows actualcastle/avatar butUIblack; no animation/audio/UI-pixel acceptance claimed.",
+    "Initial staticground577triangles/0pixels does not prove universal missing-ground rendering: newly dropped imp redbead had an actionable actual visible pixel. OR200cow rendering gap remains a separate unresolved case. No client library changes.",
+    "Lean local manifests/config/debug0/nonincremental/codegen2 differ from published pristine checkout. Owner tests are not independentV0-V4acceptance; chemistry independent verification paused. Discovery counts are not gameplay completion."
+  ],
+  "frame_and_contract_review": {
+    "frames": [
+      {
+        "reference": "work/integration/runs/openrune-imp-drops-baseline-native-20261022-001/native-events.done.bmp",
+        "sha256": "31f0ca5a541b357244cddd1680d5ee4bfca4010b5feee64e37248dd3048acfef",
+        "observed": "Rendered castle courtyard/avatar; native002pile frame also combat healthbar/hitsplat. UI area is black. Individual ground items are not visually identified from this static frame; actual Take/pile identity relies on native menu/wire/server/save evidence. No animation/audio/UI acceptance."
+      },
+      {
+        "reference": "work/integration/runs/openrune-imp-drops-actions-native-20261022-002/native-events.pile.bmp",
+        "sha256": "d10b77353a13d6044a4ea67189e31327f4b0d3ecf8f42ce81de1a243185ae879",
+        "observed": "Rendered castle courtyard/avatar; native002pile frame also combat healthbar/hitsplat. UI area is black. Individual ground items are not visually identified from this static frame; actual Take/pile identity relies on native menu/wire/server/save evidence. No animation/audio/UI acceptance."
+      }
+    ],
+    "queue_failure": {
+      "reference": "queue-029.log",
+      "sha256": "e7978f9626ca11fc448d653825ab3f3600cc01565775f76694493084ed77adcd",
+      "scope": "Unpublished202identifier scalars violated list schema; corrected only last226th record, previous225bytes retained."
+    },
+    "queue_pass": {
+      "reference": "queue-030.log",
+      "sha256": "d48eff9c7b746f2d611544e2ed860d5b5baed04661ed50d54b12375445aadaa0",
+      "result": "PASS226records202units exactGitobject/contractintegrity only, not gameplay acceptance"
+    }
+  }
+}
