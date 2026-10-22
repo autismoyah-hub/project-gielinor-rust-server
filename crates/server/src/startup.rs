@@ -589,6 +589,10 @@ pub fn configure<B: AccountBackend>(
         crate::npc_death_config::resolve(names, &runtime.definitions, &parameters, &sequences)
             .map_err(io::Error::other)?,
     );
+    let farm=crate::content::farm_chicken_drops(n("npc"),n("obj"),n("seq"),&runtime.definitions,runtime.world.npc_death.as_ref().unwrap()).map_err(io::Error::other)?;
+    if farm.drops.keys().any(|id|runtime.world.npc_no_death_drops.contains(id)||runtime.world.npc_guaranteed_extras.contains_key(id)){return Err(io::Error::other("Conflicting farm chicken drop registration"));}
+    runtime.world.npc_death.as_mut().unwrap().definitions.extend(farm.deaths);
+    runtime.world.npc_death.as_mut().unwrap().chickens.extend(farm.drops);
     let death=runtime.world.npc_death.as_ref().unwrap();
     if runtime.world.npc_guaranteed_extras.keys().any(|id|death.chickens.contains_key(id)||!death.definitions.get(id).is_some_and(|d|d.animation_ticks>0)){return Err(io::Error::other("Missing or conflicting guaranteed-drop death profile"));}
     let ducks=crate::content::ducks(n("npc"),n("content"),n("synth"),&runtime.definitions,runtime.world.npc_death.as_ref().unwrap()).map_err(io::Error::other)?;

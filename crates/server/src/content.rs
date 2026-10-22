@@ -6,6 +6,8 @@ mod remaining_pack_tests;
 mod bank_booths;
 mod shearing;
 mod cows;
+mod farm_chicken_drops;
+pub use farm_chicken_drops::{farm_chicken_drops,FarmChickenDrops};
 mod ducks;
 mod forging_ring;
 pub use forging_ring::forging_ring;
