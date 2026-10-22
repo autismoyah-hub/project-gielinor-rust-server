@@ -15,6 +15,12 @@ impl Config {
     pub fn capacity(self,worn:&crate::inventory::Inventory)->i32 {
         if worn.slots().iter().flatten().any(|item|self.capes.contains(&item.id)){36}else{27}
     }
+    /// Delayed furnace consumption uses current open-form/membership authority.
+    /// Saved coal above the current cape capacity remains spendable.
+    pub fn consumable(self, inventory:&crate::inventory::Inventory, variables:&crate::variables::Variables, member:bool)->i32 {
+        if !member || !inventory.slots().iter().flatten().any(|i|i.id==self.open && i.count==1 && i.vars==0){return 0;}
+        variables.bit(self.stored).unwrap_or(0).max(0)
+    }
     /// Stage incoming coal separately from the actor until the reward commits.
     pub(crate) fn incoming(self,inventory:&crate::inventory::Inventory,worn:&crate::inventory::Inventory,variables:&crate::variables::Variables,member:bool,item:i32)->Result<Option<crate::variables::Variables>,crate::variables::Error>{
         if !member||item!=self.coal||!inventory.slots().iter().flatten().any(|i|i.id==self.open&&i.count==1&&i.vars==0){return Ok(None);}

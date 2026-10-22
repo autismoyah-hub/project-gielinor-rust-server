@@ -11,12 +11,20 @@ impl World {
         request: Arc<Request>,
         count: i32,
     ) -> Result<(), ActionError> {
+        self.start_smithing_kind(actor,request,count,false)
+    }
+    /// Furnace-only admission; preserves the shared smithing queue/events.
+    pub fn start_smelting(&mut self,actor:ActorId,request:Arc<Request>,count:i32)->Result<(),ActionError>{
+        self.start_smithing_kind(actor,request,count,true)
+    }
+    fn start_smithing_kind(&mut self,actor:ActorId,request:Arc<Request>,count:i32,furnace:bool)->Result<(),ActionError>{
         self.player(actor)?;
         let config = self.smithing.ok_or(ActionError::InvalidItem)?;
         let p = self.players.get_mut(actor.slot as usize).unwrap();
         if p.saving {
             return Err(ActionError::LoggingOut);
         }
+        if furnace && (p.pending_logout || p.death_queued || p.data.stats.current(3) as u8 == 0) {return Err(ActionError::Protected);}
         if request.members && !p.member {
             self.events.push(WorldEvent::LocationMessage {
                 actor,
@@ -24,9 +32,10 @@ impl World {
             });
             return Ok(());
         }
-        let Some(job) = request.start(count) else {
+        let Some(mut job) = request.start(count) else {
             return Ok(());
         };
+        job.furnace=furnace;
         self.events.push(WorldEvent::PlayerCombatAnimation {
             actor,
             sequence: request.animation,
@@ -48,17 +57,20 @@ pub(super) fn complete(
     config: Config,
     job: Job,
     catalog: &crate::inventory::Catalog,
+    coal_bag: Option<crate::coal_bag::Config>,
     tutorial_stats: bool,
     events: &mut Vec<WorldEvent>,
     random: &mut impl RandomSource,
 ) -> Result<(), ActionError> {
+    if job.furnace && (p.pending_logout || p.death_queued || p.data.stats.current(3) as u8 == 0) {return Ok(());}
+    let xp_rate=config.xp_rate * p.data.xp_rate_hundreds as f64 / 100.0;
     let next = match job
-        .complete_for_member(
-            &mut p.data.inventory,
+        .complete_furnace(
+            &mut p.data,
             catalog,
-            &mut p.data.stats,
+            coal_bag,
             config.skill,
-            config.xp_rate * p.data.xp_rate_hundreds as f64 / 100.0,
+            xp_rate,
             config.max_level,
             p.member,
             random,
@@ -532,3 +544,7 @@ mod tests {
         assert_eq!(world.observe(actor).unwrap().coords.x(), 3202);
     }
 }
+
+#[cfg(test)]
+#[path="coal_bag_smelting_tests.rs"]
+mod coal_bag_smelting_tests;

@@ -2799,6 +2799,7 @@ impl World {
                                                                 config,
                                                                 job,
                                                                 &self.object_types,
+                                                                self.coal_bag,
                                                                 self.tutorial_rules_completed_varp
                                                                     .is_some(),
                                                                 &mut self.events,

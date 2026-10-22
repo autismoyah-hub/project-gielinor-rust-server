@@ -40,6 +40,8 @@ pub struct Request {
 pub struct Job {
     pub request: Arc<Request>,
     pub remaining: i32,
+    /// Set only by the trusted furnace entry; forging stays physical-only.
+    pub(crate) furnace: bool,
 }
 #[derive(Debug)]
 pub enum Outcome {
@@ -78,12 +80,16 @@ impl Request {
         catalog: &Catalog,
         limit: i32,
     ) -> Result<i32, &'static str> {
+        self.affordable_count_with_stock(inv, catalog, limit, None)
+    }
+    pub(crate) fn affordable_count_with_stock(&self, inv: &Inventory, catalog: &Catalog, limit: i32, stock: Option<(i32,i32)>) -> Result<i32, &'static str> {
         let mut affordable = None;
         for &(id, amount) in &self.consumed {
             if amount == 0 {
                 return Err("Zero ingredient amount");
             }
-            let count = total(inv, catalog, id).wrapping_div(amount);
+            let available = total(inv, catalog, id).saturating_add(stock.filter(|(item,_)|*item==id).map_or(0,|(_,count)|count));
+            let count = available.wrapping_div(amount);
             affordable = Some(affordable.map_or(count, |previous: i32| previous.min(count)));
         }
         Ok(affordable.unwrap_or(0).min(limit))
@@ -98,6 +104,7 @@ impl Request {
         (count > 0).then(|| Job {
             request: self.clone(),
             remaining: count,
+            furnace: false,
         })
     }
 }
@@ -180,6 +187,7 @@ impl Job {
         (remaining > 0 && self.request.has_inputs(inv, catalog)).then(|| Job {
             request: self.request.clone(),
             remaining,
+            furnace: self.furnace,
         })
     }
 }

@@ -299,6 +299,7 @@ pub mod assembly_production;
 pub mod held_item_conversion;
 pub mod container_emptying;
 pub mod coal_bag;
+mod coal_bag_smelting;
 pub mod facility_crafting;
 pub mod gathering;
 pub mod gathering_outfits;

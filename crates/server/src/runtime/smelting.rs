@@ -301,7 +301,7 @@ impl<B: AccountBackend> Runtime<B> {
             .data(actor)
             .map_err(|e| io::Error::other(format!("{e:?}")))?;
         let outcome = recipe
-            .select(
+            .select_with_coal_bag(
                 &data.inventory,
                 &self.world.object_types,
                 &config.types,
@@ -309,6 +309,9 @@ impl<B: AccountBackend> Runtime<B> {
                 config.skill,
                 config.animation,
                 selection.count,
+                self.world.coal_bag,
+                &data.variables,
+                self.active[&actor].character.identity.member,
             )
             .map_err(|e| io::Error::other(format!("{e:?}")))?;
         match outcome {
@@ -322,7 +325,7 @@ impl<B: AccountBackend> Runtime<B> {
             }
             gielinor_world::smelting::Selection::Start { request, count } => {
                 self.world
-                    .start_smithing(actor, request, count)
+                    .start_smelting(actor, request, count)
                     .map_err(|e| io::Error::other(format!("{e:?}")))?;
             }
         }
