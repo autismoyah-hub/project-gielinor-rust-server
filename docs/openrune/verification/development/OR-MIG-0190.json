@@ -1,0 +1,242 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0190",
+  "implementation_commit_sha": "678d81d964b348be56d35f2c22fc0722dd229293",
+  "recorded_utc": "2026-10-22T11:12:39.821187+00:00",
+  "result": "OWNER_WORLD_CACHE_PASS_NATIVE_PREPARED_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/server/src/content.rs": "02281d05e20d3e498b3c0a7353ed392229f26ba8afd4ccc6cf11aa26d4ad0964",
+    "crates/server/src/content/cows.rs": "6e28b72938c3e54dcee4dd472f480087ba13764551b94b2a9c49ebe2e136e1f2",
+    "crates/server/src/startup.rs": "0e388df80b31abadeeecab944c1141f83ab5bed1f5146b27629e43cd64b92b9a",
+    "crates/world/src/lib.rs": "1114928912c0509f3db204aecce6aa155e2a3f98b0fff624bd2813e1eefc6989",
+    "crates/world/src/npc_interaction.rs": "faa9fa471826abd530153414bce115177b3f34cbefbe7f62dba7fea4f0cea38c",
+    "crates/world/src/npc_item_reply.rs": "84401e200afb9532d052f3ea0b2f6c60ca96605a024378bc58199689cc38010a",
+    "crates/world/src/simulation.rs": "45ff38bdfdbb5fb2181160996a397f2986564e9bd6ecf870269494ec6261895f",
+    "crates/world/src/simulation/npc_actions.rs": "2fa6499b12129cc2a8ac557680560446a13dd68e9cbae460674d78ea81dc80dc",
+    "crates/world/src/simulation/npc_item_reply_actions.rs": "5f665ffde7e32536c8d3475d00ac4418c33e87e58a6e57bccf1576e036d26bfe",
+    "crates/world/src/simulation/shearing_actions.rs": "7d97bc3517a2676c51204efc64559c1a90582bd1db39d6a2596846f85ce80156"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-npcs/src/main/kotlin/org/rsmod/content/generic/npcs/cow/Cow.kt",
+      "sha256": "b91599e7f2c5f393f0b11a90d7de75959d61aa945f283b1f7f57afdc3927f923",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable;configured241"
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-npcs/src/main/kotlin/org/rsmod/content/generic/npcs/cow/CowCalf.kt",
+      "sha256": "e3a3310d76f8a7d57dc311b3e0287f7411ead6b0bd5665afb4bf8f7140a21395",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable;configured241"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "content/generic/generic-npcs/src/main/kotlin/org/rsmod/content/generic/npcs/cow/Cow.kt",
+      "sha256": "42cd847ec51b1e9b36152b6317f1c73df3607ff01e87cd97acba5e838766266f",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable;target239.1reference"
+    },
+    {
+      "kind": "project_gielinor",
+      "reference": "content/generic/generic-npcs/src/main/kotlin/org/rsmod/content/generic/npcs/cow/CowCalf.kt",
+      "sha256": "46aaaf122405eff101d4c5a2c678365483804ddbc63521543502e1db1514341c",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; upstream commit unavailable;target239.1reference"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/game-process/src/main/kotlin/org/rsmod/api/game/process/npc/AiTimerProcessor.kt",
+      "sha256": "87955f8f387352953bc6b6216c42695f495090a0fe6a34c7cea140b501a24c3c",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; configured241; behavior independently adapted"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/game-process/src/main/kotlin/org/rsmod/api/game/process/npc/NpcMainProcess.kt",
+      "sha256": "705dedc559314873725d2dcd17e1ea76a707ec86dcb8c00f79e7b5f3156f253a",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; configured241; behavior independently adapted"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/random/src/main/kotlin/org/rsmod/api/random/GameRandom.kt",
+      "sha256": "22e3a3620b6987dd7f1bd9a1757593ee5677ce480d130d7044086dfc4a7424fc",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; configured241; behavior independently adapted"
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/repo/src/main/kotlin/org/rsmod/api/repo/world/WorldRepository.kt",
+      "sha256": "9874c5d9e640df5f7465e72276d660e2b33edca0bb3ab75a7c6ac12a8f6d233e",
+      "availability": "protected_local_reference",
+      "revision": "Preserved local source; configured241; behavior independently adapted"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cow",
+      "sha256": "96215b02be02de56764fc9167dd8c385b578364b8a6884aa8798932bbae9bc46",
+      "availability": "protected_local_reference",
+      "revision": "15254984"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Cow calf",
+      "sha256": "99d36912150a8f3312d931367807ae6941d6239bf74f51d536e260eab37b894f",
+      "availability": "protected_local_reference",
+      "revision": "15199604"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Bucket",
+      "sha256": "1ec1af1b73cc99947aeaf5307ead156e323cc15355fd36e03f203aa011c8bf68",
+      "availability": "protected_local_reference",
+      "revision": "15350072"
+    }
+  ],
+  "compatibility_notes": {
+    "scope": "Ordinary6cow/calf profiles, ambient and empty-bucket/default held refusals; not dairy harvesting or complete NPC module.",
+    "wiki_source_difference": "Cow calf Wiki15199604 additionally describes milk-bucket refusal. Both reviewed OpenRune and originalPG Calf source have only empty-bucket override and generic other-item response. Current narrow port follows targetPG/OpenRune for unspecified other items; Wiki milk-bucket-specific extension remains explicitly unimplemented, not claimed complete.",
+    "wiki_supported": "Cow Wiki15254984 ordinary cows cannot be milked, empty bucket exact refusal. Cow calf Wiki supports exact empty-bucket refusal. Moo audio named; exact15\u201334interval/one-in-four/radius10/graze5854 are source/cache facts, not Wiki timing facts."
+  },
+  "logs": {
+    "inspection-001.log": {
+      "sha256": "77415625b5047c92e79ac621bba389ecc3be2f89d3d87f9648504c7d275d27f7",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 5.0% sampled, ceiling70%.",
+        "Capacity: 8,182 MiB available, commit 44.0%, pages-in/s 0, disk 2.6 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "inspection-002.log": {
+      "sha256": "c79b559a2eba93af10bc24d12a364ba792968e45141a4b65e71349f70dd6dbbd",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 22.9% sampled, ceiling70%.",
+        "Capacity: 7,511 MiB available, commit 46.5%, pages-in/s 0, disk 2.7 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "focused-003.log": {
+      "sha256": "3065e57e3a2e317f943c6916a9510ad9acd978448b7a406cb9f74aa2c09f7d5f",
+      "result": "FAIL_PRESERVED",
+      "summaries": [
+        "Build CPU capacity: 26.2% sampled, ceiling70%.",
+        "Capacity: 6,961 MiB available, commit 48.9%, pages-in/s 0, disk 1.8 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "focused-004.log": {
+      "sha256": "4373b89f99cea4703d83a716add12b297134709d2d3f3fd9f117c72f175c14ec",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 36.4% sampled, ceiling70%.",
+        "Capacity: 7,809 MiB available, commit 44.5%, pages-in/s 0, disk 4.7 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 310 filtered out; finished in 0.01s",
+        "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 711 filtered out; finished in 1.88s"
+      ]
+    },
+    "cache-005.log": {
+      "sha256": "c7b1dd47abdfa9f90088ae3c4f739dd3e103486bf3691f370d9c0380dd613163",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 12.4% sampled, ceiling70%.",
+        "Capacity: 8,226 MiB available, commit 42.1%, pages-in/s 0, disk 2.6 ms.",
+        "Cargo concurrency: -j 2",
+        "PASS actual6cow/calf profiles and30prepared World reply/flavour cases; synthetic terrain/positions, no actual-map/native assertion"
+      ]
+    },
+    "shared-006.log": {
+      "sha256": "6a032b9101a4526685be9706e5cd2198f7238dac7a421e6fb608f82d7c331708",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 3.1% sampled, ceiling70%.",
+        "Capacity: 8,180 MiB available, commit 42.8%, pages-in/s 0, disk 4.8 ms.",
+        "Cargo concurrency: -j 2",
+        "test result: ok. 313 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 74.19s",
+        "test result: ok. 714 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 70.97s"
+      ]
+    },
+    "map-007.log": {
+      "sha256": "82ad2dbbf1f7d14de4b43b4a7c8dd3ed80ae9385a5494e4ceefd4a38eb2d2a11",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 13.9% sampled, ceiling70%.",
+        "Capacity: 7,779 MiB available, commit 45.4%, pages-in/s 0, disk 0.0 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "archive-008.log": {
+      "sha256": "e6b7fefd31014aab6bb0e60d229fb6bffadbac82efecddc3347fe062741b314e",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 15.1% sampled, ceiling70%.",
+        "Capacity: 7,685 MiB available, commit 45.9%, pages-in/s 5, disk 1.0 ms.",
+        "Cargo concurrency: -j 2",
+        "Archived server 0AFE669F643F68022CF3D96D10B1AF50D903A3C13C3BDEA84D967D284B882759 (643 source files)."
+      ]
+    },
+    "driver-009.log": {
+      "sha256": "0eba3f0385b04b81c01f00dc2afc879c97f185618c95c39771dd53fd19de2553",
+      "result": "PASS",
+      "summaries": [
+        "Build CPU capacity: 5.0% sampled, ceiling70%.",
+        "Capacity: 8,433 MiB available, commit 41.5%, pages-in/s 0, disk 2.2 ms.",
+        "Cargo concurrency: -j 2"
+      ]
+    },
+    "fixture-010.log": {
+      "sha256": "fd43db13d79b97c8caa7a0c1f1178d9a962a8a894d15843a7a9a18d9e64aa32e",
+      "result": "PASS",
+      "summaries": []
+    }
+  },
+  "server_archive": {
+    "sha256": "0AFE669F643F68022CF3D96D10B1AF50D903A3C13C3BDEA84D967D284B882759",
+    "source_count": 643,
+    "source_manifest_sha256": "f6f53f6c32521cd95475b3effc667e6e50330791db753f0bb630f78ee30c9b7f",
+    "before_after_sources_unchanged": true
+  },
+  "matrix": {
+    "server_pass": 313,
+    "world_pass": 714,
+    "world_existing_ignored": 1,
+    "ordinary_profiles": 6,
+    "cache_prepared_world_cases": 30,
+    "binding_drift_cases": 10
+  },
+  "native": [],
+  "native_driver": {
+    "driver": "cow-interactions-001",
+    "scenario": "ordinaryCowCalfHeldRefusalsAndFlavour",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless software-rendered scene/menu and sheep stages, regrowth and wool; no OS Window/desktop input or independent verdict",
+    "files": {
+      "server_cow.exe": "ED91021019C82390D617F00FD846037244D0C0CDCF26FDF7C8865D3B606CA687",
+      "NativeCowScenario.rs": "5790C77DCA7E9A0901A41A81D23D2C4DEB0B4622BC23F26D6126326A3465A168"
+    }
+  },
+  "private_probe": {
+    "path": "crates/server/examples/cow_world_cache_private.rs",
+    "sha256": "7bde912a0f80ada0ed47ee78a0c11ac81be00494b11c41950fdf0980c735011b",
+    "scope": "24actual-definition/member/item reached reply cases and6ambient callbacks, synthetic clear terrain/positions"
+  },
+  "failures_preserved": {
+    "inspection001": "Private probe referenced nonexistent NpcType.bas; original source retained and separate cow_profiles2_private used.",
+    "focused003": "Test referenced nonexistent Player.combat; corrected assertion to existing aggressive_npc. No gameplay change."
+  },
+  "known_limitations": [
+    "Owner working-tree validation with retained private test/manifest opt-ins, not pristine or independent acceptance.",
+    "Native not accepted in this revision. Separate990unchanged-library driver and four fresh full-bag fixtures are prepared for Cow/Calf control/actions/reconnect; preparation is not gameplay evidence.",
+    "Only six ordinary target239.1static profiles. Does not replace existing combat/loot, dairy harvestingOR28 or Tower/Cinderworks death/progression behavior. OriginalPG Cow has local death/drop/Floor extensions beyond donor callbacks; no new death adaptation claimed.",
+    "Cow calf Wiki15199604 additionally describes milk-bucket refusal. Both reviewed OpenRune and originalPG Calf source have only empty-bucket override and generic other-item response. Current narrow port follows targetPG/OpenRune for unspecified other items; Wiki milk-bucket-specific extension remains explicitly unimplemented, not claimed complete.",
+    "Ambient timing/chance use existing189positive-countdown callback and draw order. Radius10/sound3044/Moo/graze5854 are source/cache facts; compiled Kotlin phase/RNGstream/audio playback not verified.",
+    "Held replies use existing attested op2 touch route with captured behavior replaced before processing, never dispatching attack. Current actor/target/life/visible stage/selected item/config checked at request and resume. No item debit, milk/reward/XP or persistence schema change.",
+    "Prepared World cases use synthetic clear terrain/positions; separate map-spawn inspection is not actual-map/native interaction acceptance. Native movement/modal/stale/life/multiplayer and full rendering remain pending.",
+    "Independent chemistry verification remains paused."
+  ]
+}
