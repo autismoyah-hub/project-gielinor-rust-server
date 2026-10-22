@@ -37,6 +37,7 @@ impl World {
             threshold: None,
             product: tree.product,
             product_delta: 0,
+            stored_delta: 0,
             fine_xp_delta: 0,
             level: p.data.stats.current(skill) as i32,
             required_level: tree.level,

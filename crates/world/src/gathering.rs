@@ -15,6 +15,8 @@ pub struct Trace {
     pub threshold: Option<f64>,
     pub product: i32,
     pub product_delta: i32,
+    /// Ordinary inventory delta remains separate from an incoming virtual store.
+    pub stored_delta: i32,
     pub fine_xp_delta: i32,
     pub level: i32,
     pub required_level: i32,
@@ -36,6 +38,7 @@ impl Trace {
             Activity::Mining => "mining",
         };
         let optional = |value: Option<String>| value.unwrap_or_else(|| "null".into());
+        let storage=if self.stored_delta!=0{format!(",\"stored_delta\":{}",self.stored_delta)}else{String::new()};
         format!(
             concat!(
             "{{\"schema\":1,\"activity\":\"{}\",\"actor_slot\":{},\"actor_generation\":{},\"tick\":{},",
@@ -43,7 +46,7 @@ impl Trace {
                 "\"result\":\"{}\",\"roll\":{},\"threshold\":{},\"product\":{},",
                 "\"product_delta\":{},\"fine_xp_delta\":{},\"level\":{},\"required_level\":{},",
                 "\"tool\":{},\"free_slots\":{},\"product_before\":{},\"fine_xp_before\":{},",
-                "\"base_xp\":{},\"xp_rate_hundreds\":{},\"depletion_roll\":{},\"active_ticks\":{},\"respawn_delay\":{},\"consumed_delta\":0}}"
+                "\"base_xp\":{},\"xp_rate_hundreds\":{},\"depletion_roll\":{},\"active_ticks\":{},\"respawn_delay\":{},\"consumed_delta\":0{}}}"
             ),
             activity,
             actor.slot,
@@ -73,7 +76,8 @@ impl Trace {
             self.xp_rate_hundreds,
             optional(self.depletion_roll.map(|v|v.to_string())),
             optional(self.active_ticks.map(|v|v.to_string())),
-            optional(self.respawn_delay.map(|v|v.to_string()))
+            optional(self.respawn_delay.map(|v|v.to_string())),
+            storage
         )
     }
 }
@@ -83,6 +87,8 @@ pub(crate) struct Reward {
     stats: crate::stats::Stats,
     advancement: crate::skills::Advancement,
     delta: i32,
+    variables: Option<crate::variables::Variables>,
+    pub(crate) stored_delta:i32,
 }
 impl Reward {
     pub(crate) fn commit(
@@ -91,6 +97,7 @@ impl Reward {
     ) -> (crate::skills::Advancement, i32) {
         data.inventory = self.inventory;
         data.stats = self.stats;
+        if let Some(variables)=self.variables{data.variables=variables;}
         (self.advancement, self.delta)
     }
 }
@@ -103,12 +110,22 @@ pub(crate) fn reward(
     product: i32,
     xp: f64,
 ) -> Result<Reward, crate::simulation::ActionError> {
+    reward_with_storage(data,catalog,skill,product,xp,None)
+}
+fn reward_with_storage(
+    data:&crate::simulation::PlayerData,catalog:&crate::inventory::Catalog,
+    skill:u8,product:i32,xp:f64,storage:Option<crate::coal_bag::Config>,
+)->Result<Reward,crate::simulation::ActionError>{
     let mut inventory = data.inventory.clone();
     let mut stats = data.stats.clone();
     let before = stats.fine_xp(skill);
-    inventory
+    if storage.is_some_and(|c|c.coal==product)&&!catalog.ordinary_nonstackable(product){return Err(crate::simulation::ActionError::InvalidItem);}
+    let variables=storage.map(|c|c.incoming(&data.inventory,&data.equipment,&data.variables,true,product)).transpose()
+        .map_err(|_|crate::simulation::ActionError::InvalidItem)?.flatten();
+    let stored_delta=i32::from(variables.is_some());
+    if stored_delta==0{inventory
         .insert(catalog, crate::inventory::Insert::new(product, 1))
-        .map_err(|_| crate::simulation::ActionError::InvalidItem)?;
+        .map_err(|_| crate::simulation::ActionError::InvalidItem)?;}
     let advancement = crate::skills::advance(
         &mut stats,
         skill,
@@ -123,6 +140,8 @@ pub(crate) fn reward(
         stats,
         advancement,
         delta,
+        variables,
+        stored_delta,
     })
 }
 
@@ -169,4 +188,14 @@ pub(crate) fn reward_with_outfit(
     let bonus=outfit.map(|o|o.bonus_basis_points(&data.equipment,catalog,member)).transpose()
         .map_err(|_|crate::simulation::ActionError::InvalidItem)?.unwrap_or(0);
     reward(data,catalog,skill,product,xp*(1.0+f64::from(bonus)/10000.0))
+}
+
+pub(crate) fn mining_reward(
+    data:&crate::simulation::PlayerData,catalog:&crate::inventory::Catalog,
+    skill:u8,product:i32,xp:f64,member:bool,outfit:Option<&crate::gathering_outfits::Outfit>,
+    storage:Option<crate::coal_bag::Config>,
+)->Result<Reward,crate::simulation::ActionError>{
+    let bonus=outfit.map(|o|o.bonus_basis_points(&data.equipment,catalog,member)).transpose()
+        .map_err(|_|crate::simulation::ActionError::InvalidItem)?.unwrap_or(0);
+    reward_with_storage(data,catalog,skill,product,xp*(1.0+f64::from(bonus)/10000.0),storage.filter(|_|member))
 }

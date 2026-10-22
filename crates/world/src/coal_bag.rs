@@ -15,4 +15,12 @@ impl Config {
     pub fn capacity(self,worn:&crate::inventory::Inventory)->i32 {
         if worn.slots().iter().flatten().any(|item|self.capes.contains(&item.id)){36}else{27}
     }
+    /// Stage incoming coal separately from the actor until the reward commits.
+    pub(crate) fn incoming(self,inventory:&crate::inventory::Inventory,worn:&crate::inventory::Inventory,variables:&crate::variables::Variables,member:bool,item:i32)->Result<Option<crate::variables::Variables>,crate::variables::Error>{
+        if !member||item!=self.coal||!inventory.slots().iter().flatten().any(|i|i.id==self.open&&i.count==1&&i.vars==0){return Ok(None);}
+        let stored=variables.bit(self.stored)?;
+        if stored>=self.capacity(worn){return Ok(None);}
+        let mut next=variables.clone();next.set_bit(self.base,self.stored,stored+1,false)?;
+        Ok(Some(next))
+    }
 }

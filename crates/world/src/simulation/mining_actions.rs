@@ -1,5 +1,8 @@
 use super::*;
 use crate::locations::Location;
+#[cfg(test)]
+#[path="coal_bag_mining_tests.rs"]
+mod coal_bag_tests;
 impl World {
     pub(super) fn process_mining(
         &mut self,
@@ -38,6 +41,7 @@ impl World {
             threshold: None,
             product: rock.product,
             product_delta: 0,
+            stored_delta: 0,
             fine_xp_delta: 0,
             level,
             required_level: rock.level,
@@ -131,7 +135,7 @@ impl World {
             trace.threshold = Some(threshold);
             trace.result = "failed_roll";
             if (roll as f64) < threshold {
-                match crate::gathering::reward_with_outfit(
+                match crate::gathering::mining_reward(
                     &p.data,
                     &self.object_types,
                     skill,
@@ -139,6 +143,7 @@ impl World {
                     rock.xp,
                     p.member,
                     self.gathering_outfits.get(&skill),
+                    self.coal_bag,
                 ) {
                     Err(error) => {
                         trace.result = "transaction_rejected";
@@ -169,10 +174,12 @@ impl World {
                             rock.respawn,
                         );
                         let p = self.players.get_mut(slot).unwrap();
+                        let stored=reward.stored_delta;
                         let (advancement, delta) = reward.commit(&mut p.data);
                         trace.respawn_delay = Some(rock.respawn);
                         trace.result = "success";
-                        trace.product_delta = 1;
+                        trace.product_delta = 1-stored;
+                        trace.stored_delta=stored;
                         trace.fine_xp_delta = delta;
                         if self.tutorial_rules_completed_varp.is_some()
                             && p.stat_events
