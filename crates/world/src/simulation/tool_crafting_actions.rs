@@ -1024,7 +1024,10 @@ impl World {
         if p.pending_logout || p.saving {
             return Err(ActionError::LoggingOut);
         }
-        if p.protection.access_protected(p.has_modal) {
+        if p.death_queued
+            || p.data.stats.current(3) as u8 == 0
+            || p.protection.access_protected(p.has_modal)
+        {
             return Err(ActionError::Protected);
         }
         let mut random = self.random;

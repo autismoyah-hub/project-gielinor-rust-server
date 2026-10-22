@@ -303,6 +303,41 @@ mod tests {
         assert!(light_sources(&obj, &names, &defs).is_err());
     }
     #[test]
+    fn light_sources_life_boundary_refuses_all_profiles_both_directions_and_prepared_contexts() {
+        use gielinor_world::{held_use::{Handler,Request,Scope,Type},
+            hits::{Hit,Style,Target}, simulation::{ActionError,PlayerData,World,WorldEvent}, CoordGrid};
+        let(defs,objects,names)=fixture();let mut cases=0;
+        for profile in light_sources(&objects,&names,&defs).unwrap() {
+            for reverse in [false,true] {for prepared in [false,true] {for phase in 0..3 {
+                let r=profile.light;let mut w=World::default();w.collision.allocate(3200,3200,0);
+                w.object_types=defs.inventory_catalog();
+                for id in [590,r.exchange.input] {w.held_use_types.insert(id,Type{id,content:-1});}
+                w.held_use_handlers.register(Scope::Types,590,r.exchange.input,Handler::ToolCraftingImmediate(r)).unwrap();
+                let mut stats=Stats::default();stats.set_base(11,r.level as i8);stats.set_current(11,r.level as i8);
+                let mut data=PlayerData::new(1,"Light life control".into(),CoordGrid::new(3200,3200,0).unwrap(),stats);
+                for slot in 0..28 {data.inventory.restore_slot(slot,Some(Item{id:1511,count:1,vars:0})).unwrap();}
+                for(slot,id)in[(0,590),(19,r.exchange.input),(8,r.exchange.input)]{data.inventory.restore_slot(slot,Some(Item{id,count:1,vars:0})).unwrap();}
+                w.queue_login(1,data).unwrap();w.tick_with_random(&mut NoDraw).unwrap();let actor=w.actors().next().unwrap();w.set_membership(actor,true).unwrap();
+                let request=if reverse {Request{selected_slot:19,selected_id:r.exchange.input,target_slot:0,target_id:590}}
+                    else{Request{selected_slot:0,selected_id:590,target_slot:19,target_id:r.exchange.input}};
+                if prepared {assert!(w.prepare_held_use(actor,request).unwrap().is_some());}
+                if phase==0 {w.data_mut(actor).unwrap().stats.set_current(3,0);}else{
+                    w.queue_hit(Target::Player(actor),Hit{display:None,source:None,style:Style::Typeless,damage:99},0).unwrap();
+                    w.tick_with_random(&mut NoDraw).unwrap();assert!(w.drain_events().iter().any(|e|matches!(e,WorldEvent::DeathRequested(Target::Player(a))if *a==actor)));
+                    if phase==2 {w.data_mut(actor).unwrap().stats.set_current(3,10);}
+                }
+                let before=w.data(actor).unwrap().clone();w.drain_events();
+                if !prepared {assert!(w.prepare_held_use(actor,request).unwrap().is_some());}
+                assert_eq!(w.finish_held_use(actor,request),Err(ActionError::Protected),"case {cases}");
+                for _ in 0..4 {w.tick_with_random(&mut NoDraw).unwrap();}
+                let after=w.data(actor).unwrap();assert_eq!(after.inventory.slots(),before.inventory.slots());assert_eq!(after.stats,before.stats);
+                assert!(!w.drain_events().iter().any(|e|matches!(e,WorldEvent::SkillAdvanced{..}|WorldEvent::PlayerCombatAnimation{..}|WorldEvent::GameMessage{..})),"case {cases}");
+                cases+=1;
+            }}}
+        }
+        assert_eq!(cases,108);
+    }
+    #[test]
     fn light_sources_actual_immediate_both_orders_and_registered_held_extinguish_roundtrip() {
         use gielinor_world::{
             held_use::{Handler, Request, Scope, Type},
