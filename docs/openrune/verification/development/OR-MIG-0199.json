@@ -1,0 +1,774 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0199",
+  "implementation_commit_sha": "e1f32f2eb97cb879aa3e7c5688890b1e89887548",
+  "recorded_utc": "2026-10-22T18:41:58.036770+00:00",
+  "result": "OWNER_GODSWORD_WORLD_CACHE_ACTUAL_SCRIPT_AND_FOUR_NATIVE_SESSIONS_PASS_INDEPENDENT_PENDING",
+  "sources": {
+    "crates/server/src/content.rs": "9c77f47a8a72f3b4031a38743718a37903dd46cec94b2e9b10f79fc237cac5ea",
+    "crates/server/src/content/godsword_forging.rs": "120e3fc901276e354cc5c8f73a88a83aa67f5b9ad6211192fc170e275974331c",
+    "crates/server/src/content/godsword_forging_world_tests.rs": "348f70de928ce81492497f0e3d244c1670ddbe799457beff0cfc3c244530dbca",
+    "crates/server/src/startup.rs": "1c49f7c4fc06d9ee1e197728155a5c3a8b978ea310168bc0ad78d1c8203a8114",
+    "crates/world/src/facility_crafting.rs": "612f151efc23245ed156323032044d19def02495a10139580c036be64c57a0ea",
+    "crates/world/src/held_use.rs": "072aa503ec3e992dbcddcd082ddd12bb8ccf2534431ab2397aa734339f1b51c1",
+    "crates/world/src/simulation.rs": "f208b19ada71f0f820b73d50c7195287d3a738b3d5d271b01fc335e4871fc2ad",
+    "crates/world/src/simulation/facility_crafting_actions.rs": "02cd39d85525b16ab3e86ff329c082f29c42e12a9a27727cd19f0a8e64e19629",
+    "crates/world/src/simulation/held_use_actions.rs": "bc865bf45c37802324df703c0064d63460e19f2190dd2c2de65fe7487ac93b66"
+  },
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/GodSwordScript.kt",
+      "sha256": "1cc1b713e7da628d233780df7108fc483b37c5ed9b7e599d387d48fcd203e6c5",
+      "availability": "protected_local_reference",
+      "revision": "Configured241donor; actual unchanged privateforgeBlade compiled with7ownedrecordingdependencies/driver. Reflection excludes fullDSL/hammer admission/game inventory/XP engine."
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/skills/smithing/src/main/kotlin/org/rsmod/content/skills/smithing/util/SmithingUtils.kt",
+      "sha256": "801dd4425e8333442129b8218cbbcf0b788ad7859485a6f1e93068a268fcd3ae",
+      "availability": "protected_local_reference",
+      "revision": "Inspectedonly:hasHammer accepts carried ordinary/main/offhand; actual helper not compiled. Wiki equipped hammer support explicitly adapted."
+    },
+    {
+      "kind": "wiki",
+      "reference": "Godsword blade",
+      "sha256": "3b8d83204bda02f03c0057840bc4046a0c49b7ebdfae1491c76207f3a106c264",
+      "availability": "protected_local_reference",
+      "revision": "15184510"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Imcando hammer",
+      "sha256": "b9abe43a88eafa03f0b321f07bf98c6160ee22c50efadf056ac5966164aafcde",
+      "availability": "protected_local_reference",
+      "revision": "15325383"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Imcando hammer (off-hand)",
+      "sha256": "a27ca8f604379e111a889cb252f21565d54834534722acd43d6ac7145dacd623",
+      "availability": "protected_local_reference",
+      "revision": "15284104"
+    }
+  ],
+  "server_archive": {
+    "sha256": "C7F3D919BD9B4F69B1798BC1C4373C7C99D5A3B2337E70F9081F41D385D46658",
+    "source_count": 690,
+    "source_manifest_sha256": "a211a3998d307527b23aeb3f054838bef96a7fd3ea0b1258ada18dd70c6533a5"
+  },
+  "matrix": {
+    "world_passed": 768,
+    "world_existing_ignored": 1,
+    "server_passed": 328,
+    "factory_negative_cases": 112,
+    "godsword_world_tests": 7,
+    "world_recipe_tool_rate_cases": 180,
+    "actual_kotlin_recordings": 731,
+    "cache_material_comparisons": 731,
+    "cache_map_jobs_and_refusals": 35
+  },
+  "logs": {
+    "archive-015.log": {
+      "sha256": "3fed7f67b03aa0229839241a34a293b087c7c94821ea98eff5d3bdcb3ba9d122",
+      "reference": "work/openrune-godsword-forging-20261022/archive-015.log"
+    },
+    "archive-diag-020.log": {
+      "sha256": "8cfd7f54a24f6bf4e8a1f7aaf82c13aeee40635d30779690b153fc35b4732766",
+      "reference": "work/openrune-godsword-forging-20261022/archive-diag-020.log"
+    },
+    "cache-012.log": {
+      "sha256": "663f562683456a75dbe521e52ab1431d55566ef33cec65cdc9c5b2dc6163344a",
+      "reference": "work/openrune-godsword-forging-20261022/cache-012.log"
+    },
+    "cache-013.log": {
+      "sha256": "098d04ac999ac634681d5f5e8c86d53f6e9a2cd980d74138b1f283c692e2b182",
+      "reference": "work/openrune-godsword-forging-20261022/cache-013.log"
+    },
+    "driver-017.log": {
+      "sha256": "c69109bb41b866b9bc5a1afe3c5c91dae2a7982dd52bbc8cb7db7d726a01d535",
+      "reference": "work/openrune-godsword-forging-20261022/driver-017.log"
+    },
+    "fixtures-016.log": {
+      "sha256": "d0467691a72622235c1ee3402bbef7e30c85c6e445777ef8c13b41c90a3398a5",
+      "reference": "work/openrune-godsword-forging-20261022/fixtures-016.log"
+    },
+    "kotlin-010.log": {
+      "sha256": "6a0da6ef40ecfbd73c78674b047653062d58388dbd38d61e52c7c7d5c5991ba0",
+      "reference": "work/openrune-godsword-forging-20261022/kotlin-010.log"
+    },
+    "native-018.log": {
+      "sha256": "efcbb87a66aef2b2427208a3d17f77a607683294c61600444c64a90635608445",
+      "reference": "work/openrune-godsword-forging-20261022/native-018.log"
+    },
+    "native-022.log": {
+      "sha256": "e1b7058744a272379fc84105ca174eaca85ceda22d16ceeb4ec982f639a0d3b7",
+      "reference": "work/openrune-godsword-forging-20261022/native-022.log"
+    },
+    "native-diag-021.log": {
+      "sha256": "ba64f4086e42dc84442749a74369d61c77d7679db94266fc4bba56adf8e8209d",
+      "reference": "work/openrune-godsword-forging-20261022/native-diag-021.log"
+    },
+    "profiles-001.log": {
+      "sha256": "b9340a10cd029c3b7cc17088ad4025c61a10133dff27e1e13ae97366575e0db9",
+      "reference": "work/openrune-godsword-forging-20261022/profiles-001.log"
+    },
+    "profiles-006.log": {
+      "sha256": "11323324fd355efffc5ceb114a804c7d7766c5d1bfb79a127b243f7e9f9c240b",
+      "reference": "work/openrune-godsword-forging-20261022/profiles-006.log"
+    },
+    "profiles-007.log": {
+      "sha256": "abe83108bef73cd28120aa7c5daaddbe5de41b335e3febd93688602028dc7671",
+      "reference": "work/openrune-godsword-forging-20261022/profiles-007.log"
+    },
+    "profiles-008.log": {
+      "sha256": "809f00cac37bd95f02b69f295d2d36988f09967eb247f337dd4cea429df61458",
+      "reference": "work/openrune-godsword-forging-20261022/profiles-008.log"
+    },
+    "server-005.log": {
+      "sha256": "0679093c9327daf479107edbe90f48f7366e44d222946a7cc4ae306041c9068e",
+      "reference": "work/openrune-godsword-forging-20261022/server-005.log"
+    },
+    "server-009.log": {
+      "sha256": "790a9112133e282d52895328682b896b63e3874bd6a92049cbb65d18afba7ab8",
+      "reference": "work/openrune-godsword-forging-20261022/server-009.log"
+    },
+    "server-014.log": {
+      "sha256": "b62d784394de56b39ffc28030f084b1fc52b64488c83f7a3ecb5976015d017af",
+      "reference": "work/openrune-godsword-forging-20261022/server-014.log"
+    },
+    "server-trace-019.log": {
+      "sha256": "e73e934a547302a18b7f62129c976fbda34e07924b3c0c819f075d1c36b7f675",
+      "reference": "work/openrune-godsword-forging-20261022/server-trace-019.log"
+    },
+    "world-011.log": {
+      "sha256": "fa7b8d70590ca720791d9cd3c1aa1c66068d0d4a500af89d3e1c06df54ab953c",
+      "reference": "work/openrune-godsword-forging-20261022/world-011.log"
+    },
+    "world-policy-002.log": {
+      "sha256": "c416140a15804af9fe29abe2fe35ea5b021a3e5c53e9ddbd1c6d41682fd8641e",
+      "reference": "work/openrune-godsword-forging-20261022/world-policy-002.log"
+    },
+    "world-policy-003.log": {
+      "sha256": "a604b61823761d0f6459d4e8f23c8ca46a2b2a7e96c0d7bb0d5add6bc7409563",
+      "reference": "work/openrune-godsword-forging-20261022/world-policy-003.log"
+    },
+    "world-policy-004.log": {
+      "sha256": "9286e68dd4901b721c436d56edad2ffc7b3daa12480b64ee849f63971a2f6b32",
+      "reference": "work/openrune-godsword-forging-20261022/world-policy-004.log"
+    }
+  },
+  "actual_kotlin": {
+    "unchanged_sources": 1,
+    "owned_recording_dependencies_and_driver": 7,
+    "raw_source_output_sha256": "47af23c99c0a01cb12bf3afb46bc17f226267fb76e1d57f1f249606fea65b706",
+    "scope": "One unchanged private GodSwordScript.forgeBlade is compiled/reflected with7owned recording dependencies/driver.731 recordings characterize material search and2output refusals, not full DSL/hammer admission/queue/inventory/XP engine. SmithingUtils.hasHammer inspected only.",
+    "source_classifications": [
+      7,
+      75,
+      432,
+      217
+    ]
+  },
+  "native": [
+    {
+      "run": "openrune-godsword-forging-baseline-native-20261022-002",
+      "assessment_sha256": "4fa9b01cbf0199c5153f0de7a4daf453a8ed6706d338649729d8ac717676e6ee",
+      "assessment": {
+        "result": "PASS_NATIVE_GODSWORD_CONTROL",
+        "run": "openrune-godsword-forging-baseline-native-20261022-002",
+        "mode": "control",
+        "server_sha256": "C7F3D919BD9B4F69B1798BC1C4373C7C99D5A3B2337E70F9081F41D385D46658",
+        "driver_sha256": "A618039E4FB5270D8DB989F159DFF73B5BB0814F59D3FE80F6A6C4F3F0023BE5",
+        "native_events": [
+          {
+            "kind": "native.shard_held_use",
+            "first": 11818,
+            "second": 11820,
+            "opcode": 27
+          },
+          {
+            "kind": "native.shards_need_anvil",
+            "xp_delta": 0
+          },
+          {
+            "kind": "native.godsword_done",
+            "mode": "control",
+            "raw1": 1,
+            "raw2": 1,
+            "raw3": 1,
+            "partial": 0,
+            "blade": 0,
+            "hilt": 1,
+            "godsword": 0,
+            "hammer": 1,
+            "displayed_xp_delta": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 9.579,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 18:17:21"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 18:37:46"
+          }
+        },
+        "shutdown": {
+          "pid": 4392,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T18:37:46.9861138Z"
+        },
+        "saved_fine_xp_delta": 0,
+        "saved_stock": {
+          "ids": [
+            11818,
+            11820,
+            11822,
+            11794,
+            11798,
+            11810,
+            11802,
+            2347
+          ],
+          "before": [
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1
+          ],
+          "after": [
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        },
+        "all_varp_changes": {
+          "3077": {
+            "before": 22253,
+            "after": 47307
+          },
+          "65515": {
+            "before": 91,
+            "after": 183
+          },
+          "300": {
+            "before": 100,
+            "after": 200
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "17ef0ab157972b61ca2578ccfc9ea3c5811e7cab54f7d4ffecf81258de779fe0",
+          "final-state.json": "9d21a3f1ae3ed5bd33ac3cf53a4cfdb597b1c8cb8e8be5618d0fefb86bcbcff9",
+          "initial-state.json": "e6f06e3bdd9c70dc237181852ccbbd6962fc16c4cb8396033ff00684abf06ff8",
+          "logout-before.json": "3220bede230204944ab7ffe34207264da550602cab4e34a80109ff25a3726c94",
+          "logout-observation.json": "d2970524f153f8a6e268c31c13d09927e9f84e154cb88b38fc1f93129e81c74d",
+          "native-events.before.bmp": "f07f039f496e4df2a6a8b265508399cdc1aeeabe25387452c6cca59ee14089e3",
+          "native-events.done.bmp": "f07f039f496e4df2a6a8b265508399cdc1aeeabe25387452c6cca59ee14089e3",
+          "native-events.jsonl": "9d516835319616c8f66d30d94cd99c97a0491fce61ec9dfe18397558e3f5aaa3",
+          "result.json": "a47b085b79512f75f436ede44ec27b017950c3a7e6d2654fdccb6fddc7adc3cc",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "d2ee0f329c73302d73fc5ba9115593c9d5f348b5636666630d543dd99fa14d5f",
+          "server.log": "af248efe7415e63c7cd5ea1f6d53467bd859ddf880591962bfbb50d69324035d",
+          "shutdown.json": "18186614e408e1edb8942e148132261b9f64b030fd585f8d0bd9eb83605106b4"
+        },
+        "limitations": [
+          "Prepared member99Smithing/current5x/quantity1,three loose shards or lonepartial,Armadylhilt/hammer/Varrockposition are fixtures; inputs are not earned drops.",
+          "Native heldfeedback and lonepartialrefusal have zero reward; actual twoanviljoins eachgive100baseXP/5000fineat5x, then retainedOR59hiltattachmentgivesAGSwithout extraXP; same-save reconnect no replay. Allsaveack/unforced0/990unchangedclient files required.",
+          "Native ordinary hammer and raw1+2thenraw3 combination only; other five joins/equivalenttools/lateswaps/fullbag/level/refusal matrices are owner World/cache tests. No general anvil, weapon/combat, acquisition/quest, audio/exact3+4animation-phase or independent acceptance.",
+          "Source singlepartialidentity and raw3one-step100XP deliberately corrected to Wiki two-piecejoins/two-stage200XP; level80/currentworn hammers follow Wiki. Shared239.1skillmulti differs donor automatic/modal workflow. Frames require inspection; no UI-pixel/animation claim; chemistry independent paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-godsword-forging-lone-native-20261022-002",
+      "assessment_sha256": "856be3cced6163d31e485e23ea707caf71d8a2d4c5846025bf50cfeb05d7261e",
+      "assessment": {
+        "result": "PASS_NATIVE_GODSWORD_LONE",
+        "run": "openrune-godsword-forging-lone-native-20261022-002",
+        "mode": "lone",
+        "server_sha256": "C7F3D919BD9B4F69B1798BC1C4373C7C99D5A3B2337E70F9081F41D385D46658",
+        "driver_sha256": "A618039E4FB5270D8DB989F159DFF73B5BB0814F59D3FE80F6A6C4F3F0023BE5",
+        "native_events": [
+          {
+            "kind": "native.lone_partial_anvil",
+            "input": 11794,
+            "raw": 2097,
+            "x": 3188,
+            "z": 3426,
+            "opcode": 62
+          },
+          {
+            "kind": "native.lone_partial_refused",
+            "partial": 1,
+            "xp_delta": 0
+          },
+          {
+            "kind": "native.godsword_done",
+            "mode": "lone",
+            "raw1": 0,
+            "raw2": 0,
+            "raw3": 0,
+            "partial": 1,
+            "blade": 0,
+            "hilt": 1,
+            "godsword": 0,
+            "hammer": 1,
+            "displayed_xp_delta": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 9.438,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 18:36:28"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 18:38:58"
+          }
+        },
+        "shutdown": {
+          "pid": 1104,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T18:38:59.4339664Z"
+        },
+        "saved_fine_xp_delta": 0,
+        "saved_stock": {
+          "ids": [
+            11818,
+            11820,
+            11822,
+            11794,
+            11798,
+            11810,
+            11802,
+            2347
+          ],
+          "before": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1
+          ],
+          "after": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        },
+        "all_varp_changes": {
+          "3077": {
+            "before": 29525,
+            "after": 60044
+          },
+          "65515": {
+            "before": 627,
+            "after": 721
+          },
+          "3079": {
+            "before": 319,
+            "after": 99
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "76132bfae320b52918b46fb78786fd3dd3e27e9cb010758dc41bc62b3b9cf0cc",
+          "final-state.json": "56bb97961185cb05af0a6dabefac97ee7d1928e3659a5198791cad92f328a551",
+          "initial-state.json": "f38e13c8c8806afd63c52c861546cfdb44a5e37874c271b5ad7400300555fd84",
+          "logout-before.json": "85a39fb9d486200d6ef81db3ebaac55ba66e771461283bc7cca9036fc02383e0",
+          "logout-observation.json": "73a6780736e723408807d4c7ad36d983747c1bda568168313b67c974843223f2",
+          "native-events.before.bmp": "2734024b1a948c776f07a866f2b6d17f687170ac740e26c3489169728d170d0f",
+          "native-events.done.bmp": "2734024b1a948c776f07a866f2b6d17f687170ac740e26c3489169728d170d0f",
+          "native-events.jsonl": "827cbff04741f065c0c78a0656f672d6964a3baafcbd047ae0493397f91daf32",
+          "result.json": "04bfa88229db26f65bf0542078a0d9d39519eec1c65d27059ff0be6f6c26dd6f",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "28e8fe787d0dfd6cbf6ed23d53ac3043e7474503ba62eb9132972bc57c3a9a81",
+          "server.log": "b66e67d5a330230bb27acc3d67f656333eaf3f5a0fd624e0dd04a5609af34420",
+          "shutdown.json": "6f3d6d39367db8e491da2798672179c89294ccc14eadfd5f3ecdff85cb0527c5"
+        },
+        "limitations": [
+          "Prepared member99Smithing/current5x/quantity1,three loose shards or lonepartial,Armadylhilt/hammer/Varrockposition are fixtures; inputs are not earned drops.",
+          "Native heldfeedback and lonepartialrefusal have zero reward; actual twoanviljoins eachgive100baseXP/5000fineat5x, then retainedOR59hiltattachmentgivesAGSwithout extraXP; same-save reconnect no replay. Allsaveack/unforced0/990unchangedclient files required.",
+          "Native ordinary hammer and raw1+2thenraw3 combination only; other five joins/equivalenttools/lateswaps/fullbag/level/refusal matrices are owner World/cache tests. No general anvil, weapon/combat, acquisition/quest, audio/exact3+4animation-phase or independent acceptance.",
+          "Source singlepartialidentity and raw3one-step100XP deliberately corrected to Wiki two-piecejoins/two-stage200XP; level80/currentworn hammers follow Wiki. Shared239.1skillmulti differs donor automatic/modal workflow. Frames require inspection; no UI-pixel/animation claim; chemistry independent paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-godsword-forging-actions-native-20261022-002",
+      "assessment_sha256": "cfa505e087e777beff323cdfa4a7ffe905bff49f91e48a1266d8a1b9a7da590c",
+      "assessment": {
+        "result": "PASS_NATIVE_GODSWORD_FORGE",
+        "run": "openrune-godsword-forging-actions-native-20261022-002",
+        "mode": "forge",
+        "server_sha256": "C7F3D919BD9B4F69B1798BC1C4373C7C99D5A3B2337E70F9081F41D385D46658",
+        "driver_sha256": "A618039E4FB5270D8DB989F159DFF73B5BB0814F59D3FE80F6A6C4F3F0023BE5",
+        "native_events": [
+          {
+            "kind": "native.blade_use_anvil",
+            "input": 11818,
+            "raw": 2097,
+            "x": 3188,
+            "z": 3426,
+            "opcode": 62
+          },
+          {
+            "kind": "native.blade_join_selection",
+            "product": 11794,
+            "logical": 17694735,
+            "opcode": 115,
+            "count": 1
+          },
+          {
+            "kind": "native.blade_partial_made",
+            "product": 11794,
+            "count": 1,
+            "displayed_xp_delta": 500
+          },
+          {
+            "kind": "native.blade_use_anvil",
+            "input": 11794,
+            "raw": 2097,
+            "x": 3188,
+            "z": 3426,
+            "opcode": 62
+          },
+          {
+            "kind": "native.blade_join_selection",
+            "product": 11798,
+            "logical": 17694735,
+            "opcode": 115,
+            "count": 1
+          },
+          {
+            "kind": "native.blade_complete_made",
+            "product": 11798,
+            "count": 1,
+            "displayed_xp_delta": 1000
+          },
+          {
+            "kind": "native.godsword_hilt_use",
+            "blade": 11798,
+            "hilt": 11810,
+            "opcode": 27
+          },
+          {
+            "kind": "native.godsword_attached",
+            "product": 11802,
+            "count": 1,
+            "displayed_xp_delta": 1000
+          },
+          {
+            "kind": "native.godsword_done",
+            "mode": "forge",
+            "raw1": 0,
+            "raw2": 0,
+            "raw3": 0,
+            "partial": 0,
+            "blade": 0,
+            "hilt": 0,
+            "godsword": 1,
+            "hammer": 1,
+            "displayed_xp_delta": 1000
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 9.563,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-12 21:36:41"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 18:40:31"
+          }
+        },
+        "shutdown": {
+          "pid": 15916,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T18:40:32.0930690Z"
+        },
+        "saved_fine_xp_delta": 10000,
+        "saved_stock": {
+          "ids": [
+            11818,
+            11820,
+            11822,
+            11794,
+            11798,
+            11810,
+            11802,
+            2347
+          ],
+          "before": [
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1
+          ],
+          "after": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        "all_varp_changes": {
+          "3077": {
+            "before": 0,
+            "after": 32054
+          },
+          "3079": {
+            "before": 0,
+            "after": 133
+          },
+          "65530": {
+            "before": 0,
+            "after": 800
+          },
+          "65515": {
+            "before": 0,
+            "after": 127
+          },
+          "18": {
+            "before": 0,
+            "after": 1
+          },
+          "843": {
+            "before": 17,
+            "after": 0
+          },
+          "300": {
+            "before": 0,
+            "after": 200
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "608defe07a6fa8215b7df471a0ab910f710ff3858d3e144e0ab37e3a1361ac7e",
+          "final-state.json": "627049f61309033153a41cb55f52222328fc8c69fad7d26236d7bbeeca4199c0",
+          "initial-state.json": "7dcfc8a69e0e8c96316f3770fdffab28ce368f55c2bf26b0c8095e04f5abc28a",
+          "logout-before.json": "3eef250e36b3609524dbd7a14de6e967d8c30417f22ef53a13c4af808f6c0afe",
+          "logout-observation.json": "bbd59e40956d81998a3b9b7751449b1ec41f2892a7499139b30f8f9269d02b72",
+          "native-events.before.bmp": "10d3ea31f10d1c8dd47bbb065005eddac47374aa4ccf1e5124e0af479a12ef1f",
+          "native-events.blade.bmp": "fbd2f75a514d6dac1632bc2bec3e926239dc3a82af8c45631e4899d4fd1e1168",
+          "native-events.done.bmp": "fbd2f75a514d6dac1632bc2bec3e926239dc3a82af8c45631e4899d4fd1e1168",
+          "native-events.jsonl": "dc537a9b19a834a17fb404c253f75a4aec9fabcb4fbd829955c45859b57a20a8",
+          "native-events.partial.bmp": "fbd2f75a514d6dac1632bc2bec3e926239dc3a82af8c45631e4899d4fd1e1168",
+          "result.json": "7789297be8f8a434d5527a22befb246b970c836cdcbde8b48368d74afbf6d461",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "4eebb44e25e6b3b9a9648dc0de9793418a8a1ed32aef42c661f84af3d7b85077",
+          "server.log": "4dec43d743e607d362f96a26309eab0bddfcd8a30de3c81468fc5b94fefe1f63",
+          "shutdown.json": "cd6dec2ab7fce62f6f59efb515753aebcbdd5b92a2bf049eb30c8913c5f940a0"
+        },
+        "limitations": [
+          "Prepared member99Smithing/current5x/quantity1,three loose shards or lonepartial,Armadylhilt/hammer/Varrockposition are fixtures; inputs are not earned drops.",
+          "Native heldfeedback and lonepartialrefusal have zero reward; actual twoanviljoins eachgive100baseXP/5000fineat5x, then retainedOR59hiltattachmentgivesAGSwithout extraXP; same-save reconnect no replay. Allsaveack/unforced0/990unchangedclient files required.",
+          "Native ordinary hammer and raw1+2thenraw3 combination only; other five joins/equivalenttools/lateswaps/fullbag/level/refusal matrices are owner World/cache tests. No general anvil, weapon/combat, acquisition/quest, audio/exact3+4animation-phase or independent acceptance.",
+          "Source singlepartialidentity and raw3one-step100XP deliberately corrected to Wiki two-piecejoins/two-stage200XP; level80/currentworn hammers follow Wiki. Shared239.1skillmulti differs donor automatic/modal workflow. Frames require inspection; no UI-pixel/animation claim; chemistry independent paused."
+        ]
+      }
+    },
+    {
+      "run": "openrune-godsword-forging-replay-native-20261022-002",
+      "assessment_sha256": "847adfc4bda73f8d22fd24c1fe3e2280ec94384a6dccc3c1305ce0e1959c90ff",
+      "assessment": {
+        "result": "PASS_NATIVE_GODSWORD_VERIFY",
+        "run": "openrune-godsword-forging-replay-native-20261022-002",
+        "mode": "verify",
+        "server_sha256": "C7F3D919BD9B4F69B1798BC1C4373C7C99D5A3B2337E70F9081F41D385D46658",
+        "driver_sha256": "A618039E4FB5270D8DB989F159DFF73B5BB0814F59D3FE80F6A6C4F3F0023BE5",
+        "native_events": [
+          {
+            "kind": "native.godsword_done",
+            "mode": "verify",
+            "raw1": 0,
+            "raw2": 0,
+            "raw3": 0,
+            "partial": 0,
+            "blade": 0,
+            "hilt": 0,
+            "godsword": 1,
+            "hammer": 1,
+            "displayed_xp_delta": 0
+          }
+        ],
+        "logout": {
+          "status": "PASS",
+          "save_completed": true,
+          "elapsed_seconds": 9.813,
+          "before": {
+            "world_id": null,
+            "last_logout": "2026-10-22 18:40:31"
+          },
+          "after": {
+            "world_id": null,
+            "last_logout": "2026-10-22 18:41:42"
+          }
+        },
+        "shutdown": {
+          "pid": 18548,
+          "exited": true,
+          "exitCode": 0,
+          "forced": false,
+          "utc": "2026-10-22T18:41:43.1854849Z"
+        },
+        "saved_fine_xp_delta": 0,
+        "saved_stock": {
+          "ids": [
+            11818,
+            11820,
+            11822,
+            11794,
+            11798,
+            11810,
+            11802,
+            2347
+          ],
+          "before": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          "after": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        "all_varp_changes": {
+          "3079": {
+            "before": 133,
+            "after": 96
+          },
+          "300": {
+            "before": 200,
+            "after": 300
+          },
+          "3077": {
+            "before": 32054,
+            "after": 43353
+          },
+          "65515": {
+            "before": 127,
+            "after": 217
+          }
+        },
+        "evidence_hashes": {
+          "client.log": "74be149ea865509a15e53fa54bb48fe816978c6d6f4d6627aeff43d1e3d9452b",
+          "final-state.json": "53b86e72d59084fec738a6550c4a2b575a1b66f1d15681bd22484fbdbf4319b5",
+          "initial-state.json": "627049f61309033153a41cb55f52222328fc8c69fad7d26236d7bbeeca4199c0",
+          "logout-before.json": "b5f0ac7ac9c63c0a5592ebddcec13efa923b6bcdbf38a460f0a07145554a7be4",
+          "logout-observation.json": "5616f42a32b2873a290ee4886e41791feb712f68f3d7f77fc202268749c187db",
+          "native-events.before.bmp": "10d3ea31f10d1c8dd47bbb065005eddac47374aa4ccf1e5124e0af479a12ef1f",
+          "native-events.done.bmp": "10d3ea31f10d1c8dd47bbb065005eddac47374aa4ccf1e5124e0af479a12ef1f",
+          "native-events.jsonl": "1fd060620895a2e9f41d7449bb377453ac3aa34b0ca9dac2757bc0dfcc11df1e",
+          "result.json": "17e63a3026911b25522d2edbcad8cd74966cbd87d8c1f07c6772d637f6155f6d",
+          "server.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "server.json": "dad50330784fe8eaac7d956a575cb7fe4511804c0804682c5f63dbf727aa1172",
+          "server.log": "2f4ed68ee9577f599b01c33e830f5b9eddfc01de3a74e4db16483c6bc754874c",
+          "shutdown.json": "5d556c6eee068c627feea08f5da3268e87b77772d04fabdd0ef36782b6e7d911"
+        },
+        "limitations": [
+          "Prepared member99Smithing/current5x/quantity1,three loose shards or lonepartial,Armadylhilt/hammer/Varrockposition are fixtures; inputs are not earned drops.",
+          "Native heldfeedback and lonepartialrefusal have zero reward; actual twoanviljoins eachgive100baseXP/5000fineat5x, then retainedOR59hiltattachmentgivesAGSwithout extraXP; same-save reconnect no replay. Allsaveack/unforced0/990unchangedclient files required.",
+          "Native ordinary hammer and raw1+2thenraw3 combination only; other five joins/equivalenttools/lateswaps/fullbag/level/refusal matrices are owner World/cache tests. No general anvil, weapon/combat, acquisition/quest, audio/exact3+4animation-phase or independent acceptance.",
+          "Source singlepartialidentity and raw3one-step100XP deliberately corrected to Wiki two-piecejoins/two-stage200XP; level80/currentworn hammers follow Wiki. Shared239.1skillmulti differs donor automatic/modal workflow. Frames require inspection; no UI-pixel/animation claim; chemistry independent paused."
+        ]
+      }
+    }
+  ],
+  "native_driver": {
+    "driver": "godsword-forging-001",
+    "scenario": "nativeTwoGodswordJoinsAndHilt",
+    "baseline": "client-239.1-baseline-001-build-001",
+    "pinnedLibraryFilesChecked": 990,
+    "scope": "Headless actual shard heldfeedback,lonepartialrefusal,twoanviljoins+existinghilt,same-save earnedreplay; no OS window/input or independent verdict",
+    "files": {
+      "server_godsword_forging1.exe": "A618039E4FB5270D8DB989F159DFF73B5BB0814F59D3FE80F6A6C4F3F0023BE5",
+      "NativeGodswordForgingScenario1.rs": "428DAD0A167E72C9BF23D290F2E24DFBBA9EFECD25B82114BF284A9461022BE8"
+    }
+  },
+  "frame_review": {
+    "inspected": true,
+    "frames": [
+      {
+        "reference": "work/integration/runs/openrune-godsword-forging-actions-native-20261022-002/native-events.before.bmp",
+        "sha256": "10d3ea31f10d1c8dd47bbb065005eddac47374aa4ccf1e5124e0af479a12ef1f"
+      },
+      {
+        "reference": "work/integration/runs/openrune-godsword-forging-actions-native-20261022-002/native-events.blade.bmp",
+        "sha256": "fbd2f75a514d6dac1632bc2bec3e926239dc3a82af8c45631e4899d4fd1e1168"
+      }
+    ],
+    "observation": "Actual native software BMPs inspected: Varrock smithy, anvils and character visible; inventory/chat panels black. No item-icon/UI-pixel/animation claim. Packet/menu/received-state plus acknowledged character exports establish the scoped joins and reward."
+  },
+  "failures_preserved": [
+    {
+      "run": "openrune-godsword-forging-lone-native-20261022-001",
+      "scope": "Original missing authoritative map window; no stock/XP changes; save acknowledged/unforced0"
+    },
+    {
+      "run": "openrune-godsword-forging-lone-diag-native-20261022-001",
+      "scope": "Exact preserved failed character reused; decoded source_slot4/object11794/target2097correct,open=true/enabled=true/exists=false; source diagnosticsa31e8e82. No reset."
+    }
+  ],
+  "known_limitations": [
+    "Six disjoint two-piece joins only, current level80 Smithing/member/tool guards,100 baseXP per join. Three loose shards require two joins/200baseXP. Existing OR59 five hilt attachments retained; no dismantling, acquisition, weapon equipment/combat, other smithing products or full Smithing parity.",
+    "One unchanged private GodSwordScript.forgeBlade is compiled/reflected with7owned recording dependencies/driver.731 recordings characterize material search and2output refusals, not full DSL/hammer admission/queue/inventory/XP engine. SmithingUtils.hasHammer inspected only.",
+    "Donor permits single-partial identity reforging/XP, three-raw one-step100XP, lacks explicit80gate, and inspects carried hammers. Rust deliberately uses Wiki two-piece progress/200XP,80gate and current carried or correct worn Imcando hammers. Source recording output refusal still givesXP; Rust stages inventory/Stats together.",
+    "Shared revision239.1 skill-multi selection replaces donor automatic workflow. Seven-tick shared reward cadence/animation898, not independently verified exact donor3+4phase or sound3771. No audio or animation-pixel acceptance.",
+    "Native fixtures are member99Smithing/5x/quantity1 with prepared three raw shards, ordinary hammer, Armadyl hilt and Varrock position. Actual raw1+2 then partial12+raw3, existing hilt attachment, lonepartial refusal and same-save reconnect only. Remaining joins/tools/rates/fullbag/late guards use owner World/cache matrices, not native-earned drops.",
+    "Initial lone native001 and diagnostic001 failures preserve unchanged stock/XP/saves. Runner omitted --spawn and loaded Lumbridge while persisted player/client were in Varrock: correct packet/current inventory UI passed but authoritative location absent. Runner2 uses explicit3187,3426,0; original archive/client remain unchanged. No relaxed UI/location permissions.",
+    "Local lean opt0/debug assertions/dev+testdebug0/nonincremental/codegen2 profiles and private manifests differ from published tree; not pristine acceptance. Independent V0-V4 pending; chemistry independent verification paused. Discovery classification is not gameplay completion."
+  ]
+}
