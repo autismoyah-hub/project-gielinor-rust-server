@@ -634,6 +634,7 @@ pub fn configure<B: AccountBackend>(
             ),
         ),
     )?;
+    runtime.configure_ordinary_bank_booths(names)?;
     let font_id = names.id("font", "q8_full")?;
     let font_files = cache
         .files(13, font_id, None)?

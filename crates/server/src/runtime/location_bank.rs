@@ -1,5 +1,20 @@
 use super::*;
 impl<B: AccountBackend> Runtime<B> {
+    pub fn configure_ordinary_bank_booths(&mut self, names:&crate::startup::Names)->io::Result<()> {
+        if !self.connections.is_empty() || self.bank_presentation.is_none()
+            || self.npc_bank_parents.is_none() || !self.world.ordinary_bank_booths.is_empty() {
+            return Err(io::Error::other("Configure ordinary booths once with shared banking before admission"));
+        }
+        let booths=crate::content::ordinary_bank_booths(names.group("loc"),names.group("content"),&self.definitions).map_err(io::Error::other)?;
+        for &id in &booths {
+            if self.world.location_banks.contains_key(&id) || self.world.has_location_handler(id,2) {
+                return Err(io::Error::other("Conflicting ordinary bank booth handler"));
+            }
+        }
+        self.world.ordinary_bank_booths=booths;
+        Ok(())
+    }
+
     pub fn configure_crafting_guild_bank(
         &mut self,
         names: &crate::startup::Names,

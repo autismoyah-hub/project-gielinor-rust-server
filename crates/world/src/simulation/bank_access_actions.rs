@@ -1,6 +1,10 @@
 use super::*;
 use crate::bank_access::Request;
 impl World {
+    pub(super) fn is_location_bank_operation(&self, id:u32, operation:u8)->bool {
+        operation==1 && self.location_banks.contains_key(&id)
+            || operation==2 && self.ordinary_bank_booths.contains(&id)
+    }
     pub(super) fn cinderworks_bank(&self, location:crate::locations::Location)->bool {
         location.id==crate::tower_cinderworks::BANK_BOOTH && location.shape==10 && location.angle==0
             && self.cinderworks.as_ref().is_some_and(|c|c.spatial.at(c.origin,53,60).is_ok_and(|at|at==location.coords))
@@ -12,7 +16,11 @@ impl World {
     ) {
         let p = self.players.get(slot).unwrap();
         let actor = p.id;
-        let kind=if self.cinderworks_bank(location) {
+        if p.death_queued || p.data.stats.current(3) as u8 == 0 {
+            let p=self.players.get_mut(slot).unwrap();p.location_interaction=None;p.movement.interacting=false;p.movement.abort();
+            self.events.push(WorldEvent::ActionRejected{actor,error:ActionError::Protected});return;
+        }
+        let kind=if self.cinderworks_bank(location) || self.ordinary_bank_booths.contains(&location.id) {
             crate::bank_access::Kind::Full
         } else {
             let Some(gate)=self.location_banks.get(&location.id) else {return;};
@@ -37,7 +45,8 @@ impl World {
         let Ok(p) = self.player(actor) else {
             return false;
         };
-        !p.saving
+        !p.death_queued && p.data.stats.current(3) as u8 != 0
+            && !p.saving
             && !p.pending_logout
             && !p.protection.access_protected(p.has_modal)
             && p.movement.coords == request.origin
@@ -48,7 +57,7 @@ impl World {
                 == Some(request.location)
             && (self.location_banks.get(&request.location.id).is_some_and(|g| {
                     g.kind == request.kind && g.allows(p.member, &p.data.stats, &p.data.variables)
-                }) || request.kind==crate::bank_access::Kind::Full && self.cinderworks_bank(request.location))
+                }) || request.kind==crate::bank_access::Kind::Full && (self.cinderworks_bank(request.location) || self.ordinary_bank_booths.contains(&request.location.id)))
             && self.door_target(request.location).is_ok_and(|target| {
                 target.reached(&self.collision, p.movement.coords, p.movement.size)
             })
@@ -245,5 +254,27 @@ mod tests {
         assert!(w.location_bank_request_valid(a, request));
         w.locations = Default::default();
         assert!(!w.location_bank_request_valid(a, request));
+    }
+
+    #[test]
+    fn guild_bank_shared_request_rejects_zero_hp_unresolved_death_and_visible_hp_restoration() {
+        use crate::hits::{Hit, Style, Target};
+        for late in [false,true] {for phase in 0..3 {
+            let(mut w,a,loc)=setup(99,99,0,true,false);
+            let action=Action::OperateLocation{coords:loc.coords,id:loc.id,operation:1,control:false};
+            let pending=if late {
+                w.submit(a,action.clone()).unwrap();w.tick().unwrap();
+                Some(w.drain_events().into_iter().find_map(|e|if let WorldEvent::LocationBankRequested{request,..}=e{Some(request)}else{None}).unwrap())
+            }else{None};
+            if phase==0 {w.data_mut(a).unwrap().stats.set_current(3,0);}else {
+                w.queue_hit(Target::Player(a),Hit{display:None,source:None,style:Style::Typeless,damage:99},0).unwrap();w.tick().unwrap();
+                assert!(w.drain_events().iter().any(|e|matches!(e,WorldEvent::DeathRequested(Target::Player(id))if *id==a)));
+                if phase==2 {w.data_mut(a).unwrap().stats.set_current(3,10);}
+            }
+            let before=w.data(a).unwrap().clone();
+            if let Some(r)=pending {assert!(!w.location_bank_request_valid(a,r));}else{w.submit(a,action).unwrap();}
+            for _ in 0..5 {w.tick().unwrap();assert!(!w.drain_events().iter().any(|e|matches!(e,WorldEvent::LocationBankRequested{..})));}
+            assert_eq!(w.data(a).unwrap().inventory,before.inventory);assert_eq!(w.data(a).unwrap().bank,before.bank);assert_eq!(w.data(a).unwrap().stats,before.stats);
+        }}
     }
 }

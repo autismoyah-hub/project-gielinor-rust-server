@@ -7,7 +7,7 @@ impl World {
         if self.cinderworks.as_ref().is_some_and(|c|c.handles(id,operation)){return true;}
         if operation==1&&self.guild_passages.contains_key(&id){return true;}
         if operation==1&&self.runecrafting.as_ref().is_some_and(|c|c.altars.contains_key(&id)){return true;}
-        if operation==1 && self.location_banks.contains_key(&id){return true;}
+        if self.is_location_bank_operation(id, operation){return true;}
         if self.facility_crafting.get(&id).is_some_and(|c|c.locations.get(&id)==Some(&Some(operation))){return true;}
         if self
             .furnaces
@@ -291,7 +291,7 @@ impl World {
             && (self
                 .location_handlers
                 .get(&(loc.id, operation))
-                .is_some_and(|h| h.arrival_delay()) || operation==1 && self.location_banks.contains_key(&loc.id))
+                .is_some_and(|h| h.arrival_delay()) || self.is_location_bank_operation(loc.id, operation))
         {
             let p = self.players.get_mut(slot).unwrap();
             p.movement.abort();
@@ -338,9 +338,10 @@ impl World {
             return;
         }
         if self.cinderworks_location(slot,loc,operation){return;}
+        let bank_operation=self.is_location_bank_operation(loc.id, operation);
         let p = self.players.get_mut(slot).unwrap();
         if operation==1 && self.guild_passages.contains_key(&loc.id){self.process_guild_passage(slot,loc);return;}
-        if operation==1 && self.location_banks.contains_key(&loc.id){self.request_location_bank(slot,loc);return;}
+        if bank_operation{self.request_location_bank(slot,loc);return;}
         if self
             .milking
             .as_ref()
