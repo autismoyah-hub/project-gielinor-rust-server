@@ -146,6 +146,27 @@ def main():
                     gateway.act("interface 60882951 1")
                     observed = gateway.wait(lambda s: s["ready"] and 929 not in s.get("modals", []), 30)
 
+                def outside_portal():
+                    action = f"object {portal} 3225 3218 1"
+                    try:
+                        return gateway.act(action)
+                    except RuntimeError as error:
+                        if "action is not in the visible native menu" not in str(error):
+                            raise
+                    # Stock scenery can occlude the thin portal from the initial
+                    # camera. Only retry explicitly unsubmitted menu rejections;
+                    # each attempt still needs a real visible native operation.
+                    for yaw in [0, 4096, 8192, 12288]:
+                        report.setdefault("portal_camera_views", []).append(yaw)
+                        gateway.act(f"camera 2048 {yaw}")
+                        time.sleep(.2)
+                        try:
+                            return gateway.act(action)
+                        except RuntimeError as error:
+                            if "action is not in the visible native menu" not in str(error):
+                                raise
+                    raise RuntimeError("Outside portal is unavailable in all four visible native camera views")
+
                 def walk(x, z):
                     until, retry = time.monotonic() + 55, 0
                     while time.monotonic() < until:
@@ -189,7 +210,7 @@ def main():
                     assert json.loads(json.dumps(conserved(observed))) == expected
                     assert "Done: Kitchen" in observed["journal"] and "Cinderworks milestones: 1/5" in observed["journal"]
                     if observed["position"][1] < 10000:
-                        gateway.act(f"object {portal} 3225 3218 1")
+                        outside_portal()
                         observed = gateway.wait(lambda s: s["ready"] and s["position"][1] > 10000, 35)
                     assert json.loads(json.dumps(conserved(observed))) == expected
                     walk(10427, 114)
@@ -199,7 +220,7 @@ def main():
                     before_restart = conserved(outside)
                 elif session == 0:
                     if observed["position"][1] < 10000:
-                        gateway.act(f"object {portal} 3225 3218 1")
+                        outside_portal()
                     gateway.wait(lambda s: s["ready"] and s["position"][1] > 10000, 35)
                     walk(10418, 106)
                     initial = gateway.observe()
@@ -271,7 +292,7 @@ def main():
                     before_restart = conserved(outside)
                 else:
                     assert conserved(observed) == before_restart, "Logout/server restart changed earned progression"
-                    gateway.act(f"object {portal} 3225 3218 1")
+                    outside_portal()
                     returned = gateway.wait(lambda s: s["ready"] and s["position"][1] > 10000, 35)
                     assert conserved(returned) == before_restart, "Return changed permanent state"
                 final = gateway.observe()
