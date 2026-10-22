@@ -1,0 +1,84 @@
+{
+  "tested_integration_sha": "ec00738fbd97d9564c7711859fc509dae3d66a4e",
+  "suite": "empty-search-reach",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "PASS",
+  "resource": {
+    "available_ram": 8424042496,
+    "active_compilers": [],
+    "cpu_percent": 5.06,
+    "cpu_samples": [
+      12.648221343873523,
+      1.3565891472868241,
+      1.1673151750972721
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 8,010 MiB available, commit 45.2%, pages-in/s 0, disk 1.1 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 24005099520,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "684248e3625e412a3756bd737d1fb624d49dd5a3",
+  "harness_package": "proving-ground-empty-search-reach-1792639531545804800",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent5-verification\\work\\ec00738fbd97d9564c7711859fc509dae3d66a4e\\external-harness-1545804800\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-empty-search-reach-ec00738fbd97d9564c7711859fc509dae3d66a4e\\run-0.log",
+      "timed_out": false,
+      "budget_seconds": 600
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent5-verification\\work\\ec00738fbd97d9564c7711859fc509dae3d66a4e\\external-harness-1545804800\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "tests_passed": 1,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-empty-search-reach-ec00738fbd97d9564c7711859fc509dae3d66a4e\\run-1.log",
+      "timed_out": false,
+      "budget_seconds": 600
+    }
+  ],
+  "executed_test_binary_sha256": {
+    "target\\debug\\deps\\reach-f0a04d070ffdec48.exe": "dedc17d3a67030f157fedd14c95257ecd39e928c6e8c652dd1bc4203f7b2b81d"
+  },
+  "test_identity": {
+    "status": "PASS",
+    "expected_direct_tests": [
+      "seven_immediate_messages_seven_unreachable_and_seven_interrupted_approaches"
+    ],
+    "observed_tests": [
+      "seven_immediate_messages_seven_unreachable_and_seven_interrupted_approaches"
+    ],
+    "unexpected_not_authored": [],
+    "missing_direct_tests": [],
+    "policy": "Unique per-campaign Cargo package identity, fresh source-copy timestamps, and executed-test names checked against frozen authored source; macro-generated names must occur in that source."
+  },
+  "scope": "Independent authoritative empty-search-reach scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-empty-search-reach-ec00738fbd97d9564c7711859fc509dae3d66a4e\\harness\\reach.rs": "4080afa468ea67aa935fd2722ebbe7764e2fd4943a63264e82e0cd7b7060459f"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\reach-f0a04d070ffdec48.exe": "dedc17d3a67030f157fedd14c95257ecd39e928c6e8c652dd1bc4203f7b2b81d"
+  }
+}

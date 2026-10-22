@@ -1,0 +1,17 @@
+{
+  "finding_id": "PG-DEF-003",
+  "status": "CONFIRMED_CURRENT_MAIN",
+  "tested_sha": "ec00738fbd97d9564c7711859fc509dae3d66a4e",
+  "severity": "P2",
+  "implementation_owner": "FORGE",
+  "reproduction": "Fixture installs original immediate battlestaff/limestone recipes at Crafting99/rate500. Full bag retains duplicate tools and raw items. For each item direction set HP0, or queue an actual lethal hit, observe DeathRequested and restore visible HP without respawn. Submit exact selected raw slot17 via public prepare/finish held-use boundary.",
+  "expected": "No item transaction, XP award, RNG or later replay while dead or death-pending. Living selected-slot controls produce exactly one output.",
+  "actual": "All8 refusal scenarios fail conservation; selected raw changes into output. Limestone gives300 fineXP on success or75 on break. Living control test passes four recipe/direction combinations.",
+  "qualification": "World authority component, not native client reachability or durable persistence acceptance. New main confirmation of historical PG-DEF-003; no new global root cause or isolated-source fix claimed.",
+  "correction": "Apply authoritative alive/death-pending gates before immediate item/XP transaction, publish separately pinned correction and retain living/stale-selected regression controls. Ordinary finding: no implementation stop.",
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-immediate-life-ec00738fbd97d9564c7711859fc509dae3d66a4e-1792639733372574300/manifest.json": "339b64d6a1848f1eb9170f720e5303008c535fe0b05fb7b69800c78c48f1799a",
+    "docs/openrune/verification/independent/integration-external-immediate-life-ec00738fbd97d9564c7711859fc509dae3d66a4e-1792639733372574300/run-1.log": "95743030b5fd6bbd3ff02d59b5c9e57131ad27be14eed01b882cd0e583ddba09",
+    "docs/openrune/verification/independent/integration-external-immediate-life-ec00738fbd97d9564c7711859fc509dae3d66a4e-1792639733372574300/harness/life.rs": "31e79025af559d02a22de7c0fd13bb0192145ae6f99328f59e7e212fdf9e6fff"
+  }
+}

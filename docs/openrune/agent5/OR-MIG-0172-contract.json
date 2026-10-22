@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "implementation_id": "OR-MIG-0172",
+  "revision": 1,
+  "supersedes": null,
+  "feature_name": "Windmill direct ladders and two-tick middle-floor menu",
+  "implementation_commit_sha": "28936e76e9972bfe76b25846cc8966b8b9e151c2",
+  "rust_paths": [
+    "crates/world/src/location_content.rs",
+    "crates/world/src/simulation/door_actions.rs",
+    "crates/world/src/simulation/location_swap_actions.rs",
+    "crates/world/src/simulation/location_choice_actions.rs",
+    "crates/server/src/content/windmill_ladders.rs",
+    "crates/server/src/content.rs",
+    "crates/server/src/startup.rs"
+  ],
+  "source_references": [
+    {
+      "kind": "openrune",
+      "reference": "content/other/windmill/src/main/kotlin/org/rsmod/content/other/windmill/WindmillLadderScript.kt",
+      "sha256": "9df6a94311bdbad681a68816c976f62320a4e2c4eed04c71f7a843c4e771d836",
+      "availability": "protected_local_reference",
+      "revision": "Protected local archive, upstream commit unavailable; configured241"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Ladder",
+      "sha256": "99fd98a5d690cea8e2799191ca061239079e6273c15d9404641510a7c96ff51d",
+      "availability": "protected_local_reference",
+      "revision": "15164969"
+    },
+    {
+      "kind": "wiki",
+      "reference": "Mill Lane Mill",
+      "sha256": "92c83dd1d9ff833599a86ca1fe08002f8558287e2b985bf52cedeedf838d0df0",
+      "availability": "protected_local_reference",
+      "revision": "15264815"
+    }
+  ],
+  "provenance": {
+    "status": "independent_behavior_adaptation",
+    "basis": "Independent adaptation of five explicit source windmill ladder operations and their distinct direct/menu delays, exact native aliases/operations and existing actor-owned choice/climb systems. No donor code, configuration or assets copied.",
+    "restrictions": [
+      "Root ISC does not establish blanket per-file or dependency clearance.",
+      "Protected source/native/cache/Wiki/private and historical evidence stays local. Mill hopper/flour processing, quests, other ladders and generic no-native choice content remain separate."
+    ]
+  },
+  "registration_dispatch": [
+    {
+      "path": "crates/server/src/content/windmill_ladders.rs",
+      "symbol": "pub fn windmill_ladders(",
+      "role": "Attest exact native12964/12965/12966 geometry and all operations, then produce four one-tick direct climbs and one middle menu."
+    },
+    {
+      "path": "crates/server/src/startup.rs",
+      "symbol": "runtime.world.location_handlers.extend(mill_ladders);",
+      "role": "Actual startup refuses conflicts before installing the five-operation batch."
+    },
+    {
+      "path": "crates/world/src/simulation/door_actions.rs",
+      "symbol": "self.start_windmill_choice(slot,loc);",
+      "role": "Reached middle operation1 preserves its source arrival flag and enters an actor-owned location choice."
+    },
+    {
+      "path": "crates/world/src/simulation/location_choice_actions.rs",
+      "symbol": "pub(super) fn start_windmill_choice(",
+      "role": "Capture actor-relative plus/minus1 level destinations with the exact source title/options and delayed climb followup."
+    },
+    {
+      "path": "crates/world/src/simulation/location_choice_actions.rs",
+      "symbol": "ChoiceAfter::Climb { animation, delay } =>",
+      "role": "After valid selected reply, consume/close choice and reuse the checked protected climb entry; immediate spiral choice remains a separate Jump followup."
+    },
+    {
+      "path": "crates/world/src/simulation/location_swap_actions.rs",
+      "symbol": "pub(super) enum ChoiceAfter",
+      "role": "Small typed immediate/delayed followup stays in the existing actor continuation; no new actor field/global scheduler."
+    }
+  ],
+  "dependencies": [
+    "OR-MIG-0168",
+    "OR-MIG-0171",
+    "ENV: existing native location choice renderer/token/close eligibility and authoritative protected climb continuation, movement/occupancy and saved-coordinate synchronization."
+  ],
+  "expected_normal_behavior": [
+    "Bottom12964 operation1 climbs one level; middle12965 operation2 climbs and operation3 descends one; top12966 operation1 descends one. All four direct operations arrive, animate828 for both directions, wait one protected tick and keep the actor x/z.",
+    "Middle12965 operation1 arrives and opens title Climb up or down the ladder? with Climb Up. and Climb Down. in that order. Choice1/2 uses server-owned actor-relative plus/minus1 level, emits animation828 and waits two protected ticks before movement.",
+    "Consume and close the selected menu before starting the existing protected Climb continuation. Dialogue token becomes unavailable while the delayed climb runs, so a stale opposite reply cannot change the selected destination. Existing spiral menu still jumps immediately and retains its own text/translation.",
+    "Use existing authoritative movement/occupancy, saved coordinates, synchronization and climb trace. No fake NPC, inventory change, XP, RNG, sound, model mutation, global scheduler or persistent schema."
+  ],
+  "expected_negative_behavior": [
+    "Wrong aliases/static geometry/operation list/sequence or handler conflicts refuse the entire batch. Do not infer middle/right-click operations from name alone or use the generic downward827 animation here.",
+    "Wrong/stale token, invalid choice, genuine Close, stale location generation, invalid selected destination and canceled/moved/saving/logout/dead/modal actor must not replay a destination. Selected two-tick warmup retains shared held-action and lifecycle cancellation.",
+    "Do not replace actor-relative destinations with location-relative spiral landings, immediate jump after menu, one-tick menu delay or two-floor shortcuts. Existing immediate spiral and NPC/tool choice behavior must remain intact."
+  ],
+  "identifiers": {
+    "locations": [
+      12964,
+      12965,
+      12966
+    ],
+    "operations": [
+      1,
+      2,
+      3
+    ],
+    "sequence": [
+      828
+    ],
+    "direct_delay": [
+      1
+    ],
+    "menu_delay": [
+      2
+    ],
+    "delta_level": [
+      1,
+      -1
+    ],
+    "choices": [
+      1,
+      2
+    ],
+    "title": [
+      "Climb up or down the ladder?"
+    ],
+    "options": [
+      "Climb Up.",
+      "Climb Down."
+    ]
+  },
+  "timing_and_transactions": {
+    "timing": [
+      "All five source operations request arriveDelay. Four direct climbs animate828/delay1; the middle menu animates828/delay2 only after a valid choice. Waiting for the menu does not itself begin a climb.",
+      "Generic source approach/movement-cycle ordering remains a V4 obligation. Immediate spiral choice keeps Jump; windmill uses typed Climb followup."
+    ],
+    "transactions": [
+      "Reuse existing actor-owned token, captured target generation, origin/last movement and two server destinations. Invalid choice keeps the valid menu; replay cannot replace a consumed selection.",
+      "After selection, close the menu and dispatch through start_fixed_location_climb with the selected checked actor-relative coordinate, animation828 and delay2. That existing continuation validates the target/origin/lifecycle again before authoritative movement.",
+      "No new player field or persistence/schema is added. ChoiceAfter selects actual immediate or delayed consumers within existing pending_location_action; old generic choice cancellation remains authoritative."
+    ]
+  },
+  "required_verification_levels": [
+    {
+      "level": "V0",
+      "required": true,
+      "reason": "Exact three native ladders/five operations, all-direct828 and source1/2 delay metadata, actual startup/dispatch/native choice and executable compilation."
+    },
+    {
+      "level": "V1",
+      "required": true,
+      "reason": "Menu title/order, both actor-relative choices, exact two-tick warmup/animation, token consumption/opposite replay, close/held/stale/logout/modal cancellation; existing immediate spiral and other choice-family regressions."
+    },
+    {
+      "level": "V2",
+      "required": true,
+      "reason": "Native all five operations, direct1 versus menu2 timing and828 animation, correct floor/position/GPI, genuine Close and stale ResumePause controls."
+    },
+    {
+      "level": "V3",
+      "required": true,
+      "reason": "Both menu wait and selected protected warmup interruption, held action, movement, logout/reconnect/death/modal, saved landing and no transient token replay."
+    },
+    {
+      "level": "V4",
+      "required": true,
+      "reason": "Pinned WindmillLadderScript and native definitions against Wiki Ladder/Mill Lane Mill traversal context; exact labels, direct/menu timing and source approach semantics need independent observation."
+    }
+  ],
+  "known_limitations": [
+    "Independent native UI/animation/floor/scene/GPI and lifecycle/reference acceptance remains pending. Working-tree development checks do not establish actual native or pristine acceptance.",
+    "Only explicit source mill12964/12965/12966 operations are registered. Hopper/flour/quest content, other windmills and generic ladder-choice group with no attested native nodes remain separate.",
+    "Common host static movement-cycle/arrival policy remains; exact source/native approach and selected-warmup interruption timing require V4."
+  ],
+  "implementation_status": "implemented_pending_verification",
+  "verification_status": "queued_independent",
+  "behavior_basis": {
+    "observed_in_source": [
+      "WindmillLadderScript registers bottom/top first operations and middle first/second/third. Direct climbs are actor-relative plus/minus1 level, source arriveDelay, animation828 and delay1 for either direction.",
+      "Middle first menu source exact title/options selects actor-relative destination, emits828 and delays2. It is not the spiral menu and does not immediately telejump after reply."
+    ],
+    "wiki_supported": [
+      "Pinned Ladder/Mill Lane Mill pages support floor traversal/location context; they do not independently prove the exact source title, animation or1/2 tick distinction."
+    ],
+    "intentional_adaptations": [
+      "Small typed ChoiceAfter reuses current actor choice/token/lifecycle state and171 checked protected climb entry. Source-specific labels/destinations/timing remain distinct; no NPC/global engine or actor persistence is introduced."
+    ],
+    "inferred_or_unresolved": [
+      "Independent genuine native menu/Close/ResumePause, direct/menu timing, floor/GPI and lifecycle/source comparison; unrelated mill/quest content remains open."
+    ]
+  },
+  "legacy_evidence": [
+    {
+      "reference": "OPENRUNE_MIGRATION_STATUS.md",
+      "scope": "Build CPU capacity: 19.4% sampled, ceiling70%.; Capacity: 6,502 MiB available, commit 64.0%, pages-in/s 0, disk 3.7 ms.; Cargo concurrency: -j 2;     Finished `test` profile [unoptimized + debuginfo] target(s) in 3m 42s; test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 271 filtered out; finished in 4.82s; test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 600 filtered out; finished in 4.64s; Build CPU capacity: 38.0% sampled, ceiling70%.; Capacity: 6,866 MiB available, commit 61.6%, pages-in/s 0, disk 4.3 ms.; Cargo concurrency: -j 2;     Finished `dev` profile [unoptimized + debuginfo] target(s) in 26.59s; 571 unchanged hashes per run. Working-tree development checks; not native/pristine/independent acceptance.",
+      "independent_verification": false
+    }
+  ]
+}

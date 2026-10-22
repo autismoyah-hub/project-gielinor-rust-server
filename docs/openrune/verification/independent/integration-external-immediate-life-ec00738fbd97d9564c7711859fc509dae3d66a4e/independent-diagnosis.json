@@ -1,0 +1,8 @@
+{
+  "status": "HARNESS_API_MISMATCH",
+  "scope": "No executable/test ran. Consolidated Recipe adds skill and output_count. Original Agent7 Crafting12/one-output semantics are made explicit in Agent5 fixture; no gameplay expectation changes.",
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-immediate-life-ec00738fbd97d9564c7711859fc509dae3d66a4e/manifest.json": "9df05e880b52eb3630302223b243f2b955c7fe968507d7b99a1a115468f50554",
+    "docs/openrune/verification/independent/integration-external-immediate-life-ec00738fbd97d9564c7711859fc509dae3d66a4e/run-1.log": "e97fdce79c0a7891ac444d24a38defb46b4a50798d2a2b4df811ba8da74220e4"
+  }
+}

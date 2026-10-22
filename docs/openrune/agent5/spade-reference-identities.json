@@ -1,0 +1,62 @@
+{
+  "implementation_sha": "cec5b1e125021b606371fc70488a67635b7213c9",
+  "status": "HASHES_VERIFIED",
+  "references": [
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-locs/src/main/kotlin/org/rsmod/content/generic/locs/spade/SpadeScript.kt",
+      "sha256": "d7f20f599779618957ae3b6f017e7ea5cfa0eb4bdba210d80edb4adcd6d9eedb",
+      "availability": "protected_local_reference",
+      "revision": "Protected archive; upstream commit unavailable; configured241",
+      "actual_sha256": "d7f20f599779618957ae3b6f017e7ea5cfa0eb4bdba210d80edb4adcd6d9eedb",
+      "actual_revision": "Protected archive; upstream commit unavailable; configured241",
+      "independently_read": true
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/generic/generic-locs/src/main/kotlin/org/rsmod/content/generic/locs/spade/SpadeModule.kt",
+      "sha256": "f7af8bc2a2e896433a43e2ecdf996da2304b212aac8dba046dc0486e57d74afe",
+      "availability": "protected_local_reference",
+      "revision": "Protected archive; upstream commit unavailable; configured241",
+      "actual_sha256": "f7af8bc2a2e896433a43e2ecdf996da2304b212aac8dba046dc0486e57d74afe",
+      "actual_revision": "Protected archive; upstream commit unavailable; configured241",
+      "independently_read": true
+    },
+    {
+      "kind": "openrune",
+      "reference": "api/player/src/main/kotlin/org/rsmod/api/player/hook/SpadeDigHook.kt",
+      "sha256": "3e772d1abf0c291e46d7a8c474a956240f15ed80170ecb538f4bfb9bb2f64a36",
+      "availability": "protected_local_reference",
+      "revision": "Protected archive; upstream commit unavailable; configured241",
+      "actual_sha256": "3e772d1abf0c291e46d7a8c474a956240f15ed80170ecb538f4bfb9bb2f64a36",
+      "actual_revision": "Protected archive; upstream commit unavailable; configured241",
+      "independently_read": true
+    },
+    {
+      "kind": "openrune",
+      "reference": "content/quest/pack/src/main/resources/gamevals.toml",
+      "sha256": "9c1162287abf69da9671a446d755d01d5e17e9c7e1950008dac22273030ae7c4",
+      "availability": "protected_local_reference",
+      "revision": "Protected archive; upstream commit unavailable; configured241",
+      "actual_sha256": "9c1162287abf69da9671a446d755d01d5e17e9c7e1950008dac22273030ae7c4",
+      "actual_revision": "Protected archive; upstream commit unavailable; configured241",
+      "independently_read": true
+    },
+    {
+      "kind": "wiki",
+      "reference": "Spade",
+      "sha256": "c8758b6e0ef49e81a1d8913ff22dcc4b0b433c00f9ef50be141ee2c678849c27",
+      "availability": "protected_local_reference",
+      "revision": "15318128",
+      "actual_sha256": "c8758b6e0ef49e81a1d8913ff22dcc4b0b433c00f9ef50be141ee2c678849c27",
+      "actual_revision": 15318128,
+      "independently_read": true
+    }
+  ],
+  "source_read_scope": "SpadeScript,Module,Hook read directly. Quest gamevals hash verified with digspade entry inspected separately. Wiki full wikitext loaded for hash; generic Dig/tool context distinct from exact tick/audio identifiers.",
+  "limitations": [
+    "Source configured241/upstream commit unavailable. Target239 IDs require actual cache checks.",
+    "Synchronous test hook callbacks do not establish real suspendable quest/boss consumers.",
+    "Native sound1470/animation/reset/chat and persistence acceptance remain open."
+  ]
+}

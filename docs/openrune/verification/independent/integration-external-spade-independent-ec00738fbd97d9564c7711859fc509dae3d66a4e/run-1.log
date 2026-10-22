@@ -1,0 +1,119 @@
+warning: unused import: `*`
+   --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\typenum-1.17.0\src\lib.rs:104:25
+    |
+104 |     N1, N2, Z0, P1, P2, *,
+    |                         ^
+    |
+    = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `typenum` (lib) generated 1 warning (run `cargo fix --lib -p typenum` to apply 1 suggestion)
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\generic-array-0.14.7\src\lib.rs:235:33
+    |
+235 |     pub unsafe fn iter_position(&mut self) -> (slice::IterMut<T>, &mut usize) {
+    |                                 ^^^^^^^^^      ^^^^^^^^^^^^^^^^^  ^^^^^^^^^^ the same lifetime is elided here
+    |                                 |              |
+    |                                 |              the same lifetime is hidden here
+    |                                 the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+    = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default
+help: use `'_` for type paths
+    |
+235 |     pub unsafe fn iter_position(&mut self) -> (slice::IterMut<'_, T>, &mut usize) {
+    |                                                               +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\generic-array-0.14.7\src\lib.rs:290:33
+    |
+290 |     pub unsafe fn iter_position(&mut self) -> (slice::Iter<T>, &mut usize) {
+    |                                 ^^^^^^^^^      ^^^^^^^^^^^^^^  ^^^^^^^^^^ the same lifetime is elided here
+    |                                 |              |
+    |                                 |              the same lifetime is hidden here
+    |                                 the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+290 |     pub unsafe fn iter_position(&mut self) -> (slice::Iter<'_, T>, &mut usize) {
+    |                                                            +++
+
+warning: `generic-array` (lib) generated 2 warnings (run `cargo fix --lib -p generic-array` to apply 2 suggestions)
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\num-bigint-0.4.6\src\biguint\addition.rs:23:9
+   |
+23 |         unsafe { arch::_addcarry_u64(carry, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+   |
+   = note: `#[warn(unused_unsafe)]` (part of `#[warn(unused)]`) on by default
+
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\num-bigint-0.4.6\src\biguint\subtraction.rs:23:9
+   |
+23 |         unsafe { arch::_subborrow_u64(borrow, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+
+warning: `num-bigint` (lib) generated 2 warnings
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+warning: unused macro definition: `prefix`
+  --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:71:14
+   |
+71 | macro_rules! prefix {
+   |              ^^^^^^
+   |
+   = note: `#[warn(unused_macros)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `prefix`
+  --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:88:16
+   |
+88 | pub(crate) use prefix;
+   |                ^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `libbz2_rs_sys_version`
+  --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\libbz2-rs-sys-0.2.2\src\lib.rs:83:16
+   |
+83 | pub(crate) use libbz2_rs_sys_version;
+   |                ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function `from_mut` is never used
+   --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:253:30
+    |
+230 |     impl<S: StreamState> BzStream<S> {
+    |     -------------------------------- associated function in this implementation
+...
+253 |         pub(crate) unsafe fn from_mut(s: &mut bz_stream) -> &mut Self {
+    |                              ^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `libbz2-rs-sys` (lib) generated 4 warnings (run `cargo fix --lib -p libbz2-rs-sys` to apply 2 suggestions)
+   Compiling proving-ground-spade-independent-1792640067723066600 v0.1.0 (C:\Projects\OSRSRSPS\agent5-verification\work\ec00738fbd97d9564c7711859fc509dae3d66a4e\external-harness-7723066600)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 8.50s
+     Running tests\spade.rs (C:\Projects\OSRSRSPS\agent5-verification\work\ec00738fbd97d9564c7711859fc509dae3d66a4e\target\debug\deps\spade-7a6719d2b778a8d3.exe)
+
+running 5 tests
+A5_SPADE hook deny=false first_claim_only=true
+A5_SPADE cancel mode=0 no_late_message_reward=true
+A5_SPADE hook deny=true first_claim_only=true
+test independent_first_claim_callback_and_veto_do_not_fall_back_to_generic_text ... ok
+A5_SPADE cancel mode=1 no_late_message_reward=true
+A5_SPADE cancel mode=2 no_late_message_reward=true
+test actual_held_close_and_logout_cancel_completion_without_replay ... ok
+A5_SPADE initial24 wrong_selected_with_real_duplicate vars catalog missing_rule invalid_delay zeroHP modal refuse=true
+test stale_selected_duplicate_and_invalid_initial_state_refuse_without_effects ... ok
+A5_SPADE native952 firstDig seq830 source1470 delay2 factory6contradictions=true; sound_alias=None
+test actual_native_cache_binding_identity_and_whole_factory_contradictions ... ok
+A5_SPADE normal112 all28slots full/open member/F2P exact_delay2 no_RNG_reward_repeat=true
+test all_selected_slots_both_memberships_full_and_open_pack_two_tick_no_reward_or_repeat ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.91s

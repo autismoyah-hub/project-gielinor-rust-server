@@ -1,0 +1,97 @@
+"""Run independent public-API scenarios at an explicit integration commit."""
+import argparse,hashlib,importlib.util,json,os,re,shutil,subprocess,time
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+READONLY_RESOURCES=ROOT.parent/'agent7-verification/work/native-combat/resources'
+p=argparse.ArgumentParser();p.add_argument('sha');p.add_argument('--suite',choices=['spade-life-tail','spade-independent','empty-search-route-tail','flax-generations-tail','flax-generations','flax-guards','flax-world','empty-search-reach','empty-search-oracles','empty-search-current-tail','empty-search-current','empty-search-bindings','consumable-food-clocks-fresh','food-native-life','food-native-bindings','food-native-world','food-native-operations','giant-crab-current','giant-crab-life','giant-crab-bindings','giant-crab-selected','consumable-food-clocks-prerng','consumable-food-clocks-life','consumable-food-clocks-bindings','consumable-food-clocks-attack','consumable-food-clocks-refusals','consumable-food-clocks','jangerberries-bindings','jangerberries-world-selected','jangerberries-kernel-tail','jangerberries-world','jangerberries-kernel','prayer-life-original','wine-drink-bindings','wine-drink-life','food-life-original','wine-drink-world','wine-drink-kernel','cooking-gauntlets-life','cooking-gauntlets-world','cooking-gauntlets-kernel','cooking-cape-life','cooking-cape-guards-tail','cooking-cape-world','skillcape-vendor-spawn-inventory','skillcape-vendor-spawns','skillcape-vendor-cache-facts','skillcape-vendor-npc-authority','skillcape-vendor-item-authority','skillcape-vendor-life-tail','skillcape-vendor-life','skillcape-vendor-owned','skillcape-vendor-hood','skillcape-vendor-world','skillcape-vendor-matrix','zealot-selected-world-tail','zealot-selected-life','zealot-selected-world','zealot-selected-matrix','rune-altars-current-regression','crafting-cape-guild-entry','crafting-cape-buttons','crafting-cape-death','crafting-cape-interrupt','crafting-cape-expiry-observe','crafting-cape-expiry','crafting-cape-bindings','crafting-cape-world','daeyalt-member-transition','daeyalt-boundaries-tail','daeyalt-boundaries','rune-close-ordering','daeyalt-context','daeyalt-ordinary-regression','daeyalt-live-guards','daeyalt-kernel-config','daeyalt-kernel','daeyalt-bindings','daeyalt-guards-tail','daeyalt-guards','daeyalt-world','rune-altars-boundaries','rune-altars-bindings','rune-altars-stock','rune-altars-guards','rune-altars-world','imcando-worn-duplicates','imcando-worn-interrupt','imcando-worn-listeners','imcando-worn-bindings','imcando-worn-refusals','imcando-worn-world','imcando-held-interrupt','imcando-held-refusals','imcando-held-bindings','imcando-held-world','light-life','light-legacy-bindings','light-tool-regression','light-bindings','member-tanning-guards','member-tanning-world','tanning-world','amethyst-policy','amethyst-boosts','amethyst-life','amethyst-legacy','amethyst-bindings','amethyst-guards','amethyst-world','crafting-finishes-refusals','crafting-finishes-admission','crafting-finishes-bindings','crafting-finishes-matrix','crafting-finishes-world','current-assembly-regression','energy-food','food-regeneration','assembly-batch','chemistry-matrix','prayer-cache','gem-matrix','gem-bindings','shell-matrix','shell-bindings','pouch-matrix','glass-matrix','glass-bindings','pouch-bindings','glass-admission','fallible-gem-matrix','amethyst-counts','production-gems','immediate-tools','immediate-bindings','immediate-admission','immediate-life','fallible-gem-bindings','immediate-regression','fallible-gem-world','light-source-world','light-conversion-world','sinew-matrix','sinew-bindings','battlestaff-matrix','battlestaff-bindings','battlestaff-regression','battlestaff-lifecycle','crab-matrix','crab-bindings','crab-admission','crab-world','crab-lifecycle','crab-counts','pair-production','pair-production-late','pair-production-admission','pair-production-regression','pair-production-bindings','pair-production-life','pair-production-counts','pair-production-counts-tail'],required=True);a=p.parse_args();assert re.fullmatch('[0-9a-f]{40}',a.sha)
+policy=ROOT/'docs/openrune/verification/USER_DEFERRALS.json'
+if policy.exists() and json.loads(policy.read_text(encoding='utf-8'))['status']=='ACTIVE_UNTIL_USER_RESUMES':assert a.suite!='chemistry-matrix','User deferred chemistry tests; select eligible unrelated suite'
+out=ROOT/'docs/openrune/verification/independent'/('integration-external-'+a.suite+'-'+a.sha)
+if out.exists():out=out.parent/(out.name+'-'+str(time.time_ns()))
+out.mkdir(parents=True)
+report={'tested_integration_sha':a.sha,'suite':a.suite,'campaign_kind':'integration','independent_verification':True,'status':'IN_PROGRESS'}
+spec=importlib.util.spec_from_file_location('capacity',ROOT/'scripts/proving-ground-native.py');capacity=importlib.util.module_from_spec(spec);spec.loader.exec_module(capacity);capacity.OUT=out
+try:report['resource']=capacity.guard()
+except (AssertionError,subprocess.CalledProcessError) as exc:
+    report.update(status='BLOCKED',reason='Measured-resource deferral; no substitute target: '+str(exc));(out/'manifest.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report));raise SystemExit(0)
+checkout=ROOT.parent/'agent5-targets'/a.sha
+if not checkout.exists():subprocess.run(['git','-c','safe.directory='+ROOT.as_posix(),'worktree','add','--detach',str(checkout),a.sha],cwd=ROOT,check=True)
+def git(*args):return subprocess.check_output(['git','-c','safe.directory='+checkout.as_posix(),*args],cwd=checkout,text=True).strip()
+assert git('rev-parse','HEAD')==a.sha and not git('status','--porcelain','--untracked-files=no')
+report['source_tree']=git('rev-parse','HEAD^{tree}')
+work=ROOT/'work'/a.sha
+for name in ['target','tmp','cargo-home','external-harness']:(work/name).mkdir(parents=True,exist_ok=True)
+package_name='proving-ground-'+a.suite+'-'+str(time.time_ns())
+report['harness_package']=package_name
+harness=work/('external-harness-'+str(time.time_ns())[-10:]);shutil.copytree(ROOT/'verification'/a.suite/'tests',harness/'tests',dirs_exist_ok=True,copy_function=shutil.copyfile);shutil.copytree(harness/'tests',out/'harness')
+(harness/'Cargo.toml').write_text('[package]\nname='+json.dumps(package_name)+'\nversion="0.1.0"\nedition="2021"\n[workspace]\n[dependencies]\ngielinor-world={path='+json.dumps((checkout/'crates/world').as_posix())+'}\n',encoding='utf-8')
+if a.suite=='crafting-cape-buttons':
+    bridge=harness/'boundary-bridge';(bridge/'src').mkdir(parents=True)
+    pinned=checkout/'crates/server/src/runtime/equipment_buttons.rs'
+    manifest='[package]\nname="pg-cape-boundary"\nversion="0.1.0"\nedition="2021"\n[dependencies]\ngielinor-world={path='+json.dumps((checkout/'crates/world').as_posix())+'}\ngielinor-protocol={path='+json.dumps((checkout/'crates/protocol').as_posix())+'}\n'
+    (bridge/'Cargo.toml').write_text(manifest,encoding='utf-8',newline='\n')
+    library='mod pinned { include!('+json.dumps(pinned.as_posix())+'); }\npub fn route(button:&gielinor_protocol::buttons::Button,slot:usize,item:i32,rules:&std::collections::BTreeMap<i32,gielinor_world::worn_stat_boost::Rule>)->Option<gielinor_world::simulation::Action>{pinned::boost_action(button,slot,item,rules)}\n'
+    (bridge/'src/lib.rs').write_text(library,encoding='utf-8',newline='\n');(out/'bridge-lib.rs').write_text(library,encoding='utf-8',newline='\n')
+    with (harness/'Cargo.toml').open('a',encoding='utf-8')as f:f.write('gielinor-protocol={path='+json.dumps((checkout/'crates/protocol').as_posix())+'}\npg-cape-boundary={path='+json.dumps(bridge.as_posix())+'}\n')
+    (out/'bridge.json').write_text(json.dumps({'target_file':pinned.relative_to(checkout).as_posix(),'target_source_sha256':hashlib.sha256(pinned.read_bytes()).hexdigest(),'bridge_library_sha256':hashlib.sha256(library.encode()).hexdigest(),'dependency_manifest':manifest,'scope':'Small owned visibility bridge includes the exact unmodified pinned pure adapter in a normal dependency crate. Its cfg(test) developer tests are not compiled or run; only independently authored integration test calls execute. Component has already been mapped by Runtime: upstream open-interface/component authority is a separate V0/V2 obligation. Typed Button fields only; no sockets or constructed wire payloads.'},indent=2)+'\n',encoding='utf-8',newline='\n')
+
+if a.suite in ['food-native-operations','food-native-world','food-native-life']:
+    bridge=harness/'food-boundary';(bridge/'src').mkdir(parents=True)
+    pinned=checkout/'crates/server/src/food_operations.rs'
+    manifest='[package]\nname="pg-food-boundary"\nversion="0.1.0"\nedition="2021"\n[dependencies]\n'+''.join(name+'={path='+json.dumps((checkout/('crates/'+sub)).as_posix())+'}\n'for name,sub in [('gielinor-world','world'),('gielinor-protocol','protocol'),('gielinor-cache','cache')])
+    library='#[path='+json.dumps(pinned.as_posix())+'] mod pinned;\npub fn operation(item:&gielinor_cache::definitions::ItemType)->Option<u8>{pinned::button_operation(item)}\npub fn route(button:&gielinor_protocol::buttons::Button,slot:usize,current:i32,foods:&std::collections::BTreeMap<i32,gielinor_world::food::Edible>,defs:&gielinor_cache::game::Definitions,native:bool)->Option<gielinor_world::simulation::Action>{pinned::held_action(button,slot,current,foods,defs,native)}\n'
+    (bridge/'Cargo.toml').write_text(manifest,encoding='utf-8',newline='\n');(bridge/'src/lib.rs').write_text(library,encoding='utf-8',newline='\n');(out/'bridge-lib.rs').write_text(library,encoding='utf-8',newline='\n')
+    with(harness/'Cargo.toml').open('a',encoding='utf-8')as f:f.write('pg-food-boundary={path='+json.dumps(bridge.as_posix())+'}\n'+''.join(name+'={path='+json.dumps((checkout/('crates/'+sub)).as_posix())+'}\n'for name,sub in [('gielinor-protocol','protocol'),('gielinor-cache','cache')]))
+    env_food=True
+    (out/'bridge.json').write_text(json.dumps({'target_file':pinned.relative_to(checkout).as_posix(),'target_source_sha256':hashlib.sha256(pinned.read_bytes()).hexdigest(),'scope':'Exact unmodified pinned module through owned visibility bridge. Public typed Button/Action values only; no packet bytes, sockets or native claim. Upstream actual interface/component resolution separate. cfg(test) FORGE tests not executed.'},indent=2)+'\n',encoding='utf-8',newline='\n')
+
+env=os.environ.copy();env.update(CARGO_HOME=str(work/'cargo-home'),CARGO_TARGET_DIR=str(work/'target'),TMP=str(work/'tmp'),TEMP=str(work/'tmp'),PATH=str(capacity.TOOL)+os.pathsep+env['PATH'])
+if a.suite in ['food-native-operations','food-native-world','food-native-life']:env.update(PG_GAME_CACHE=str(READONLY_RESOURCES/'cache/game'),PG_SYMBOLS=str(READONLY_RESOURCES/'symbols'))
+if a.suite in ['skillcape-vendor-cache-facts','skillcape-vendor-spawns','skillcape-vendor-spawn-inventory']:
+    with (harness/'Cargo.toml').open('a',encoding='utf-8') as f:f.write('gielinor-cache={path='+json.dumps((checkout/'crates/cache').as_posix())+'}\n')
+    env.update(PG_GAME_CACHE=str(READONLY_RESOURCES/'cache/game'),PG_SYMBOLS=str(READONLY_RESOURCES/'symbols'))
+if a.suite in ['empty-search-route-tail','flax-generations-tail','flax-generations','flax-guards','flax-world','empty-search-reach','empty-search-oracles','empty-search-current-tail','empty-search-current','empty-search-bindings','food-native-bindings','giant-crab-bindings','consumable-food-clocks-bindings','jangerberries-bindings','wine-drink-bindings','crafting-cape-bindings','daeyalt-bindings','rune-altars-bindings','imcando-worn-bindings','imcando-held-bindings','light-legacy-bindings','light-bindings','amethyst-bindings','crafting-finishes-bindings','prayer-cache','gem-bindings','shell-bindings','glass-bindings','pouch-bindings','immediate-bindings','fallible-gem-bindings','sinew-bindings','battlestaff-bindings','crab-bindings','pair-production-bindings']:
+    with (harness/'Cargo.toml').open('a',encoding='utf-8') as f:f.write('gielinor-cache={path='+json.dumps((checkout/'crates/cache').as_posix())+'}\n')
+    env.update(PG_GAME_CACHE=str(READONLY_RESOURCES/'cache/game'),PG_SYMBOLS=str(READONLY_RESOURCES/'symbols'))
+    if a.suite in ['empty-search-route-tail','flax-generations-tail','flax-generations','flax-guards','flax-world','empty-search-reach','empty-search-oracles','empty-search-current-tail','empty-search-current','empty-search-bindings','food-native-bindings','giant-crab-bindings','consumable-food-clocks-bindings','jangerberries-bindings','wine-drink-bindings','crafting-cape-bindings','daeyalt-bindings','rune-altars-bindings','imcando-worn-bindings','imcando-held-bindings','light-legacy-bindings','light-bindings','amethyst-bindings','crafting-finishes-bindings','gem-bindings','shell-bindings','glass-bindings','pouch-bindings','immediate-bindings','fallible-gem-bindings','sinew-bindings','battlestaff-bindings','crab-bindings','pair-production-bindings']:
+        with (harness/'Cargo.toml').open('a',encoding='utf-8') as f:f.write('gielinor-server={path='+json.dumps((checkout/'crates/server').as_posix())+'}\n')
+if a.suite=='spade-independent':
+    with (harness/'Cargo.toml').open('a',encoding='utf-8') as f:
+        for package,folder in [('gielinor-cache','cache'),('gielinor-server','server')]:f.write(package+'={path='+json.dumps((checkout/('crates/'+folder)).as_posix())+'}\n')
+    env.update(PG_GAME_CACHE=str(READONLY_RESOURCES/'cache/game'),PG_SYMBOLS=str(READONLY_RESOURCES/'symbols'))
+report['runs']=[]
+for i,args in enumerate([['generate-lockfile','--offline'],['test','--offline','--locked','-j','1']]):
+    cmd=[str(capacity.TOOL/'cargo.exe'),*args,'--manifest-path',str(harness/'Cargo.toml')];log=out/f'run-{i}.log'
+    if a.suite in ['empty-search-route-tail','flax-generations-tail','flax-generations','flax-guards','flax-world','empty-search-reach','empty-search-oracles','empty-search-current-tail','empty-search-current','empty-search-bindings','jangerberries-bindings','jangerberries-world-selected','jangerberries-kernel-tail','jangerberries-world','jangerberries-kernel','prayer-life-original','wine-drink-bindings','wine-drink-life','food-life-original','wine-drink-world','wine-drink-kernel','cooking-gauntlets-life','cooking-gauntlets-world','cooking-gauntlets-kernel','cooking-cape-life','cooking-cape-guards-tail','cooking-cape-world','skillcape-vendor-spawn-inventory','skillcape-vendor-spawns','skillcape-vendor-cache-facts','skillcape-vendor-npc-authority','skillcape-vendor-item-authority','skillcape-vendor-life-tail','skillcape-vendor-life','skillcape-vendor-owned','skillcape-vendor-hood','skillcape-vendor-world','skillcape-vendor-matrix','zealot-selected-world-tail','zealot-selected-life','zealot-selected-world','zealot-selected-matrix','rune-altars-current-regression','crafting-cape-guild-entry','crafting-cape-buttons','crafting-cape-death','crafting-cape-interrupt','crafting-cape-expiry-observe','crafting-cape-expiry','crafting-cape-bindings','crafting-cape-world','daeyalt-member-transition','daeyalt-boundaries-tail','daeyalt-boundaries','rune-close-ordering','daeyalt-context','daeyalt-ordinary-regression','daeyalt-live-guards','daeyalt-kernel-config','daeyalt-kernel','daeyalt-bindings','daeyalt-guards-tail','daeyalt-guards','daeyalt-world','rune-altars-boundaries','rune-altars-bindings','rune-altars-stock','rune-altars-guards','rune-altars-world','imcando-worn-duplicates','imcando-worn-interrupt','imcando-worn-listeners','imcando-worn-refusals','imcando-worn-world','imcando-held-interrupt','imcando-held-refusals','imcando-held-world','light-life','tanning-world','amethyst-bindings','crafting-finishes-bindings','crafting-finishes-world','prayer-cache','gem-bindings','shell-bindings','glass-bindings','pouch-bindings','immediate-bindings','fallible-gem-bindings','sinew-bindings','battlestaff-bindings','crab-bindings','pair-production','immediate-life','pair-production-counts','pair-production-counts-tail'] and args[0]=='test':cmd+=['--','--nocapture']
+    if a.suite in ['spade-independent','spade-life-tail'] and args[0]=='test':cmd+=['--','--nocapture']
+    print('INDEPENDENT_INTEGRATION',a.sha,args,flush=True)
+    # Measured matrices and the fresh pinned flax build require a bounded600second budget; retain prior timeout evidence.
+    budget=600 # bounded fresh consolidated-main compilation; prior campaign timeouts stay historical
+    timed_out=False
+    with log.open('w',encoding='utf-8',newline='\n') as f:
+        try:rc=subprocess.run(cmd,cwd=checkout,env=env,stdout=f,stderr=subprocess.STDOUT,timeout=budget,creationflags=subprocess.BELOW_NORMAL_PRIORITY_CLASS).returncode
+        except subprocess.TimeoutExpired:
+            rc=124;timed_out=True
+            report['reason']='Owned build/test budget expired after '+str(budget)+' seconds; preserve raw output, no implementation failure or acceptance inferred.'
+    text=log.read_text(encoding='utf-8');count=sum(map(int,re.findall(r'test result: (?:ok|FAILED)\. (\d+) passed;',text)))
+    report['runs'].append({'command':cmd,'exit_code':rc,'tests_passed':count,'log':str(log.relative_to(ROOT)),'timed_out':timed_out,'budget_seconds':budget})
+    if rc:break
+report['status']='BLOCKED' if any(x.get('timed_out')for x in report['runs'])else 'PASS' if all(x['exit_code']==0 for x in report['runs']) and report['runs'][-1]['tests_passed']>0 else 'FAIL'
+# Shared dependency cache must never substitute another suite's test executable.
+source_text='\n'.join(p.read_text(encoding='utf-8')for p in(harness/'tests').glob('*.rs'))
+expected=set(re.findall(r'#\[test\]\s*(?:pub\s+)?fn\s+(\w+)',source_text))
+run_text='\n'.join((ROOT/r['log']).read_text(encoding='utf-8')for r in report['runs'])
+observed={n.split('::')[-1]for n in re.findall(r'^test ([\w:]+) \.\.\. (?:ok|FAILED|ignored)',run_text,re.M)}
+unexpected=sorted(n for n in observed if not re.search(r'\b'+re.escape(n)+r'\b',source_text))
+missing=sorted(expected-observed)
+executed_paths=[Path(value)for value in re.findall(r'Running [^\n]*\(([^)\n]+\.exe)\)',run_text)]
+report['executed_test_binary_sha256']={str(p.relative_to(work)):hashlib.sha256(p.read_bytes()).hexdigest()for p in executed_paths if p.is_file()}
+report['test_identity']={'status':'PASS'if observed and not unexpected and not missing else 'NOT_PROVEN','expected_direct_tests':sorted(expected),'observed_tests':sorted(observed),'unexpected_not_authored':unexpected,'missing_direct_tests':missing,'policy':'Unique per-campaign Cargo package identity, fresh source-copy timestamps, and executed-test names checked against frozen authored source; macro-generated names must occur in that source.'}
+if (report['status']=='PASS'or observed)and(unexpected or missing or not observed):
+    report['status']='HARNESS_FAILURE'
+    report['reason']='Executed test identity does not match authored scenario; no gameplay acceptance from this run.'
+report['scope']='Independent authoritative '+a.suite+' scenarios at explicit SHA; scenario evidence only, not complete contract acceptance'
+report['harness_sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (out/'harness').glob('*.rs')}
+report['test_binary_sha256']={str(p.relative_to(work)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (work/'target/debug/deps').glob('*.exe')}
+assert git('rev-parse','HEAD')==a.sha and not git('status','--porcelain','--untracked-files=no')
+(out/'manifest.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n');print(json.dumps(report),flush=True)

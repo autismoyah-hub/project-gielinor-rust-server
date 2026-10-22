@@ -1,0 +1,21 @@
+{
+  "finding_id": "PG-DEF-003-SPADE",
+  "parent_finding": "PG-DEF-003",
+  "severity": "P2",
+  "status": "CONFIRMED_PINNED_AND_MAIN",
+  "tested_shas": [
+    "cec5b1e125021b606371fc70488a67635b7213c9",
+    "ec00738fbd97d9564c7711859fc509dae3d66a4e"
+  ],
+  "reproduction": "Admit a real player with spade952 slot7/HP99. Queue a150-damage typeless World hit and observe DeathRequested with HP0. Restore only visible HP99, without respawn. Submit Dig before admission, or restore HP during the already admitted two-tick Dig.",
+  "expected": "No Dig animation/sound/admission after unresolved death; no completed generic message/hook during that death state.",
+  "actual": "Both independently executed pins emit one generic message in each restoredHP case; the pre-admission case also emits a new Dig animation. Both HP0 controls suppress completion. No item/XP reward is invented by generic Dig.",
+  "correction": "Use authoritative life/death-pending state before spade admission and completion/hook dispatch. Retain original failures; publish and retest separately pinned correction.",
+  "scope": "World authority, not native gameplay reachability. Synchronous independent callbacks are fixture-only; no actual quest/boss consumer accepted. Ordinary backlog finding; no FORGE stop.",
+  "evidence_sha256": {
+    "docs/openrune/verification/independent/integration-external-spade-life-tail-cec5b1e125021b606371fc70488a67635b7213c9/manifest.json": "0946996f4f6c37797f3929e80f6b61902dba06af6619a9385416be1f86f7e057",
+    "docs/openrune/verification/independent/integration-external-spade-life-tail-ec00738fbd97d9564c7711859fc509dae3d66a4e/manifest.json": "c61016b1d91ddd0864b95c1d50b22b09131a7ef98bb2daed8de988a046a47445",
+    "docs/openrune/verification/independent/integration-external-spade-life-tail-cec5b1e125021b606371fc70488a67635b7213c9/run-1.log": "3a95ffa36ea5b28906db24b574a69c124a6e572078d0d92aa859a142dbc536a3",
+    "docs/openrune/verification/independent/integration-external-spade-life-tail-ec00738fbd97d9564c7711859fc509dae3d66a4e/run-1.log": "793c32ae57fb3911e9bad238f73cc3ad20634a89b80b3e15e979b45426d10d8c"
+  }
+}

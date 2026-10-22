@@ -1,0 +1,91 @@
+{
+  "tested_integration_sha": "cec5b1e125021b606371fc70488a67635b7213c9",
+  "suite": "spade-life-tail",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 8619548672,
+    "active_compilers": [],
+    "cpu_percent": 2.47,
+    "cpu_samples": [
+      1.7892644135188873,
+      5.038759689922479,
+      0.5905511811023612
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 8,169 MiB available, commit 44.8%, pages-in/s 57, disk 2.9 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 20147634176,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "062734f187747f606b5a100eee027bf060d86874",
+  "harness_package": "proving-ground-spade-life-tail-1792640248139690500",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent5-verification\\work\\cec5b1e125021b606371fc70488a67635b7213c9\\external-harness-8139690500\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-spade-life-tail-cec5b1e125021b606371fc70488a67635b7213c9\\run-0.log",
+      "timed_out": false,
+      "budget_seconds": 600
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent5-verification\\work\\cec5b1e125021b606371fc70488a67635b7213c9\\external-harness-8139690500\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 101,
+      "tests_passed": 2,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-spade-life-tail-cec5b1e125021b606371fc70488a67635b7213c9\\run-1.log",
+      "timed_out": false,
+      "budget_seconds": 600
+    }
+  ],
+  "executed_test_binary_sha256": {
+    "target\\debug\\deps\\life-41a2ed884f4499c6.exe": "639df788b919a0c820a4d79b31302c59e1376963387a12299ff2b862d00c2303"
+  },
+  "test_identity": {
+    "status": "PASS",
+    "expected_direct_tests": [
+      "before_admission_death_hp_zero",
+      "before_admission_death_visible_hp_restored",
+      "during_delay_death_hp_zero",
+      "during_delay_death_visible_hp_restored"
+    ],
+    "observed_tests": [
+      "before_admission_death_hp_zero",
+      "before_admission_death_visible_hp_restored",
+      "during_delay_death_hp_zero",
+      "during_delay_death_visible_hp_restored"
+    ],
+    "unexpected_not_authored": [],
+    "missing_direct_tests": [],
+    "policy": "Unique per-campaign Cargo package identity, fresh source-copy timestamps, and executed-test names checked against frozen authored source; macro-generated names must occur in that source."
+  },
+  "scope": "Independent authoritative spade-life-tail scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-spade-life-tail-cec5b1e125021b606371fc70488a67635b7213c9\\harness\\life.rs": "4104fd2fcfe463b2ce938e4f031236fd04b31199f789dc867c9c10ba4bfc10d3"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\life-41a2ed884f4499c6.exe": "639df788b919a0c820a4d79b31302c59e1376963387a12299ff2b862d00c2303",
+    "target\\debug\\deps\\spade-9d503284626f4e56.exe": "be65b56542767610a6f00348963103320e03319449537a9b9c3a277cb40fe9c3"
+  }
+}

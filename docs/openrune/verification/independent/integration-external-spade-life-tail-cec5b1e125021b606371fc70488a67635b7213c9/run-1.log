@@ -1,0 +1,43 @@
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent5-targets\cec5b1e125021b606371fc70488a67635b7213c9\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling proving-ground-spade-life-tail-1792640248139690500 v0.1.0 (C:\Projects\OSRSRSPS\agent5-verification\work\cec5b1e125021b606371fc70488a67635b7213c9\external-harness-8139690500)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.79s
+     Running tests\life.rs (C:\Projects\OSRSRSPS\agent5-verification\work\cec5b1e125021b606371fc70488a67635b7213c9\target\debug\deps\life-41a2ed884f4499c6.exe)
+
+running 4 tests
+A5_SPADE_LIFE during=true restore_visible_HP=false messages=0 new_dig_animations=0
+test during_delay_death_hp_zero ... ok
+A5_SPADE_LIFE during=true restore_visible_HP=true messages=1 new_dig_animations=0
+
+thread 'during_delay_death_visible_hp_restored' (15572) panicked at tests\life.rs:12:489:
+assertion `left == right` failed: unresolved DeathRequested cannot be bypassed by visible HP restoration
+  left: 1
+ right: 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test during_delay_death_visible_hp_restored ... FAILED
+A5_SPADE_LIFE during=false restore_visible_HP=false messages=0 new_dig_animations=0
+test before_admission_death_hp_zero ... ok
+A5_SPADE_LIFE during=false restore_visible_HP=true messages=1 new_dig_animations=1
+
+thread 'before_admission_death_visible_hp_restored' (10824) panicked at tests\life.rs:12:489:
+assertion `left == right` failed: unresolved DeathRequested cannot be bypassed by visible HP restoration
+  left: 1
+ right: 0
+test before_admission_death_visible_hp_restored ... FAILED
+
+failures:
+
+failures:
+    before_admission_death_visible_hp_restored
+    during_delay_death_visible_hp_restored
+
+test result: FAILED. 2 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s
+
+error: test failed, to rerun pass `--test life`

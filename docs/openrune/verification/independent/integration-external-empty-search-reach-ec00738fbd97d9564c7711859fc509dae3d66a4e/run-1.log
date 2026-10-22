@@ -1,0 +1,148 @@
+   Compiling typenum v1.17.0 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\typenum-1.17.0)
+   Compiling version_check v0.9.5 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\version_check-0.9.5)
+   Compiling generic-array v0.14.7 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\generic-array-0.14.7)
+   Compiling autocfg v1.4.0 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\autocfg-1.4.0)
+   Compiling num-traits v0.2.19 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\num-traits-0.2.19)
+warning: unused import: `*`
+   --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\typenum-1.17.0\src\lib.rs:104:25
+    |
+104 |     N1, N2, Z0, P1, P2, *,
+    |                         ^
+    |
+    = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `typenum` (lib) generated 1 warning (run `cargo fix --lib -p typenum` to apply 1 suggestion)
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\generic-array-0.14.7\src\lib.rs:235:33
+    |
+235 |     pub unsafe fn iter_position(&mut self) -> (slice::IterMut<T>, &mut usize) {
+    |                                 ^^^^^^^^^      ^^^^^^^^^^^^^^^^^  ^^^^^^^^^^ the same lifetime is elided here
+    |                                 |              |
+    |                                 |              the same lifetime is hidden here
+    |                                 the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+    = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default
+help: use `'_` for type paths
+    |
+235 |     pub unsafe fn iter_position(&mut self) -> (slice::IterMut<'_, T>, &mut usize) {
+    |                                                               +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\generic-array-0.14.7\src\lib.rs:290:33
+    |
+290 |     pub unsafe fn iter_position(&mut self) -> (slice::Iter<T>, &mut usize) {
+    |                                 ^^^^^^^^^      ^^^^^^^^^^^^^^  ^^^^^^^^^^ the same lifetime is elided here
+    |                                 |              |
+    |                                 |              the same lifetime is hidden here
+    |                                 the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+290 |     pub unsafe fn iter_position(&mut self) -> (slice::Iter<'_, T>, &mut usize) {
+    |                                                            +++
+
+warning: `generic-array` (lib) generated 2 warnings (run `cargo fix --lib -p generic-array` to apply 2 suggestions)
+   Compiling num-integer v0.1.46 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\num-integer-0.1.46)
+   Compiling block-buffer v0.10.4 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\block-buffer-0.10.4)
+   Compiling crypto-common v0.1.6 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\crypto-common-0.1.6)
+   Compiling digest v0.10.7 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\digest-0.10.7)
+   Compiling num-bigint v0.4.6 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\num-bigint-0.4.6)
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\num-bigint-0.4.6\src\biguint\addition.rs:23:9
+   |
+23 |         unsafe { arch::_addcarry_u64(carry, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+   |
+   = note: `#[warn(unused_unsafe)]` (part of `#[warn(unused)]`) on by default
+
+warning: unnecessary `unsafe` block
+  --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\num-bigint-0.4.6\src\biguint\subtraction.rs:23:9
+   |
+23 |         unsafe { arch::_subborrow_u64(borrow, a, b, out) }
+   |         ^^^^^^ unnecessary `unsafe` block
+
+warning: `num-bigint` (lib) generated 2 warnings
+   Compiling gielinor-world v0.1.0 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\crates\world)
+warning: unused import: `Effect`
+ --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\crates\world\src\simulation\skillcape_vendor_actions.rs:3:30
+  |
+3 |     dialogue::{Conversation, Effect, Pending},
+  |                              ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gielinor-world` (lib) generated 1 warning (run `cargo fix --lib -p gielinor-world` to apply 1 suggestion)
+   Compiling adler2 v2.0.1 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\adler2-2.0.1)
+   Compiling cfg-if v1.0.0 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\cfg-if-1.0.0)
+   Compiling sha2 v0.10.8 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\sha2-0.10.8)
+   Compiling miniz_oxide v0.8.9 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\miniz_oxide-0.8.9)
+   Compiling gielinor-protocol v0.1.0 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\crates\protocol)
+   Compiling libbz2-rs-sys v0.2.2 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\libbz2-rs-sys-0.2.2)
+warning: unused macro definition: `prefix`
+  --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:71:14
+   |
+71 | macro_rules! prefix {
+   |              ^^^^^^
+   |
+   = note: `#[warn(unused_macros)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `prefix`
+  --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:88:16
+   |
+88 | pub(crate) use prefix;
+   |                ^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `libbz2_rs_sys_version`
+  --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\libbz2-rs-sys-0.2.2\src\lib.rs:83:16
+   |
+83 | pub(crate) use libbz2_rs_sys_version;
+   |                ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function `from_mut` is never used
+   --> C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\vendor\libbz2-rs-sys-0.2.2\src\bzlib.rs:253:30
+    |
+230 |     impl<S: StreamState> BzStream<S> {
+    |     -------------------------------- associated function in this implementation
+...
+253 |         pub(crate) unsafe fn from_mut(s: &mut bz_stream) -> &mut Self {
+    |                              ^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `libbz2-rs-sys` (lib) generated 4 warnings (run `cargo fix --lib -p libbz2-rs-sys` to apply 2 suggestions)
+   Compiling gielinor-cache v0.1.0 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\crates\cache)
+   Compiling gielinor-storage v0.1.0 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\crates\storage)
+   Compiling gielinor-server v0.1.0 (C:\Projects\OSRSRSPS\agent5-targets\ec00738fbd97d9564c7711859fc509dae3d66a4e\crates\server)
+   Compiling proving-ground-empty-search-reach-1792639531545804800 v0.1.0 (C:\Projects\OSRSRSPS\agent5-verification\work\ec00738fbd97d9564c7711859fc509dae3d66a4e\external-harness-1545804800)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 56s
+     Running tests\reach.rs (C:\Projects\OSRSRSPS\agent5-verification\work\ec00738fbd97d9564c7711859fc509dae3d66a4e\target\debug\deps\reach-f0a04d070ffdec48.exe)
+
+running 1 test
+PG_SEARCH_REACH id=355 mode=0 messages=1 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=355 mode=1 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=355 mode=2 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=357 mode=0 messages=1 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=357 mode=1 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=357 mode=2 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=358 mode=0 messages=1 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=358 mode=1 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=358 mode=2 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=359 mode=0 messages=1 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=359 mode=1 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=359 mode=2 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=365 mode=0 messages=1 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=365 mode=1 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=365 mode=2 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=366 mode=0 messages=1 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=366 mode=1 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=366 mode=2 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=12963 mode=0 messages=1 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=12963 mode=1 messages=0 no_reward_animation_sound_RNG=true
+PG_SEARCH_REACH id=12963 mode=2 messages=0 no_reward_animation_sound_RNG=true
+test seven_immediate_messages_seven_unreachable_and_seven_interrupted_approaches ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.86s

@@ -1,0 +1,93 @@
+{
+  "tested_integration_sha": "ec00738fbd97d9564c7711859fc509dae3d66a4e",
+  "suite": "spade-life-tail",
+  "campaign_kind": "integration",
+  "independent_verification": true,
+  "status": "FAIL",
+  "resource": {
+    "available_ram": 8605102080,
+    "active_compilers": [],
+    "cpu_percent": 1.98,
+    "cpu_samples": [
+      1.7928286852589626,
+      2.3391812865497075,
+      1.7964071856287456
+    ],
+    "cpu_ceiling": 70,
+    "policy": "Existing project memory/commit/paging checks and sampled CPU ceiling; owned Cargo remains j1/two CPUs/BelowNormal",
+    "capacity_policy_sha256": "dc3c6e372de5369ab77c4ebbd7cf21c426d0916581e11f2377480eba79adcdfd",
+    "memory_preflight_exit": 0,
+    "memory_preflight_stdout": "Capacity: 8,181 MiB available, commit 44.7%, pages-in/s 0, disk 0.0 ms.\nCargo concurrency: -j 2\n",
+    "memory_preflight_stderr": "",
+    "disk_free": 20059897856,
+    "owned_affinity_mask": 3
+  },
+  "source_tree": "684248e3625e412a3756bd737d1fb624d49dd5a3",
+  "harness_package": "proving-ground-spade-life-tail-1792640278295557100",
+  "runs": [
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent5-verification\\work\\ec00738fbd97d9564c7711859fc509dae3d66a4e\\external-harness-8295557100\\Cargo.toml"
+      ],
+      "exit_code": 0,
+      "tests_passed": 0,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-spade-life-tail-ec00738fbd97d9564c7711859fc509dae3d66a4e\\run-0.log",
+      "timed_out": false,
+      "budget_seconds": 600
+    },
+    {
+      "command": [
+        "C:\\Projects\\OSRSRSPS\\rust-client\\work\\rustup\\toolchains\\stable-x86_64-pc-windows-gnu\\bin\\cargo.exe",
+        "test",
+        "--offline",
+        "--locked",
+        "-j",
+        "1",
+        "--manifest-path",
+        "C:\\Projects\\OSRSRSPS\\agent5-verification\\work\\ec00738fbd97d9564c7711859fc509dae3d66a4e\\external-harness-8295557100\\Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "exit_code": 101,
+      "tests_passed": 2,
+      "log": "docs\\openrune\\verification\\independent\\integration-external-spade-life-tail-ec00738fbd97d9564c7711859fc509dae3d66a4e\\run-1.log",
+      "timed_out": false,
+      "budget_seconds": 600
+    }
+  ],
+  "executed_test_binary_sha256": {
+    "target\\debug\\deps\\life-bddaa6d353fdf2ea.exe": "08b0141d59646d2dbb6372cee9d9d451e2b291728b2c54403c910d8ed0cf3c69"
+  },
+  "test_identity": {
+    "status": "PASS",
+    "expected_direct_tests": [
+      "before_admission_death_hp_zero",
+      "before_admission_death_visible_hp_restored",
+      "during_delay_death_hp_zero",
+      "during_delay_death_visible_hp_restored"
+    ],
+    "observed_tests": [
+      "before_admission_death_hp_zero",
+      "before_admission_death_visible_hp_restored",
+      "during_delay_death_hp_zero",
+      "during_delay_death_visible_hp_restored"
+    ],
+    "unexpected_not_authored": [],
+    "missing_direct_tests": [],
+    "policy": "Unique per-campaign Cargo package identity, fresh source-copy timestamps, and executed-test names checked against frozen authored source; macro-generated names must occur in that source."
+  },
+  "scope": "Independent authoritative spade-life-tail scenarios at explicit SHA; scenario evidence only, not complete contract acceptance",
+  "harness_sha256": {
+    "docs\\openrune\\verification\\independent\\integration-external-spade-life-tail-ec00738fbd97d9564c7711859fc509dae3d66a4e\\harness\\life.rs": "4104fd2fcfe463b2ce938e4f031236fd04b31199f789dc867c9c10ba4bfc10d3"
+  },
+  "test_binary_sha256": {
+    "target\\debug\\deps\\life-67fe54aa4b9ad64b.exe": "99728a80ea6008a583ca079b08bebe1c682a321fb14dadd2b0b95421b1babe88",
+    "target\\debug\\deps\\life-bddaa6d353fdf2ea.exe": "08b0141d59646d2dbb6372cee9d9d451e2b291728b2c54403c910d8ed0cf3c69",
+    "target\\debug\\deps\\reach-f0a04d070ffdec48.exe": "dedc17d3a67030f157fedd14c95257ecd39e928c6e8c652dd1bc4203f7b2b81d",
+    "target\\debug\\deps\\spade-7a6719d2b778a8d3.exe": "8edc00c0e4b69443461ee38d92e58cb4dd23f9ebc4e2cc5d6376f4fc3914108a"
+  }
+}
