@@ -4,11 +4,11 @@
 
 | Phase | Status |
 |---|---|
-| A — reconciliation | Maintained source inventory and gaps recorded; full charter/addenda missing |
-| B — permanent progression | Existing V13 retained; generic ledger not implemented |
-| C — reusable floor system | Proposed boundaries only |
+| A — reconciliation | Maintained source inventory recorded; owner confirmed foundations; complete historical charter still missing |
+| B — permanent progression | V14 solo conquest ledger, V13 backfill, transactional save/load and acknowledgement integration pass headless tests and real worker restart; native acceptance outstanding |
+| C — reusable floor system | Reusable identity/prerequisite/objective/completion contracts implemented; broader World floor routing remains open |
 | D — repeatable gameplay | Existing Cinderworks replay retained; catalogue/credits/contracts not implemented |
-| E — progression breadth | No new floor, equipment, skill gates or native acceptance |
+| E — progression breadth | Synthetic two-floor eligibility/objective/disk-reopen slice; no live Floor Two, new equipment, skill gates or native acceptance |
 | F — group foundations | Proposed durable ownership separation only; policies unresolved |
 
 ## Source and preservation
@@ -39,12 +39,23 @@
 
 ## Current increment
 
-Four requested reports created. No gameplay, migration, economy or client behavior
-changed. The complete charter was searched in local Markdown/text and accessible
-Pages; no matching authoritative document was returned. Owner was asked for its
-location. Phase A remains incomplete until it is read and reconciled.
+Reports checkpoint: `f5804f1b3fc2c6b5f9e20dc080fa8455dde29d4a`.
+Implementation checkpoint: `1c2d4d8e0dd4d761ef156588a05f669d788d202e`.
+Strengthened storage tests: `97eb70e0bf64e7a9d9372a6105b881d636fe2249`.
+Permanent completion records now use an additive migration and the maintained
+save transaction; Cinderworks reward rates and client behavior are unchanged.
+The complete charter was searched in local Markdown/text and accessible Pages;
+the owner's later clarification authorizes this bounded foundation increment.
+Full historical reconciliation remains open.
 
-Next: pin the charter and approved addenda, obtain FORGE coordination endpoint,
-then implement/review the smallest durable floor completion increment. Publish
+Validation: workspace library regression **1,040 passed, 0 failed, 3 existing
+ignored**; final strengthened storage suite **16 passed, 0 failed, 1 existing
+ignored**; actual disposable SQLite/account-worker/authentication restart
+diagnostic **PASS**. See `TOWER_SYSTEM_ACCEPTANCE.md` and the machine-readable
+receipt at `docs/gameplay/acceptance-20261021.json`. No new native-client acceptance
+or independent third-party verification is claimed.
+
+Next: obtain exact-source native acceptance and FORGE review/coordination endpoint,
+and pin the charter/addenda for wider content. Publish
 implementation commits separately from acceptance metadata so evidence can cite
 an actual source SHA. Do not merge this branch into main without review.

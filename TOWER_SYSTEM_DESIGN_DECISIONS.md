@@ -18,7 +18,7 @@
 
 | ID | Decision needed | Implementation boundary while unresolved |
 |---|---|---|
-| D01 | Complete charter V1.8 and all subsequent approved decisions | No new progression rules or migration until reconciliation |
+| D01 | Complete charter V0.1–V1.8 and subsequent approved decisions | Owner explicitly authorized confirmed progression/objective/persistence foundations; broader policies remain open |
 | D02 | Later-floor completion versus reward-claim admission requirements | Do not equate paid reward with conquest without approval |
 | D03 | Boss Credit earning, scope, spend, failure and payout policies | No live credit minting, spending or assumed rates |
 | D04 | Boss catalogue unlock and boss-only replay eligibility | Keep existing full-floor replay behavior |
@@ -26,7 +26,29 @@
 | D06 | Group identity, membership replacement, failure, loot and replay | Document ownership contract; no roster/economy schema guesses |
 | D07 | Approved second-floor scaffolding and client presentation | No finished Floor Two world or parity modifications |
 
-## Proposed technical contracts — not yet implemented or approved
+## Confirmed foundation increment
+
+Owner clarification authorizes permanent character development, permanent floor
+unlocks, reusable objectives and safe persistence without waiting for the earlier
+charter. V1.8 is an addendum, not a replacement. Its exact contents have not yet
+been supplied to this checkout; do not invent its skilling details.
+
+Implemented at `1c2d4d8e0dd4d761ef156588a05f669d788d202e`: solo floor identity,
+permanent conquest set, content-owned prerequisites and required/optional objective
+contracts. A conquered floor stays conquered during replay and before claiming
+its reward. No later live floor admission policy is enabled. `Conquest::Replay`
+only classifies an already-conquered floor; it is **not** a reward authorization,
+attempt counter or Boss Credit grant. Objective proofs are trusted server content
+inputs, not accepted directly from a client packet.
+
+V14 adds one monotonic completion row per character/floor, preserving V13 and
+backfilling only Floor One where `clears > 0`. Saving merges rows inside the
+existing account transaction. Failed transactions cannot expose a new completion;
+the existing World acknowledgement barrier publishes the staged ledger on success.
+Known Floor One completion is reconciled at load/save as a compatibility boundary.
+No dates, repeated-clear counters, group IDs or missing accomplishments are invented.
+
+## Further proposed technical contracts — not yet implemented
 
 Each configured floor should supply stable identity, prerequisites, objective
 identities, completion contract and explicit replay/reward policy references.

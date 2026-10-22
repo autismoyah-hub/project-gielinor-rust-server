@@ -5,9 +5,11 @@ Audit: 2026-10-21 (America/Los_Angeles). Source baseline:
 `origin/main`. Branch: `agent7/tower-core-gameplay-20261021`.
 
 This is an implementation inventory against the reassignment brief, **not a
-completed charter reconciliation**. The complete charter V1.8 and subsequent
-addenda were not found in the workspace or accessible Pages search. Requested
-from the owner. Earlier root-level Tower reports describe an older experimental
+completed charter reconciliation**. The owner clarified that V1.8 supplements
+V0.1–V1.7 and explicitly authorized confirmed persistent progression, floor
+unlocks, reusable objectives and safe persistence foundations. V1.8's actual
+contents and the earlier charter remain unavailable in this checkout. Earlier
+root-level Tower reports describe an older experimental
 baseline and must not override the maintained consolidation report.
 
 ## 1. Implemented with existing verification evidence
@@ -16,7 +18,7 @@ baseline and must not override the maintained consolidation report.
 |---|---|---|
 | Fresh arrival retaining possessions and stats | `simulation/cinderworks_entry.rs`; entry tests | Existing configured starter policy is retained; setup XP is not earned XP |
 | Three preparation services, Imp, Warden, coolant and hazards | `simulation/cinderworks_services.rs`, `cinderworks_encounter_actions.rs`; `CONSOLIDATION_REPORT.md` | Native historical first clear, not current-branch native certification |
-| Durable run and first/replay distinction | `tower_run.rs`; storage V13 and `storage/src/tower_run.rs` | One Cinderworks record per character, no general floor ledger |
+| Durable run and first/replay distinction | `tower_run.rs`; storage V13 and `storage/src/tower_run.rs` | Existing reward behavior retained |
 | Atomic rewards and durable acknowledgements | `simulation/cinderworks_actions.rs`, `cinderworks_checkpoint.rs`; `storage/accounts.rs` | Keep inventory, run state and acknowledgement in existing transaction/worker |
 | Return, rescue, relogin and restart | `cinderworks_recovery.rs`; `docs/consolidation/restart-replay-validation.json` | Historical native source/binary scope must stay attached to its original evidence |
 | Equipment, bank, wealth, fine XP, queued skills and combat | Existing world actions and account save transaction | Reuse owners; do not create replacement engines |
@@ -28,8 +30,9 @@ separately in `TOWER_SYSTEM_ACCEPTANCE.md`.
 ## 2. Implemented but incomplete for the wider Tower
 
 - `Run.clears` and `first_reward_paid` survive replay, but objective bits belong
-  to the current attempt. There is no reusable floor-indexed completion/unlock
-  history; do not infer historical service accomplishments from reset bits.
+  to the current attempt. New V14 and `tower_progression::Progress` now preserve
+  floor-indexed solo conquest separately. No historical service accomplishments
+  are inferred from reset bits. New functionality needs the acceptance below.
 - Replay currently restarts the Floor One preparation loop. Boss-only catalogue
   admission is absent. Preserve current first/replay payment behavior pending an
   explicit superseding design decision.
@@ -42,11 +45,12 @@ separately in `TOWER_SYSTEM_ACCEPTANCE.md`.
 
 ## 3. Requested but not implemented in the inspected maintained Tower paths
 
-These requirements come from the reassignment brief; charter approval remains
-unverified: reusable floor definitions, per-floor entry eligibility, permanent
-completion and milestone records, separate later-floor state, a minimal second
-floor test slice, boss catalogue, Boss Credit ledger, repeatable assignments and
-challenge completion history, durable group ascent/instance ownership.
+The new increment supplies content-owned floor identity/prerequisites, required
+versus optional objectives, permanent completion and first/replay classification.
+A synthetic second-floor contract exercises eligibility and disk persistence;
+it is not a live Floor Two. Detailed milestones, later-floor World integration,
+boss catalogue, Boss Credit ledger, repeatable assignments, challenge completion
+history and durable group ascent/instance ownership remain unimplemented.
 
 ## 4. Explicitly exploratory or undecided
 
@@ -57,9 +61,8 @@ No defaults or database policy are selected here.
 
 ## Next dependency-aware increment
 
-Obtain and pin the complete charter/addenda; reconcile each approved requirement
-against this inventory. Then propose an additive floor ledger saved in the
-existing account transaction and backfill proven Cinderworks completions without
-granting rewards. Specify first conquest, pending reward and replay independently.
-Review the extraction with FORGE before engine edits. Use a clearly identified
-headless second-floor fixture before any authored Floor Two environment.
+Implementation `1c2d4d8e0dd4d761ef156588a05f669d788d202e` adds the floor ledger
+inside the existing save transaction, backfills positive V13 clears without
+grants, and stages its World visibility behind the existing acknowledgement.
+FORGE review and exact-source native acceptance remain required before integration.
+Pin the complete charter/addenda before broadening gameplay and economy rules.
