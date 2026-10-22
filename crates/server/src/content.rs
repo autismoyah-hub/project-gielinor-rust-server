@@ -7,6 +7,8 @@ mod bank_booths;
 mod shearing;
 mod cows;
 mod ducks;
+mod forging_ring;
+pub use forging_ring::forging_ring;
 mod smithing_catalyst;
 pub use smithing_catalyst::smithing_catalyst;
 mod goldsmith_smelting;

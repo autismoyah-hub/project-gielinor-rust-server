@@ -60,6 +60,7 @@ pub(super) fn complete(
     coal_bag: Option<crate::coal_bag::Config>,
     goldsmith: Option<crate::goldsmith_smelting::Config>,
     catalyst: Option<&crate::smithing_catalyst::Config>,
+    ring: Option<crate::forging_ring::Config>,
     tutorial_stats: bool,
     events: &mut Vec<WorldEvent>,
     random: &mut impl RandomSource,
@@ -67,12 +68,14 @@ pub(super) fn complete(
     if job.furnace && (p.pending_logout || p.death_queued || p.data.stats.current(3) as u8 == 0) {return Ok(());}
     let base_xp=goldsmith.filter(|_|job.furnace&&config.skill==13).map_or(job.request.xp,|bonus|bonus.xp(&job.request,&p.data.equipment,p.member,catalog));
     let xp_rate=config.xp_rate * p.data.xp_rate_hundreds as f64 / 100.0;
+    let worn_ring=ring.filter(|c|c.worn(&p.data,catalog));
     let next = match job
-        .complete_catalyzed(
+        .complete_with_forging_ring(
             &mut p.data,
             catalog,
             coal_bag,
             catalyst,
+            ring,
             config.skill,
             xp_rate,
             config.max_level,
@@ -110,6 +113,7 @@ pub(super) fn complete(
             advancement,
             next,
         } => {
+            if worn_ring.is_some_and(|c|!c.worn(&p.data,catalog)){events.push(WorldEvent::GameMessage{actor:p.id,text:"Your ring of forging crumbles to dust.".into()});}
             if tutorial_stats {
                 p.stat_events
                     .advance(
@@ -561,3 +565,7 @@ mod goldsmith_smelting_tests;
 #[cfg(test)]
 #[path="smithing_catalyst_tests.rs"]
 mod smithing_catalyst_tests;
+
+#[cfg(test)]
+#[path="forging_ring_tests.rs"]
+mod forging_ring_tests;

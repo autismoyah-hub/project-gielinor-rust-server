@@ -63,3 +63,20 @@ mod tests {
         }
     }
 }
+
+pub(super) fn forging_ring_action(button:&gielinor_protocol::buttons::Button,slot:usize,actual:i32,config:Option<gielinor_world::forging_ring::Config>,worn:bool)->Option<gielinor_world::simulation::Action>{
+ let c=config?;if actual!=c.ring{return None;}
+ let accepted=if worn{slot==12&&button.op==2&&worn_item_claim_matches(button,actual)}else{button.op==6&&button.object==actual&&usize::try_from(button.slot).ok()==Some(slot)};
+ accepted.then_some(gielinor_world::simulation::Action::ForgingRingItem{slot,item:actual,operation:button.op,worn})
+}
+#[cfg(test)]
+mod forging_ring_buttons{
+ use super::*;use gielinor_protocol::buttons::{Button,button};
+ #[test]
+ fn forging_ring_real_button_payload_break_is_six_and_worn_check_two(){
+  let config=Some(gielinor_world::forging_ring::Config{ring:2568,used:gielinor_world::variables::Varp{id:62400,permanent:true,transmit:gielinor_world::variables::Transmit::Never,bit_protect:true,client_code:-1}});
+  let mut raw=(149u32<<16).to_be_bytes().to_vec();raw.extend(27u16.to_be_bytes());raw.extend(2568u16.to_be_bytes());raw.push(6);let b=button(&raw).unwrap();assert!(matches!(forging_ring_action(&b,27,2568,config,false),Some(gielinor_world::simulation::Action::ForgingRingItem{operation:6,worn:false,..})));
+  for bad in[Button{op:5,..b},Button{op:3,..b},Button{slot:26,..b},Button{object:2569,..b}]{assert!(forging_ring_action(&bad,27,2568,config,false).is_none());}assert!(forging_ring_action(&b,27,2569,config,false).is_none());assert!(forging_ring_action(&b,27,2568,None,false).is_none());
+  for object in[-1,2568]{let b=Button{component:387<<16,slot:-1,object,op:2};assert!(forging_ring_action(&b,12,2568,config,true).is_some());for bad in[Button{slot:0,..b},Button{object:2569,..b},Button{op:1,..b},Button{op:3,..b}]{assert!(forging_ring_action(&bad,12,2568,config,true).is_none());}assert!(forging_ring_action(&b,11,2568,config,true).is_none());}
+ }
+}

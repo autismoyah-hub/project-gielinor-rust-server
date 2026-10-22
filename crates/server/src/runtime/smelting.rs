@@ -91,6 +91,7 @@ impl<B: AccountBackend> Runtime<B> {
             .progression;
         let goldsmith=crate::content::goldsmith_smelting(names.group("obj"),&self.definitions,&recipes).map_err(io::Error::other)?;
         let catalyst=crate::content::smithing_catalyst(names.group("obj"),&self.definitions,&recipes).map_err(io::Error::other)?;
+        let ring=crate::content::forging_ring(names.group("obj"),names.group("varp"),&self.definitions,&recipes).map_err(io::Error::other)?;
         let types = crate::smelting::item_types(&self.definitions.items);
         let config = Config {
             presentation: crate::skill_multi::Presentation {
@@ -121,6 +122,8 @@ impl<B: AccountBackend> Runtime<B> {
         )?;
         self.world.goldsmith_smelting=Some(goldsmith);
         self.world.smithing_catalyst=Some(catalyst);
+        self.definitions.varps.insert(u32::from(ring.used.id),ring.used);
+        self.world.forging_ring=Some(ring);
         let group = names.id("content", "smithing_furnace")? as i32;
         let mut furnaces: BTreeMap<_, _> = self
             .definitions

@@ -64,6 +64,7 @@ mod worn_stat_boost_actions;
 mod skillcape_vendor_actions;
 mod container_emptying_actions;
 mod coal_bag_actions;
+mod forging_ring_actions;
 mod item_pack_actions;
 mod milking_actions;
 mod water_source_actions;
@@ -583,6 +584,7 @@ pub enum Action {
     BoostWornItem { slot: usize, item: i32 },
     ConvertHeldItem { slot: usize, item: i32 },
     CoalBagItem {slot:usize,item:i32,operation:u8},
+    ForgingRingItem {slot:usize,item:i32,operation:u8,worn:bool},
     EmptyContainer { slot: usize, item: i32 },
     OpenCoinPouch { slot: usize, item: i32, all: bool },
     DrinkSlot {
@@ -1031,6 +1033,7 @@ pub struct World {
     pub worn_stat_boosts: BTreeMap<i32,crate::worn_stat_boost::Rule>,
     pub empty_containers: BTreeMap<i32,crate::container_emptying::Rule>,
     pub smithing_catalyst: Option<crate::smithing_catalyst::Config>,
+    pub forging_ring: Option<crate::forging_ring::Config>,
     pub goldsmith_smelting: Option<crate::goldsmith_smelting::Config>,
     pub coal_bag: Option<crate::coal_bag::Config>,
     pub coin_pouches: BTreeMap<i32,crate::item_packs::PouchRule>,
@@ -1168,6 +1171,7 @@ impl Default for World {
             worn_stat_boosts: BTreeMap::new(),
             empty_containers: BTreeMap::new(),
             smithing_catalyst: None,
+            forging_ring: None,
             goldsmith_smelting: None,
             coal_bag: None,
             coin_pouches: BTreeMap::new(),
@@ -2150,6 +2154,7 @@ impl World {
             Action::SwapWornItem { slot, item } => self.swap_worn_item(id,slot,item)?,
             Action::ConvertHeldItem { slot, item } => self.convert_held_item(id,slot,item)?,
             Action::CoalBagItem {slot,item,operation}=>self.coal_bag_item(id,slot,item,operation)?,
+            Action::ForgingRingItem {slot,item,operation,worn}=>self.forging_ring_item(id,slot,item,operation,worn)?,
             Action::EmptyContainer { slot, item } => self.empty_container(id,slot,item)?,
             Action::OpenCoinPouch { slot, item, all } => self.open_coin_pouch(id,slot,item,all)?,
             Action::CleanHerb { slot, item } => self.clean_herb(id, slot, item)?,
@@ -2806,6 +2811,7 @@ impl World {
                                                                 self.coal_bag,
                                                                 self.goldsmith_smelting,
                                                                 self.smithing_catalyst.as_ref(),
+                                                                self.forging_ring,
                                                                 self.tutorial_rules_completed_varp
                                                                     .is_some(),
                                                                 &mut self.events,

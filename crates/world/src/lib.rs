@@ -299,6 +299,7 @@ pub mod assembly_production;
 pub mod held_item_conversion;
 pub mod container_emptying;
 pub mod smithing_catalyst;
+pub mod forging_ring;
 pub mod goldsmith_smelting;
 pub mod coal_bag;
 mod coal_bag_smelting;
