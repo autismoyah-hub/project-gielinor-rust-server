@@ -60,8 +60,10 @@ fn fresh_and_existing_forge_v12_keep_chemistry_and_add_empty_tower_run() {
         )]),
     )]);
     a.save(&s).unwrap();
+    a.db.execute("DROP TABLE tower_attempt_transitions", &[]).unwrap();
+    a.db.execute("DROP TABLE tower_attempts", &[]).unwrap();
     a.db.execute("DROP TABLE tower_run", &[]).unwrap();
-    a.db.execute("DELETE FROM _rust_migrations WHERE version=13", &[])
+    a.db.execute("DELETE FROM _rust_migrations WHERE version>=13", &[])
         .unwrap();
     a.initialize().unwrap();
     a.initialize().unwrap();
@@ -74,7 +76,7 @@ fn fresh_and_existing_forge_v12_keep_chemistry_and_add_empty_tower_run() {
     assert_eq!(
         a.db.query("SELECT MAX(version) FROM _rust_migrations", &[], 1)
             .unwrap()[0][0],
-        int(13)
+        int(14)
     );
 }
 
@@ -86,7 +88,9 @@ fn experimental_tower_v12_is_refused_without_renumbering_or_mutation() {
     a.save(&s).unwrap();
     // Reconstruct the actual divergent V12 shape using this disposable memory DB.
     a.db.execute("DROP TABLE chemistry_state", &[]).unwrap();
-    a.db.execute("DELETE FROM _rust_migrations WHERE version=13", &[])
+    a.db.execute("DROP TABLE tower_attempt_transitions", &[]).unwrap();
+    a.db.execute("DROP TABLE tower_attempts", &[]).unwrap();
+    a.db.execute("DELETE FROM _rust_migrations WHERE version>=13", &[])
         .unwrap();
     let before = a.db.query("SELECT * FROM tower_run", &[], 4).unwrap();
     let error = a.initialize().unwrap_err();

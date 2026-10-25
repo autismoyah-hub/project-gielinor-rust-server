@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Validate versioned OpenRune contracts; this does not certify gameplay behavior."""
-import argparse,json,re,subprocess
-from pathlib import Path,PurePosixPath
+import argparse,json,re
+from pathlib import Path
+from openrune_queue_git import relative, validate_git
 
 REQUIRED={'schema_version','implementation_id','revision','feature_name','source_references','provenance','rust_paths','registration_dispatch','implementation_commit_sha','dependencies','expected_normal_behavior','expected_negative_behavior','identifiers','timing_and_transactions','required_verification_levels','known_limitations','implementation_status','verification_status','behavior_basis','legacy_evidence','supersedes'}
 def require(ok,message):
     if not ok:raise ValueError(message)
 def strings(value,nonempty=True):return isinstance(value,list) and (bool(value) or not nonempty) and all(isinstance(v,str) and bool(v.strip()) for v in value)
-def relative(path):return isinstance(path,str) and bool(path) and '\\' not in path and not PurePosixPath(path).is_absolute() and ':' not in path and '..' not in PurePosixPath(path).parts
 def validate(records,root=None):
     latest={};ids={r.get('implementation_id') for r in records}
     for index,r in enumerate(records,1):
@@ -62,47 +62,25 @@ def validate(records,root=None):
     if root:validate_git(records,root)
     return len(latest)
 
-def validate_git(records,root):
-    """Read each exact Git object once through one process, retaining every check."""
-    requests={}
-    def add(key,kind,label,symbol=None):
-        require(not any(c in key for c in ('\n','\r','\0')),label+': invalid Git object request')
-        item=requests.setdefault(key,{'kind':kind,'label':label,'symbols':[]})
-        if kind=='commit':item['kind']='commit'
-        if symbol is not None:item['symbols'].append((label,symbol))
-    for index,record in enumerate(records,1):
-        prefix=f'line{index}';sha=record['implementation_commit_sha']
-        add(sha+'^{commit}','commit',prefix)
-        for path in record['rust_paths']:add(sha+':'+path,'object',prefix)
-        for step in record['registration_dispatch']:
-            add(sha+':'+step['path'],'object',prefix,step['symbol'])
-    command=['git','-c','safe.directory='+str(root),'cat-file','--batch']
-    with subprocess.Popen(command,cwd=root,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE) as process:
-        try:
-            for key,request in requests.items():
-                process.stdin.write(key.encode('utf-8')+b'\n');process.stdin.flush()
-                header=process.stdout.readline()
-                require(header and not header.endswith(b' missing\n'),request['label']+': missing Git object '+key)
-                parts=header.rstrip(b'\n').split(b' ')
-                require(len(parts)==3 and parts[2].isdigit(),request['label']+': invalid Git object response')
-                size=int(parts[2]);payload=process.stdout.read(size);terminator=process.stdout.read(1)
-                require(len(payload)==size and terminator==b'\n',request['label']+': truncated Git object '+key)
-                if request['kind']=='commit':require(parts[1]==b'commit',request['label']+': Git object is not a commit '+key)
-                if request['symbols']:
-                    require(parts[1]==b'blob',request['label']+': dispatch path is not a file '+key)
-                    source=payload.decode('utf-8')
-                    for label,symbol in request['symbols']:
-                        require(symbol in source,label+': dispatch symbol absent at implementation SHA: '+symbol)
-        finally:
-            process.stdin.close()
-        error=process.stderr.read().decode('utf-8',errors='replace')
-        require(process.wait()==0,'Git object validation failed: '+error.strip())
-
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('queue',type=Path);p.add_argument('--git',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('queue',type=Path)
+    p.add_argument('--git',action='store_true')
+    sources=p.add_mutually_exclusive_group()
+    sources.add_argument('--legacy-repo',type=Path,help='Read-only old-server Git repository (default: approved OSRS_ASSET_ROOT archive)')
+    sources.add_argument('--legacy-bundle',type=Path,help='Approved old-server bundle; unpacked only into a workspace-local bare cache')
+    a=p.parse_args()
+    if (a.legacy_repo or a.legacy_bundle) and not a.git:
+        p.error('Legacy evidence source options require --git')
     records=[]
     for i,line in enumerate(a.queue.read_text(encoding='utf-8').splitlines(),1):
         require(bool(line.strip()),f'line{i}: blank JSONL record');records.append(json.loads(line))
-    require(bool(records),'empty queue');count=validate(records,a.queue.resolve().parents[3] if a.git else None)
+    require(bool(records),'empty queue');count=validate(records)
+    if a.git:
+        report=validate_git(records,a.queue.resolve().parent,legacy_repo=a.legacy_repo,legacy_bundle=a.legacy_bundle)
+        print('Git evidence: '+json.dumps(report,sort_keys=True))
     print(f'PASS {len(records)} records; {count} implementation units; contract integrity only, not gameplay acceptance')
-if __name__=='__main__':main()
+if __name__=='__main__':
+    try:main()
+    except (ValueError,OSError) as error:
+        raise SystemExit('FAIL '+str(error))

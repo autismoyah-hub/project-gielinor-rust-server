@@ -233,6 +233,7 @@ impl World {
                 if let Some(spot)=spot { self.events.push(WorldEvent::PlayerSpotAnimation{actor,spot,delay:0,height:0,slot:0}); }
             }
             Some(Handler::TutorialFire(config)) => self.start_tutorial_fire(actor, config),
+            Some(Handler::Firemaking { log }) => self.start_firemaking_held(actor, log),
             None => self.events.push(WorldEvent::EngineMessage {
                 actor,
                 message: "Nothing interesting happens.",

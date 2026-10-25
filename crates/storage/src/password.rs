@@ -137,10 +137,26 @@ pub fn secure_random(output: &mut [u8]) -> Result<(), Error> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    /// The external Argon2 library, found like the launchers do: beneath `OSRS_ASSET_ROOT`
+    /// (`scripts/start-server.ps1`), else beside a standalone rust-server checkout.
+    fn reference_argon2() -> Option<std::path::PathBuf> {
+        let relative = Path::new("rust-server/work/native/argon2.dll");
+        std::env::var_os("OSRS_ASSET_ROOT")
+            .map(|root| Path::new(&root).join(relative))
+            .into_iter()
+            .chain([Path::new(env!("CARGO_MANIFEST_DIR")).join("../../work/native/argon2.dll")])
+            .find(|path| path.is_file())
+    }
     #[test]
-    #[ignore = "Requires an independently supplied Argon2 DLL at work/native/argon2.dll; excluded from public default tests"]
     fn cached_reference_argon2_verifies_and_rejects_wrong_password() {
-        let path = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../work/native/argon2.dll");
+        let Some(path) = reference_argon2() else {
+            eprintln!(
+                "SKIPPED cached_reference_argon2_verifies_and_rejects_wrong_password: \
+                 no argon2.dll under $OSRS_ASSET_ROOT/rust-server/work/native or the checkout's \
+                 work/native (external asset, not shipped)"
+            );
+            return;
+        };
         let hasher = PasswordHasher::load(&path.canonicalize().unwrap()).unwrap();
         let hash = hasher
             .hash_with_salt(b"parity-only-password", &[23; 16])

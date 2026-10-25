@@ -6,6 +6,8 @@ use gielinor_world::{simulation::Action, CoordGrid};
 pub enum Request {
     Npc(gielinor_protocol::npc_input::Operation),
     NpcTarget(gielinor_protocol::npc_input::Target),
+    /// OPNPC6 examine of a client-resolved NPC type.
+    ExamineNpc(u16),
     Location(gielinor_protocol::loc_input::Operation),
     LocationTarget(gielinor_protocol::loc_input::Target),
     GroundObject(gielinor_protocol::obj_input::Operation),
@@ -21,6 +23,8 @@ pub enum Request {
     Target(gielinor_protocol::buttons::Target),
     /// Requires protected-access teleport support before this can be executed.
     PrivilegedTelejump(CoordGrid),
+    /// MESSAGE_PUBLIC payload; Huffman decoding needs the cache table held by the runtime.
+    PublicChat(Vec<u8>),
     Unhandled,
 }
 
@@ -32,8 +36,14 @@ pub fn decode(
     development: bool,
 ) -> Result<Request, DecodeError> {
     let click = match packet.opcode {
+        69 => return Ok(Request::PublicChat(packet.payload.clone())),
         86 => {
             return Ok(Request::NpcTarget(gielinor_protocol::npc_input::target(
+                &packet.payload,
+            )?))
+        }
+        0 => {
+            return Ok(Request::ExamineNpc(gielinor_protocol::npc_input::examine(
                 &packet.payload,
             )?))
         }
@@ -117,6 +127,20 @@ fn game_button(payload: &[u8]) -> Result<Request, DecodeError> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn npc_examine_routes_big_endian_type_and_rejects_bad_length() {
+        let packet = Packet {
+            opcode: 0,
+            payload: vec![0x3f, 0xaa],
+        };
+        assert!(matches!(
+            decode(&packet, 0, 0, false).unwrap(),
+            Request::ExamineNpc(16298)
+        ));
+        for payload in [vec![], vec![0x3f], vec![0x3f, 0x8a, 0]] {
+            assert!(decode(&Packet { opcode: 0, payload }, 0, 0, false).is_err());
+        }
+    }
     #[test]
     fn npc_spell_target_routes_component_and_preserves_nullable_fields() {
         let bytes = vec![255, 255, 255, 0x12, 0xb4, 255, 255, 0, 218, 0, 5];

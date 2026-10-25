@@ -47,6 +47,8 @@ pub enum Handler {
     ToolCraftingMixedChoices{recipes:std::sync::Arc<Vec<crate::tool_crafting::Recipe>>,cycle_ticks:u8,materials:crate::tool_crafting_materials::Specifications},
     TutorialDough(crate::tutorial_dough::Config),
     TutorialFire(crate::tutorial_fire::Config),
+    /// Ordinary firemaking: tinderbox and these logs, in either direction.
+    Firemaking { log: i32 },
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(usize)]

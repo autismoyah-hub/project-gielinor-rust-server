@@ -41,6 +41,7 @@ pub enum Page {
 pub enum Effect {
     Banknote {ctx:crate::banknote_exchange::NpcContext,confirm:bool},
     SkillcapeVendor {ctx:crate::skillcape_vendor::Context,stage:crate::skillcape_vendor::Stage},
+    TowerBanker(crate::tower_banker::Stage),
     LectureTutor {
         config: crate::tutorial_lecture_tutor::Config,
         stage: crate::tutorial_lecture_tutor::Stage,

@@ -334,6 +334,40 @@ impl<B: AccountBackend> Runtime<B> {
         }
         Ok(())
     }
+    /// TowerBankerNpc.kt Talk-to and `desc` for the packed Floor One banker type.
+    /// Bank (op3) stays with the shared `configure_bankers` content-group binding.
+    pub fn configure_tower_banker(&mut self, npc: u16) -> io::Result<()> {
+        if !self.connections.is_empty() {
+            return Err(io::Error::other("Configure tower banker before admission"));
+        }
+        if !self.definitions.npcs.contains_key(&(npc as u32)) {
+            return Err(io::Error::other("Unresolved tower banker definition"));
+        }
+        if self.npc_examines.contains_key(&npc) || self.world.npc_handlers.contains_key(&(npc, 1)) {
+            return Err(io::Error::other("Tower banker already configured"));
+        }
+        self.world.npc_handlers.insert((npc, 1), Handler::TowerBanker);
+        self.npc_examines
+            .insert(npc, gielinor_world::tower_banker::EXAMINE);
+        Ok(())
+    }
+    /// OpNpc6Handler.kt: no reach or index check, only the type's text.
+    pub(super) fn examine_npc(&mut self, actor: ActorId, npc: u16) -> io::Result<()> {
+        let Some(text) = self.npc_examines.get(&npc).copied() else {
+            return Ok(());
+        };
+        if let Some(connection) = self.connection(actor) {
+            let packet = gielinor_protocol::chat::game(
+                gielinor_world::tower_banker::EXAMINE_CHAT_TYPE,
+                None,
+                text,
+            )
+            .map_err(|e| io::Error::other(format!("{e:?}")))?;
+            self.transport
+                .send(connection, packet.opcode, &packet.payload)?;
+        }
+        Ok(())
+    }
     pub fn configure_bankers(
         &mut self,
         groups: &[i32],

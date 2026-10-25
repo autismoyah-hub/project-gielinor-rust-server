@@ -192,7 +192,7 @@ impl World {
             && source.x() <= target.x() + size - 1 + distance
             && source.z() >= target.z() - distance
             && source.z() <= target.z() + size - 1 + distance;
-        let bank_approach = matches!(pending.handler,Some(Handler::Bank|Handler::Banknote{..}))
+        let bank_approach = matches!(pending.handler,Some(Handler::Bank|Handler::Banknote{..}|Handler::TowerBanker))
             && !overlap
             && within
             && raycast::clear(
@@ -298,6 +298,14 @@ impl World {
                 return true;
             }
             if pending.handler==Some(Handler::Pickpocket) {self.clear_npc_route(slot);self.start_pickpocket(slot,pending.target);return true;}
+            if pending.handler == Some(Handler::TowerBanker) {
+                self.clear_npc_route(slot);
+                if let Err(error) = self.start_tower_banker(actor, pending.target) {
+                    self.events
+                        .push(WorldEvent::ActionRejected { actor, error });
+                }
+                return true;
+            }
             if pending.handler == Some(Handler::TowerTanner) {
                 self.clear_npc_route(slot);
                 if let Err(error) =
@@ -332,6 +340,11 @@ impl World {
             if pending.handler == Some(Handler::TutorialFishing) {
                 self.clear_npc_route(slot);
                 self.process_tutorial_fishing(slot);
+                return true;
+            }
+            if pending.handler == Some(Handler::Fishing) {
+                self.clear_npc_route(slot);
+                self.start_fishing(slot, pending.target, pending.operation);
                 return true;
             }
             if let Some(Handler::CombatTutor(config)) = pending.handler {
@@ -407,10 +420,11 @@ impl World {
                 Some(Handler::Tanning) => Event::Tanning(pending.target),
                 Some(Handler::Pickpocket) => unreachable!("Pickpocket handled above"),
                 Some(Handler::TowerTanner) => unreachable!("Tanning handled above"),
+                Some(Handler::TowerBanker) => unreachable!("Banker dialogue handled above"),
                 Some(Handler::Combat) => unreachable!("Combat handled above"),
                 Some(Handler::SkillcapeVendor(_)) => unreachable!("Vendor dialogue handled above"),
                 Some(Handler::Person) => unreachable!("Dialogue handled above"),
-                Some(Handler::TutorialFishing | Handler::CinderworksFishing) => unreachable!("Fishing handled above"),
+                Some(Handler::TutorialFishing | Handler::CinderworksFishing | Handler::Fishing) => unreachable!("Fishing handled above"),
                 Some(
                     Handler::TutorialGuide { .. }
                     | Handler::SurvivalTutor(_)

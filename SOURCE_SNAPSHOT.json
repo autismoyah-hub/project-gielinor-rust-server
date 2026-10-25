@@ -242,6 +242,25 @@
     "vendor/num-integer-0.1.46/tests/roots.rs",
     "vendor/num-traits-0.2.19/tests/cast.rs"
   ],
+  "latest_sync": {
+    "date": "2026-10-25",
+    "excluded": [
+      "integration/",
+      "reference/",
+      "build.ps1",
+      "new crates/*/tests and crates/*/examples (private cache/fixture-dependent)",
+      "cache-derived *.expected fixtures",
+      "parity scripts and unpublished docs excluded by .gitignore"
+    ],
+    "method": "git archive of the source commit; public root documents, licenses, config/ and test-discovery settings retained; public .gitignore exclusions applied",
+    "note": "source_identity, source_files and excluded_source_paths above describe the Alpha 0.1.0 capture and are not updated per file for this sync; see SOURCE_CHECKPOINT.md.",
+    "public_parent": "1aa20582",
+    "published_test_fixtures": [
+      "crates/server/tests/fixtures/authentication/ (public test-only RSA key and synthetic login; see its README)"
+    ],
+    "source_commit": "cd3603315a443b821b75f339ada1d0508c50cacc",
+    "source_repository": "autismoyah-hub/osrs-workspace (private monorepo), path rust-server/"
+  },
   "original_per_file_mtimes_preserved": false,
   "packaging_rust_deltas": [
     {

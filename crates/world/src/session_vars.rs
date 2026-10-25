@@ -215,4 +215,30 @@ mod tests {
         c.login(&mut vars, &mut timers, -1).unwrap();
         assert_eq!(vars.get(c.energy.id), 1000);
     }
+
+    #[test]
+    fn retained_energy_999_caps_and_late_relogin_restarts_fifty_cycle_timer() {
+        let c = config();
+        let definitions = [(c.energy.id, c.energy)].into();
+        let mut vars = Variables::default();
+        vars.set(c.energy, 999, false);
+        // The save uses persistent varps; loading an existing account must not
+        // promote its retained 999 to 1000 or preserve an old elapsed timer.
+        let saved = vars.persistent(&definitions);
+        let mut loaded = Variables::default();
+        for (id, value) in saved { loaded.set(definitions[&id], value, false); }
+        let mut timers = Timers::default();
+        c.prepare_account(&mut loaded, false).unwrap();
+        c.login(&mut loaded, &mut timers, 900).unwrap();
+        assert_eq!(loaded.get(300), 999);
+        for cycle in 901..950 {
+            timers.process(cycle, |_, id| { c.tick(id, &mut loaded, cycle, 0).unwrap(); true });
+        }
+        assert_eq!(loaded.get(300), 999);
+        let mut updates = vec![];
+        timers.process(950, |_, id| { updates.extend(c.tick(id, &mut loaded, 950, 0).unwrap()); true });
+        assert_eq!(loaded.get(300), 1000);
+        assert!(updates.iter().any(|u| u.id == 300 && u.value == 1000));
+        assert!(c.tick(c.special_timer, &mut loaded, 1000, 0).unwrap().is_empty());
+    }
 }

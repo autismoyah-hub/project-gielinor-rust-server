@@ -10,10 +10,14 @@ pub enum Handler {
     Pickpocket,
     Tanning,
     TowerTanner,
+    /// Floor One banker Talk-to; Bank stays on [`Handler::Bank`].
+    TowerBanker,
     Combat,
     Person,
     TutorialFishing,
     CinderworksFishing,
+    /// Ordinary spot; the (type, operation) binding lives in `World::fishing`.
+    Fishing,
     MagicTutor(crate::tutorial_magic_tutor::Config),
     LectureTutor(crate::tutorial_lecture_tutor::Config),
     CombatTutor(crate::tutorial_combat_tutor::Config),

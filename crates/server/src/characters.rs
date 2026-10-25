@@ -287,6 +287,55 @@ mod tests {
             stats: BTreeMap::from([(3, StatType::decode(&[4, 10, 0]).unwrap())]),
         }
     }
+    /// Issue #13: a registration resumed after an interrupted first login keeps both
+    /// "already logged in" protections: another world's world_id, and live admission.
+    #[test]
+    fn resumed_registration_still_refuses_an_active_session() {
+        let defs = definitions();
+        let policy = Policy {
+            world: 1,
+            inventory: 93,
+            equipment: 94,
+            bank: 95,
+            hitpoints: 3,
+            spawn: CoordGrid::new(3094, 3107, 0).unwrap(),
+            base_xp_rate_hundreds: 100,
+            auto_display_names: true,
+            dev_modlevel: None,
+            modlevels: BTreeMap::new(),
+        };
+        let mut accounts = Accounts::from_database(Database::memory().unwrap());
+        accounts.initialize().unwrap();
+        accounts.create("interrupted", "test-hash", 1).unwrap();
+        let resumed = |accounts: &Accounts| {
+            let account = accounts.load("interrupted", 1).unwrap().unwrap();
+            assert!(account.last_login.is_none() && account.last_logout.is_none());
+            Authenticated {
+                account,
+                new_account: true,
+                authenticator_code: None,
+            }
+        };
+        let mut elsewhere = resumed(&accounts);
+        elsewhere.account.world_id = Some(2);
+        assert_eq!(
+            Character::load(elsewhere, &defs, &policy, "2026-10-24T06:02:55".into()).err(),
+            Some(5)
+        );
+        let mut world = gielinor_world::simulation::World::default();
+        let (_, first) =
+            Character::load(resumed(&accounts), &defs, &policy, "2026-10-24T06:02:55".into())
+                .unwrap();
+        assert_eq!(first.coords, policy.spawn);
+        world.queue_login(1, first).unwrap();
+        let (_, second) =
+            Character::load(resumed(&accounts), &defs, &policy, "2026-10-24T06:03:10".into())
+                .unwrap();
+        assert_eq!(
+            world.queue_login(2, second),
+            Err(gielinor_world::simulation::AdmissionError::Duplicate)
+        );
+    }
     #[test]
     fn new_account_minimum_hp_compares_unsigned_stat_bytes() {
         let defs = definitions();

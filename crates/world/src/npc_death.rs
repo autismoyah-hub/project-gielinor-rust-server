@@ -33,8 +33,8 @@ impl Chicken {
 #[derive(Clone, Debug)]
 pub struct GuaranteedExtras { pub products: Vec<(u16, i32)>, pub policy: DropPolicy }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub enum DropPolicy { Chicken, Cow, Imp, Bear, Spider }
-impl DropPolicy { pub fn name(self) -> &'static str { match self { Self::Chicken => "selected_chicken", Self::Cow => "selected_cow", Self::Imp => "selected_imp", Self::Bear => "selected_bear", Self::Spider => "selected_spider" } } }
+pub enum DropPolicy { Chicken, Cow, Imp, Bear, Spider, Goblin, Man, Woman }
+impl DropPolicy { pub fn name(self) -> &'static str { match self { Self::Chicken => "selected_chicken", Self::Cow => "selected_cow", Self::Imp => "selected_imp", Self::Bear => "selected_bear", Self::Spider => "selected_spider", Self::Goblin => "selected_goblin", Self::Man => "selected_man", Self::Woman => "selected_woman" } } }
 /// Authoritative selected-profile drop boundary, independent of hit/XP acceptance.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum DropResult {

@@ -37,6 +37,12 @@ pub enum Error {
 }
 impl Inputs {
     pub fn chance(self) -> Result<i32, Error> {
+        self.chance_with_special(1.0)
+    }
+    pub fn chance_with_special(self, multiplier: f64) -> Result<i32, Error> {
+        if !multiplier.is_finite() || multiplier <= 0.0 {
+            return Err(Error::Multiplier);
+        }
         let style = match self.style {
             Some(1) => 9,
             Some(2) => 11,
@@ -48,6 +54,9 @@ impl Inputs {
         let attack = self
             .attributes
             .attack_roll(combat::base_roll(attack, self.attack_bonus));
+        // PvNMeleeAccuracy scales the fully modified offensive roll, truncating
+        // before comparing with the independently selected defensive roll.
+        let attack = (f64::from(attack) * multiplier) as i32;
         let defence = self.attributes.defence_roll(
             combat::base_roll(self.defence_level.wrapping_add(9), self.defence_bonus),
             self.invocation,
@@ -57,6 +66,12 @@ impl Inputs {
             .hit_chance(combat::hit_chance(attack, defence, false), attack, defence))
     }
     pub fn max_hit(self, attributes: Attributes) -> Result<i32, Error> {
+        self.max_hit_with_special(attributes, 1.0)
+    }
+    pub fn max_hit_with_special(self, attributes: Attributes, multiplier: f64) -> Result<i32, Error> {
+        if !multiplier.is_finite() || multiplier <= 0.0 {
+            return Err(Error::Multiplier);
+        }
         let style = match self.style {
             Some(1) => 9,
             Some(3) => 11,
@@ -71,10 +86,14 @@ impl Inputs {
         )
         .map_err(|_| Error::Multiplier)?;
         let damage = attributes.damage(combat::base_damage(strength, self.strength_bonus));
+        let damage = (f64::from(damage) * multiplier) as i32;
         Ok(attributes.post_special(damage, self.speed, self.health, self.max_health))
     }
     pub fn roll(self, random: &mut impl RandomSource) -> Result<Roll, Error> {
-        let chance = self.chance()?;
+        self.roll_with_special(random, 1.0, 1.0)
+    }
+    pub fn roll_with_special(self, random: &mut impl RandomSource, accuracy: f64, damage: f64) -> Result<Roll, Error> {
+        let chance = self.chance_with_special(accuracy)?;
         if chance <= random.below(10000) as i32 {
             return Ok(Roll {
                 damage: 0,
@@ -98,7 +117,7 @@ impl Inputs {
         if attrs.melee & (1u64 << Melee::Gadderhammer as u8) != 0 && random.below(20) == 0 {
             attrs.melee |= 1u64 << Melee::GadderhammerProc as u8;
         }
-        let max_hit = self.max_hit(attrs)?;
+        let max_hit = self.max_hit_with_special(attrs, damage)?;
         if max_hit < 1 || max_hit == i32::MAX {
             return Err(Error::EmptyDamageRange);
         }

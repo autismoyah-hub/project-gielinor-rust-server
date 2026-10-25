@@ -1,10 +1,10 @@
-//! Runtime NPC stat/XP/spawn/respawn bind from the pinned Kotlin content script.
+//! Optional Kronos-format NPC combat JSON (`OSRS_NPC_COMBAT_DIRECTORY`), overlaid on the
+//! cache-derived stats in [`crate::npc_combat_stats`]. No default directory is compiled in.
 use crate::kronos_json::{self, Value};
 use std::{
     collections::BTreeMap,
     path::{Path, PathBuf},
 };
-pub const DEFAULT_DIRECTORY: &str = "C:/Projects/OSRSRSPS/source-reference/kronos-osrs-184-master/kronos-osrs-184-master/Kronos-master/kronos-server/data/npcs/combat";
 #[derive(Clone, Debug, PartialEq)]
 pub struct Info {
     pub ids: Vec<i32>,
@@ -230,7 +230,7 @@ impl Catalog {
                     id,
                     gielinor_world::npc_bind::Binding {
                         stats: info.stats,
-                        xp_multiplier: (info.xp_modifier * 1000.0).round_ties_even() as i32,
+                        xp_multiplier: Some((info.xp_modifier * 1000.0).round_ties_even() as i32),
                         spawn_animation: animation,
                         respawn_ticks: info.respawn_ticks,
                     },

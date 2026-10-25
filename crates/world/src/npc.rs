@@ -73,6 +73,15 @@ pub struct Npc {
     pub combat_xp_multiplier: i32,
     pub last_combat: i32,
     pub aggressive_player: Option<crate::simulation::ActorId>,
+    /// Npc.huntMode/huntRange; `default_*` are the type values restored by [`Npc::reset_hunt`].
+    pub hunt_mode: Option<u16>,
+    pub hunt_range: i32,
+    pub default_hunt_mode: Option<u16>,
+    pub default_hunt_range: i32,
+    pub hunt_clock: i32,
+    pub hunt_player: Option<crate::simulation::ActorId>,
+    /// NPC type `vislevel` (combat level), compared by hunt `check_nottoostrong`.
+    pub combat_level: i32,
     pub face_player: Option<crate::simulation::ActorId>,
     /// PlayerFaceClose owns movement independently of the NPC's default mode.
     pub dialogue_face: Option<crate::simulation::ActorId>,
@@ -146,6 +155,13 @@ impl Npc {
             combat_xp_multiplier: 0,
             last_combat: -1000,
             aggressive_player: None,
+            hunt_mode: None,
+            hunt_range: 0,
+            default_hunt_mode: None,
+            default_hunt_range: 0,
+            hunt_clock: 0,
+            hunt_player: None,
+            combat_level: -1,
             face_player: None,
             dialogue_face: None,
             face_changed: false,
@@ -187,6 +203,13 @@ impl Npc {
             self.face_player = target;
             self.face_changed = true;
         }
+    }
+    /// Npc.resetHunt: clears the found target and restores the type hunt mode and range.
+    pub fn reset_hunt(&mut self) {
+        self.hunt_clock = 0;
+        self.hunt_player = None;
+        self.hunt_mode = self.default_hunt_mode;
+        self.hunt_range = self.default_hunt_range;
     }
     pub fn regenerate(&mut self) {
         if self.regen_rate == 0 {

@@ -77,6 +77,9 @@ impl World {
         else {
             return Err(ActionError::InvalidItem);
         };
+        if let Some(config) = &self.special_attacks {
+            config.validate().map_err(|_| ActionError::InvalidItem)?;
+        }
         let p = self.player(actor)?;
         if p.saving {
             return Err(ActionError::LoggingOut);
@@ -146,9 +149,20 @@ impl World {
             .npc_combat
             .get(&npc.type_id)
             .ok_or(ActionError::InvalidItem)?;
-        let input = config
+        let mut input = config
             .inputs(&p.data, npc, definition, kind, style, speed, -1)
             .map_err(|_| ActionError::InvalidItem)?;
+        let special_vars = self.special_attacks.as_ref().map(|c| (c.energy, c.armed));
+        let armed = self.special_attacks.as_ref().is_some_and(|c| p.data.variables.get(c.armed.id) == 1);
+        let special = self.special_attacks.as_ref().and_then(|c| {
+            armed.then(|| p.data.equipment.get(3).and_then(|item| c.melee.get(&item.id).copied())).flatten()
+        });
+        let insufficient = special.zip(special_vars).is_some_and(|(s, (energy, _))| p.data.variables.get(energy.id) < s.cost);
+        let special = special.filter(|_| !insufficient);
+        if let Some(special) = special {
+            // Cleave keeps offensive type/style, but blocks against Slash.
+            input.defence_bonus = definition.defence[usize::from(special.block_type - 1)];
+        }
         let fx = config.effects(p.data.equipment.get(3).map(|i| i.id), stance);
         let defend = config.npc_defend.get(&npc.type_id).copied();
         let mut mark = *config
@@ -166,7 +180,25 @@ impl World {
         let uuid = p.data.character_id;
         let logged = p.protection.processed_clock > 0;
         self.set_next_attack_delay(actor, speed)?;
-        let roll = input.roll(random).map_err(|_| ActionError::InvalidStat)?;
+        // PvNCombat resets Weapon before attempting the registered handler. Low
+        // energy returns to the ordinary attack under the same weapon delay.
+        if armed {
+            let (_, armed) = special_vars.unwrap();
+            if let Some(update) = self.data_mut(actor)?.variables.set(armed, 0, logged) {
+                self.events.push(WorldEvent::CombatVariables { actor, updates: vec![update] });
+            }
+        }
+        if insufficient {
+            self.events.push(WorldEvent::GameMessage { actor, text: "You don't have enough power left.".into() });
+        }
+        if let Some(s) = special {
+            self.events.push(WorldEvent::PlayerCombatAnimation { actor, sequence: s.animation });
+            self.events.push(WorldEvent::PlayerSpotAnimation { actor, spot: s.spot, delay: 0, height: s.spot_height, slot: s.spot_slot });
+        }
+        let roll = match special {
+            Some(s) => input.roll_with_special(random, s.accuracy, s.max_hit),
+            None => input.roll(random),
+        }.map_err(|_| ActionError::InvalidStat)?;
         if let Some(max_hit) = roll.max_hit {
             let update = self
                 .data_mut(actor)?
@@ -180,11 +212,9 @@ impl World {
             }
         }
         self.give_npc_combat_xp(actor, target, attack, roll.damage, rate)?;
-        self.events.push(WorldEvent::CombatAnimation {
-            actor,
-            sequence: fx.0,
-            sound: fx.1,
-        });
+        if special.is_none() {
+            self.events.push(WorldEvent::CombatAnimation { actor, sequence: fx.0, sound: fx.1 });
+        }
         mark.source_threshold = threshold.max(roll.max_hit.unwrap_or(prior_max_hit));
         let clock = self.clock.0;
         let npc = self.npc_mut(target).ok_or(ActionError::StaleActor)?;
@@ -208,6 +238,16 @@ impl World {
                 actor: target,
                 sequence,
             });
+        }
+        // Source charges only after the special handler successfully queues its
+        // hit and continuation. Misses still charge; rejected actions do not.
+        if let Some(s) = special {
+            let (energy, _) = special_vars.unwrap();
+            let p = self.data_mut(actor)?;
+            let remaining = p.variables.get(energy.id) - s.cost;
+            if let Some(update) = p.variables.set(energy, remaining, logged) {
+                self.events.push(WorldEvent::CombatVariables { actor, updates: vec![update] });
+            }
         }
         Ok(true)
     }

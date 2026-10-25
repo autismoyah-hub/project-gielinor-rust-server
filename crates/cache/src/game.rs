@@ -56,6 +56,20 @@ impl GameCache {
         self.archive(archive)?;
         self.archives[&archive].files(&mut self.store, group, key)
     }
+    /// First file of the group whose index name hash matches `name` (Java
+    /// String.hashCode over CP1252 bytes), e.g. binary archive 10 "huffman".
+    pub fn named_file(&mut self, archive: u8, name: &str) -> io::Result<Option<Vec<u8>>> {
+        self.archive(archive)?;
+        let hash = name
+            .bytes()
+            .fold(0i32, |h, b| h.wrapping_mul(31).wrapping_add(b as i8 as i32));
+        let Some(group) = self.archives[&archive].index.named_group(hash) else {
+            return Ok(None);
+        };
+        Ok(self
+            .files(archive, group, None)?
+            .and_then(|files| files.into_values().next()))
+    }
     /// Missing archive indexes have zero CRC, as in the reference checksum table.
     pub fn checksums(&mut self) -> io::Result<[u32; 23]> {
         let mut values = [0; 23];
@@ -93,6 +107,14 @@ impl GameCache {
             crate::projectiles::ProjectileType::decode(&bytes)
                 .map(|value| (id, value))
                 .map_err(|e| invalid(&format!("Config 204:{id}: {e:?}")))
+        }).collect()
+    }
+    /// Server-only `.hunt` configs; an absent group is empty.
+    pub fn hunt_modes(&mut self) -> io::Result<BTreeMap<u32, gielinor_world::hunt::Mode>> {
+        self.files(2, 2, None)?.unwrap_or_default().into_iter().map(|(id, bytes)| {
+            crate::hunt::decode(&bytes)
+                .map(|value| (id, value))
+                .map_err(|e| invalid(&format!("Config 2:{id}: {e:?}")))
         }).collect()
     }
     pub fn db_rows(&mut self) -> io::Result<BTreeMap<u32, crate::db::Row>> {

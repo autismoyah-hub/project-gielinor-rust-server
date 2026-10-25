@@ -27,3 +27,4 @@ path = "examples/cinderworks_floor_check.rs"
 [[example]]
 name = "cinderworks_checkpoint_check"
 path = "examples/cinderworks_checkpoint_check.rs"
+
