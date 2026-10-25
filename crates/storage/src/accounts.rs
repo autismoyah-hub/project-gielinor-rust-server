@@ -1,7 +1,7 @@
 use crate::sqlite::{Database, Error, Value};
 use gielinor_world::{inventory::Item, CoordGrid};
 use std::collections::BTreeMap;
-const MIGRATIONS: [&str; 13] = [
+const MIGRATIONS: [&str; 14] = [
     include_str!("../migrations/V1__init.sql"),
     include_str!("../migrations/V2__add_run_energy_to_characters.sql"),
     include_str!("../migrations/V3__add_realm_config_columns.sql"),
@@ -15,6 +15,7 @@ const MIGRATIONS: [&str; 13] = [
     include_str!("../migrations/V11__tower_bones_offered.sql"),
     include_str!("../migrations/V12__chemistry_state.sql"),
     include_str!("../migrations/V13__tower_run.sql"),
+    include_str!("../migrations/V14__tower_attempt.sql"),
 ];
 fn int(v: i64) -> Value {
     Value::Integer(v)
@@ -145,6 +146,10 @@ impl Accounts {
     }
     pub fn from_database(db: Database) -> Self {
         Self { db }
+    }
+    /// Crate-local access for the Tower attempt store (`tower_attempt.rs`).
+    pub(crate) fn tower_database(&mut self) -> &mut Database {
+        &mut self.db
     }
     /// Initialize only a new, isolated database; never silently take over a Kotlin database.
     pub fn initialize(&mut self) -> Result<(), Error> {
@@ -314,20 +319,41 @@ impl Accounts {
         if s.coords == CoordGrid::NULL || !(0..=10000).contains(&s.run_energy) {
             return Err(Error::from("Invalid character save state".to_string()));
         }
-        self.db.transaction(|db|{
-            if db.query("SELECT id FROM characters WHERE id=? AND account_id=?",&[int(s.character_id),int(s.account_id)],1)?.is_empty(){return Err(Error::from("Character/account mismatch".to_string()))}
-            db.execute("UPDATE characters SET x=?,z=?,level=?,varps=?,last_login=?,run_energy=?,xp_rate_in_hundreds=?,last_logout=CASE WHEN ? THEN CURRENT_TIMESTAMP ELSE last_logout END WHERE id=?",&[int(s.coords.x() as i64),int(s.coords.z() as i64),int(s.coords.level() as i64),text(&s.persistent_varps_json),optional(&s.last_login),int(s.run_energy as i64),int(s.xp_rate_hundreds as i64),int(logout as i64),int(s.character_id)])?;
-            db.execute("UPDATE accounts SET display_name=?,known_device=?,modlevel=? WHERE id=?",&[optional(&s.display_name),s.known_device.map_or(Value::Null,int),optional(&s.modlevel),int(s.account_id)])?;
-            db.execute("INSERT INTO tower_arrival(character_id,kit_given,staff_taken,diary_progress,bones_offered) VALUES(?,?,?,?,?) ON CONFLICT(character_id) DO UPDATE SET kit_given=excluded.kit_given,staff_taken=excluded.staff_taken,diary_progress=excluded.diary_progress,bones_offered=COALESCE(excluded.bones_offered,tower_arrival.bones_offered)", &[int(s.character_id),int(s.tower_arrival.kit_given as i64),int(s.tower_arrival.staff_taken as i64),int(s.tower_arrival.diary_progress as i64),s.tower_arrival.bones_offered.map_or(Value::Null,|v|int(v as i64))])?;
-            if let Some(progress) = s.tower_diary { crate::tower_diary::save(db, s.character_id, progress)?; }
-            crate::chemistry::save(db,s.character_id,s.chemistry)?;
-            crate::tower_run::save(db,s.character_id,s.tower_run)?;
-            for (id,stat) in &s.stats {if !(0..=2_000_000_000).contains(&stat.fine_xp){return Err(Error::from("Invalid fine XP".to_string()))}db.execute("INSERT INTO stats(character_id,stat_id,vis_level,base_level,fine_xp) VALUES(?,?,?,?,?) ON CONFLICT(character_id,stat_id) DO UPDATE SET vis_level=excluded.vis_level,base_level=excluded.base_level,fine_xp=excluded.fine_xp,updated_at=CASE WHEN stats.fine_xp!=excluded.fine_xp THEN CURRENT_TIMESTAMP ELSE stats.updated_at END",&[int(s.character_id),int(*id as i64),int(stat.visible as i64),int(stat.base as i64),int(stat.fine_xp as i64)])?;}
-            db.execute("DELETE FROM inventories WHERE character_id=?",&[int(s.character_id)])?;
-            for (kind,items) in &s.inventories {if items.is_empty(){continue}db.execute("INSERT INTO inventories(character_id,inv_type) VALUES(?,?)",&[int(s.character_id),int(*kind as i64)])?;let inv=db.last_insert_id();for (slot,item) in items {if *slot>=65536||item.id<0||item.count<1{return Err(Error::from("Invalid inventory item".to_string()))}db.execute("INSERT INTO inventory_objs VALUES(?,?,?,?,?)",&[int(inv),int(*slot as i64),int(item.id as i64),int(item.count as i64),int(item.vars as i64)])?;}}
-            Ok(())
-        })
+        self.db.transaction(|db| write_snapshot(db, s, logout))
     }
+}
+/// The body of the character save transaction, unchanged: one absolute snapshot. Callers own the
+/// transaction; the Tower attempt store runs it inside its commit transaction.
+pub(crate) fn write_snapshot(db: &Database, s: &Save, logout: bool) -> Result<(), Error> {
+    if db.query("SELECT id FROM characters WHERE id=? AND account_id=?",&[int(s.character_id),int(s.account_id)],1)?.is_empty(){return Err(Error::from("Character/account mismatch".to_string()))}
+    db.execute("UPDATE characters SET x=?,z=?,level=?,varps=?,last_login=?,run_energy=?,xp_rate_in_hundreds=?,last_logout=CASE WHEN ? THEN CURRENT_TIMESTAMP ELSE last_logout END WHERE id=?",&[int(s.coords.x() as i64),int(s.coords.z() as i64),int(s.coords.level() as i64),text(&s.persistent_varps_json),optional(&s.last_login),int(s.run_energy as i64),int(s.xp_rate_hundreds as i64),int(logout as i64),int(s.character_id)])?;
+    db.execute("UPDATE accounts SET display_name=?,known_device=?,modlevel=? WHERE id=?",&[optional(&s.display_name),s.known_device.map_or(Value::Null,int),optional(&s.modlevel),int(s.account_id)])?;
+    db.execute("INSERT INTO tower_arrival(character_id,kit_given,staff_taken,diary_progress,bones_offered) VALUES(?,?,?,?,?) ON CONFLICT(character_id) DO UPDATE SET kit_given=excluded.kit_given,staff_taken=excluded.staff_taken,diary_progress=excluded.diary_progress,bones_offered=COALESCE(excluded.bones_offered,tower_arrival.bones_offered)", &[int(s.character_id),int(s.tower_arrival.kit_given as i64),int(s.tower_arrival.staff_taken as i64),int(s.tower_arrival.diary_progress as i64),s.tower_arrival.bones_offered.map_or(Value::Null,|v|int(v as i64))])?;
+    if let Some(progress) = s.tower_diary { crate::tower_diary::save(db, s.character_id, progress)?; }
+    crate::chemistry::save(db,s.character_id,s.chemistry)?;
+    crate::tower_run::save(db,s.character_id,s.tower_run)?;
+    for (id,stat) in &s.stats {if !(0..=2_000_000_000).contains(&stat.fine_xp){return Err(Error::from("Invalid fine XP".to_string()))}db.execute("INSERT INTO stats(character_id,stat_id,vis_level,base_level,fine_xp) VALUES(?,?,?,?,?) ON CONFLICT(character_id,stat_id) DO UPDATE SET vis_level=excluded.vis_level,base_level=excluded.base_level,fine_xp=excluded.fine_xp,updated_at=CASE WHEN stats.fine_xp!=excluded.fine_xp THEN CURRENT_TIMESTAMP ELSE stats.updated_at END",&[int(s.character_id),int(*id as i64),int(stat.visible as i64),int(stat.base as i64),int(stat.fine_xp as i64)])?;}
+    db.execute("DELETE FROM inventories WHERE character_id=?",&[int(s.character_id)])?;
+    for (kind,items) in &s.inventories {if items.is_empty(){continue}db.execute("INSERT INTO inventories(character_id,inv_type) VALUES(?,?)",&[int(s.character_id),int(*kind as i64)])?;let inv=db.last_insert_id();for (slot,item) in items {if *slot>=65536||item.id<0||item.count<1{return Err(Error::from("Invalid inventory item".to_string()))}db.execute("INSERT INTO inventory_objs VALUES(?,?,?,?,?)",&[int(inv),int(*slot as i64),int(item.id as i64),int(item.count as i64),int(item.vars as i64)])?;}}
+    Ok(())
+}
+/// Static checks a snapshot must pass before any database access: the same conditions the save
+/// path enforces (coords and run energy before its transaction, fine XP and inventory items inside it).
+pub(crate) fn validate_save(s: &Save) -> Result<(), Error> {
+    if s.coords == CoordGrid::NULL || !(0..=10000).contains(&s.run_energy) {
+        return Err(Error::from("Invalid character save state".to_string()));
+    }
+    if s.stats.values().any(|stat| !(0..=2_000_000_000).contains(&stat.fine_xp)) {
+        return Err(Error::from("Invalid fine XP".to_string()));
+    }
+    for items in s.inventories.values() {
+        for (slot, item) in items {
+            if *slot >= 65536 || item.id < 0 || item.count < 1 {
+                return Err(Error::from("Invalid inventory item".to_string()));
+            }
+        }
+    }
+    Ok(())
 }
 #[cfg(test)]
 mod tests {
@@ -704,6 +730,8 @@ mod tests {
         a.db.execute("DROP TABLE chemistry_state", &[]).unwrap();
         a.db.execute("DROP TABLE tower_diary", &[]).unwrap();
         a.db.execute("DROP TABLE tower_arrival", &[]).unwrap();
+        a.db.execute("DROP TABLE tower_attempt_transitions", &[]).unwrap();
+        a.db.execute("DROP TABLE tower_attempts", &[]).unwrap();
         a.db.execute("DELETE FROM _rust_migrations WHERE version>=9", &[])
             .unwrap();
         a.initialize().unwrap();
@@ -721,6 +749,8 @@ mod tests {
         a.db.execute("UPDATE characters SET run_energy=4321 WHERE id=?",&[int(id)]).unwrap();
         a.db.execute("DROP TABLE tower_run",&[]).unwrap();
         a.db.execute("DROP TABLE chemistry_state",&[]).unwrap();
+        a.db.execute("DROP TABLE tower_attempt_transitions",&[]).unwrap();
+        a.db.execute("DROP TABLE tower_attempts",&[]).unwrap();
         a.db.execute("DELETE FROM _rust_migrations WHERE version>=12",&[]).unwrap();
         a.initialize().unwrap();a.initialize().unwrap();
         let loaded=a.load("chemistry migration",1).unwrap().unwrap();

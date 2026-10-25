@@ -25,6 +25,8 @@ pub struct Avatar<'a> {
     pub face_angle: Option<u16>,
     pub face_npc: Option<u16>,
     pub face_changed: bool,
+    /// This cycle's public-chat block; the sender's own update carries the chatbox echo.
+    pub chat: Option<&'a [u8]>,
 }
 #[derive(Clone)]
 struct Known {
@@ -201,6 +203,7 @@ impl Observer {
                 .transpose()?;
             let update = Updates {
                 spot_animations: Some(&avatar.spot_animations),
+                chat: avatar.chat,
                 hitmarks: hits.as_deref(),
                 headbars: bars.as_deref(),
                 face: avatar
@@ -237,6 +240,7 @@ impl Observer {
             .encode()?;
             let initial = Updates {
                 spot_animations: Some(&avatar.spot_animations),
+                chat: avatar.chat,
                 hitmarks: hits.as_deref(),
                 headbars: bars.as_deref(),
                 face: avatar
@@ -315,6 +319,61 @@ mod tests {
     use super::*;
     use gielinor_world::movement::Movement;
     #[test]
+    fn public_chat_reaches_sender_and_observers_in_view_for_one_cycle() {
+        let avatars_at = |xs: [i32; 3]| -> Vec<Avatar<'static>> {
+            xs.iter()
+                .enumerate()
+                .map(|(i, &x)| Avatar {
+                    actor: ActorId {
+                        slot: i as u16 + 1,
+                        generation: 1,
+                    },
+                    movement: MovementSnapshot::from(&Movement::new(
+                        CoordGrid::new(x, 3200, 0).unwrap(),
+                    )),
+                    appearance: &[0],
+                    appearance_rebuild: false,
+                    sequence: None,
+                    exact_move: None,
+                    spot_animations: Vec::new(),
+                    face_angle: None,
+                    face_npc: None,
+                    face_changed: false,
+                    chat: None,
+                    combat: None,
+                })
+                .collect()
+        };
+        // Sender, an observer 5 tiles away and one 30 tiles away (view radius 15).
+        let block = [0u8, 128, 0, 128, 253, b'i', b'h', 2];
+        let mut avatars: Vec<Avatar<'_>> = avatars_at([3200, 3205, 3230]);
+        let mut observers: Vec<_> = avatars
+            .iter()
+            .map(|a| Observer::initialize(a.actor, &avatars, 15).unwrap().0)
+            .collect();
+        for observer in &mut observers {
+            observer.cycle(&avatars).unwrap();
+        }
+        let with_mask = Updates {
+            chat: Some(&block),
+            ..Default::default()
+        }
+        .encode()
+        .unwrap();
+        assert_eq!(with_mask[..2], [8, 1]);
+        avatars[0].chat = Some(&block);
+        let contains = |payload: &[u8]| payload.windows(with_mask.len()).any(|w| w == with_mask);
+        let seen: Vec<_> = observers
+            .iter_mut()
+            .map(|o| contains(&o.cycle(&avatars).unwrap()[0].payload))
+            .collect();
+        assert_eq!(seen, [true, true, false]);
+        avatars[0].chat = None;
+        for observer in &mut observers {
+            assert!(!contains(&observer.cycle(&avatars).unwrap()[0].payload));
+        }
+    }
+    #[test]
     fn player_hits_select_target_source_and_public_views_once() {
         use gielinor_protocol::combat_updates::{self, Headbar, Hitmark};
         let coords = CoordGrid::new(3200, 3200, 0).unwrap();
@@ -333,6 +392,7 @@ mod tests {
                 face_angle: None,
                 face_npc: None,
                 face_changed: false,
+                chat: None,
                 combat: None,
             })
             .collect();
@@ -439,6 +499,7 @@ mod tests {
             face_angle: None,
             face_npc: None,
             face_changed: false,
+            chat: None,
         }];
         let (mut observer, login) = Observer::initialize(actor, &avatars, 15).unwrap();
         assert_eq!(login.opcode, 49);

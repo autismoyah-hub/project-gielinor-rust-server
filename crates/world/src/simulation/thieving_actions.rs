@@ -44,8 +44,17 @@ impl World {
             return;
         };
         let p = self.players.get_mut(slot).unwrap();
-        if !p.member
-            || p.protection.access_protected(p.has_modal)
+        if !p.member {
+            // Thieving is members-only ("NPCs cannot be pickpocketed when not on a Members
+            // server", Wiki Thieving/Experience table). No refusal text is attested, so none
+            // is sent; OpenRune's pickpocket has no membership check.
+            self.events.push(WorldEvent::ActionRejected {
+                actor: p.id,
+                error: ActionError::Members,
+            });
+            return;
+        }
+        if p.protection.access_protected(p.has_modal)
             || p.pending_logout
             || p.saving
             || p.movement.rooted
@@ -473,5 +482,99 @@ mod tests {
             .iter()
             .flatten()
             .all(|i| i.id != 22521));
+    }
+    #[test]
+    fn a_man_killed_for_loot_respawns_and_can_still_be_pickpocketed() {
+        use crate::{
+            hits::{Hit, Style, Target as HitTarget},
+            npc_death::{Config as Death, Definition, DropPolicy},
+            npc_loot::{Outcome, Product, Profile, Row, Weighted},
+        };
+        let (mut w, a, n) = fixture();
+        w.data_mut(a).unwrap().character_id = 400;
+        w.set_observer_id(a, 900).unwrap();
+        w.npc_death = Some(Death {
+            definitions: [(3106, Definition { animation: 836, animation_ticks: 2, sound: None })].into(),
+            bones: 526,
+            chickens: Default::default(),
+        });
+        let main = Weighted::with_rows(1, vec![Row { weight: 1, outcome: Outcome::Range { item: 877, min: 2, max: 12 } }]).unwrap();
+        w.npc_loot_profiles.insert(
+            3106,
+            Profile::new(DropPolicy::Man, vec![Product { item: 526, count: 1 }], Some(main)).unwrap(),
+        );
+        w.object_types.stackable.insert(877);
+        let man = w.npc_mut(n).unwrap();
+        man.stats[3] = 2;
+        man.base_stats[3] = 2;
+        man.regen_rate = 0;
+        man.respawns = true;
+        man.respawn_rate = 3;
+        man.hero_points.credit(400, 2);
+        let tile = man.movement.coords;
+        w.queue_hit(
+            HitTarget::Npc(n),
+            Hit { source: Some(HitTarget::Player(a)), style: Style::Typeless, damage: 2, display: None },
+            1,
+        )
+        .unwrap();
+        let mut r = Draw { value: 0, attempts: 0 };
+        let mut drops = vec![];
+        let mut respawned = None;
+        for _ in 0..12 {
+            w.tick_with_random(&mut r).unwrap();
+            for e in w.drain_events() {
+                match e {
+                    WorldEvent::NpcDrop(t) => drops.push(t),
+                    // Respawn re-admits the slot under a new generation.
+                    WorldEvent::NpcCombatAnimation { actor, sequence: u16::MAX } if actor.slot == n.slot => {
+                        respawned = Some(actor)
+                    }
+                    _ => {}
+                }
+            }
+        }
+        assert_eq!(drops.len(), 1);
+        assert_eq!(drops[0].products, [(526, 1), (877, 2)], "count draw 0 is the range minimum");
+        assert!(w.objects.at(tile).all(|h| !h.snapshot().visible_to(Some(901))));
+        let n = respawned.expect("the man respawned");
+        let man = w.npc(n).unwrap();
+        assert!(man.visible && man.type_id == 3106 && man.stats[3] == 2, "respawned with full hitpoints");
+        // The respawned man is an ordinary pickpocket target again.
+        arm(&mut w, a, n, &mut r);
+        w.tick_with_random(&mut r).unwrap();
+        assert_eq!(r.attempts, 1);
+        let pouch = w.data(a).unwrap().inventory.slots().iter().flatten().find(|i| i.id == 22521).map(|i| i.count);
+        assert_eq!(pouch, Some(1));
+    }
+    #[test]
+    fn a_free_account_pickpocket_is_refused_without_a_message_or_any_change() {
+        let (mut w, a, n) = fixture();
+        w.set_membership(a, false).unwrap();
+        let before = (w.data(a).unwrap().inventory.clone(), w.data(a).unwrap().stats.clone());
+        let mut r = Draw { value: 0, attempts: 0 };
+        w.submit(a, Action::OperateNpc { target: n, operation: 3, control: false }).unwrap();
+        let mut events = vec![];
+        for _ in 0..4 {
+            w.tick_with_random(&mut r).unwrap();
+            events.extend(w.drain_events());
+        }
+        let rejected: Vec<_> = events
+            .iter()
+            .filter(|e| matches!(e, WorldEvent::ActionRejected { actor, error: ActionError::Members } if *actor == a))
+            .collect();
+        assert_eq!(rejected.len(), 1, "one explicit members refusal");
+        assert!(!events.iter().any(|e| matches!(e, WorldEvent::GameMessage { .. })), "no unattested message");
+        assert_eq!(r.attempts, 0, "no pickpocket roll");
+        let p = w.players.get(a.slot as usize).unwrap();
+        assert!(p.npc_interaction.is_none() && !p.movement.interacting, "interaction cleared");
+        assert!(!p.queues.snapshot().iter().any(|q| q.id == QUEUE), "nothing queued");
+        assert_eq!((w.data(a).unwrap().inventory.clone(), w.data(a).unwrap().stats.clone()), before);
+        // The same player as a member pickpockets as before.
+        w.set_membership(a, true).unwrap();
+        arm(&mut w, a, n, &mut r);
+        w.tick_with_random(&mut r).unwrap();
+        assert_eq!(r.attempts, 1);
+        assert_eq!(w.data(a).unwrap().inventory.get(0).unwrap().id, 22521);
     }
 }

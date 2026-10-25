@@ -40,6 +40,8 @@ mod pickable_actions;
 mod door_actions;
 mod guild_passage_actions;
 mod drop_action;
+mod firemaking_actions;
+mod fishing_actions;
 mod chemistry_actions;
 mod ground_actions;
 mod held_use_actions;
@@ -47,6 +49,7 @@ mod location_use_actions;
 #[cfg(test)]
 mod logout_tests;
 mod melee_actions;
+mod special_attack_actions;
 mod movement_actions;
 pub use movement_actions::MovementInput;
 mod elemental_spell_actions;
@@ -89,6 +92,9 @@ mod runecrafting_actions;
 mod npc_combat_actions;
 mod npc_death_actions;
 mod npc_search;
+mod npc_hunt_actions;
+mod manual_logout_actions;
+pub use manual_logout_actions::{ManualLogout, COMBAT_LOGOUT_MESSAGE};
 mod prayer_actions;
 mod prayer_book_actions;
 mod quantity_dialog;
@@ -235,6 +241,8 @@ enum Deferred {
     WaterFilling(crate::water_sources::Job),
     Cooking(crate::cooking::Job),
     CinderworksFishing(cinderworks_fishing::Job),
+    Fishing(fishing_actions::Job),
+    Firemaking(firemaking_actions::Job),
     Pickpocket(thieving_actions::Job),
     ToolCrafting(crate::tool_crafting::Pending),
     AssemblyProduction(crate::assembly_production::Pending),
@@ -309,6 +317,8 @@ struct Player {
     combat_mixing_request: Option<crate::combat_mixing::Request>,
     unfinished_potion_request: Option<crate::unfinished_potions::Request>,
     member: bool,
+    /// The pending ground-object interaction is "Light" rather than "Take".
+    object_light: bool,
     stat_events: crate::stat_events::Events,
     areas: crate::area_tracking::State,
     pending_areas: VecDeque<crate::area_tracking::Event>,
@@ -321,6 +331,9 @@ struct Player {
     last_npc_combat: i32,
     last_pvp_combat: i32,
     retaliate_npcs: VecDeque<(i32, NpcId)>,
+    /// PlayerRegistry zone and insertion order, read by NPC player hunts.
+    hunt_zone: [i32; 3],
+    hunt_order: u64,
     id: ActorId,
     combat_decimal: i32,
     action_delay: i32,
@@ -330,6 +343,8 @@ struct Player {
     active_speed: Speed,
     saving: bool,
     pending_logout: bool,
+    /// Player.manualLogout: the logout-panel button, decided in the PlayerLogout phase.
+    manual_logout: bool,
     logout_modal_close_pending: bool,
     disconnect_grace: crate::disconnect::Grace,
     run: RunModifiers,
@@ -388,6 +403,8 @@ impl Player {
         self.queues.remove_all(spade_actions::QUEUE);
         self.queues.remove_all(bookcase_actions::QUEUE);
         self.queues.remove_all(crate::thieving::QUEUE);
+        self.queues.remove_all(crate::fishing::QUEUE);
+        self.queues.remove_all(crate::firemaking::QUEUE);
         self.queues.remove_all(crate::tool_crafting::QUEUE);
         self.queues.remove_all(crate::assembly::QUEUE);
         self.queues.remove_all(crate::milking::QUEUE);
@@ -521,6 +538,7 @@ pub enum Action {
         token: u64,
         choice: i32,
     },
+    LightObject { coords: CoordGrid, id: u16, control: bool },
     TakeObject {
         coords: CoordGrid,
         id: u16,
@@ -623,6 +641,8 @@ pub enum ActionError {
     UnsupportedCombat,
     UnknownTowerDiary,
     UnknownTowerBones,
+    /// Members-only content refused on a free account.
+    Members,
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum AdmissionError {
@@ -995,6 +1015,8 @@ pub struct World {
     pub tower_combat: Option<crate::tower_combat::Config>,
     pub woodcutting: Option<crate::woodcutting::Config>,
     pub mining: Option<crate::mining::Config>,
+    pub mining_gems: Option<crate::mining::Gems>,
+    pub mining_essence: Option<crate::mining::Essence>,
     pub gathering_outfits: BTreeMap<u8, crate::gathering_outfits::Outfit>,
     /// Explicit stock partitions; empty until a verified content profile registers one.
     pub shops: BTreeMap<u32, crate::shop::Shop>,
@@ -1068,6 +1090,7 @@ pub struct World {
     pub npc_no_death_drops: std::collections::BTreeSet<u16>,
     pub npc_guaranteed_extras: BTreeMap<u16, crate::npc_death::GuaranteedExtras>,
     pub npc_loot_profiles: BTreeMap<u16, crate::npc_loot::Profile>,
+    pub npc_wealth_rings: std::collections::BTreeSet<i32>,
     pub npc_item_replies: std::collections::BTreeMap<u16,crate::npc_item_reply::Rule>,
     pub locations: crate::locations::Locations,
     pub location_types: BTreeMap<u32, crate::loc_collision::LocCollision>,
@@ -1083,6 +1106,7 @@ pub struct World {
     pub npc_options: crate::npc_options::Catalog,
     pub attack_profiles: crate::attack_profile::Catalog,
     pub melee: Option<crate::melee::Config>,
+    pub special_attacks: Option<crate::special_attacks::Config>,
     pub ranged: Option<crate::ranged::Config>,
     pub ranged_weapons: Option<crate::ranged_weapon::Catalog>,
     pub spell_combat: Option<crate::spell_combat::Config>,
@@ -1090,9 +1114,15 @@ pub struct World {
     pub npc_melee: Option<crate::npc_melee::Config>,
     pub npc_death: Option<crate::npc_death::Config>,
     pub npc_bindings: BTreeMap<u16, crate::npc_bind::Binding>,
+    pub hunt_modes: BTreeMap<u16, crate::hunt::Mode>,
+    /// Hunt modes for NPC types whose cache type has none (server ordinary_aggression).
+    pub hunt_defaults: BTreeMap<u16, u16>,
     pub combat_state: Option<crate::combat_state::Config>,
     pub npc_combat: BTreeMap<u16, crate::npc_combat::Definition>,
     pub pickpocket:Option<crate::thieving::Config>,
+    pub fishing: Option<crate::fishing::Config>,
+    pub firemaking: Option<crate::firemaking::Config>,
+    firemaking_fires: crate::firemaking::Fires,
     pub facility_policies: BTreeMap<u32,crate::facility_crafting::Policy>,
     pub facility_crafting:BTreeMap<u32,crate::facility_crafting::Config>,
     pub npc_handlers: BTreeMap<(u16, u8), crate::npc_interaction::Handler>,
@@ -1109,6 +1139,7 @@ pub struct World {
     order: Vec<usize>,
     npcs: EntityList<NpcEntry>,
     npc_hunt_order: u64,
+    player_hunt_order: u64,
     random: SeededRandom,
 }
 impl Default for World {
@@ -1148,6 +1179,8 @@ impl Default for World {
             tower_combat: None,
             woodcutting: None,
             mining: None,
+            mining_gems: None,
+            mining_essence: None,
             gathering_outfits: BTreeMap::new(),
             shops: BTreeMap::new(),
             active_trees: Default::default(),
@@ -1221,6 +1254,7 @@ impl Default for World {
             npc_no_death_drops: Default::default(),
             npc_guaranteed_extras: Default::default(),
             npc_loot_profiles: Default::default(),
+            npc_wealth_rings: Default::default(),
             npc_item_replies: Default::default(),
             locations: Default::default(),
             location_types: BTreeMap::new(),
@@ -1236,6 +1270,7 @@ impl Default for World {
             npc_options: Default::default(),
             attack_profiles: Default::default(),
             melee: None,
+            special_attacks: None,
             ranged: None,
             ranged_weapons: None,
             spell_combat: None,
@@ -1243,11 +1278,16 @@ impl Default for World {
             npc_melee: None,
             npc_death: None,
             npc_bindings: BTreeMap::new(),
+            hunt_modes: BTreeMap::new(),
+            hunt_defaults: BTreeMap::new(),
             combat_state: None,
             npc_combat: BTreeMap::new(),
             npc_handlers: Default::default(),
             banknote_npc_sad:None,
             pickpocket:None,
+            fishing: None,
+            firemaking: None,
+            firemaking_fires: Default::default(),
             facility_policies: Default::default(),
             facility_crafting:BTreeMap::new(),
             location_timers: Default::default(),
@@ -1262,6 +1302,7 @@ impl Default for World {
             order: vec![],
             npcs: EntityList::new(32767, 0),
             npc_hunt_order: 0,
+            player_hunt_order: 0,
             random: SeededRandom(2391),
         }
     }
@@ -1369,7 +1410,7 @@ impl World {
             entry.npc.combat_xp_multiplier = self
                 .npc_bindings
                 .get(&entry.npc.type_id)
-                .map(|b| b.xp_multiplier)
+                .and_then(|b| b.xp_multiplier)
                 .unwrap_or_else(|| {
                     catalog
                         .get(&entry.npc.type_id)
@@ -1402,6 +1443,7 @@ impl World {
                 });
             }
         }
+        npc_hunt_actions::apply_hunt_default(&self.hunt_defaults, &mut npc);
         npc.movement.occupancy(&mut self.collision, true);
         let hunt_zone = npc_search::zone(npc.movement.coords);
         self.npc_hunt_order = self
@@ -1584,6 +1626,8 @@ impl World {
         p.has_modal = open;
         if open {
             p.queues.remove_all(crate::thieving::QUEUE);
+            p.queues.remove_all(crate::fishing::QUEUE);
+            p.queues.remove_all(crate::firemaking::QUEUE);
             p.queues.remove_all(crate::tool_crafting::QUEUE);
             p.queues.remove_all(crate::assembly_production::QUEUE);
             p.queues.remove_all(crate::facility_crafting::QUEUE);
@@ -1976,6 +2020,7 @@ impl World {
             Action::ResumeChemistry {token,choice} => return self.resume_chemistry(id,token,choice),
             Action::DropSlot { slot } => return self.start_drop(id, slot),
             Action::ResumeDrop { token, choice } => return self.resume_drop(id, token, choice),
+            Action::LightObject {coords,id:object_id,control} => return self.request_light_object(id,coords,object_id,control),
             Action::TakeObject {
                 coords,
                 id: object_id,
@@ -2494,6 +2539,7 @@ impl World {
                         self.events.push(WorldEvent::GroundError(error));
                     }
                 }
+                Phase::NpcPreTick => self.process_npc_player_hunts(random),
                 Phase::NpcMain => {
                     self.process_shearing_npcs();
                     let mut failed = vec![];
@@ -2552,6 +2598,7 @@ impl World {
                         if self.process_npc_death(id, random) {
                             continue;
                         }
+                        self.process_npc_hunt(id);
                         self.process_npc_flavour(id,random);
                         self.process_duck_callbacks(id,random);
                         if self.process_npc_combat(id, random) {
@@ -2603,6 +2650,7 @@ impl World {
                         if let Err(error) = self.change_location(loc, add) {
                             self.events.push(WorldEvent::LocationError(error));
                         }
+                        if !add {self.fire_burned_out(loc);}
                     }
                     self.events.push(WorldEvent::SynchronizeNpcs {
                         tick: self.clock.0,
@@ -2655,6 +2703,7 @@ impl World {
                 }
                 Phase::PlayerMain => {
                     let mut spade_completions=Vec::new();
+                    let mut firemaking_completions=Vec::new();
                     let mut chemistry_worn_changes=Vec::new();
                     let alive_npcs: HashSet<_> = self
                         .npcs
@@ -2767,6 +2816,11 @@ impl World {
                                                         if caught {if let Some(n)=self.npcs.get_mut(target.slot as usize).filter(|n|n.id==target) {n.npc.face_player=Some(p.id);n.npc.face_changed=true;}}
                                                     }
                                                 }
+                                                Deferred::Fishing(job) => {
+                                                    if let Some(config)=&self.fishing {
+                                                        fishing_actions::complete(p,queues,job,config,&self.object_types,self.npcs.get(job.target.slot as usize),self.tutorial_rules_completed_varp.is_some(),&mut self.events,random);
+                                                    }
+                                                }
                                                 Deferred::Cooking(job) => {
                                                     let first=self.events.len();
                                                     if let Some(config)=&self.cooking {cooking_actions::complete(p,job,config,&self.object_types,self.locations.revision(job.target),self.clock.0,self.tutorial_rules_completed_varp.is_some(),&mut self.events,random);}
@@ -2784,6 +2838,7 @@ impl World {
                                                     }
                                                 }
                                                 Deferred::Spade(job) => {if let Some(done)=spade_actions::complete(p,job,&mut self.events){spade_completions.push(done);}}
+                                                Deferred::Firemaking(job) => firemaking_completions.push((p.id,job)),
                                                 Deferred::Bookcase(job) => {bookcase_actions::complete(p,job,self.locations.revision(job.target),&mut self.events,random);}
                                                 Deferred::Milking(job) => {
                                                     if let Some(config) = &self.milking {
@@ -3154,6 +3209,7 @@ impl World {
                         }
                     }
                     for (actor,job) in spade_completions {self.complete_spade_hook(actor,job);}
+                    for (actor,job) in firemaking_completions {self.complete_firemaking(actor,job,random);}
                     for (actor,slot,item) in chemistry_worn_changes { self.worn_changed(actor,slot,item); }
                 }
                 Phase::PlayerLogout => {
@@ -3171,6 +3227,7 @@ impl World {
                     for actor in due {
                         self.request_logout(actor).expect("current player");
                     }
+                    self.process_manual_logouts();
                     let pending: Vec<_> = self
                         .players
                         .iter()
@@ -3278,6 +3335,7 @@ impl World {
                             cinderworks_recovery_at:None,
                             ordinary_death: None,
                             member: false,
+                            object_light: false,
                             dough_request: None,
                             tool_crafting_request:None,
                             counted_assembly_request:None,
@@ -3298,6 +3356,8 @@ impl World {
                             last_npc_combat: -1000,
                             last_pvp_combat: -1000,
                             retaliate_npcs: Default::default(),
+                            hunt_zone: [0; 3],
+                            hunt_order: 0,
                             combat_decimal: 0,
                             action_delay: 0,
                             consumables: Default::default(),
@@ -3307,6 +3367,7 @@ impl World {
                             active_speed: Speed::Walk,
                             saving: false,
                             pending_logout: false,
+                            manual_logout: false,
                             logout_modal_close_pending: false,
                             disconnect_grace: Default::default(),
                             run,
@@ -3347,6 +3408,7 @@ impl World {
                             weight_sources: None,
                         };
                         assert!(self.players.insert(player).is_ok());
+                        self.update_player_hunt_zone(slot, true);
                         self.order.push(slot);
                         self.accounts.insert(account, id);
                         self.update_prayer_resistance(id);
@@ -3363,6 +3425,11 @@ impl World {
                     }
                 }
                 Phase::PlayerPostTick => {
+                    for slot in self.order.clone() {
+                        if self.players.get(slot).is_some_and(|p| !p.saving) {
+                            self.update_player_hunt_zone(slot, false);
+                        }
+                    }
                     self.events.push(WorldEvent::SynchronizePlayers {
                         tick: self.clock.0,
                         players: self
@@ -5173,6 +5240,30 @@ mod tests {
         w.saved(id).unwrap();
         w.tick().unwrap();
         assert!(w.observe(id).is_err());
+        // Issue #14: a fresh login is accepted as soon as the logout save lands.
+        w.queue_login(3, account()).unwrap();
+    }
+    /// Issue #14: combat prevention can hold an x-logged player, but only for the
+    /// Kotlin PREVENT_LOGOUT_HARD_CAP_PERIOD (100 cycles) after the 16-cycle grace.
+    #[test]
+    fn combat_prevention_holds_a_disconnected_player_at_most_116_cycles() {
+        let (mut w, id) = admitted();
+        w.players.get_mut(id.slot as usize).unwrap().logout_blocked_until = i32::MAX;
+        w.client_disconnected(id).unwrap();
+        w.drain_events();
+        let mut saved_after = None;
+        for cycle in 1..=200 {
+            w.tick().unwrap();
+            if w.drain_events().iter().any(|e| matches!(e, WorldEvent::Save { .. })) {
+                saved_after = Some(cycle);
+                break;
+            }
+            assert_eq!(w.queue_login(2, account()), Err(AdmissionError::Duplicate));
+        }
+        assert_eq!(saved_after, Some(117));
+        w.saved(id).unwrap();
+        w.tick().unwrap();
+        w.queue_login(2, account()).unwrap();
     }
     #[test]
     fn duplicate_admission_movement_and_save_before_removal() {

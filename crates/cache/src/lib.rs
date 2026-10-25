@@ -10,6 +10,7 @@ pub mod disk;
 pub mod enums;
 pub mod game;
 pub mod headbars;
+pub mod hunt;
 pub mod index;
 pub mod item_identity;
 pub mod js5;

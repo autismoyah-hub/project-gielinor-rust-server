@@ -1,7 +1,6 @@
 use super::*;
 
 #[test]
-#[ignore = "Requires private Kotlin differential fixture pending-logout.expected; excluded from public default tests"]
 fn original_pending_logout_process_matches_save_boundary() {
     let fixture = std::fs::read_to_string(concat!(
         env!("CARGO_MANIFEST_DIR"),

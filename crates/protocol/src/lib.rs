@@ -30,5 +30,7 @@ pub mod zone;
 pub mod region_rebuild;
 pub mod spot_animation;
 pub mod hint_arrow;
+pub mod huffman;
+pub mod public_chat;
 
 pub mod outgoing_category;

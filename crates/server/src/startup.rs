@@ -36,6 +36,8 @@ impl Names {
             "midi",
             "jingle",
             "dbtable",
+            "hunt",
+            "varn",
         ] {
             groups.insert(kind, symbols::load(directories, kind, None)?);
         }
@@ -263,7 +265,11 @@ pub fn configure<B: AccountBackend>(
         &parameters,
         &cache.headbars()?,
     )?);
-    runtime.configure_interfaces(cache.components()?)?;
+    let components = cache.components()?;
+    let special_attacks = crate::special_attack_config::resolve(
+        names, &runtime.definitions, &tables, &components,
+    ).map_err(io::Error::other)?;
+    runtime.configure_interfaces(components)?;
     runtime.enable_player_synchronization(crate::runtime::Presentation {
         animations: crate::appearance::AnimationPolicy::resolve(n("seq"), n("param"))
             .map_err(io::Error::other)?,
@@ -335,6 +341,9 @@ pub fn configure<B: AccountBackend>(
             &runtime.definitions,
         )
         .map_err(io::Error::other)?,
+    )?;
+    runtime.configure_special_attacks(
+        special_attacks,
     )?;
     runtime.configure_combat_wear(
         crate::magic_config::Inputs {
@@ -484,6 +493,10 @@ pub fn configure<B: AccountBackend>(
     for &id in pickpocket.targets.keys() {if runtime.world.npc_handlers.contains_key(&(id,3)){return Err(io::Error::other("Conflicting pickpocket operation"));}}
     for &id in pickpocket.targets.keys() {runtime.world.npc_handlers.insert((id,3),gielinor_world::npc_interaction::Handler::Pickpocket);}
     runtime.world.pickpocket=Some(pickpocket);
+    let fishing=crate::content::ordinary_fishing(n("npc"),n("obj"),n("seq"),n("synth"),n("stat"),&runtime.definitions).map_err(io::Error::other)?;
+    if fishing.spots.keys().any(|key|runtime.world.npc_handlers.contains_key(key)){return Err(io::Error::other("Conflicting fishing spot operation"));}
+    for &key in fishing.spots.keys(){runtime.world.npc_handlers.insert(key,gielinor_world::npc_interaction::Handler::Fishing);}
+    runtime.world.fishing=Some(fishing);
     let shearing=crate::content::shearing(n("npc"),n("obj"),n("content"),n("param"),n("seq"),n("synth"),&runtime.definitions).map_err(io::Error::other)?;
     if shearing.targets.keys().any(|&id|runtime.world.npc_handlers.contains_key(&(id,1))){return Err(io::Error::other("Conflicting sheep operation"));}
     for &raw in shearing.targets.keys(){runtime.world.npc_handlers.insert((raw,1),gielinor_world::npc_interaction::Handler::Shear{raw,selected:None});}
@@ -613,29 +626,50 @@ pub fn configure<B: AccountBackend>(
     if spiders.profiles.iter().any(|(id,p)|runtime.world.npc_no_death_drops.contains(id)||runtime.world.npc_guaranteed_extras.contains_key(id)||runtime.world.npc_death.as_ref().unwrap().chickens.contains_key(id)||runtime.world.npc_loot_profiles.contains_key(id)||!p.validate_catalog(&runtime.world.object_types)){return Err(io::Error::other("Conflicting small-spider normal loot registration"));}
     runtime.world.npc_death.as_mut().unwrap().definitions.extend(spiders.deaths);
     runtime.world.npc_loot_profiles.extend(spiders.profiles);
+    let shared=crate::content::shared_drop_tables::resolve(n("obj")).map_err(io::Error::other)?;
+    runtime.world.npc_wealth_rings=crate::wealth_drop_config::resolve(n("obj"),&runtime.definitions).map_err(io::Error::other)?;
+    let goblins=crate::content::goblin_drops::goblin_drops(n("npc"),n("obj"),&runtime.definitions,runtime.world.npc_death.as_ref().unwrap(),&shared.herb).map_err(io::Error::other)?;
+    if goblins.iter().any(|(id,p)|runtime.world.npc_no_death_drops.contains(id)||runtime.world.npc_guaranteed_extras.contains_key(id)||runtime.world.npc_death.as_ref().unwrap().chickens.contains_key(id)||runtime.world.npc_loot_profiles.contains_key(id)||!p.validate_catalog(&runtime.world.object_types)){return Err(io::Error::other("Conflicting or invalid ordinary goblin drop registration"));}
+    runtime.world.npc_loot_profiles.extend(goblins);
+    let people=crate::content::man_woman_drops::man_woman_drops(n("npc"),n("obj"),&runtime.definitions,runtime.world.npc_death.as_ref().unwrap(),&shared.herb).map_err(io::Error::other)?;
+    if people.iter().any(|(id,p)|runtime.world.npc_no_death_drops.contains(id)||runtime.world.npc_guaranteed_extras.contains_key(id)||runtime.world.npc_death.as_ref().unwrap().chickens.contains_key(id)||runtime.world.npc_loot_profiles.contains_key(id)||!p.validate_catalog(&runtime.world.object_types)){return Err(io::Error::other("Conflicting or invalid ordinary man/woman drop registration"));}
+    runtime.world.npc_loot_profiles.extend(people);
     let death=runtime.world.npc_death.as_ref().unwrap();
     if runtime.world.npc_guaranteed_extras.keys().any(|id|death.chickens.contains_key(id)||!death.definitions.get(id).is_some_and(|d|d.animation_ticks>0)){return Err(io::Error::other("Missing or conflicting guaranteed-drop death profile"));}
     let ducks=crate::content::ducks(n("npc"),n("content"),n("synth"),&runtime.definitions,runtime.world.npc_death.as_ref().unwrap()).map_err(io::Error::other)?;
     if runtime.world.npc_flavour.as_ref().is_some_and(|f|f.types.keys().any(|id|ducks.contains(*id)))||ducks.adults.iter().any(|id|runtime.world.npc_no_death_drops.contains(id)){return Err(io::Error::other("Conflicting duck callback/death registration"));}
     runtime.world.npc_no_death_drops.extend(ducks.adults.iter().copied());
     runtime.world.ducks=Some(ducks);
-    let combat_catalog =
-        crate::kronos_combat::Catalog::load(Path::new(crate::kronos_combat::DEFAULT_DIRECTORY));
-    if !combat_catalog.failures.is_empty() {
-        eprintln!(
-            "NPC combat data: {} ids loaded, {} file failures",
-            combat_catalog.by_id.len(),
-            combat_catalog.failures.len()
-        );
-    }
-    runtime
-        .world
-        .configure_npc_bindings(combat_catalog.bindings(&sequences));
+    let respawns = crate::ordinary_respawn::resolve(n("npc"), &runtime.definitions.npcs)
+        .map_err(io::Error::other)?;
+    let hitpoints = crate::ordinary_hitpoints::resolve(n("npc"), &runtime.definitions.npcs)
+        .map_err(io::Error::other)?;
+    let combat_stats = crate::npc_combat_stats::load_with_ordinary(
+        &runtime.definitions.npcs, &sequences, &respawns, &hitpoints,
+        std::env::var_os(crate::npc_combat_stats::OVERRIDE_VARIABLE).map(std::path::PathBuf::from),
+    ).map_err(io::Error::other)?;
+    eprintln!("{}", combat_stats.summary());
+    runtime.world.configure_npc_bindings(combat_stats.bindings);
+    let hunt = crate::npc_hunt_config::resolve(
+        cache.hunt_modes()?,
+        names.group("varn"),
+        &runtime.definitions.npcs,
+        crate::ordinary_aggression::resolve(
+            names.group("npc"),
+            names.group("hunt"),
+            &runtime.definitions.npcs,
+        )
+        .map_err(io::Error::other)?,
+    )
+    .map_err(io::Error::other)?;
+    eprintln!("{}", hunt.summary());
+    runtime.world.configure_hunt(hunt.modes, hunt.defaults);
     runtime.configure_bonuses(
         bonuses,
         crate::bonuses::Styles::resolve(n("enum"), &tables).map_err(io::Error::other)?,
         Some(crate::bonuses::BankDisplay::resolve(n("component")).map_err(io::Error::other)?),
     )?;
+    runtime.configure_logout_button(names.id("component", "logout:logout")?);
     runtime.enable_ground_synchronization()?;
     runtime.world.configure_npc_combat(
         crate::npc_combat_config::resolve(

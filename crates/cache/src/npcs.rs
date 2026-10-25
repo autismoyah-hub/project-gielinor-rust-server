@@ -16,6 +16,8 @@ pub struct NpcType {
     /// Attack, defence, strength, hitpoints, ranged, magic (cache opcode order).
     pub stats: [i32; 6],
     pub category: i32,
+    /// Opcode 95 `vislevel`, the combat level used by hunt `check_nottoostrong`.
+    pub combat_level: i32,
     pub active: bool,
     pub follower: bool,
     pub restrict: Restrict,
@@ -56,6 +58,7 @@ impl NpcType {
             ops: std::array::from_fn(|_| None),
             stats: [1, 1, 1, 10, 1, 1],
             category: -1,
+            combat_level: -1,
             active: true,
             follower: false,
             restrict: Restrict::Normal,
@@ -119,7 +122,8 @@ impl NpcType {
                     d.animations[6] = r.u16()?;
                     r.take(6)?;
                 }
-                95 | 97 | 98 | 103 | 116 | 124 | 126 | 146 => {
+                95 => d.combat_level = i32::from(r.u16()?),
+                97 | 98 | 103 | 116 | 124 | 126 | 146 => {
                     r.u16()?;
                 }
                 117 => {
@@ -260,6 +264,11 @@ impl NpcType {
         npc.stats = self.stats;
         npc.regen_rate = self.regen_rate as i32;
         npc.respawn_rate = self.respawn_rate as i32;
+        npc.hunt_mode = self.hunt_mode;
+        npc.default_hunt_mode = self.hunt_mode;
+        npc.hunt_range = i32::from(self.hunt_range);
+        npc.default_hunt_range = npc.hunt_range;
+        npc.combat_level = self.combat_level;
         npc.hero_points = gielinor_world::hero_points::HeroPoints::new(self.hero_count as usize);
         npc.patrol = self.patrol.clone();
         Ok(npc)

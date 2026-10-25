@@ -190,18 +190,36 @@ fn report(events: Vec<runtime::Event>) {
         }
     }
 }
+/// The legacy Threshold arrival on the Lumbridge recovery pad is configured unless the
+/// server was started with `--ordinary-world`. Cinderworks arrival is separate and can't be
+/// combined with that flag.
+fn tower_arrival_config(
+    ordinary_world: bool,
+    progression: Option<gielinor_world::floor_progression::Policy>,
+    origin: CoordGrid,
+) -> Option<gielinor_world::tower_arrival::Config> {
+    if ordinary_world {
+        return None;
+    }
+    progression.map(|progression| gielinor_world::tower_arrival::Config { origin, progression })
+}
 pub fn run() -> io::Result<()> {
     let mut values = BTreeMap::new();
     let mut directories = Vec::new();
     let mut check = false;
+    let mut ordinary_world = false;
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
         if arg == "--help" {
-            println!("Gielinor Rust development server (partial implementation)\n--game-cache PATH --js5-cache PATH --symbols PATH [--symbols OVERLAY]\n--check validates cache/content without a socket or account database.\nTo serve: --rsa-exponent RAW_BE_FILE --rsa-modulus RAW_BE_FILE --argon2 DLL\n[--state-name isolated] [--bind 127.0.0.1:0] [--ticks N] [--spawn X,Z,LEVEL] [--stop-file PATH] [--elemental-source ISOLATED_FIXTURE_DIR] [--cinderworks-content ART_TOWER]\nCtrl+C or creation of the stop file requests logout and drains pending saves. Port 43594 is forbidden.");
+            println!("Gielinor Rust development server (partial implementation)\n--game-cache PATH --js5-cache PATH --symbols PATH [--symbols OVERLAY]\n--check validates cache/content without a socket or account database.\nTo serve: --rsa-exponent RAW_BE_FILE --rsa-modulus RAW_BE_FILE --argon2 DLL\n[--state-name isolated] [--bind 127.0.0.1:0] [--ticks N] [--spawn X,Z,LEVEL] [--stop-file PATH] [--elemental-source ISOLATED_FIXTURE_DIR] [--cinderworks-content ART_TOWER | --ordinary-world]\n--ordinary-world serves the ordinary world with no Tower arrival on the Lumbridge recovery pad.\nCtrl+C or creation of the stop file requests logout and drains pending saves. Port 43594 is forbidden.");
             return Ok(());
         }
         if arg == "--check" {
             check = true;
+            continue;
+        }
+        if arg == "--ordinary-world" {
+            ordinary_world = true;
             continue;
         }
         if ![
@@ -242,6 +260,9 @@ pub fn run() -> io::Result<()> {
     };
     if directories.is_empty() {
         return Err(fail("At least one --symbols directory is required"));
+    }
+    if ordinary_world && values.contains_key("--cinderworks-content") {
+        return Err(fail("--ordinary-world cannot be combined with --cinderworks-content"));
     }
     let address: SocketAddr = values
         .get("--bind")
@@ -346,6 +367,19 @@ pub fn run() -> io::Result<()> {
         loaded.npcs.len(),
         loaded.locations.len()
     );
+    // Fixture runs need to show which ordinary squares surround an explicit --spawn.
+    println!(
+        "Spawn {},{},{} map squares: {}",
+        spawn.x(),
+        spawn.z(),
+        spawn.level(),
+        loaded
+            .squares
+            .iter()
+            .map(|id| format!("{}_{}", id >> 8, id & 0xff))
+            .collect::<Vec<_>>()
+            .join(" ")
+    );
     let provider = js5::Worker::start(
         PathBuf::from(required("--js5-cache")?),
         0xff_ffff,
@@ -377,6 +411,13 @@ pub fn run() -> io::Result<()> {
     let mut runtime =
         runtime::Runtime::new(loaded.world, transport, definitions, policy, Backend(None));
     startup::configure(&mut runtime, &mut cache, &names)?;
+    // Public chat uses the Huffman table the client receives from the JS5 cache.
+    let huffman = GameCache::open(Path::new(required("--js5-cache")?), 0xff_ffff)?
+        .named_file(10, "huffman")?
+        .ok_or_else(|| fail("Missing JS5 binary huffman table"))?;
+    runtime.huffman = Some(
+        gielinor_protocol::huffman::Huffman::new(&huffman).map_err(|e| fail(format!("Huffman table: {e:?}")))?,
+    );
     #[cfg(feature = "integration-fixtures")]
     if child_world_fixture {
         let child_map=cache.map_square(12850)?.ok_or_else(||fail("Child fixture requires stock source map square12850"))?;
@@ -433,12 +474,7 @@ pub fn run() -> io::Result<()> {
     runtime.world = world;
     runtime.constructed = constructed;
     runtime.world.tower_arrival =
-        runtime
-            .floor_progression
-            .map(|progression| gielinor_world::tower_arrival::Config {
-                origin: tower_origin,
-                progression,
-            });
+        tower_arrival_config(ordinary_world, runtime.floor_progression, tower_origin);
     runtime.configure_tower_tanner(
         tower_origin,
         names.short("npc", "threshold_tanner")?,
@@ -451,6 +487,7 @@ pub fn run() -> io::Result<()> {
             .try_into()
             .unwrap(),
     )?;
+    runtime.configure_tower_banker(names.short("npc", "threshold_banker")?)?;
     runtime.configure_tower_chest(names.id("loc", "threshold_chest")?, names.group("obj"))?;
     runtime.configure_tower_staff(
         names.id("loc", "crate_old")?,
@@ -474,6 +511,7 @@ pub fn run() -> io::Result<()> {
     runtime.configure_crafting_guild_bank(&names)?;
     runtime.configure_deposit_box(&names)?;
     runtime.configure_mining(&names)?;
+    runtime.configure_firemaking(&names)?;
     let offering_xp = names.id("param", "skill_xp")?;
     let offering_default = cache
         .parameters()?
@@ -601,4 +639,27 @@ pub fn run() -> io::Result<()> {
     }
     println!("Shutdown completed; accounts drained.");
     Ok(())
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    fn policy() -> gielinor_world::floor_progression::Policy {
+        gielinor_world::floor_progression::Policy {
+            attack: 0,
+            defence: 1,
+            strength: 2,
+            hitpoints: 3,
+            runecrafting: 20,
+            herblore: 15,
+        }
+    }
+    #[test]
+    fn ordinary_world_disables_only_the_legacy_tower_arrival() {
+        let origin = CoordGrid::new(10368, 64, 0).unwrap();
+        assert!(tower_arrival_config(true, Some(policy()), origin).is_none());
+        let legacy = tower_arrival_config(false, Some(policy()), origin).unwrap();
+        assert_eq!(legacy.origin, origin);
+        assert_eq!(legacy.progression.herblore, 15);
+        assert!(tower_arrival_config(false, None, origin).is_none());
+    }
 }

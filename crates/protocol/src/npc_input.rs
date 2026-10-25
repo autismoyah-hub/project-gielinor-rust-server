@@ -26,6 +26,13 @@ pub fn target(bytes: &[u8]) -> Result<Target, DecodeError> {
         source_object: nullable(object),
     })
 }
+/// OPNPC6 (0): Examine carries the client-resolved NPC type, not an index.
+pub fn examine(bytes: &[u8]) -> Result<u16, DecodeError> {
+    let mut r = Reader::new(bytes);
+    let id = r.u16()?;
+    r.finish()?;
+    Ok(id)
+}
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Operation {
     pub index: u16,

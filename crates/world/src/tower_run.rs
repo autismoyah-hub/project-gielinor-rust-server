@@ -1,5 +1,6 @@
 //! Durable Cinderworks lifecycle. Encounter timers and ownership are transient;
 //! these fields are saved in the existing character/inventory transaction.
+pub mod attempt;
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub struct Run {
     pub id: u32,

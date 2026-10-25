@@ -110,13 +110,29 @@ pub(crate) fn reward(
     product: i32,
     xp: f64,
 ) -> Result<Reward, crate::simulation::ActionError> {
-    reward_with_storage(data,catalog,skill,product,xp,None)
+    reward_with_storage(data,catalog,skill,product,xp,None,None)
+}
+/// Spend one unit of `cost` (fishing bait) in the same transaction as the product and XP.
+pub(crate) fn reward_consuming(
+    data: &crate::simulation::PlayerData,
+    catalog: &crate::inventory::Catalog,
+    skill: u8,
+    product: i32,
+    xp: f64,
+    cost: Option<i32>,
+) -> Result<Reward, crate::simulation::ActionError> {
+    reward_with_storage(data, catalog, skill, product, xp, None, cost)
 }
 fn reward_with_storage(
     data:&crate::simulation::PlayerData,catalog:&crate::inventory::Catalog,
-    skill:u8,product:i32,xp:f64,storage:Option<crate::coal_bag::Config>,
+    skill:u8,product:i32,xp:f64,storage:Option<crate::coal_bag::Config>,cost:Option<i32>,
 )->Result<Reward,crate::simulation::ActionError>{
     let mut inventory = data.inventory.clone();
+    if let Some(cost)=cost {
+        inventory
+            .delete(catalog, crate::inventory::Delete::new(cost, 1))
+            .map_err(|_| crate::simulation::ActionError::InvalidItem)?;
+    }
     let mut stats = data.stats.clone();
     let before = stats.fine_xp(skill);
     if storage.is_some_and(|c|c.coal==product)&&!catalog.ordinary_nonstackable(product){return Err(crate::simulation::ActionError::InvalidItem);}
@@ -197,5 +213,5 @@ pub(crate) fn mining_reward(
 )->Result<Reward,crate::simulation::ActionError>{
     let bonus=outfit.map(|o|o.bonus_basis_points(&data.equipment,catalog,member)).transpose()
         .map_err(|_|crate::simulation::ActionError::InvalidItem)?.unwrap_or(0);
-    reward_with_storage(data,catalog,skill,product,xp*(1.0+f64::from(bonus)/10000.0),storage.filter(|_|member))
+    reward_with_storage(data,catalog,skill,product,xp*(1.0+f64::from(bonus)/10000.0),storage.filter(|_|member),None)
 }

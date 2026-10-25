@@ -126,6 +126,16 @@ impl World {
             },
         )
     }
+    pub(super) fn start_tower_banker(&mut self, actor: ActorId, npc: NpcId) -> Result<(), ActionError> {
+        self.show_dialogue(
+            actor,
+            Pending {
+                token: 0,
+                npc,
+                conversation: crate::tower_banker::talk(),
+            },
+        )
+    }
     pub(super) fn start_tutorial_guide(
         &mut self,
         actor: ActorId,
@@ -398,6 +408,9 @@ impl World {
                         config,
                         stage: crate::tutorial_survival::Stage::RecapChoice,
                     } => crate::tutorial_survival::choice(config, choice),
+                    Effect::TowerBanker(crate::tower_banker::Stage::Choice) => {
+                        crate::tower_banker::choice(choice)
+                    }
                     _ => Conversation::choice(choice),
                 };
                 let Some(conversation) = conversation else {
@@ -430,6 +443,14 @@ impl World {
         if pending.conversation.pages.is_empty() {
             match pending.conversation.after {
                 Effect::Banknote{..}=>{},
+                Effect::TowerBanker(stage) => {
+                    if stage == crate::tower_banker::Stage::OpenBank {
+                        self.events.push(WorldEvent::NpcInteraction {
+                            actor,
+                            event: crate::npc_interaction::Event::Bank,
+                        });
+                    }
+                }
                 Effect::SkillcapeVendor {ctx,stage} => {pending.conversation=self.finish_skillcape_vendor(actor,pending.npc,ctx,stage)?;},
                 Effect::LectureTutor { config, stage } => {
                     let (step, open_tab) = crate::tutorial_lecture_tutor::finish(config, stage);

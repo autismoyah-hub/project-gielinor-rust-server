@@ -52,6 +52,7 @@ impl World {
         p.quantity_input = false;
         p.protection.suspended = false;
         p.object_interaction = Some(object);
+        p.object_light = false;
         p.npc_interaction = None;
         p.movement.interacting = true;
         p.movement.temporary_speed = if control {
@@ -179,6 +180,11 @@ impl World {
         if !reached {
             self.events.push(WorldEvent::ClearMapFlag(actor));
             self.events.push(WorldEvent::CannotReach(actor));
+            return;
+        }
+        if p.object_light {
+            self.start_firemaking_ground(slot, object);
+            self.events.push(WorldEvent::ClearMapFlag(actor));
             return;
         }
         let Some(observer) = p.observer_id else {

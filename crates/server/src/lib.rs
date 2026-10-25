@@ -14,6 +14,7 @@ pub mod combat_tab;
 pub mod constructed;
 mod food_operations;
 pub mod content;
+pub mod wealth_drop_config;
 #[cfg(windows)]
 pub mod deposit_box_ui;
 pub mod dialogue;
@@ -33,6 +34,7 @@ mod kronos_json;
 pub mod login_init;
 pub mod magic_config;
 pub mod melee_config;
+pub mod special_attack_config;
 pub mod melee_equipment_config;
 pub mod ranged_config;
 pub mod ranged_equipment_config;
@@ -41,7 +43,12 @@ pub mod ranged_weapon_config;
 pub mod message_box;
 #[cfg(windows)]
 pub mod music;
+pub mod ordinary_aggression;
 pub mod npc_combat_config;
+pub mod npc_combat_stats;
+pub mod ordinary_respawn;
+pub mod ordinary_hitpoints;
+pub mod npc_hunt_config;
 pub mod npc_death_config;
 pub mod npc_melee_config;
 pub mod npc_synchronization;
@@ -49,6 +56,7 @@ pub mod player_design;
 pub mod potions;
 #[cfg(windows)]
 pub mod prayer;
+pub mod public_chat;
 #[cfg(windows)]
 pub mod prayer_book;
 pub mod rune_catalog;

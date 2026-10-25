@@ -149,13 +149,14 @@ impl World {
                 if conflicting {
                     if let Some(trace)=&mut trace{trace.result=crate::npc_death::DropResult::Rejected;}
                     self.events.push(WorldEvent::NpcCombatError{actor:id,error:ActionError::InvalidItem});
-                } else if let Some((owner, observer, duration)) = hero.filter(|_|!suppress_drops).and_then(|uuid| {
+                } else if let Some((owner, observer, duration, wearing_wealth)) = hero.filter(|_|!suppress_drops).and_then(|uuid| {
                     self.players
                         .iter()
                         .find(|(_, p)| p.data.character_id == uuid)
                         .and_then(|(_, p)| {
                             p.observer_id.map(|observer| {
-                                (p.id, observer, p.loot_drop_duration.unwrap_or(200))
+                                (p.id, observer, p.loot_drop_duration.unwrap_or(200),
+                                    crate::npc_loot::wearing_wealth(&p.data.equipment, &self.npc_wealth_rings))
                             })
                         })
                 }) {
@@ -166,9 +167,11 @@ impl World {
                         self.events.push(WorldEvent::NpcCombatError{actor:id,error:ActionError::InvalidItem});
                     } else {
                     let mut products = if let Some(profile)=&weighted{
-                        let draw=profile.bound().map(|bound|random.below(bound));
-                        if let Some(trace)=&mut trace{trace.draw=draw;}
-                        profile.products(draw).expect("RandomSource must return a value below its exclusive bound")
+                        let rolled=profile.roll_with_context(&mut *random,crate::npc_loot::Context {
+                            location: crate::npc_loot::Location::of(drop_coords), wearing_wealth,
+                        });
+                        if let Some(trace)=&mut trace{trace.draw=rolled.draw;}
+                        rolled.products
                     }else{vec![(bones,1)]};
                     if let Some(extras) = &extras { products.extend_from_slice(&extras.products); }
                     if let Some(trace) = &mut trace { trace.owner=Some(owner); }
@@ -260,6 +263,7 @@ impl World {
                 npc.dialogue_face = None;
                 npc.face_changed = false;
                 npc.last_combat = -1000;
+                npc.reset_hunt();
                 npc.last_attack = -1000;
                 npc.combat_action_delay = 0;
                 npc.flat_armour = 0;

@@ -1,3 +1,17 @@
+# 2026-10-25 server sync
+
+Source: private monorepo main `cd3603315a443b821b75f339ada1d0508c50cacc` (path `rust-server/`), replacing the server code imported from public `1aa20582`. Development snapshot, not a tagged release; not build- or test-verified in this repository (the monorepo "Workspace checks" CI compiled the server workspace).
+
+Notable server changes from merged monorepo PRs:
+
+- Gameplay: ordinary OpenRune fishing core for 239.1 (#5); ordinary firemaking with a tinderbox (#89); mining gem pre-roll and gem rocks (#103); clay rocks and infinite rune essence rocks (#125), with the selected essence named in full-pack refusals (#136); PvN Dragon longsword special attack (#142).
+- NPCs and drops: NPC combat stats loaded from the cache instead of Kronos (#36); NPC aggression from cache hunt modes (#66); shared drop sub-tables and tertiary rolls (#83); goblin drop table 2 and Goblin Village drops (#106); Man and Woman drop tables (#112); ring-of-wealth shared drop context (#145); five-profile ordinary respawn, part A (#152); Goblin 3028 effective hitpoints corrected to 5 (#161); typed NPC attack geometry framework (#162).
+- Social and session: MESSAGE_PUBLIC decoding and public-chat echo (#97); logout-panel button routed through protected logout (#98); interrupted first registrations resume instead of failing with login status 13 (#22); disconnect grace and x-log cap pinned (#28); explicit `--ordinary-world` mode (#132); free accounts refused pickpocketing explicitly (#129).
+- Tower: Floor One banker Talk-to and NPC examine (#55); solo attempt and life-mode model (#116); attempt records, validated restore and recovery (#122); V14 attempt storage and request ledger (#137); sealed snapshot attempt commits (#150).
+- Infrastructure: pure resource and throttle guard policy (#184); selfsuite terminal binding and verified source imports (#187); test suite made to compile in a clean worktree (#8); the server authentication test now uses an independent public test-only RSA fixture instead of private reference data (#191).
+
+Packaging: `.cargo/config.toml` now sets `jobs = 2` and `target-dir = "work/target"`, so build outputs go to `work/target` (git-ignored) and not `target/`. Public root documents, licenses, `config/` and test-discovery settings are retained. Private integration/reference material, cache-derived fixtures, private tests/examples and parity scripts remain excluded. See SOURCE_CHECKPOINT.md.
+
 # Alpha 0.1.0 release preparation
 
 Target: OSRS 239.1. Windows x86-64 GNU Rust 1.99.0. Source snapshot 78b3fcd2e73c777ba4dc4684bbd9400ab7736b80b5f95bea10c0621f64a2e2b8, captured 2026-10-14 UTC (October 13 Pacific). This is a development alpha, not complete OSRS parity.

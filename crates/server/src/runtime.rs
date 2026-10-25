@@ -15,6 +15,7 @@ use std::{
 };
 mod anvil;
 mod autocast_picker;
+mod logout_button;
 mod signposts;
 mod dialogue;
 mod drop_dialog;
@@ -23,6 +24,7 @@ mod deposit_box;
 mod deposit_box_count;
 mod location_bank;
 mod equipment_buttons;
+mod special_attack;
 mod chemistry_dialog;
 mod location_target;
 mod mining;
@@ -36,7 +38,9 @@ mod counted_assembly;
 mod skill_multi;
 mod dough;
 mod tool_crafting;
+mod firemaking;
 mod finished_potions;
+mod chat;
 mod potion_upgrades;
 mod combat_mixing;
 mod unfinished_potions;
@@ -248,6 +252,8 @@ struct Active {
     sequence: Option<(u16, u8)>,
     exact_move: Option<gielinor_protocol::appearance::ExactMove>,
     spot_animations: Vec<gielinor_protocol::spot_animation::Animation>,
+    /// This cycle's encoded public-chat block, cleared after player sync.
+    public_chat: Option<Vec<u8>>,
     ui: gielinor_world::ui::State,
     character: Character,
     connection: Option<u64>,
@@ -277,6 +283,8 @@ pub struct Runtime<B: AccountBackend> {
     pub floor_progression: Option<gielinor_world::floor_progression::Policy>,
     pub combat_display: Option<crate::combat_display::Config>,
     combat_updates: HashMap<gielinor_world::hits::Target, crate::combat_display::Display>,
+    /// Cache Huffman table (binary archive 10 "huffman"); public chat is rejected without it.
+    pub huffman: Option<gielinor_protocol::huffman::Huffman>,
     drop_presentation: Option<crate::drop_dialog::Presentation>,
     dialogue_presentation: Option<crate::dialogue::Presentation>,
     signposts: Option<crate::content::Signposts>,
@@ -293,15 +301,19 @@ pub struct Runtime<B: AccountBackend> {
     pub music_component: Option<u32>,
     npc_bank_parents: Option<(gielinor_world::ui::Component, gielinor_world::ui::Component)>,
     npc_spell_buttons: BTreeMap<u32, i32>,
+    /// OPNPC6 text by NPC type; types without content-owned text stay silent.
+    npc_examines: BTreeMap<u16, &'static str>,
     login_presentation: Option<crate::login_init::Presentation>,
     interface_hooks: crate::interface_hooks::Hooks,
     journal: Option<crate::journal::Journal>,
     gameframe_moves: Option<crate::gameframe_move::Config>,
     combat_tab: Option<crate::combat_tab::Presentation>,
     combat_buttons: BTreeMap<u32, Option<u8>>,
+    special_buttons: Vec<u32>,
     player_design: Option<crate::player_design::Bindings>,
     tutorial: Option<std::sync::Arc<crate::tutorial_character::Config>>,
     tutorial_leave: Option<gielinor_world::tutorial_leave::Config>,
+    logout_button: Option<u32>,
     autocast_picker: Option<crate::autocast_picker::Presentation>,
     interface_controls: BTreeMap<u32, crate::interface_controls::Control>,
     bonuses: Option<(crate::bonuses::Config, crate::bonuses::Styles)>,
@@ -344,6 +356,7 @@ impl<B: AccountBackend> Runtime<B> {
             combat_display: None,
             constructed: Default::default(),
             combat_updates: HashMap::new(),
+            huffman: None,
             zones_enabled: false,
             drop_presentation: None,
             dialogue_presentation: None,
@@ -360,6 +373,7 @@ impl<B: AccountBackend> Runtime<B> {
             music_component: None,
             npc_bank_parents: None,
             npc_spell_buttons: BTreeMap::new(),
+            npc_examines: BTreeMap::new(),
             login_presentation: None,
             floor_progression: None,
             interface_hooks: crate::interface_hooks::Hooks::default(),
@@ -367,9 +381,11 @@ impl<B: AccountBackend> Runtime<B> {
             gameframe_moves: None,
             combat_tab: None,
             combat_buttons: BTreeMap::new(),
+            special_buttons: Vec::new(),
             player_design: None,
             tutorial: None,
             tutorial_leave: None,
+            logout_button: None,
             autocast_picker: None,
             interface_controls: BTreeMap::new(),
             bonuses: None,
@@ -1325,6 +1341,9 @@ impl<B: AccountBackend> Runtime<B> {
             self.transport
                 .send(connection, packet.opcode, &packet.payload)?;
         }
+        for packet in special_attack::opened(&self.special_buttons, interface, &mut active.ui)? {
+            self.transport.send(connection, packet.opcode, &packet.payload)?;
+        }
         if let Some(journal) = &self.journal {
             let data = self
                 .world
@@ -2020,11 +2039,14 @@ impl<B: AccountBackend> Runtime<B> {
                         .staff_level;
                     match crate::gameplay::decode(&packet, level, staff, false) {
                         Ok(crate::gameplay::Request::Npc(op)) => self.npc_button(actor, op)?,
+                        Ok(crate::gameplay::Request::ExamineNpc(id)) => self.examine_npc(actor, id)?,
                         Ok(crate::gameplay::Request::NpcTarget(target)) => {
                             self.npc_spell_target(actor, target)?
                         }
                         Ok(crate::gameplay::Request::GroundObject(op)) => {
-                            if op.operation == 3
+                            let light = op.operation == 4
+                                && self.world.firemaking.as_ref().is_some_and(|c| c.logs.contains_key(&i32::from(op.id)));
+                            if (op.operation == 3 || light)
                                 && op.suboperation == 0
                                 && self.world.pickup_effects.is_some()
                             {
@@ -2055,14 +2077,13 @@ impl<B: AccountBackend> Runtime<B> {
                                                 self.close_interface(actor, parent)?;
                                             }
                                         }
-                                        if let Err(error) = self.world.submit(
-                                            actor,
-                                            gielinor_world::simulation::Action::TakeObject {
-                                                coords,
-                                                id: op.id,
-                                                control: op.control,
-                                            },
-                                        ) {
+                                        let (id, control) = (op.id, op.control);
+                                        let action = if light {
+                                            gielinor_world::simulation::Action::LightObject { coords, id, control }
+                                        } else {
+                                            gielinor_world::simulation::Action::TakeObject { coords, id, control }
+                                        };
+                                        if let Err(error) = self.world.submit(actor, action) {
                                             self.events.push(Event::PacketRejected {
                                                 connection,
                                                 actor,
@@ -2309,6 +2330,7 @@ impl<B: AccountBackend> Runtime<B> {
                                         )?;
                                     }
                                     if route == gielinor_world::ui::ButtonRoute::Overlay {
+                                        self.logout_button(actor, button.component, button.op)?;
                                         self.tutorial_overlay_button(actor, button.component)?;
                                         let prayer = self
                                             .world
@@ -2338,6 +2360,9 @@ impl<B: AccountBackend> Runtime<B> {
                                             }
                                         }
                                         self.autocast_button(actor, button)?;
+                                        if button.op == 1 && self.special_buttons.contains(&button.component) {
+                                            self.world.toggle_special_attack(actor).map_err(|e| io::Error::other(format!("{e:?}")))?;
+                                        }
                                         if let Some(stance) =
                                             self.combat_buttons.get(&button.component).copied()
                                         {
@@ -2941,6 +2966,9 @@ impl<B: AccountBackend> Runtime<B> {
                                 reason: "Protected telejump is not implemented".into(),
                             })
                         }
+                        Ok(crate::gameplay::Request::PublicChat(payload)) => {
+                            self.public_chat(connection, actor, packet.opcode, &payload)
+                        }
                         Ok(crate::gameplay::Request::Unhandled) => {
                             self.events.push(Event::Packet {
                                 connection,
@@ -3239,6 +3267,7 @@ impl<B: AccountBackend> Runtime<B> {
                             sequence: None,
                             exact_move: None,
                             spot_animations: Vec::new(),
+                            public_chat: None,
                             pending_face: None,
                             face_npc: None,
                             face_angle: None,
@@ -4134,6 +4163,7 @@ impl<B: AccountBackend> Runtime<B> {
                         .opened(interface, &mut active.ui)
                         .map_err(io::Error::other)?,
                 );
+                packets.extend(special_attack::opened(&self.special_buttons, interface, &mut active.ui)?);
                 if let Some(journal) = &self.journal {
                     packets.extend(
                         journal
@@ -4206,6 +4236,7 @@ impl<B: AccountBackend> Runtime<B> {
             self.combat_updates.clear();
             for active in self.active.values_mut() {
                 active.spot_animations.clear();
+                active.public_chat = None;
                 active.appearance_rebuild = false;
             }
             return;
@@ -4269,6 +4300,12 @@ impl<B: AccountBackend> Runtime<B> {
                 }
             }
         }
+        // Owned copies: observers below borrow `self.active` mutably while avatars live.
+        let chats: HashMap<ActorId, Vec<u8>> = self
+            .active
+            .iter()
+            .filter_map(|(actor, active)| Some((*actor, active.public_chat.clone()?)))
+            .collect();
         let avatars: Vec<_> = images
             .iter()
             .map(
@@ -4284,6 +4321,7 @@ impl<B: AccountBackend> Runtime<B> {
                         .map(|active| active.spot_animations.clone())
                         .unwrap_or_default(),
                     face_angle: self.active.get(actor).and_then(|active| active.face_angle),
+                    chat: chats.get(actor).map(Vec::as_slice),
                     face_npc: self
                         .active
                         .get(actor)
@@ -4605,6 +4643,7 @@ impl<B: AccountBackend> Runtime<B> {
             active.sequence = None;
             active.exact_move = None;
             active.spot_animations.clear();
+            active.public_chat = None;
             active.face_changed = false;
             active.appearance_rebuild = false;
         }

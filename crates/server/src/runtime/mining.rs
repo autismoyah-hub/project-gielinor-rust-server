@@ -89,6 +89,8 @@ impl<B: AccountBackend> Runtime<B> {
                 ));
             }
         }
+        // OpenRune rollGemPreTable-eligible rocks: ordinary, limestone, lead and clay.
+        let mut pre_roll_rocks = std::collections::BTreeSet::new();
         for (id, rock) in crate::content::ordinary_mining_rocks(
             names.group("obj"),
             names.group("loc"),
@@ -97,6 +99,7 @@ impl<B: AccountBackend> Runtime<B> {
         )
         .map_err(io::Error::other)?
         {
+            pre_roll_rocks.insert(id);
             if config.rocks.insert(id, rock).is_some() {
                 return Err(io::Error::other("Conflicting ordinary mining rock"));
             }
@@ -109,6 +112,7 @@ impl<B: AccountBackend> Runtime<B> {
         )
         .map_err(io::Error::other)?
         {
+            pre_roll_rocks.insert(id);
             if config.rocks.insert(id, rock).is_some() {
                 return Err(io::Error::other("Conflicting limestone mining stage"));
             }
@@ -121,11 +125,41 @@ impl<B: AccountBackend> Runtime<B> {
         )
         .map_err(io::Error::other)?
         {
+            pre_roll_rocks.insert(id);
             if config.rocks.insert(id, rock).is_some() {
                 return Err(io::Error::other("Conflicting lead mining target"));
             }
         }
+        // Clay is pre-roll eligible (OpenRune, Wiki Clay rocks); the infinite essence rock is not.
+        let (clay_essence, essence) = crate::content::clay_essence_mining::clay_essence_mining(
+            names.group("obj"),
+            names.group("loc"),
+            &self.definitions,
+        )
+        .map_err(io::Error::other)?;
+        pre_roll_rocks.extend(crate::content::clay_essence_mining::pre_roll_rocks(&clay_essence));
+        for (id, rock) in clay_essence {
+            if config.rocks.insert(id, rock).is_some() {
+                return Err(io::Error::other("Conflicting clay or essence rock"));
+            }
+        }
+        let (gem_rocks, gems) = crate::content::mining_gems(
+            names.group("obj"),
+            names.group("loc"),
+            &self.definitions,
+            pre_roll_rocks,
+        )
+        .map_err(io::Error::other)?;
+        for (id, rock) in gem_rocks {
+            if config.rocks.insert(id, rock).is_some() {
+                return Err(io::Error::other("Conflicting gem rock"));
+            }
+        }
         config.validate().map_err(io::Error::other)?;
+        gems.validate(&config.rocks).map_err(io::Error::other)?;
+        self.world.mining_gems = Some(gems);
+        essence.validate(&config.rocks).map_err(io::Error::other)?;
+        self.world.mining_essence = Some(essence);
         let outfit = crate::content::prospector_outfit(
             names.group("obj"),
             names.group("stat"),
